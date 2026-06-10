@@ -45,15 +45,24 @@ function Get-Safehouse {
     # Load runtime config if exists
     if ($path -and (Test-Path $path)) {
         $config = Get-Content -Path $path -Raw | ConvertFrom-Json
+        if (-not $ShowSecrets) {
+            Hide-ConfigSecret -InputObject $config
+        }
         $result.config = $config
         $result.configPath = $path
     } else {
+        Write-Warning "No configuration found at '$path'. Run Set-Safehouse to create one."
         $result.config = $null
         $result.configPath = $path
     }
 
-    # Load vault status
-    $vault = Get-SecretVault -Name $VaultName -ErrorAction SilentlyContinue
+    # Load vault status. SecretManagement may not be installed yet (Set-Safehouse
+    # installs it on first run) — treat that the same as "no vault".
+    $vault = if (Get-Command Get-SecretVault -ErrorAction SilentlyContinue) {
+        Get-SecretVault -Name $VaultName -ErrorAction SilentlyContinue
+    } else {
+        $null
+    }
     $result.vaultExists = [bool]$vault
     $result.vaultName = $VaultName
 

@@ -61,6 +61,7 @@ function Test-InfiltrationEIDTNT001 {
                 @{ Name = $_.name; Type = $_.type; IsDefault = $_.isDefault; IsInitial = $_.isInitial }
             })
             TechnicalContacts       = @($technicalContacts)
+            SecurityComplianceContacts = @($securityComplianceContact ?? @())
             OnPremisesSyncEnabled   = $org.onPremisesSyncEnabled
             DirectorySizeQuota      = $org.directorySizeQuota
             AssignedPlans           = @($org.assignedPlans | Select-Object -First 20 | ForEach-Object {
@@ -428,7 +429,6 @@ function Test-InfiltrationEIDTNT010 {
     $verified = @($domains | Where-Object { $_.isVerified -eq $true })
     $unverified = @($domains | Where-Object { $_.isVerified -ne $true })
     $defaultDomain = @($domains | Where-Object { $_.isDefault -eq $true })
-    $initialDomains = @($domains | Where-Object { $_.isInitial -eq $true })
     $customDomains = @($domains | Where-Object { $_.isInitial -ne $true })
 
     $status = if ($unverified.Count -gt 0) { 'WARN' } else { 'PASS' }

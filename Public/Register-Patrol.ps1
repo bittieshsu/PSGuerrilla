@@ -58,36 +58,41 @@ function Register-Patrol {
     }
 
     $cfgPath = if ($ConfigPath) { $ConfigPath } else { $script:ConfigPath }
-    $cfgFileArg = if ($ConfigFile) { " -ConfigFile '$(Resolve-Path $ConfigFile)'" } else { '' }
+
+    # Paths are embedded single-quoted in the generated runner script — double any
+    # embedded single quote (apostrophes are legal in Windows profile paths) so the
+    # generated script stays syntactically valid.
+    $cfgPathQ = $cfgPath -replace "'", "''"
+    $cfgFileArg = if ($ConfigFile) { " -ConfigFile '$((Resolve-Path $ConfigFile).Path -replace "'", "''")'" } else { '' }
 
     # Build the PowerShell command for all enabled theaters
     $commands = @()
 
-    $signalArgs = "-ConfigPath '$cfgPath'$cfgFileArg -Force"
+    $signalArgs = "-ConfigPath '$cfgPathQ'$cfgFileArg -Force"
 
     if ('Workspace' -in $Theaters) {
-        $commands += "`$r = Invoke-Recon -ConfigPath '$cfgPath'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
+        $commands += "`$r = Invoke-Recon -ConfigPath '$cfgPathQ'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
         if ($SendAlerts) {
             $commands += "if (`$r.NewThreats.Count -gt 0) { `$r | Send-Signal $signalArgs }"
         }
     }
 
     if ('Entra' -in $Theaters) {
-        $commands += "`$s = Invoke-Surveillance -ConfigPath '$cfgPath'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
+        $commands += "`$s = Invoke-Surveillance -ConfigPath '$cfgPathQ'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
         if ($SendAlerts) {
             $commands += "if (`$s.NewThreats.Count -gt 0) { `$s | Send-Signal $signalArgs }"
         }
     }
 
     if ('AD' -in $Theaters) {
-        $commands += "`$w = Invoke-Watchtower -ConfigPath '$cfgPath'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
+        $commands += "`$w = Invoke-Watchtower -ConfigPath '$cfgPathQ'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
         if ($SendAlerts) {
             $commands += "if (`$w.NewThreats.Count -gt 0) { `$w | Send-Signal $signalArgs }"
         }
     }
 
     if ('M365' -in $Theaters) {
-        $commands += "`$t = Invoke-Wiretap -ConfigPath '$cfgPath'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
+        $commands += "`$t = Invoke-Wiretap -ConfigPath '$cfgPathQ'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
         if ($SendAlerts) {
             $commands += "if (`$t.NewThreats.Count -gt 0) { `$t | Send-Signal $signalArgs }"
         }
@@ -118,7 +123,7 @@ function Register-Patrol {
     }
     $scriptLines += @(
         '} catch {'
-        "    `$_ | Out-String | Add-Content -Path '$logPath'"
+        "    `$_ | Out-String | Add-Content -Path '$($logPath -replace "'", "''")'"
         '}'
     )
 

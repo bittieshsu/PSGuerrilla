@@ -45,7 +45,7 @@ function Invoke-GoogleReportsApi {
         $response = $null
         for ($attempt = 0; $attempt -lt $MaxRetries; $attempt++) {
             try {
-                $response = Invoke-RestMethod -Uri $uri -Headers $headers -Method Get -ErrorAction Stop
+                $response = Invoke-RestMethod -TimeoutSec 30 -Uri $uri -Headers $headers -Method Get -ErrorAction Stop
                 break
             } catch {
                 $statusCode = $_.Exception.Response.StatusCode.value__

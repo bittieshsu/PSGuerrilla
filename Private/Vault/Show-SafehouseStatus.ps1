@@ -18,7 +18,6 @@ function Show-SafehouseStatus {
     $khaki  = $script:Palette.Khaki
     $white  = $script:Palette.Parchment
     $gray   = $script:Palette.Gray
-    $gold   = $script:Palette.Gold
     $reset  = $PSStyle.Reset
 
     # Check if vault exists

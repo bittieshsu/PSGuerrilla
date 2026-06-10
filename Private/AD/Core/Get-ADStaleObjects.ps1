@@ -558,7 +558,6 @@ function Get-ADStaleObjects {
 
     try {
         $domainName = ($domainDN -replace '^DC=', '' -replace ',DC=', '.').ToLower()
-        $forestDN = $Connection.ForestDN
 
         # Try AD-integrated DNS zone containers
         $dnsContainers = @(

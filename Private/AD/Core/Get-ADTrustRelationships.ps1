@@ -106,7 +106,6 @@ function Get-ADTrustRelationships {
 
         # Decode attribute flags
         $isNonTransitive      = ($trustAttribs -band 0x0001) -ne 0
-        $isUplevelOnly        = ($trustAttribs -band 0x0002) -ne 0
         $isQuarantined        = ($trustAttribs -band 0x0004) -ne 0   # SID filtering
         $isForestTransitive   = ($trustAttribs -band 0x0008) -ne 0
         $isCrossOrganization  = ($trustAttribs -band 0x0010) -ne 0   # Selective authentication

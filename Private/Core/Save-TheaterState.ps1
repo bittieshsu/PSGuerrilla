@@ -28,9 +28,17 @@ function Save-TheaterState {
     }
 
     try {
-        $State | ConvertTo-Json -Depth 10 | Set-Content -Path $statePath -Encoding UTF8
+        # Atomic write: stage to a sibling temp file, then rename — same pattern as
+        # Save-OperationState. Avoids leaving a half-written state file on disk if
+        # the process is killed mid-serialization.
+        $tempPath = "$statePath.tmp"
+        $State | ConvertTo-Json -Depth 10 | Set-Content -Path $tempPath -Encoding UTF8 -ErrorAction Stop
+        Move-Item -Path $tempPath -Destination $statePath -Force -ErrorAction Stop
         Write-Verbose "$Theater state saved to $statePath"
     } catch {
         Write-Warning "Failed to save $Theater state file: $_"
+        if ($tempPath -and (Test-Path $tempPath)) {
+            Remove-Item -Path $tempPath -Force -ErrorAction SilentlyContinue
+        }
     }
 }

@@ -59,7 +59,7 @@ function Send-SignalSlack {
     } | ConvertTo-Json -Depth 20 -Compress
 
     try {
-        Invoke-RestMethod -Uri $WebhookUrl -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
+        Invoke-RestMethod -TimeoutSec 30 -Uri $WebhookUrl -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
         return [PSCustomObject]@{
             Provider = 'Slack'
             Success  = $true
@@ -69,7 +69,7 @@ function Send-SignalSlack {
     } catch {
         Start-Sleep -Seconds 3
         try {
-            Invoke-RestMethod -Uri $WebhookUrl -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
+            Invoke-RestMethod -TimeoutSec 30 -Uri $WebhookUrl -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
             return [PSCustomObject]@{
                 Provider = 'Slack'
                 Success  = $true

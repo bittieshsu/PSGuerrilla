@@ -48,7 +48,7 @@ function Send-SignalPagerDuty {
     } | ConvertTo-Json -Depth 10 -Compress
 
     try {
-        $response = Invoke-RestMethod -Uri 'https://events.pagerduty.com/v2/enqueue' `
+        $response = Invoke-RestMethod -TimeoutSec 30 -Uri 'https://events.pagerduty.com/v2/enqueue' `
             -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
 
         return [PSCustomObject]@{
@@ -60,7 +60,7 @@ function Send-SignalPagerDuty {
     } catch {
         Start-Sleep -Seconds 3
         try {
-            $response = Invoke-RestMethod -Uri 'https://events.pagerduty.com/v2/enqueue' `
+            $response = Invoke-RestMethod -TimeoutSec 30 -Uri 'https://events.pagerduty.com/v2/enqueue' `
                 -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
 
             return [PSCustomObject]@{

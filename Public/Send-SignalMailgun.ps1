@@ -40,7 +40,7 @@ function Send-SignalMailgun {
     if ($TextBody) { $form['text'] = $TextBody }
 
     try {
-        $response = Invoke-RestMethod -Uri $uri -Method Post `
+        $response = Invoke-RestMethod -TimeoutSec 30 -Uri $uri -Method Post `
             -Authentication Basic -Credential $credential `
             -Form $form -ErrorAction Stop
 
@@ -53,7 +53,7 @@ function Send-SignalMailgun {
     } catch {
         Start-Sleep -Seconds 3
         try {
-            $response = Invoke-RestMethod -Uri $uri -Method Post `
+            $response = Invoke-RestMethod -TimeoutSec 30 -Uri $uri -Method Post `
                 -Authentication Basic -Credential $credential `
                 -Form $form -ErrorAction Stop
 

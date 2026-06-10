@@ -53,7 +53,7 @@ function Send-SignalTeams {
     } | ConvertTo-Json -Depth 20 -Compress
 
     try {
-        Invoke-RestMethod -Uri $WebhookUrl -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
+        Invoke-RestMethod -TimeoutSec 30 -Uri $WebhookUrl -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
         return [PSCustomObject]@{
             Provider = 'Teams'
             Success  = $true
@@ -63,7 +63,7 @@ function Send-SignalTeams {
     } catch {
         Start-Sleep -Seconds 3
         try {
-            Invoke-RestMethod -Uri $WebhookUrl -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
+            Invoke-RestMethod -TimeoutSec 30 -Uri $WebhookUrl -Method Post -Body $body -ContentType 'application/json' -ErrorAction Stop
             return [PSCustomObject]@{
                 Provider = 'Teams'
                 Success  = $true

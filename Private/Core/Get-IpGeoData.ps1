@@ -56,7 +56,7 @@ function Get-IpGeoData {
         $requestTimestamps.Add([datetime]::UtcNow)
 
         try {
-            $response = Invoke-RestMethod -Uri 'http://ip-api.com/batch' `
+            $response = Invoke-RestMethod -TimeoutSec 30 -Uri 'http://ip-api.com/batch' `
                 -Method Post `
                 -Body $jsonBody `
                 -ContentType 'application/json' `
@@ -80,7 +80,7 @@ function Get-IpGeoData {
             Write-Warning "GeoIP batch request failed: $_. Retrying once..."
             Start-Sleep -Seconds 5
             try {
-                $response = Invoke-RestMethod -Uri 'http://ip-api.com/batch' `
+                $response = Invoke-RestMethod -TimeoutSec 30 -Uri 'http://ip-api.com/batch' `
                     -Method Post `
                     -Body $jsonBody `
                     -ContentType 'application/json' `

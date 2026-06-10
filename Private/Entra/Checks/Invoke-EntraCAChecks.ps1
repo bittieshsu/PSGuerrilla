@@ -89,7 +89,7 @@ function Test-InfiltrationEIDCA002 {
     # Check for MFA requirement
     $mfaPolicies = @($policies | Where-Object {
         $_.grantControls.builtInControls -contains 'mfa' -or
-        $_.grantControls.authenticationStrength -ne $null
+        $null -ne $_.grantControls.authenticationStrength
     })
 
     $hasAllUsersMfa = @($mfaPolicies | Where-Object {
@@ -152,7 +152,6 @@ function Test-InfiltrationEIDCA004 {
 
     foreach ($policy in $policies) {
         $excludedGroups = @($policy.conditions.users.excludeGroups | Where-Object { $_ })
-        $excludedUsers = @($policy.conditions.users.excludeUsers | Where-Object { $_ -and $_ -ne 'GuestsOrExternalUsers' })
 
         foreach ($groupId in $excludedGroups) {
             if (-not $exclusionGroups.ContainsKey($groupId)) {
@@ -274,7 +273,7 @@ function Test-InfiltrationEIDCA007 {
 
     $mfaPolicies = @($policies | Where-Object {
         $_.grantControls.builtInControls -contains 'mfa' -or
-        $_.grantControls.authenticationStrength -ne $null
+        $null -ne $_.grantControls.authenticationStrength
     })
 
     if ($mfaPolicies.Count -eq 0) {
@@ -529,10 +528,10 @@ function Test-InfiltrationEIDCA014 {
 
     $sessionPolicies = @($policies | Where-Object {
         $_.sessionControls -ne $null -and
-        ($_.sessionControls.signInFrequency -ne $null -or
-         $_.sessionControls.persistentBrowser -ne $null -or
-         $_.sessionControls.cloudAppSecurity -ne $null -or
-         $_.sessionControls.applicationEnforcedRestrictions -ne $null)
+        ($null -ne $_.sessionControls.signInFrequency -or
+         $null -ne $_.sessionControls.persistentBrowser -or
+         $null -ne $_.sessionControls.cloudAppSecurity -or
+         $null -ne $_.sessionControls.applicationEnforcedRestrictions)
     })
 
     # Check for persistent browser policies (should disable persistence)

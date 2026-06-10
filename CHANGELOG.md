@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.4.0] - 2026-06-10
+
+### Fixed
+- **GUI: scan results never reached the window.** The `Invoke-GuerrillaGuiAsync` DispatcherTimer tick handler was not a closure, so `$state`/`$OnComplete`/`$OnError` were unresolvable when the timer fired; additionally, results were read from `EndInvoke` (always empty with the explicit-output `BeginInvoke` overload introduced in 2.3.1) instead of the output collection. Scans now complete, stream logs, and report results; a stray non-terminating error no longer discards a successful scan.
+- **Vault-staged Google service-account key leaked to %TEMP%.** `Invoke-Recon`, `Invoke-Fortification`, and `Invoke-Campaign` staged the private key to a temp file and never deleted it. Scan bodies are now wrapped in `try/finally` cleanup.
+- **Set-Safehouse could destroy the only copy of a key.** The "delete the original key file?" prompt ran before the vault write; deletion is now offered only after `Set-GuerrillaCredential` succeeds.
+- `Save-TheaterState` now writes atomically (temp file + rename), matching `Save-OperationState` — a crash mid-write can no longer corrupt theater state.
+- `Register-Patrol` escapes single quotes when embedding paths in the generated patrol-runner script (apostrophes in profile paths no longer break it).
+- `Send-SignalSyslog` flattens CR/LF/tab and escapes CEF/LEEF metacharacters in threat-derived fields, preventing log-line forgery via crafted indicator text.
+- `Get-Safehouse` again masks plaintext secrets found in config.json (lost in the 2.2.0 vault redesign), warns when no config exists, and no longer hard-fails when SecretManagement is not installed.
+- `Show-Guerrilla` validates the thread is STA before loading WPF, replacing an opaque failure under `pwsh -MTA`.
+- Renamed shadowed automatic variables: `$error` in `Invoke-IntuneChecks`, `$matches` in the threat-actor matcher (now `Find-ThreatActorProfile`, approved verb).
+
+### Changed
+- All `Invoke-RestMethod` calls now carry explicit timeouts: 30s for alert senders, token endpoints, geo/intel lookups; 120s for Graph/Azure RM/Google Admin API wrappers. A hung endpoint can no longer stall a patrol indefinitely.
+- Removed ~30 dead variable assignments across check runners, exporters, and senders (PSScriptAnalyzer `PSUseDeclaredVarsMoreThanAssignments` is now clean for Public/Private).
+- `Set-Safehouse`/`Get-Safehouse`/config-migration tests rewritten against the 2.2.0+ vault API (they still targeted the retired `-AdminEmail`/`-SendGridApiKey` surface).
+
 ## [2.0.0] - 2026-02-27
 
 ### Changed

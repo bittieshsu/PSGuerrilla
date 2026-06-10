@@ -127,7 +127,6 @@ if (`$confirm -ne 'yes') {
             $actionNum++
             $checkId = $finding.CheckId ?? $finding.Id ?? 'Unknown'
             $name = ($finding.Name ?? $finding.CheckName ?? $checkId) -replace "'", "''"
-            $desc = ($finding.Description ?? '') -replace "'", "''"
             $steps = ($finding.RemediationSteps ?? 'See documentation for manual remediation steps.') -replace "'", "''"
             $sev = $finding.Severity ?? 'Medium'
 

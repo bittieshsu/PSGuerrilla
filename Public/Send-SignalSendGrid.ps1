@@ -45,7 +45,7 @@ function Send-SignalSendGrid {
     }
 
     try {
-        $response = Invoke-RestMethod -Uri 'https://api.sendgrid.com/v3/mail/send' `
+        $null = Invoke-RestMethod -TimeoutSec 30 -Uri 'https://api.sendgrid.com/v3/mail/send' `
             -Method Post -Headers $headers -Body $body -ErrorAction Stop
         return [PSCustomObject]@{
             Provider = 'SendGrid'
@@ -57,7 +57,7 @@ function Send-SignalSendGrid {
         # Retry once
         Start-Sleep -Seconds 3
         try {
-            $response = Invoke-RestMethod -Uri 'https://api.sendgrid.com/v3/mail/send' `
+            $null = Invoke-RestMethod -TimeoutSec 30 -Uri 'https://api.sendgrid.com/v3/mail/send' `
                 -Method Post -Headers $headers -Body $body -ErrorAction Stop
             return [PSCustomObject]@{
                 Provider = 'SendGrid'

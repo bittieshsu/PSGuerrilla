@@ -320,7 +320,6 @@ function Test-InfiltrationEIDAUTH011 {
             -CurrentValue 'Authorization policy not available'
     }
 
-    $sspr = $authzPolicy.defaultUserRolePermissions
     $allowedToReset = $authzPolicy.allowedToUseSSPR ?? $false
 
     $status = if ($allowedToReset) { 'PASS' } else { 'WARN' }

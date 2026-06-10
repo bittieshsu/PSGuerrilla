@@ -40,12 +40,6 @@ function Invoke-ReconDemo {
     # ============================================================
     # USER 1: CRITICAL — known attacker IP + impossible travel + brute force success
     # ============================================================
-    $u1Events = @(
-        (& $mockEvent 'sarah.chen@acme.com' 'login_success' '185.220.101.42' 'known_attacker' 'DE' ($now.AddHours(-6)) 'login' @{ login_type = 'exchange' })
-        (& $mockEvent 'sarah.chen@acme.com' 'login_success' '3.236.48.201' 'aws' 'US' ($now.AddHours(-4)) 'login' @{ login_type = 'reauth' })
-        (& $mockEvent 'sarah.chen@acme.com' 'risky_sensitive_action_allowed' '3.236.48.201' 'aws' 'US' ($now.AddHours(-3.5)) 'login' @{})
-    )
-
     $u1 = [PSCustomObject]@{
         PSTypeName              = 'PSGuerrilla.UserProfile'
         Email                   = 'sarah.chen@acme.com'

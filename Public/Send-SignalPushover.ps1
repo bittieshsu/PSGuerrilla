@@ -87,7 +87,7 @@ function Send-SignalPushover {
     }
 
     try {
-        $response = Invoke-RestMethod -Uri $uri -Method Post -Body $form -ErrorAction Stop
+        $response = Invoke-RestMethod -TimeoutSec 30 -Uri $uri -Method Post -Body $form -ErrorAction Stop
 
         if ($response.status -eq 1) {
             return [PSCustomObject]@{
@@ -107,7 +107,7 @@ function Send-SignalPushover {
     } catch {
         Start-Sleep -Seconds 3
         try {
-            $response = Invoke-RestMethod -Uri $uri -Method Post -Body $form -ErrorAction Stop
+            $response = Invoke-RestMethod -TimeoutSec 30 -Uri $uri -Method Post -Body $form -ErrorAction Stop
 
             if ($response.status -eq 1) {
                 return [PSCustomObject]@{

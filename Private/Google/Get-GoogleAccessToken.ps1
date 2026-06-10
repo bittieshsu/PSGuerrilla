@@ -70,7 +70,7 @@ function Get-GoogleAccessToken {
     }
 
     try {
-        $response = Invoke-RestMethod -Uri $tokenUri -Method Post -Body $body -ContentType 'application/x-www-form-urlencoded'
+        $response = Invoke-RestMethod -TimeoutSec 30 -Uri $tokenUri -Method Post -Body $body -ContentType 'application/x-www-form-urlencoded'
     } catch {
         $statusCode = $_.Exception.Response.StatusCode.value__
         throw "Google OAuth2 token exchange failed (HTTP $statusCode): $($_.ErrorDetails.Message ?? $_.Exception.Message)"

@@ -73,6 +73,7 @@ function Invoke-AzureRMApi {
                     Headers     = $headers
                     Method      = $Method
                     ErrorAction = 'Stop'
+                    TimeoutSec  = 120
                 }
                 if ($Body -and $Method -in @('Post', 'Patch', 'Put')) {
                     $invokeParams['Body'] = ($Body | ConvertTo-Json -Depth 20)

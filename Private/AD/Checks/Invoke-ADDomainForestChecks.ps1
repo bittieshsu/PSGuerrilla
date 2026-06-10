@@ -209,14 +209,6 @@ function Test-ReconADDOM006 {
     }
 
     $roles = $domain.FSMORoles
-    $roleList = @(
-        "Schema Master: $($roles.SchemaMaster)"
-        "Domain Naming Master: $($roles.DomainNamingMaster)"
-        "PDC Emulator: $($roles.PDCEmulator)"
-        "RID Master: $($roles.RIDMaster)"
-        "Infrastructure Master: $($roles.InfrastructureMaster)"
-    )
-
     # Check if all roles are on the same DC
     $uniqueHolders = @($roles.Values | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } |
         Sort-Object -Unique)

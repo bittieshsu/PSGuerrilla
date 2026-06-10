@@ -107,6 +107,7 @@ function Invoke-GraphApi {
                     Headers     = $headers
                     Method      = $Method
                     ErrorAction = 'Stop'
+                    TimeoutSec  = 120
                 }
                 if ($Body -and $Method -in @('Post', 'Patch')) {
                     $invokeParams['Body'] = ($Body | ConvertTo-Json -Depth 20)
@@ -223,7 +224,7 @@ function Invoke-GraphBatchRequest {
         }
 
         try {
-            $response = Invoke-RestMethod -Uri $batchUri -Method Post `
+            $response = Invoke-RestMethod -Uri $batchUri -Method Post -TimeoutSec 120 `
                 -Headers $headers -Body ($batchBody | ConvertTo-Json -Depth 20) -ErrorAction Stop
 
             foreach ($resp in $response.responses) {

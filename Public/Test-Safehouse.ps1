@@ -29,7 +29,6 @@ function Test-Safehouse {
     $red   = $script:Palette.Red
     $white = $script:Palette.Parchment
     $khaki = $script:Palette.Khaki
-    $gray  = $script:Palette.Gray
     $reset = $PSStyle.Reset
 
     $results = [System.Collections.Generic.List[PSCustomObject]]::new()

@@ -1,7 +1,7 @@
 # PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
 # https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
-function Match-ThreatActorProfile {
+function Find-ThreatActorProfile {
     <#
     .SYNOPSIS
         Matches detected threat indicators to known threat actor profiles.
@@ -70,7 +70,7 @@ function Match-ThreatActorProfile {
     }
 
     $threatScore = [int]($ThreatProfile.ThreatScore ?? 0)
-    $matches = [System.Collections.Generic.List[PSCustomObject]]::new()
+    $actorMatches = [System.Collections.Generic.List[PSCustomObject]]::new()
 
     foreach ($actor in $ActorProfiles.profiles) {
         $criteria = $actor.matchCriteria
@@ -117,7 +117,7 @@ function Match-ThreatActorProfile {
             default { 'Low' }
         }
 
-        $matches.Add([PSCustomObject]@{
+        $actorMatches.Add([PSCustomObject]@{
             PSTypeName         = 'PSGuerrilla.ThreatActorMatch'
             ActorId            = $actor.id
             ActorName          = $actor.name
@@ -135,5 +135,5 @@ function Match-ThreatActorProfile {
         })
     }
 
-    return @($matches | Sort-Object -Property MatchRatio -Descending)
+    return @($actorMatches | Sort-Object -Property MatchRatio -Descending)
 }

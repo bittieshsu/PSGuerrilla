@@ -92,7 +92,7 @@ function Export-ReportPdf {
     )
 
     try {
-        $process = Start-Process -FilePath $BrowserPath -ArgumentList $arguments -PassThru -NoNewWindow -Wait -ErrorAction Stop
+        Start-Process -FilePath $BrowserPath -ArgumentList $arguments -NoNewWindow -Wait -ErrorAction Stop
 
         # Give it a moment to write the file (timeout = 30 seconds)
         $timeoutMs = 30000

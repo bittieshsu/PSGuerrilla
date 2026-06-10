@@ -36,7 +36,7 @@ function Send-SignalTwilio {
         }
 
         try {
-            $response = Invoke-RestMethod -Uri $uri -Method Post `
+            $response = Invoke-RestMethod -TimeoutSec 30 -Uri $uri -Method Post `
                 -Authentication Basic -Credential $credential `
                 -Form $form -ErrorAction Stop
 

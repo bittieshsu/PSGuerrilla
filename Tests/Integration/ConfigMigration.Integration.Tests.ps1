@@ -151,17 +151,19 @@ Describe 'Config Migration Integration' {
         It 'Set-Safehouse then Get-Safehouse preserves values' {
             $cfgPath = Join-Path $TestDrive 'roundtrip-cfg/config.json'
 
-            Set-Safehouse -AdminEmail 'admin@test.com' `
-                          -ServiceAccountKeyPath 'C:\test\key.json' `
-                          -DefaultDaysBack 14 `
-                          -DefaultScanMode Full `
+            Set-Safehouse -OutputDirectory 'C:\Test\Reports' `
+                          -MinimumAlertLevel MEDIUM `
+                          -BusinessHoursStart 8 `
+                          -BusinessHoursEnd 18 `
+                          -KnownCompromisedUsers @('victim@test.com') `
                           -ConfigPath $cfgPath
 
             $result = Get-Safehouse -ConfigPath $cfgPath -ShowSecrets
-            $result.google.adminEmail | Should -Be 'admin@test.com'
-            $result.google.serviceAccountKeyPath | Should -Be 'C:\test\key.json'
-            $result.google.defaultDaysBack | Should -Be 14
-            $result.google.defaultScanMode | Should -Be 'Full'
+            $result.config.output.directory | Should -Be 'C:\Test\Reports'
+            $result.config.alerting.minimumThreatLevel | Should -Be 'MEDIUM'
+            $result.config.detection.businessHoursStart | Should -Be 8
+            $result.config.detection.businessHoursEnd | Should -Be 18
+            $result.config.detection.knownCompromisedUsers | Should -Contain 'victim@test.com'
         }
     }
 }

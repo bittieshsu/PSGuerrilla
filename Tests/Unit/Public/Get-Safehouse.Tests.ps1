@@ -29,9 +29,9 @@ BeforeAll {
 
 Describe 'Get-Safehouse' {
     Context 'No config exists' {
-        It 'returns null and warns when no config file' {
+        It 'returns empty config and warns when no config file' {
             $result = Get-Safehouse -ConfigPath (Join-Path $TestDrive 'missing/config.json') -WarningAction SilentlyContinue -WarningVariable warn
-            $result | Should -BeNullOrEmpty
+            $result.config | Should -BeNullOrEmpty
             $warn.Count | Should -BeGreaterThan 0
             $warn[0] | Should -Match 'Set-Safehouse'
         }
@@ -46,13 +46,15 @@ Describe 'Get-Safehouse' {
             $config | ConvertTo-Json -Depth 10 | Set-Content $cfgPath
         }
 
-        It 'returns config object' {
+        It 'returns config object with vault status fields' {
             $result = Get-Safehouse -ConfigPath $cfgPath
             $result | Should -Not -BeNullOrEmpty
-            $result.google | Should -Not -BeNullOrEmpty
+            $result.config.google | Should -Not -BeNullOrEmpty
+            $result.configPath | Should -Be $cfgPath
+            $result.vaultExists | Should -BeOfType [bool]
         }
 
-        It 'masks sensitive fields by default' {
+        It 'masks sensitive config fields by default' {
             $cfgDir2 = Join-Path $TestDrive 'mask-cfg'
             New-Item -Path $cfgDir2 -ItemType Directory -Force | Out-Null
             $cfgPath2 = Join-Path $cfgDir2 'config.json'
@@ -63,9 +65,16 @@ Describe 'Get-Safehouse' {
             $config2 | ConvertTo-Json -Depth 10 | Set-Content $cfgPath2
 
             $result = Get-Safehouse -ConfigPath $cfgPath2
-            $result.alerting.providers.sendgrid.apiKey | Should -Be '********'
-            $result.alerting.providers.twilio.accountSid | Should -Be '********'
-            $result.alerting.providers.twilio.authToken | Should -Be '********'
+            $result.config.alerting.providers.sendgrid.apiKey | Should -Be '********'
+            $result.config.alerting.providers.twilio.accountSid | Should -Be '********'
+            $result.config.alerting.providers.twilio.authToken | Should -Be '********'
+        }
+
+        It 'does not mask empty or non-sensitive fields' {
+            $result = Get-Safehouse -ConfigPath $cfgPath
+            # Empty apiKey in mock config stays empty rather than masquerading as a stored secret
+            $result.config.alerting.providers.mailgun.apiKey | Should -Be ''
+            $result.config.google.adminEmail | Should -Be 'admin@example.com'
         }
 
         It 'shows secrets with -ShowSecrets' {
@@ -77,7 +86,7 @@ Describe 'Get-Safehouse' {
             $config3 | ConvertTo-Json -Depth 10 | Set-Content $cfgPath3
 
             $result = Get-Safehouse -ConfigPath $cfgPath3 -ShowSecrets
-            $result.alerting.providers.sendgrid.apiKey | Should -Be 'SG.visible-key'
+            $result.config.alerting.providers.sendgrid.apiKey | Should -Be 'SG.visible-key'
         }
     }
 }

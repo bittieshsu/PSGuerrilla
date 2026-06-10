@@ -88,7 +88,6 @@ function Test-ReconADGPO002 {
     }
 
     $gpos = @($gpoData.GPOs)
-    $sysvolContent = $gpoData.SYSVOLContent
 
     # Empty GPOs: Flags=3 (both disabled) OR IsEmpty=$true (no SYSVOL content beyond GPT.INI)
     $emptyGPOs = @($gpos | Where-Object {
@@ -411,9 +410,6 @@ function Test-ReconADGPO008 {
     # Identify GPOs that reference WMI filters by checking GPO properties
     # The GPO objects from the collector do not have a direct WMIFilter field,
     # but WMI filters being present is itself worth noting
-    $gpos = @($gpoData.GPOs)
-    $gposWithWMI = [System.Collections.Generic.List[hashtable]]::new()
-
     # WMI filters can restrict application; report all GPOs that have linked ones
     # Since the data model may not directly link GPO->WMI, report the filters that exist
     $currentValue = "$($wmiFilters.Count) WMI filter(s) exist in the domain that may restrict GPO application. Review to ensure security-critical GPOs are not blocked"
@@ -573,7 +569,6 @@ function Test-ReconADGPO011 {
             -CurrentValue 'SYSVOL not accessible; cannot analyze GPO security settings'
     }
 
-    $securityFindings = [System.Collections.Generic.List[hashtable]]::new()
     $gposWithSecSettings = 0
 
     foreach ($gpoName in $sysvolContent.Keys) {

@@ -257,7 +257,6 @@ function Test-FortificationAUTH012 {
             -CurrentValue 'No super admins found' -OrgUnitPath $OrgUnitPath
     }
 
-    $enrolled = @($superAdmins | Where-Object { $_.isEnrolledIn2Sv -eq $true })
     $notEnrolled = @($superAdmins | Where-Object { $_.isEnrolledIn2Sv -ne $true })
 
     if ($notEnrolled.Count -gt 0) {

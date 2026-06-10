@@ -44,7 +44,7 @@ function Update-ThreatIntelData {
     # --- AWS ---
     try {
         Write-Verbose 'Fetching AWS IP ranges...'
-        $awsData = Invoke-RestMethod -Uri 'https://ip-ranges.amazonaws.com/ip-ranges.json' -ErrorAction Stop
+        $awsData = Invoke-RestMethod -TimeoutSec 30 -Uri 'https://ip-ranges.amazonaws.com/ip-ranges.json' -ErrorAction Stop
         $awsCidrs = @($awsData.prefixes | Where-Object { $_.service -eq 'EC2' } | ForEach-Object { $_.ip_prefix } | Sort-Object -Unique)
         if ($awsCidrs.Count -gt 10) {
             $providers['aws'] = $awsCidrs
@@ -59,7 +59,7 @@ function Update-ThreatIntelData {
     # --- GCP ---
     try {
         Write-Verbose 'Fetching GCP IP ranges...'
-        $gcpData = Invoke-RestMethod -Uri 'https://www.gstatic.com/ipranges/cloud.json' -ErrorAction Stop
+        $gcpData = Invoke-RestMethod -TimeoutSec 30 -Uri 'https://www.gstatic.com/ipranges/cloud.json' -ErrorAction Stop
         $gcpCidrs = @($gcpData.prefixes | Where-Object { $_.ipv4Prefix } | ForEach-Object { $_.ipv4Prefix } | Sort-Object -Unique)
         if ($gcpCidrs.Count -gt 10) {
             $providers['gcp'] = $gcpCidrs
@@ -74,7 +74,7 @@ function Update-ThreatIntelData {
     # --- Cloudflare ---
     try {
         Write-Verbose 'Fetching Cloudflare IP ranges...'
-        $cfText = Invoke-RestMethod -Uri 'https://www.cloudflare.com/ips-v4' -ErrorAction Stop
+        $cfText = Invoke-RestMethod -TimeoutSec 30 -Uri 'https://www.cloudflare.com/ips-v4' -ErrorAction Stop
         $cfCidrs = @($cfText -split "`n" | ForEach-Object { $_.Trim() } | Where-Object { $_ -match '^\d' })
         if ($cfCidrs.Count -gt 5) {
             $providers['cloudflare'] = $cfCidrs

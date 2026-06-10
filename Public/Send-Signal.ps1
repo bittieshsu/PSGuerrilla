@@ -71,7 +71,6 @@ function Send-Signal {
                     if ($channel.vaultKey) {
                         try {
                             $credValue = Get-GuerrillaCredential -VaultKey $channel.vaultKey -VaultName $vaultName
-                            $providerKey = $channel.type.ToLower()
 
                             switch ($channel.type) {
                                 'teams' {

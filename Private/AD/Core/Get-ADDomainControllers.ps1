@@ -24,16 +24,6 @@ function Get-ADDomainControllers {
         'Windows 2000'
     )
 
-    # "Unsupported" means entirely out of extended support (2012 and older, excluding 2012 R2 which
-    # left support at the same time but is tracked separately for organizations that may have ESU).
-    $unsupportedOsPatterns = @(
-        'Windows Server 2012'     # non-R2 only — matched before 2012 R2 check below
-        'Windows Server 2008 R2'
-        'Windows Server 2008'
-        'Windows Server 2003'
-        'Windows 2000'
-    )
-
     $domainDN = $Connection.DomainDN
     $configDN = $Connection.ConfigDN
 

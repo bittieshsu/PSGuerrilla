@@ -59,7 +59,7 @@ function Export-Dashboard {
     }
 
     # Generate the HTML
-    $generatedPath = Export-DashboardHtml `
+    $null = Export-DashboardHtml `
         -ScoreResult $scoreResult `
         -Findings $Findings `
         -ScanResults $ScanResults `

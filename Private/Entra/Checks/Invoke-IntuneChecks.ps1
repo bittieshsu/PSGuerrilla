@@ -90,10 +90,10 @@ function Test-InfiltrationINTUNE002 {
     $nonCompliant = $summary.nonCompliantDeviceCount ?? 0
     $inGracePeriod = $summary.inGracePeriodCount ?? 0
     $notEvaluated = $summary.notEvaluatedDeviceCount ?? 0
-    $error = $summary.errorDeviceCount ?? 0
+    $errorCount = $summary.errorDeviceCount ?? 0
     $conflict = $summary.conflictDeviceCount ?? 0
 
-    $total = $compliant + $nonCompliant + $inGracePeriod + $notEvaluated + $error + $conflict
+    $total = $compliant + $nonCompliant + $inGracePeriod + $notEvaluated + $errorCount + $conflict
     $nonCompliantPct = if ($total -gt 0) { [Math]::Round(($nonCompliant / $total) * 100, 1) } else { 0 }
 
     $status = if ($nonCompliant -eq 0) { 'PASS' }
@@ -101,13 +101,13 @@ function Test-InfiltrationINTUNE002 {
               else { 'FAIL' }
 
     return New-AuditFinding -CheckDefinition $CheckDefinition -Status $status `
-        -CurrentValue "Compliance: $compliant compliant, $nonCompliant non-compliant ($nonCompliantPct%), $inGracePeriod grace period, $error errors" `
+        -CurrentValue "Compliance: $compliant compliant, $nonCompliant non-compliant ($nonCompliantPct%), $inGracePeriod grace period, $errorCount errors" `
         -Details @{
             Compliant = $compliant
             NonCompliant = $nonCompliant
             InGracePeriod = $inGracePeriod
             NotEvaluated = $notEvaluated
-            Error = $error
+            Error = $errorCount
             Conflict = $conflict
             Total = $total
             NonCompliantPercentage = $nonCompliantPct

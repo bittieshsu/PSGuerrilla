@@ -26,8 +26,6 @@ function Test-BulkFileDownload {
     $sorted = @($downloadEvents | Sort-Object { [datetime]::Parse($_.Timestamp) })
 
     # Sliding window detection
-    $windowMs = $WindowMinutes * 60 * 1000
-
     for ($i = 0; $i -lt $sorted.Count; $i++) {
         $windowStart = [datetime]::Parse($sorted[$i].Timestamp)
         $windowEnd = $windowStart.AddMinutes($WindowMinutes)

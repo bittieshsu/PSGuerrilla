@@ -157,7 +157,6 @@ function Test-InfiltrationEIDPIM004 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
-    $privilegedUsers = $AuditData.PIM.PrivilegedUsers
     if (-not $privilegedUsers) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
             -CurrentValue 'Privileged user details not available'
@@ -182,7 +181,6 @@ function Test-InfiltrationEIDPIM005 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
-    $privilegedUsers = $AuditData.PIM.PrivilegedUsers
     if (-not $privilegedUsers) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
             -CurrentValue 'Privileged user details not available'
@@ -209,7 +207,6 @@ function Test-InfiltrationEIDPIM006 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
-    $privilegedUsers = $AuditData.PIM.PrivilegedUsers
     $registrationDetails = $AuditData.AuthMethods.UserRegistrationDetails
     if (-not $privilegedUsers -or -not $registrationDetails) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
@@ -243,7 +240,6 @@ function Test-InfiltrationEIDPIM007 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
-    $privilegedUsers = $AuditData.PIM.PrivilegedUsers
     $registrationDetails = $AuditData.AuthMethods.UserRegistrationDetails
     if (-not $privilegedUsers -or -not $registrationDetails) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
@@ -287,7 +283,6 @@ function Test-InfiltrationEIDPIM008 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
-    $privilegedUsers = $AuditData.PIM.PrivilegedUsers
     if (-not $privilegedUsers) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
             -CurrentValue 'Privileged user details not available'
@@ -312,7 +307,6 @@ function Test-InfiltrationEIDPIM009 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
-    $privilegedUsers = $AuditData.PIM.PrivilegedUsers
     if (-not $privilegedUsers) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
             -CurrentValue 'Privileged user details not available'
@@ -391,7 +385,6 @@ function Test-InfiltrationEIDPIM012 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $globalAdmins = $AuditData.PIM.GlobalAdmins
-    $privilegedUsers = $AuditData.PIM.PrivilegedUsers
     if (-not $globalAdmins -or $globalAdmins.Count -eq 0) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
             -CurrentValue 'No Global Administrators found — cannot validate break-glass accounts'
@@ -433,7 +426,6 @@ function Test-InfiltrationEIDPIM013 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
-    $privilegedUsers = $AuditData.PIM.PrivilegedUsers
     if (-not $privilegedUsers) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
             -CurrentValue 'Privileged user details not available'

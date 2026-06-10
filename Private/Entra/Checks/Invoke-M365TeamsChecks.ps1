@@ -323,8 +323,6 @@ function Test-InfiltrationM365TEAMS007 {
     $customApps = $globalPolicy.GlobalCatalogAppsType ?? 'Unknown'
     $privateApps = $globalPolicy.PrivateCatalogAppsType ?? 'Unknown'
 
-    # AllowedAppTypes / blocked checks
-    $allAllowed = ($thirdPartyApps -eq 'AllowedAppList' -or $thirdPartyApps -eq 'BlockedAppList')
     $thirdPartyBlocked = ($thirdPartyApps -eq 'BlockAllApps')
 
     $status = if ($thirdPartyBlocked) { 'PASS' }

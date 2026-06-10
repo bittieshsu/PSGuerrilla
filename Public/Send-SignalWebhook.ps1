@@ -60,7 +60,7 @@ function Send-SignalWebhook {
     }
 
     try {
-        Invoke-RestMethod -Uri $WebhookUrl -Method Post -Body $payload -Headers $requestHeaders -ErrorAction Stop
+        Invoke-RestMethod -TimeoutSec 30 -Uri $WebhookUrl -Method Post -Body $payload -Headers $requestHeaders -ErrorAction Stop
         return [PSCustomObject]@{
             Provider = 'Webhook'
             Success  = $true
@@ -70,7 +70,7 @@ function Send-SignalWebhook {
     } catch {
         Start-Sleep -Seconds 3
         try {
-            Invoke-RestMethod -Uri $WebhookUrl -Method Post -Body $payload -Headers $requestHeaders -ErrorAction Stop
+            Invoke-RestMethod -TimeoutSec 30 -Uri $WebhookUrl -Method Post -Body $payload -Headers $requestHeaders -ErrorAction Stop
             return [PSCustomObject]@{
                 Provider = 'Webhook'
                 Success  = $true

@@ -61,8 +61,15 @@ function Send-SignalSyslog {
         $timestamp = [datetime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
         $hostname = [System.Net.Dns]::GetHostName()
 
-        $email = $threat.Email ?? $threat.UserPrincipalName ?? 'unknown'
-        $indicators = ($threat.Indicators -join '; ') -replace '\|', '_'
+        # Escape values destined for CEF/LEEF fields. Indicator text can carry
+        # attacker-influenced strings (user agents, OAuth app names) — flatten
+        # CR/LF/tab so a crafted value cannot split the syslog message or inject
+        # LEEF fields (tab is the LEEF delimiter), and escape the format
+        # metacharacters: backslash first, then '=' (extension values) and '|'
+        # (header fields).
+        $sanitize = { param($s) "$s" -replace '\\', '\\' -replace '[\r\n\t]+', ' ' -replace '=', '\=' -replace '\|', '_' }
+        $email = & $sanitize ($threat.Email ?? $threat.UserPrincipalName ?? 'unknown')
+        $indicators = & $sanitize ($threat.Indicators -join '; ')
         $score = [int]($threat.ThreatScore ?? 0)
 
         if ($Format -eq 'CEF') {

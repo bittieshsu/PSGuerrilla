@@ -27,16 +27,15 @@ Describe 'Set-Safehouse' {
     Context 'Creating new config' {
         It 'creates config file when it does not exist' {
             $cfgPath = Join-Path $TestDrive 'new-cfg/config.json'
-            $result = Set-Safehouse -AdminEmail 'admin@t.com' -ConfigPath $cfgPath
+            $result = Set-Safehouse -OutputDirectory (Join-Path $TestDrive 'reports') -ConfigPath $cfgPath
             Test-Path $cfgPath | Should -BeTrue
             $result.Status | Should -Be 'Saved'
         }
 
         It 'creates default config structure' {
             $cfgPath = Join-Path $TestDrive 'default-cfg/config.json'
-            Set-Safehouse -ConfigPath $cfgPath
+            Set-Safehouse -MinimumAlertLevel HIGH -ConfigPath $cfgPath
             $config = Get-Content $cfgPath -Raw | ConvertFrom-Json -AsHashtable
-            $config.google | Should -Not -BeNullOrEmpty
             $config.output | Should -Not -BeNullOrEmpty
             $config.alerting | Should -Not -BeNullOrEmpty
             $config.detection | Should -Not -BeNullOrEmpty
@@ -45,31 +44,38 @@ Describe 'Set-Safehouse' {
 
         It 'sets PSGuerrilla defaults in new config' {
             $cfgPath = Join-Path $TestDrive 'guerrilla-defaults/config.json'
-            Set-Safehouse -ConfigPath $cfgPath
+            Set-Safehouse -MinimumAlertLevel HIGH -ConfigPath $cfgPath
             $config = Get-Content $cfgPath -Raw | ConvertFrom-Json -AsHashtable
             $config.output.directory | Should -Match 'PSGuerrilla'
-            $config.alerting.providers.sendgrid.fromName | Should -Be 'PSGuerrilla Signals'
             $config.scheduling.taskName | Should -Be 'PSGuerrilla-Patrol'
+            $config.detection.businessHoursStart | Should -Be 7
+        }
+
+        It 'respects -WhatIf and does not write the config file' {
+            $cfgPath = Join-Path $TestDrive 'whatif-cfg/config.json'
+            Set-Safehouse -MinimumAlertLevel HIGH -ConfigPath $cfgPath -WhatIf
+            Test-Path $cfgPath | Should -BeFalse
         }
     }
 
     Context 'Updating existing config' {
         It 'merges parameters into existing config' {
             $cfgPath = Join-Path $TestDrive 'merge-cfg/config.json'
-            Set-Safehouse -AdminEmail 'admin@t.com' -ConfigPath $cfgPath
-            Set-Safehouse -ServiceAccountKeyPath 'C:\test\key.json' -ConfigPath $cfgPath
+            Set-Safehouse -OutputDirectory 'C:\Custom\Reports' -ConfigPath $cfgPath
+            Set-Safehouse -MinimumAlertLevel CRITICAL -ConfigPath $cfgPath
 
             $config = Get-Content $cfgPath -Raw | ConvertFrom-Json -AsHashtable
-            $config.google.adminEmail | Should -Be 'admin@t.com'
-            $config.google.serviceAccountKeyPath | Should -Be 'C:\test\key.json'
+            $config.output.directory | Should -Be 'C:\Custom\Reports'
+            $config.alerting.minimumThreatLevel | Should -Be 'CRITICAL'
         }
 
-        It 'enables SendGrid when API key is set' {
-            $cfgPath = Join-Path $TestDrive 'sg-enable/config.json'
-            Set-Safehouse -SendGridApiKey 'SG.test-key' -ConfigPath $cfgPath
+        It 'updates alerting toggles' {
+            $cfgPath = Join-Path $TestDrive 'alert-toggle/config.json'
+            Set-Safehouse -EnableAlerting $false -EnableSuppression $true -SuppressionWindowHours 12 -ConfigPath $cfgPath
             $config = Get-Content $cfgPath -Raw | ConvertFrom-Json -AsHashtable
-            $config.alerting.providers.sendgrid.enabled | Should -BeTrue
-            $config.alerting.providers.sendgrid.apiKey | Should -Be 'SG.test-key'
+            $config.alerting.enabled | Should -BeFalse
+            $config.alerting.suppression.enabled | Should -BeTrue
+            $config.alerting.suppression.windowHours | Should -Be 12
         }
 
         It 'updates detection settings' {

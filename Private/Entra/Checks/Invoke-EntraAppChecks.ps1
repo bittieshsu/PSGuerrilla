@@ -758,14 +758,6 @@ function Test-InfiltrationEIDAPP016 {
         $_.servicePrincipalType -eq 'ManagedIdentity'
     })
 
-    $systemAssigned = @($managedIdentities | Where-Object {
-        $_.displayName -match '^[a-f0-9]{8}-' -or
-        $_.tags -contains 'WindowsAzureActiveDirectoryIntegratedApp'
-    })
-    $userAssigned = @($managedIdentities | Where-Object {
-        $_.displayName -notmatch '^[a-f0-9]{8}-'
-    })
-
     return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
         -CurrentValue "$($managedIdentities.Count) managed identities found" `
         -Details @{

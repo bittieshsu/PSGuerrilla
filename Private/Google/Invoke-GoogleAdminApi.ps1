@@ -55,6 +55,7 @@ function Invoke-GoogleAdminApi {
                     Headers     = $headers
                     Method      = $Method
                     ErrorAction = 'Stop'
+                    TimeoutSec  = 120
                 }
                 if ($Body -and $Method -in @('Post', 'Patch')) {
                     $invokeParams['Body'] = ($Body | ConvertTo-Json -Depth 10)

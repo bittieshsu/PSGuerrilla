@@ -102,7 +102,6 @@ function Test-InfiltrationEIDFED002 {
                 $certBytes = [Convert]::FromBase64String($signingCert)
                 $cert = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new($certBytes)
                 $notAfter = $cert.NotAfter.ToUniversalTime()
-                $notBefore = $cert.NotBefore.ToUniversalTime()
 
                 if ($notAfter -lt $now) {
                     $certIssues.Add(@{

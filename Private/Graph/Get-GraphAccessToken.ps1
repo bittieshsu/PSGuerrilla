@@ -89,7 +89,7 @@ function Get-GraphTokenClientSecret {
     }
 
     try {
-        $response = Invoke-RestMethod -Uri $tokenUri -Method Post -Body $body `
+        $response = Invoke-RestMethod -TimeoutSec 30 -Uri $tokenUri -Method Post -Body $body `
             -ContentType 'application/x-www-form-urlencoded' -ErrorAction Stop
     } catch {
         $statusCode = $_.Exception.Response.StatusCode.value__
@@ -166,7 +166,7 @@ function Get-GraphTokenCertificate {
     }
 
     try {
-        $response = Invoke-RestMethod -Uri $tokenUri -Method Post -Body $body `
+        $response = Invoke-RestMethod -TimeoutSec 30 -Uri $tokenUri -Method Post -Body $body `
             -ContentType 'application/x-www-form-urlencoded' -ErrorAction Stop
     } catch {
         $statusCode = $_.Exception.Response.StatusCode.value__
@@ -201,7 +201,7 @@ function Get-GraphTokenDeviceCode {
     }
 
     try {
-        $deviceResponse = Invoke-RestMethod -Uri $deviceCodeUri -Method Post -Body $body `
+        $deviceResponse = Invoke-RestMethod -TimeoutSec 30 -Uri $deviceCodeUri -Method Post -Body $body `
             -ContentType 'application/x-www-form-urlencoded' -ErrorAction Stop
     } catch {
         throw "Device code request failed: $($_.ErrorDetails.Message ?? $_.Exception.Message)"
@@ -221,7 +221,7 @@ function Get-GraphTokenDeviceCode {
     while ([DateTimeOffset]::UtcNow -lt $expiresAt) {
         Start-Sleep -Seconds $interval
         try {
-            $response = Invoke-RestMethod -Uri $tokenUri -Method Post -Body $pollBody `
+            $response = Invoke-RestMethod -TimeoutSec 30 -Uri $tokenUri -Method Post -Body $pollBody `
                 -ContentType 'application/x-www-form-urlencoded' -ErrorAction Stop
 
             if ($response.access_token) {

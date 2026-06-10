@@ -42,7 +42,6 @@ function Export-DashboardHtml {
         ([int]$score -ge 20) { '#c75c2e'; break }
         default { '#8b2500' }
     }
-    $dashOffset = [Math]::Round(251.2 * (1 - [int]$score / 100), 1)
 
     # Stats
     $totalFindings = ($Findings ?? @()).Count

@@ -67,6 +67,12 @@ function Show-Guerrilla {
         throw 'Show-Guerrilla requires Windows (WPF). On macOS/Linux, use the CLI cmdlets: Set-Safehouse, Invoke-Reconnaissance, Invoke-Fortification, Invoke-Infiltration, Invoke-Campaign, Register-Patrol.'
     }
 
+    # WPF needs a single-threaded apartment; without this guard ShowDialog fails
+    # with an opaque InvalidOperationException under pwsh -MTA.
+    if ([System.Threading.Thread]::CurrentThread.GetApartmentState() -ne 'STA') {
+        throw 'Show-Guerrilla requires an STA thread (WPF). Start PowerShell without -MTA — pwsh defaults to STA on Windows — and retry.'
+    }
+
     # The runspace inside Invoke-GuerrillaGuiAsync needs to know where to import
     # PSGuerrilla from. Resolve the .psd1 next to this loaded module.
     $manifestPath = $null

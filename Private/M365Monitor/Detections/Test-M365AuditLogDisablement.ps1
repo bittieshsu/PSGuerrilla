@@ -9,16 +9,6 @@ function Test-M365AuditLogDisablement {
 
     $results = [System.Collections.Generic.List[PSCustomObject]]::new()
 
-    # Operations that directly disable or reduce audit logging
-    $disableOperations = @(
-        'Set-AdminAuditLogConfig'
-        'Disable-OrganizationCustomization'
-        'Set-OrganizationConfig'
-        'Set-Mailbox'
-        'Set-MailboxAuditBypassAssociation'
-        'Disable-Mailbox'
-    )
-
     # Property patterns that indicate audit weakening
     $auditDisableProperties = @(
         'UnifiedAuditLogIngestionEnabled'

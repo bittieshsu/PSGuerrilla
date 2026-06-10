@@ -227,7 +227,6 @@ function Export-FieldReportHtml {
 "@)
 
     # --- Executive Summary ---
-    $actionNeeded = ($critCount + $highCount) -gt 0
     $summaryVerdict = if ($critCount -gt 0) {
         "Immediate action required. $critCount user(s) show critical indicators of compromise."
     } elseif ($highCount -gt 0) {

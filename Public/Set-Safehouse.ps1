@@ -271,9 +271,11 @@ function Set-Safehouse {
                 foreach ($key in $matchingKeys) {
                     $cred = $metadata.credentials[$key]
                     Write-Host "  ${amber}Rotating: $($cred.description) ($key)${reset}"
+                    $script:PendingKeySourceFile = $null
                     $newValue = Read-CredentialValue -PromptType $cred.promptType -Description $cred.description -VaultKey $key
                     if ($newValue) {
                         Set-GuerrillaCredential -VaultKey $key -Value $newValue -VaultName $VaultName
+                        Invoke-PendingKeyFileCleanup
                         $metadata.credentials[$key].storedDate = [datetime]::UtcNow.ToString('o')
 
                         # Ask for new expiration if applicable
@@ -566,6 +568,7 @@ function Set-Safehouse {
                     continue
                 }
 
+                $script:PendingKeySourceFile = $null
                 $value = Read-CredentialValue -PromptType $req.promptType -Description $req.description -VaultKey $req.vaultKey
 
                 if ($null -eq $value) {
@@ -575,6 +578,7 @@ function Set-Safehouse {
                 }
 
                 Set-GuerrillaCredential -VaultKey $req.vaultKey -Value $value -VaultName $VaultName
+                Invoke-PendingKeyFileCleanup
 
                 # Build metadata entry
                 $metaEntry = @{
@@ -743,11 +747,10 @@ function Read-CredentialValue {
                     }
                     Write-Host "  Loaded: $($sa.client_email)"
 
-                    $deleteResponse = Read-Host "  Delete the original key file now that it's in the vault? [Y/n]"
-                    if (-not $deleteResponse -or $deleteResponse -match '^[Yy]') {
-                        Remove-Item -Path $userInput -Force
-                        Write-Host "  Original file deleted."
-                    }
+                    # Remember the source file so the caller can offer to delete it
+                    # AFTER the vault write succeeds. Deleting here would destroy the
+                    # only copy of the key if Set-GuerrillaCredential then fails.
+                    $script:PendingKeySourceFile = $userInput
 
                     return $jsonContent
                 } catch {

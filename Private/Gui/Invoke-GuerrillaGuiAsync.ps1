@@ -87,6 +87,9 @@ function Invoke-GuerrillaGuiAsync {
     }
 
     # DispatcherTimer ticks on the UI thread — safe to mutate WPF controls from inside.
+    # The handler MUST be a closure: without GetNewClosure() the tick fires after this
+    # function has returned, $state/$OnLog/$OnComplete/$OnError no longer resolve, and
+    # the completion callback can never run.
     $timer = New-Object System.Windows.Threading.DispatcherTimer
     $timer.Interval = [TimeSpan]::FromMilliseconds(150)
     $timer.Add_Tick({
@@ -114,10 +117,24 @@ function Invoke-GuerrillaGuiAsync {
             $state.Completed = $true
             $state.Timer.Stop()
             try {
-                $result = $state.PowerShell.EndInvoke($state.Handle)
-                if ($state.PowerShell.HadErrors -and $OnError) {
-                    $firstErr = $state.PowerShell.Streams.Error[0]
-                    & $OnError $firstErr
+                $state.PowerShell.EndInvoke($state.Handle)
+                # Results land in the explicit output collection passed to BeginInvoke —
+                # with that overload EndInvoke's own return value is always empty.
+                $result = @($state.Output)
+
+                # Surface non-terminating errors in the log, but don't let them
+                # discard a successful result — a single Write-Error mid-scan must
+                # not make the whole run look failed.
+                $errStream = $state.PowerShell.Streams.Error
+                if ($errStream.Count -gt 0 -and $OnLog) {
+                    foreach ($e in $errStream) {
+                        try { & $OnLog "ERROR: $e" } catch { }
+                    }
+                }
+
+                if ($state.PowerShell.HadErrors -and $result.Count -eq 0) {
+                    $firstErr = if ($errStream.Count -gt 0) { $errStream[0] } else { 'Scan failed without error detail' }
+                    if ($OnError) { & $OnError $firstErr }
                 } elseif ($OnComplete) {
                     & $OnComplete $result
                 }
@@ -127,7 +144,7 @@ function Invoke-GuerrillaGuiAsync {
                 $state.PowerShell.Dispose()
             }
         }
-    })
+    }.GetNewClosure())
 
     $state.Timer = $timer
     $timer.Start()

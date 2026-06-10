@@ -368,7 +368,6 @@ function Get-ADGroupPolicyObjects {
             $rules = $gpoSd.GetAccessRules($true, $false, [System.Security.Principal.SecurityIdentifier])
             $canEdit = [System.Collections.Generic.List[string]]::new()
             $canApply = [System.Collections.Generic.List[string]]::new()
-            $canLink = [System.Collections.Generic.List[string]]::new()
 
             foreach ($rule in $rules) {
                 if ($rule.AccessControlType.ToString() -ne 'Allow') { continue }

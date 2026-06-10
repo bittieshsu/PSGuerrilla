@@ -16,11 +16,9 @@ function Export-CampaignReportHtml {
     $findings      = $Result.Findings
     $overallScore  = $Result.OverallScore
     $scoreLabel    = $Result.ScoreLabel
-    $categoryScores = $Result.CategoryScores
     $theaterScores = $Result.TheaterScores
     $theaters      = $Result.Theaters
     $scanStart     = $Result.ScanStart
-    $scanEnd       = $Result.ScanEnd
     $duration      = $Result.Duration
     $scanId        = $Result.ScanId
 

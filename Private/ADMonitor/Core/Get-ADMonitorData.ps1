@@ -33,7 +33,6 @@ function Get-ADMonitorData {
     }
 
     $domainDN = $LdapConnection.DomainDN
-    $configDN = $LdapConnection.ConfigDN
     $schemaDN = $LdapConnection.SchemaDN
     $result.domainName = ($domainDN -replace '^DC=', '' -replace ',DC=', '.').ToLower()
 
