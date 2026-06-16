@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.1] - 2026-06-16
+
+### Changed
+- The Active Directory report's **"Findings by Priority" table now includes a Remediation column**. Previously it showed only ID / Severity / Status / Category / Check / Finding, and remediation guidance lived only in the per-category detail tables further down. It falls back to the recommended value when a check has no explicit remediation steps. (Google Workspace, Entra/M365, and Campaign reports already surfaced remediation in their findings tables / detail rows.)
+- Regenerated the committed sample reports under `Samples/` to reflect the new column.
+
 ## [2.5.0] - 2026-06-16
 
 ### Added

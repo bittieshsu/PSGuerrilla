@@ -344,7 +344,7 @@ function Export-ReconnaissanceReportHtml {
         [void]$html.Append(@"
 <h2>Findings by Priority</h2>
 <table class="priority-table">
-  <thead><tr><th>ID</th><th>Severity</th><th>Status</th><th>Category</th><th>Check</th><th>Finding</th></tr></thead>
+  <thead><tr><th>ID</th><th>Severity</th><th>Status</th><th>Category</th><th>Check</th><th>Finding</th><th>Remediation</th></tr></thead>
   <tbody>
 "@)
         foreach ($f in $priorityFindings) {
@@ -352,6 +352,7 @@ function Export-ReconnaissanceReportHtml {
             $sevClass = $f.Severity.ToLower()
             $statusClass = if ($isAccepted) { 'accepted' } else { $f.Status.ToLower() }
             $statusLabel = if ($isAccepted) { 'ACCEPTED' } else { $f.Status }
+            $remediation = if ($f.RemediationSteps) { $f.RemediationSteps } else { $f.RecommendedValue }
             [void]$html.Append(@"
     <tr>
       <td><code>$(& $esc $f.CheckId)</code></td>
@@ -360,6 +361,7 @@ function Export-ReconnaissanceReportHtml {
       <td>$(& $esc $f.Category)</td>
       <td>$(& $esc $f.CheckName)</td>
       <td>$(& $esc $f.CurrentValue)</td>
+      <td><small>$(& $esc $remediation)</small></td>
     </tr>
 "@)
         }
