@@ -21,10 +21,12 @@ function Invoke-Fortification {
         [Alias('RuntimeConfig')]
         [string]$ConfigPath,
         [Alias('MissionConfig')]
-        [string]$ConfigFile
+        [string]$ConfigFile,
+        [string]$VaultName = 'PSGuerrilla'
     )
 
     $tempSaPath = $null
+    $vaultName = $VaultName
     # --- Resolve mission config (guerrilla-config.json) ---
     if ($ConfigFile) {
         $missionCfg = Read-MissionConfig -Path $ConfigFile
@@ -95,9 +97,24 @@ function Invoke-Fortification {
                    elseif ($config -and $config.output.directory) { $config.output.directory }
                    else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
 
+        # Final fallback: the safehouse vault under the default keys Set-Safehouse
+        # stores interactively — so a vault-only setup (no mission-config file) scans
+        # without extra parameters. The staged temp key is cleaned in the finally below.
+        if (-not $keyPath) {
+            $saJson = Get-SafehouseSecret -VaultKey 'GUERRILLA_GWS_SA' -VaultName $vaultName
+            if ($saJson) {
+                $tempSaPath = Join-Path ([System.IO.Path]::GetTempPath()) "guerrilla-sa-$([guid]::NewGuid().ToString('N').Substring(0,8)).json"
+                $saJson | Set-Content -Path $tempSaPath -Encoding UTF8
+                $keyPath = $tempSaPath
+            }
+        }
+        if (-not $admin) {
+            $admin = Get-SafehouseSecret -VaultKey 'GUERRILLA_GWS_SA_ADMIN_EMAIL' -VaultName $vaultName
+        }
+
         # Validate required parameters
-        if (-not $keyPath) { throw 'ServiceAccountKeyPath is required. Provide it as a parameter or set it in config.' }
-        if (-not $admin)   { throw 'AdminEmail is required. Provide it as a parameter or set it in config.' }
+        if (-not $keyPath) { throw 'ServiceAccountKeyPath is required. Provide it as a parameter, store it in the safehouse (Set-Safehouse), or set it in config.' }
+        if (-not $admin)   { throw 'AdminEmail is required. Provide it as a parameter, store it in the safehouse (Set-Safehouse), or set it in config.' }
 
         # --- Operation header ---
         if (-not $Quiet) {

@@ -570,15 +570,18 @@ function Show-GuerrillaWindow {
         # closure capture — closures don't survive the runspace transfer reliably.
         $action = {
             param([string]$CmdletName, [string]$OutputDir, [string]$Mode,
-                  [bool]$NoReports, [bool]$NoDelta, [string[]]$Categories)
+                  [bool]$NoReports, [bool]$NoDelta, [string[]]$Categories, [string]$VaultName)
             # Only pass parameters the target cmdlet actually declares. The four
             # theater cmdlets have different surfaces (e.g. Invoke-Campaign has no
             # -Categories/-NoReports; none take -ScanMode), so gating on the real
             # parameter set avoids "A parameter cannot be found that matches ..."
-            # instead of maintaining brittle per-cmdlet name lists.
+            # instead of maintaining brittle per-cmdlet name lists. The cmdlets
+            # auto-resolve credentials from the safehouse vault, so passing -VaultName
+            # is all that's needed for a vault-only setup.
             $params = (Get-Command $CmdletName).Parameters
             $invokeArgs = @{}
             if ($params.ContainsKey('Quiet'))                                    { $invokeArgs.Quiet = $false }
+            if ($VaultName          -and $params.ContainsKey('VaultName'))        { $invokeArgs.VaultName = $VaultName }
             if ($OutputDir          -and $params.ContainsKey('OutputDirectory')) { $invokeArgs.OutputDirectory = $OutputDir }
             if ($NoReports          -and $params.ContainsKey('NoReports'))       { $invokeArgs.NoReports = $true }
             if ($NoDelta            -and $params.ContainsKey('NoDelta'))         { $invokeArgs.NoDelta = $true }
@@ -586,7 +589,7 @@ function Show-GuerrillaWindow {
             if ($Mode               -and $params.ContainsKey('ScanMode'))       { $invokeArgs.ScanMode = $Mode }
             & $CmdletName @invokeArgs
         }
-        $actionArgs = @($cmdletName, $outDir, $mode, [bool]$noReports, [bool]$noDelta, @($selectedCats))
+        $actionArgs = @($cmdletName, $outDir, $mode, [bool]$noReports, [bool]$noDelta, @($selectedCats), $session.VaultName)
 
         # Invoke-GuerrillaGuiAsync fires these callbacks from its own DispatcherTimer
         # scope, so they must carry everything they need by closure. GetNewClosure()

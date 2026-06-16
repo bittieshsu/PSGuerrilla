@@ -83,9 +83,11 @@ function Invoke-Infiltration {
         [Alias('RuntimeConfig')]
         [string]$ConfigPath,
         [Alias('MissionConfig')]
-        [string]$ConfigFile
+        [string]$ConfigFile,
+        [string]$VaultName = 'PSGuerrilla'
     )
 
+    $vaultName = $VaultName
     # --- Resolve mission config (guerrilla-config.json) ---
     if ($ConfigFile) {
         $missionCfg = Read-MissionConfig -Path $ConfigFile
@@ -161,9 +163,23 @@ function Invoke-Infiltration {
         $ClientId = $config.entra.clientId
     }
 
+    # Final fallback: the safehouse vault under the default keys Set-Safehouse stores
+    # interactively — so a vault-only setup (no mission-config file) scans without
+    # extra parameters.
+    if (-not $TenantId) {
+        $TenantId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_TENANT' -VaultName $vaultName
+    }
+    if (-not $ClientId) {
+        $ClientId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_CLIENTID' -VaultName $vaultName
+    }
+    if (-not $CertificateThumbprint -and -not $ClientSecret) {
+        $secretVal = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_SECRET' -VaultName $vaultName
+        if ($secretVal) { $ClientSecret = $secretVal | ConvertTo-SecureString -AsPlainText -Force }
+    }
+
     # Validate required parameters
-    if (-not $TenantId) { throw 'TenantId is required. Provide -TenantId, -ConfigFile, or set entra.tenantId in config.' }
-    if (-not $ClientId) { throw 'ClientId is required. Provide -ClientId, -ConfigFile, or set entra.clientId in config.' }
+    if (-not $TenantId) { throw 'TenantId is required. Provide -TenantId, store it in the safehouse (Set-Safehouse), -ConfigFile, or set entra.tenantId in config.' }
+    if (-not $ClientId) { throw 'ClientId is required. Provide -ClientId, store it in the safehouse (Set-Safehouse), -ConfigFile, or set entra.clientId in config.' }
 
     # --- Operation header ---
     if (-not $Quiet) {

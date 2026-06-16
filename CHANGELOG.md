@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.5.0] - 2026-06-16
+
+### Added
+- **Scans auto-resolve credentials from the safehouse vault.** Previously `Invoke-Fortification`, `Invoke-Infiltration`, and `Invoke-Campaign` only read the vault when handed a `-ConfigFile` (guerrilla-config.json) mission file — so an interactive `Set-Safehouse` setup (no config file) couldn't scan at all, failing with `ServiceAccountKeyPath is required` / `TenantId is required`, including from the `Show-Guerrilla` GUI. These cmdlets now fall back — as a last resort, after explicit parameters and `config.json` — to the default vault keys `Set-Safehouse` stores: `GUERRILLA_GWS_SA` (+ `_ADMIN_EMAIL`) for Google Workspace and `GUERRILLA_GRAPH_TENANT` / `GUERRILLA_GRAPH_CLIENTID` / `GUERRILLA_GRAPH_SECRET` for Entra/Azure/M365. A populated safehouse now "just works" for every theater from both the CLI and the GUI.
+- `-VaultName` parameter (default `PSGuerrilla`) on `Invoke-Fortification` / `Invoke-Infiltration` / `Invoke-Campaign`, so non-default/custom vaults resolve correctly. `Show-Guerrilla` passes the active vault name automatically.
+- `Get-SafehouseSecret` private helper — a graceful counterpart to `Get-GuerrillaCredential` that returns `$null` on a miss (vault/key absent, SecretManagement not installed) instead of throwing, for "fall back to the safehouse" resolution.
+
+### Notes
+- Active Directory was already covered: `Invoke-Reconnaissance` falls back to the current Kerberos session, so it needs no vault credentials.
+
 ## [2.4.4] - 2026-06-16
 
 ### Fixed

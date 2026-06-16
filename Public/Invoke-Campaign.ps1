@@ -94,10 +94,12 @@ function Invoke-Campaign {
         [Alias('RuntimeConfig')]
         [string]$ConfigPath,
         [Alias('MissionConfig')]
-        [string]$ConfigFile
+        [string]$ConfigFile,
+        [string]$VaultName = 'PSGuerrilla'
     )
 
     $tempSaPath = $null
+    $vaultName = $VaultName
     # --- Resolve mission config (guerrilla-config.json) ---
     if ($ConfigFile) {
         $missionCfg = Read-MissionConfig -Path $ConfigFile
@@ -182,6 +184,32 @@ function Invoke-Campaign {
         $outDir = if ($OutputDirectory) { $OutputDirectory }
                   elseif ($config -and $config.output.directory) { $config.output.directory }
                   else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
+
+        # Final fallback: pull any still-missing credentials from the safehouse vault
+        # under the default keys Set-Safehouse stores interactively. This runs before
+        # theater auto-detection and the per-theater requirement checks below, so a
+        # vault-only setup (no mission-config file) drives a full campaign.
+        if (-not $ServiceAccountKeyPath) {
+            $saJson = Get-SafehouseSecret -VaultKey 'GUERRILLA_GWS_SA' -VaultName $vaultName
+            if ($saJson) {
+                $tempSaPath = Join-Path ([System.IO.Path]::GetTempPath()) "guerrilla-sa-$([guid]::NewGuid().ToString('N').Substring(0,8)).json"
+                $saJson | Set-Content -Path $tempSaPath -Encoding UTF8
+                $ServiceAccountKeyPath = $tempSaPath
+            }
+        }
+        if (-not $AdminEmail) {
+            $AdminEmail = Get-SafehouseSecret -VaultKey 'GUERRILLA_GWS_SA_ADMIN_EMAIL' -VaultName $vaultName
+        }
+        if (-not $TenantId) {
+            $TenantId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_TENANT' -VaultName $vaultName
+        }
+        if (-not $ClientId) {
+            $ClientId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_CLIENTID' -VaultName $vaultName
+        }
+        if (-not $CertificateThumbprint -and -not $ClientSecret) {
+            $secretVal = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_SECRET' -VaultName $vaultName
+            if ($secretVal) { $ClientSecret = $secretVal | ConvertTo-SecureString -AsPlainText -Force }
+        }
 
         # --- Auto-detect theaters from provided credentials ---
         if (-not $Theaters) {
