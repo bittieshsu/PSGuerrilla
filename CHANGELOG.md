@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.5.2] - 2026-06-16
+
+### Fixed
+- **The sample-report generator undercounted Active Directory checks as 175 instead of the real 203.** `Samples/Generate-SampleReports.ps1` built its AD report from a hardcoded `$adFiles` list of only **10 of the 14** AD check-definition files, silently omitting `ADLoggingChecks` (7), `ADNetworkChecks` (10), `ADTradecraftChecks` (4) and `TierZeroChecks` (7) — the 28 checks added in v2.2.0. The generator now **discovers every AD check file automatically** (a case-sensitive match on the `AD`/`TierZero` prefix, so the Google Workspace `AdminManagementChecks.json` — lowercase `d` — is never captured), so newly added categories can't silently drop out again.
+- Regenerated the committed `Samples/Reconnaissance-AllFail.html`, which now reflects all **203** AD checks (GWS 98 + AD 203 + Entra 158 = **459** total).
+
+### Notes
+- This was purely a sample/count bug. **All 203 AD checks were always implemented and run** by `Invoke-Reconnaissance` — verified as a 1:1 mapping between the 203 JSON check IDs and the 203 `Test-Recon*` dispatch functions, with zero stubs. The module's advertised "203 AD checks / 459 total" was already correct.
+
 ## [2.5.1] - 2026-06-16
 
 ### Changed

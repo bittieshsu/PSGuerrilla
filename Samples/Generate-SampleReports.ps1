@@ -247,17 +247,17 @@ Write-Host "  -> $gwsPath ($($gwsFindings.Count) checks, score: $($gwsScore.Over
 # ============================================================================
 Write-Host 'Generating Reconnaissance report (Active Directory)...' -ForegroundColor Cyan
 
+# Discover every Active Directory reconnaissance check file automatically so newly
+# added categories (e.g. Logging, Network, Tradecraft, TierZero) can never silently
+# drop out of the sample report — the old hardcoded list omitted 4 files and
+# undercounted AD by 28 checks (reported 175 instead of the real 203).
+# Match is CASE-SENSITIVE on an uppercase 'D' so the Google Workspace
+# 'AdminManagementChecks.json' (lowercase 'd') is not captured.
 $adFiles = @(
-    'ADDomainForestChecks.json'
-    'ADTrustChecks.json'
-    'ADPrivilegedAccountChecks.json'
-    'ADPasswordPolicyChecks.json'
-    'ADKerberosChecks.json'
-    'ADAclDelegationChecks.json'
-    'ADGroupPolicyChecks.json'
-    'ADLogonScriptChecks.json'
-    'ADCertificateServicesChecks.json'
-    'ADStaleObjectChecks.json'
+    Get-ChildItem -Path $dataDir -Filter '*.json' |
+        Where-Object { $_.Name -cmatch '^(AD[A-Z]|TierZero)' } |
+        Select-Object -ExpandProperty Name |
+        Sort-Object
 )
 
 $adFindings = New-AllFailFindings -CheckFiles $adFiles

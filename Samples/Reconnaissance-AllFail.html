@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PSGuerrilla AD Reconnaissance Report - SAMPLE.LOCAL - 2026-06-16 12:24:45 UTC</title>
+<title>PSGuerrilla AD Reconnaissance Report - SAMPLE.LOCAL - 2026-06-16 12:38:23 UTC</title>
 <style>
   :root {
     --bg: #1a1f16; --surface: #242b1e; --surface-alt: #2d3526; --border: #3d4a35;
@@ -135,7 +135,7 @@
 </style>
 </head>
 <body><h1>AD Reconnaissance Report</h1>
-<div class="subtitle">Domain: SAMPLE.LOCAL &mdash; Generated: 2026-06-16 12:24:45 UTC</div><div class="score-panel">
+<div class="subtitle">Domain: SAMPLE.LOCAL &mdash; Generated: 2026-06-16 12:38:23 UTC</div><div class="score-panel">
   <div class="score-ring">
     <svg viewBox="0 0 120 120" width="120" height="120">
       <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="10"/>
@@ -148,44 +148,32 @@
   <div class="score-detail">
     <div class="label" style="color:var(--dark-red)">OVERRUN</div>
     <div class="desc">Active Directory security posture score (0-100)</div>
-    <div class="desc">175 checks evaluated &mdash; 0 passed, 175 failed, 0 warnings, 0 skipped</div>
+    <div class="desc">203 checks evaluated &mdash; 0 passed, 203 failed, 0 warnings, 0 skipped</div>
   </div>
 </div><div class="exec-summary">
   <h3>Executive Summary</h3>
   <p>The AD environment has critical security deficiencies. Immediate remediation is required to prevent compromise.</p>
-  <p>Critical: <strong>40</strong> &mdash; High: <strong>74</strong> &mdash;
-     Medium: <strong>43</strong> &mdash; Low: <strong>9</strong></p>
+  <p>Critical: <strong>48</strong> &mdash; High: <strong>89</strong> &mdash;
+     Medium: <strong>48</strong> &mdash; Low: <strong>9</strong></p>
 </div><div class="stat-grid">  <div class="stat-card">
-    <div class="value" style="color:var(--parchment)">175</div>
+    <div class="value" style="color:var(--parchment)">203</div>
     <div class="label">Total Checks</div>
   </div>  <div class="stat-card">
     <div class="value" style="color:var(--pass)">0</div>
     <div class="label">Passed</div>
   </div>  <div class="stat-card">
-    <div class="value" style="color:var(--critical)">40</div>
+    <div class="value" style="color:var(--critical)">48</div>
     <div class="label">Critical</div>
   </div>  <div class="stat-card">
-    <div class="value" style="color:var(--high)">74</div>
+    <div class="value" style="color:var(--high)">89</div>
     <div class="label">High</div>
   </div>  <div class="stat-card">
-    <div class="value" style="color:var(--medium)">43</div>
+    <div class="value" style="color:var(--medium)">48</div>
     <div class="label">Medium</div>
   </div>  <div class="stat-card">
     <div class="value" style="color:var(--low)">9</div>
     <div class="label">Low</div>
   </div></div><h2>Category Breakdown</h2><div class="category-grid">  <div class="cat-card">
-    <div class="cat-header">
-      <div class="cat-name">AD Trust Relationships</div>
-      <div class="cat-score" style="color:var(--deep-orange)">0</div>
-    </div>
-    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
-    <div class="cat-counts">
-      <span style="color:var(--pass)">Pass: 0</span>
-      <span style="color:var(--fail)">Fail: 11</span>
-      <span style="color:var(--warn)">Warn: 0</span>
-      <span style="color:var(--skip)">Skip: 0</span>
-    </div>
-  </div>  <div class="cat-card">
     <div class="cat-header">
       <div class="cat-name">AD Domain &amp; Forest Configuration</div>
       <div class="cat-score" style="color:var(--deep-orange)">0</div>
@@ -199,37 +187,13 @@
     </div>
   </div>  <div class="cat-card">
     <div class="cat-header">
-      <div class="cat-name">AD Password &amp; Lockout Policies</div>
+      <div class="cat-name">AD Logging &amp; EDR Posture</div>
       <div class="cat-score" style="color:var(--deep-orange)">0</div>
     </div>
     <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
     <div class="cat-counts">
       <span style="color:var(--pass)">Pass: 0</span>
-      <span style="color:var(--fail)">Fail: 22</span>
-      <span style="color:var(--warn)">Warn: 0</span>
-      <span style="color:var(--skip)">Skip: 0</span>
-    </div>
-  </div>  <div class="cat-card">
-    <div class="cat-header">
-      <div class="cat-name">AD Group Policy</div>
-      <div class="cat-score" style="color:var(--deep-orange)">0</div>
-    </div>
-    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
-    <div class="cat-counts">
-      <span style="color:var(--pass)">Pass: 0</span>
-      <span style="color:var(--fail)">Fail: 24</span>
-      <span style="color:var(--warn)">Warn: 0</span>
-      <span style="color:var(--skip)">Skip: 0</span>
-    </div>
-  </div>  <div class="cat-card">
-    <div class="cat-header">
-      <div class="cat-name">AD Certificate Services</div>
-      <div class="cat-score" style="color:var(--deep-orange)">0</div>
-    </div>
-    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
-    <div class="cat-counts">
-      <span style="color:var(--pass)">Pass: 0</span>
-      <span style="color:var(--fail)">Fail: 19</span>
+      <span style="color:var(--fail)">Fail: 7</span>
       <span style="color:var(--warn)">Warn: 0</span>
       <span style="color:var(--skip)">Skip: 0</span>
     </div>
@@ -247,25 +211,13 @@
     </div>
   </div>  <div class="cat-card">
     <div class="cat-header">
-      <div class="cat-name">AD Privileged Account Security</div>
+      <div class="cat-name">Tier-0 Hygiene &amp; Hybrid Identity Surface</div>
       <div class="cat-score" style="color:var(--deep-orange)">0</div>
     </div>
     <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
     <div class="cat-counts">
       <span style="color:var(--pass)">Pass: 0</span>
-      <span style="color:var(--fail)">Fail: 30</span>
-      <span style="color:var(--warn)">Warn: 0</span>
-      <span style="color:var(--skip)">Skip: 0</span>
-    </div>
-  </div>  <div class="cat-card">
-    <div class="cat-header">
-      <div class="cat-name">AD Logon Scripts &amp; Network Shares</div>
-      <div class="cat-score" style="color:var(--deep-orange)">0</div>
-    </div>
-    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
-    <div class="cat-counts">
-      <span style="color:var(--pass)">Pass: 0</span>
-      <span style="color:var(--fail)">Fail: 11</span>
+      <span style="color:var(--fail)">Fail: 7</span>
       <span style="color:var(--warn)">Warn: 0</span>
       <span style="color:var(--skip)">Skip: 0</span>
     </div>
@@ -283,6 +235,90 @@
     </div>
   </div>  <div class="cat-card">
     <div class="cat-header">
+      <div class="cat-name">AD Group Policy</div>
+      <div class="cat-score" style="color:var(--deep-orange)">0</div>
+    </div>
+    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
+    <div class="cat-counts">
+      <span style="color:var(--pass)">Pass: 0</span>
+      <span style="color:var(--fail)">Fail: 24</span>
+      <span style="color:var(--warn)">Warn: 0</span>
+      <span style="color:var(--skip)">Skip: 0</span>
+    </div>
+  </div>  <div class="cat-card">
+    <div class="cat-header">
+      <div class="cat-name">AD Trust Relationships</div>
+      <div class="cat-score" style="color:var(--deep-orange)">0</div>
+    </div>
+    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
+    <div class="cat-counts">
+      <span style="color:var(--pass)">Pass: 0</span>
+      <span style="color:var(--fail)">Fail: 11</span>
+      <span style="color:var(--warn)">Warn: 0</span>
+      <span style="color:var(--skip)">Skip: 0</span>
+    </div>
+  </div>  <div class="cat-card">
+    <div class="cat-header">
+      <div class="cat-name">AD Password &amp; Lockout Policies</div>
+      <div class="cat-score" style="color:var(--deep-orange)">0</div>
+    </div>
+    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
+    <div class="cat-counts">
+      <span style="color:var(--pass)">Pass: 0</span>
+      <span style="color:var(--fail)">Fail: 22</span>
+      <span style="color:var(--warn)">Warn: 0</span>
+      <span style="color:var(--skip)">Skip: 0</span>
+    </div>
+  </div>  <div class="cat-card">
+    <div class="cat-header">
+      <div class="cat-name">AD Logon Scripts &amp; Network Shares</div>
+      <div class="cat-score" style="color:var(--deep-orange)">0</div>
+    </div>
+    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
+    <div class="cat-counts">
+      <span style="color:var(--pass)">Pass: 0</span>
+      <span style="color:var(--fail)">Fail: 11</span>
+      <span style="color:var(--warn)">Warn: 0</span>
+      <span style="color:var(--skip)">Skip: 0</span>
+    </div>
+  </div>  <div class="cat-card">
+    <div class="cat-header">
+      <div class="cat-name">AD Privileged Account Security</div>
+      <div class="cat-score" style="color:var(--deep-orange)">0</div>
+    </div>
+    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
+    <div class="cat-counts">
+      <span style="color:var(--pass)">Pass: 0</span>
+      <span style="color:var(--fail)">Fail: 30</span>
+      <span style="color:var(--warn)">Warn: 0</span>
+      <span style="color:var(--skip)">Skip: 0</span>
+    </div>
+  </div>  <div class="cat-card">
+    <div class="cat-header">
+      <div class="cat-name">AD Certificate Services</div>
+      <div class="cat-score" style="color:var(--deep-orange)">0</div>
+    </div>
+    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
+    <div class="cat-counts">
+      <span style="color:var(--pass)">Pass: 0</span>
+      <span style="color:var(--fail)">Fail: 19</span>
+      <span style="color:var(--warn)">Warn: 0</span>
+      <span style="color:var(--skip)">Skip: 0</span>
+    </div>
+  </div>  <div class="cat-card">
+    <div class="cat-header">
+      <div class="cat-name">AD Adversary Tradecraft Indicators</div>
+      <div class="cat-score" style="color:var(--deep-orange)">0</div>
+    </div>
+    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
+    <div class="cat-counts">
+      <span style="color:var(--pass)">Pass: 0</span>
+      <span style="color:var(--fail)">Fail: 4</span>
+      <span style="color:var(--warn)">Warn: 0</span>
+      <span style="color:var(--skip)">Skip: 0</span>
+    </div>
+  </div>  <div class="cat-card">
+    <div class="cat-header">
       <div class="cat-name">AD Kerberos Security</div>
       <div class="cat-score" style="color:var(--deep-orange)">0</div>
     </div>
@@ -290,6 +326,18 @@
     <div class="cat-counts">
       <span style="color:var(--pass)">Pass: 0</span>
       <span style="color:var(--fail)">Fail: 11</span>
+      <span style="color:var(--warn)">Warn: 0</span>
+      <span style="color:var(--skip)">Skip: 0</span>
+    </div>
+  </div>  <div class="cat-card">
+    <div class="cat-header">
+      <div class="cat-name">AD Network &amp; Relay Preconditions</div>
+      <div class="cat-score" style="color:var(--deep-orange)">0</div>
+    </div>
+    <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:0%;background:var(--deep-orange)"></div></div>
+    <div class="cat-counts">
+      <span style="color:var(--pass)">Pass: 0</span>
+      <span style="color:var(--fail)">Fail: 10</span>
       <span style="color:var(--warn)">Warn: 0</span>
       <span style="color:var(--skip)">Skip: 0</span>
     </div>
@@ -481,6 +529,30 @@
       <td>Unconstrained</td>
       <td><small>Identify users with unconstrained delegation using Get-ADUser -Filter {TrustedForDelegation -eq $true} -Properties TrustedForDelegation. This is almost never a legitimate configuration for user accounts. Remove the unconstrained delegation flag and configure constrained delegation to specific services if delegation is required. Rotate the account password immediately as the account may have been targeted</small></td>
     </tr>    <tr>
+      <td><code>ADNET-001</code></td>
+      <td><span class="badge badge-critical">Critical</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>LDAP Signing Required on Domain Controllers</td>
+      <td>Not required</td>
+      <td><small>Edit the Default Domain Controllers Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; &#39;Domain controller: LDAP server signing requirements&#39; = &#39;Require signing&#39;. Verify with: reg query HKLM\System\CurrentControlSet\Services\NTDS\Parameters /v LDAPServerIntegrity (should be 2). Microsoft has been hardening this default since 2020 (ADV190023) and will enforce it by default in future Windows Server releases.</small></td>
+    </tr>    <tr>
+      <td><code>ADNET-003</code></td>
+      <td><span class="badge badge-critical">Critical</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>SMB Server Signing Required (Domain Policy)</td>
+      <td>Not required</td>
+      <td><small>Edit the Default Domain Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; &#39;Microsoft network server: Digitally sign communications (always)&#39; = Enabled. Registry: HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\RequireSecuritySignature = 1. Windows 11 24H2 / Server 2025 enable this by default; older OS versions need explicit policy.</small></td>
+    </tr>    <tr>
+      <td><code>ADNET-009</code></td>
+      <td><span class="badge badge-critical">Critical</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>Print Spooler Service on Domain Controllers</td>
+      <td>Not configured (critical risk)</td>
+      <td><small>Edit the Default Domain Controllers Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; System Services &gt; Print Spooler &gt; &#39;Define this policy setting&#39; = Disabled. This propagates to every DC at the next gpupdate. Verify on each DC: Get-Service Spooler should show Status=Stopped, StartType=Disabled. If a DC also runs print services (it shouldn&#39;t), find another host for that role first.</small></td>
+    </tr>    <tr>
       <td><code>ADPRIV-001</code></td>
       <td><span class="badge badge-critical">Critical</span></td>
       <td><span class="badge badge-fail">FAIL</span></td>
@@ -600,6 +672,46 @@
       <td>World-Writable Script Permissions</td>
       <td>Not configured (critical risk)</td>
       <td><small>Enumerate NTFS permissions on every file in the NETLOGON share and SYSVOL scripts folders. Identify files where Domain Users, Authenticated Users, Everyone, or other broad groups have Write, Modify, or Full Control permissions. Reset permissions using icacls to grant Read and Execute to Authenticated Users and Full Control to Domain Admins and SYSTEM only.</small></td>
+    </tr>    <tr>
+      <td><code>ADTIER-001</code></td>
+      <td><span class="badge badge-critical">Critical</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>Tier-0 Hygiene &amp; Hybrid Identity Surface</td>
+      <td>Azure AD Connect Sync Account (MSOL_) Audit</td>
+      <td>Disabled</td>
+      <td><small>Locate the MSOL_ account: Get-ADUser -Filter {sAMAccountName -like &#39;MSOL_*&#39;}. Confirm it has DCSync rights: dsacls &#39;DC=domain,DC=com&#39; | findstr MSOL_. Move it to a Tier-0 admin OU. Rotate the password using the AAD Connect tooling (do NOT reset via standard tooling — use Add-ADSyncADDSConnectorAccount in the ADSync PowerShell module on the AAD Connect server). Apply a logon-restriction GPO so the account can only log on locally to the AAD Connect server itself. Treat the AAD Connect host as Tier-0 — restrict who can RDP/admin it.</small></td>
+    </tr>    <tr>
+      <td><code>ADTIER-002</code></td>
+      <td><span class="badge badge-critical">Critical</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>Tier-0 Hygiene &amp; Hybrid Identity Surface</td>
+      <td>Backup Software Service Accounts in Privileged Groups</td>
+      <td>Excessive permissions found</td>
+      <td><small>Identify the backup product in use and follow its least-privilege guide (Veeam: backup-server local admin only + AD account with object read; Rubrik: dedicated service principal in cloud-only role; etc.). Remove the backup account from Domain Admins. Migrate to a gMSA where supported. Place the backup server in a Tier-1 OU with restricted logon rights. If full DA is genuinely required for a specific workload, document it and isolate that part of backup to its own account separate from the main one.</small></td>
+    </tr>    <tr>
+      <td><code>ADTIER-004</code></td>
+      <td><span class="badge badge-critical">Critical</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>Tier-0 Hygiene &amp; Hybrid Identity Surface</td>
+      <td>Configuration Management Service Accounts in Privileged Groups</td>
+      <td>Excessive permissions found</td>
+      <td><small>Identify the config-mgmt product and review service account rights. For SCCM: ensure the Network Access Account is non-privileged (NOT a Domain Admin); ensure the site server&#39;s machine account is not a Domain Admin; review hierarchy service accounts for least privilege. Move site servers and management points to a Tier-0 OU with restricted logons.</small></td>
+    </tr>    <tr>
+      <td><code>ADTRADE-001</code></td>
+      <td><span class="badge badge-critical">Critical</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Adversary Tradecraft Indicators</td>
+      <td>Group Policy Preferences cpassword Leftovers in SYSVOL</td>
+      <td>Misconfigured</td>
+      <td><small>Scan SYSVOL: Get-ChildItem -Path \\&lt;domain&gt;\SYSVOL\&lt;domain&gt;\Policies -Recurse -Include *.xml | Select-String &#39;cpassword&#39;. For each match: (1) rotate the password of the account whose credential is exposed (the username is in the same XML), (2) audit logs for use of that credential since the preference was created, (3) delete the GPP preference once the new credential is in place. Microsoft&#39;s KB2962486 has the cleanup guidance.</small></td>
+    </tr>    <tr>
+      <td><code>ADTRADE-002</code></td>
+      <td><span class="badge badge-critical">Critical</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Adversary Tradecraft Indicators</td>
+      <td>DCShadow Indicator (Rogue Configuration-Partition Servers)</td>
+      <td>Not configured (critical risk)</td>
+      <td><small>Enumerate: Get-ADObject -Filter {objectClass -eq &#39;server&#39;} -SearchBase &quot;CN=Sites,$((Get-ADRootDSE).configurationNamingContext)&quot; -Properties whenCreated, dNSHostName | Sort whenCreated. Cross-reference with your DC inventory (Get-ADDomainController -Filter *). Any server object not matching a real DC, especially recently created, demands immediate IR — DCShadow is a domain-takeover-grade primitive. Monitor for 5137 / 5141 events on schema container as a detection-time signal.</small></td>
     </tr>    <tr>
       <td><code>ADTRUST-004</code></td>
       <td><span class="badge badge-critical">Critical</span></td>
@@ -929,6 +1041,86 @@
       <td>Disabled</td>
       <td><small>Configure via Group Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; &#39;Network security: Configure encryption types allowed for Kerberos&#39; = AES128_HMAC_SHA1, AES256_HMAC_SHA1, Future encryption types. Audit accounts with msDS-SupportedEncryptionTypes to identify those restricted to RC4. Ensure all service accounts have AES keys generated by rotating passwords after AES support is enabled at the domain level</small></td>
     </tr>    <tr>
+      <td><code>ADLOG-001</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Logging &amp; EDR Posture</td>
+      <td>Advanced Audit Policy Configured</td>
+      <td>Disabled</td>
+      <td><small>Open the Default Domain Controllers Policy in GPMC. Navigate to Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Advanced Audit Policy Configuration &gt; Audit Policies. Enable at minimum: Account Logon &gt; Kerberos Service Ticket Operations (Success+Failure), Logon/Logoff &gt; Logon (Success+Failure) + Special Logon (Success), Account Management &gt; all (Success), Object Access &gt; File Share + Detailed File Share (Success+Failure if monitoring lateral movement), Detailed Tracking &gt; Process Creation (Success). Also enable &#39;Audit: Force audit policy subcategory settings&#39; in Security Options so it takes precedence over the legacy nine-category settings.</small></td>
+    </tr>    <tr>
+      <td><code>ADLOG-002</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Logging &amp; EDR Posture</td>
+      <td>PowerShell Script Block Logging Enabled</td>
+      <td>Disabled</td>
+      <td><small>Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Windows Components &gt; Windows PowerShell &gt; &#39;Turn on PowerShell Script Block Logging&#39; = Enabled. Verify after gpupdate: Get-ItemProperty &#39;HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging&#39;. Make sure event log capacity for &#39;Microsoft-Windows-PowerShell/Operational&#39; is sized for the volume (default 15 MB will rotate in hours under load).</small></td>
+    </tr>    <tr>
+      <td><code>ADLOG-004</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Logging &amp; EDR Posture</td>
+      <td>Process Creation Auditing with Command Line</td>
+      <td>Disabled</td>
+      <td><small>Two settings, both required: (1) Computer Configuration &gt; Policies &gt; Administrative Templates &gt; System &gt; Audit Process Creation &gt; &#39;Include command line in process creation events&#39; = Enabled. (2) Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Advanced Audit Policy Configuration &gt; Detailed Tracking &gt; Audit Process Creation = Success. Without (1), 4688 events arrive without a NewProcessName argument string. Without (2), they don&#39;t arrive at all.</small></td>
+    </tr>    <tr>
+      <td><code>ADLOG-005</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Logging &amp; EDR Posture</td>
+      <td>Microsoft Defender Tamper Protection Policy</td>
+      <td>Non-compliant</td>
+      <td><small>In the MDE portal: Settings &gt; Endpoints &gt; Advanced features &gt; Tamper Protection = On (apply to all devices). In GPO: Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Windows Components &gt; Microsoft Defender Antivirus &gt; &#39;Turn off Microsoft Defender Antivirus&#39; = Disabled (yes, double-negative — this means &#39;do NOT allow turning Defender off&#39;). Also: &gt; Real-Time Protection &gt; &#39;Turn off real-time protection&#39; = Disabled. Review the Exclusions subkey carefully — every entry there is a hole an attacker will find.</small></td>
+    </tr>    <tr>
+      <td><code>ADLOG-006</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Logging &amp; EDR Posture</td>
+      <td>Windows Event Forwarding (WEF) Subscription Manager</td>
+      <td>Allowed to external</td>
+      <td><small>Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Windows Components &gt; Event Forwarding &gt; &#39;Configure target Subscription Manager&#39; = Enabled. Value: Server=http://wec-server.domain.tld:5985/wsman/SubscriptionManager/WEC,Refresh=60. Configure subscriptions on the collector with xpath queries for the events you care about (4624, 4625, 4688, 4768, 4769, 4104, 1102, etc.). If you don&#39;t have a WEF collector, this is the project to start; it&#39;s almost always cheaper than a full SIEM agent rollout for the same telemetry.</small></td>
+    </tr>    <tr>
+      <td><code>ADNET-002</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>LDAP Channel Binding Enforced on Domain Controllers</td>
+      <td>Not required</td>
+      <td><small>Edit the Default Domain Controllers Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; &#39;Domain controller: LDAP server channel binding token requirements&#39; = &#39;Always&#39;. Registry: HKLM\System\CurrentControlSet\Services\NTDS\Parameters\LdapEnforceChannelBinding = 2. Originally introduced for CVE-2017-8563.</small></td>
+    </tr>    <tr>
+      <td><code>ADNET-004</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>SMB Client Signing Required (Domain Policy)</td>
+      <td>Not required</td>
+      <td><small>Edit the Default Domain Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; &#39;Microsoft network client: Digitally sign communications (always)&#39; = Enabled. Registry: HKLM\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\RequireSecuritySignature = 1.</small></td>
+    </tr>    <tr>
+      <td><code>ADNET-005</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>LLMNR Disabled by Domain Policy</td>
+      <td>Non-compliant</td>
+      <td><small>Edit the Default Domain Policy: Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Network &gt; DNS Client &gt; &#39;Turn off multicast name resolution&#39; = Enabled. Registry: HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient\EnableMulticast = 0.</small></td>
+    </tr>    <tr>
+      <td><code>ADNET-007</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>IPv6 mitm6 Mitigation Posture</td>
+      <td>Disabled</td>
+      <td><small>If you don&#39;t use IPv6: push HKLM\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\DisabledComponents = 0xFF (hex) via GPO Registry to all workstations and servers. If you do use IPv6: ensure your access switches enforce DHCPv6 Guard / RA Guard so rogue DHCPv6 advertisements are dropped at the port. Microsoft has explicitly stated that disabling IPv6 entirely is not recommended for Windows but is acceptable for environments where IPv6 is unused.</small></td>
+    </tr>    <tr>
+      <td><code>ADNET-010</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>WebClient Service Default State on Workstations</td>
+      <td>Disabled</td>
+      <td><small>Edit the Default Domain Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; System Services &gt; WebClient &gt; &#39;Define this policy setting&#39; = Disabled. If a subset of hosts (e.g. SharePoint clients) actually need WebDAV, scope an opposing GPO to just those OUs. Monitor for sudden re-enablement.</small></td>
+    </tr>    <tr>
       <td><code>ADPRIV-003</code></td>
       <td><span class="badge badge-high">High</span></td>
       <td><span class="badge badge-fail">FAIL</span></td>
@@ -1193,6 +1385,46 @@
       <td>Disabled</td>
       <td><small>Query computer accounts by operatingSystem attribute to identify end-of-support OS versions. Determine which systems are covered by Extended Security Updates (ESU). Create migration timelines for all unsupported systems. Implement compensating controls for systems that cannot be immediately upgraded: network segmentation, enhanced monitoring, restricted service access. Track progress against migration timelines</small></td>
     </tr>    <tr>
+      <td><code>ADTIER-003</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>Tier-0 Hygiene &amp; Hybrid Identity Surface</td>
+      <td>Hypervisor / Virtualization Service Accounts in Privileged Groups</td>
+      <td>Excessive permissions found</td>
+      <td><small>Review the AD service account for each hypervisor product. Apply vendor least-privilege guidance. For vCenter: use the documented SSO identity source pattern rather than mapping a Domain Admin. For Hyper-V/SCVMM: scope service-account rights to the OUs hosting VM computer accounts. Treat the hypervisor management host as Tier-0 in your administrative model.</small></td>
+    </tr>    <tr>
+      <td><code>ADTIER-005</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>Tier-0 Hygiene &amp; Hybrid Identity Surface</td>
+      <td>SQL / Database Service Accounts in Privileged Groups</td>
+      <td>Excessive permissions found</td>
+      <td><small>Migrate SQL service accounts to gMSA where supported. For accounts that must remain user-based, remove privileged group membership and grant only the local rights the database engine requires (Log on as a service, Bypass traverse checking, Adjust memory quotas for a process — see Microsoft docs for the specific rights).</small></td>
+    </tr>    <tr>
+      <td><code>ADTIER-006</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>Tier-0 Hygiene &amp; Hybrid Identity Surface</td>
+      <td>Tier-0 Admin Accounts Outside a Dedicated Tier-0 OU</td>
+      <td>Excessive permissions found</td>
+      <td><small>Create OU=Tier-0,OU=Admin if it doesn&#39;t exist. Move all members of Domain/Enterprise/Schema Admins into it. Restrict the GPO authorship on that OU (only Tier-0 admins themselves). Apply a dedicated logon-restriction GPO so Tier-0 accounts can only log on to Tier-0 hosts. Block inheritance on the OU.</small></td>
+    </tr>    <tr>
+      <td><code>ADTIER-007</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>Tier-0 Hygiene &amp; Hybrid Identity Surface</td>
+      <td>Service Accounts with Interactive Logon Rights via Privileged Group</td>
+      <td>Disabled</td>
+      <td><small>Identify service accounts (SPN-bearing, naming convention, or business inventory). Apply a Default Domain Policy GPO: Computer Configuration &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; User Rights Assignment &gt; &#39;Deny log on locally&#39; = &lt;service-accounts-group&gt;. Add the same accounts to &#39;Deny log on through Remote Desktop Services&#39;. Add them to Protected Users where supported (Server 2012 R2+).</small></td>
+    </tr>    <tr>
+      <td><code>ADTRADE-004</code></td>
+      <td><span class="badge badge-high">High</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Adversary Tradecraft Indicators</td>
+      <td>RODC Password Replication Policy Hygiene</td>
+      <td>Non-compliant</td>
+      <td><small>For each RODC: Get-ADDomainController -Filter {IsReadOnly -eq $true} | ForEach-Object { Get-ADDomainControllerPasswordReplicationPolicy -Identity $_ -Allowed; Get-ADDomainControllerPasswordReplicationPolicy -Identity $_ -Denied }. Verify the Denied list contains the &#39;Denied RODC Password Replication Group&#39; built-in. If your environment has no RODCs this check is N/A — PASS. Microsoft&#39;s RODC planning guide has the canonical PRP template.</small></td>
+    </tr>    <tr>
       <td><code>ADTRUST-006</code></td>
       <td><span class="badge badge-high">High</span></td>
       <td><span class="badge badge-fail">FAIL</span></td>
@@ -1344,6 +1576,38 @@
       <td>Kerberos Ticket Lifetime</td>
       <td>Weak encryption (RC4)</td>
       <td><small>Configure Kerberos policy in Default Domain Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Account Policies &gt; Kerberos Policy. Set maximum lifetime for service ticket (600 minutes), maximum lifetime for user ticket (10 hours or less), and maximum lifetime for user ticket renewal (7 days). For Tier 0 accounts, add them to the Protected Users group which automatically enforces a 4-hour TGT lifetime</small></td>
+    </tr>    <tr>
+      <td><code>ADLOG-003</code></td>
+      <td><span class="badge badge-medium">Medium</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Logging &amp; EDR Posture</td>
+      <td>PowerShell Module Logging Enabled</td>
+      <td>Disabled</td>
+      <td><small>Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Windows Components &gt; Windows PowerShell &gt; &#39;Turn on Module Logging&#39; = Enabled. Add &#39;*&#39; to the Module Names list (logs all modules) or specifically Microsoft.PowerShell.* + the modules your environment uses for administration.</small></td>
+    </tr>    <tr>
+      <td><code>ADLOG-007</code></td>
+      <td><span class="badge badge-medium">Medium</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Logging &amp; EDR Posture</td>
+      <td>Sysmon Deployment Indicator</td>
+      <td>Default (insecure)</td>
+      <td><small>Deploy Sysmon (https://download.sysinternals.com/files/Sysmon.zip) via GPO startup script or your config-management platform. Use a community baseline as starting point (SwiftOnSecurity/sysmon-config or Olaf Hartong/sysmon-modular). Verify deployment via Get-CimInstance Win32_Service -Filter &quot;Name=&#39;Sysmon64&#39;&quot; against a representative host set, or query the WEF collector for &#39;Microsoft-Windows-Sysmon/Operational&#39; events.</small></td>
+    </tr>    <tr>
+      <td><code>ADNET-006</code></td>
+      <td><span class="badge badge-medium">Medium</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>NetBIOS over TCP/IP Configuration Reviewed</td>
+      <td>Default (insecure)</td>
+      <td><small>Disable NetBIOS over TCP/IP fleet-wide. Options: (1) Set DHCP scope option Microsoft Disable Netbios Option (option 1) to 0x2; (2) Group Policy Preferences &gt; Windows Settings &gt; Registry to push NetbiosOptions = 2 to each Tcpip_&lt;Interface&gt; key; (3) Bake it into the workstation imaging baseline. This setting is interface-specific and not directly addressable via standard GPO security settings.</small></td>
+    </tr>    <tr>
+      <td><code>ADNET-008</code></td>
+      <td><span class="badge badge-medium">Medium</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Network &amp; Relay Preconditions</td>
+      <td>WPAD Auto-Discovery Disabled</td>
+      <td>Default (insecure)</td>
+      <td><small>Three complementary controls: (1) Add &#39;wpad&#39; to the DNS server&#39;s GlobalQueryBlockList: dnscmd /Config /GlobalQueryBlockList wpad isatap; (2) Disable the WinHttpAutoProxySvc via GPO Services policy; (3) GPO Internet Explorer / Edge: &#39;Disable changing Automatic Configuration settings&#39; and ensure no PAC URL is auto-configured. (1) is the single most impactful fix.</small></td>
     </tr>    <tr>
       <td><code>ADPRIV-007</code></td>
       <td><span class="badge badge-medium">Medium</span></td>
@@ -1512,6 +1776,14 @@
       <td>DNS Record Staleness</td>
       <td>Multiple found</td>
       <td><small>Enable DNS scavenging on the DNS server properties and on each AD-integrated DNS zone. Configure the no-refresh interval to 7 days and the refresh interval to 7 days. Set scavenging period on at least one DNS server. Manually review aged DNS records before the first scavenging run to identify critical static records that need to be excluded. Mark records that should not be scavenged as static</small></td>
+    </tr>    <tr>
+      <td><code>ADTRADE-003</code></td>
+      <td><span class="badge badge-medium">Medium</span></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td>AD Adversary Tradecraft Indicators</td>
+      <td>Stale BitLocker Recovery Keys</td>
+      <td>Multiple found</td>
+      <td><small>Enumerate recovery information: Get-ADObject -Filter {objectClass -eq &#39;msFVE-RecoveryInformation&#39;} -Properties whenCreated. For each, walk up to the parent computer object and check its lastLogonTimestamp / Enabled. For computers inactive &gt;90 days: confirm the drive has been wiped or destroyed, then delete the AD computer object (which cascades the recovery info). For computers actively in use but with very old recovery keys: rotate via Backup-BitLockerKeyProtector. Verify that the BitLocker recovery group has tight membership.</small></td>
     </tr>    <tr>
       <td><code>ADTRUST-002</code></td>
       <td><span class="badge badge-medium">Medium</span></td>
@@ -1829,6 +2101,43 @@
           <td>Unconstrained</td>
           <td>All OU delegations documented, scoped to specific object types, and using least-privilege permissions</td>
           <td><small>Review all non-default ACEs on each OU using dsacls.exe or PowerShell. Verify that delegations use the InheritedObjectType to scope permissions to specific object classes. Remove delegations that are no longer required. Document all intentional delegations in an authorization matrix.</small></td>
+        </tr></tbody></table></div></details><details class="cat-detail">
+  <summary>AD Adversary Tradecraft Indicators &mdash; 4 checks (P:0 F:4 W:0)</summary>
+  <div class="detail-body">
+    <table>
+      <thead><tr><th>ID</th><th>Severity</th><th>Status</th><th>Check</th><th>Current Value</th><th>Recommended</th><th>Remediation</th></tr></thead>
+      <tbody>        <tr>
+          <td><code>ADTRADE-001</code></td>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Group Policy Preferences cpassword Leftovers in SYSVOL<br><small style="color:var(--dim)">From 2008 to May 2014, Group Policy Preferences let admins push scheduled tasks, local user passwords, mapped drives, and services using a &#39;cpassword&#39; field — encrypted with an AES-256 key Microsoft publicly documented. The fix in MS14-025 disabled the cpassword field in NEW preferences but left existing ones in SYSVOL untouched. Every red-team engagement still finds these. Any authenticated domain user can read SYSVOL, grab the cpassword, and decrypt it offline. If you find anything here, treat every credential exposed as compromised and rotate it.</small></td>
+          <td>Misconfigured</td>
+          <td>Zero cpassword attributes anywhere under \\domain\SYSVOL\domain\Policies\**\*.xml.</td>
+          <td><small>Scan SYSVOL: Get-ChildItem -Path \\&lt;domain&gt;\SYSVOL\&lt;domain&gt;\Policies -Recurse -Include *.xml | Select-String &#39;cpassword&#39;. For each match: (1) rotate the password of the account whose credential is exposed (the username is in the same XML), (2) audit logs for use of that credential since the preference was created, (3) delete the GPP preference once the new credential is in place. Microsoft&#39;s KB2962486 has the cleanup guidance.</small></td>
+        </tr>        <tr>
+          <td><code>ADTRADE-002</code></td>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>DCShadow Indicator (Rogue Configuration-Partition Servers)<br><small style="color:var(--dim)">DCShadow (Vincent LE TOUX / Benjamin Delpy, BlueHat IL 2018) registers an attacker-controlled host as a domain controller by writing nTDSDSA + server objects under CN=Sites,CN=Configuration. The fake DC is then used to inject malicious replication data (SID history, password hashes) without ever being a real DC. Defenders almost never check the configuration partition for new server objects — it&#39;s one of the highest-confidence persistence signals available from LDAP.</small></td>
+          <td>Not configured (critical risk)</td>
+          <td>All server objects under CN=Sites,CN=Configuration correspond to real, inventoried domain controllers. No recently created server objects that don&#39;t match a known DC.</td>
+          <td><small>Enumerate: Get-ADObject -Filter {objectClass -eq &#39;server&#39;} -SearchBase &quot;CN=Sites,$((Get-ADRootDSE).configurationNamingContext)&quot; -Properties whenCreated, dNSHostName | Sort whenCreated. Cross-reference with your DC inventory (Get-ADDomainController -Filter *). Any server object not matching a real DC, especially recently created, demands immediate IR — DCShadow is a domain-takeover-grade primitive. Monitor for 5137 / 5141 events on schema container as a detection-time signal.</small></td>
+        </tr>        <tr>
+          <td><code>ADTRADE-004</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>RODC Password Replication Policy Hygiene<br><small style="color:var(--dim)">Read-Only Domain Controllers cache passwords for the principals listed in their Password Replication Policy (PRP). If a Tier-0 account (Domain Admin, Enterprise Admin, krbtgt) is reachable by an RODC&#39;s PRP — directly or via group nesting — compromising the RODC compromises those accounts. The default &#39;Denied RODC Password Replication Group&#39; should explicitly contain DA / EA / SA / Schema Admins / krbtgt; some environments customize the policy and accidentally remove those denials.</small></td>
+          <td>Non-compliant</td>
+          <td>All RODCs in the domain have a Password Replication Policy where Domain Admins, Enterprise Admins, Schema Admins, krbtgt, and Account Operators are members of the Deny side. No high-privileged accounts are members of the Allow side.</td>
+          <td><small>For each RODC: Get-ADDomainController -Filter {IsReadOnly -eq $true} | ForEach-Object { Get-ADDomainControllerPasswordReplicationPolicy -Identity $_ -Allowed; Get-ADDomainControllerPasswordReplicationPolicy -Identity $_ -Denied }. Verify the Denied list contains the &#39;Denied RODC Password Replication Group&#39; built-in. If your environment has no RODCs this check is N/A — PASS. Microsoft&#39;s RODC planning guide has the canonical PRP template.</small></td>
+        </tr>        <tr>
+          <td><code>ADTRADE-003</code></td>
+          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Stale BitLocker Recovery Keys<br><small style="color:var(--dim)">BitLocker recovery keys are stored in AD as msFVE-RecoveryInformation child objects of the computer that backed them up. When a computer is decommissioned but the AD object is left dangling, the recovery keys remain queryable by anyone with BitLocker recovery rights — typically a wider group than &#39;Tier-0&#39;. Stale keys mean disposed drives are decryptable if recovered from a refurbisher or trash bin.</small></td>
+          <td>Multiple found</td>
+          <td>All msFVE-RecoveryInformation objects belong to computers active in the last 90 days. No keys orphaned to disabled or recently-modified-then-stale computer accounts.</td>
+          <td><small>Enumerate recovery information: Get-ADObject -Filter {objectClass -eq &#39;msFVE-RecoveryInformation&#39;} -Properties whenCreated. For each, walk up to the parent computer object and check its lastLogonTimestamp / Enabled. For computers inactive &gt;90 days: confirm the drive has been wiped or destroyed, then delete the AD computer object (which cascades the recovery info). For computers actively in use but with very old recovery keys: rotate via Backup-BitLockerKeyProtector. Verify that the BitLocker recovery group has tight membership.</small></td>
         </tr></tbody></table></div></details><details class="cat-detail">
   <summary>AD Certificate Services &mdash; 19 checks (P:0 F:19 W:0)</summary>
   <div class="detail-body">
@@ -2442,6 +2751,67 @@
           <td>No duplicate SPNs across the domain. All SPNs on computer accounts correspond to legitimate, documented services</td>
           <td><small>Scan for duplicate SPNs using setspn -X in the forest or Get-ADObject queries. Remove or reassign duplicate SPNs to the correct accounts. Review SPNs on computer objects to identify any unauthorized or unexpected services. Use setspn -L &lt;computername&gt; to list SPNs per computer. Document all non-default SPNs with their business purpose</small></td>
         </tr></tbody></table></div></details><details class="cat-detail">
+  <summary>AD Logging &amp; EDR Posture &mdash; 7 checks (P:0 F:7 W:0)</summary>
+  <div class="detail-body">
+    <table>
+      <thead><tr><th>ID</th><th>Severity</th><th>Status</th><th>Check</th><th>Current Value</th><th>Recommended</th><th>Remediation</th></tr></thead>
+      <tbody>        <tr>
+          <td><code>ADLOG-001</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Advanced Audit Policy Configured<br><small style="color:var(--dim)">Legacy nine-category audit policy is too coarse for modern investigations — it can tell you SOMETHING failed under &#39;Audit account logon events&#39; but not whether it was a Kerberos preauth failure, a service ticket request, or an explicit credential pass-through. Windows has supported Advanced Audit Policy (60+ subcategories) since Vista, but it has to be opted into. Presence of audit.csv in the Default Domain Controllers Policy SYSVOL folder is the on-the-wire indicator that the domain has migrated.</small></td>
+          <td>Disabled</td>
+          <td>Default Domain Controllers Policy ships an audit.csv (Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Advanced Audit Policy Configuration &gt; Audit Policies &gt; &lt;subcategories&gt;).</td>
+          <td><small>Open the Default Domain Controllers Policy in GPMC. Navigate to Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Advanced Audit Policy Configuration &gt; Audit Policies. Enable at minimum: Account Logon &gt; Kerberos Service Ticket Operations (Success+Failure), Logon/Logoff &gt; Logon (Success+Failure) + Special Logon (Success), Account Management &gt; all (Success), Object Access &gt; File Share + Detailed File Share (Success+Failure if monitoring lateral movement), Detailed Tracking &gt; Process Creation (Success). Also enable &#39;Audit: Force audit policy subcategory settings&#39; in Security Options so it takes precedence over the legacy nine-category settings.</small></td>
+        </tr>        <tr>
+          <td><code>ADLOG-002</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>PowerShell Script Block Logging Enabled<br><small style="color:var(--dim)">Event 4104 (PowerShell Script Block Logging) is the single most useful Windows event for investigating modern intrusions — it captures the actual PowerShell code being executed after deobfuscation, including code passed via -EncodedCommand. Without it, an investigator looking at PS-based ransomware deployment is blind. The setting is delivered by administrative template into HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging\EnableScriptBlockLogging.</small></td>
+          <td>Disabled</td>
+          <td>Group Policy &#39;Turn on PowerShell Script Block Logging&#39; is Enabled at the domain or DC OU level. Registry: EnableScriptBlockLogging = 1.</td>
+          <td><small>Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Windows Components &gt; Windows PowerShell &gt; &#39;Turn on PowerShell Script Block Logging&#39; = Enabled. Verify after gpupdate: Get-ItemProperty &#39;HKLM:\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging&#39;. Make sure event log capacity for &#39;Microsoft-Windows-PowerShell/Operational&#39; is sized for the volume (default 15 MB will rotate in hours under load).</small></td>
+        </tr>        <tr>
+          <td><code>ADLOG-004</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Process Creation Auditing with Command Line<br><small style="color:var(--dim)">Event 4688 (process creation) is the foundational lateral-movement signal — it tells you what process was launched and by whom. The default 4688 event does NOT include the command line, which makes it nearly useless for investigations involving PowerShell, wmic, mshta, or other living-off-the-land binaries. The &#39;Include command line in process creation events&#39; policy fills in that gap.</small></td>
+          <td>Disabled</td>
+          <td>Group Policy &#39;Include command line in process creation events&#39; is Enabled, AND Advanced Audit Policy subcategory &#39;Audit Process Creation&#39; is set to Success.</td>
+          <td><small>Two settings, both required: (1) Computer Configuration &gt; Policies &gt; Administrative Templates &gt; System &gt; Audit Process Creation &gt; &#39;Include command line in process creation events&#39; = Enabled. (2) Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Advanced Audit Policy Configuration &gt; Detailed Tracking &gt; Audit Process Creation = Success. Without (1), 4688 events arrive without a NewProcessName argument string. Without (2), they don&#39;t arrive at all.</small></td>
+        </tr>        <tr>
+          <td><code>ADLOG-005</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Microsoft Defender Tamper Protection Policy<br><small style="color:var(--dim)">If your EDR can be turned off from the endpoint without an admin action, every attacker turns it off as step one of their playbook. Defender Tamper Protection (and the equivalent in any modern EDR) blocks local disablement. This check looks for the GPO settings that govern Defender real-time protection — full Tamper Protection state is set in the cloud (Intune/MDE portal), but the GPO-side hardening is verifiable from SYSVOL.</small></td>
+          <td>Non-compliant</td>
+          <td>Defender real-time protection cannot be disabled by the local user; exclusions are tightly governed (or empty); SmartScreen Enhanced is on. Tamper Protection itself is set via Microsoft Defender for Endpoint cloud portal — verify out-of-band.</td>
+          <td><small>In the MDE portal: Settings &gt; Endpoints &gt; Advanced features &gt; Tamper Protection = On (apply to all devices). In GPO: Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Windows Components &gt; Microsoft Defender Antivirus &gt; &#39;Turn off Microsoft Defender Antivirus&#39; = Disabled (yes, double-negative — this means &#39;do NOT allow turning Defender off&#39;). Also: &gt; Real-Time Protection &gt; &#39;Turn off real-time protection&#39; = Disabled. Review the Exclusions subkey carefully — every entry there is a hole an attacker will find.</small></td>
+        </tr>        <tr>
+          <td><code>ADLOG-006</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Windows Event Forwarding (WEF) Subscription Manager<br><small style="color:var(--dim)">Logs that only exist on the host that generated them are exactly as useful as that host&#39;s local disk after the attacker wipes it. Windows Event Forwarding ships logs off-box to a collector at the time of write. Without a SubscriptionManager GPO pointing every endpoint at the collector, WEF doesn&#39;t happen.</small></td>
+          <td>Allowed to external</td>
+          <td>Group Policy &#39;Configure target Subscription Manager&#39; is set on workstations and servers to point at the WEF collector.</td>
+          <td><small>Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Windows Components &gt; Event Forwarding &gt; &#39;Configure target Subscription Manager&#39; = Enabled. Value: Server=http://wec-server.domain.tld:5985/wsman/SubscriptionManager/WEC,Refresh=60. Configure subscriptions on the collector with xpath queries for the events you care about (4624, 4625, 4688, 4768, 4769, 4104, 1102, etc.). If you don&#39;t have a WEF collector, this is the project to start; it&#39;s almost always cheaper than a full SIEM agent rollout for the same telemetry.</small></td>
+        </tr>        <tr>
+          <td><code>ADLOG-003</code></td>
+          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>PowerShell Module Logging Enabled<br><small style="color:var(--dim)">Event 4103 (PowerShell Module Logging) records the cmdlet/parameter invocations of any module configured for logging. Pair this with Script Block Logging and you have a high-confidence telemetry stack for any PS-based attack. The setting is delivered by administrative template into HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging.</small></td>
+          <td>Disabled</td>
+          <td>Group Policy &#39;Turn on Module Logging&#39; is Enabled with at least the &#39;*&#39; module name list. Registry: EnableModuleLogging = 1.</td>
+          <td><small>Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Windows Components &gt; Windows PowerShell &gt; &#39;Turn on Module Logging&#39; = Enabled. Add &#39;*&#39; to the Module Names list (logs all modules) or specifically Microsoft.PowerShell.* + the modules your environment uses for administration.</small></td>
+        </tr>        <tr>
+          <td><code>ADLOG-007</code></td>
+          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Sysmon Deployment Indicator<br><small style="color:var(--dim)">Sysmon (System Monitor, from Sysinternals) is the gold-standard endpoint telemetry source for the events Windows native logging doesn&#39;t cover well: file hash on process creation, network connections per process, DLL loads, registry monitoring, named pipes. It runs as a kernel-mode driver. There&#39;s no GPO-side detection of &#39;Sysmon is installed&#39; from SYSVOL alone — the indicator is the presence of a Sysmon config GPO or a startup script that deploys it. This check WARNs and asks the auditor to verify out-of-band.</small></td>
+          <td>Default (insecure)</td>
+          <td>Sysmon is installed on workstations and servers via a deployment GPO or configuration-management push, with a configuration tuned to the environment (SwiftOnSecurity, Olaf Hartong, or vendor-provided baselines).</td>
+          <td><small>Deploy Sysmon (https://download.sysinternals.com/files/Sysmon.zip) via GPO startup script or your config-management platform. Use a community baseline as starting point (SwiftOnSecurity/sysmon-config or Olaf Hartong/sysmon-modular). Verify deployment via Get-CimInstance Win32_Service -Filter &quot;Name=&#39;Sysmon64&#39;&quot; against a representative host set, or query the WEF collector for &#39;Microsoft-Windows-Sysmon/Operational&#39; events.</small></td>
+        </tr></tbody></table></div></details><details class="cat-detail">
   <summary>AD Logon Scripts &amp; Network Shares &mdash; 11 checks (P:0 F:11 W:0)</summary>
   <div class="detail-body">
     <table>
@@ -2534,6 +2904,91 @@
           <td>Disabled</td>
           <td>Complete inventory of all logon scripts with documented purpose, owner, and last modification date</td>
           <td><small>Enumerate all user scriptPath attributes using Get-ADUser -Filter {scriptPath -like &#39;*&#39;} -Properties scriptPath. List all GPO-configured scripts from GPO reports. Inventory all files in the NETLOGON share. Cross-reference to identify orphaned scripts, unused scripts, and scripts referenced by user accounts but missing from NETLOGON. Document each script&#39;s purpose and owner.</small></td>
+        </tr></tbody></table></div></details><details class="cat-detail">
+  <summary>AD Network &amp; Relay Preconditions &mdash; 10 checks (P:0 F:10 W:0)</summary>
+  <div class="detail-body">
+    <table>
+      <thead><tr><th>ID</th><th>Severity</th><th>Status</th><th>Check</th><th>Current Value</th><th>Recommended</th><th>Remediation</th></tr></thead>
+      <tbody>        <tr>
+          <td><code>ADNET-001</code></td>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>LDAP Signing Required on Domain Controllers<br><small style="color:var(--dim)">When domain controllers do not require LDAP signing, an attacker who can intercept or coerce LDAP traffic (for example via PetitPotam or any NTLM authentication trigger) can relay NTLM authentication to a DC&#39;s LDAP service and read or write directory data as the coerced principal. Enforcing LDAP signing closes the most common relay sink on a domain controller.</small></td>
+          <td>Not required</td>
+          <td>Default Domain Controllers Policy sets &#39;Domain controller: LDAP server signing requirements&#39; to &#39;Require signing&#39; (LDAPServerIntegrity = 2)</td>
+          <td><small>Edit the Default Domain Controllers Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; &#39;Domain controller: LDAP server signing requirements&#39; = &#39;Require signing&#39;. Verify with: reg query HKLM\System\CurrentControlSet\Services\NTDS\Parameters /v LDAPServerIntegrity (should be 2). Microsoft has been hardening this default since 2020 (ADV190023) and will enforce it by default in future Windows Server releases.</small></td>
+        </tr>        <tr>
+          <td><code>ADNET-003</code></td>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>SMB Server Signing Required (Domain Policy)<br><small style="color:var(--dim)">Without SMB signing required on the server side, an attacker who can position themselves in the network path or coerce SMB authentication can relay NTLM to SMB and execute file actions as the coerced principal. This is the classic relay sink for tools like ntlmrelayx; enforcing server-side signing closes it.</small></td>
+          <td>Not required</td>
+          <td>Default Domain Policy enables &#39;Microsoft network server: Digitally sign communications (always)&#39; (RequireSecuritySignature on LanManServer = 1)</td>
+          <td><small>Edit the Default Domain Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; &#39;Microsoft network server: Digitally sign communications (always)&#39; = Enabled. Registry: HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\RequireSecuritySignature = 1. Windows 11 24H2 / Server 2025 enable this by default; older OS versions need explicit policy.</small></td>
+        </tr>        <tr>
+          <td><code>ADNET-009</code></td>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Print Spooler Service on Domain Controllers<br><small style="color:var(--dim)">The Print Spooler service on a domain controller is the RPC endpoint exploited by the PrinterBug coercion technique (and a long list of follow-ons including the original CVE-2021-1675 PrintNightmare). When combined with any NTLM relay sink (ADCS Web, LDAP without signing, SMB without signing), it gives an unauthenticated attacker a primitive to coerce the DC machine account into authenticating to a target of their choice. Spooler is rarely needed on a DC.</small></td>
+          <td>Not configured (critical risk)</td>
+          <td>Print Spooler service is Disabled (start type 4) in the Default Domain Controllers Policy</td>
+          <td><small>Edit the Default Domain Controllers Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; System Services &gt; Print Spooler &gt; &#39;Define this policy setting&#39; = Disabled. This propagates to every DC at the next gpupdate. Verify on each DC: Get-Service Spooler should show Status=Stopped, StartType=Disabled. If a DC also runs print services (it shouldn&#39;t), find another host for that role first.</small></td>
+        </tr>        <tr>
+          <td><code>ADNET-002</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>LDAP Channel Binding Enforced on Domain Controllers<br><small style="color:var(--dim)">LDAP channel binding ties an LDAPS authentication to the underlying TLS channel. Without it, an attacker who has intercepted a TLS-protected LDAP session can still relay NTLM authentication to LDAPS. Together with LDAP signing, channel binding eliminates LDAP as a relay target.</small></td>
+          <td>Not required</td>
+          <td>Default Domain Controllers Policy sets &#39;Domain controller: LDAP server channel binding token requirements&#39; to &#39;Always&#39; (LdapEnforceChannelBinding = 2)</td>
+          <td><small>Edit the Default Domain Controllers Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; &#39;Domain controller: LDAP server channel binding token requirements&#39; = &#39;Always&#39;. Registry: HKLM\System\CurrentControlSet\Services\NTDS\Parameters\LdapEnforceChannelBinding = 2. Originally introduced for CVE-2017-8563.</small></td>
+        </tr>        <tr>
+          <td><code>ADNET-004</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>SMB Client Signing Required (Domain Policy)<br><small style="color:var(--dim)">Client-side SMB signing is the half of the contract that prevents a workstation from being lured into authenticating to a malicious SMB server (responder-style). Without it, any user on the network who is tricked into resolving a hostile name (LLMNR poisoning, WPAD, etc.) coughs up an NTLM hash that an attacker can crack or relay.</small></td>
+          <td>Not required</td>
+          <td>Default Domain Policy enables &#39;Microsoft network client: Digitally sign communications (always)&#39; (RequireSecuritySignature on LanmanWorkstation = 1)</td>
+          <td><small>Edit the Default Domain Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; Security Options &gt; &#39;Microsoft network client: Digitally sign communications (always)&#39; = Enabled. Registry: HKLM\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\RequireSecuritySignature = 1.</small></td>
+        </tr>        <tr>
+          <td><code>ADNET-005</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>LLMNR Disabled by Domain Policy<br><small style="color:var(--dim)">Link-Local Multicast Name Resolution is a broadcast-based fallback that any host on the local segment can answer. Responder.py and similar tools impersonate the answer, harvest NTLMv2 challenge-responses, and either crack them offline or relay them. Disabling LLMNR domain-wide is the single most impactful workstation hardening you can do for an internal pentest posture.</small></td>
+          <td>Non-compliant</td>
+          <td>Default Domain Policy enables &#39;Turn off multicast name resolution&#39; (DnsClient policy EnableMulticast = 0)</td>
+          <td><small>Edit the Default Domain Policy: Computer Configuration &gt; Policies &gt; Administrative Templates &gt; Network &gt; DNS Client &gt; &#39;Turn off multicast name resolution&#39; = Enabled. Registry: HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient\EnableMulticast = 0.</small></td>
+        </tr>        <tr>
+          <td><code>ADNET-007</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>IPv6 mitm6 Mitigation Posture<br><small style="color:var(--dim)">mitm6 is the IPv6 equivalent of Responder: a malicious DHCPv6 server hands out a link-local DNS server, then poisons WPAD lookups to harvest credentials. Enterprises that haven&#39;t deployed IPv6 typically also haven&#39;t disabled it, leaving link-local IPv6 enabled with no defensive posture. Mitigation is either to deploy IPv6 properly with RA Guard / DHCPv6 Guard at the switch, or to disable IPv6 components via DisabledComponents = 0xFF.</small></td>
+          <td>Disabled</td>
+          <td>Either IPv6 is disabled domain-wide via DisabledComponents = 0xFF, OR the network has RA Guard + DHCPv6 Guard deployed at the access layer (out-of-band, not detectable from AD)</td>
+          <td><small>If you don&#39;t use IPv6: push HKLM\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\DisabledComponents = 0xFF (hex) via GPO Registry to all workstations and servers. If you do use IPv6: ensure your access switches enforce DHCPv6 Guard / RA Guard so rogue DHCPv6 advertisements are dropped at the port. Microsoft has explicitly stated that disabling IPv6 entirely is not recommended for Windows but is acceptable for environments where IPv6 is unused.</small></td>
+        </tr>        <tr>
+          <td><code>ADNET-010</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>WebClient Service Default State on Workstations<br><small style="color:var(--dim)">The WebClient service (WebDAV redirector) lets an attacker coerce HTTP authentication from a workstation by referencing a UNC path that begins with a hostname containing an &#39;@&#39; (e.g. \\attacker@80\share). This is the workstation analog of PetitPotam and is the relay source most commonly used to attack ADCS Web Enrollment (ESC8). WebClient is started on demand but should be set to Disabled domain-wide for non-mobile workstations.</small></td>
+          <td>Disabled</td>
+          <td>Default Domain Policy disables the WebClient service (start type 4) for all member workstations and servers that do not require WebDAV</td>
+          <td><small>Edit the Default Domain Policy: Computer Configuration &gt; Policies &gt; Windows Settings &gt; Security Settings &gt; System Services &gt; WebClient &gt; &#39;Define this policy setting&#39; = Disabled. If a subset of hosts (e.g. SharePoint clients) actually need WebDAV, scope an opposing GPO to just those OUs. Monitor for sudden re-enablement.</small></td>
+        </tr>        <tr>
+          <td><code>ADNET-006</code></td>
+          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>NetBIOS over TCP/IP Configuration Reviewed<br><small style="color:var(--dim)">NetBIOS-NS is the second leg of name-resolution poisoning attacks after LLMNR. Disabling it at the DHCP/interface level requires Reset Of network configuration that GPO can&#39;t fully express; however, the Tcpip\Parameters\Interfaces NetbiosOptions value can be set via DHCP scope option 1 or by direct registry. This check reports whether ANY domain-wide policy artifact addresses it, so the auditor knows whether to investigate at the DHCP or imaging layer.</small></td>
+          <td>Default (insecure)</td>
+          <td>Domain-wide method exists to disable NetBIOS over TCP/IP on workstations (DHCP option 1 = 0x2, group policy preference, or imaging baseline)</td>
+          <td><small>Disable NetBIOS over TCP/IP fleet-wide. Options: (1) Set DHCP scope option Microsoft Disable Netbios Option (option 1) to 0x2; (2) Group Policy Preferences &gt; Windows Settings &gt; Registry to push NetbiosOptions = 2 to each Tcpip_&lt;Interface&gt; key; (3) Bake it into the workstation imaging baseline. This setting is interface-specific and not directly addressable via standard GPO security settings.</small></td>
+        </tr>        <tr>
+          <td><code>ADNET-008</code></td>
+          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>WPAD Auto-Discovery Disabled<br><small style="color:var(--dim)">Web Proxy Auto-Discovery resolves the name &#39;wpad&#39; via DNS, NetBIOS, or LLMNR and trusts whatever proxy configuration comes back. An attacker can poison any of those resolutions and proxy the victim&#39;s web traffic. Even with LLMNR and NetBIOS disabled, the WinHttpAutoProxySvc can still attempt WPAD, so a defense-in-depth GPO that disables WPAD outright is recommended.</small></td>
+          <td>Default (insecure)</td>
+          <td>GPO disables WPAD via &#39;Turn off auto-proxy result caching&#39; or by setting WinHttpAutoProxySvc start type to 4 (disabled), or DNS server has a wpad GlobalQueryBlockList entry</td>
+          <td><small>Three complementary controls: (1) Add &#39;wpad&#39; to the DNS server&#39;s GlobalQueryBlockList: dnscmd /Config /GlobalQueryBlockList wpad isatap; (2) Disable the WinHttpAutoProxySvc via GPO Services policy; (3) GPO Internet Explorer / Edge: &#39;Disable changing Automatic Configuration settings&#39; and ensure no PAC URL is auto-configured. (1) is the single most impactful fix.</small></td>
         </tr></tbody></table></div></details><details class="cat-detail">
   <summary>AD Password &amp; Lockout Policies &mdash; 22 checks (P:0 F:22 W:0)</summary>
   <div class="detail-body">
@@ -3146,10 +3601,211 @@
           <td>SID filtering disabled</td>
           <td>Up-to-date trust topology diagram maintained and reviewed quarterly</td>
           <td><small>Generate a trust topology map using automated tools or manually document all trust relationships including direction, type, transitivity, SID filtering status, and selective authentication status. Update the diagram whenever trusts are added, modified, or removed. Include the map in security documentation and review quarterly</small></td>
+        </tr></tbody></table></div></details><details class="cat-detail">
+  <summary>Tier-0 Hygiene &amp; Hybrid Identity Surface &mdash; 7 checks (P:0 F:7 W:0)</summary>
+  <div class="detail-body">
+    <table>
+      <thead><tr><th>ID</th><th>Severity</th><th>Status</th><th>Check</th><th>Current Value</th><th>Recommended</th><th>Remediation</th></tr></thead>
+      <tbody>        <tr>
+          <td><code>ADTIER-001</code></td>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Azure AD Connect Sync Account (MSOL_) Audit<br><small style="color:var(--dim)">When Azure AD Connect installs in Express mode it creates a domain account named MSOL_&lt;random-hex&gt; and grants it Replicating Directory Changes + Replicating Directory Changes All on the domain naming context — i.e. DCSync rights. The account is effectively Tier-0 but it lives in the default Users container by default, has a 10-year password expiry, and rarely shows up in privileged-group enumeration tools because it gets its power via direct ACL rather than group membership. Compromise of this account is functionally a domain takeover.</small></td>
+          <td>Disabled</td>
+          <td>All MSOL_ accounts are inventoried, password rotated within the last 180 days, placed in a Tier-0 OU with restricted logon rights, and the AAD Connect server itself is hardened as a Tier-0 system.</td>
+          <td><small>Locate the MSOL_ account: Get-ADUser -Filter {sAMAccountName -like &#39;MSOL_*&#39;}. Confirm it has DCSync rights: dsacls &#39;DC=domain,DC=com&#39; | findstr MSOL_. Move it to a Tier-0 admin OU. Rotate the password using the AAD Connect tooling (do NOT reset via standard tooling — use Add-ADSyncADDSConnectorAccount in the ADSync PowerShell module on the AAD Connect server). Apply a logon-restriction GPO so the account can only log on locally to the AAD Connect server itself. Treat the AAD Connect host as Tier-0 — restrict who can RDP/admin it.</small></td>
+        </tr>        <tr>
+          <td><code>ADTIER-002</code></td>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Backup Software Service Accounts in Privileged Groups<br><small style="color:var(--dim)">Backup software (Veeam, Commvault, Rubrik, Cohesity, NAKIVO, Backup Exec, Vembu, Acronis) typically asks for a service account with very high permissions. Documentation often suggests Domain Admin for ease of setup, and many admins comply. Once an attacker compromises the backup server (a frequent ransomware initial-access vector), they inherit Domain Admin via the service account. This is the #1 ransomware escalation path in 2023-2025 incident response data.</small></td>
+          <td>Excessive permissions found</td>
+          <td>No backup-software service accounts are members of Domain Admins, Enterprise Admins, Schema Admins, or Backup Operators. Use vendor-documented least-privilege accounts and isolated backup credentials.</td>
+          <td><small>Identify the backup product in use and follow its least-privilege guide (Veeam: backup-server local admin only + AD account with object read; Rubrik: dedicated service principal in cloud-only role; etc.). Remove the backup account from Domain Admins. Migrate to a gMSA where supported. Place the backup server in a Tier-1 OU with restricted logon rights. If full DA is genuinely required for a specific workload, document it and isolate that part of backup to its own account separate from the main one.</small></td>
+        </tr>        <tr>
+          <td><code>ADTIER-004</code></td>
+          <td><span class="badge badge-critical">Critical</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Configuration Management Service Accounts in Privileged Groups<br><small style="color:var(--dim)">Configuration-management platforms (SCCM/MECM, Intune Connector, Jamf, KACE, Lansweeper, ManageEngine, Ivanti, BigFix) push software to every endpoint by definition — they are already a privileged lateral-movement platform. SCCM in particular has well-known abuse primitives (Network Access Account exposure, NTLM coercion to site server, client push). A config-mgmt service account in Domain Admins gives an attacker who lands on any managed endpoint the keys to the domain.</small></td>
+          <td>Excessive permissions found</td>
+          <td>Config-management service accounts are scoped to their documented minimum rights and never in Domain Admins / Enterprise Admins. SCCM Network Access Account is a non-privileged dedicated identity.</td>
+          <td><small>Identify the config-mgmt product and review service account rights. For SCCM: ensure the Network Access Account is non-privileged (NOT a Domain Admin); ensure the site server&#39;s machine account is not a Domain Admin; review hierarchy service accounts for least privilege. Move site servers and management points to a Tier-0 OU with restricted logons.</small></td>
+        </tr>        <tr>
+          <td><code>ADTIER-003</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Hypervisor / Virtualization Service Accounts in Privileged Groups<br><small style="color:var(--dim)">vCenter / Hyper-V / SCVMM / Citrix / Nutanix integrations with AD often use a service account configured during setup. If that account is a Domain Admin, then compromise of the hypervisor management plane (or the host&#39;s SSO database) cascades to AD. The hypervisor is conceptually Tier-0 already; its AD identity should match.</small></td>
+          <td>Excessive permissions found</td>
+          <td>Hypervisor service accounts have only the rights documented by the vendor (typically read for inventory + specific OU writes if VM-AD integration is in use). Not in Domain Admins.</td>
+          <td><small>Review the AD service account for each hypervisor product. Apply vendor least-privilege guidance. For vCenter: use the documented SSO identity source pattern rather than mapping a Domain Admin. For Hyper-V/SCVMM: scope service-account rights to the OUs hosting VM computer accounts. Treat the hypervisor management host as Tier-0 in your administrative model.</small></td>
+        </tr>        <tr>
+          <td><code>ADTIER-005</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>SQL / Database Service Accounts in Privileged Groups<br><small style="color:var(--dim)">SQL Server / MySQL / PostgreSQL service accounts in Domain Admins are common in environments where the DBA team installed SQL with default &#39;Use existing AD account&#39; guidance and picked an admin account out of convenience. Once the database server is reachable on the network, a SQL credential compromise or a SQL Server vulnerability gives the attacker Domain Admin directly.</small></td>
+          <td>Excessive permissions found</td>
+          <td>Database service accounts run as gMSAs or dedicated service identities with no privileged-group membership.</td>
+          <td><small>Migrate SQL service accounts to gMSA where supported. For accounts that must remain user-based, remove privileged group membership and grant only the local rights the database engine requires (Log on as a service, Bypass traverse checking, Adjust memory quotas for a process — see Microsoft docs for the specific rights).</small></td>
+        </tr>        <tr>
+          <td><code>ADTIER-006</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Tier-0 Admin Accounts Outside a Dedicated Tier-0 OU<br><small style="color:var(--dim)">If your Domain Admins live in the same OU as regular users, every GPO that targets users (logon scripts, browser policy, mapped drives, etc.) also applies to your Domain Admins — which means anyone who can edit those GPOs can run code as a Domain Admin at next logon. The Microsoft tiered model recommends a dedicated Tier-0 admin OU with restricted GPO authorship and restricted logon rights.</small></td>
+          <td>Excessive permissions found</td>
+          <td>All Domain Admins, Enterprise Admins, and Schema Admins members are in a dedicated Tier-0 OU (typically OU=Tier-0,OU=Admin) with restricted GPO authorship.</td>
+          <td><small>Create OU=Tier-0,OU=Admin if it doesn&#39;t exist. Move all members of Domain/Enterprise/Schema Admins into it. Restrict the GPO authorship on that OU (only Tier-0 admins themselves). Apply a dedicated logon-restriction GPO so Tier-0 accounts can only log on to Tier-0 hosts. Block inheritance on the OU.</small></td>
+        </tr>        <tr>
+          <td><code>ADTIER-007</code></td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-fail">FAIL</span></td>
+          <td>Service Accounts with Interactive Logon Rights via Privileged Group<br><small style="color:var(--dim)">Service accounts that are members of Domain Admins (or any group granted &#39;Allow log on locally&#39; via default privileged-group membership) can be used interactively. Attackers love this — capture a service account password (Kerberoasting, registry, scripts in SYSVOL), use it interactively on a workstation, dump LSASS, and pivot. Service accounts should not be able to log on interactively to anything but the host they serve.</small></td>
+          <td>Disabled</td>
+          <td>Service accounts (heuristic: sAMAccountName starts with svc/sa/service or has SPN + no interactive logon recently) are explicitly denied &#39;Allow log on locally&#39; and &#39;Allow log on through Remote Desktop Services&#39; via the Default Domain Controllers Policy and a dedicated Tier-1/Tier-2 logon-restriction GPO.</td>
+          <td><small>Identify service accounts (SPN-bearing, naming convention, or business inventory). Apply a Default Domain Policy GPO: Computer Configuration &gt; Windows Settings &gt; Security Settings &gt; Local Policies &gt; User Rights Assignment &gt; &#39;Deny log on locally&#39; = &lt;service-accounts-group&gt;. Add the same accounts to &#39;Deny log on through Remote Desktop Services&#39;. Add them to Protected Users where supported (Server 2012 R2+).</small></td>
         </tr></tbody></table></div></details><h2>Compliance Mapping</h2>
 <table class="compliance-table">
   <thead><tr><th>Check ID</th><th>Status</th><th>MITRE ATT&amp;CK</th><th>NIST SP 800-53</th><th>CIS AD</th><th>ANSSI</th></tr></thead>
   <tbody>    <tr>
+      <td><code>ADACL-001</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code> <code>T1003.006</code></td><td><code>AC-6</code> <code>AC-6(5)</code> <code>AU-6</code></td><td></td><td><code>vuln_permissions_adminsdholder</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-002</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code> <code>T1098</code></td><td><code>AC-6</code> <code>AC-6(1)</code> <code>AC-3</code></td><td></td><td><code>vuln_permissions_genericall</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-003</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code> <code>T1098</code></td><td><code>AC-6</code> <code>AC-6(1)</code> <code>AC-3</code></td><td></td><td><code>vuln_permissions_genericwrite</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-004</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code> <code>T1098</code></td><td><code>AC-6</code> <code>AC-6(1)</code> <code>AC-3</code> <code>AU-12</code></td><td></td><td><code>vuln_permissions_writedacl</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-005</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code> <code>T1098</code></td><td><code>AC-6</code> <code>AC-6(1)</code> <code>AC-3</code></td><td></td><td><code>vuln_permissions_writeowner</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-006</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1098</code> <code>T1078.002</code></td><td><code>AC-6</code> <code>IA-5(1)</code></td><td></td><td><code>vuln_permissions_resetpassword</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-007</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code> <code>T1069.002</code></td><td><code>AC-6</code> <code>AC-6(1)</code> <code>AC-3(7)</code></td><td></td><td><code>vuln_delegation_broad_groups</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-008</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code></td><td><code>AC-6</code> <code>AC-6(3)</code> <code>CM-5</code></td><td></td><td></td>
+    </tr>    <tr>
+      <td><code>ADACL-009</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1098</code> <code>T1136.002</code></td><td><code>CM-6</code> <code>AC-6</code></td><td></td><td><code>vuln_machineaccountquota</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-010</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1003.006</code> <code>T1098</code></td><td><code>AC-6</code> <code>AC-6(5)</code> <code>AU-12</code></td><td></td><td><code>vuln_dcsync_rights</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-011</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code></td><td><code>AC-6</code> <code>AC-3</code></td><td></td><td><code>vuln_object_ownership</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-012</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code> <code>T1003.006</code></td><td><code>AC-6</code> <code>AC-3</code> <code>CM-6</code></td><td></td><td></td>
+    </tr>    <tr>
+      <td><code>ADACL-013</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1484.001</code></td><td><code>AC-6</code> <code>CM-5</code></td><td></td><td><code>vuln_gpo_link_permissions</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-014</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1484.001</code></td><td><code>AC-6</code> <code>CM-5</code> <code>CM-6</code></td><td></td><td><code>vuln_gpo_edit_permissions</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-015</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code> <code>T1098</code> <code>T1069.002</code></td><td><code>AC-6</code> <code>AC-6(5)</code> <code>AC-2(7)</code></td><td></td><td><code>vuln_shadow_admins</code></td>
+    </tr>    <tr>
+      <td><code>ADACL-016</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1222.001</code> <code>T1069.002</code> <code>T1098</code></td><td><code>AC-6</code> <code>RA-5</code> <code>CA-8</code></td><td></td><td><code>vuln_attack_paths</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-001</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code></td><td><code>CM-8</code> <code>CM-8(1)</code> <code>IA-5(2)</code></td><td></td><td></td>
+    </tr>    <tr>
+      <td><code>ADCS-002</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1556</code></td><td><code>AC-6</code> <code>IA-5(2)</code> <code>CM-6</code></td><td></td><td><code>vuln_adcs_esc1</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-003</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1556</code></td><td><code>AC-6</code> <code>IA-5(2)</code> <code>CM-6</code></td><td></td><td><code>vuln_adcs_esc2</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-004</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code></td><td><code>AC-6</code> <code>IA-5(2)</code> <code>CM-6</code></td><td></td><td><code>vuln_adcs_esc3</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-005</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code></td><td><code>AC-6</code> <code>IA-5(2)</code> <code>CM-6</code></td><td></td><td><code>vuln_adcs_esc3</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-006</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1222.001</code></td><td><code>AC-6</code> <code>AC-3</code> <code>IA-5(2)</code></td><td></td><td><code>vuln_adcs_esc4</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-007</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1222.001</code></td><td><code>AC-6</code> <code>AC-3</code></td><td></td><td><code>vuln_adcs_esc4</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-008</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1222.001</code></td><td><code>AC-6</code> <code>AC-3</code> <code>IA-5(2)</code></td><td></td><td><code>vuln_adcs_esc5</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-009</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1556</code></td><td><code>CM-6</code> <code>IA-5(2)</code> <code>AC-6</code></td><td></td><td><code>vuln_adcs_esc6</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-010</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code></td><td><code>AC-6</code> <code>AC-6(1)</code> <code>AC-5</code></td><td></td><td><code>vuln_adcs_esc7</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-011</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1557</code> <code>T1187</code></td><td><code>SC-8</code> <code>SC-23</code> <code>IA-5(2)</code></td><td></td><td><code>vuln_adcs_esc8</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-012</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1098</code></td><td><code>IA-5(2)</code> <code>CM-6</code> <code>AC-6</code></td><td></td><td><code>vuln_adcs_esc9</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-013</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1557</code></td><td><code>SC-8</code> <code>SC-8(1)</code> <code>IA-5(2)</code></td><td></td><td><code>vuln_adcs_esc11</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-014</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1098</code></td><td><code>AC-6</code> <code>IA-5(2)</code> <code>CM-6</code></td><td></td><td><code>vuln_adcs_esc13</code></td>
+    </tr>    <tr>
+      <td><code>ADCS-015</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code></td><td><code>CM-6</code> <code>IA-5(2)</code></td><td></td><td></td>
+    </tr>    <tr>
+      <td><code>ADCS-016</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1556</code></td><td><code>IA-5(2)</code> <code>CM-6</code> <code>AC-6</code></td><td></td><td></td>
+    </tr>    <tr>
+      <td><code>ADCS-017</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code></td><td><code>IA-5(2)</code> <code>CM-6</code></td><td></td><td></td>
+    </tr>    <tr>
+      <td><code>ADCS-018</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code> <code>T1562.002</code></td><td><code>AU-2</code> <code>AU-3</code> <code>AU-12</code></td><td></td><td></td>
+    </tr>    <tr>
+      <td><code>ADCS-019</code></td>
+      <td><span class="badge badge-fail">FAIL</span></td>
+      <td><code>T1649</code></td><td><code>CM-8</code> <code>CM-8(1)</code> <code>IA-5(2)</code></td><td></td><td></td>
+    </tr>    <tr>
       <td><code>ADDOM-001</code></td>
       <td><span class="badge badge-fail">FAIL</span></td>
       <td><code>T1078.002</code></td><td><code>CM-6</code> <code>SI-2</code></td><td><code>1.1.1</code></td><td><code>R1</code></td>
@@ -3209,149 +3865,9 @@
       <td><code>ADDOM-015</code></td>
       <td><span class="badge badge-fail">FAIL</span></td>
       <td><code>T1557</code> <code>T1021.002</code></td><td><code>SC-8</code> <code>SC-8(1)</code></td><td><code>2.2.1</code></td><td><code>R26</code></td>
-    </tr>    <tr>
-      <td><code>ADDOM-016</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1557</code> <code>T1003</code></td><td><code>IA-5(2)</code> <code>SC-8</code></td><td><code>2.3.1</code></td><td><code>R27</code></td>
-    </tr>    <tr>
-      <td><code>ADDOM-017</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1557</code> <code>T1003</code></td><td><code>IA-5(2)</code> <code>SC-8</code></td><td><code>2.3.2</code></td><td><code>R27</code></td>
-    </tr>    <tr>
-      <td><code>ADDOM-018</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1087.002</code> <code>T1069.002</code></td><td><code>AC-3</code> <code>AC-14</code></td><td><code>2.4.1</code></td><td><code>R30</code></td>
-    </tr>    <tr>
-      <td><code>ADDOM-019</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1187</code> <code>T1210</code></td><td><code>CM-7</code> <code>CM-7(1)</code></td><td><code>1.2.3</code></td><td><code>R9</code></td>
-    </tr>    <tr>
-      <td><code>ADDOM-020</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1003</code> <code>T1078.002</code></td><td><code>IA-5(1)</code> <code>AC-6</code></td><td><code>1.2.4</code></td><td><code>R10</code></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-001</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1482</code></td><td><code>AC-20</code> <code>CA-3</code></td><td><code>3.1.1</code></td><td></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-002</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1482</code> <code>T1078.002</code></td><td><code>AC-20</code> <code>AC-4</code></td><td><code>3.1.2</code></td><td></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-003</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1482</code> <code>T1078.002</code></td><td><code>AC-20</code> <code>AC-4</code></td><td><code>3.1.3</code></td><td></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-004</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1134.005</code></td><td><code>AC-4</code> <code>AC-6</code></td><td><code>3.2.1</code></td><td><code>R32</code></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-005</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1134.005</code></td><td><code>AC-6</code> <code>AC-6(1)</code></td><td><code>3.2.2</code></td><td><code>R32</code></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-006</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1482</code> <code>T1078.002</code></td><td><code>AC-3</code> <code>AC-4</code> <code>AC-6</code></td><td><code>3.2.3</code></td><td><code>R33</code></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-007</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.004</code> <code>T1649</code></td><td><code>IA-2</code> <code>AC-20</code> <code>SC-8</code></td><td><code>3.3.1</code></td><td></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-008</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1482</code> <code>T1078.002</code></td><td><code>AC-20</code> <code>CA-3</code> <code>SA-9</code></td><td><code>3.1.4</code></td><td></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-009</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1482</code></td><td><code>CM-6</code> <code>AC-20</code></td><td><code>3.4.1</code></td><td></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-010</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1482</code> <code>T1550.003</code></td><td><code>IA-5(1)</code> <code>SC-12</code></td><td><code>3.2.4</code></td><td></td>
-    </tr>    <tr>
-      <td><code>ADTRUST-011</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1482</code></td><td><code>AC-20</code> <code>PL-2</code></td><td><code>3.1.5</code></td><td></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-001</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code> <code>T1069.002</code></td><td><code>AC-6(1)</code> <code>AC-6(5)</code> <code>AC-2(7)</code></td><td><code>4.1.1</code></td><td><code>R2</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-002</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code> <code>T1069.002</code></td><td><code>AC-6(1)</code> <code>AC-6(5)</code> <code>AC-2(2)</code></td><td><code>4.1.2</code></td><td><code>R2</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-003</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code> <code>T1069.002</code></td><td><code>AC-6(1)</code> <code>AC-6(5)</code></td><td><code>4.1.3</code></td><td><code>R2</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-004</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code> <code>T1098</code></td><td><code>AC-6(1)</code> <code>AC-6(5)</code></td><td><code>4.1.4</code></td><td><code>R3</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-005</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code> <code>T1543.003</code></td><td><code>AC-6(1)</code> <code>AC-6(5)</code></td><td><code>4.1.5</code></td><td><code>R3</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-006</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1003.003</code> <code>T1078.002</code></td><td><code>AC-6(1)</code> <code>AC-6(5)</code></td><td><code>4.1.6</code></td><td><code>R3</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-007</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1547.012</code> <code>T1078.002</code></td><td><code>AC-6(1)</code> <code>CM-7</code></td><td><code>4.1.7</code></td><td><code>R3</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-008</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1543.003</code> <code>T1078.002</code></td><td><code>AC-6(1)</code> <code>AC-6(5)</code></td><td><code>4.1.8</code></td><td><code>R3</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-009</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1069.002</code> <code>T1078.002</code></td><td><code>AC-6(1)</code> <code>AC-2</code></td><td><code>4.2.1</code></td><td><code>R4</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-010</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code></td><td><code>IA-5(1)</code> <code>AC-2</code></td><td><code>4.3.1</code></td><td><code>R36</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-011</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code></td><td><code>IA-5(1)</code> <code>AC-2</code></td><td><code>4.3.2</code></td><td><code>R36</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-012</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1558.004</code></td><td><code>IA-5(2)</code> <code>AC-2</code></td><td><code>4.3.3</code></td><td><code>R36</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-013</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1003.006</code> <code>T1078.002</code></td><td><code>IA-5(1)</code> <code>SC-28</code></td><td><code>4.3.4</code></td><td><code>R36</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-014</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1558</code> <code>T1078.002</code></td><td><code>SC-12</code> <code>SC-13</code></td><td><code>4.3.5</code></td><td><code>R36</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-015</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code></td><td><code>IA-2(1)</code> <code>IA-2(2)</code></td><td><code>4.4.1</code></td><td><code>R5</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-016</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1110.001</code> <code>T1110.003</code> <code>T1078.002</code></td><td><code>IA-5(1)</code></td><td><code>4.5.1</code></td><td><code>R37</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-017</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code></td><td><code>IA-5(1)</code></td><td><code>4.5.2</code></td><td><code>R37</code></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-018</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code></td><td><code>AC-2(3)</code> <code>AC-2</code></td><td><code>4.6.1</code></td><td></td>
-    </tr>    <tr>
-      <td><code>ADPRIV-019</code></td>
-      <td><span class="badge badge-fail">FAIL</span></td>
-      <td><code>T1078.002</code> <code>T1098</code></td><td><code>AC-2(3)</code> <code>AC-2</code></td><td><code>4.6.2</code></td><td><code>R38</code></td>
     </tr></tbody></table><div class="footer">
   <p>Generated by PSGuerrilla v2.0.0 &mdash; AD Reconnaissance Module</p>
-  <p>Report generated: 2026-06-16 12:24:45 UTC</p>
+  <p>Report generated: 2026-06-16 12:38:23 UTC</p>
   <p>By Jim Tyler, Microsoft MVP &mdash; <a href="https://github.com/jimrtyler">GitHub</a> | <a href="https://linkedin.com/in/jamestyler">LinkedIn</a> | <a href="https://youtube.com/@jimrtyler">YouTube</a></p>
 </div>
 </body></html>
