@@ -28,7 +28,9 @@ function Invoke-Reconnaissance {
         [int]$PasswordAgeDays = 365,
 
         [ValidateSet('Guerrilla', 'Professional', 'Slate')]
-        [string]$ReportStyle = 'Guerrilla'
+        [string]$ReportStyle = 'Guerrilla',
+
+        [switch]$TestMode
     )
 
     # --- Resolve mission config (guerrilla-config.json) ---
@@ -75,6 +77,14 @@ function Invoke-Reconnaissance {
         $targetLabel = if ($Server) { $Server } else { 'Current Domain' }
         Write-OperationHeader -Operation 'RECONNAISSANCE AUDIT' -Mode 'AD Security' -Target $targetLabel -DaysBack 0
     }
+
+    # --- Test mode: synthesize an all-FAIL report without touching a real domain ---
+    if ($TestMode) {
+        if (-not $Quiet) { Write-ProgressLine -Phase RECON -Message 'TEST MODE — simulating an all-fail report' }
+        $domainName = 'testmode.local'
+        $allFindings = Get-GuerrillaSimulatedFindings -Theater ActiveDirectory
+    }
+    else {
 
     # --- Connect to AD ---
     if (-not $Quiet) { Write-ProgressLine -Phase RECON -Message 'Connecting to Active Directory' }
@@ -155,6 +165,8 @@ function Invoke-Reconnaissance {
             }
         }
     }
+
+    } # end if (-not $TestMode)
 
     # --- Score ---
     if (-not $Quiet) { Write-ProgressLine -Phase RECON -Message 'Calculating posture score' }

@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.9.0] - 2026-06-17
+
+### Added
+- **Test mode** — a `-TestMode` switch on `Invoke-Reconnaissance`, `Invoke-Fortification`, `Invoke-Infiltration`, and `Invoke-Campaign`, plus a **"Test mode" checkbox** in the `Show-Guerrilla` Operations tab. When enabled, the scan makes **no live connection** and instead synthesizes a complete **all-FAIL** report straight from the shipped check definitions. Everything downstream behaves exactly like a real scan: report **styles/themes**, **white-label branding**, affected-account lists, scoring, and CSV/JSON output. This lets a consultant preview a fully-populated report — and dial in branding/theme — without a tenant or domain. Works for all three theaters **and the big Campaign report** (which simulates all 459 checks across AD + Google Workspace + Entra/M365).
+
+### Changed
+- The **Campaign (big report)** now honours report **themes and white-label branding** too: `Invoke-Campaign` gains `-ReportStyle`, reads branding from config, and `Export-CampaignReportHtml` was moved onto the shared theming engine (Guerrilla / Professional / Slate), including plain **risk-based per-theater labels** in the plain themes. (Previously only the three single-theater reports were themed.)
+
+### Notes
+- In test mode the category selection is ignored — a full theater check set is always simulated (the point is a "fully failed report"). Real scans are unaffected.
+- Backward compatible: default Guerrilla output is unchanged and all 64 HTML report validation checks still pass.
+
 ## [2.8.1] - 2026-06-17
 
 ### Fixed

@@ -236,6 +236,7 @@ function Show-GuerrillaWindow {
             <RadioButton x:Name="ops_ModeFull" Content="Full" GroupName="Mode"/>
             <CheckBox x:Name="ops_NoReports" Content="No reports" Margin="24,0,12,0"/>
             <CheckBox x:Name="ops_NoDelta"   Content="No delta"/>
+            <CheckBox x:Name="ops_TestMode"  Content="Test mode" Margin="12,0,0,0" ToolTip="Simulate a scan with no live connection — produces an all-fail report so you can preview themes and branding."/>
           </StackPanel>
           <StackPanel Grid.Column="1" Orientation="Horizontal">
             <TextBlock Text="Report style:" Foreground="#B8A97E" VerticalAlignment="Center" Margin="0,0,8,0"/>
@@ -702,6 +703,7 @@ function Show-GuerrillaWindow {
         $noReports    = $session.Controls['ops_NoReports'].IsChecked
         $noDelta      = $session.Controls['ops_NoDelta'].IsChecked
         $reportStyle  = "$($session.Controls['ops_ReportStyle'].SelectedItem.Content)"
+        $testMode     = [bool]$session.Controls['ops_TestMode'].IsChecked
         $selectedCats = & $getSelectedCategories
 
         $cmdletName = if ($session.Controls['ops_TheaterAD'].IsChecked)        { 'Invoke-Reconnaissance' }
@@ -716,7 +718,7 @@ function Show-GuerrillaWindow {
         $action = {
             param([string]$CmdletName, [string]$OutputDir, [string]$Mode,
                   [bool]$NoReports, [bool]$NoDelta, [string[]]$Categories, [string]$VaultName,
-                  [string]$ReportStyle)
+                  [string]$ReportStyle, [bool]$TestMode)
             # Only pass parameters the target cmdlet actually declares. The four
             # theater cmdlets have different surfaces (e.g. Invoke-Campaign has no
             # -Categories/-NoReports; none take -ScanMode), so gating on the real
@@ -734,9 +736,10 @@ function Show-GuerrillaWindow {
             if ($Categories.Count -gt 0 -and $params.ContainsKey('Categories')) { $invokeArgs.Categories = $Categories }
             if ($Mode               -and $params.ContainsKey('ScanMode'))       { $invokeArgs.ScanMode = $Mode }
             if ($ReportStyle        -and $params.ContainsKey('ReportStyle'))    { $invokeArgs.ReportStyle = $ReportStyle }
+            if ($TestMode           -and $params.ContainsKey('TestMode'))       { $invokeArgs.TestMode = $true }
             & $CmdletName @invokeArgs
         }
-        $actionArgs = @($cmdletName, $outDir, $mode, [bool]$noReports, [bool]$noDelta, @($selectedCats), $session.VaultName, $reportStyle)
+        $actionArgs = @($cmdletName, $outDir, $mode, [bool]$noReports, [bool]$noDelta, @($selectedCats), $session.VaultName, $reportStyle, $testMode)
 
         # Invoke-GuerrillaGuiAsync fires these callbacks from its own DispatcherTimer
         # scope, so they must carry everything they need by closure. GetNewClosure()

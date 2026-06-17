@@ -25,7 +25,9 @@ function Invoke-Fortification {
         [string]$VaultName = 'PSGuerrilla',
 
         [ValidateSet('Guerrilla', 'Professional', 'Slate')]
-        [string]$ReportStyle = 'Guerrilla'
+        [string]$ReportStyle = 'Guerrilla',
+
+        [switch]$TestMode
     )
 
     $tempSaPath = $null
@@ -116,6 +118,16 @@ function Invoke-Fortification {
         }
 
         # Validate required parameters
+        # --- Test mode: synthesize an all-FAIL report without touching a real tenant ---
+        if ($TestMode) {
+            if (-not $Quiet) {
+                Write-OperationHeader -Operation 'FORTIFICATION AUDIT (TEST MODE)' -Mode 'Simulation' -Target 'testmode.local' -DaysBack 0
+            }
+            $admin = 'admin@testmode.local'
+            $auditData = @{ Tenant = @{ Domain = 'testmode.local' }; Errors = @{} }
+            $allFindings = Get-GuerrillaSimulatedFindings -Theater GoogleWorkspace
+        }
+        else {
         if (-not $keyPath) { throw 'ServiceAccountKeyPath is required. Provide it as a parameter, store it in the safehouse (Set-Safehouse), or set it in config.' }
         if (-not $admin)   { throw 'AdminEmail is required. Provide it as a parameter, store it in the safehouse (Set-Safehouse), or set it in config.' }
 
@@ -188,6 +200,8 @@ function Invoke-Fortification {
                 }
             }
         }
+
+        } # end if (-not $TestMode)
 
         # --- Score ---
         if (-not $Quiet) { Write-ProgressLine -Phase FORTIFYING -Message 'Calculating posture score' }

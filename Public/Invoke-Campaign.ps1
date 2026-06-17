@@ -95,7 +95,12 @@ function Invoke-Campaign {
         [string]$ConfigPath,
         [Alias('MissionConfig')]
         [string]$ConfigFile,
-        [string]$VaultName = 'PSGuerrilla'
+        [string]$VaultName = 'PSGuerrilla',
+
+        [ValidateSet('Guerrilla', 'Professional', 'Slate')]
+        [string]$ReportStyle = 'Guerrilla',
+
+        [switch]$TestMode
     )
 
     $tempSaPath = $null
@@ -213,15 +218,21 @@ function Invoke-Campaign {
 
         # --- Auto-detect theaters from provided credentials ---
         if (-not $Theaters) {
-            $Theaters = @()
-            if ($ServiceAccountKeyPath -and $AdminEmail) { $Theaters += 'Workspace' }
-            if ($Server -or $Credential -or (Get-Command Get-ADDomain -ErrorAction SilentlyContinue)) {
-                $Theaters += 'AD'
+            if ($TestMode) {
+                # Test mode needs no credentials — simulate the full big report.
+                $Theaters = @('Workspace', 'AD', 'Cloud')
             }
-            if ($TenantId -and $ClientId) { $Theaters += 'Cloud' }
+            else {
+                $Theaters = @()
+                if ($ServiceAccountKeyPath -and $AdminEmail) { $Theaters += 'Workspace' }
+                if ($Server -or $Credential -or (Get-Command Get-ADDomain -ErrorAction SilentlyContinue)) {
+                    $Theaters += 'AD'
+                }
+                if ($TenantId -and $ClientId) { $Theaters += 'Cloud' }
 
-            if ($Theaters.Count -eq 0) {
-                throw 'No theaters could be determined. Provide -Theaters or supply credentials for at least one theater.'
+                if ($Theaters.Count -eq 0) {
+                    throw 'No theaters could be determined. Provide -Theaters or supply credentials for at least one theater.'
+                }
             }
         }
 
@@ -237,7 +248,7 @@ function Invoke-Campaign {
 
         # ── Workspace Theater ──────────────────────────────────────────────
         if ('Workspace' -in $Theaters) {
-            if (-not $ServiceAccountKeyPath -or -not $AdminEmail) {
+            if (-not $TestMode -and (-not $ServiceAccountKeyPath -or -not $AdminEmail)) {
                 throw 'Workspace theater requires -ServiceAccountKeyPath and -AdminEmail'
             }
 
@@ -255,6 +266,7 @@ function Invoke-Campaign {
             if ($ConfigPath) { $fortParams['ConfigPath'] = $ConfigPath }
             if ($ConfigFile) { $fortParams['ConfigFile'] = $ConfigFile }
             if ($TargetOU) { $fortParams['TargetOU'] = $TargetOU }
+            if ($TestMode) { $fortParams['TestMode'] = $true }
 
             try {
                 $fortResult = Invoke-Fortification @fortParams
@@ -289,6 +301,7 @@ function Invoke-Campaign {
             if ($Credential) { $reconParams['Credential'] = $Credential }
             if ($ConfigPath) { $reconParams['ConfigPath'] = $ConfigPath }
             if ($ConfigFile) { $reconParams['ConfigFile'] = $ConfigFile }
+            if ($TestMode) { $reconParams['TestMode'] = $true }
 
             try {
                 $reconResult = Invoke-Reconnaissance @reconParams
@@ -311,7 +324,7 @@ function Invoke-Campaign {
 
         # ── Cloud Theater ──────────────────────────────────────────────────
         if ('Cloud' -in $Theaters) {
-            if (-not $TenantId -or -not $ClientId) {
+            if (-not $TestMode -and (-not $TenantId -or -not $ClientId)) {
                 throw 'Cloud theater requires -TenantId and -ClientId'
             }
 
@@ -331,6 +344,7 @@ function Invoke-Campaign {
             if ($DeviceCode) { $infilParams['DeviceCode'] = $true }
             if ($ConfigPath) { $infilParams['ConfigPath'] = $ConfigPath }
             if ($ConfigFile) { $infilParams['ConfigFile'] = $ConfigFile }
+            if ($TestMode) { $infilParams['TestMode'] = $true }
 
             try {
                 $infilResult = Invoke-Infiltration @infilParams
@@ -419,8 +433,12 @@ function Invoke-Campaign {
         }
 
         try {
+            if (-not $PSBoundParameters.ContainsKey('ReportStyle') -and $config -and $config.output -and ($config.output.reportStyle -in 'Guerrilla', 'Professional', 'Slate')) {
+                $ReportStyle = [string]$config.output.reportStyle
+            }
             $htmlPath = Join-Path $outDir "$baseName.html"
-            Export-CampaignReportHtml -Result $result -OutputPath $htmlPath
+            Export-CampaignReportHtml -Result $result -OutputPath $htmlPath `
+                -Style $ReportStyle -Branding (Get-GuerrillaBranding -Config $config)
             $result | Add-Member -NotePropertyName 'HtmlReportPath' -NotePropertyValue $htmlPath
             if (-not $Quiet) { Write-ProgressLine -Phase REPORTING -Message 'HTML report' -Detail $htmlPath }
         } catch {

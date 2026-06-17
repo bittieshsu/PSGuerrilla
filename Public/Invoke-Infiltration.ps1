@@ -87,7 +87,9 @@ function Invoke-Infiltration {
         [string]$VaultName = 'PSGuerrilla',
 
         [ValidateSet('Guerrilla', 'Professional', 'Slate')]
-        [string]$ReportStyle = 'Guerrilla'
+        [string]$ReportStyle = 'Guerrilla',
+
+        [switch]$TestMode
     )
 
     $vaultName = $VaultName
@@ -180,9 +182,14 @@ function Invoke-Infiltration {
         if ($secretVal) { $ClientSecret = $secretVal | ConvertTo-SecureString -AsPlainText -Force }
     }
 
-    # Validate required parameters
-    if (-not $TenantId) { throw 'TenantId is required. Provide -TenantId, store it in the safehouse (Set-Safehouse), -ConfigFile, or set entra.tenantId in config.' }
-    if (-not $ClientId) { throw 'ClientId is required. Provide -ClientId, store it in the safehouse (Set-Safehouse), -ConfigFile, or set entra.clientId in config.' }
+    # Validate required parameters (skipped in test mode — no real tenant is contacted)
+    if ($TestMode) {
+        if (-not $TenantId) { $TenantId = 'testmode.tenant' }
+    }
+    else {
+        if (-not $TenantId) { throw 'TenantId is required. Provide -TenantId, store it in the safehouse (Set-Safehouse), -ConfigFile, or set entra.tenantId in config.' }
+        if (-not $ClientId) { throw 'ClientId is required. Provide -ClientId, store it in the safehouse (Set-Safehouse), -ConfigFile, or set entra.clientId in config.' }
+    }
 
     # --- Operation header ---
     if (-not $Quiet) {
@@ -194,6 +201,16 @@ function Invoke-Infiltration {
     if (-not $Quiet) {
         Write-ProgressLine -Phase INFILTRATE -Message 'Authenticating to Microsoft Graph'
     }
+
+    # --- Test mode: synthesize an all-FAIL report without touching a real tenant ---
+    if ($TestMode) {
+        if (-not $Quiet) { Write-ProgressLine -Phase INFILTRATE -Message 'TEST MODE — simulating an all-fail report' }
+        $categoriesToRun = @('ConditionalAccess', 'AuthenticationMethods', 'PIM', 'Applications',
+            'Federation', 'TenantConfig', 'AzureIAM', 'Intune', 'M365Services')
+        $auditData = @{ Errors = @{} }
+        $allFindings = Get-GuerrillaSimulatedFindings -Theater EntraM365
+    }
+    else {
 
     $authParams = @{
         TenantId = $TenantId
@@ -303,6 +320,8 @@ function Invoke-Infiltration {
             }
         }
     }
+
+    } # end if (-not $TestMode)
 
     # --- Score ---
     $score = Get-AuditPostureScore -Findings @($allFindings)
