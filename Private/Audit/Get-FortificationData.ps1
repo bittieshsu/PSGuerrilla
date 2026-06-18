@@ -303,7 +303,10 @@ function Get-FortificationData {
         $sampleUsers = if ($userPool.Count -le $UserSampleSize) {
             $userPool
         } else {
-            $userPool | Select-Object -First $UserSampleSize
+            # Random sample (not -First): inspecting the same directory-order prefix every
+            # run skews coverage (often one OU) and would never reach a compromised mailbox
+            # late in the list. Auto-forwarding exfil typically hides in a single account.
+            @(Get-Random -InputObject $userPool -Count $UserSampleSize)
         }
 
         $userCount = 0

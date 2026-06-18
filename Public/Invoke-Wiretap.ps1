@@ -93,8 +93,12 @@ function Invoke-Wiretap {
         [string]$ConfigPath,
 
         [Alias('MissionConfig')]
-        [string]$ConfigFile
+        [string]$ConfigFile,
+
+        [string]$VaultName = 'PSGuerrilla'
     )
+
+    $vaultName = $VaultName
 
     # --- Resolve mission config (guerrilla-config.json) ---
     if ($ConfigFile) {
@@ -174,9 +178,19 @@ function Invoke-Wiretap {
               elseif ($config -and $config.output.directory) { $config.output.directory }
               else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
 
+    # Final fallback: the safehouse vault under the default keys Set-Safehouse stores
+    # interactively — so a vault-only setup (no mission-config file) runs without extra
+    # parameters, matching Invoke-Infiltration / Invoke-Fortification behaviour.
+    if (-not $tenantId) { $tenantId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_TENANT'   -VaultName $vaultName }
+    if (-not $clientId) { $clientId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_CLIENTID' -VaultName $vaultName }
+    if (-not $certThumb -and -not $ClientSecret) {
+        $secretVal = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_SECRET' -VaultName $vaultName
+        if ($secretVal) { $ClientSecret = $secretVal | ConvertTo-SecureString -AsPlainText -Force }
+    }
+
     # Validate required parameters
-    if (-not $tenantId) { throw 'TenantId is required. Provide it as a parameter or set entra.tenantId in config.' }
-    if (-not $clientId) { throw 'ClientId is required. Provide it as a parameter or set entra.clientId in config.' }
+    if (-not $tenantId) { throw 'TenantId is required. Provide it as a parameter, store it in the safehouse (Set-Safehouse), or set entra.tenantId in config.' }
+    if (-not $clientId) { throw 'ClientId is required. Provide it as a parameter, store it in the safehouse (Set-Safehouse), or set entra.clientId in config.' }
 
     # --- Operation header ---
     if (-not $Quiet) {

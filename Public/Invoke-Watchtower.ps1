@@ -2,6 +2,49 @@
 # https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-Watchtower {
+    <#
+    .SYNOPSIS
+        Continuous Active Directory baseline-change monitoring.
+
+    .DESCRIPTION
+        Invoke-Watchtower is the AD theater of PSGuerrilla's continuous-monitoring
+        suite (alongside Invoke-Surveillance for Entra sign-in risk and Invoke-Wiretap
+        for M365 audit logs). It snapshots security-relevant AD state — privileged
+        group membership, AdminSDHolder, GPO/ACL changes, trusts, krbtgt, delegation,
+        and other Tier-0 indicators — and compares each run against a stored baseline,
+        emitting the changes detected since the last sweep.
+
+        The first run establishes the baseline (no changes reported). Subsequent runs
+        diff against it and surface additions/removals/modifications with severity.
+        Connects to the current domain by default; use -Server / -Credential to target
+        another domain controller. Pair with Register-Patrol to run it on a schedule.
+
+    .PARAMETER Server
+        Target domain controller. Defaults to the current domain's DC.
+
+    .PARAMETER Credential
+        Alternate credentials for the directory connection.
+
+    .PARAMETER DaysBack
+        How far back to look on the first (baseline) run. Default: 1.
+
+    .PARAMETER ScanMode
+        Fast (core Tier-0 objects) or Full (broader object coverage). Default: Fast.
+
+    .PARAMETER Force
+        Re-establish the baseline instead of diffing against the stored one.
+
+    .EXAMPLE
+        Invoke-Watchtower
+        # First run establishes the AD baseline for the current domain.
+
+    .EXAMPLE
+        Invoke-Watchtower -ScanMode Full
+        # Subsequent run; reports Tier-0 changes since the last baseline.
+
+    .NOTES
+        Baseline state is stored under the per-user PSGuerrilla data root (theater 'ad').
+    #>
     [CmdletBinding()]
     param(
         [string]$Server,

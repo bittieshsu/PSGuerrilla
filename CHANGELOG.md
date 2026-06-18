@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.9.2] - 2026-06-18
+
+### Fixed
+_Part 2 of the live-environment validation pass — Google Workspace, continuous monitoring, and reporting._
+- **Continuous monitoring couldn't use the safehouse vault.** `Invoke-Surveillance` and `Invoke-Wiretap` never read the vault, so a vault-only setup (interactive `Set-Safehouse`, no `guerrilla-config.json`) failed immediately with *"TenantId is required"* — even though `Invoke-Infiltration` handled the same vault fine, and this broke `Register-Patrol` scheduled monitoring for vault installs. Both cmdlets now have a `-VaultName` parameter and resolve `TenantId`/`ClientId`/`ClientSecret` from the vault (`GUERRILLA_GRAPH_*`) as the last resort after parameters and config — the same fallback the audit cmdlets got in v2.5.0.
+- **`Invoke-Surveillance` aborted the entire run on the first Graph 403.** Its collectors had no isolation, so a missing Identity-Protection scope (or no Entra ID P2) killed all monitoring. Each collector is now wrapped in `try/catch`; the risk-detection `403` / `AadPremiumLicenseRequired` case degrades to a clear *"requires IdentityRiskEvent.Read.All + IdentityRiskyUser.Read.All scopes and an Entra ID P2 license"* skip, and the sign-in / audit-log signals still run.
+- **Google Workspace Gmail sampling was non-random.** `Get-FortificationData` selected mailboxes with `Select-Object -First`, always inspecting the same directory-order prefix (often skewed to a single OU) — so a compromised mailbox later in the list was never examined and a "clean" sampled result gave false assurance. Now uses a **random** sample (`Get-Random`).
+- **`Export-RemediationScripts -OutputPath` now works.** It was the only `Export-*` cmdlet using `-OutputDirectory`; added `-OutputPath` as an alias for parity with the other exporters.
+- **`Invoke-Watchtower` gained comment-based help** (`.SYNOPSIS` / `.DESCRIPTION` / `.PARAMETER` / `.EXAMPLE`) — `Get-Help` previously returned only auto-generated syntax.
+
+### Notes
+- Larger improvements from the same report are tracked as follow-ups: converting the ~60 Google Workspace "verify in Admin Console" always-WARN placeholders into real checks via the **Cloud Identity Policy API** (GWS-1); parallelizing Fortification's per-user collection (GWS-3); and expanding `Get-ComplianceCrosswalk` to surface the NIST 800-53 / MITRE ATT&CK / CIS mappings already present in every check (REP-2).
+
 ## [2.9.1] - 2026-06-18
 
 ### Fixed

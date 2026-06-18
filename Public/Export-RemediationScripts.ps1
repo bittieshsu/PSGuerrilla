@@ -25,6 +25,9 @@ function Export-RemediationScripts {
     [CmdletBinding()]
     param(
         [PSCustomObject[]]$Findings,
+        # -OutputPath alias for parity with the other Export-* cmdlets (which all use
+        # -OutputPath); this one emits multiple .ps1 files into a directory.
+        [Alias('OutputPath')]
         [string]$OutputDirectory,
         [switch]$Force
     )

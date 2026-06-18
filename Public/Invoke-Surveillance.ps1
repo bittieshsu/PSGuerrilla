@@ -93,8 +93,12 @@ function Invoke-Surveillance {
         [string]$ConfigPath,
 
         [Alias('MissionConfig')]
-        [string]$ConfigFile
+        [string]$ConfigFile,
+
+        [string]$VaultName = 'PSGuerrilla'
     )
+
+    $vaultName = $VaultName
 
     # --- Resolve mission config (guerrilla-config.json) ---
     if ($ConfigFile) {
@@ -178,9 +182,19 @@ function Invoke-Surveillance {
               elseif ($config -and $config.output.directory) { $config.output.directory }
               else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
 
+    # Final fallback: the safehouse vault under the default keys Set-Safehouse stores
+    # interactively — so a vault-only setup (no mission-config file) runs without extra
+    # parameters, matching Invoke-Infiltration / Invoke-Fortification behaviour.
+    if (-not $tenantId) { $tenantId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_TENANT'   -VaultName $vaultName }
+    if (-not $clientId) { $clientId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_CLIENTID' -VaultName $vaultName }
+    if (-not $certThumb -and -not $ClientSecret) {
+        $secretVal = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_SECRET' -VaultName $vaultName
+        if ($secretVal) { $ClientSecret = $secretVal | ConvertTo-SecureString -AsPlainText -Force }
+    }
+
     # Validate required parameters
-    if (-not $tenantId) { throw 'TenantId is required. Provide it as a parameter or set entra.tenantId in config.' }
-    if (-not $clientId) { throw 'ClientId is required. Provide it as a parameter or set entra.clientId in config.' }
+    if (-not $tenantId) { throw 'TenantId is required. Provide it as a parameter, store it in the safehouse (Set-Safehouse), or set entra.tenantId in config.' }
+    if (-not $clientId) { throw 'ClientId is required. Provide it as a parameter, store it in the safehouse (Set-Safehouse), or set entra.clientId in config.' }
 
     # --- 2. Operation header ---
     if (-not $Quiet) {
@@ -247,7 +261,14 @@ function Invoke-Surveillance {
     if (-not $Quiet) {
         Write-ProgressLine -Phase SURVEILLANCE -Message 'Collecting sign-in events'
     }
-    $signInEvents = Get-EntraSignInEvents -AccessToken $graphToken -StartTime $startTime -Quiet:$Quiet
+    # Each collector is isolated so one forbidden/unavailable Graph endpoint degrades to a
+    # skip instead of aborting the whole sweep (mirrors Invoke-Infiltration's resilience).
+    $signInEvents = @()
+    try {
+        $signInEvents = @(Get-EntraSignInEvents -AccessToken $graphToken -StartTime $startTime -Quiet:$Quiet)
+    } catch {
+        Write-Warning "Sign-in event collection failed: $_"
+    }
     if (-not $Quiet) {
         Write-ProgressLine -Phase SURVEILLANCE -Message 'Sign-in events' -Detail "$($signInEvents.Count) found"
     }
@@ -255,7 +276,21 @@ function Invoke-Surveillance {
     if (-not $Quiet) {
         Write-ProgressLine -Phase SURVEILLANCE -Message 'Collecting risk detections'
     }
-    $riskDetections = Get-EntraRiskDetections -AccessToken $graphToken -StartTime $startTime -Quiet:$Quiet
+    # Identity-Protection risk detections require the IdentityRiskEvent.Read.All /
+    # IdentityRiskyUser.Read.All application scopes AND an Entra ID P2 license — a missing
+    # scope/license degrades to a clear skip rather than killing the sweep.
+    $riskDetections = @()
+    try {
+        $riskDetections = @(Get-EntraRiskDetections -AccessToken $graphToken -StartTime $startTime -Quiet:$Quiet)
+    } catch {
+        if ($_.Exception.Message -match 'scopes are missing|Forbidden|AadPremiumLicenseRequired|\b403\b') {
+            if (-not $Quiet) {
+                Write-ProgressLine -Phase INFO -Message 'Risk detections skipped' -Detail 'requires IdentityRiskEvent.Read.All + IdentityRiskyUser.Read.All scopes and an Entra ID P2 license'
+            }
+        } else {
+            Write-Warning "Risk detection collection failed: $_"
+        }
+    }
     if (-not $Quiet) {
         Write-ProgressLine -Phase SURVEILLANCE -Message 'Risk detections' -Detail "$($riskDetections.Count) found"
     }
@@ -265,7 +300,11 @@ function Invoke-Surveillance {
         if (-not $Quiet) {
             Write-ProgressLine -Phase SURVEILLANCE -Message 'Collecting directory audit events (full mode)'
         }
-        $auditEvents = Get-EntraDirectoryAudits -AccessToken $graphToken -StartTime $startTime -Quiet:$Quiet
+        try {
+            $auditEvents = @(Get-EntraDirectoryAudits -AccessToken $graphToken -StartTime $startTime -Quiet:$Quiet)
+        } catch {
+            Write-Warning "Directory audit collection failed: $_"
+        }
         if (-not $Quiet) {
             Write-ProgressLine -Phase SURVEILLANCE -Message 'Directory audit events' -Detail "$($auditEvents.Count) found"
         }
