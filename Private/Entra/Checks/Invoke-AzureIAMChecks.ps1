@@ -30,16 +30,38 @@ function Invoke-AzureIAMChecks {
     return @($findings)
 }
 
+# ── Shared: distinguish "no Azure ARM access" from "no resources" (ENT-5) ──────
+# When Azure ARM is unreachable or NO subscription is accessible, every resource check
+# should SKIP with one clear, actionable message — not emit a misleading
+# "No X found in scanned subscriptions" WARN that implies a scan happened and found none.
+# Returns a SKIP finding in that case, or $null when the IAM data is usable (>=1 sub).
+function Get-AzureIAMUnavailableFinding {
+    [CmdletBinding()]
+    param($IamData, [hashtable]$CheckDefinition)
+
+    if (-not $IamData) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Azure Resource Manager was not queried (Azure IAM not in scope, or no app-only ARM token).'
+    }
+    if ($IamData.Errors -and $IamData.Errors['Subscriptions']) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue "No Azure ARM access — could not list subscriptions ($($IamData.Errors['Subscriptions'])). Grant the app the Reader role at the root management group to audit Azure resources."
+    }
+    if (-not $IamData.Subscriptions -or $IamData.Subscriptions.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'No accessible Azure subscriptions — grant the app the Reader role at the root management group to audit Azure resources.'
+    }
+    return $null
+}
+
 # ── AZIAM-001: Subscription Role Assignment Count ────────────────────────
 function Test-InfiltrationAZIAM001 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData -or -not $iamData.RoleAssignments) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $assignments = $iamData.RoleAssignments
     $subscriptions = $iamData.Subscriptions
@@ -70,10 +92,8 @@ function Test-InfiltrationAZIAM002 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData -or -not $iamData.RoleAssignments) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $assignments = $iamData.RoleAssignments
 
@@ -120,10 +140,8 @@ function Test-InfiltrationAZIAM003 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData -or -not $iamData.RoleAssignments) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $assignments = $iamData.RoleAssignments
 
@@ -158,10 +176,8 @@ function Test-InfiltrationAZIAM004 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $vaults = $iamData.KeyVaults
     if (-not $vaults -or $vaults.Count -eq 0) {
@@ -204,10 +220,8 @@ function Test-InfiltrationAZIAM005 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $storageAccounts = $iamData.StorageAccounts
     if (-not $storageAccounts -or $storageAccounts.Count -eq 0) {
@@ -260,10 +274,8 @@ function Test-InfiltrationAZIAM006 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $nsgs = $iamData.NetworkSecurityGroups
     if (-not $nsgs -or $nsgs.Count -eq 0) {
@@ -327,10 +339,8 @@ function Test-InfiltrationAZIAM007 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $policyStates = $iamData.PolicyStates
     if (-not $policyStates -or $policyStates.Count -eq 0) {
@@ -380,10 +390,8 @@ function Test-InfiltrationAZIAM008 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $mgGroups = $iamData.ManagementGroups
     if (-not $mgGroups -or $mgGroups.Count -eq 0) {
@@ -413,10 +421,8 @@ function Test-InfiltrationAZIAM009 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $customRoles = $iamData.RoleDefinitions
     if (-not $customRoles -or $customRoles.Count -eq 0) {
@@ -456,10 +462,8 @@ function Test-InfiltrationAZIAM010 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     $iamData = $AuditData.AzureIAM
-    if (-not $iamData) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-            -CurrentValue 'Azure IAM data not available'
-    }
+    $unavailable = Get-AzureIAMUnavailableFinding -IamData $iamData -CheckDefinition $CheckDefinition
+    if ($unavailable) { return $unavailable }
 
     $locks = $iamData.ResourceLocks
     $subscriptions = $iamData.Subscriptions

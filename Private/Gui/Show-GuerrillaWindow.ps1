@@ -889,9 +889,19 @@ function Show-GuerrillaWindow {
     $session.Controls['sh_Refresh'].Add_Click({ & $refreshSafehouseGrid })
 
     $session.Controls['sh_Add'].Add_Click({
-        $msg = "To add credentials, run from a PowerShell prompt:`r`n`r`n    Set-Safehouse`r`n`r`n" +
-               "It will ask which environments you want to set up. GUI-driven credential entry is on the roadmap for the next release."
-        [System.Windows.MessageBox]::Show($msg, 'Add Credential', 'OK', 'Information') | Out-Null
+        try {
+            $entries = Show-AddCredentialDialog -Owner $session.Window
+            if (-not $entries) { return }   # cancelled
+            # Make sure the vault exists before writing.
+            if (-not (Get-SecretVault -Name $session.VaultName -ErrorAction SilentlyContinue)) {
+                Initialize-GuerrillaVault -VaultName $session.VaultName | Out-Null
+            }
+            $n = Save-SafehouseCredentialSet -Entries $entries -VaultName $session.VaultName
+            & $refreshSafehouseGrid
+            [System.Windows.MessageBox]::Show("Stored $n credential value(s). Use 'Test All' to verify connectivity.", 'Credential saved', 'OK', 'Information') | Out-Null
+        } catch {
+            [System.Windows.MessageBox]::Show("Could not save credential: $_", 'Error', 'OK', 'Error') | Out-Null
+        }
     })
 
     $session.Controls['sh_Remove'].Add_Click({

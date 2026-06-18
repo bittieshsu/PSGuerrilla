@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.10.4] - 2026-06-18
+
+_Backlog sweep — the code-only gaps that don't need a live tenant/DC to build and verify._
+
+### Added
+- **(GUI-1) Real "Add Credential" modal.** The Safehouse tab's "Add Credential" button now opens a dark-themed WPF dialog (not a redirect-to-terminal stub) that stores **Microsoft Entra / Graph** (tenant / client / secret + optional expiry) or **Google Workspace** (service-account JSON via file picker + delegated-admin email) credentials straight into the vault, then refreshes the grid. Field validation (GUID / email / valid SA JSON) runs before anything is written. Backed by a non-interactive `Save-SafehouseCredentialSet` helper; the dialog's builder/validator are pure and unit-tested, and the window was render-verified off-screen.
+
+### Fixed
+- **(ENT-5) Azure IAM now distinguishes "no ARM access" from "no resources."** Every `AZIAM-*` resource check shared one guard that emitted a misleading `WARN: No X found in scanned subscriptions` even when the real problem was zero Azure access. A shared `Get-AzureIAMUnavailableFinding` now returns a single clear **SKIP** — *"No accessible Azure subscriptions — grant the app the Reader role at the root management group"* (or surfaces the ARM authorization error) — so the WARN only fires when subscriptions exist but genuinely have no resources of that type.
+- **(ENT-4, partial) Consolidated the M365 workload-skip noise.** Instead of ~40 individual `SKIP: <workload> not connected` lines, `Invoke-Infiltration` now prints **one** pre-flight banner summarizing which workload modules (EXO / Teams / SharePoint / Power Platform) are not connected and how many checks each skipped. (Net-new workload **checks** still need live Graph/admin-module validation and remain on the roadmap.)
+- **(DSInternals) Single pre-flight note.** When DSInternals isn't installed, reconnaissance prints one note that the 5 password-hash checks (`ADPWD-010..014`) will SKIP, instead of five identical per-check skip lines.
+
+### Notes
+- Regression tests: `Tests/verify-ent5-azure-skip.ps1` (7/7), `Tests/verify-gui-credential-entry.ps1` (15/15). AD/GWS/Entra check counts unchanged (204 / 98 / 158).
+- Still gated on a **live environment** (can't build+validate from a dev box), unchanged: full-domain transitive attack paths, GWS-1 Cloud Identity Policy API (blocked on the DWD scope), GWS-3 full parallelization, ENT-4 net-new workload checks, ADDOM-007 replication health, and the security-event-log behavioral ITDR layer.
+
 ## [2.10.3] - 2026-06-18
 
 _Fixes from the v2.10.1 attack-path validation and the v2.10.2 GUI re-check._

@@ -101,6 +101,11 @@ function Get-ReconnaissanceData {
                 PSPKI           = $false
             }
         }
+        # Single pre-flight note for the DSInternals-gated password-hash checks
+        # (ADPWD-010..014), instead of five identical per-check SKIP lines in the report run.
+        if (-not $Quiet -and $data.ModuleAvailability -and -not $data.ModuleAvailability.DSInternals) {
+            Write-ProgressLine -Phase INFO -Message 'DSInternals not installed — the 5 password-hash checks (ADPWD-010..014) will SKIP. Install-Module DSInternals (and run on a DC / with replication rights) to enable NT-hash analysis.'
+        }
     }
 
     # ── 2. Domain Information ────────────────────────────────────────────

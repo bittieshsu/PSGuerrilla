@@ -321,6 +321,21 @@ function Invoke-Infiltration {
         }
     }
 
+    # ENT-4: collapse the ~40 individual "workload module not connected" SKIPs into one
+    # pre-flight banner so the console isn't flooded with per-check skip lines.
+    if (-not $Quiet) {
+        $workloadSkips = @($allFindings | Where-Object { $_.Status -eq 'SKIP' -and $_.CurrentValue -match 'not connected\)' })
+        if ($workloadSkips.Count -gt 0) {
+            $byModule = @{}
+            foreach ($s in $workloadSkips) {
+                $mod = if ($s.CurrentValue -match '\(([^()]*?)\s+not connected\)') { $Matches[1] } else { 'workload module' }
+                $byModule[$mod] = ($byModule[$mod] + 1)
+            }
+            $parts = @($byModule.GetEnumerator() | Sort-Object Name | ForEach-Object { "$($_.Key) ×$($_.Value)" })
+            Write-ProgressLine -Phase INFO -Message "$($workloadSkips.Count) workload check(s) skipped — module not connected: $($parts -join ', '). Connect the EXO / Teams / SharePoint / Power Platform admin modules (or run with -IncludeWorkloadModules) to enable them."
+        }
+    }
+
     } # end if (-not $TestMode)
 
     # --- Score ---
