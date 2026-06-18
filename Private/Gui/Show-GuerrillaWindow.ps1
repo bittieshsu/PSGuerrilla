@@ -90,11 +90,57 @@ function Show-GuerrillaWindow {
       <Setter Property="Padding" Value="8,4"/>
       <Setter Property="CaretBrush" Value="#F5F0E6"/>
     </Style>
+    <!-- Full dark template. The stock ComboBox template renders the closed selection box
+         (SelectionBoxItem) via the system theme, ignoring Foreground, so the selected text
+         was invisible/blank when collapsed. This template themes the selection box too. -->
     <Style TargetType="ComboBox">
       <Setter Property="Background" Value="#252420"/>
       <Setter Property="Foreground" Value="#F5F0E6"/>
       <Setter Property="BorderBrush" Value="#55524A"/>
       <Setter Property="Padding" Value="8,4"/>
+      <Setter Property="Height" Value="28"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ComboBox">
+            <Grid>
+              <ToggleButton x:Name="ToggleButton" Focusable="False" ClickMode="Press"
+                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                <ToggleButton.Template>
+                  <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="#55524A" BorderThickness="1" SnapsToDevicePixels="True">
+                      <Grid>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*"/>
+                          <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Path Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Data="M 0 0 L 4 4 L 8 0 Z" Fill="#F5F0E6"/>
+                      </Grid>
+                    </Border>
+                  </ControlTemplate>
+                </ToggleButton.Template>
+              </ToggleButton>
+              <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False"
+                                Content="{TemplateBinding SelectionBoxItem}"
+                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                Margin="8,0,28,0" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                TextElement.Foreground="#F5F0E6"/>
+              <Popup x:Name="Popup" Placement="Bottom" Focusable="False" AllowsTransparency="True"
+                     IsOpen="{TemplateBinding IsDropDownOpen}" PopupAnimation="Slide">
+                <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                      MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}">
+                  <Border Background="#252420" BorderBrush="#55524A" BorderThickness="1">
+                    <ScrollViewer SnapsToDevicePixels="True">
+                      <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                    </ScrollViewer>
+                  </Border>
+                </Grid>
+              </Popup>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
     </Style>
     <!-- Dropdown items: the WPF popup defaults to a light system theme, so without this
          the near-white item text is invisible. Force dark items with light text. -->
@@ -846,7 +892,10 @@ function Show-GuerrillaWindow {
 
     $session.Controls['sh_Remove'].Add_Click({
         $row = $session.Controls['sh_Grid'].SelectedItem
-        if (-not $row) { return }
+        if (-not $row) {
+            [System.Windows.MessageBox]::Show('Select a credential row first, then click Remove Selected.', 'No selection', 'OK', 'Information') | Out-Null
+            return
+        }
         $ans = [System.Windows.MessageBox]::Show("Remove credential '$($row.VaultKey)'?", 'Confirm', 'YesNo', 'Warning')
         if ($ans -eq 'Yes') {
             try {
@@ -860,12 +909,60 @@ function Show-GuerrillaWindow {
 
     $session.Controls['sh_Rotate'].Add_Click({
         $row = $session.Controls['sh_Grid'].SelectedItem
-        if (-not $row) { return }
+        if (-not $row) {
+            [System.Windows.MessageBox]::Show('Select a credential row first, then click Rotate Selected.', 'No selection', 'OK', 'Information') | Out-Null
+            return
+        }
         [System.Windows.MessageBox]::Show("To rotate, run from a PowerShell prompt:`r`n`r`n    Set-Safehouse -Rotate $($row.Environment)", 'Rotate Credential', 'OK', 'Information') | Out-Null
     })
 
     $session.Controls['sh_Test'].Add_Click({
-        [System.Windows.MessageBox]::Show("To test all connections, run:`r`n`r`n    Set-Safehouse -Test`r`n`r`n(GUI-driven connectivity testing is on the roadmap.)", 'Test All', 'OK', 'Information') | Out-Null
+        $btn = $session.Controls['sh_Test']
+        $btn.IsEnabled = $false
+        $btn.Content = 'Testing…'
+
+        $testComplete = {
+            param($result)
+            $btn.IsEnabled = $true
+            $btn.Content = 'Test All'
+            $rows = @($result)
+            if ($rows.Count -eq 0) {
+                [System.Windows.MessageBox]::Show('No credentials were found to test. Add credentials first.', 'Test All', 'OK', 'Information') | Out-Null
+                return
+            }
+            $passStates = @('CONNECTED', 'VALID', 'STORED', 'KERBEROS')
+            $pass = @($rows | Where-Object { $passStates -contains $_.Status }).Count
+            $sb = [System.Text.StringBuilder]::new()
+            [void]$sb.AppendLine("$pass of $($rows.Count) checks passed.")
+            $lastEnv = ''
+            foreach ($r in $rows) {
+                if ($r.Environment -ne $lastEnv) {
+                    [void]$sb.AppendLine('')
+                    [void]$sb.AppendLine($r.Environment)
+                    $lastEnv = $r.Environment
+                }
+                $icon = if ($passStates -contains $r.Status) { '[OK] ' } else { '[X]  ' }
+                $detail = if ($r.Detail) { " - $($r.Detail)" } else { '' }
+                [void]$sb.AppendLine("  $icon$($r.Name): $($r.Status) ($($r.ElapsedMs)ms)$detail")
+            }
+            $icon = if ($pass -eq $rows.Count) { 'Information' } else { 'Warning' }
+            [System.Windows.MessageBox]::Show($sb.ToString(), 'Safehouse Connectivity Test', 'OK', $icon) | Out-Null
+        }.GetNewClosure()
+
+        $testError = {
+            param($err)
+            $btn.IsEnabled = $true
+            $btn.Content = 'Test All'
+            [System.Windows.MessageBox]::Show("Connectivity test failed: $err", 'Test All', 'OK', 'Error') | Out-Null
+        }.GetNewClosure()
+
+        Invoke-GuerrillaGuiAsync `
+            -ModulePath $session.ModulePath `
+            -Action     { param($VaultName) Test-Safehouse -VaultName $VaultName } `
+            -Arguments  @($session.VaultName) `
+            -Dispatcher $session.Window.Dispatcher `
+            -OnComplete $testComplete `
+            -OnError    $testError
     })
 
     $session.Controls['sh_Export'].Add_Click({
@@ -1209,10 +1306,33 @@ function Show-GuerrillaWindow {
     & $loadCategoriesForTheater
     & $setActiveTab $StartOn
 
+    # Single-instance guard. A second window shares the same config.json and theater
+    # *-state.json files, so two open instances clobber each other (last-writer-wins).
+    # Refuse the second window rather than silently corrupting state.
+    $createdNew = $false
+    try {
+        $script:GuerrillaGuiMutex = New-Object System.Threading.Mutex($true, 'Global\PSGuerrilla.GuiSingleInstance', [ref]$createdNew)
+    } catch {
+        # Mutex unavailable (rare) — fail open rather than block the GUI entirely.
+        $createdNew = $true
+        $script:GuerrillaGuiMutex = $null
+    }
+    if (-not $createdNew) {
+        [System.Windows.MessageBox]::Show('PSGuerrilla is already open in another window. Close it first, or switch to that window.', 'Already running', 'OK', 'Information') | Out-Null
+        try { if ($script:GuerrillaGuiMutex) { $script:GuerrillaGuiMutex.Dispose() } } catch {}
+        $script:GuerrillaGuiMutex = $null
+        return
+    }
+
     # Cleanup on window close
     $window.Add_Closing({
         if ($session.CurrentAsync) {
             Stop-GuerrillaGuiAsync -State $session.CurrentAsync
+        }
+        if ($script:GuerrillaGuiMutex) {
+            try { $script:GuerrillaGuiMutex.ReleaseMutex() } catch {}
+            try { $script:GuerrillaGuiMutex.Dispose() } catch {}
+            $script:GuerrillaGuiMutex = $null
         }
     })
 

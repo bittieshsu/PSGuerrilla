@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.10.2] - 2026-06-18
+
+_GUI + Safehouse fixes from the live GUI/Safehouse validation pass._
+
+### Fixed
+- **(SH-1) Config-file setup now persists the Google Workspace admin email to the vault.** `Set-Safehouse -ConfigFile` migrated the service-account JSON but never stored `GUERRILLA_GWS_SA_ADMIN_EMAIL`, so a config-file setup followed by a **vault-only** scan (GUI / scheduled patrol, no `-ConfigFile`) failed with *"AdminEmail is required."* The migration now also stores the admin email (from `google.adminEmail`).
+- **(SH-4) Config migration now also handles Pushover and Twilio/SMS providers** (previously silently dropped — only teams/slack/sendgrid/mailgun/pagerduty were migrated), using canonical keys `GUERRILLA_PUSHOVER_KEY` / `GUERRILLA_TWILIO_KEY`.
+- **(SH-2) Status surfaces reconcile metadata with the real secret store.** `Get-Safehouse`, `Set-Safehouse -Status`, and the GUI Safehouse tab were metadata-driven (`GUERRILLA_VAULT_METADATA`), so secrets stored without a metadata entry (the interactive admin-email write, Pushover, a legacy bare key) were invisible — a *"are my creds loaded?"* blind spot. A new `Get-SafehouseCredentialView` helper reconciles metadata with `Get-SecretInfo`, surfacing present-but-unregistered keys (flagged `unregistered`).
+- **(SH-3) Vault status discloses the no-master-password mode.** The store is configured with `Authentication None` for unattended runs; status now plainly states *"DPAPI at rest, no master password — any process running as this user can read these secrets"* instead of just labeling it `DPAPI`.
+- **(GUI-1) The Safehouse "Test All" button now works.** It runs the real `Test-Safehouse` connectivity engine asynchronously (off the UI thread) and shows per-environment, per-check results, instead of redirecting to the terminal.
+- **(GUI-2) ComboBoxes show their selected value when collapsed.** Report style / Profile / Minimum alert level rendered blank when closed because the stock WPF template themed the selection box via the system theme; a full dark `ControlTemplate` now themes the `SelectionBoxItem`.
+- **(GUI-4) Single-instance guard.** A named mutex stops a second `Show-Guerrilla` window from opening and clobbering the shared `config.json` / `*-state.json` (last-writer-wins); the second launch warns and exits.
+- **(GUI-5) Rotate/Remove give feedback when no row is selected** (previously a silent no-op).
+
+### Notes
+- GUI-3 (Safehouse tab under-reporting) is resolved by the SH-2 fix (the tab reads `Get-Safehouse`). GUI-6 (Patrol scheduling broken monitoring) was resolved by the v2.9.4 MON-4 fix.
+- Full GUI-driven credential **entry** ("Add Credential") remains a roadmap item; the terminal `Set-Safehouse` flow is still the entry path.
+- Regression tests added: `Tests/verify-safehouse-fixes.ps1` (10/10 — SH-1/SH-2/SH-4).
+
 ## [2.10.1] - 2026-06-18
 
 ### Added

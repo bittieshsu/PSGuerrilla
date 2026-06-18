@@ -939,6 +939,22 @@ function Invoke-CredentialMigration {
         $Config.google.Remove('serviceAccountKeyPath')
         Write-Host "  ${green}✓ Migrated: Google Workspace service account${reset}"
         $migrated++
+
+        # Also persist the delegated-admin email to the vault so vault-only scans
+        # (GUI / scheduled patrols with no -ConfigFile) can resolve it. Without this,
+        # config-file setup followed by a vault-only Invoke-Fortification fails with
+        # "AdminEmail is required." The interactive path stores this key too (above).
+        if ($Config.google.adminEmail) {
+            Set-GuerrillaCredential -VaultKey 'GUERRILLA_GWS_SA_ADMIN_EMAIL' -Value $Config.google.adminEmail -VaultName $VaultName
+            $metadata.credentials['GUERRILLA_GWS_SA_ADMIN_EMAIL'] = @{
+                type = 'adminEmail'; environment = 'googleWorkspace'
+                storedDate = [datetime]::UtcNow.ToString('o')
+                description = 'Google Workspace delegated-admin email'
+                identity = $Config.google.adminEmail
+            }
+            Write-Host "  ${green}✓ Migrated: Google Workspace admin email${reset}"
+            $migrated++
+        }
     }
 
     # Migrate Entra credentials
@@ -1030,6 +1046,42 @@ function Invoke-CredentialMigration {
             }
             $provs.pagerduty.routingKey = ''
             $migrated++
+        }
+        # Pushover — bundled JSON (apiToken/userKey), matching Send-Signal's 'pushover'
+        # resolver and the interactive 'pushoverConfig' shape. Canonical key:
+        # GUERRILLA_PUSHOVER_KEY. (Older builds wrote a numbered GUERRILLA_PUSHOVER_1.)
+        if ($provs.pushover -and ($provs.pushover.apiToken -or $provs.pushover.appToken)) {
+            $poCred = @{
+                apiToken = ($provs.pushover.apiToken ?? $provs.pushover.appToken)
+                userKey  = $provs.pushover.userKey
+            } | ConvertTo-Json -Compress
+            Set-GuerrillaCredential -VaultKey 'GUERRILLA_PUSHOVER_KEY' -Value $poCred -VaultName $VaultName
+            $metadata.credentials['GUERRILLA_PUSHOVER_KEY'] = @{
+                type = 'pushoverConfig'; environment = 'alerting'
+                storedDate = [datetime]::UtcNow.ToString('o'); description = 'Pushover alert configuration'
+            }
+            $provs.pushover.apiToken = ''
+            if ($provs.pushover.PSObject.Properties['appToken']) { $provs.pushover.appToken = '' }
+            $migrated++
+            Write-Host "  ${green}✓ Migrated: Pushover credentials${reset}"
+        }
+        # Twilio / SMS — bundled JSON, matching Send-Signal's 'sms' resolver and the
+        # interactive 'twilioConfig' shape. Canonical key: GUERRILLA_TWILIO_KEY.
+        if ($provs.twilio -and $provs.twilio.authToken) {
+            $twCred = @{
+                accountSid = $provs.twilio.accountSid
+                authToken  = $provs.twilio.authToken
+                from       = $provs.twilio.from
+                to         = $provs.twilio.to
+            } | ConvertTo-Json -Compress
+            Set-GuerrillaCredential -VaultKey 'GUERRILLA_TWILIO_KEY' -Value $twCred -VaultName $VaultName
+            $metadata.credentials['GUERRILLA_TWILIO_KEY'] = @{
+                type = 'smsConfig'; environment = 'alerting'
+                storedDate = [datetime]::UtcNow.ToString('o'); description = 'Twilio SMS configuration'
+            }
+            $provs.twilio.authToken = ''
+            $migrated++
+            Write-Host "  ${green}✓ Migrated: Twilio/SMS credentials${reset}"
         }
     }
 

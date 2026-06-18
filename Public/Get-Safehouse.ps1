@@ -70,10 +70,13 @@ function Get-Safehouse {
         $metadata = Get-VaultMetadata -VaultName $VaultName
         $result.vaultMetadata = $metadata
 
-        if ($metadata.credentials) {
+        # Reconcile metadata with the real secret store so present-but-unregistered
+        # secrets (e.g. the admin email, Pushover, a legacy bare key) are not hidden.
+        $credView = Get-SafehouseCredentialView -VaultName $VaultName
+        if ($credView -and $credView.Count -gt 0) {
             $credStatus = [ordered]@{}
-            foreach ($key in $metadata.credentials.Keys) {
-                $cred = $metadata.credentials[$key]
+            foreach ($key in $credView.Keys) {
+                $cred = $credView[$key]
                 $entry = [ordered]@{
                     description = $cred.description
                     environment = $cred.environment
@@ -91,6 +94,7 @@ function Get-Safehouse {
                 }
 
                 if ($cred.identity) { $entry.identity = $cred.identity }
+                if ($cred.unregistered) { $entry.unregistered = $true }
 
                 if ($ShowSecrets) {
                     try {

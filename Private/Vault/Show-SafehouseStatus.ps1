@@ -31,6 +31,8 @@ function Show-SafehouseStatus {
     }
 
     $metadata = Get-VaultMetadata -VaultName $VaultName
+    # Reconcile with the real store so present-but-unregistered secrets still show.
+    $credView = Get-SafehouseCredentialView -VaultName $VaultName
     $now = [datetime]::UtcNow
     $protection = if ($IsWindows -or (-not (Test-Path variable:IsWindows))) { 'DPAPI' } else { 'Encrypted file' }
 
@@ -63,7 +65,7 @@ function Show-SafehouseStatus {
 
     Write-Host "  ${amber}${horzDiv}${line}${horzDivR}${reset}"
 
-    if ($metadata.credentials -and $metadata.credentials.Count -gt 0) {
+    if ($credView -and $credView.Count -gt 0) {
         $headerLine = '  CREDENTIAL                    STATUS         AGE'
         $padded = $headerLine.PadRight(60)
         Write-Host "  ${amber}${vertBar}${reset}${white}${padded}${reset}${amber}${vertBar}${reset}"
@@ -74,8 +76,8 @@ function Show-SafehouseStatus {
 
         $expiringCount = 0
 
-        foreach ($key in $metadata.credentials.Keys) {
-            $cred = $metadata.credentials[$key]
+        foreach ($key in $credView.Keys) {
+            $cred = $credView[$key]
             $desc = if ($cred.description) { $cred.description } else { $key }
             if ($desc.Length -gt 28) { $desc = $desc.Substring(0, 25) + '...' }
 
@@ -150,6 +152,23 @@ function Show-SafehouseStatus {
         Write-Host "  ${amber}${cornerBL}${line}${cornerBR}${reset}"
         Write-Host ''
         Write-Host "  ${gray}Run Set-Safehouse or Set-Safehouse -ConfigFile <path> to store credentials.${reset}"
+    }
+
+    # Protection-mode disclosure. The store is DPAPI-encrypted at rest and tied to this
+    # user, but PSGuerrilla configures it with no master password (Authentication None) so
+    # unattended scans don't prompt — meaning ANY code running as this user can read every
+    # secret via Get-Secret. Say so plainly rather than letting "DPAPI" imply more.
+    $auth = $null
+    try {
+        if (Get-Command Get-SecretStoreConfiguration -ErrorAction SilentlyContinue) {
+            $auth = (Get-SecretStoreConfiguration -ErrorAction Stop).Authentication
+        }
+    } catch {}
+    if ("$auth" -eq 'None') {
+        Write-Host ''
+        Write-Host "  ${gray}Protection: DPAPI at rest, no master password (unattended mode).${reset}"
+        Write-Host "  ${gray}Any process running as this user can read these secrets — protect the${reset}"
+        Write-Host "  ${gray}account and host accordingly.${reset}"
     }
 
     Write-Host ''
