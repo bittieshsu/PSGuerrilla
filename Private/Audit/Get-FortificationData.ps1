@@ -84,6 +84,7 @@ function Get-FortificationData {
         ChromePolicies      = @()
         OAuthApps           = @()
         DomainWideDelegation = @()
+        CloudIdentityPolicies = $null
         Errors              = @{}
     }
 
@@ -476,27 +477,71 @@ function Get-FortificationData {
             Write-ProgressLine -Phase AUDITING -Message 'Retrieving Chrome policies'
         }
         try {
-            $chromeToken = Get-GoogleAccessToken `
-                -ServiceAccountKeyPath $ServiceAccountKeyPath `
-                -AdminEmail $AdminEmail `
-                -Scopes @('https://www.googleapis.com/auth/chrome.management.policy.readonly')
+            # Resolve the customer's ROOT org-unit id dynamically — Chrome policy resolution
+            # targets an OU id, which is tenant-specific and must never be hardcoded. Top-level
+            # OUs carry the root OU as their parentOrgUnitId (directory API prefixes it 'id:').
+            $rootOuId = $null
+            try {
+                $ouToken = Get-GoogleAccessToken `
+                    -ServiceAccountKeyPath $ServiceAccountKeyPath `
+                    -AdminEmail $AdminEmail `
+                    -Scopes @('https://www.googleapis.com/auth/admin.directory.orgunit.readonly')
+                $ouResp = Invoke-GoogleAdminApi `
+                    -AccessToken $ouToken `
+                    -Uri 'https://admin.googleapis.com/admin/directory/v1/customer/my_customer/orgunits?type=children&orgUnitPath=/' `
+                    -Quiet:$Quiet
+                $rootOuId = (@($ouResp.organizationUnits)[0].parentOrgUnitId) -replace '^id:', ''
+            } catch {
+                Write-Verbose "Could not resolve root OU id for Chrome policies: $_"
+            }
 
-            $chromeResult = Invoke-GoogleAdminApi `
-                -AccessToken $chromeToken `
-                -Uri 'https://chromepolicy.googleapis.com/v1/customers/my_customer/policies:resolve' `
-                -Method Post `
-                -Body @{
-                    policyTargetKey = @{ targetResource = 'orgunits/03ph8a2z0' }
-                    pageSize        = 1000
-                } `
-                -Paginate `
-                -ItemsProperty 'resolvedPolicies' `
-                -Quiet:$Quiet
+            if (-not $rootOuId) {
+                Write-Verbose 'Skipping Chrome policy resolution — root org-unit id unavailable.'
+            } else {
+                $chromeToken = Get-GoogleAccessToken `
+                    -ServiceAccountKeyPath $ServiceAccountKeyPath `
+                    -AdminEmail $AdminEmail `
+                    -Scopes @('https://www.googleapis.com/auth/chrome.management.policy.readonly')
 
-            $data.ChromePolicies = @($chromeResult ?? @())
+                $chromeResult = Invoke-GoogleAdminApi `
+                    -AccessToken $chromeToken `
+                    -Uri 'https://chromepolicy.googleapis.com/v1/customers/my_customer/policies:resolve' `
+                    -Method Post `
+                    -Body @{
+                        policyTargetKey = @{ targetResource = "orgunits/$rootOuId" }
+                        pageSize        = 1000
+                    } `
+                    -Paginate `
+                    -ItemsProperty 'resolvedPolicies' `
+                    -Quiet:$Quiet
+
+                $data.ChromePolicies = @($chromeResult ?? @())
+            }
         } catch {
             $data.Errors['ChromePolicies'] = $_.Exception.Message
         }
+    }
+
+    # ── 16. Cloud Identity policies (Workspace settings) ─────────────────
+    # Powers the Gmail / Drive / Auth / Chat / Meet / Calendar / DLP / service-status
+    # checks that were previously "verify in Admin Console" placeholders. Best-effort and
+    # self-isolating: Get-GoogleCloudIdentityPolicies returns $null (and the dependent
+    # checks stay SKIP) on a tenant that hasn't delegated the cloud-identity scope.
+    if (-not $Quiet) {
+        Write-ProgressLine -Phase AUDITING -Message 'Retrieving Workspace policies (Cloud Identity)'
+    }
+    try {
+        $data.CloudIdentityPolicies = Get-GoogleCloudIdentityPolicies `
+            -ServiceAccountKeyPath $ServiceAccountKeyPath `
+            -AdminEmail $AdminEmail `
+            -Quiet:$Quiet
+        if ($data.CloudIdentityPolicies -and -not $Quiet) {
+            Write-ProgressLine -Phase INFO -Message "Collected $($data.CloudIdentityPolicies.Count) Workspace policies via Cloud Identity"
+        } elseif (-not $data.CloudIdentityPolicies -and -not $Quiet) {
+            Write-ProgressLine -Phase INFO -Message 'Cloud Identity Policy API not available — policy-backed checks will SKIP (grant the cloud-identity.policies.readonly DWD scope to enable)'
+        }
+    } catch {
+        $data.Errors['CloudIdentityPolicies'] = $_.Exception.Message
     }
 
     # ── Summary ──────────────────────────────────────────────────────────

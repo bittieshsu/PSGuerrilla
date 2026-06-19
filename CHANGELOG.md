@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.10.8] - 2026-06-19
+
+### Added
+- **GWS-1 enabling infrastructure — Cloud Identity Policy collector.** New `Get-GoogleCloudIdentityPolicies` collector pulls the full Workspace settings set from the Cloud Identity Policy API (`policies.list`, paginated) and indexes it by setting type, plus a `Get-GooglePolicySetting` lookup helper; wired into `Get-FortificationData` as `CloudIdentityPolicies`. This is the data layer that turns the ~60 "verify in Admin Console" placeholder checks (Gmail / Drive / Auth / Chat / Meet / Calendar / DLP / service-status) into real checks — the check conversions come next, once the live `setting.value` shapes are confirmed. The `cloud-identity.policies.readonly` scope is requested in an **isolated token** so a tenant that hasn't delegated it degrades gracefully (collector returns `$null`, dependent checks SKIP) instead of breaking the whole Google scan with `unauthorized_client`.
+
+### Fixed
+- **Chrome-policy collection no longer hardcodes a tenant-specific org-unit id.** `Get-FortificationData` resolved Chrome policies against a hardcoded `orgunits/<id>` — which only worked for one tenant (a bug for everyone else) and embedded a tenant identifier. It now resolves the customer's **root org-unit id dynamically** (from the directory API) and skips gracefully if it can't.
+
+### Notes
+- Teams `/appCatalogs/teamsApps` needs no change: the collector already queries with `$filter` (not `$top`), and `Invoke-GraphApi` paginates via `@odata.nextLink` — so the `$top`-rejection the validation flagged doesn't apply to our call path.
+- Regression test: `Tests/verify-gws1-policy-collector.ps1` (8/8 — indexing, lookup, graceful degradation). Check counts unchanged.
+
 ## [2.10.7] - 2026-06-19
 
 ### Fixed
