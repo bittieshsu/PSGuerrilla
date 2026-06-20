@@ -25,3 +25,8 @@ coverage/
 *.pem
 sa-key.json
 *-credentials.json
+
+# Handoff / testing-instruction docs never belong in the repo
+Tests/HANDOFF*
+*HANDOFF*.md
+*handoff*.md
