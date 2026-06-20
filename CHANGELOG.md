@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.12.1] - 2026-06-19
+
+_Live-validation fixes: the Lookout baseline-persistence bug + confirmed-enum tighten-ups._
+
+### Fixed
+- **`Invoke-Lookout` drift detection was non-functional — baseline never persisted.** `Get-TheaterState` / `Save-TheaterState` carried `[ValidateSet('entra','ad','m365')]`, which **rejected the `'workspace'` theater** Lookout uses — so every run silently failed to save/load its baseline and re-baselined instead of detecting drift. Added `'workspace'` to the ValidateSet on both. New regression `Tests/verify-lookout-state.ps1` exercises the **real** state helpers (not mocks) across two runs and asserts the 2nd run loads the baseline (`BaselineEstablished -eq $false`) — the gap that let this ship (the prior Lookout test mocked the state helpers).
+
+### Changed
+- **Confirmed-enum tighten-ups** (from live tenant values — closes WARNs that were grading unknown strings conservatively):
+  - **COLLAB-008** (calendar external sharing): the real `maxAllowedExternalSharing` family is `EXTERNAL_*`. `EXTERNAL_ALL_INFO_*` (shares full event details externally) now → **FAIL**; `EXTERNAL_FREE_BUSY_ONLY` / `EXTERNAL_NO_SHARING` → **PASS**.
+  - **OAUTH-006** (`api_controls.app_approval_requests.allowedForAll`): **corrected interpretation.** Per Google's Aug-2025 app-access-request-approval rollout, `ENABLED` means the *request-and-approve workflow* is on (users request unconfigured apps for **admin approval** — access is not auto-granted), a governance positive → **PASS** (was mis-graded as "allowed for all = insecure"). The real app gate remains OAUTH-001/007.
+  - **OAUTH-001**: `UNSPECIFIED_UBER_BLOCK` confirmed as block-all → **PASS** (made explicit; a bare not-set value still falls through to WARN).
+- **EMAIL-019** remediation reworded ("Security > Data protection > Manage rules: …") so the evaluated WARN's guidance text no longer contains the placeholder phrase that tripped validation greps.
+
+### Notes
+- `ADMIN-008` / `ADMIN-009` (directory contact / profile sharing) are convertible via `directory.workspace_resource_type_visibility` (confirmed present in the full schema dump) — deferred to a follow-up pending secure-direction confirmation, to avoid shipping questionable grading.
+- Check counts unchanged (AD 204 / GWS 98 / Entra 158). All GWS-1 + Lookout suites green.
+
 ## [2.12.0] - 2026-06-19
 
 _Google Workspace continuous monitoring — `Invoke-Lookout` closes the last gap in the GWS theater._

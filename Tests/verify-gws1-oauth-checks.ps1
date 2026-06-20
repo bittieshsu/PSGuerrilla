@@ -46,10 +46,12 @@ $out = & $mod {
     # Weakest-OU-wins: one OU blocked, one OU allow-all -> FAIL.
     $r.O001_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.unconfigured_third_party_apps' = @(@{ accessLevel = 'BLOCKED' }, @{ accessLevel = 'ALLOW_ALL' }) }) }) 'Test-FortificationOAUTH001'
 
-    # ── OAUTH-006: API access control (api_controls.app_approval_requests / allowedForAll) ──
-    $r.O006_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = $true } }) }) 'Test-FortificationOAUTH006'
-    $r.O006_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = $false } }) }) 'Test-FortificationOAUTH006'
-    $r.O006_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = 'MAYBE' } }) }) 'Test-FortificationOAUTH006'
+    # ── OAUTH-006: app-access request workflow (api_controls.app_approval_requests / allowedForAll) ──
+    # CONFIRMED (live + Google docs): ENABLED/true = request-and-approve workflow on (governance
+    # positive, access still admin-gated) -> PASS. DISABLED/unknown -> WARN.
+    $r.O006_pass  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = 'ENABLED' } }) }) 'Test-FortificationOAUTH006'
+    $r.O006_passT = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = $true } }) }) 'Test-FortificationOAUTH006'
+    $r.O006_warn  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = 'MAYBE' } }) }) 'Test-FortificationOAUTH006'
 
     # ── OAUTH-007: marketplace install restrictions (workspace_marketplace.apps_access_options / accessLevel) ──
     $r.O007_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'workspace_marketplace.apps_access_options' = @{ accessLevel = 'ALLOW_LISTED_APPS' } }) }) 'Test-FortificationOAUTH007'
@@ -80,9 +82,9 @@ Add-R 'OAUTH-001 blocked -> PASS'             ($out.O001_pass -eq 'PASS') ("got=
 Add-R 'OAUTH-001 allow-all -> FAIL'           ($out.O001_fail -eq 'FAIL') ("got=$($out.O001_fail)")
 Add-R 'OAUTH-001 unknown enum -> WARN'        ($out.O001_warn -eq 'WARN') ("got=$($out.O001_warn)")
 Add-R 'OAUTH-001 weakest OU -> FAIL'          ($out.O001_weak -eq 'FAIL') ("got=$($out.O001_weak)")
-Add-R 'OAUTH-006 allowed-for-all -> FAIL'     ($out.O006_fail -eq 'FAIL') ("got=$($out.O006_fail)")
-Add-R 'OAUTH-006 admin-gated -> PASS'         ($out.O006_pass -eq 'PASS') ("got=$($out.O006_pass)")
-Add-R 'OAUTH-006 unknown value -> WARN'       ($out.O006_warn -eq 'WARN') ("got=$($out.O006_warn)")
+Add-R 'OAUTH-006 request workflow ENABLED -> PASS' ($out.O006_pass -eq 'PASS') ("got=$($out.O006_pass)")
+Add-R 'OAUTH-006 allowedForAll=true -> PASS'       ($out.O006_passT -eq 'PASS') ("got=$($out.O006_passT)")
+Add-R 'OAUTH-006 unrecognized value -> WARN'       ($out.O006_warn -eq 'WARN') ("got=$($out.O006_warn)")
 Add-R 'OAUTH-007 allowlist -> PASS'           ($out.O007_pass -eq 'PASS') ("got=$($out.O007_pass)")
 Add-R 'OAUTH-007 allow-all -> FAIL'           ($out.O007_fail -eq 'FAIL') ("got=$($out.O007_fail)")
 Add-R 'OAUTH-007 unknown enum -> WARN'        ($out.O007_warn -eq 'WARN') ("got=$($out.O007_warn)")

@@ -57,8 +57,10 @@ function Test-FortificationOAUTH001 {
     }
     # Insecure: anything that lets unconfigured apps in (ALLOW_ALL / sign-in + all APIs).
     $insecure = @($vals | Where-Object { "$_" -match '(?i)ALLOW_ALL|UNRESTRICTED|ALL_APIS|\bALL\b' })
-    # Secure: explicitly blocked / restricted / sign-in only.
-    $secure   = @($vals | Where-Object { "$_" -match '(?i)BLOCK|RESTRICT|SIGN_?IN_?ONLY|ALLOW_LISTED|ALLOWLIST' })
+    # Secure: explicitly blocked / restricted / sign-in only. CONFIRMED (live): UNSPECIFIED_UBER_BLOCK
+    # = block-all of unconfigured apps -> secure (matches BLOCK; listed explicitly for clarity).
+    # A bare "UNSPECIFIED"/not-set value matches neither set and falls through to WARN (never PASS).
+    $secure   = @($vals | Where-Object { "$_" -match '(?i)UBER_BLOCK|BLOCK|RESTRICT|SIGN_?IN_?ONLY|ALLOW_LISTED|ALLOWLIST' })
     $note = "Unconfigured third-party app access: $((@($vals) | Select-Object -Unique) -join ', ') (across $($vals.Count) targeted policy/policies)"
 
     if ($insecure.Count -gt 0) {
@@ -238,11 +240,12 @@ function Test-FortificationOAUTH006 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
 
-    # GWS-1: api_controls.app_approval_requests { allowedForAll=enum } governs whether
-    # users may grant API access to apps without admin approval. "allowed for all" means
-    # any app can obtain API access (no admin gate) — insecure; a "restricted/admin-only"
-    # value means API access is gated. Grade WEAKEST-OU-WINS. Enum strings not fully
-    # documented — see caveat.
+    # GWS-1: api_controls.app_approval_requests { allowedForAll=enum }. CONFIRMED (live tenant +
+    # Google's Aug-2025 app-access-request-approval rollout): this governs whether the app-access
+    # REQUEST workflow is available to all users. When ENABLED, users can request access to
+    # unconfigured apps for ADMIN APPROVAL — access is not auto-granted, so this is a governance
+    # positive (PASS). It is NOT "apps allowed for all". DISABLED / unknown -> WARN (no self-service
+    # request path, or value not recognized — review). The actual app gate is OAUTH-001/007.
     $pol = $AuditData.CloudIdentityPolicies
     if (-not $pol) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
@@ -256,26 +259,17 @@ function Test-FortificationOAUTH006 {
             -CurrentValue 'No api_controls.app_approval_requests policy returned for this tenant' `
             -OrgUnitPath $OrgUnitPath
     }
-    # Booleans: insecure when API access is allowed for all (true). Weakest-OU-wins.
-    $allowedAll = @($vals | Where-Object { $_ -eq $true -or "$_" -match '(?i)ALLOW_ALL|UNRESTRICTED|\bALL\b|TRUE' })
-    if ($allowedAll.Count -gt 0) {
-        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
-            -CurrentValue "API access allowed for all apps (no admin approval gate) in $($allowedAll.Count) of $($vals.Count) targeted policy/policies" `
-            -OrgUnitPath $OrgUnitPath `
-            -Details @{ Note = 'Interpretation: "allowed for all" treated as insecure. Confirm exact enum/boolean shape against a live tenant.' }
-    }
-    # Recognized-secure values: restricted / admin-approval-required / false.
-    $secure = @($vals | Where-Object { $_ -eq $false -or "$_" -match '(?i)RESTRICT|ADMIN|APPROV|BLOCK|FALSE' })
-    if ($secure.Count -eq $vals.Count) {
+    $note = "App-access request workflow: $((@($vals) | Select-Object -Unique) -join ', ') (across $($vals.Count) targeted policy/policies)"
+    $enabled = @($vals | Where-Object { $_ -eq $true -or "$_" -match '(?i)^(ENABLED|ON|TRUE|ALLOWED)$' })
+    if ($enabled.Count -eq $vals.Count) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
-            -CurrentValue 'API access requires admin approval (not allowed for all apps)' `
+            -CurrentValue "App-access request-and-approve workflow enabled (users request unconfigured apps; admins approve) — $note" `
             -OrgUnitPath $OrgUnitPath
     }
-    # Unrecognized enum -> never PASS.
     return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
-        -CurrentValue "Unrecognized app-approval value(s): $((@($vals) | Select-Object -Unique) -join ', ') — manual confirmation required" `
+        -CurrentValue "App-access request workflow not confirmed enabled — $note" `
         -OrgUnitPath $OrgUnitPath `
-        -Details @{ Note = 'Value not recognized; verify in Admin Console > Security > API controls > Manage Google Services.' }
+        -Details @{ Note = 'ENABLED is the recommended governed posture (request -> admin approval). DISABLED means users are blocked with no request path; verify under Security > API controls. The actual app gate is OAUTH-001/007.' }
 }
 
 # ── OAUTH-007: Marketplace App Installation Restrictions ─────────────────

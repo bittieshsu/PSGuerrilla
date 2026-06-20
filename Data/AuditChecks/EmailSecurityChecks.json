@@ -281,7 +281,7 @@
       "subcategory": "Data Loss Prevention",
       "recommendedValue": "DLP rules configured for key data types (credit cards, SSNs, health records) with block or warn action",
       "remediationUrl": "https://admin.google.com/ac/apps/gmail/compliance",
-      "remediationSteps": "Admin Console > Security > Data protection > Manage rules > Create DLP rules for Gmail that detect sensitive content patterns and apply appropriate actions",
+      "remediationSteps": "Security > Data protection > Manage rules: create a Gmail DLP rule that detects sensitive content patterns (credit cards, SSNs, health records) and applies a block or warn action",
       "compliance": {
         "nistSp80053": ["AC-4", "SC-7", "SI-4"],
         "mitreAttack": ["T1048", "T1567", "T1020"],

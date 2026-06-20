@@ -5,7 +5,7 @@ function Get-TheaterState {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [ValidateSet('entra', 'ad', 'm365')]
+        [ValidateSet('entra', 'ad', 'm365', 'workspace')]
         [string]$Theater,
 
         [string]$ConfigPath

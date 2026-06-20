@@ -260,16 +260,17 @@ function Test-FortificationCOLLAB008 {
 
     # GWS-1 PRIMARY: calendar.primary_calendar_max_allowed_external_sharing
     # { maxAllowedExternalSharing=enum }. The most-permissive value shares all event details
-    # externally (insecure); weakest-OU-wins. ENUM GUESS: READ_WRITE_ACCESS/MANAGE/ALL/EVERYTHING/
-    # READ_ALL/SHARE_ALL_INFO are permissive (FAIL); FREE_BUSY_ONLY/LIMITED/NONE/DOMAIN_ONLY are
-    # limited (PASS). Unknown values WARN — never PASS blindly. (OrgUnitPolicies fallback retained.)
+    # externally (insecure); weakest-OU-wins. CONFIRMED enums (live tenant): EXTERNAL_ALL_INFO_*
+    # (READ_ONLY / READ_WRITE / READ_WRITE_MANAGE) share full event details externally -> FAIL;
+    # EXTERNAL_FREE_BUSY_ONLY / EXTERNAL_NO_SHARING are limited -> PASS. Older-shape guesses kept as
+    # a fallback. Unknown values WARN — never PASS blindly. (OrgUnitPolicies fallback retained.)
     $pol = $AuditData.CloudIdentityPolicies
     if ($pol) {
         $vals = @(Resolve-GooglePolicyValue -Policies $pol -Type 'calendar.primary_calendar_max_allowed_external_sharing' -Field 'maxAllowedExternalSharing')
         if ($vals.Count -gt 0) {
             $note = "Max allowed external sharing: $((@($vals) | Select-Object -Unique) -join ', ') (across $($vals.Count) targeted policy/policies)"
-            $permissive = @($vals | Where-Object { "$_" -match '(?i)\b(READ_WRITE_ACCESS|MANAGE|ALL|EVERYTHING|READ_ALL|SHARE_ALL_INFO)\b' })
-            $limited    = @($vals | Where-Object { "$_" -match '(?i)\b(FREE_BUSY_ONLY|LIMITED|NONE|DOMAIN_ONLY)\b' })
+            $permissive = @($vals | Where-Object { "$_" -match '(?i)(EXTERNAL_ALL_INFO|READ_WRITE|SHARE_ALL|READ_ALL|MANAGE|EVERYTHING)' })
+            $limited    = @($vals | Where-Object { "$_" -match '(?i)(EXTERNAL_FREE_BUSY|EXTERNAL_NO_SHARING|FREE_BUSY|DOMAIN_ONLY|^NONE$|^LIMITED$)' })
             if ($permissive.Count -gt 0) {
                 return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
                     -CurrentValue "Calendar shares full event details externally — $note" -OrgUnitPath $OrgUnitPath `

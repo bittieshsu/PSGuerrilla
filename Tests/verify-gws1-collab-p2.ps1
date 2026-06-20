@@ -61,6 +61,9 @@ $out = & $mod {
     $r.C008_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'SOME_FUTURE_VALUE' } }) }) 'Test-FortificationCOLLAB008'
     # weakest-OU-wins: one permissive OU -> FAIL.
     $r.C008_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @(@{ maxAllowedExternalSharing = 'NONE' }, @{ maxAllowedExternalSharing = 'SHARE_ALL_INFO' }) }) }) 'Test-FortificationCOLLAB008'
+    # CONFIRMED live enums: EXTERNAL_ALL_INFO_* -> FAIL; EXTERNAL_FREE_BUSY_ONLY -> PASS.
+    $r.C008_real_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'EXTERNAL_ALL_INFO_READ_ONLY' } }) }) 'Test-FortificationCOLLAB008'
+    $r.C008_real_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'EXTERNAL_FREE_BUSY_ONLY' } }) }) 'Test-FortificationCOLLAB008'
     # Policy unavailable -> OrgUnitPolicies fallback (FAIL on READ_WRITE).
     $r.C008_fb_fail = St (@{ CloudIdentityPolicies = $null; OrgUnitPolicies = @{ '/' = [PSCustomObject]@{ calendarExternalSharing = 'READ_WRITE' } } }) 'Test-FortificationCOLLAB008'
     # Policy unavailable AND no OrgUnitPolicies -> reaches fallback's manual-verify (WARN), no throw.
@@ -79,6 +82,8 @@ Add-R 'COLLAB-008 limited sharing -> PASS'               ($out.C008_pass -eq 'PA
 Add-R 'COLLAB-008 permissive sharing -> FAIL'            ($out.C008_fail -eq 'FAIL') ("got=$($out.C008_fail)")
 Add-R 'COLLAB-008 unknown enum -> WARN'                  ($out.C008_warn -eq 'WARN') ("got=$($out.C008_warn)")
 Add-R 'COLLAB-008 weakest OU (permissive) -> FAIL'       ($out.C008_weak -eq 'FAIL') ("got=$($out.C008_weak)")
+Add-R 'COLLAB-008 EXTERNAL_ALL_INFO_READ_ONLY -> FAIL'   ($out.C008_real_fail -eq 'FAIL') ("got=$($out.C008_real_fail)")
+Add-R 'COLLAB-008 EXTERNAL_FREE_BUSY_ONLY -> PASS'       ($out.C008_real_pass -eq 'PASS') ("got=$($out.C008_real_pass)")
 Add-R 'COLLAB-008 no policy -> OrgUnitPolicies FAIL'     ($out.C008_fb_fail -eq 'FAIL') ("got=$($out.C008_fb_fail)")
 Add-R 'COLLAB-008 no policy + no OUP -> WARN (no throw)' ($out.C008_skip -eq 'WARN') ("got=$($out.C008_skip)")
 
