@@ -84,3 +84,47 @@ function Test-ReconADPATH001 {
             Paths              = @($paths)
         }
 }
+
+# ── ADPATH-002: Transitive Escalation Chains to Tier-0 ─────────────────────
+function Test-ReconADPATH002 {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][hashtable]$AuditData,
+        [Parameter(Mandatory)][hashtable]$CheckDefinition
+    )
+
+    $analysis = Get-ADTransitiveAttackPath -AuditData $AuditData
+
+    if (-not $analysis.DataAvailable) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'ACL / privileged-group data not available — run with the ACLDelegation + PrivilegedAccounts (or All) categories enabled to compute transitive chains'
+    }
+
+    # ADPATH-002 reports MULTI-HOP chains (Length > 1); single-hop control is ADPATH-001's job.
+    $paths = @($analysis.Paths)
+    $multi = @($paths | Where-Object { $_.Length -gt 1 })
+    $multiNonPriv = @($multi | Where-Object { -not $_.SourceIsPrivileged })
+
+    if ($multi.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue 'No multi-hop transitive escalation chains found in the collected ACL scope (deep transitive coverage requires full-domain ACL collection — see ADPATH-002 notes)' `
+            -Details @{ ChainCount = 0; SinglehopPathCount = @($paths).Count }
+    }
+
+    $preview = @($multi | Select-Object -First 5 | ForEach-Object { $_.Path }) -join ' | '
+    $currentValue = "$($multi.Count) transitive escalation chain(s) to Tier-0"
+    if ($multiNonPriv.Count -gt 0) {
+        $currentValue += " — $($multiNonPriv.Count) from NON-privileged principals (highest risk)"
+    }
+    $currentValue += ": $preview"
+
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+        -CurrentValue $currentValue `
+        -Details @{
+            ChainCount         = $multi.Count
+            NonPrivilegedCount = $multiNonPriv.Count
+            AffectedLabel      = 'Transitive escalation chains to Tier-0'
+            AffectedItems      = @($multi | ForEach-Object { $_.Path })
+            Chains             = @($multi)
+        }
+}

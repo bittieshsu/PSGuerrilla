@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.17.0] - 2026-06-20
+
+_Transitive attack-path engine — the leapfrog half of the PingCastle plan (their attack-path is weak and defers to BloodHound)._
+
+### Added
+- **Transitive attack-path engine** (`Resolve-AttackPathGraph` + `Get-ADTransitiveAttackPath`). A directed privilege graph where every edge points "toward more privilege" (control + group-membership), with a **BFS shortest-path** resolver that chains edges of **arbitrary length** to Tier-0 — e.g. `HelpDesk --[WriteDacl]--> CORP-Admins --[MemberOf]--> Domain Admins`. Cycle-safe and depth-bounded. Builds on the existing default-principal exclusion (no v2.10.x false positives).
+- **New check `ADPATH-002` — Transitive Escalation Chains to Tier-0** (AttackPath category). Reports multi-hop chains (the single-hop case stays ADPATH-001's job), non-privileged sources first. **AD is now 205 checks (473 total).**
+
+### Notes
+- **Chain depth is bounded by ACL-collection coverage.** Today's six-critical-object collection yields mostly one-hop edges, so ADPATH-002 is typically clean on current data; the **full-domain ACL collector** (live-gated, next increment) populates control edges over arbitrary objects and unlocks deep low-privilege-to-Domain-Admin chains. The engine itself is validated for arbitrary depth: `Tests/verify-transitive-attackpath.ps1` (13/13) proves 3-hop chaining, shortest-path selection, cycle-safety, and depth bounding.
+- **Still to come on the PingCastle plan:** the full-domain ACL collector, the **BloodHound/AzureHound export**, and **cartography** (visual domain/trust/attack-path map). With the maturity model (2.15/2.16) + this engine, the only PingCastle lead left is brand/tuning, which is earned, not coded.
+
 ## [2.16.0] - 2026-06-20
 
 _Maturity rating now lands in the board-facing report (PingCastle-killer, part 1 complete)._

@@ -18,6 +18,22 @@
         "mitreAttack": ["T1098", "T1222.001", "T1484.001"],
         "cisAd": []
       }
+    },
+    {
+      "id": "ADPATH-002",
+      "name": "Transitive Escalation Chains to Tier-0",
+      "description": "Computes MULTI-HOP privilege-escalation chains to Tier-0 by transitively following control (GenericAll / WriteDacl / WriteOwner / AddMember) and group-membership edges — for example HelpDesk --[WriteDacl]--> CORP-Admins --[MemberOf]--> Domain Admins. Complements ADPATH-001 (single-hop) by chaining edges of arbitrary length and reporting the shortest path per principal. Chain DEPTH is bounded by ACL-collection coverage: with the current six-critical-object collection most chains are one hop, so this check is typically clean today; the full-domain ACL collector (roadmap, live-gated) populates control edges over arbitrary objects and unlocks deep low-privilege-to-Domain-Admin chains. The engine itself chains arbitrary depth (BFS shortest-path, cycle-safe).",
+      "severity": "Critical",
+      "subcategory": "Attack Path Analysis",
+      "recommendedValue": "No transitive control chain leads a non-privileged principal to Tier-0.",
+      "remediationSteps": "For each chain, break the weakest link: remove the attacker-controllable ACE at the first hop (the non-privileged principal's control over the next object in the chain), or remove the nested group from the Tier-0 group. Re-run to confirm the chain is severed.",
+      "referenceUrl": "https://attack.mitre.org/techniques/T1098/",
+      "referenceTitle": "MITRE ATT&CK T1098 — transitive control chains to Tier-0",
+      "compliance": {
+        "nistSp80053": ["AC-5", "AC-6"],
+        "mitreAttack": ["T1098", "T1222.001", "T1484.001"],
+        "cisAd": []
+      }
     }
   ]
 }
