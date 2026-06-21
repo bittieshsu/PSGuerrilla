@@ -62,6 +62,40 @@ function Export-ExecutiveSummary {
     $score = $scoreResult.Score ?? 'N/A'
     $label = $scoreResult.Label ?? ''
 
+    # Maturity model (CMMI-style 1-5) — the executive maturity rating
+    $maturity = $null
+    try { $maturity = Get-GuerrillaMaturity -Findings $Findings } catch { }
+    $matColors = @{ '1' = '#b00020'; '2' = '#d84315'; '3' = '#f5a623'; '4' = '#7a9e7e'; '5' = '#2e7d32' }
+    $maturityStat = ''
+    $maturitySection = ''
+    if ($maturity -and $maturity.OverallLevel) {
+        $matLevel = [int]$maturity.OverallLevel
+        $matColor = $matColors["$matLevel"] ?? '#888888'
+        $matLabel = & $esc ([string]$maturity.OverallLabel)
+        $maturityStat = "<div class='stat'><div class='val' style='color:$matColor;'>$matLevel/5</div><div class='lbl'>Maturity ($matLabel)</div></div>"
+
+        $catRows = ''
+        foreach ($k in ($maturity.CategoryLevels.Keys | Sort-Object { [int]$maturity.CategoryLevels[$_].Level })) {
+            $cl = $maturity.CategoryLevels[$k]
+            $cc = $matColors["$([int]$cl.Level)"] ?? '#888888'
+            $catRows += "<tr><td>$(& $esc ([string]$cl.Category))</td><td style='color:$cc;font-weight:600;'>Level $([int]$cl.Level)</td><td>$(& $esc ([string]$cl.Label))</td></tr>"
+        }
+        $blockerHtml = ''
+        if ($maturity.NextLevel) {
+            $bl = (@($maturity.NextLevelBlockers | Select-Object -First 8 | ForEach-Object { "<li>$(& $esc ([string]$_))</li>" }) -join '')
+            if ($bl) { $blockerHtml = "<p>To reach <strong>Level $([int]$maturity.NextLevel)</strong>, address:</p><ul>$bl</ul>" }
+        }
+        $maturitySection = @"
+<style>.mat{width:100%;border-collapse:collapse;margin-top:12px}.mat th,.mat td{text-align:left;padding:6px 10px;border-bottom:1px solid rgba(128,128,128,0.25)}.mat th{opacity:.7;font-weight:600}</style>
+<h2>Security Maturity</h2>
+<div class="card">
+<p>Overall maturity: <strong style="color:$matColor;font-size:1.1em;">Level $matLevel of 5: $matLabel</strong>. The lowest unmet control anchors the rating, so a single critical exposure caps the score until it is resolved (CMMI-style scale: 1 Initial to 5 Optimized).</p>
+$blockerHtml
+<table class="mat"><thead><tr><th>Category</th><th>Level</th><th>Maturity</th></tr></thead><tbody>$catRows</tbody></table>
+</div>
+"@
+    }
+
     # Key stats
     $totalFindings = ($Findings ?? @()).Count
     $criticalFails = @($Findings | Where-Object { $_.Status -eq 'FAIL' -and $_.Severity -eq 'Critical' }).Count
@@ -180,9 +214,11 @@ h2 { color:var(--olive); margin-top:25px; font-size:1.2em; }
 <div class="stat"><div class="val" style="color:var(--sage);">$passRate%</div><div class="lbl">Pass Rate</div></div>
 <div class="stat"><div class="val" style="color:var(--deep-orange);">$criticalFails</div><div class="lbl">Critical Issues</div></div>
 <div class="stat"><div class="val" style="color:var(--amber);">$highFails</div><div class="lbl">High Issues</div></div>
+$maturityStat
 $(if ($totalThreats -gt 0) { "<div class='stat'><div class='val' style='color:var(--dark-red);'>$totalThreats</div><div class='lbl'>Active Threats</div></div>" })
 </div>
 
+$maturitySection
 $(if ($criticalRows) {
 @"
 <h2>Key Findings Requiring Attention</h2>

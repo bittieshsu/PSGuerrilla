@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.16.0] - 2026-06-20
+
+_Maturity rating now lands in the board-facing report (PingCastle-killer, part 1 complete)._
+
+### Added
+- **`Export-ExecutiveSummary` now surfaces the Security Maturity rating.** A color-coded **Level X/5** badge in the stat row, plus a **"Security Maturity"** card with the overall level + label, the **next-level blockers** (what to fix to climb one level), and a **per-category maturity table** — computed via `Get-GuerrillaMaturity` from the report's findings. This is the executive artifact that matches PingCastle's maturity presentation, and it's stricter (worst-unmet-control anchors the rating).
+
+### Notes
+- Report-only change; no new checks (counts unchanged). Validated: the section/badge/table render and are severity-color-coded (Level 1 = red through Level 5 = green); empty-findings path is safe.
+- Remaining on the PingCastle plan: **cartography** (visual domain/trust/attack-path map in the report) and the **full-domain transitive attack-path graph + BloodHound/AzureHound export**. Surfacing maturity in the per-theater Reconnaissance and Campaign reports is a small follow-on.
+
 ## [2.15.0] - 2026-06-20
 
 _Maturity model — the first half of the "executive-grade artifact" push (matches and is stricter than PingCastle's maturity rating)._
