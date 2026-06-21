@@ -1,6 +1,6 @@
 @{
     RootModule        = 'PSGuerrilla.psm1'
-    ModuleVersion     = '2.14.1'
+    ModuleVersion     = '2.15.0'
     GUID              = 'f7a3b2c1-4d5e-6f78-9a0b-1c2d3e4f5a6b'
     Author            = 'Jim Tyler, Microsoft MVP'
     CompanyName       = 'Jim Tyler'
@@ -39,6 +39,7 @@
         'Invoke-Infiltration'
         'Invoke-Campaign'
         'Get-GuerrillaScore'
+        'Get-GuerrillaMaturity'
         'Get-QuickWins'
         'Get-ComplianceCrosswalk'
         'Export-BudgetJustification'
@@ -79,7 +80,7 @@
             Tags       = @('GoogleWorkspace', 'ActiveDirectory', 'EntraID', 'AzureAD', 'Intune', 'M365', 'Security', 'CompromiseAssessment', 'IncidentResponse', 'ThreatDetection', 'ADSecurity', 'CloudSecurity', 'NTLMRelay', 'TierZero', 'GUI', 'WPF', 'PSGuerrilla')
             LicenseUri = 'https://creativecommons.org/licenses/by/4.0/'
             ProjectUri = 'https://guerrilla.army'
-            ReleaseNotes = 'v2.14.1: Live-validation fixes for the Adversary Tradecraft category. GTRADE-001 (DeleFriend) no longer false-PASSes: there is no GA API to list domain-wide-delegation grants, so an empty result means could-not-enumerate (now WARN with manual-verify guidance), not no-grants (was PASS) - same empty->PASS masking fixed in OAUTH-008. GTRADE-005 no longer over-matches read-only roles: uses the real Google admin privilege vocabulary (USERS_ALL/USERS_CREATE/USERS_RESET_PASSWORD/GROUPS_ALL/DOMAIN_MANAGEMENT/ORGANIZATION_UNITS_*/APP_ADMIN/ROLE_MANAGEMENT/MANAGE_/SECURITY) and excludes _RETRIEVE. GTRADE-006 labels unnamed OAuth apps as unnamed app (client_id). GTRADE-002/003 pending apps.groups.settings delegation (graceful SKIP confirmed). Counts unchanged (GWS 110 / AD 204 / Entra 158). verify-gws-tradecraft.ps1 24/24; test-mode 110 findings, 0 ERROR. v2.14.0: New Google Workspace Adversary Tradecraft category (GoogleTradecraftChecks, 6 checks) - detecting attack preconditions Google does not natively surface. GTRADE-001 Domain-Wide Delegation org-takeover exposure (DeleFriend: flags grants with full mail/drive/admin.directory/cloud-platform impersonation scopes); GTRADE-002 internet-readable groups (whoCanViewGroup=ANYONE_CAN_VIEW); GTRADE-003 open-join/external-member groups; GTRADE-004 super-admin sprawl; GTRADE-005 super-admin-equivalent custom roles; GTRADE-006 persistent/over-scoped OAuth grants (full mail/drive/admin scopes that survive password reset). New Get-GoogleGroupSettings collector (apps.groups.settings scope, already requested; isolated token, -Quick-gated, graceful SKIP). GWS is now 110 checks across 9 categories (472 total). Read-only. Phase-2 (deferred, needs GCP IAM scope): full DeleFriend SA-key confirmation, stale SA keys, open-group->IAM correlation. Test verify-gws-tradecraft.ps1 (23/23); test-mode dispatches 110 findings, 0 ERROR. AD 204 / Entra 158 unchanged. See CHANGELOG.md for v2.13.0 and earlier.'
+            ReleaseNotes = 'v2.15.0: New Get-GuerrillaMaturity cmdlet - a CMMI-style 1-5 security maturity rating from audit findings (AD / Google Workspace / Entra-M365). Worst unmet control anchors the score (one open Critical caps the estate at Level 1 Initial), which is stricter and more board-readable than an averaged 0-100 score. Levels 1 Initial -> 2 Managed -> 3 Defined -> 4 Quantitatively Managed -> 5 Optimized; FAIL caps by severity, any WARN caps at 4, PASS/SKIP/ERROR never cap. Returns overall level+label, per-category levels, the anchor findings holding you at the current level, and the next-level blockers; accepts pipeline input. First half of the executive-grade-artifact push (matches/exceeds PingCastle maturity). Next: report cartography + full-domain transitive attack-path graph with BloodHound export. 45 public functions. Test verify-maturity.ps1 (17/17). Check counts unchanged. v2.14.1: Live-validation fixes for the Adversary Tradecraft category. GTRADE-001 (DeleFriend) no longer false-PASSes: there is no GA API to list domain-wide-delegation grants, so an empty result means could-not-enumerate (now WARN with manual-verify guidance), not no-grants (was PASS) - same empty->PASS masking fixed in OAUTH-008. GTRADE-005 no longer over-matches read-only roles: uses the real Google admin privilege vocabulary (USERS_ALL/USERS_CREATE/USERS_RESET_PASSWORD/GROUPS_ALL/DOMAIN_MANAGEMENT/ORGANIZATION_UNITS_*/APP_ADMIN/ROLE_MANAGEMENT/MANAGE_/SECURITY) and excludes _RETRIEVE. GTRADE-006 labels unnamed OAuth apps as unnamed app (client_id). GTRADE-002/003 pending apps.groups.settings delegation (graceful SKIP confirmed). Counts unchanged (GWS 110 / AD 204 / Entra 158). verify-gws-tradecraft.ps1 24/24; test-mode 110 findings, 0 ERROR. See CHANGELOG.md for v2.14.0 and earlier.'
         }
     }
 }

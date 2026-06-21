@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.15.0] - 2026-06-20
+
+_Maturity model — the first half of the "executive-grade artifact" push (matches and is stricter than PingCastle's maturity rating)._
+
+### Added
+- **`Get-GuerrillaMaturity`** — a CMMI-style **1–5 security maturity** rating computed from audit findings (Active Directory, Google Workspace, or Entra/M365). Like a maturity model should, the **worst unmet control anchors the score**: a single open Critical caps the whole estate at **Level 1 (Initial)** regardless of how much else passes — stricter and more honest than an averaged 0–100 score, and the way an auditor/board reads posture.
+  - Levels: 1 Initial → 2 Managed → 3 Defined → 4 Quantitatively Managed → 5 Optimized. Anchoring: FAIL caps by severity (Critical→1, High→2, Medium→3, Low→4), any WARN caps at 4; PASS/SKIP/ERROR never cap.
+  - Returns the **overall level + label**, **per-category levels**, the exact **anchor findings** holding you at the current level, and the **next-level blockers** (so advancement is concrete). Accepts pipeline input: `(Invoke-Reconnaissance).Findings | Get-GuerrillaMaturity -Theater ActiveDirectory`.
+
+### Notes
+- This is step 1 of two toward closing PingCastle's only real lead (their executive presentation). Next: surface this in the AD/Campaign reports as a maturity section + **cartography** (visual domain/trust/attack-path map), then the **full-domain transitive attack-path graph + BloodHound/AzureHound export**.
+- 45 public functions now (was 44). Regression test: `Tests/verify-maturity.ps1` (17/17). Check counts unchanged.
+
 ## [2.14.1] - 2026-06-20
 
 _Live-validation fixes for the Adversary Tradecraft category._
