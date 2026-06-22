@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.28.1] - 2026-06-21
+
+_Release-notes maintenance — no functional change._
+
+### Changed
+- Refreshed the PSGallery release notes. No code, check, or scoring changes — module behavior is identical to 2.28.0 (517 checks, 48 public functions).
+
 ## [2.28.0] - 2026-06-21
 
 _Interactive findings filter in the AD report — completes the Maester-class report (roadmap M3 done)._
