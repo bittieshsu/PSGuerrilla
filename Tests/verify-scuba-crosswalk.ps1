@@ -26,8 +26,8 @@ function Get-CheckDef($file, $id) {
 
 $defs = @(
     (Get-CheckDef 'EntraAuthChecks.json' 'EIDAUTH-015')   # scuba MS.AAD.1.1v1
-    (Get-CheckDef 'EntraAuthChecks.json' 'EIDAUTH-010')   # eidsca AT01, no scuba
-    (Get-CheckDef 'EntraAuthChecks.json' 'EIDAUTH-001')   # scuba + eidsca + cisM365 (regression anchor)
+    (Get-CheckDef 'EidscaChecks.json'    'EIDSCA-AT01')   # eidsca AT01 (dedicated EIDSCA catalog), no scuba
+    (Get-CheckDef 'EntraAuthChecks.json' 'EIDAUTH-001')   # scuba + cisM365 (regression anchor)
     (Get-CheckDef 'EntraFedChecks.json'  'EIDFED-001')    # untagged (no scuba/eidsca)
 )
 Add-R 'all check defs loaded' (@($defs | Where-Object { $_ }).Count -eq 4) ''
@@ -54,11 +54,11 @@ Add-R 'untagged check has no SCUBA row'  (@($scuba | Where-Object CheckId -eq 'E
 $only = @(Get-ComplianceCrosswalk -Findings $findings -Framework SCUBA)
 Add-R '-Framework SCUBA filters'         (($only.Count -gt 0) -and (@($only | Where-Object Framework -ne 'SCUBA').Count -eq 0)) "n=$($only.Count)"
 
-# EIDSCA works (EIDAUTH-010 tagged AT01, no scuba)
+# EIDSCA works via the dedicated EIDSCA catalog (EIDSCA-AT01 tagged AT01, no scuba)
 $eid = @(Get-ComplianceCrosswalk -Findings $findings -Framework EIDSCA)
 Add-R 'EIDSCA rows produced'             ($eid.Count -gt 0) "n=$($eid.Count)"
-Add-R 'EIDAUTH-010 -> AT01 (eidsca)'     (@($eid | Where-Object { $_.CheckId -eq 'EIDAUTH-010' -and $_.Requirement -match 'AT01' }).Count -eq 1) ''
-Add-R 'EIDAUTH-010 has no SCUBA row'     (@($scuba | Where-Object CheckId -eq 'EIDAUTH-010').Count -eq 0) ''
+Add-R 'EIDSCA-AT01 -> AT01 (eidsca)'     (@($eid | Where-Object { $_.CheckId -eq 'EIDSCA-AT01' -and $_.Requirement -match 'AT01' }).Count -eq 1) ''
+Add-R 'EIDSCA-AT01 has no SCUBA row'     (@($scuba | Where-Object CheckId -eq 'EIDSCA-AT01').Count -eq 0) ''
 
 # No regression: CIS + NIST still produced from the same findings
 $cis  = @(Get-ComplianceCrosswalk -Findings $findings -Framework CIS)

@@ -24,6 +24,7 @@ function Get-InfiltrationData {
         Applications          = @('Applications')
         Federation            = @('Federation')
         TenantConfig          = @('TenantConfig')
+        Eidsca                = @('AuthMethods', 'TenantConfig')
         AzureIAM              = @('AzureIAM')
         Intune                = @('Intune')
         M365Services          = @('M365Services')

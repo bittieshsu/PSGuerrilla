@@ -65,7 +65,7 @@ function Invoke-Infiltration {
     [CmdletBinding()]
     param(
         [ValidateSet('All', 'ConditionalAccess', 'AuthenticationMethods', 'PIM', 'Applications',
-                     'Federation', 'TenantConfig', 'AzureIAM', 'Intune', 'M365Services')]
+                     'Federation', 'TenantConfig', 'AzureIAM', 'Intune', 'M365Services', 'Eidsca')]
         [string[]]$Categories = @('All'),
 
         [string]$TenantId,
@@ -238,7 +238,7 @@ function Invoke-Infiltration {
     $armToken = $null
     $categoriesToRun = if ($Categories -contains 'All') {
         @('ConditionalAccess', 'AuthenticationMethods', 'PIM', 'Applications',
-          'Federation', 'TenantConfig', 'AzureIAM', 'Intune', 'M365Services')
+          'Federation', 'TenantConfig', 'AzureIAM', 'Intune', 'M365Services', 'Eidsca')
     } else { $Categories }
 
     if ('AzureIAM' -in $categoriesToRun) {
@@ -287,6 +287,7 @@ function Invoke-Infiltration {
         Applications          = 'Invoke-EntraAppChecks'
         Federation            = 'Invoke-EntraFedChecks'
         TenantConfig          = 'Invoke-EntraTenantChecks'
+        Eidsca                = 'Invoke-EntraEidscaChecks'
         AzureIAM              = 'Invoke-AzureIAMChecks'
         Intune                = 'Invoke-IntuneChecks'
         M365Services          = @(

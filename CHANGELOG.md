@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.24.0] - 2026-06-21
+
+_Full EIDSCA coverage — the 44-control Entra ID Security Config Analyzer baseline, evaluated for real (Maester parity item M1)._
+
+### Added
+- **Full EIDSCA baseline (44 controls)** as a new **`Eidsca`** category — matches Maester's EIDSCA test set 1:1 (AF/AG/AM/AS/AT/AV authentication-method controls, AP authorization-policy, CP/CR consent, PR password-protection, ST guest-group settings). Control definitions (Graph object + exact property path + operator + expected value) were extracted from the **authoritative Maester corpus**, not fabricated, and live in `Data/AuditChecks/EidscaChecks.json`.
+- A data-driven evaluator (`Resolve-EidscaControl`) runs the catalog against the raw Graph policy objects PSGuerrilla **already collects** (`authenticationMethodsPolicy`, `authorizationPolicy`, `adminConsentRequestPolicy`, directory `settings`) — no new collection needed. Surfaced via `Get-ComplianceCrosswalk -Framework EIDSCA` and the new category in `Invoke-Infiltration`.
+
+### Changed
+- EIDSCA coverage went from **10 approximate tags → 44 controls evaluated**. The interim `eidsca` tags on existing Entra checks (v2.22.0) were removed so the dedicated EIDSCA category owns the framework (no duplicate crosswalk rows).
+- Check count: **473 → 517** (Entra/M365 158 → 202). AD 205, GWS 110 unchanged.
+
+### Notes
+- **Honest by design**: any control whose source policy/setting wasn't collected (scope/module not connected) returns **SKIP = "Not Assessed"**, never PASS. Verified.
+- Test: `Tests/verify-eidsca.ps1` (18/18 — every source type + operator, FAIL on misconfig, SKIP on missing data, dispatcher + crosswalk). Offline-validated; live confirmation via the Maester head-to-head harness.
+- Roadmap M1 done. Next named Maester gaps: **M2 CA what-if** and **M6 EXO/email depth** (the M0 audit found Maester's MS.EXO SCuBA depth is far higher than our v2.22.0 mapping — that baseline needs a refresh too).
+
 ## [2.23.0] - 2026-06-21
 
 _Fixes from the v2.22.0 live-validation pass — the attack-path visuals now render on real data, and "not assessed" stops reading as "compliant."_

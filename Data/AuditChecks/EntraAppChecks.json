@@ -173,7 +173,6 @@
       "remediationSteps": "Navigate to Entra ID > Enterprise applications > Consent and permissions > Admin consent settings. Enable the admin consent workflow and designate appropriate reviewers from your security or IT administration teams. Configure notification settings to alert reviewers of pending requests and establish a service level agreement for review turnaround to prevent workflow bottlenecks.",
       "compliance": {
         "scuba": ["MS.AAD.5.3v1"],
-        "eidsca": ["CR01"],
         "nistSp80053": ["AC-6"],
         "cisM365": ["5.3.1"]
       }
