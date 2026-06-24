@@ -273,8 +273,18 @@ function Test-ReconADDOM007 {
             -Details @{ Failures = $failures }
     }
 
+    # Single-DC forest: there is no replication topology to fail. Report this
+    # explicitly so the PASS reads as an assessed result, not an empty default.
+    if ($replHealth -is [hashtable] -and $replHealth.SingleDC -eq $true) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue 'Single domain controller, no replication topology to assess (healthy)' `
+            -Details @{ ReplicationHealth = $replHealth }
+    }
+
+    $partnerCount = if ($replHealth -is [hashtable] -and $null -ne $replHealth.Partners) { @($replHealth.Partners).Count } else { 0 }
+
     return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
-        -CurrentValue 'AD replication is healthy' `
+        -CurrentValue "AD replication is healthy ($partnerCount partner link(s), no failures)" `
         -Details @{ ReplicationHealth = $replHealth }
 }
 

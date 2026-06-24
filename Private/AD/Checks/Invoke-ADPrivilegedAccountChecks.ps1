@@ -1232,19 +1232,81 @@ function Test-ReconADPRIV025 {
         }
 }
 
+# ═════════════════════════════════════════════════════════════════════════════
+# Helper: evaluate a parsed User Rights Assignment from the DC-OU GptTmpl.inf.
+# Returns a finding for ADPRIV-026/027.
+#   * $null right (template not read)      => SKIP (Not Assessed; never PASS).
+#   * any principal with IsExpected=$false => FAIL.
+#   * only expected Tier-0 admins          => PASS.
+# (MITRE T1078.002 / T1021.001; ANSSI dc_inappropriate_logon_rights; CIS URA.)
+# ═════════════════════════════════════════════════════════════════════════════
+function Resolve-DCLogonRightFinding {
+    [CmdletBinding()]
+    param(
+        [hashtable]$AuditData,
+        [hashtable]$CheckDefinition,
+        [string]$RightField,     # 'InteractiveLogon' or 'RemoteInteractiveLogon'
+        [string]$RightLabel,     # human label for messages
+        [string]$ManualHint
+    )
+
+    $ura = $null
+    if ($AuditData.PrivilegedAccounts -and
+        $AuditData.PrivilegedAccounts.ContainsKey('UserRightsAssignment')) {
+        $ura = $AuditData.PrivilegedAccounts.UserRightsAssignment
+    }
+
+    # Collector never ran, or the GptTmpl.inf could not be read at all.
+    if ($null -eq $ura -or -not ($ura -is [hashtable]) -or $null -eq $ura[$RightField]) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue "$RightLabel on domain controllers could not be assessed: the Domain Controllers OU security template (GptTmpl.inf) was not readable. Not Assessed." `
+            -Details @{
+                Note       = 'Requires SYSVOL read access to the Domain Controllers OU GPO security template.'
+                ManualStep = $ManualHint
+            }
+    }
+
+    $principals = @($ura[$RightField])
+    $nonTier0   = @($principals | Where-Object { -not $_.IsExpected })
+
+    $allNames = @($principals | ForEach-Object {
+        if ($_.Name) { $_.Name } elseif ($_.Sid) { $_.Sid } else { 'unknown' }
+    })
+
+    if ($nonTier0.Count -gt 0) {
+        $badNames = @($nonTier0 | ForEach-Object {
+            if ($_.Name) { $_.Name } elseif ($_.Sid) { $_.Sid } else { 'unknown' }
+        })
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue "$($nonTier0.Count) non-Tier-0 principal(s) hold $RightLabel on domain controllers: $($badNames -join ', ')" `
+            -Details @{
+                Right              = $RightField
+                NonTier0Count      = $nonTier0.Count
+                NonTier0Principals = @($badNames)
+                AllPrincipals      = @($allNames)
+                TemplatesRead      = @($ura.TemplatesRead)
+            }
+    }
+
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "$RightLabel on domain controllers is restricted to expected Tier-0 administrators ($($allNames -join ', '))" `
+        -Details @{
+            Right         = $RightField
+            AllPrincipals = @($allNames)
+            TemplatesRead = @($ura.TemplatesRead)
+        }
+}
+
 # ── ADPRIV-026: Privileged Users Local Logon on DCs ──────────────────────
 function Test-ReconADPRIV026 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
-    # This check requires GPO parsing to determine "Allow log on locally" user rights assignment
-    # on the Domain Controllers OU. This data is not collected by Get-ADPrivilegedMembers.
-    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-        -CurrentValue 'Local logon rights on DCs require GPO analysis. Verify via Group Policy: Computer Configuration > Windows Settings > Security Settings > Local Policies > User Rights Assignment > Allow log on locally on the Domain Controllers OU GPO' `
-        -Details @{
-            Note       = 'This check requires GPO SYSVOL parsing or direct DC access to evaluate User Rights Assignment policies'
-            ManualStep = 'Run gpresult /H report.html on a DC and review Allow log on locally setting'
-        }
+    # SeInteractiveLogonRight ("Allow log on locally") on the Domain Controllers OU.
+    return Resolve-DCLogonRightFinding -AuditData $AuditData -CheckDefinition $CheckDefinition `
+        -RightField 'InteractiveLogon' `
+        -RightLabel 'local (interactive) logon rights' `
+        -ManualHint 'Run gpresult /H report.html on a DC and review Allow log on locally on the Domain Controllers OU GPO'
 }
 
 # ── ADPRIV-027: Privileged Users RDP on DCs ──────────────────────────────
@@ -1252,14 +1314,11 @@ function Test-ReconADPRIV027 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
-    # This check requires GPO parsing to determine "Allow log on through Remote Desktop Services"
-    # user rights assignment on the Domain Controllers OU.
-    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-        -CurrentValue 'RDP access rights on DCs require GPO analysis. Verify via Group Policy: Computer Configuration > Windows Settings > Security Settings > Local Policies > User Rights Assignment > Allow log on through Remote Desktop Services on the Domain Controllers OU GPO' `
-        -Details @{
-            Note       = 'This check requires GPO SYSVOL parsing or direct DC access to evaluate User Rights Assignment policies'
-            ManualStep = 'Run gpresult /H report.html on a DC and review Allow log on through Remote Desktop Services setting'
-        }
+    # SeRemoteInteractiveLogonRight ("Allow log on through Remote Desktop Services").
+    return Resolve-DCLogonRightFinding -AuditData $AuditData -CheckDefinition $CheckDefinition `
+        -RightField 'RemoteInteractiveLogon' `
+        -RightLabel 'Remote Desktop (RDP) logon rights' `
+        -ManualHint 'Run gpresult /H report.html on a DC and review Allow log on through Remote Desktop Services on the Domain Controllers OU GPO'
 }
 
 # ── ADPRIV-028: Users with DCSync Rights ──────────────────────────────────

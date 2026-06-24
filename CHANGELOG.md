@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.31.0] - 2026-06-24
+
+_Three AD collectors that turn previously Not-Assessed checks into real verdicts on a domain controller. Each degrades to Not Assessed when its data/rights/module are unavailable — never a false pass._
+
+### Added
+- **NT-hash password quality** (`Get-ADPasswordHashQuality`) — replicates hashes via DSInternals (DCSync) and runs `Test-PasswordQuality`. Lights up **blank-password** (`ADPWD-010`) and **duplicate-password** (`ADPWD-011`) detection, and **privileged weak passwords** (`ADPRIV-016`). HIBP/dictionary/common (`ADPWD-012/013/014`) stay Not Assessed unless a dataset is supplied. **Security:** only account names + counts are kept; NT hashes/cleartext are analysed in memory and never written to the result, disk, or pipeline.
+- **Replication health** (`Get-ADReplicationHealth`) — `Get-ADReplicationPartnerMetadata`/`Get-ADReplicationFailure` (or `repadmin`), feeding `ADDOM-007`; a single-DC forest is reported healthy.
+- **DC user-rights assignment** (`Get-ADUserRightsAssignment`) — parses the Domain Controllers security template for `SeInteractiveLogonRight` / `SeRemoteInteractiveLogonRight` and flags non-Tier-0 principals, feeding `ADPRIV-026` (local logon) and `ADPRIV-027` (RDP).
+
 ## [2.30.3] - 2026-06-24
 
 _Honesty fix — six AD checks could report PASS without actually performing the assessment._

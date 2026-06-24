@@ -356,6 +356,101 @@ function Get-ReconnaissanceData {
         }
     }
 
+    # ── 16. Replication health (ADDOM-007) ───────────────────────────────
+    # Only attempt if domain info was collected (we merge into $data.Domain).
+    if ((& $needsSource 'DomainInfo') -and $data.Domain) {
+        if (-not $Quiet) {
+            Write-ProgressLine -Phase RECON -Message 'Assessing AD replication health'
+        }
+        try {
+            $dcCount = if ($null -ne $data.DomainControllers) { @($data.DomainControllers).Count } else { 0 }
+            $replHealth = Get-ADReplicationHealth -Connection $Connection -DomainControllerCount $dcCount -Quiet:$Quiet
+            # $null means "not assessable" — leave it so ADDOM-007 SKIPs honestly.
+            if ($null -ne $replHealth) {
+                $data.Domain.ReplicationHealth = $replHealth
+            }
+        } catch {
+            Write-Warning "Replication health collection failed: $_"
+            $data.Errors['ReplicationHealth'] = $_.Exception.Message
+        }
+    }
+
+    # ── 17. User Rights Assignment on DCs (ADPRIV-026/027) ────────────────
+    # Parses the Domain Controllers OU GPO security template (GptTmpl.inf).
+    if (& $needsSource 'PrivilegedMembers') {
+        if (-not $Quiet) {
+            Write-ProgressLine -Phase RECON -Message 'Parsing DC-OU User Rights Assignment from SYSVOL'
+        }
+        try {
+            # If the GroupPolicies collector found GPOs linked to the DC OU,
+            # pass their GUIDs so additional templates get parsed.
+            $uraConn = $Connection.Clone()
+            if ($data.GroupPolicies -and $data.GroupPolicies.ContainsKey('DCOULinkedGpoGuids')) {
+                $uraConn['DCOULinkedGpoGuids'] = @($data.GroupPolicies.DCOULinkedGpoGuids)
+            }
+            $ura = Get-ADUserRightsAssignment -Connection $uraConn -Quiet:$Quiet
+            if ($null -ne $ura) {
+                if (-not $data.PrivilegedAccounts) { $data.PrivilegedAccounts = @{} }
+                $data.PrivilegedAccounts['UserRightsAssignment'] = $ura
+            }
+        } catch {
+            Write-Warning "User Rights Assignment collection failed: $_"
+            $data.Errors['UserRightsAssignment'] = $_.Exception.Message
+        }
+    }
+
+    # ── 18. NT-hash quality via DSInternals (ADPWD-010/011, ADPRIV-016) ───
+    # Only when the password-hash analysis is in scope (PasswordPolicies or
+    # PrivilegedMembers) AND DSInternals is available. On any failure the
+    # collector returns null fields so the dependent checks SKIP.
+    $hashScope = (& $needsSource 'PasswordPolicies') -or (& $needsSource 'PrivilegedMembers')
+    if ($hashScope -and $data.ModuleAvailability -and $data.ModuleAvailability.DSInternals) {
+        if (-not $Quiet) {
+            Write-ProgressLine -Phase RECON -Message 'Analyzing NT password-hash quality (DSInternals)'
+        }
+        try {
+            # Build the privileged SamAccountName allow-set so the collector can
+            # compute the ADPRIV-016 privileged subset (names only — no hashes).
+            $privSamNames = @()
+            if ($data.PrivilegedAccounts -and $data.PrivilegedAccounts.AllPrivilegedUsers) {
+                $privSamNames = @($data.PrivilegedAccounts.AllPrivilegedUsers |
+                    ForEach-Object { $_.SamAccountName } |
+                    Where-Object { $_ })
+            }
+            $hashConn = $Connection.Clone()
+            $hashConn['PrivilegedSamNames'] = $privSamNames
+
+            $hashParams = @{ Connection = $hashConn; Quiet = $Quiet }
+            if ($WeakPasswordList) { $hashParams['WeakPasswordHashesFile'] = $WeakPasswordList }
+
+            $hq = Get-ADPasswordHashQuality @hashParams
+
+            if ($null -ne $hq -and $hq.Performed) {
+                if (-not $data.PasswordPolicies) { $data.PasswordPolicies = @{} }
+                # Only the no-dataset-required fields are always set; the rest stay
+                # $null (Not Assessed) unless a dataset was supplied.
+                $data.PasswordPolicies['BlankPasswordUsers']   = $hq.BlankPasswordUsers
+                $data.PasswordPolicies['DuplicateHashGroups']  = $hq.DuplicateHashGroups
+                if ($null -ne $hq.HIBPCompromisedUsers) { $data.PasswordPolicies['HIBPCompromisedUsers'] = $hq.HIBPCompromisedUsers }
+                if ($null -ne $hq.DictionaryMatchUsers) { $data.PasswordPolicies['DictionaryMatchUsers'] = $hq.DictionaryMatchUsers }
+                if ($null -ne $hq.CommonPasswordUsers)  { $data.PasswordPolicies['CommonPasswordUsers']  = $hq.CommonPasswordUsers }
+
+                # Privileged weak-password subset for ADPRIV-016.
+                if ($null -ne $hq.PasswordAnalysis) {
+                    if (-not $data.PrivilegedAccounts) { $data.PrivilegedAccounts = @{} }
+                    $data.PrivilegedAccounts['PasswordAnalysis'] = $hq.PasswordAnalysis
+                    $data.PasswordAnalysis = $hq.PasswordAnalysis
+                }
+            } elseif ($null -ne $hq -and $hq.Error) {
+                # Record why analysis did not run; fields stay $null → checks SKIP.
+                $data.Errors['PasswordHashQuality'] = $hq.Error
+            }
+        } catch {
+            Write-Warning "NT password-hash analysis failed: $_"
+            $data.Errors['PasswordHashQuality'] = $_.Exception.Message
+        }
+    }
+
     # ── Summary ──────────────────────────────────────────────────────────
     if (-not $Quiet) {
         $collectedCount = 0
