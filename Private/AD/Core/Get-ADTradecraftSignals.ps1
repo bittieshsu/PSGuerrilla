@@ -65,7 +65,10 @@ function Get-ADTradecraftSignals {
         $out = @{ Found = $false; Members = @() }
         try {
             $sidObj = New-Object System.Security.Principal.SecurityIdentifier($GroupSid)
-            $sidBytes = $sidObj.GetSidBytes()
+            # SecurityIdentifier has no GetSidBytes(); use GetBinaryForm. The previous call threw and
+            # was swallowed here, making every RID-relative group lookup SKIP ("could not be resolved").
+            $sidBytes = New-Object byte[] $sidObj.BinaryLength
+            $sidObj.GetBinaryForm($sidBytes, 0)
             $escapedSid = ($sidBytes | ForEach-Object { '\' + $_.ToString('x2') }) -join ''
             $root = New-LdapSearchRoot -Connection $Connection -SearchBase $SearchBase
             $grp = @(Invoke-LdapQuery -SearchRoot $root `

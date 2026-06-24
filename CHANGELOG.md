@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.30.2] - 2026-06-24
+
+_Live-domain reliability fix (validated on a domain controller)._
+
+### Fixed
+- **AD well-known group resolution (`ADTRADE-008`, `ADTRADE-009`, and any SID-based lookup)** — the SID→binary conversion called `SecurityIdentifier.GetSidBytes()`, **a method that does not exist**; it threw and was swallowed by the surrounding try/catch, so Cert Publishers / Key Admins / Enterprise Key Admins (and other RID-relative groups) reported *Not Assessed* even when present. Replaced with the correct `GetBinaryForm` in `Get-ADTradecraftSignals.ps1`, `Get-ADPrivilegedMembers.ps1`, and `Resolve-ADSid.ps1`. Confirmed against a live domain controller: the groups now resolve and the checks return real PASS/FAIL verdicts. (2.30.1 mis-attributed this to a byte[] objectSid issue — `objectSid` is already converted to a string upstream — so this is the actual root cause.)
+
 ## [2.30.1] - 2026-06-24
 
 _Reliability fixes from live validation of the v2.30.0 checks. No check-count or public-surface change (580 checks)._

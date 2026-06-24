@@ -54,7 +54,10 @@ function Resolve-ADSid {
     # Try LDAP lookup
     if ($SearchRoot) {
         try {
-            $sidBytes = (New-Object System.Security.Principal.SecurityIdentifier($SidString)).GetSidBytes()
+            # SecurityIdentifier has no GetSidBytes(); use GetBinaryForm (the old call threw silently).
+            $__sid = New-Object System.Security.Principal.SecurityIdentifier($SidString)
+            $sidBytes = New-Object byte[] $__sid.BinaryLength
+            $__sid.GetBinaryForm($sidBytes, 0)
             $escapedSid = ($sidBytes | ForEach-Object { '\' + $_.ToString('x2') }) -join ''
 
             $results = @(Invoke-LdapQuery -SearchRoot $SearchRoot `

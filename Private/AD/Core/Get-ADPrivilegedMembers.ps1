@@ -51,7 +51,9 @@ function Get-ADPrivilegedMembers {
         param([string]$SidString, [System.DirectoryServices.DirectoryEntry]$SearchRoot)
         try {
             $sidObj = New-Object System.Security.Principal.SecurityIdentifier($SidString)
-            $sidBytes = $sidObj.GetSidBytes()
+            # SecurityIdentifier has no GetSidBytes(); use GetBinaryForm (the old call threw silently).
+            $sidBytes = New-Object byte[] $sidObj.BinaryLength
+            $sidObj.GetBinaryForm($sidBytes, 0)
             $escapedSid = ($sidBytes | ForEach-Object { '\' + $_.ToString('x2') }) -join ''
             $results = @(Invoke-LdapQuery -SearchRoot $SearchRoot `
                 -Filter "(objectSid=$escapedSid)" `
