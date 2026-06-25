@@ -14,12 +14,14 @@ Security assessment, threat detection, and continuous monitoring for Google Work
 
 | Theater | Capability | Checks |
 |---------|-----------|--------|
-| Google Workspace | Compromise assessment, 23 detection signals, 9 audit categories (incl. adversary tradecraft) | 110 |
-| Active Directory | 15-category security reconnaissance (incl. transitive attack-path analysis) | 205 |
-| Entra ID / Azure / Intune / M365 | Infiltration audit across 14 categories | 158 |
+| Google Workspace | Compromise assessment, 23 detection signals, 10 audit categories — adversary tradecraft + CISA SCuBA baselines (Gmail, Drive, Chat, Meet, Calendar, Sites, Classroom, Gemini, Assured Controls) | 125 |
+| Active Directory | 15-category security reconnaissance incl. transitive attack-path analysis + NT-hash password quality (DSInternals), replication health, and DC user-rights | 211 |
+| Entra ID / Azure / Intune / M365 | Infiltration audit across 15 categories — full 44-control EIDSCA, CISA SCuBA (Entra ID + Exchange Online depth), and Entra Connect version currency | 244 |
 | All theaters | Continuous monitoring with baseline drift detection | Real-time |
 
-**Total: 473 security checks** across authentication, email security, drive/SharePoint, OAuth, admin management, conditional access, PIM, Kerberos, certificate services, group policy, Intune endpoint compliance, NTLM-relay preconditions, Tier-0 hygiene, logging/telemetry posture, adversary-tradecraft indicators (GPP cpassword, DCShadow, BitLocker hygiene, RODC PRP), and more.
+**Total: 580 security checks** across authentication, email security (full SCuBA Exchange Online), drive/SharePoint, OAuth, admin management, conditional access, PIM, Kerberos, certificate services (ESC1–ESC16), group policy, Intune endpoint compliance, NTLM-relay preconditions, Tier-0 hygiene, hybrid-identity (Entra Connect / Seamless SSO), shadow-credential and dMSA-escalation detection, NT-hash password quality, logging/telemetry posture, adversary-tradecraft indicators (GPP cpassword, DCShadow, BitLocker hygiene, RODC PRP), and more — mapped to NIST 800-53, MITRE ATT&CK, CIS, ANSSI, CISA SCuBA, and EIDSCA.
+
+> Checks that cannot collect their data (missing module, scope, license, or dataset) report **Not Assessed** — never a passing score on an unchecked control.
 
 ## Requirements
 
@@ -164,9 +166,9 @@ Opens a five-tab WPF window: Operations (run scans), Safehouse (manage credentia
 Invoke-Campaign -ConfigFile './guerrilla-config.json'
 
 # Or run individual theaters
-Invoke-Fortification                    # Google Workspace audit (110 checks)
-Invoke-Reconnaissance                   # Active Directory audit (205 checks)
-Invoke-Infiltration                     # Entra/Azure/Intune/M365 audit (158 checks)
+Invoke-Fortification                    # Google Workspace audit (125 checks)
+Invoke-Reconnaissance                   # Active Directory audit (211 checks)
+Invoke-Infiltration                     # Entra/Azure/Intune/M365 audit (244 checks)
 ```
 
 Results are automatically saved to `$env:APPDATA/PSGuerrilla/` (Windows) for report generation and trend tracking.
@@ -366,9 +368,9 @@ Add the **`AppCatalog.Read.All`** application permission to the app registration
 | Function | Alias | Description |
 |----------|-------|-------------|
 | `Invoke-Recon` | `Invoke-WorkspaceRecon` | Google Workspace compromise assessment with 23 behavioral detection signals |
-| `Invoke-Fortification` | — | Google Workspace security configuration audit (8 categories) |
-| `Invoke-Reconnaissance` | `Invoke-ADRecon` | Active Directory security audit across 15 categories (205 checks) |
-| `Invoke-Infiltration` | `Invoke-CloudRecon` | Entra ID, Azure, Intune, and M365 security assessment (158 checks) |
+| `Invoke-Fortification` | — | Google Workspace security configuration audit (10 categories, 125 checks) |
+| `Invoke-Reconnaissance` | `Invoke-ADRecon` | Active Directory security audit across 15 categories (211 checks) |
+| `Invoke-Infiltration` | `Invoke-CloudRecon` | Entra ID, Azure, Intune, and M365 security assessment (244 checks) |
 | `Invoke-Campaign` | — | Unified audit across all theaters in a single run |
 
 > The theater-named aliases (`Invoke-WorkspaceRecon` / `Invoke-ADRecon` / `Invoke-CloudRecon`) are interchangeable with the canonical names — use whichever makes the intent clearer at the call site. `Invoke-Recon` (Workspace user behavior) and `Invoke-Reconnaissance` (AD configuration audit) look nearly identical but cover different theaters.
@@ -533,7 +535,7 @@ Invoke-Reconnaissance -ConfigFile './guerrilla-config.json' -Categories Privileg
 | `DomainForest` | Domain/forest info, functional levels, FSMO holders, sites |
 | `Trusts` | External and forest trusts, SID filtering, transitivity |
 | `PrivilegedAccounts` | Domain/Enterprise/Schema Admins, krbtgt, AdminSDHolder, DCSync rights |
-| `PasswordPolicy` | Default Domain Password Policy + Fine-Grained Password Policies, LAPS |
+| `PasswordPolicy` | Default Domain Password Policy + Fine-Grained Password Policies, LAPS, and NT-hash quality (blank/duplicate-password detection via DSInternals when run on a DC with replication rights; HIBP/dictionary report Not Assessed unless a dataset is supplied) |
 | `Kerberos` | Kerberoasting, AS-REP roasting, all delegation types, encryption types |
 | `ACLDelegation` | Dangerous ACEs on critical objects, OU delegation, MachineAccountQuota |
 | `GroupPolicy` | GPO inventory, link analysis, sensitive GPO permissions |
@@ -543,7 +545,7 @@ Invoke-Reconnaissance -ConfigFile './guerrilla-config.json' -Categories Privileg
 | `Network` | NTLM-relay preconditions: LDAP/SMB signing, LLMNR/NetBIOS/WPAD, IPv6 (mitm6), Spooler/WebClient — the settings that turn an ESC8 finding from theoretical into one-shot domain compromise |
 | `TierZero` | Tier-bleed scanning by service-account name pattern (Veeam / vCenter / SCCM / SQL in DA/EA/SA), plus the Azure AD Connect MSOL_ account audit (an account most enumeration tools never surface because it gets DCSync via ACL, not group membership) |
 | `Logging` | Telemetry posture: Advanced Audit Policy adoption, PowerShell Script Block / Module Logging, Process Creation cmdline auditing, Defender Tamper Protection guidance, WEF SubscriptionManager, Sysmon deployment indicator — the events investigators need to actually catch the things the other categories warn about |
-| `Tradecraft` | Adversary indicators that fall outside the standard category buckets: GPP cpassword leftovers in SYSVOL (still the #1 red-team find), DCShadow surface (rogue server objects in CN=Sites,CN=Configuration), stale BitLocker recovery keys, RODC Password Replication Policy hygiene |
+| `Tradecraft` | Adversary indicators that fall outside the standard category buckets: GPP cpassword leftovers in SYSVOL (still the #1 red-team find), DCShadow surface (rogue server objects in CN=Sites,CN=Configuration), stale BitLocker recovery keys, RODC Password Replication Policy hygiene, shadow credentials (`msDS-KeyCredentialLink`), delegated-MSA escalation (BadSuccessor), Seamless SSO (`AZUREADSSOACC`) key rotation, Enterprise/Key Admins and Cert Publishers membership, and gMSA password exposure |
 
 Runtime configuration (detection thresholds, business hours, alert suppression, etc.) is managed separately:
 
@@ -558,15 +560,15 @@ Set-Safehouse -ConfigPath './my-runtime-config.json'
 
 ```
 PSGuerrilla/
-  PSGuerrilla.psd1              # Module manifest (43 exported functions)
+  PSGuerrilla.psd1              # Module manifest (49 exported functions)
   PSGuerrilla.psm1              # Root module (loader)
   PSGuerrilla.format.ps1xml     # Custom table formatters
   Config/                        # JSON schema and defaults
   Data/                          # Threat intel, audit check definitions, compliance crosswalks
-    AuditChecks/                 # 38 JSON files defining all 473 security checks
+    AuditChecks/                 # 40 JSON files defining all 580 security checks
     Profiles/                    # Scoring profiles (Default, K12)
-  Public/                        # 43 exported functions
-  Private/                       # 234 internal function files
+  Public/                        # 49 exported functions
+  Private/                       # 258 internal function files
     AD/                          # Active Directory collection and checks
     ADMonitor/                   # AD continuous monitoring and detections
     Audit/                       # Shared audit framework
