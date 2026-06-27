@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPRIV-023",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "PrivilegedMembers collection failed",
+  "auditData": {
+    "Errors": {
+      "PrivilegedMembers": "referral returned from server"
+    },
+    "PrivilegedAccounts": null
+  }
+}

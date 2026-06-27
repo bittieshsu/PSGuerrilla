@@ -1,0 +1,20 @@
+{
+  "checkId": "INTUNE-016",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No firewall policy deployed",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "DeviceConfigurations": [
+        {
+          "@odata.type": "#microsoft.graph.windowsUpdateForBusinessConfiguration",
+          "id": "c1",
+          "displayName": "Update Ring"
+        }
+      ]
+    }
+  }
+}

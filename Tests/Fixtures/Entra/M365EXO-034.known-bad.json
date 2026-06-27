@@ -1,0 +1,20 @@
+{
+  "checkId": "M365EXO-034",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Mailbox intelligence not enabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiPhishPolicies": [
+          {
+            "EnableMailboxIntelligence": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

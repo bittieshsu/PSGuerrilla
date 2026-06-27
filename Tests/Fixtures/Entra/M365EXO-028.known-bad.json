@@ -1,0 +1,22 @@
+{
+  "checkId": "M365EXO-028",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No malware policy enables file filtering",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "MalwarePolicies": [
+          {
+            "FileTypes": [],
+            "EnableFileFilter": false,
+            "Name": "P1"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

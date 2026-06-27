@@ -1,0 +1,19 @@
+{
+  "checkId": "ADLOG-002",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "PowerShell Script Block Logging enabled (1)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Registry": {
+          "MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging\\EnableScriptBlockLogging": {
+            "Value": "1"
+          }
+        }
+      }
+    }
+  }
+}

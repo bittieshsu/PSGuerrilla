@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-033",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No safety tips / spoof intelligence enabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiPhishPolicies": [
+          {
+            "EnableSimilarUsersSafetyTips": false,
+            "EnableFirstContactSafetyTips": false,
+            "EnableSpoofIntelligence": false,
+            "EnableSimilarDomainsSafetyTips": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

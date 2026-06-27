@@ -1,0 +1,17 @@
+{
+  "checkId": "M365SPO-004",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Self-service site creation disabled",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "SelfServiceSiteCreationManagedPath": "sites",
+        "SelfServiceSiteCreationDisabled": true
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

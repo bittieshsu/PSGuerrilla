@@ -1,0 +1,13 @@
+{
+  "checkId": "DRIVE-001",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Org-unit policy not assessed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "OrgUnits": "collector error"
+    }
+  }
+}

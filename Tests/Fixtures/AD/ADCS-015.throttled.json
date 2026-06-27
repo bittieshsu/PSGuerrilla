@@ -1,0 +1,13 @@
+{
+  "checkId": "ADCS-015",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Certificate services not assessed",
+  "auditData": {
+    "Errors": {
+      "CertificateServices": "collector error"
+    },
+    "CertificateServices": null
+  }
+}

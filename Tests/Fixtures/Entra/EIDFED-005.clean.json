@@ -1,0 +1,27 @@
+{
+  "checkId": "EIDFED-005",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Password hash sync enabled",
+  "auditData": {
+    "Federation": {
+      "Users": {
+        "SyncedCount": 100
+      },
+      "Errors": {},
+      "OnPremisesSyncSettings": {
+        "value": [
+          {
+            "features": {
+              "passwordHashSyncEnabled": true,
+              "passThroughAuthenticationEnabled": false
+            }
+          }
+        ]
+      },
+      "OnPremisesSyncEnabled": true
+    },
+    "Errors": {}
+  }
+}

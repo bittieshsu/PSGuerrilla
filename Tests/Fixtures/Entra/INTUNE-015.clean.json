@@ -1,0 +1,25 @@
+{
+  "checkId": "INTUNE-015",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All managed devices encrypted",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "ManagedDevices": [
+        {
+          "isEncrypted": true,
+          "deviceName": "PC1",
+          "operatingSystem": "Windows 11"
+        },
+        {
+          "isEncrypted": true,
+          "deviceName": "PC2",
+          "operatingSystem": "Windows 11"
+        }
+      ]
+    }
+  }
+}

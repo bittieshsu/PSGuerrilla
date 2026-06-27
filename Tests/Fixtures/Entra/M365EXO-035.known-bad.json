@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-035",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Connection filter has IP allow-list entries",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "ConnectionFilterPolicies": [
+          {
+            "Name": "Default",
+            "IPAllowList": [
+              "192.0.2.1"
+            ]
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

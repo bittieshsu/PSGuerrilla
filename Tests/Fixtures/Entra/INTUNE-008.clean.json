@@ -1,0 +1,18 @@
+{
+  "checkId": "INTUNE-008",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "A Defender/antivirus profile is deployed",
+  "auditData": {
+    "Intune": {
+      "DeviceConfigurations": [
+        {
+          "displayName": "Defender Policy",
+          "@odata.type": "microsoft.graph.windows10EndpointProtectionConfiguration",
+          "id": "1"
+        }
+      ]
+    }
+  }
+}

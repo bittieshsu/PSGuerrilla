@@ -1,0 +1,25 @@
+{
+  "checkId": "OAUTH-010",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Few apps hold sensitive scopes (<=5)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "scope": "drive",
+          "app_name": "A1"
+        }
+      },
+      {
+        "Params": {
+          "scope": "gmail",
+          "app_name": "A2"
+        }
+      }
+    ]
+  }
+}

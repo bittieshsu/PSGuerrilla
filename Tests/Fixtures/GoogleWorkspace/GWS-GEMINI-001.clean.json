@@ -1,0 +1,24 @@
+{
+  "checkId": "GWS-GEMINI-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Gemini app service disabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gemini_app.service_status": [
+          {
+            "setting": {
+              "value": {
+                "serviceState": "DISABLED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDFED-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No federated domains configured",
+  "auditData": {
+    "Errors": {},
+    "Federation": {
+      "Errors": {},
+      "FederationConfigs": []
+    }
+  }
+}

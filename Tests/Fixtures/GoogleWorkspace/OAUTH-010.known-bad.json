@@ -1,0 +1,49 @@
+{
+  "checkId": "OAUTH-010",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Six apps hold sensitive scopes (6-10)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "scope": "drive",
+          "app_name": "A1"
+        }
+      },
+      {
+        "Params": {
+          "scope": "gmail",
+          "app_name": "A2"
+        }
+      },
+      {
+        "Params": {
+          "scope": "calendar",
+          "app_name": "A3"
+        }
+      },
+      {
+        "Params": {
+          "scope": "drive",
+          "app_name": "A4"
+        }
+      },
+      {
+        "Params": {
+          "scope": "gmail",
+          "app_name": "A5"
+        }
+      },
+      {
+        "Params": {
+          "scope": "calendar",
+          "app_name": "A6"
+        }
+      }
+    ]
+  }
+}

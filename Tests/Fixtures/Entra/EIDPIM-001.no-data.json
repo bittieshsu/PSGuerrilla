@@ -1,0 +1,13 @@
+{
+  "checkId": "EIDPIM-001",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Global Administrator list unavailable; must be Not Assessed, never PASS",
+  "auditData": {
+    "Errors": {},
+    "PIM": {
+      "GlobalAdmins": null
+    }
+  }
+}

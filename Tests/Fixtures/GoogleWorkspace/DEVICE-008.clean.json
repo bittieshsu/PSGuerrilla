@@ -1,0 +1,16 @@
+{
+  "checkId": "DEVICE-008",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Chrome extension management policy configured",
+  "objectShape": false,
+  "auditData": {
+    "ChromePolicies": {
+      "ExtensionInstallBlocklist": [
+        "*"
+      ]
+    },
+    "Errors": {}
+  }
+}

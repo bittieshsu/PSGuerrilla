@@ -1,0 +1,15 @@
+{
+  "checkId": "ADLOG-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Cmdline auditing not verifiable (no FAIL path)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Registry": {}
+      }
+    }
+  }
+}

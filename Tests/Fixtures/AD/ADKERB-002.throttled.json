@@ -1,0 +1,13 @@
+{
+  "checkId": "ADKERB-002",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "KerberosConfig collection failed",
+  "auditData": {
+    "Errors": {
+      "KerberosConfig": "collector error"
+    },
+    "Kerberos": null
+  }
+}

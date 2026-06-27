@@ -1,0 +1,19 @@
+{
+  "checkId": "ADDOM-017",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "LM/NTLMv1 allowed (<3)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "g1": {
+          "SecuritySettings": {
+            "LmCompatibilityLevel": 0
+          }
+        }
+      }
+    }
+  }
+}

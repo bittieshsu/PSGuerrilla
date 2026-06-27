@@ -1,0 +1,14 @@
+{
+  "checkId": "ADSTALE-002",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No inactive computer accounts",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "InactiveComputers": [],
+      "TotalComputers": 50
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPRIV-007",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Print Operators group empty",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Print Operators": []
+      }
+    }
+  }
+}

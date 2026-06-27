@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-022",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Lockout disabled (threshold 0)",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "DefaultPolicy": {
+        "LockoutThreshold": 0
+      }
+    }
+  }
+}

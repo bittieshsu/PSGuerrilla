@@ -1,0 +1,16 @@
+{
+  "checkId": "EIDCA-011",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Conditional Access not assessed",
+  "auditData": {
+    "ConditionalAccess": {
+      "NamedLocations": null,
+      "Errors": {}
+    },
+    "Errors": {
+      "ConditionalAccess": "Graph 429"
+    }
+  }
+}

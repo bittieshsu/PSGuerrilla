@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDAPP-011",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No OAuth2 user-consent grants",
+  "auditData": {
+    "Applications": {
+      "ConsentGrants": [],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

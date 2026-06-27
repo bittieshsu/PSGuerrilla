@@ -1,0 +1,14 @@
+{
+  "checkId": "ADPWD-012",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "DSInternals unavailable — HIBP comparison not performed",
+  "auditData": {
+    "ModuleAvailability": {
+      "DSInternals": false
+    },
+    "Errors": {},
+    "PasswordPolicies": {}
+  }
+}

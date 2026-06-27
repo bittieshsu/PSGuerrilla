@@ -1,0 +1,22 @@
+{
+  "checkId": "ADDOM-013",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "LDAP signing disabled via GPO (0)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "guid1": {
+          "RegistryPolicies": [
+            {
+              "ValueName": "LDAPServerIntegrity",
+              "Value": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "checkId": "ADCS-018",
+  "theater": "Reconnaissance",
+  "scenario": "limitation",
+  "expectedStatus": "WARN",
+  "description": "CA AuditFilter not assessable via LDAP",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateAuthorities": [
+        {
+          "DNSHostName": "ca1.t.l",
+          "Name": "CA1"
+        }
+      ]
+    }
+  }
+}

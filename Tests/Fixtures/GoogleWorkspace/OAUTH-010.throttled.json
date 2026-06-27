@@ -1,0 +1,14 @@
+{
+  "checkId": "OAUTH-010",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "OAuth token activity not assessed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "OAuthApps": "Reports API 429"
+    },
+    "OAuthApps": null
+  }
+}

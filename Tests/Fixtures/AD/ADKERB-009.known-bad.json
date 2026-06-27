@@ -1,0 +1,27 @@
+{
+  "checkId": "ADKERB-009",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "DES encryption enabled on a DC",
+  "auditData": {
+    "Kerberos": {
+      "EncryptionTypes": {
+        "DomainControllers": [
+          {
+            "HasAES": false,
+            "HasRC4": false
+          }
+        ],
+        "Summary": {
+          "RC4Enabled": 0,
+          "DESEnabled": 1,
+          "TotalDCs": 1,
+          "AESEnabled": 0
+        }
+      },
+      "KerberoastableAccounts": []
+    },
+    "Errors": {}
+  }
+}

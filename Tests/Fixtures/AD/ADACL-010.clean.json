@@ -1,0 +1,19 @@
+{
+  "checkId": "ADACL-010",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "DCSync rights held only by default admins",
+  "auditData": {
+    "Errors": {},
+    "ACLs": {
+      "DangerousACEs": [
+        {
+          "ObjectTypeGUID": "1131f6aa-9c07-11d1-f79f-00c04fc2dcd2",
+          "IdentitySID": "S-1-5-32-544",
+          "IdentityReference": "BUILTIN\\Administrators"
+        }
+      ]
+    }
+  }
+}

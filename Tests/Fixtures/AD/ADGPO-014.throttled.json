@@ -1,0 +1,13 @@
+{
+  "checkId": "ADGPO-014",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Group Policy not assessed",
+  "auditData": {
+    "Errors": {
+      "GroupPolicyObjects": "collector error"
+    },
+    "GroupPolicies": null
+  }
+}

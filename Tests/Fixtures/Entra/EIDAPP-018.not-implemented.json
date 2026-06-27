@@ -1,0 +1,11 @@
+{
+  "checkId": "EIDAPP-018",
+  "theater": "Infiltration",
+  "scenario": "not-implemented",
+  "expectedStatus": "SKIP",
+  "description": "App credential-add audit requires audit log data (not collected)",
+  "auditData": {
+    "Applications": {},
+    "Errors": {}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "checkId": "ADCS-014",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No OID linked to a security group",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "OIDObjects": [
+        {
+          "Name": "OID1",
+          "OID": "1.2.3",
+          "DN": "CN=OID1",
+          "HasGroupLink": false
+        }
+      ],
+      "CertificateTemplates": []
+    }
+  }
+}

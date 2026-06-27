@@ -1,0 +1,14 @@
+{
+  "checkId": "ADSTALE-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No enabled accounts with expired passwords",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "ExpiredNotDisabled": [],
+      "TotalUsers": 100
+    }
+  }
+}

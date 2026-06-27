@@ -1,0 +1,37 @@
+{
+  "checkId": "INTUNE-023",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Approval policies cover all destructive operations (wipe/retire/delete)",
+  "auditData": {
+    "Intune": {
+      "OperationApprovalPolicies": [
+        {
+          "displayName": "Wipe Approval",
+          "approverGroupIds": [
+            "g1"
+          ],
+          "operationApprovalPolicyType": "deviceWipe",
+          "id": "1"
+        },
+        {
+          "displayName": "Retire Approval",
+          "approverGroupIds": [
+            "g1"
+          ],
+          "operationApprovalPolicyType": "deviceRetire",
+          "id": "2"
+        },
+        {
+          "displayName": "Delete Approval",
+          "approverGroupIds": [
+            "g1"
+          ],
+          "operationApprovalPolicyType": "deviceDelete",
+          "id": "3"
+        }
+      ]
+    }
+  }
+}

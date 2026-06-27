@@ -1,0 +1,30 @@
+{
+  "checkId": "ADCS-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Enrollment-agent template enrollable by Everyone (ESC3)",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateTemplates": [
+        {
+          "ExtendedKeyUsageOIDs": [
+            "1.3.6.1.4.1.311.20.2.1"
+          ],
+          "Name": "Agent",
+          "IsPublished": true,
+          "SchemaVersion": 3,
+          "EnrollmentPermissions": [
+            {
+              "Identity": "Everyone",
+              "Right": "Enroll",
+              "SID": "S-1-1-0"
+            }
+          ],
+          "DisplayName": "Agent"
+        }
+      ]
+    }
+  }
+}

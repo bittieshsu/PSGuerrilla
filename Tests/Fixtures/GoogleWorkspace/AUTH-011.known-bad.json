@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-011",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Login challenges not enabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "security.login_challenges": [
+          {
+            "setting": {
+              "value": {
+                "enableEmployeeIdChallenge": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

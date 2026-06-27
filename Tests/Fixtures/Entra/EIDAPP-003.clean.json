@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDAPP-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No app registrations hold credentials",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "A1",
+          "keyCredentials": [],
+          "appId": "a1",
+          "passwordCredentials": []
+        }
+      ]
+    }
+  }
+}

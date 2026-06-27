@@ -1,0 +1,20 @@
+{
+  "checkId": "INTUNE-009",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "ASR rules policy deployed",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "DeviceConfigurations": [
+        {
+          "@odata.type": "#microsoft.graph.windows10EndpointProtectionConfiguration",
+          "id": "c1",
+          "displayName": "ASR Rules Policy"
+        }
+      ]
+    }
+  }
+}

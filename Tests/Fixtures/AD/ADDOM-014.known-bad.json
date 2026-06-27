@@ -1,0 +1,22 @@
+{
+  "checkId": "ADDOM-014",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "LDAP channel binding disabled (0)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "g1": {
+          "RegistryPolicies": [
+            {
+              "Value": 0,
+              "ValueName": "LdapEnforceChannelBinding"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

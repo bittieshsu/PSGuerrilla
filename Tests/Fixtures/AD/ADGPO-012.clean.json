@@ -1,0 +1,17 @@
+{
+  "checkId": "ADGPO-012",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No cpassword values in SYSVOL GPOs",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "GPO1": {
+          "CPasswordFound": false
+        }
+      }
+    }
+  }
+}

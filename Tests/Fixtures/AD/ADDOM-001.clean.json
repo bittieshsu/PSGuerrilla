@@ -1,0 +1,14 @@
+{
+  "checkId": "ADDOM-001",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Forest functional level current (>=7)",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "ForestFunctionalLevel": 7,
+      "ForestFunctionalLevelName": "2016"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkId": "ADGPO-022",
+  "theater": "Reconnaissance",
+  "scenario": "informational",
+  "expectedStatus": "WARN",
+  "description": "AppLocker/WDAC GPO presence (informational)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "HasRegistryPol": false,
+          "PreferenceFiles": []
+        }
+      },
+      "GPOs": [
+        {
+          "DisplayName": "Default Domain Policy"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checkId": "ADGPO-012",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A GPP cpassword value is present in SYSVOL",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "GPO1": {
+          "CPasswordFound": true,
+          "CPasswordLocations": [
+            "Groups.xml"
+          ]
+        }
+      }
+    }
+  }
+}

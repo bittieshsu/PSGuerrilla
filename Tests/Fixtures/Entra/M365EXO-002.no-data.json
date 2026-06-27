@@ -1,0 +1,16 @@
+{
+  "checkId": "M365EXO-002",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "No anti-spam policy data (empty array guarded to SKIP)",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiSpamPolicies": []
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

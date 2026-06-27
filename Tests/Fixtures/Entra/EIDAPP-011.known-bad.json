@@ -1,0 +1,21 @@
+{
+  "checkId": "EIDAPP-011",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A user-consented OAuth2 grant exists",
+  "auditData": {
+    "Applications": {
+      "ConsentGrants": [
+        {
+          "scope": "User.Read",
+          "clientId": "c1",
+          "resourceId": "r1",
+          "consentType": "Principal"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

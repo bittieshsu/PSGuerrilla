@@ -1,0 +1,20 @@
+{
+  "checkId": "ADSTALE-011",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A stale DNS record exists",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "StaleDNSRecords": [
+        {
+          "Tombstoned": false,
+          "Name": "stale.t.l",
+          "WhenChanged": "2023-01-01T00:00:00Z",
+          "DN": "CN=stale,..."
+        }
+      ]
+    }
+  }
+}

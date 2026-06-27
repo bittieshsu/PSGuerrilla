@@ -1,0 +1,20 @@
+{
+  "checkId": "ADDOM-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Single domain controller (no redundancy)",
+  "auditData": {
+    "Errors": {},
+    "DomainControllers": [
+      {
+        "Name": "DC1",
+        "IsRODC": false,
+        "IsGlobalCatalog": true,
+        "FQDN": "dc1.t.l",
+        "OperatingSystem": "Windows Server 2019",
+        "ObsoleteOS": false
+      }
+    ]
+  }
+}

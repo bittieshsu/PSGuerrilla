@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-032",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Anti-phish impersonation protection enabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiPhishPolicies": [
+          {
+            "EnableTargetedUserProtection": true,
+            "Name": "P1"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

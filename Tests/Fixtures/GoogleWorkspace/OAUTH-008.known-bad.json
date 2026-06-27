@@ -1,0 +1,19 @@
+{
+  "checkId": "OAUTH-008",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "a delegation grant holds Gmail and Drive scopes",
+  "auditData": {
+    "DomainWideDelegation": [
+      {
+        "scopes": [
+          "https://www.googleapis.com/auth/gmail.modify",
+          "https://www.googleapis.com/auth/drive"
+        ],
+        "clientId": "100000000000000000002"
+      }
+    ],
+    "Errors": {}
+  }
+}

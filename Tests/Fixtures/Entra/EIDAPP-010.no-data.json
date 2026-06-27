@@ -1,0 +1,13 @@
+{
+  "checkId": "EIDAPP-010",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "App registrations unavailable",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": []
+    },
+    "Errors": {}
+  }
+}

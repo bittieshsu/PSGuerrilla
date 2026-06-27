@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDPIM-010",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "PIM eligible assignments configured",
+  "auditData": {
+    "PIM": {
+      "Errors": {},
+      "RoleAssignmentSchedules": [],
+      "RoleEligibilitySchedules": [
+        {
+          "id": "sched1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

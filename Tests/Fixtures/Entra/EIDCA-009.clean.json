@@ -1,0 +1,25 @@
+{
+  "checkId": "EIDCA-009",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "A CA policy requires device compliance",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "displayName": "Compliant",
+          "grantControls": {
+            "builtInControls": [
+              "compliantDevice"
+            ]
+          },
+          "state": "enabled",
+          "id": "p1"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "checkId": "DRIVE-010",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "An active Drive DLP rule is configured",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "rule.dlp": [
+          {
+            "setting": {
+              "value": {
+                "state": "ACTIVE",
+                "action": {
+                  "driveAction": {}
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

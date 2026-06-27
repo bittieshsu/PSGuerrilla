@@ -1,0 +1,19 @@
+{
+  "checkId": "ADTRADE-009",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Cert Publishers contains only computer accounts",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "CertPublishers": [
+        {
+          "ObjectClass": "computer",
+          "SamAccountName": "ca1$"
+        }
+      ],
+      "CertPublishersFound": true
+    }
+  }
+}

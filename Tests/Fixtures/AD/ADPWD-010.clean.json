@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-010",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No accounts with blank passwords",
+  "auditData": {
+    "ModuleAvailability": {
+      "DSInternals": true
+    },
+    "PasswordPolicies": {
+      "BlankPasswordUsers": []
+    }
+  }
+}

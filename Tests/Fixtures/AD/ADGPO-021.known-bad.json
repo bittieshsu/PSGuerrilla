@@ -1,0 +1,18 @@
+{
+  "checkId": "ADGPO-021",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No PowerShell-logging GPO detected",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "HasRegistryPol": false
+        }
+      },
+      "GPOs": []
+    }
+  }
+}

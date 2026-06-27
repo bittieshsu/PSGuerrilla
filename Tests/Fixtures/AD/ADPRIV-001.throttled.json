@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPRIV-001",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "PrivilegedMembers collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "PrivilegedAccounts": null,
+    "Errors": {
+      "PrivilegedMembers": "Get-ADGroupMember failed: a referral was returned from the server."
+    }
+  }
+}

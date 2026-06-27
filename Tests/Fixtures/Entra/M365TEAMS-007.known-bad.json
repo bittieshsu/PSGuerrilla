@@ -1,0 +1,23 @@
+{
+  "checkId": "M365TEAMS-007",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Third-party Teams app control unknown/unset",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "AppPermissionPolicies": [
+          {
+            "DefaultCatalogAppsType": "Unknown",
+            "PrivateCatalogAppsType": "Unknown",
+            "GlobalCatalogAppsType": "Unknown",
+            "Identity": "Global"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

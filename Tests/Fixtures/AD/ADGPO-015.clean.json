@@ -1,0 +1,17 @@
+{
+  "checkId": "ADGPO-015",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No scheduled-task GPP files",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "PreferenceFiles": []
+        }
+      }
+    }
+  }
+}

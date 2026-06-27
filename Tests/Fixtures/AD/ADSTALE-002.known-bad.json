@@ -1,0 +1,23 @@
+{
+  "checkId": "ADSTALE-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An inactive computer account exists",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "InactiveComputers": [
+        {
+          "LastLogon": "2023-01-01T00:00:00Z",
+          "Enabled": true,
+          "OperatingSystem": "Windows Server 2008",
+          "DN": "CN=c1,DC=t,DC=l",
+          "Name": "C1",
+          "SamAccountName": "c1"
+        }
+      ],
+      "TotalComputers": 50
+    }
+  }
+}

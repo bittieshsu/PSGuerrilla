@@ -1,0 +1,22 @@
+{
+  "checkId": "M365TEAMS-001",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Teams external access locked down",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "ExternalAccessConfig": {
+          "BlockedDomains": null,
+          "AllowedDomains": null,
+          "AllowTeamsConsumer": false,
+          "AllowFederatedUsers": false,
+          "AllowPublicUsers": false
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

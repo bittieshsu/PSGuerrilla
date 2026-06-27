@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-011",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Group creation restricted to admins",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "groups_for_business.groups_sharing": [
+          {
+            "setting": {
+              "value": {
+                "createGroupsAccessLevel": "ADMIN_ONLY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

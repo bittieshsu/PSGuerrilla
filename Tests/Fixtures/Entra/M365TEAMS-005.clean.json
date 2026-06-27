@@ -1,0 +1,23 @@
+{
+  "checkId": "M365TEAMS-005",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Recordings stored in OneDrive (or disabled)",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "MeetingPolicies": [
+          {
+            "AllowCloudRecording": true,
+            "RecordingStorageMode": "OneDriveForBusiness",
+            "AllowTranscription": true,
+            "Identity": "Global"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

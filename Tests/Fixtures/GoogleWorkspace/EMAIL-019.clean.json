@@ -1,0 +1,29 @@
+{
+  "checkId": "EMAIL-019",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "An active Gmail DLP rule is configured",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "rule.dlp": [
+          {
+            "setting": {
+              "value": {
+                "state": "ACTIVE",
+                "action": {
+                  "gmailAction": {
+                    "action": "REJECT"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

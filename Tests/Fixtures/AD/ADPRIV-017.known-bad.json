@@ -1,0 +1,19 @@
+{
+  "checkId": "ADPRIV-017",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Privileged password older than 365 days",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "Enabled": true,
+          "PwdLastSet": "2020-01-01T00:00:00Z",
+          "SamAccountName": "a"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

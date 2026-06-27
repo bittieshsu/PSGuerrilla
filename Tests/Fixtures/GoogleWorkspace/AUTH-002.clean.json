@@ -1,0 +1,63 @@
+{
+  "checkId": "AUTH-002",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All active users 2SV-enrolled (>=95%)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u1@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u2@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u3@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u4@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u5@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u6@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u7@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u8@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u9@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u10@e.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "checkId": "ADACL-009",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "MachineAccountQuota is 0",
+  "auditData": {
+    "ACLs": {
+      "MachineAccountQuota": 0
+    },
+    "Errors": {}
+  }
+}

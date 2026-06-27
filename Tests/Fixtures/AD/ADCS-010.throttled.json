@@ -1,0 +1,13 @@
+{
+  "checkId": "ADCS-010",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "CertificateServices collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "CertificateServices": null,
+    "Errors": {
+      "CertificateServices": "AD CS enumeration failed: RPC server unavailable."
+    }
+  }
+}

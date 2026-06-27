@@ -1,0 +1,21 @@
+{
+  "checkId": "ADPRIV-019",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Disabled account in Domain Admins",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "Enabled": false,
+            "ObjectClass": "user",
+            "SamAccountName": "old"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

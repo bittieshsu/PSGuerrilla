@@ -1,0 +1,13 @@
+{
+  "checkId": "ADDOM-005",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "DomainControllers collection failed",
+  "auditData": {
+    "Errors": {
+      "DomainControllers": "collector error"
+    },
+    "DomainControllers": null
+  }
+}

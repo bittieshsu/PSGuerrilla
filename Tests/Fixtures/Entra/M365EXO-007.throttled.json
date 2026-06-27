@@ -1,0 +1,15 @@
+{
+  "checkId": "M365EXO-007",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Exchange transport-rule collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "M365Services": {
+      "Exchange": null
+    },
+    "Errors": {
+      "M365Services": "Exchange Online PowerShell connection failed."
+    }
+  }
+}

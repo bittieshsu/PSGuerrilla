@@ -1,0 +1,19 @@
+{
+  "checkId": "AUTH-013",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Super admins logged in recently",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "admin@e.com",
+        "lastLoginTime": "2026-06-01T00:00:00Z"
+      }
+    ]
+  }
+}

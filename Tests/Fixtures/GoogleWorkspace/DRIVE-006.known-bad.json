@@ -1,0 +1,16 @@
+{
+  "checkId": "DRIVE-006",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Shared-drive external sharing on",
+  "objectShape": false,
+  "auditData": {
+    "OrgUnitPolicies": {
+      "/": {
+        "sharedDriveExternalSharing": true
+      }
+    },
+    "Errors": {}
+  }
+}

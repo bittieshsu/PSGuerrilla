@@ -1,0 +1,16 @@
+{
+  "checkId": "ADPWD-014",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No common/weak passwords detected",
+  "auditData": {
+    "ModuleAvailability": {
+      "DSInternals": true
+    },
+    "Errors": {},
+    "PasswordPolicies": {
+      "CommonPasswordUsers": []
+    }
+  }
+}

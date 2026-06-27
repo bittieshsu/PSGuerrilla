@@ -1,0 +1,18 @@
+{
+  "checkId": "M365TEAMS-002",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Guest access disabled",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "GuestConfig": {
+          "AllowGuestUser": false
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

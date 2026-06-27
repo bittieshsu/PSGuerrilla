@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-014",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "2SV enrollment allowed",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "security.two_step_verification_enrollment": [
+          {
+            "setting": {
+              "value": {
+                "allowEnrollment": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

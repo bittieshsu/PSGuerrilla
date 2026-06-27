@@ -1,0 +1,23 @@
+{
+  "checkId": "ADCS-002",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "no ESC1-vulnerable certificate templates",
+  "auditData": {
+    "CertificateServices": {
+      "CertificateTemplates": [
+        {
+          "IsPublished": false,
+          "ExtendedKeyUsageOIDs": [],
+          "DisplayName": "Safe Template",
+          "RASignaturesRequired": 0,
+          "EnrollmentPermissions": [],
+          "Name": "SafeTemplate",
+          "EnrolleeSuppliesSubject": false
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

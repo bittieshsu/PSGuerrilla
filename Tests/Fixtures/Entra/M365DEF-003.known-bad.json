@@ -1,0 +1,25 @@
+{
+  "checkId": "M365DEF-003",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "AIR / Threat Explorer not fully enabled",
+  "auditData": {
+    "M365Services": {
+      "Defender": {
+        "ProtectionPolicyRules": [
+          {
+            "Name": "Standard",
+            "State": "Enabled"
+          }
+        ],
+        "ThreatExplorerEnabled": false,
+        "AIRConfiguration": {
+          "Enabled": false
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

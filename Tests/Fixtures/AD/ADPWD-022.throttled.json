@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPWD-022",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Password policy not assessed (clean PASS needs TimeSpan observation window)",
+  "auditData": {
+    "Errors": {
+      "PasswordPolicies": "collector error"
+    },
+    "PasswordPolicies": null
+  }
+}

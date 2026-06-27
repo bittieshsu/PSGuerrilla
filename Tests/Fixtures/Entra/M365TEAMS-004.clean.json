@@ -1,0 +1,22 @@
+{
+  "checkId": "M365TEAMS-004",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Anonymous meeting join restricted",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "MeetingPolicies": [
+          {
+            "AllowAnonymousUsersToJoinMeeting": false,
+            "Identity": "Global",
+            "AllowPSTNUsersToBypassLobby": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checkId": "INTUNE-018",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A SYSTEM-context unsigned script is deployed",
+  "auditData": {
+    "Intune": {
+      "DeviceManagementScripts": [
+        {
+          "fileName": "s.ps1",
+          "displayName": "S1",
+          "enforceSignatureCheck": false,
+          "runAsAccount": "system",
+          "id": "1"
+        }
+      ]
+    }
+  }
+}

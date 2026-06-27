@@ -1,0 +1,64 @@
+{
+  "checkId": "EIDAUTH-002",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "0 of 10 users MFA-registered (0%) is below the 90% failing threshold",
+  "auditData": {
+    "AuthMethods": {
+      "UserRegistrationDetails": [
+        {
+          "id": "1",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        },
+        {
+          "id": "2",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        },
+        {
+          "id": "3",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        },
+        {
+          "id": "4",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        },
+        {
+          "id": "5",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        },
+        {
+          "id": "6",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        },
+        {
+          "id": "7",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        },
+        {
+          "id": "8",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        },
+        {
+          "id": "9",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        },
+        {
+          "id": "10",
+          "isMfaRegistered": false,
+          "isMfaCapable": false
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

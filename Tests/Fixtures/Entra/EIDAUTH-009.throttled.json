@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDAUTH-009",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Auth method configs not assessed",
+  "auditData": {
+    "AuthMethods": {
+      "Errors": {}
+    },
+    "Errors": {
+      "AuthMethods": "Graph 429"
+    }
+  }
+}

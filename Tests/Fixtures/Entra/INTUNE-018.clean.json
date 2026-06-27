@@ -1,0 +1,12 @@
+{
+  "checkId": "INTUNE-018",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No device management scripts deployed",
+  "auditData": {
+    "Intune": {
+      "DeviceManagementScripts": []
+    }
+  }
+}

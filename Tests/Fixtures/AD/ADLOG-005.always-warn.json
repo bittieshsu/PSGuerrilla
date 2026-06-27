@@ -1,0 +1,10 @@
+{
+  "checkId": "ADLOG-005",
+  "theater": "Reconnaissance",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "Defender Tamper Protection set in MDE cloud (LDAP-blind)",
+  "auditData": {
+    "Errors": {}
+  }
+}

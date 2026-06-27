@@ -1,0 +1,27 @@
+{
+  "checkId": "ADDOM-020",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "DSRM admin allowed to log on over network",
+  "auditData": {
+    "DomainControllers": [
+      {
+        "Name": "DC1"
+      }
+    ],
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "g1": {
+          "RegistryPolicies": [
+            {
+              "ValueName": "DsrmAdminLogonBehavior",
+              "Value": 1
+            }
+          ]
+        }
+      }
+    }
+  }
+}

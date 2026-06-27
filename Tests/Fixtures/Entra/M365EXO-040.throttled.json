@@ -1,0 +1,15 @@
+{
+  "checkId": "M365EXO-040",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Exchange data not assessed",
+  "auditData": {
+    "M365Services": {
+      "Errors": {}
+    },
+    "Errors": {
+      "M365Services": "EXO connect failed"
+    }
+  }
+}

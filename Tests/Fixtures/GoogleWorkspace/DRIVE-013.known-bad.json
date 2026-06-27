@@ -1,0 +1,16 @@
+{
+  "checkId": "DRIVE-013",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Drive offline access enabled",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OrgUnitPolicies": {
+      "/": {
+        "driveOfflineEnabled": true
+      }
+    }
+  }
+}

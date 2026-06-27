@@ -1,0 +1,25 @@
+{
+  "checkId": "EIDTNT-005",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "B2B collaboration blocked by default",
+  "auditData": {
+    "TenantConfig": {
+      "CrossTenantAccess": {
+        "b2bCollaborationOutbound": {
+          "usersAndGroups": {
+            "targets": [],
+            "accessType": "blocked"
+          }
+        },
+        "b2bCollaborationInbound": {
+          "usersAndGroups": {
+            "targets": [],
+            "accessType": "blocked"
+          }
+        }
+      }
+    }
+  }
+}

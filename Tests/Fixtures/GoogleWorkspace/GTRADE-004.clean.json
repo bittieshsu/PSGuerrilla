@@ -1,0 +1,23 @@
+{
+  "checkId": "GTRADE-004",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Four or fewer super admins",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a1@e.com"
+      },
+      {
+        "isAdmin": false,
+        "suspended": false,
+        "primaryEmail": "u@e.com"
+      }
+    ]
+  }
+}

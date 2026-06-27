@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDAUTH-016",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No app allows ROPC/public-client flow",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "Safe",
+          "isFallbackPublicClient": false,
+          "appId": "a1",
+          "allowPublicClient": false
+        }
+      ]
+    }
+  }
+}

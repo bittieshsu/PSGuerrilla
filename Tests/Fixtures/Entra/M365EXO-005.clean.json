@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-005",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "A Safe Attachments policy is configured",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "SafeAttachmentPolicies": [
+          {
+            "Action": "DynamicDelivery",
+            "Enable": true,
+            "Name": "Default",
+            "Redirect": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

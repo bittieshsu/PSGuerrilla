@@ -1,0 +1,19 @@
+{
+  "checkId": "ADLOG-003",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "PowerShell Module Logging enabled (1)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Registry": {
+          "MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\\EnableModuleLogging": {
+            "Value": 1
+          }
+        }
+      }
+    }
+  }
+}

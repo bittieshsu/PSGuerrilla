@@ -1,0 +1,12 @@
+{
+  "checkId": "EIDAUTH-016",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "App registration data unavailable",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": null
+    }
+  }
+}

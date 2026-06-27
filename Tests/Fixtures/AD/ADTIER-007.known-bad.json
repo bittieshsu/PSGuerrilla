@@ -1,0 +1,20 @@
+{
+  "checkId": "ADTIER-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A service-named account is in Domain Admins",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "SamAccountName": "svc_backup",
+            "ObjectClass": "user"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

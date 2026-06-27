@@ -1,0 +1,22 @@
+{
+  "checkId": "ADPRIV-025",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No computer accounts in privileged groups",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "DistinguishedName": "CN=a,DC=t,DC=l",
+            "ObjectClass": "user",
+            "SamAccountName": "a",
+            "IsComputer": false
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

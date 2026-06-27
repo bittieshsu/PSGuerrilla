@@ -1,0 +1,21 @@
+{
+  "checkId": "ADPRIV-012",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A privileged account is AS-REP roastable",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "UACFlags": {
+            "DONT_REQ_PREAUTH": true
+          },
+          "SamAccountName": "admin1",
+          "DistinguishedName": "CN=admin1,CN=Users,DC=test,DC=local"
+        }
+      ]
+    }
+  }
+}

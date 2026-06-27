@@ -1,0 +1,27 @@
+{
+  "checkId": "ADGPO-006",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A GPO link references a missing GPO",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "GPOLinks": {
+        "OU=T,DC=t,DC=l": [
+          {
+            "IsEnabled": true,
+            "GPODN": "CN={9999},CN=Policies,CN=System,DC=t,DC=l"
+          }
+        ]
+      },
+      "GPOs": [
+        {
+          "GUID": "{1}",
+          "DN": "CN={12345678-1234-1234-1234-123456789012},CN=Policies,CN=System,DC=t,DC=l",
+          "DisplayName": "P1"
+        }
+      ]
+    }
+  }
+}

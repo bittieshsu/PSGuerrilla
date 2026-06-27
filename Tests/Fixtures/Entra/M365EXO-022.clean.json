@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-022",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No sharing policy shares calendar with all domains",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "SharingPolicies": [
+          {
+            "Name": "Default",
+            "Domains": [
+              "contoso.com:ContactsSharing"
+            ]
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

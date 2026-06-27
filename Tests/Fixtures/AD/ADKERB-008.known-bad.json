@@ -1,0 +1,24 @@
+{
+  "checkId": "ADKERB-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Protocol-transition with delegation target (abuse path)",
+  "auditData": {
+    "Kerberos": {
+      "ProtocolTransition": [
+        {
+          "AllowedToDelegateTo": [
+            "host/dc1"
+          ],
+          "ObjectClass": [
+            "user"
+          ],
+          "SamAccountName": "svc"
+        }
+      ],
+      "ConstrainedDelegation": []
+    },
+    "Errors": {}
+  }
+}

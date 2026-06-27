@@ -1,0 +1,28 @@
+{
+  "checkId": "M365EXO-007",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "an enabled transport rule redirects mail to an external address",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "TransportRules": [
+          {
+            "RedirectMessageTo": [
+              "attacker@external.com"
+            ],
+            "CopyTo": null,
+            "AddToRecipients": null,
+            "BlindCopyTo": null,
+            "Mode": "Enforce",
+            "State": "Enabled",
+            "Name": "Forward to external",
+            "Priority": 1
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

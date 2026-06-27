@@ -1,0 +1,24 @@
+{
+  "checkId": "LOG-004",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Cloud data sharing disabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "cloud_sharing_options.cloud_data_sharing": [
+          {
+            "setting": {
+              "value": {
+                "sharingOptions": "DISABLED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

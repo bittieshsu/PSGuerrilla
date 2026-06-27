@@ -1,0 +1,22 @@
+{
+  "checkId": "EIDFED-004",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Federation metadata extracted (informational, always PASS)",
+  "auditData": {
+    "Federation": {
+      "FederationConfigs": [
+        {
+          "DomainName": "c.com",
+          "Config": {
+            "preferredAuthenticationProtocol": "wsfed",
+            "issuerUri": "https://sts/"
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

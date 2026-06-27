@@ -1,0 +1,18 @@
+{
+  "checkId": "AUTH-012",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All super admins enrolled in 2SV",
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "primaryEmail": "admin@example.com",
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "isAdmin": true
+      }
+    ]
+  }
+}

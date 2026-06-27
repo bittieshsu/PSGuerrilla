@@ -1,0 +1,17 @@
+{
+  "checkId": "ADTRADE-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "RODC present (verify PRP out-of-band)",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "Rodcs": [
+        {
+          "DNSHostName": "rodc1.t.l"
+        }
+      ]
+    }
+  }
+}

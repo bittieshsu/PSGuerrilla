@@ -1,0 +1,70 @@
+{
+  "checkId": "AZIAM-006",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Four any-source any-port inbound Allow rules",
+  "auditData": {
+    "AzureIAM": {
+      "Subscriptions": [
+        {
+          "id": "s1"
+        }
+      ],
+      "Errors": {},
+      "NetworkSecurityGroups": [
+        {
+          "name": "nsg1",
+          "properties": {
+            "securityRules": [
+              {
+                "name": "a1",
+                "properties": {
+                  "destinationPortRange": "0-65535",
+                  "direction": "Inbound",
+                  "access": "Allow",
+                  "sourceAddressPrefix": "*",
+                  "priority": 100,
+                  "protocol": "TCP"
+                }
+              },
+              {
+                "name": "a2",
+                "properties": {
+                  "destinationPortRange": "*",
+                  "direction": "Inbound",
+                  "access": "Allow",
+                  "sourceAddressPrefix": "0.0.0.0/0",
+                  "priority": 101,
+                  "protocol": "*"
+                }
+              },
+              {
+                "name": "a3",
+                "properties": {
+                  "destinationPortRange": "0-65535",
+                  "direction": "Inbound",
+                  "access": "Allow",
+                  "sourceAddressPrefix": "Internet",
+                  "priority": 102,
+                  "protocol": "*"
+                }
+              },
+              {
+                "name": "a4",
+                "properties": {
+                  "destinationPortRange": "*",
+                  "direction": "Inbound",
+                  "access": "Allow",
+                  "sourceAddressPrefix": "*",
+                  "priority": 103,
+                  "protocol": "TCP"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

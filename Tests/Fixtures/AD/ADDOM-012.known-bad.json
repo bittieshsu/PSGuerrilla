@@ -1,0 +1,19 @@
+{
+  "checkId": "ADDOM-012",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A zone allows nonsecure dynamic updates",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "DnsZones": [
+        {
+          "DynamicUpdate": 1,
+          "Name": "c.com",
+          "ZoneType": "AD-Forward"
+        }
+      ]
+    }
+  }
+}

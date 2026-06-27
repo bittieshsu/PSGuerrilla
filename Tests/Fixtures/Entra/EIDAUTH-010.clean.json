@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDAUTH-010",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Temporary Access Pass not configured",
+  "auditData": {
+    "AuthMethods": {
+      "MethodConfigurations": [],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

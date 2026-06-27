@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.36.0] - 2026-06-27
+
+### Added
+- **Golden-fixture detection-test suite.** The first tests that validate the checks' *verdict logic* (prior tests covered alerting, the vault, and scheduling only). 468 of 580 checks — every Critical, High, and Medium severity control across Active Directory, Entra ID / Azure / Intune / M365, and Google Workspace — are now pinned by synthetic JSON fixtures (`Tests/Fixtures/`) that pump known-good, known-bad, and uncollectable/throttled data through the real `Test-Recon* / Test-Infiltration* / Test-Fortification*` functions and assert the returned status: clean ⇒ PASS, known-bad ⇒ FAIL/WARN, no-data ⇒ Not Assessed (SKIP). 1,288 fixtures run under Pester in a few seconds via `Tests/Unit/GoldenFixtureChecks.Tests.ps1`, with a CI-gating runner (`Tests/Invoke-FixtureTests.ps1`) and optional run-history tracking. The SKIP cases are a regression guard for the "absence of evidence scored as compliance" failure mode. Building the suite surfaced several latent verdict defects (empty-array guards swallowing PASS/FAIL into SKIP, a few checks with no reachable PASS path, and a broken Entra PIM check family), which are tracked for fixing. Repository/test-only addition — the installable module surface and all check behavior are unchanged.
+
 ## [2.35.0] - 2026-06-26
 
 ### Fixed

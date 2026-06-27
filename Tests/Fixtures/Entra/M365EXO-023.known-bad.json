@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-023",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No external sender tag and no marking transport rule",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "TransportRules": [],
+        "ExternalInOutlook": [
+          {
+            "Enabled": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

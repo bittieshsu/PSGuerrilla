@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-017",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "LAPS expiration too long (90 days)",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "LAPSExpirationDays": 90,
+      "LAPSType": "Windows",
+      "LAPSDeployed": true
+    }
+  }
+}

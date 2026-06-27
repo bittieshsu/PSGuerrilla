@@ -1,0 +1,18 @@
+{
+  "checkId": "ADCS-013",
+  "theater": "Reconnaissance",
+  "scenario": "limitation",
+  "expectedStatus": "WARN",
+  "description": "IF_ENFORCEENCRYPTICERTREQUEST not assessable via LDAP",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateAuthorities": [
+        {
+          "DNSHostName": "ca1.t.l",
+          "Name": "CA1"
+        }
+      ]
+    }
+  }
+}

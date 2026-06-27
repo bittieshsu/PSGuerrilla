@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-010",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "WebClient (WebDAV) disabled (4)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Services": {
+          "WebClient": {
+            "StartType": 4
+          }
+        }
+      }
+    }
+  }
+}

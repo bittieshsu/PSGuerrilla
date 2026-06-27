@@ -1,0 +1,18 @@
+{
+  "checkId": "ADMIN-004",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No suspended account holds admin privileges",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a@e.com"
+      }
+    ]
+  }
+}

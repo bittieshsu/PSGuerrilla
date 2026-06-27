@@ -1,0 +1,21 @@
+{
+  "checkId": "ADTIER-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No config-management service accounts in Tier-0 groups",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "Description": "standard admin",
+            "DisplayName": "Admin",
+            "SamAccountName": "admin1"
+          }
+        ]
+      }
+    }
+  }
+}

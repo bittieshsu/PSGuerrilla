@@ -1,0 +1,22 @@
+{
+  "checkId": "EIDAPP-009",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A service principal is stale (>90 days)",
+  "auditData": {
+    "Applications": {
+      "ServicePrincipals": [
+        {
+          "displayName": "SP1",
+          "id": "sp1",
+          "appId": "a1",
+          "signInActivity": {
+            "lastSignInDateTime": "2020-01-01T00:00:00Z"
+          }
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

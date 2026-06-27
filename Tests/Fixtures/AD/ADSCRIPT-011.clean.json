@@ -1,0 +1,20 @@
+{
+  "checkId": "ADSCRIPT-011",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Logon-script inventory compiled (informational)",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "UserScripts": [],
+      "NetlogonFiles": [
+        {
+          "RelativePath": "logon.bat",
+          "Extension": ".bat"
+        }
+      ],
+      "ScriptAnalysis": []
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "checkId": "EIDAUTH-018",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Authenticator does not show app name in notifications",
+  "auditData": {
+    "AuthMethods": {
+      "MethodConfigurations": [
+        {
+          "state": "enabled",
+          "featureSettings": {
+            "displayAppInformationRequiredState": {
+              "state": "disabled"
+            },
+            "displayLocationInformationRequiredState": {
+              "state": "disabled"
+            }
+          },
+          "id": "MicrosoftAuthenticator",
+          "@odata.type": "microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

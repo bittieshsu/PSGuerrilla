@@ -1,0 +1,19 @@
+{
+  "checkId": "M365EXO-001",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Mailbox auditing disabled org-wide",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "OrganizationConfig": {
+          "Name": "Org",
+          "AuditDisabled": true
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

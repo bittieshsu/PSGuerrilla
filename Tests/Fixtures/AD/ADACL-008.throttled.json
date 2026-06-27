@@ -1,0 +1,13 @@
+{
+  "checkId": "ADACL-008",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Object ACLs not assessed",
+  "auditData": {
+    "Errors": {
+      "ObjectACLs": "collector error"
+    },
+    "ACLs": null
+  }
+}

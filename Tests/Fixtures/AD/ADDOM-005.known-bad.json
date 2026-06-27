@@ -1,0 +1,18 @@
+{
+  "checkId": "ADDOM-005",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A DC runs an obsolete OS",
+  "auditData": {
+    "Errors": {},
+    "DomainControllers": [
+      {
+        "ObsoleteOS": true,
+        "OperatingSystem": "Windows Server 2008",
+        "FQDN": "dc1.test.local",
+        "Name": "DC1"
+      }
+    ]
+  }
+}

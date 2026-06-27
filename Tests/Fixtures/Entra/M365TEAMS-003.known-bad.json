@@ -1,0 +1,22 @@
+{
+  "checkId": "M365TEAMS-003",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Everyone auto-admitted to meetings",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "MeetingPolicies": [
+          {
+            "AllowExternalParticipantGiveRequestControl": true,
+            "AutoAdmittedUsers": "Everyone",
+            "Identity": "Global"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

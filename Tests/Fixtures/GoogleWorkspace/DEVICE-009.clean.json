@@ -1,0 +1,17 @@
+{
+  "checkId": "DEVICE-009",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Chrome OS device inventory (informational)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "ChromeDevices": [
+      {
+        "status": "ACTIVE",
+        "serialNumber": "ABC123"
+      }
+    ]
+  }
+}

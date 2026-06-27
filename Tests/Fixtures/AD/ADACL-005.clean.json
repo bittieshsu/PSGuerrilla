@@ -1,0 +1,19 @@
+{
+  "checkId": "ADACL-005",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "WriteOwner held only by a default admin",
+  "auditData": {
+    "Errors": {},
+    "ACLs": {
+      "DangerousACEs": [
+        {
+          "ActiveDirectoryRights": "WriteOwner",
+          "IdentityReference": "BUILTIN\\Administrators",
+          "IdentitySID": "S-1-5-32-544"
+        }
+      ]
+    }
+  }
+}

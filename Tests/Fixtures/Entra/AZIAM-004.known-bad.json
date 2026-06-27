@@ -1,0 +1,28 @@
+{
+  "checkId": "AZIAM-004",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Key Vault lacks RBAC, soft-delete and purge protection",
+  "auditData": {
+    "AzureIAM": {
+      "KeyVaults": [
+        {
+          "location": "eastus",
+          "properties": {
+            "enableSoftDelete": false,
+            "enablePurgeProtection": false,
+            "enableRbacAuthorization": false
+          },
+          "name": "v1"
+        }
+      ],
+      "Subscriptions": [
+        {
+          "id": "s1"
+        }
+      ],
+      "Errors": {}
+    }
+  }
+}

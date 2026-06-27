@@ -1,0 +1,18 @@
+{
+  "checkId": "M365EXO-020",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "SMTP AUTH disabled org-wide",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "TransportConfig": {
+          "SmtpClientAuthenticationDisabled": true
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

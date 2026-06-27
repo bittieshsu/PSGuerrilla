@@ -1,0 +1,14 @@
+{
+  "checkId": "EMAIL-010",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Per-user Gmail settings not assessed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "GmailSettings:u@e.com": "403"
+    },
+    "GmailSettings": null
+  }
+}

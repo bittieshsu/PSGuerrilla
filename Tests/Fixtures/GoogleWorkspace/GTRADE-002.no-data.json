@@ -1,0 +1,12 @@
+{
+  "checkId": "GTRADE-002",
+  "theater": "Fortification",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Group settings not collected",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GroupSettings": {}
+  }
+}

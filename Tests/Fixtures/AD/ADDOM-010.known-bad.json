@@ -1,0 +1,18 @@
+{
+  "checkId": "ADDOM-010",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A site has no subnets assigned",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "Sites": [
+        {
+          "Name": "Site1",
+          "Subnets": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDCA-018",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "No CA policies available",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

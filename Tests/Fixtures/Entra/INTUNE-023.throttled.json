@@ -1,0 +1,13 @@
+{
+  "checkId": "INTUNE-023",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Intune collection failed",
+  "auditData": {
+    "Errors": {
+      "Intune": "Graph 429"
+    },
+    "Intune": null
+  }
+}

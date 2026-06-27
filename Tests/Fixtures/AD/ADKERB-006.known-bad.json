@@ -1,0 +1,23 @@
+{
+  "checkId": "ADKERB-006",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Constrained delegation present (review)",
+  "auditData": {
+    "Kerberos": {
+      "ConstrainedDelegation": [
+        {
+          "AllowedToDelegateTo": [
+            "http/s1"
+          ],
+          "ObjectClass": [
+            "user"
+          ],
+          "SamAccountName": "svc"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "checkId": "M365EXO-025",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No DLP policies configured",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DlpCompliancePolicies": []
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

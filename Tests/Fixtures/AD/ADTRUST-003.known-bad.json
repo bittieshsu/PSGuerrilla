@@ -1,0 +1,20 @@
+{
+  "checkId": "ADTRUST-003",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A transitive trust extends authentication paths",
+  "auditData": {
+    "Errors": {},
+    "Trusts": [
+      {
+        "WithinForest": false,
+        "ForestTransitive": false,
+        "IsTransitive": true,
+        "TrustType": "External",
+        "TrustPartner": "trusted.com",
+        "TrustDirection": "Outbound"
+      }
+    ]
+  }
+}

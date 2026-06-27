@@ -1,0 +1,28 @@
+{
+  "checkId": "EIDAPP-014",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An app holds Exchange full_access_as_app (impersonation)",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "Impersonator",
+          "requiredResourceAccess": [
+            {
+              "resourceAppId": "00000002-0000-0ff1-ce00-000000000000",
+              "resourceAccess": [
+                {
+                  "type": "Role",
+                  "id": "dc890d15-9560-4a4c-9b7f-a736ec74ec40"
+                }
+              ]
+            }
+          ],
+          "appId": "a1"
+        }
+      ]
+    }
+  }
+}

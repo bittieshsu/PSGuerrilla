@@ -1,0 +1,33 @@
+{
+  "checkId": "LOG-003",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Alert rules cover all audit domains",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "AlertRules": [
+      {
+        "source": "login_audit",
+        "name": "Login"
+      },
+      {
+        "source": "drive",
+        "name": "Drive"
+      },
+      {
+        "source": "admin_audit",
+        "name": "Admin"
+      },
+      {
+        "source": "email",
+        "name": "Email"
+      },
+      {
+        "source": "oauth",
+        "name": "OAuth"
+      }
+    ]
+  }
+}

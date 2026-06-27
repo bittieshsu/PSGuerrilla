@@ -1,0 +1,22 @@
+{
+  "checkId": "ADSTALE-001",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An inactive user account exists",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "InactiveUsers": [
+        {
+          "SamAccountName": "u1",
+          "Enabled": true,
+          "LastLogon": "2023-01-01T00:00:00Z",
+          "DN": "CN=u1,DC=t,DC=l",
+          "MemberOf": []
+        }
+      ],
+      "TotalUsers": 100
+    }
+  }
+}

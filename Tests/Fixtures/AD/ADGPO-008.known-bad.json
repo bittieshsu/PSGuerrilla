@@ -1,0 +1,24 @@
+{
+  "checkId": "ADGPO-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A WMI filter is configured (review)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "WMIFilters": [
+        {
+          "Name": "F1",
+          "Query": "select * from x",
+          "Description": "d"
+        }
+      ],
+      "GPOs": [
+        {
+          "DisplayName": "P1"
+        }
+      ]
+    }
+  }
+}

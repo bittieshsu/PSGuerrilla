@@ -1,0 +1,31 @@
+{
+  "checkId": "ADCS-010",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "a low-priv principal holds WriteDacl over a CA enrollment-service object (ESC4-style)",
+  "auditData": {
+    "CertificateServices": {
+      "PKIObjects": [
+        {
+          "Permissions": [
+            {
+              "SID": "S-1-5-11",
+              "Identity": "Authenticated Users",
+              "Right": "WriteDacl"
+            }
+          ],
+          "DN": "CN=VulnerableCA,CN=Enrollment Services,CN=Public Key Services,CN=Services,CN=Configuration,DC=contoso,DC=com",
+          "Name": "VulnerableCA"
+        }
+      ],
+      "CertificateAuthorities": [
+        {
+          "Name": "VulnerableCA",
+          "DNSHostName": "vulnerable-ca.contoso.com"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

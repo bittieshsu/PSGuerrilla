@@ -1,0 +1,27 @@
+{
+  "checkId": "ADKERB-009",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "DCs and accounts use AES",
+  "auditData": {
+    "Kerberos": {
+      "EncryptionTypes": {
+        "DomainControllers": [
+          {
+            "HasAES": true,
+            "HasRC4": false
+          }
+        ],
+        "Summary": {
+          "RC4Enabled": 0,
+          "DESEnabled": 0,
+          "TotalDCs": 1,
+          "AESEnabled": 1
+        }
+      },
+      "KerberoastableAccounts": []
+    },
+    "Errors": {}
+  }
+}

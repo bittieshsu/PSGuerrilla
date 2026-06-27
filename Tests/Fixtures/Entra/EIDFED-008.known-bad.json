@@ -1,0 +1,17 @@
+{
+  "checkId": "EIDFED-008",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Pass-through authentication enabled (review agents)",
+  "auditData": {
+    "Federation": {
+      "OnPremisesSyncSettings": {
+        "features": {
+          "passThroughAuthenticationEnabled": true
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

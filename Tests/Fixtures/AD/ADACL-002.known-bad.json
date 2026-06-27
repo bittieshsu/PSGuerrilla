@@ -1,0 +1,20 @@
+{
+  "checkId": "ADACL-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "an unprivileged principal holds GenericAll over the domain root",
+  "auditData": {
+    "ACLs": {
+      "DangerousACEs": [
+        {
+          "ObjectName": "DC=contoso,DC=com",
+          "IdentitySID": "S-1-5-21-1111111111-2222222222-3333333333-1601",
+          "ActiveDirectoryRights": "GenericAll",
+          "IdentityReference": "CONTOSO\\SuspiciousUser"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

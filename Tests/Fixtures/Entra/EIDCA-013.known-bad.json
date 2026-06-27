@@ -1,0 +1,21 @@
+{
+  "checkId": "EIDCA-013",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No user risk policy",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "conditions": {
+            "userRiskLevels": null
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

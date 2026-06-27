@@ -1,0 +1,18 @@
+{
+  "checkId": "ADPRIV-018",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A privileged account has never logged in",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "SamAccountName": "admin1",
+          "LastLogonTimestamp": 0
+        }
+      ]
+    }
+  }
+}

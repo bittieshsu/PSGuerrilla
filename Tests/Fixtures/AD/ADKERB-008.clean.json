@@ -1,0 +1,14 @@
+{
+  "checkId": "ADKERB-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No protocol-transition delegation",
+  "auditData": {
+    "Kerberos": {
+      "ProtocolTransition": [],
+      "ConstrainedDelegation": []
+    },
+    "Errors": {}
+  }
+}

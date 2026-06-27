@@ -1,0 +1,37 @@
+{
+  "checkId": "DEVICE-001",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Most mobile devices unmanaged (<75%)",
+  "objectShape": false,
+  "auditData": {
+    "MobileDevices": [
+      {
+        "status": "BLOCKED",
+        "managementType": "NONE"
+      },
+      {
+        "status": "BLOCKED",
+        "managementType": "NONE"
+      },
+      {
+        "status": "BLOCKED",
+        "managementType": "NONE"
+      },
+      {
+        "status": "BLOCKED",
+        "managementType": "NONE"
+      },
+      {
+        "status": "BLOCKED",
+        "managementType": "NONE"
+      },
+      {
+        "status": "APPROVED",
+        "managementType": "ADVANCED"
+      }
+    ],
+    "Errors": {}
+  }
+}

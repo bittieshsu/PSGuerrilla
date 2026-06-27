@@ -1,0 +1,32 @@
+{
+  "checkId": "AZIAM-009",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A custom RBAC role uses wildcard actions",
+  "auditData": {
+    "AzureIAM": {
+      "RoleDefinitions": [
+        {
+          "properties": {
+            "permissions": [
+              {
+                "actions": [
+                  "*"
+                ]
+              }
+            ],
+            "roleName": "Custom"
+          },
+          "id": "r1"
+        }
+      ],
+      "Subscriptions": [
+        {
+          "id": "sub1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

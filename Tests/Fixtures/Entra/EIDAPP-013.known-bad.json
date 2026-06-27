@@ -1,0 +1,16 @@
+{
+  "checkId": "EIDAPP-013",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Admin consent workflow disabled",
+  "auditData": {
+    "TenantConfig": {
+      "AdminConsentRequestPolicy": {
+        "isEnabled": false
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "checkId": "ADDOM-003",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Schema version legacy (<87)",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "SchemaVersion": 85,
+      "SchemaVersionName": "2003"
+    }
+  }
+}

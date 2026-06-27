@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-004",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Malware policy with ZAP enabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "MalwarePolicies": [
+          {
+            "EnableInternalSenderAdminNotifications": true,
+            "ZapEnabled": true,
+            "EnableFileFilter": true,
+            "Name": "Default"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

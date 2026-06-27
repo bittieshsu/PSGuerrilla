@@ -1,0 +1,15 @@
+{
+  "checkId": "M365EXO-047",
+  "theater": "Infiltration",
+  "scenario": "not-implemented",
+  "expectedStatus": "SKIP",
+  "description": "Not assessable agentlessly (always SKIP)",
+  "auditData": {
+    "M365Services": {
+      "Errors": {}
+    },
+    "Errors": {
+      "M365Services": "EXO connect failed"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDAPP-006",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No excessive consent grants",
+  "auditData": {
+    "Applications": {
+      "ConsentGrants": [
+        {
+          "resourceId": "graph",
+          "clientId": "c1",
+          "scope": "User.Read",
+          "consentType": "Principal"
+        }
+      ]
+    }
+  }
+}

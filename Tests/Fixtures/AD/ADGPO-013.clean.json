@@ -1,0 +1,18 @@
+{
+  "checkId": "ADGPO-013",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No script files in GPO SYSVOL folders",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "ScriptFiles": [],
+          "HasScripts": false
+        }
+      }
+    }
+  }
+}

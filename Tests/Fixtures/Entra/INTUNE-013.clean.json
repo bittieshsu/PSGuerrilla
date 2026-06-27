@@ -1,0 +1,21 @@
+{
+  "checkId": "INTUNE-013",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Enrollment configurations present",
+  "auditData": {
+    "Intune": {
+      "EnrollmentConfigurations": [
+        {
+          "displayName": "E1",
+          "id": "e1",
+          "@odata.type": "#microsoft.graph.deviceEnrollmentPlatformRestrictions",
+          "priority": 0
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "checkId": "GWS-GEMINI-005",
+  "theater": "Fortification",
+  "scenario": "not-implemented",
+  "expectedStatus": "SKIP",
+  "description": "Gemini conversation-sharing not exposed via API",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {}
+  }
+}

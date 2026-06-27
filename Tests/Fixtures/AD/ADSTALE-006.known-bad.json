@@ -1,0 +1,21 @@
+{
+  "checkId": "ADSTALE-006",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An unsupported-OS computer exists",
+  "auditData": {
+    "StaleObjects": {
+      "TotalComputers": 100,
+      "UnsupportedOSComputers": [
+        {
+          "Enabled": true,
+          "OperatingSystem": "Windows 7",
+          "DN": "CN=OLD,DC=t,DC=l",
+          "SamAccountName": "OLD$"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

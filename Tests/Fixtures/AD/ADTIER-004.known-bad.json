@@ -1,0 +1,21 @@
+{
+  "checkId": "ADTIER-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An SCCM account is in Domain Admins",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "Description": "config management",
+            "DisplayName": "SCCM Service",
+            "SamAccountName": "sccm_svc"
+          }
+        ]
+      }
+    }
+  }
+}

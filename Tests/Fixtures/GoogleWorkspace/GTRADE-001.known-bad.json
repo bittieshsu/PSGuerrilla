@@ -1,0 +1,19 @@
+{
+  "checkId": "GTRADE-001",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "a delegation grant holds full mailbox and directory write scopes",
+  "auditData": {
+    "DomainWideDelegation": [
+      {
+        "scopes": [
+          "https://mail.google.com/",
+          "https://www.googleapis.com/auth/admin.directory.user"
+        ],
+        "clientId": "100000000000000000004"
+      }
+    ],
+    "Errors": {}
+  }
+}

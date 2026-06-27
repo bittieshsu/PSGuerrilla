@@ -1,0 +1,14 @@
+{
+  "checkId": "EMAIL-004",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "DNS record collection failed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "DnsRecords:example.com": "SERVFAIL"
+    },
+    "DnsRecords": null
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-016",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Data processing not region-limited",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "data_regions.data_processing_region": [
+          {
+            "setting": {
+              "value": {
+                "limitToStorageRegion": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

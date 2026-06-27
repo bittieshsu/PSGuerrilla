@@ -1,0 +1,18 @@
+{
+  "checkId": "OAUTH-003",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No third-party apps hold high-risk scopes",
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "app_name": "Safe",
+          "scope": "https://www.googleapis.com/auth/userinfo.email"
+        }
+      }
+    ]
+  }
+}

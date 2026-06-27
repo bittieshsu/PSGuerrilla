@@ -1,0 +1,21 @@
+{
+  "checkId": "ADPRIV-014",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No privileged account with USE_DES_KEY_ONLY",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "UACFlags": {
+            "USE_DES_KEY_ONLY": false
+          },
+          "Enabled": true,
+          "SamAccountName": "a"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

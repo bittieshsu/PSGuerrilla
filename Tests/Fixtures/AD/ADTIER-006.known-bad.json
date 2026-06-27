@@ -1,0 +1,25 @@
+{
+  "checkId": "ADTIER-006",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A Tier-0 admin is not in a dedicated admin OU",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Enterprise Admins": [],
+        "Backup Operators": [],
+        "Schema Admins": [],
+        "Domain Admins": [
+          {
+            "DistinguishedName": "CN=bad,OU=Users,DC=t,DC=l",
+            "ObjectClass": "user",
+            "SamAccountName": "bad",
+            "Group": "Domain Admins"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

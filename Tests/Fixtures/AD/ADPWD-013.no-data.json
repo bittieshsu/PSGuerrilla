@@ -1,0 +1,14 @@
+{
+  "checkId": "ADPWD-013",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "DSInternals unavailable",
+  "auditData": {
+    "PasswordPolicies": {},
+    "ModuleAvailability": {
+      "DSInternals": false
+    },
+    "Errors": {}
+  }
+}

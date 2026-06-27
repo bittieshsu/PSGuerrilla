@@ -1,0 +1,24 @@
+{
+  "checkId": "DRIVE-004",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Shared Drive creation restricted",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.shared_drive_creation": [
+          {
+            "setting": {
+              "value": {
+                "allowSharedDriveCreation": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

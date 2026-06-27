@@ -1,0 +1,39 @@
+{
+  "checkId": "EIDTNT-006",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "6 cross-tenant partners (review)",
+  "auditData": {
+    "TenantConfig": {
+      "CrossTenantPartners": [
+        {
+          "tenantId": "1",
+          "isServiceProvider": false
+        },
+        {
+          "tenantId": "2",
+          "isServiceProvider": false
+        },
+        {
+          "tenantId": "3",
+          "isServiceProvider": false
+        },
+        {
+          "tenantId": "4",
+          "isServiceProvider": false
+        },
+        {
+          "tenantId": "5",
+          "isServiceProvider": false
+        },
+        {
+          "tenantId": "6",
+          "isServiceProvider": false
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

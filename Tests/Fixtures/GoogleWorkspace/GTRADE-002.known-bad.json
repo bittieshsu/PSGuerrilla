@@ -1,0 +1,17 @@
+{
+  "checkId": "GTRADE-002",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A group is viewable by anyone on the internet",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GroupSettings": {
+      "g@e.com": {
+        "whoCanViewGroup": "ANYONE_CAN_VIEW",
+        "email": "g@e.com"
+      }
+    }
+  }
+}

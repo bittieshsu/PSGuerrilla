@@ -1,0 +1,13 @@
+{
+  "checkId": "ADTRADE-009",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Cert Publishers group not resolved",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "CertPublishersFound": false
+    }
+  }
+}

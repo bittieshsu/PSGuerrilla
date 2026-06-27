@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-008",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Calendar external sharing exposes all info read/write",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "calendar.primary_calendar_max_allowed_external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "maxAllowedExternalSharing": "EXTERNAL_ALL_INFO_READ_WRITE"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

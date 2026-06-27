@@ -1,0 +1,20 @@
+{
+  "checkId": "ADPWD-014",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An account uses a common password",
+  "auditData": {
+    "ModuleAvailability": {
+      "DSInternals": true
+    },
+    "Errors": {},
+    "PasswordPolicies": {
+      "CommonPasswordUsers": [
+        {
+          "SamAccountName": "u1"
+        }
+      ]
+    }
+  }
+}

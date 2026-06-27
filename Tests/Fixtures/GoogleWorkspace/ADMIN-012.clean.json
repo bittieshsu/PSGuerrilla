@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-012",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Groups for Business disabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "groups_for_business.service_status": [
+          {
+            "setting": {
+              "value": {
+                "serviceState": "DISABLED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

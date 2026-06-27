@@ -1,0 +1,11 @@
+{
+  "checkId": "ADTRUST-009",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No orphaned trusts",
+  "auditData": {
+    "Errors": {},
+    "Trusts": []
+  }
+}

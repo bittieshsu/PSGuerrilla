@@ -1,0 +1,19 @@
+{
+  "checkId": "ADPRIV-021",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An adminCount orphan exists",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "AdminCountOrphans": [
+        {
+          "SamAccountName": "orphan1",
+          "DistinguishedName": "CN=orphan1,DC=t,DC=l",
+          "Enabled": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "checkId": "M365TEAMS-002",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "M365 services not assessed",
+  "auditData": {
+    "M365Services": {
+      "Errors": {}
+    },
+    "Errors": {
+      "M365Services": "EXO connect failed"
+    }
+  }
+}

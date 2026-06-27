@@ -1,0 +1,15 @@
+{
+  "checkId": "ADTRADE-007",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No risky BadSuccessor dMSA delegation",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "DmsaClassPresent": true,
+      "DmsaAclCollected": true,
+      "BadSuccessorOus": []
+    }
+  }
+}

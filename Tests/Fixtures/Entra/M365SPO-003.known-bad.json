@@ -1,0 +1,16 @@
+{
+  "checkId": "M365SPO-003",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Default sharing link is AnonymousAccess",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "DefaultSharingLinkType": "AnonymousAccess"
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

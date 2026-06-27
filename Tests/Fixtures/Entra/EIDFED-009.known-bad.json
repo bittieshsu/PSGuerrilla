@@ -1,0 +1,23 @@
+{
+  "checkId": "EIDFED-009",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Federated domain missing MFA behavior (1-2 issues)",
+  "auditData": {
+    "Federation": {
+      "FederationConfigs": [
+        {
+          "DomainName": "c.com",
+          "Config": {
+            "promptLoginBehavior": null,
+            "preferredAuthenticationProtocol": "wsfed",
+            "federatedIdpMfaBehavior": null
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

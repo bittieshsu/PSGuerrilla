@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-016",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "DKIM enabled for all domains",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DkimSigningConfig": [
+          {
+            "Enabled": true,
+            "Domain": "c.com"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

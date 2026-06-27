@@ -1,0 +1,16 @@
+{
+  "checkId": "M365SPO-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Default sharing link is Direct/SpecificPeople",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "DefaultSharingLinkType": "Direct"
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

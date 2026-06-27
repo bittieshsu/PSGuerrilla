@@ -1,0 +1,17 @@
+{
+  "checkId": "EIDTNT-013",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No technical/security notification contacts",
+  "auditData": {
+    "TenantConfig": {
+      "Organization": {
+        "privacyProfile": null,
+        "securityComplianceNotificationMails": [],
+        "technicalNotificationMails": []
+      }
+    },
+    "Errors": {}
+  }
+}

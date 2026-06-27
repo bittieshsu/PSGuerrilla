@@ -1,0 +1,26 @@
+{
+  "checkId": "ADGPO-009",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Linked GPO has Apply permission",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "GPOPermissions": {
+        "P1": {
+          "CanApply": [
+            "Domain Admins"
+          ]
+        }
+      },
+      "GPOs": [
+        {
+          "GUID": "{1}",
+          "IsLinked": true,
+          "DisplayName": "P1"
+        }
+      ]
+    }
+  }
+}

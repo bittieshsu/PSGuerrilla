@@ -1,0 +1,48 @@
+{
+  "checkId": "EIDCA-004",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A group is excluded from 3+ CA policies",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "displayName": "P1",
+          "conditions": {
+            "users": {
+              "excludeGroups": [
+                "g-123"
+              ]
+            }
+          },
+          "state": "enabled"
+        },
+        {
+          "displayName": "P2",
+          "conditions": {
+            "users": {
+              "excludeGroups": [
+                "g-123"
+              ]
+            }
+          },
+          "state": "enabled"
+        },
+        {
+          "displayName": "P3",
+          "conditions": {
+            "users": {
+              "excludeGroups": [
+                "g-123"
+              ]
+            }
+          },
+          "state": "enabled"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

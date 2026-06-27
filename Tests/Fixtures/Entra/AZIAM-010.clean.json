@@ -1,0 +1,25 @@
+{
+  "checkId": "AZIAM-010",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Resource locks deployed",
+  "auditData": {
+    "AzureIAM": {
+      "ResourceLocks": [
+        {
+          "properties": {
+            "level": "CanNotDelete"
+          },
+          "id": "l1"
+        }
+      ],
+      "Subscriptions": [
+        {
+          "id": "sub1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

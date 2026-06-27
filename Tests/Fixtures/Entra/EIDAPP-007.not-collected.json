@@ -1,0 +1,10 @@
+{
+  "checkId": "EIDAPP-007",
+  "theater": "Infiltration",
+  "scenario": "not-collected",
+  "expectedStatus": "SKIP",
+  "description": "ARM role-assignment analysis not available in Entra-only audit",
+  "auditData": {
+    "Applications": {}
+  }
+}

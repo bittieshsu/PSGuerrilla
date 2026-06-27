@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-017",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All domains have valid DMARC",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DomainMailSecurity": [
+          {
+            "DMARC": {
+              "Policy": "reject",
+              "Valid": true,
+              "Record": "v=DMARC1; p=reject"
+            },
+            "Domain": "contoso.com"
+          }
+        ]
+      }
+    }
+  }
+}

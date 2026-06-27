@@ -1,0 +1,20 @@
+{
+  "checkId": "ADACL-014",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "GPOs editable only by default admins",
+  "auditData": {
+    "ACLs": {
+      "GPOPermissions": {
+        "Default Domain Policy": {
+          "CanEdit": [
+            "Domain Admins"
+          ],
+          "DN": "cn=p,DC=t,DC=l"
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

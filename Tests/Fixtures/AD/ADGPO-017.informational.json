@@ -1,0 +1,17 @@
+{
+  "checkId": "ADGPO-017",
+  "theater": "Reconnaissance",
+  "scenario": "informational",
+  "expectedStatus": "WARN",
+  "description": "Restricted Groups review (no reachable PASS path)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "PreferenceFiles": []
+        }
+      }
+    }
+  }
+}

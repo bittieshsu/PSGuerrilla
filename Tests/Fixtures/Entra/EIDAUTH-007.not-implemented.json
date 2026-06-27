@@ -1,0 +1,17 @@
+{
+  "checkId": "EIDAUTH-007",
+  "theater": "Infiltration",
+  "scenario": "not-implemented",
+  "expectedStatus": "SKIP",
+  "description": "ROCA check intentionally unimplemented (requires FIDO2 metadata)",
+  "auditData": {
+    "AuthMethods": {
+      "UserRegistrationDetails": [
+        {
+          "id": "1",
+          "isMfaRegistered": true
+        }
+      ]
+    }
+  }
+}

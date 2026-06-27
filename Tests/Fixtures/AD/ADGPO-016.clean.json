@@ -1,0 +1,17 @@
+{
+  "checkId": "ADGPO-016",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Registry.pol inventory (informational)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "HasRegistryPol": true
+        }
+      }
+    }
+  }
+}

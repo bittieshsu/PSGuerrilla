@@ -1,0 +1,29 @@
+{
+  "checkId": "ADPRIV-030",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Privileged account is in Protected Users",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "ProtectedUsersMembers": [
+        {
+          "DistinguishedName": "CN=a,DC=t,DC=l"
+        }
+      ],
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "Enabled": true,
+            "IsServiceAccount": false,
+            "IsComputer": false,
+            "SamAccountName": "a",
+            "ObjectClass": "user",
+            "DistinguishedName": "CN=a,DC=t,DC=l"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

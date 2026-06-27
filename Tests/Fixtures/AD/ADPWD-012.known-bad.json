@@ -1,0 +1,20 @@
+{
+  "checkId": "ADPWD-012",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An account uses a known-breached password",
+  "auditData": {
+    "ModuleAvailability": {
+      "DSInternals": true
+    },
+    "Errors": {},
+    "PasswordPolicies": {
+      "HIBPCompromisedUsers": [
+        {
+          "SamAccountName": "u1"
+        }
+      ]
+    }
+  }
+}

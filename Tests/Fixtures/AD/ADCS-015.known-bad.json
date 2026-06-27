@@ -1,0 +1,26 @@
+{
+  "checkId": "ADCS-015",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A published v1 template is enrollable by Authenticated Users",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateTemplates": [
+        {
+          "SchemaVersion": 1,
+          "EnrollmentPermissions": [
+            {
+              "Right": "Enroll",
+              "Identity": "Authenticated Users",
+              "SID": "S-1-5-11"
+            }
+          ],
+          "IsPublished": true,
+          "ExtendedKeyUsageOIDs": []
+        }
+      ]
+    }
+  }
+}

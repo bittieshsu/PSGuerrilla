@@ -1,0 +1,22 @@
+{
+  "checkId": "ADDOM-016",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Weak LM compatibility allows NTLMv1 (2)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "guid1": {
+          "RegistryPolicies": [
+            {
+              "ValueName": "LmCompatibilityLevel",
+              "Value": 2
+            }
+          ]
+        }
+      }
+    }
+  }
+}

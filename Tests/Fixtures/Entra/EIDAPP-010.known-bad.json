@@ -1,0 +1,20 @@
+{
+  "checkId": "EIDAPP-010",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A multi-tenant app registration exists",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "A1",
+          "appId": "a1",
+          "signInAudience": "AzureADMultipleOrgs",
+          "createdDateTime": "2025-01-01T00:00:00Z"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

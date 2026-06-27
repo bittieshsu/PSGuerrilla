@@ -1,0 +1,28 @@
+{
+  "checkId": "EIDCA-010",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Location-based CA policy present",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "Loc",
+          "id": "p1",
+          "conditions": {
+            "locations": {
+              "excludeLocations": [],
+              "includeLocations": [
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

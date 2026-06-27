@@ -1,0 +1,13 @@
+{
+  "checkId": "ADDOM-009",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "AD Recycle Bin disabled",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "RecycleBinEnabled": false
+    }
+  }
+}

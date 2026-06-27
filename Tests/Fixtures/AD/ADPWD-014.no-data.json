@@ -1,0 +1,14 @@
+{
+  "checkId": "ADPWD-014",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "DSInternals unavailable — common-password analysis not performed",
+  "auditData": {
+    "ModuleAvailability": {
+      "DSInternals": false
+    },
+    "Errors": {},
+    "PasswordPolicies": {}
+  }
+}

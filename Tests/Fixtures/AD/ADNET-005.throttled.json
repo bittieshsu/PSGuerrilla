@@ -1,0 +1,13 @@
+{
+  "checkId": "ADNET-005",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "NetworkConfig failed",
+  "auditData": {
+    "Errors": {
+      "NetworkConfig": "collector error"
+    },
+    "Network": null
+  }
+}

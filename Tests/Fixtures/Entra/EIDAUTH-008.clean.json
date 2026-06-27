@@ -1,0 +1,30 @@
+{
+  "checkId": "EIDAUTH-008",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Most users are passwordless-capable (>=80%)",
+  "auditData": {
+    "AuthMethods": {
+      "UserRegistrationDetails": [
+        {
+          "isPasswordlessCapable": true,
+          "methodsRegistered": []
+        },
+        {
+          "isPasswordlessCapable": true,
+          "methodsRegistered": []
+        },
+        {
+          "isPasswordlessCapable": true,
+          "methodsRegistered": []
+        },
+        {
+          "isPasswordlessCapable": true,
+          "methodsRegistered": []
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

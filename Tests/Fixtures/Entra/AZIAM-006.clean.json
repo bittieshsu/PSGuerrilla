@@ -1,0 +1,37 @@
+{
+  "checkId": "AZIAM-006",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No permissive inbound NSG rules",
+  "auditData": {
+    "AzureIAM": {
+      "Subscriptions": [
+        {
+          "id": "s1"
+        }
+      ],
+      "Errors": {},
+      "NetworkSecurityGroups": [
+        {
+          "name": "nsg1",
+          "properties": {
+            "securityRules": [
+              {
+                "name": "DenyAll",
+                "properties": {
+                  "destinationPortRange": "*",
+                  "direction": "Inbound",
+                  "access": "Deny",
+                  "sourceAddressPrefix": "*",
+                  "priority": 65500,
+                  "protocol": "*"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

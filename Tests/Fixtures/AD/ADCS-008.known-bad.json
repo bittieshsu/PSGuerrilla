@@ -1,0 +1,26 @@
+{
+  "checkId": "ADCS-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Authenticated Users hold WriteDacl on a PKI object",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "PKIObjects": [
+        {
+          "Name": "CN=PKS",
+          "Permissions": [
+            {
+              "Identity": "Authenticated Users",
+              "Right": "WriteDacl",
+              "SID": "S-1-5-11"
+            }
+          ],
+          "ObjectClass": "container",
+          "DN": "CN=Public Key Services,..."
+        }
+      ]
+    }
+  }
+}

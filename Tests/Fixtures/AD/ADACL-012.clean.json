@@ -1,0 +1,24 @@
+{
+  "checkId": "ADACL-012",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Domain root ACEs are all held by default admins",
+  "auditData": {
+    "ACLs": {
+      "CriticalObjectACLs": {
+        "Domain Root": {
+          "ACEs": [
+            {
+              "ActiveDirectoryRights": "GenericAll",
+              "IdentityReference": "NT AUTHORITY\\SYSTEM",
+              "IdentitySID": "S-1-5-18",
+              "AccessControlType": "Allow"
+            }
+          ]
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

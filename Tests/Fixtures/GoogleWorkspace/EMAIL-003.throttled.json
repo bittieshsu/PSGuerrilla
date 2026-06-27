@@ -1,0 +1,13 @@
+{
+  "checkId": "EMAIL-003",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "DNS record collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "DnsRecords": null,
+    "Errors": {
+      "DnsRecords:example.com": "DNS resolution failed: timeout"
+    }
+  }
+}

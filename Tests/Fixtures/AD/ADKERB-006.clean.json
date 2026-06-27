@@ -1,0 +1,13 @@
+{
+  "checkId": "ADKERB-006",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No constrained delegation configured",
+  "auditData": {
+    "Kerberos": {
+      "ConstrainedDelegation": []
+    },
+    "Errors": {}
+  }
+}

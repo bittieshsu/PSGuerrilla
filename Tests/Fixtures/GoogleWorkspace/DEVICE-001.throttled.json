@@ -1,0 +1,14 @@
+{
+  "checkId": "DEVICE-001",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Mobile device inventory not assessed",
+  "objectShape": false,
+  "auditData": {
+    "MobileDevices": null,
+    "Errors": {
+      "MobileDevices": "collector error"
+    }
+  }
+}

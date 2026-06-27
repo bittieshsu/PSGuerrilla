@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-016",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Data processing limited to storage region",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "data_regions.data_processing_region": [
+          {
+            "setting": {
+              "value": {
+                "limitToStorageRegion": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

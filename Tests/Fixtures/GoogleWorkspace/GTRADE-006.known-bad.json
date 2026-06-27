@@ -1,0 +1,19 @@
+{
+  "checkId": "GTRADE-006",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An app holds full-mailbox scope (persists across reset)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "scope": "https://mail.google.com/",
+          "app_name": "Evil"
+        }
+      }
+    ]
+  }
+}

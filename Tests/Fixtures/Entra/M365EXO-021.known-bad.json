@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-021",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A sharing policy shares contacts with all domains (*)",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "SharingPolicies": [
+          {
+            "Name": "Open",
+            "Domains": [
+              "*:ContactsSharing"
+            ]
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

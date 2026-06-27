@@ -1,0 +1,17 @@
+{
+  "checkId": "ADTRUST-006",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "External trust uses selective authentication",
+  "auditData": {
+    "Trusts": [
+      {
+        "WithinForest": false,
+        "SelectiveAuthentication": true,
+        "TrustPartner": "p.com"
+      }
+    ],
+    "Errors": {}
+  }
+}

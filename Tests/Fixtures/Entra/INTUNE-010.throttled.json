@@ -1,0 +1,15 @@
+{
+  "checkId": "INTUNE-010",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Intune device-configuration collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "Intune": {
+      "DeviceConfigurations": null
+    },
+    "Errors": {
+      "Intune": "Graph 429: deviceManagement/deviceConfigurations throttled."
+    }
+  }
+}

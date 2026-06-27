@@ -1,0 +1,13 @@
+{
+  "checkId": "INTUNE-022",
+  "theater": "Infiltration",
+  "scenario": "not-implemented",
+  "expectedStatus": "SKIP",
+  "description": "OneDrive sync config needs admin/registry data not in Graph",
+  "auditData": {
+    "Intune": {
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

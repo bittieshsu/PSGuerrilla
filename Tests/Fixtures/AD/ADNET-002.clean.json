@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-002",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "LDAP channel binding required (2)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDCPolicy": {
+        "Registry": {
+          "MACHINE\\System\\CurrentControlSet\\Services\\NTDS\\Parameters\\LdapEnforceChannelBinding": {
+            "Value": "2"
+          }
+        }
+      }
+    }
+  }
+}

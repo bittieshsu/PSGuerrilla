@@ -1,0 +1,39 @@
+{
+  "checkId": "INTUNE-005",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Many configuration profiles are unassigned (>3)",
+  "auditData": {
+    "Intune": {
+      "DeviceConfigurations": [
+        {
+          "displayName": "P1",
+          "assignments": [],
+          "id": "c1",
+          "@odata.type": "#microsoft.graph.deviceConfiguration"
+        },
+        {
+          "displayName": "P2",
+          "assignments": [],
+          "id": "c2",
+          "@odata.type": "#microsoft.graph.deviceConfiguration"
+        },
+        {
+          "displayName": "P3",
+          "assignments": [],
+          "id": "c3",
+          "@odata.type": "#microsoft.graph.deviceConfiguration"
+        },
+        {
+          "displayName": "P4",
+          "assignments": [],
+          "id": "c4",
+          "@odata.type": "#microsoft.graph.deviceConfiguration"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

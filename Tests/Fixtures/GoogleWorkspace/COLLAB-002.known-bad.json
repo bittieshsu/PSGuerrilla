@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-002",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Meet permits an unrestricted audience",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "meet.meet_joining": [
+          {
+            "setting": {
+              "value": {
+                "allowedAudience": "ALL"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

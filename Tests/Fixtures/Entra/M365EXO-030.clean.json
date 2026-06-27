@@ -1,0 +1,20 @@
+{
+  "checkId": "M365EXO-030",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Anti-malware policy present (quarantine default)",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "MalwarePolicies": [
+          {
+            "Name": "P1"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

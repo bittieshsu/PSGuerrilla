@@ -1,0 +1,11 @@
+{
+  "checkId": "ADSTALE-005",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Stale object data unavailable",
+  "auditData": {
+    "StaleObjects": null,
+    "Errors": {}
+  }
+}

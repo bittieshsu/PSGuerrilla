@@ -1,0 +1,13 @@
+{
+  "checkId": "OAUTH-003",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "OAuthApps collection failed",
+  "auditData": {
+    "Errors": {
+      "OAuthApps": "Reports API 429"
+    },
+    "OAuthApps": null
+  }
+}

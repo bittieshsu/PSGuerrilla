@@ -332,4 +332,111 @@ function New-MockCheckDefinition {
     }
 }
 
+# --- Golden-fixture helpers (shared by the Pester suite and the publisher) ---
+
+# Build the table-driven case list from the JSON fixtures under Tests/Fixtures/,
+# pairing each fixture with the REAL check definition from Data/AuditChecks/.
+function Get-GuerrillaFixtureCases {
+    $repoRoot    = (Resolve-Path (Join-Path $PSScriptRoot '..' '..')).Path
+    $fixtureRoot = Join-Path $repoRoot 'Tests' 'Fixtures'
+    $dataDir     = Join-Path $repoRoot 'Data' 'AuditChecks'
+
+    $defIndex = @{}
+    foreach ($file in Get-ChildItem -Path $dataDir -Filter *.json) {
+        $json = Get-Content -Path $file.FullName -Raw | ConvertFrom-Json -AsHashtable
+        foreach ($check in @($json.checks)) {
+            if ($check.id) {
+                $check['_categoryName'] = $json.categoryName
+                $defIndex[$check.id] = $check
+            }
+        }
+    }
+
+    $theaterPrefix = @{
+        AD              = 'Test-Recon'
+        Entra           = 'Test-Infiltration'
+        GoogleWorkspace = 'Test-Fortification'
+    }
+
+    $cases = [System.Collections.Generic.List[hashtable]]::new()
+    foreach ($file in Get-ChildItem -Path $fixtureRoot -Filter *.json -Recurse) {
+        $raw    = Get-Content -Path $file.FullName -Raw
+        $fx     = $raw | ConvertFrom-Json -AsHashtable
+        $family = Split-Path (Split-Path $file.FullName -Parent) -Leaf
+
+        # Most checks read nested data via hashtable indexing, so -AsHashtable is right.
+        # But the Google CloudIdentity resolver (Resolve-GooglePolicyValue) inspects fields
+        # via .PSObject.Properties, which only sees PSCustomObject members — matching the
+        # live collector's shape. objectShape fixtures load as PSCustomObject, then coerce
+        # the top level / Errors / CloudIdentityPolicies.ByType back to hashtables (which
+        # ARE index-accessed) while leaving the policy value objects as PSCustomObjects.
+        $auditData = $fx.auditData
+        if ($fx.objectShape) {
+            $auditData = ConvertTo-MixedAuditData ($raw | ConvertFrom-Json).auditData
+        }
+
+        $cases.Add(@{
+            CheckId        = $fx.checkId
+            Scenario       = $fx.scenario
+            ExpectedStatus = $fx.expectedStatus
+            Description    = $fx.description
+            Family         = $family
+            FunctionName   = "$($theaterPrefix[$family])$($fx.checkId -replace '-','')"
+            AuditData      = $auditData
+            Definition     = $defIndex[$fx.checkId]
+            FixtureFile    = $file.Name
+        })
+    }
+    $cases.ToArray()
+}
+
+# Coerce a PSCustomObject auditData into the production "mixed" shape: hashtable at the
+# top level (so [hashtable]$AuditData binds), Errors and CloudIdentityPolicies.ByType as
+# hashtables (index-accessed by the checks), with policy value objects left as
+# PSCustomObjects (member-accessed by Resolve-GooglePolicyValue).
+function ConvertTo-MixedAuditData {
+    param($AuditDataObject)
+    $ht = @{}
+    foreach ($p in $AuditDataObject.PSObject.Properties) { $ht[$p.Name] = $p.Value }
+    if ($ht.ContainsKey('Errors') -and $ht['Errors']) {
+        $eh = @{}; foreach ($p in $ht['Errors'].PSObject.Properties) { $eh[$p.Name] = $p.Value }
+        $ht['Errors'] = $eh
+    }
+    if ($ht.ContainsKey('CloudIdentityPolicies') -and $ht['CloudIdentityPolicies']) {
+        $cip = @{}
+        foreach ($p in $ht['CloudIdentityPolicies'].PSObject.Properties) { $cip[$p.Name] = $p.Value }
+        if ($cip.ContainsKey('ByType') -and $cip['ByType']) {
+            $bt = @{}; foreach ($p in $cip['ByType'].PSObject.Properties) { $bt[$p.Name] = $p.Value }
+            $cip['ByType'] = $bt
+        }
+        $ht['CloudIdentityPolicies'] = $cip
+    }
+    # OrgUnitPolicies is index-accessed by OU path ($AuditData.OrgUnitPolicies[$OrgUnitPath]),
+    # so it must be a hashtable even when the fixture loads as PSCustomObject.
+    if ($ht.ContainsKey('OrgUnitPolicies') -and $ht['OrgUnitPolicies']) {
+        $oup = @{}; foreach ($p in $ht['OrgUnitPolicies'].PSObject.Properties) { $oup[$p.Name] = $p.Value }
+        $ht['OrgUnitPolicies'] = $oup
+    }
+    $ht
+}
+
+# Execute one fixture against its real check function inside the module scope and
+# return the AuditFinding. Uses the module-call operator so it works with or
+# without Pester loaded (the publisher runs outside Pester).
+function Invoke-GuerrillaCheckFixture {
+    param(
+        [Parameter(Mandatory)][hashtable]$AuditData,
+        [Parameter(Mandatory)][hashtable]$Definition,
+        [Parameter(Mandatory)][string]$FunctionName
+    )
+    $mod = Get-Module PSGuerrilla
+    if (-not $mod) { throw 'PSGuerrilla module is not imported; call Import-PSGuerrilla first.' }
+    & $mod {
+        param($AuditData, $Definition, $FunctionName)
+        $cmd = Get-Command $FunctionName -ErrorAction SilentlyContinue
+        if (-not $cmd) { throw "check function not found: $FunctionName" }
+        & $FunctionName -AuditData $AuditData -CheckDefinition $Definition
+    } $AuditData $Definition $FunctionName
+}
+
 Export-ModuleMember -Function *

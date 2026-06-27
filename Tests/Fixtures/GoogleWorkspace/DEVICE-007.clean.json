@@ -1,0 +1,17 @@
+{
+  "checkId": "DEVICE-007",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Chrome policies configured",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "ChromePolicies": [
+      {
+        "value": "blocked.com",
+        "name": "BlockedHosts"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "checkId": "LOG-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Enterprise edition (extended log retention)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Tenant": {
+      "edition": "enterprise"
+    }
+  }
+}

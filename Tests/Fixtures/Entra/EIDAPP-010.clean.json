@@ -1,0 +1,20 @@
+{
+  "checkId": "EIDAPP-010",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No multi-tenant app registrations",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "A1",
+          "appId": "a1",
+          "signInAudience": "AzureADMyOrg",
+          "createdDateTime": "2025-01-01T00:00:00Z"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

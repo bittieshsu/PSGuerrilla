@@ -1,0 +1,23 @@
+{
+  "checkId": "EIDAPP-003",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "An app registration holds a credential (review)",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "A1",
+          "keyCredentials": [],
+          "appId": "a1",
+          "passwordCredentials": [
+            {
+              "keyId": "c1"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

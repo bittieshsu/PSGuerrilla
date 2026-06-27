@@ -1,0 +1,19 @@
+{
+  "checkId": "ADSCRIPT-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No external resource references in scripts",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "ScriptAnalysis": [
+        {
+          "RelativePath": "startup.bat",
+          "ExternalResources": false,
+          "ExternalResourceList": []
+        }
+      ]
+    }
+  }
+}

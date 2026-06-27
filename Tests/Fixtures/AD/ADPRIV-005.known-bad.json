@@ -1,0 +1,22 @@
+{
+  "checkId": "ADPRIV-005",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Server Operators has a member",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Server Operators": [
+          {
+            "Enabled": true,
+            "IsGroup": false,
+            "ObjectClass": "user",
+            "SamAccountName": "m1"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

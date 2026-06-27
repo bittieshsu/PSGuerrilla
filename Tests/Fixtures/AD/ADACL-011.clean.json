@@ -1,0 +1,16 @@
+{
+  "checkId": "ADACL-011",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Domain root owned by Domain Admins",
+  "auditData": {
+    "ACLs": {
+      "DomainRootOwner": "Domain Admins",
+      "CriticalObjectACLs": {
+        "Domain Root": {}
+      }
+    },
+    "Errors": {}
+  }
+}

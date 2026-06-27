@@ -1,0 +1,15 @@
+{
+  "checkId": "ADDOM-007",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Replication healthy (single DC)",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "ReplicationHealth": {
+        "SingleDC": true
+      }
+    }
+  }
+}

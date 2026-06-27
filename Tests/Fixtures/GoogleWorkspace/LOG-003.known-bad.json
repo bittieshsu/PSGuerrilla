@@ -1,0 +1,17 @@
+{
+  "checkId": "LOG-003",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Alert rules leave most audit domains uncovered (>2)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "AlertRules": [
+      {
+        "source": "login_audit",
+        "name": "Login"
+      }
+    ]
+  }
+}

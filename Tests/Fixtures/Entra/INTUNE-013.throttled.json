@@ -1,0 +1,15 @@
+{
+  "checkId": "INTUNE-013",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Intune enrollment configurations not assessed",
+  "auditData": {
+    "Intune": {
+      "Errors": {}
+    },
+    "Errors": {
+      "Intune": "Graph 429"
+    }
+  }
+}

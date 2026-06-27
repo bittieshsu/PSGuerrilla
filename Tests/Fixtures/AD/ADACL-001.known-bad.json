@@ -1,0 +1,22 @@
+{
+  "checkId": "ADACL-001",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A dangerous ACE exists on the domain root",
+  "auditData": {
+    "Errors": {},
+    "ACLs": {
+      "DangerousACEs": [
+        {
+          "IdentityReference": "CORP\\BadUser",
+          "IdentitySID": "S-1-5-21-1111111111-2222222222-3333333333-1601",
+          "ObjectName": "Domain Root"
+        }
+      ],
+      "CriticalObjectACLs": {
+        "Domain Root": null
+      }
+    }
+  }
+}

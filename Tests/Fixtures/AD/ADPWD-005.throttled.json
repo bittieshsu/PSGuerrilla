@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPWD-005",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Password policy not assessed",
+  "auditData": {
+    "Errors": {
+      "PasswordPolicies": "collector error"
+    },
+    "PasswordPolicies": null
+  }
+}

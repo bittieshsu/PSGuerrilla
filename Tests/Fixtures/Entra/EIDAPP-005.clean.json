@@ -1,0 +1,36 @@
+{
+  "checkId": "EIDAPP-005",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "a benign app (User.Read delegated only) with a credential-free service principal",
+  "auditData": {
+    "Errors": {},
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "appId": "app-benign",
+          "requiredResourceAccess": [
+            {
+              "resourceAccess": [
+                {
+                  "type": "Scope",
+                  "id": "e1fe6dd8-ba31-4d61-89e7-88639da4683d"
+                }
+              ],
+              "resourceAppId": "00000003-0000-0000-c000-000000000000"
+            }
+          ]
+        }
+      ],
+      "ServicePrincipals": [
+        {
+          "appId": "app-benign",
+          "displayName": "Benign App",
+          "passwordCredentials": [],
+          "keyCredentials": []
+        }
+      ]
+    }
+  }
+}

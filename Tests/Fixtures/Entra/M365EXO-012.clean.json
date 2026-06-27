@@ -1,0 +1,18 @@
+{
+  "checkId": "M365EXO-012",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Mailbox auditing enabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "OrganizationConfig": {
+          "AuditDisabled": false
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

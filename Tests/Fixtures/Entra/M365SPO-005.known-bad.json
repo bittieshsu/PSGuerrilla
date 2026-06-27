@@ -1,0 +1,21 @@
+{
+  "checkId": "M365SPO-005",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "DLP policies exist but none scope SharePoint/OneDrive",
+  "auditData": {
+    "M365Services": {
+      "DlpPolicies": [
+        {
+          "Mode": "Enable",
+          "Name": "P1",
+          "Workload": "Exchange",
+          "Enabled": true
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-001",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "DC does not require LDAP signing (LDAPServerIntegrity=0)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDCPolicy": {
+        "Registry": {
+          "MACHINE\\System\\CurrentControlSet\\Services\\NTDS\\Parameters\\LDAPServerIntegrity": {
+            "Value": "0"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-014",
+  "theater": "Infiltration",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "Approved-sender list is a process artifact (manual)",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DomainMailSecurity": [
+          {
+            "Domain": "c.com",
+            "SPF": {
+              "Record": "v=spf1 -all"
+            }
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

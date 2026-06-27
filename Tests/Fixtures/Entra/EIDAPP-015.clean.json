@@ -1,0 +1,18 @@
+{
+  "checkId": "EIDAPP-015",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No read-write OAuth2 permission grants",
+  "auditData": {
+    "Applications": {
+      "ConsentGrants": [
+        {
+          "scope": "User.Read Mail.Read"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

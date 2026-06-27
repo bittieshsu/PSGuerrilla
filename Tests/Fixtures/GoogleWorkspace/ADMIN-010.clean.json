@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-010",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Group owners cannot add external members",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "groups_for_business.groups_sharing": [
+          {
+            "setting": {
+              "value": {
+                "ownersCanAllowExternalMembers": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

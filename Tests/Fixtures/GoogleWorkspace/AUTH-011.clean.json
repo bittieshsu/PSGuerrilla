@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-011",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Login challenges (employee ID) enabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "security.login_challenges": [
+          {
+            "setting": {
+              "value": {
+                "enableEmployeeIdChallenge": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

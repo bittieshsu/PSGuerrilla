@@ -1,0 +1,33 @@
+{
+  "checkId": "AZIAM-002",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A few direct resource-level role assignments (1-10)",
+  "auditData": {
+    "AzureIAM": {
+      "RoleAssignments": [
+        {
+          "properties": {
+            "roleDefinitionId": "r1",
+            "scope": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+            "principalId": "p1"
+          }
+        },
+        {
+          "properties": {
+            "roleDefinitionId": "r2",
+            "scope": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+            "principalId": "p2"
+          }
+        }
+      ],
+      "Subscriptions": [
+        {
+          "id": "sub1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "IPv6 only partially restricted (no FAIL path)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Registry": {
+          "MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters\\DisabledComponents": {
+            "Value": "32"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "checkId": "EIDAPP-005",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "an app with RoleManagement.ReadWrite.Directory holds a password credential",
+  "auditData": {
+    "Errors": {},
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "appId": "app-1",
+          "requiredResourceAccess": [
+            {
+              "resourceAccess": [
+                {
+                  "type": "Role",
+                  "id": "9e3f62cf-ca93-4989-b6ce-bf83c28f9fe8"
+                }
+              ],
+              "resourceAppId": "00000003-0000-0000-c000-000000000000"
+            }
+          ]
+        }
+      ],
+      "ServicePrincipals": [
+        {
+          "appId": "app-1",
+          "passwordCredentials": [
+            {
+              "keyId": "cred-1",
+              "endDateTime": "2099-12-31T00:00:00Z"
+            }
+          ],
+          "keyCredentials": []
+        }
+      ]
+    }
+  }
+}

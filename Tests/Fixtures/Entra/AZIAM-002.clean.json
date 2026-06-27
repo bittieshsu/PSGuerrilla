@@ -1,0 +1,18 @@
+{
+  "checkId": "AZIAM-002",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No direct resource-level role assignments",
+  "auditData": {
+    "AzureIAM": {
+      "RoleAssignments": [],
+      "Subscriptions": [
+        {
+          "id": "sub1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

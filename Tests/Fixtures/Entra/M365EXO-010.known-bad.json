@@ -1,0 +1,27 @@
+{
+  "checkId": "M365EXO-010",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Multiple CAS plans enable legacy protocols",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "CASMailboxPlans": [
+          {
+            "Name": "P1",
+            "PopEnabled": false,
+            "ImapEnabled": true
+          },
+          {
+            "Name": "P2",
+            "PopEnabled": true,
+            "ImapEnabled": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

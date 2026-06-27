@@ -1,0 +1,23 @@
+{
+  "checkId": "INTUNE-012",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "App protection policies lack conditional launch settings",
+  "auditData": {
+    "Intune": {
+      "AppProtectionPolicies": [
+        {
+          "minimumRequiredOsVersion": null,
+          "id": "p1",
+          "maximumRequiredOsVersion": null,
+          "displayName": "P1",
+          "@odata.type": "#microsoft.graph.windowsInformationProtectionPolicy",
+          "minimumRequiredAppVersion": null
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "checkId": "ADACL-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No non-default OU delegations",
+  "auditData": {
+    "Errors": {},
+    "ACLs": {
+      "OUDelegation": []
+    }
+  }
+}

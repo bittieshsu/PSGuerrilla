@@ -1,0 +1,14 @@
+{
+  "checkId": "INTUNE-013",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No enrollment configurations found",
+  "auditData": {
+    "Intune": {
+      "EnrollmentConfigurations": [],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

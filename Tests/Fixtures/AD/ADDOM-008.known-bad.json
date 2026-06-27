@@ -1,0 +1,13 @@
+{
+  "checkId": "ADDOM-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Tombstone lifetime 30 days (<60)",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "TombstoneLifetime": 30
+    }
+  }
+}

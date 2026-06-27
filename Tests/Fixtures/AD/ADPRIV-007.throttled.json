@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPRIV-007",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Privileged members not assessed",
+  "auditData": {
+    "Errors": {
+      "PrivilegedMembers": "collector error"
+    },
+    "PrivilegedAccounts": null
+  }
+}

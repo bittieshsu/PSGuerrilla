@@ -1,0 +1,22 @@
+{
+  "checkId": "M365EXO-041",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Safe Links not enabled for email",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "SafeLinksPolicies": [
+          {
+            "Name": "P1",
+            "IsEnabled": false,
+            "EnableSafeLinksForEmail": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

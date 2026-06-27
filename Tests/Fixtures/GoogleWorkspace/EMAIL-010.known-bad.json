@@ -1,0 +1,20 @@
+{
+  "checkId": "EMAIL-010",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A user has a send-as alias (review delegate)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GmailSettings": {
+      "u@e.com": {
+        "sendAs": [
+          {
+            "sendAsEmail": "delegate@e.com"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "checkId": "ADPWD-011",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "DSInternals unavailable — hash analysis not performed",
+  "auditData": {
+    "ModuleAvailability": {
+      "DSInternals": false
+    },
+    "Errors": {},
+    "PasswordPolicies": {}
+  }
+}

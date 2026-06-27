@@ -1,0 +1,16 @@
+{
+  "checkId": "DRIVE-002",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Default link sharing RESTRICTED",
+  "objectShape": false,
+  "auditData": {
+    "OrgUnitPolicies": {
+      "/": {
+        "defaultLinkSharing": "RESTRICTED"
+      }
+    },
+    "Errors": {}
+  }
+}

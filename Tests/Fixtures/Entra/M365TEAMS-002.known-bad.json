@@ -1,0 +1,19 @@
+{
+  "checkId": "M365TEAMS-002",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Guest access with third-party storage enabled",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "GuestConfig": {
+          "AllowBox": true,
+          "AllowGuestUser": true
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

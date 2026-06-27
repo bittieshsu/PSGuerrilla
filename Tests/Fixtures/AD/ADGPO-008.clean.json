@@ -1,0 +1,18 @@
+{
+  "checkId": "ADGPO-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No WMI filters configured",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "WMIFilters": [],
+      "GPOs": [
+        {
+          "DisplayName": "P1"
+        }
+      ]
+    }
+  }
+}

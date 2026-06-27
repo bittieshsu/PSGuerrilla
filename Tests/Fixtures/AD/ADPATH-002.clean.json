@@ -1,0 +1,32 @@
+{
+  "checkId": "ADPATH-002",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No multi-hop privilege chains to Tier-0",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "IsGroup": false,
+            "SamAccountName": "da1",
+            "SID": "S-1-5-21-1111111111-2222222222-3333333333-512"
+          }
+        ]
+      }
+    },
+    "ACLs": {
+      "DangerousACEs": [
+        {
+          "ActiveDirectoryRights": "GenericAll",
+          "IdentityReference": "BUILTIN\\Administrators",
+          "ObjectClass": "container",
+          "IdentitySID": "S-1-5-32-544",
+          "ObjectName": "Domain Root"
+        }
+      ]
+    }
+  }
+}

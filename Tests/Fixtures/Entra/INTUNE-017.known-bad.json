@@ -1,0 +1,14 @@
+{
+  "checkId": "INTUNE-017",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No security baseline assigned",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "SecurityBaselines": []
+    }
+  }
+}

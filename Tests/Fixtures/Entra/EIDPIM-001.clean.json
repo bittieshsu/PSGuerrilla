@@ -1,0 +1,35 @@
+{
+  "checkId": "EIDPIM-001",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "3 Global Administrators is within the recommended range (2-4)",
+  "auditData": {
+    "Errors": {},
+    "PIM": {
+      "GlobalAdmins": [
+        {
+          "userPrincipalName": "admin1@contoso.com",
+          "displayName": "Admin 1",
+          "id": "1",
+          "accountEnabled": true,
+          "userType": "Member"
+        },
+        {
+          "userPrincipalName": "admin2@contoso.com",
+          "displayName": "Admin 2",
+          "id": "2",
+          "accountEnabled": true,
+          "userType": "Member"
+        },
+        {
+          "userPrincipalName": "admin3@contoso.com",
+          "displayName": "Admin 3",
+          "id": "3",
+          "accountEnabled": true,
+          "userType": "Member"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "checkId": "INTUNE-012",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Intune app protection policies not assessed",
+  "auditData": {
+    "Intune": {
+      "Errors": {}
+    },
+    "Errors": {
+      "Intune": "Graph 429"
+    }
+  }
+}

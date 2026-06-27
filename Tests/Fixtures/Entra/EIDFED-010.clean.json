@@ -1,0 +1,13 @@
+{
+  "checkId": "EIDFED-010",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No federated domains (extranet lockout N/A)",
+  "auditData": {
+    "Federation": {
+      "FederationConfigs": []
+    },
+    "Errors": {}
+  }
+}

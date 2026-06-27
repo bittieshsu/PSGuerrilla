@@ -1,0 +1,20 @@
+{
+  "checkId": "ADKERB-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "RBCD present (review)",
+  "auditData": {
+    "Kerberos": {
+      "RBCD": [
+        {
+          "SamAccountName": "c1",
+          "AllowedPrincipals": [
+            "DOMAIN\\u1"
+          ]
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

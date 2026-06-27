@@ -1,0 +1,13 @@
+{
+  "checkId": "ADDOM-003",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Domain info not assessed",
+  "auditData": {
+    "Errors": {
+      "DomainInfo": "collector error"
+    },
+    "Domain": null
+  }
+}

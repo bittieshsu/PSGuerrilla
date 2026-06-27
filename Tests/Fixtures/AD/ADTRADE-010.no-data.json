@@ -1,0 +1,13 @@
+{
+  "checkId": "ADTRADE-010",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "gMSA enumeration did not complete",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "GmsaCollected": false
+    }
+  }
+}

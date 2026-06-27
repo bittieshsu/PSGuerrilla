@@ -1,0 +1,37 @@
+{
+  "checkId": "OAUTH-004",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Four high-privilege admin-scope OAuth apps",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "scope": "admin.directory",
+          "app_name": "A1"
+        }
+      },
+      {
+        "Params": {
+          "scope": "admin.directory",
+          "app_name": "A2"
+        }
+      },
+      {
+        "Params": {
+          "scope": "admin.directory",
+          "app_name": "A3"
+        }
+      },
+      {
+        "Params": {
+          "scope": "admin.directory",
+          "app_name": "A4"
+        }
+      }
+    ]
+  }
+}

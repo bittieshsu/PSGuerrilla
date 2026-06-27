@@ -1,0 +1,24 @@
+{
+  "checkId": "M365DEF-002",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No high-severity Defender alerts disabled",
+  "auditData": {
+    "M365Services": {
+      "Defender": {
+        "ProtectionAlerts": [
+          {
+            "Name": "A1",
+            "Severity": "High",
+            "IsEnabled": true,
+            "Category": "ThreatProtection",
+            "Disabled": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkId": "ADTRADE-009",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A user is a member of Cert Publishers",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "CertPublishers": [
+        {
+          "ObjectClass": "computer",
+          "SamAccountName": "ca1$"
+        },
+        {
+          "ObjectClass": "user",
+          "SamAccountName": "bad"
+        }
+      ],
+      "CertPublishersFound": true
+    }
+  }
+}

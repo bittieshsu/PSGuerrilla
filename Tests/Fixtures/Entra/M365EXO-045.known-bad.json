@@ -1,0 +1,22 @@
+{
+  "checkId": "M365EXO-045",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Enabled protection alerts have no recipients",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "ProtectionAlerts": [
+          {
+            "Name": "A1",
+            "Disabled": false,
+            "NotifyUser": []
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

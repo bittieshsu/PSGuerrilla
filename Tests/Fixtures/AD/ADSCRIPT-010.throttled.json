@@ -1,0 +1,13 @@
+{
+  "checkId": "ADSCRIPT-010",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "LogonScripts failed",
+  "auditData": {
+    "Errors": {
+      "LogonScripts": "collector error"
+    },
+    "LogonScripts": null
+  }
+}

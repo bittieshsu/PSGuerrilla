@@ -1,0 +1,37 @@
+{
+  "checkId": "EIDCA-018",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Security-info registration not device-gated",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "Reg",
+          "id": "p1",
+          "grantControls": {
+            "builtInControls": [
+              "mfa"
+            ]
+          },
+          "conditions": {
+            "applications": {
+              "includeUserActions": [
+                "registerSecurityInformation"
+              ]
+            },
+            "users": {
+              "includeUsers": [
+                "All"
+              ]
+            }
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

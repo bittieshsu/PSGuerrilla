@@ -1,0 +1,20 @@
+{
+  "checkId": "M365EXO-026",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Malware file filter disabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "MalwarePolicies": [
+          {
+            "EnableFileFilter": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

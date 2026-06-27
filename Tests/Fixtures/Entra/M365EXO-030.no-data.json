@@ -1,0 +1,16 @@
+{
+  "checkId": "M365EXO-030",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "No malware filter policy data",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "MalwarePolicies": []
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

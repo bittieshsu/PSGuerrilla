@@ -1,0 +1,16 @@
+{
+  "checkId": "M365EXO-005",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "No Safe Attachments policy data (empty array guarded to SKIP)",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "SafeAttachmentPolicies": []
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

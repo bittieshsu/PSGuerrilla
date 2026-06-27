@@ -1,0 +1,20 @@
+{
+  "checkId": "EIDAUTH-009",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Windows Hello for Business enabled",
+  "auditData": {
+    "AuthMethods": {
+      "MethodConfigurations": [
+        {
+          "state": "enabled",
+          "id": "windowsHelloForBusiness",
+          "@odata.type": "microsoft.graph.windowsHelloForBusinessAuthenticationMethod"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

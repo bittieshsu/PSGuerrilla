@@ -1,0 +1,26 @@
+{
+  "checkId": "M365EXO-007",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "one benign disclaimer rule, no redirect/forward actions",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "TransportRules": [
+          {
+            "RedirectMessageTo": null,
+            "CopyTo": null,
+            "AddToRecipients": null,
+            "BlindCopyTo": null,
+            "Mode": "Enforce",
+            "State": "Enabled",
+            "Name": "Append disclaimer",
+            "Priority": 0
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "checkId": "ADDOM-020",
+  "theater": "Reconnaissance",
+  "scenario": "degraded",
+  "expectedStatus": "WARN",
+  "description": "DSRM logon behavior 0 (cannot fully verify, no PASS path)",
+  "auditData": {
+    "DomainControllers": [
+      {
+        "Name": "DC1"
+      }
+    ],
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "g1": {
+          "RegistryPolicies": [
+            {
+              "ValueName": "DsrmAdminLogonBehavior",
+              "Value": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkId": "ADCS-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No template grants Cert Request Agent EKU to low-priv",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateTemplates": [
+        {
+          "ExtendedKeyUsageOIDs": [
+            "1.3.6.1.5.5.7.3.2"
+          ],
+          "Name": "Safe",
+          "IsPublished": true,
+          "SchemaVersion": 3,
+          "EnrollmentPermissions": [],
+          "DisplayName": "Safe"
+        }
+      ]
+    }
+  }
+}

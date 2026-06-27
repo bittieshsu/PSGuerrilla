@@ -1,0 +1,24 @@
+{
+  "checkId": "ADTRADE-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Orphan server object under Sites (DCShadow indicator)",
+  "auditData": {
+    "DomainControllers": [
+      {
+        "Name": "dc1",
+        "FQDN": "dc1.t.l"
+      }
+    ],
+    "Tradecraft": {
+      "ConfigPartitionServers": [
+        {
+          "DNSHostName": "rogue.t.l",
+          "CN": "rogue"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

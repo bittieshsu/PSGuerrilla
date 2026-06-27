@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDTNT-004",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Guest invitations restricted (none)",
+  "auditData": {
+    "TenantConfig": {
+      "AuthorizationPolicy": {
+        "allowInvitesFrom": "none"
+      }
+    },
+    "Errors": {}
+  }
+}

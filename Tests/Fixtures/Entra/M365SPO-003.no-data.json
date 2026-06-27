@@ -1,0 +1,16 @@
+{
+  "checkId": "M365SPO-003",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Default sharing link data unavailable",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "DefaultSharingLinkType": null
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

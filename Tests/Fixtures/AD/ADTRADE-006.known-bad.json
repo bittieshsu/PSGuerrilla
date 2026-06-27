@@ -1,0 +1,22 @@
+{
+  "checkId": "ADTRADE-006",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A user account has shadow credentials (msDS-KeyCredentialLink)",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "ShadowCredCollected": true,
+      "ShadowCredentials": [
+        {
+          "IsComputer": false,
+          "KeyCredentialCount": 1,
+          "IsDomainController": false,
+          "SamAccountName": "admin",
+          "ObjectClass": "user"
+        }
+      ]
+    }
+  }
+}

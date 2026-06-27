@@ -1,0 +1,22 @@
+{
+  "checkId": "ADTIER-005",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A SQL service account is in Domain Admins",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "ObjectClass": "user",
+            "SamAccountName": "sqlsvc_prod",
+            "Description": "SQL Server service",
+            "DisplayName": "SQL"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkId": "OAUTH-007",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Marketplace allows all apps",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "workspace_marketplace.apps_access_options": [
+          {
+            "setting": {
+              "value": {
+                "accessLevel": "ALLOW_ALL_APPS"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

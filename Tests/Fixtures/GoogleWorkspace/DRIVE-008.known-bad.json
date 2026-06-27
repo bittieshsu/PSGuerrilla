@@ -1,0 +1,28 @@
+{
+  "checkId": "DRIVE-008",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Drive for Desktop enabled without device restriction",
+  "objectShape": true,
+  "auditData": {
+    "OrgUnitPolicies": {
+      "/": {}
+    },
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.drive_for_desktop": [
+          {
+            "setting": {
+              "value": {
+                "restrictToAuthorizedDevices": false,
+                "allowDriveForDesktop": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

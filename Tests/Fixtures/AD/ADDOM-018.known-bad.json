@@ -1,0 +1,20 @@
+{
+  "checkId": "ADDOM-018",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Anonymous access not restricted",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "g1": {
+          "SecuritySettings": {
+            "RestrictAnonymousSAM": 0,
+            "RestrictAnonymous": 0
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "checkId": "ADDOM-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Multiple domain controllers (redundancy)",
+  "auditData": {
+    "Errors": {},
+    "DomainControllers": [
+      {
+        "Name": "DC1",
+        "IsRODC": false,
+        "IsGlobalCatalog": true,
+        "FQDN": "dc1.t.l",
+        "OperatingSystem": "Windows Server 2019",
+        "ObsoleteOS": false
+      },
+      {
+        "Name": "DC2",
+        "IsRODC": false,
+        "IsGlobalCatalog": true,
+        "FQDN": "dc2.t.l",
+        "OperatingSystem": "Windows Server 2019",
+        "ObsoleteOS": false
+      }
+    ]
+  }
+}

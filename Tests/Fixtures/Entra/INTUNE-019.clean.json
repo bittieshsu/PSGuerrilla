@@ -1,0 +1,22 @@
+{
+  "checkId": "INTUNE-019",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Win32 app inventory compiled (informational)",
+  "auditData": {
+    "Intune": {
+      "MobileApps": [
+        {
+          "displayName": "A1",
+          "id": "a1",
+          "fileName": "a1.exe",
+          "@odata.type": "#microsoft.graph.win32LobApp",
+          "publisher": "MyOrg"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "checkId": "ADTRUST-005",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "External trust has SID filtering enabled",
+  "auditData": {
+    "Errors": {},
+    "Trusts": [
+      {
+        "SIDFilteringEnabled": true,
+        "WithinForest": false,
+        "TrustPartner": "partner.com"
+      }
+    ]
+  }
+}

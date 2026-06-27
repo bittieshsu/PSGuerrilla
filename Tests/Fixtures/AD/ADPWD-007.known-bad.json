@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Password history 8 (<12)",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "DefaultPolicy": {
+        "PasswordHistoryCount": 8
+      }
+    }
+  }
+}

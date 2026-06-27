@@ -1,0 +1,18 @@
+{
+  "checkId": "ADDOM-005",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All DCs run supported OS",
+  "auditData": {
+    "Errors": {},
+    "DomainControllers": [
+      {
+        "ObsoleteOS": false,
+        "OperatingSystem": "Windows Server 2022",
+        "FQDN": "dc1.test.local",
+        "Name": "DC1"
+      }
+    ]
+  }
+}

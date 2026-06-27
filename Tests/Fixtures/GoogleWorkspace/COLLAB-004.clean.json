@@ -1,0 +1,25 @@
+{
+  "checkId": "COLLAB-004",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "External chat disabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "chat.external_chat_restriction": [
+          {
+            "setting": {
+              "value": {
+                "allowExternalChat": false,
+                "externalChatRestriction": "INTERNAL_ONLY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

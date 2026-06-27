@@ -1,0 +1,18 @@
+{
+  "checkId": "AZIAM-010",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No resource locks deployed",
+  "auditData": {
+    "AzureIAM": {
+      "ResourceLocks": [],
+      "Subscriptions": [
+        {
+          "id": "sub1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

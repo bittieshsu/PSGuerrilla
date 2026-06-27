@@ -1,0 +1,10 @@
+{
+  "checkId": "ADLOG-007",
+  "theater": "Reconnaissance",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "Sysmon presence not detectable from AD (manual)",
+  "auditData": {
+    "Errors": {}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checkId": "ADGPO-013",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "GPO contains script files (review)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "ScriptFiles": [
+            "logon.ps1"
+          ],
+          "HasScripts": true
+        }
+      }
+    }
+  }
+}

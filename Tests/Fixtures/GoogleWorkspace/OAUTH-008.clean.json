@@ -1,0 +1,18 @@
+{
+  "checkId": "OAUTH-008",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "domain-wide delegation grants hold no Gmail/Drive/Admin/Calendar scopes",
+  "auditData": {
+    "DomainWideDelegation": [
+      {
+        "scopes": [
+          "https://www.googleapis.com/auth/spreadsheets.readonly"
+        ],
+        "clientId": "100000000000000000001"
+      }
+    ],
+    "Errors": {}
+  }
+}

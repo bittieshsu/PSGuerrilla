@@ -1,0 +1,16 @@
+{
+  "checkId": "ADPWD-012",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No HIBP-compromised passwords",
+  "auditData": {
+    "ModuleAvailability": {
+      "DSInternals": true
+    },
+    "Errors": {},
+    "PasswordPolicies": {
+      "HIBPCompromisedUsers": []
+    }
+  }
+}

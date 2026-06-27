@@ -1,0 +1,22 @@
+{
+  "checkId": "ADGPO-021",
+  "theater": "Reconnaissance",
+  "scenario": "logging-present",
+  "expectedStatus": "WARN",
+  "description": "PowerShell-logging GPO present (verify)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "HasRegistryPol": true
+        }
+      },
+      "GPOs": [
+        {
+          "DisplayName": "PowerShell Logging Policy"
+        }
+      ]
+    }
+  }
+}

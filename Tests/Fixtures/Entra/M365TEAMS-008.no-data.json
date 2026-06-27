@@ -1,0 +1,16 @@
+{
+  "checkId": "M365TEAMS-008",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Teams client/guest config data unavailable",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "GuestConfig": null
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

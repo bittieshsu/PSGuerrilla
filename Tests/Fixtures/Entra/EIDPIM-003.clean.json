@@ -1,0 +1,16 @@
+{
+  "checkId": "EIDPIM-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No permanent privileged role assignments",
+  "auditData": {
+    "PIM": {
+      "Errors": {},
+      "RoleDefinitions": [],
+      "RoleAssignments": [],
+      "RoleEligibilitySchedules": []
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkId": "EIDCA-012",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Sign-in risk policy covers high+medium",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "conditions": {
+            "signInRiskLevels": [
+              "high",
+              "medium"
+            ]
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

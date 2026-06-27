@@ -1,0 +1,24 @@
+{
+  "checkId": "GWS-CLASS-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Class membership restricted to the domain",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "classroom.class_membership": [
+          {
+            "setting": {
+              "value": {
+                "whoCanJoinClasses": "ANYONE_IN_DOMAIN"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

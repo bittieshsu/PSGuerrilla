@@ -1,0 +1,25 @@
+{
+  "checkId": "ADCS-012",
+  "theater": "Reconnaissance",
+  "scenario": "compat-mode",
+  "expectedStatus": "WARN",
+  "description": "StrongCertificateBindingEnforcement in compatibility mode (no reachable PASS path)",
+  "auditData": {
+    "CertificateServices": {
+      "CertificateTemplates": []
+    },
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "g1": {
+          "RegistryPolicies": [
+            {
+              "Value": 1,
+              "ValueName": "StrongCertificateBindingEnforcement"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

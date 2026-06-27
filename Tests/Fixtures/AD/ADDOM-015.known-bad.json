@@ -1,0 +1,23 @@
+{
+  "checkId": "ADDOM-015",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "SMB signing not required via GPO (0)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "guid1": {
+          "RegistryPolicies": [
+            {
+              "ValueName": "RequireSecuritySignature",
+              "Key": "HKLM\\System\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+              "Value": 0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

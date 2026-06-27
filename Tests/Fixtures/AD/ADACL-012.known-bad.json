@@ -1,0 +1,24 @@
+{
+  "checkId": "ADACL-012",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Dangerous allow ACE on domain root",
+  "auditData": {
+    "ACLs": {
+      "CriticalObjectACLs": {
+        "Domain Root": {
+          "ACEs": [
+            {
+              "ActiveDirectoryRights": "GenericWrite",
+              "IdentityReference": "CORP\\U",
+              "IdentitySID": "S-1-5-21-1111111111-2222222222-3333333333-1601",
+              "AccessControlType": "Allow"
+            }
+          ]
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

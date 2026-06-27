@@ -1,0 +1,18 @@
+{
+  "checkId": "AZIAM-009",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No custom RBAC roles with wildcard actions",
+  "auditData": {
+    "AzureIAM": {
+      "RoleDefinitions": [],
+      "Subscriptions": [
+        {
+          "id": "sub1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

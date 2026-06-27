@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDAPP-012",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "User app-consent disabled",
+  "auditData": {
+    "TenantConfig": {
+      "AuthorizationPolicy": {
+        "permissionGrantPolicyIdsAssignedToDefaultUserRole": []
+      }
+    }
+  }
+}

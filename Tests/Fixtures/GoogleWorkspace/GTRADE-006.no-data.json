@@ -1,0 +1,12 @@
+{
+  "checkId": "GTRADE-006",
+  "theater": "Fortification",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "OAuth token activity not collected",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": []
+  }
+}

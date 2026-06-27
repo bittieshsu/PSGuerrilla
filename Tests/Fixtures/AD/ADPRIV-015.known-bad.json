@@ -1,0 +1,22 @@
+{
+  "checkId": "ADPRIV-015",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No privileged user requires smartcard",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "UACFlags": {
+            "SMARTCARD_REQUIRED": false
+          },
+          "Enabled": true,
+          "ObjectClass": "user",
+          "SamAccountName": "a"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

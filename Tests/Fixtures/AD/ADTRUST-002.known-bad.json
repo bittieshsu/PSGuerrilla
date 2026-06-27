@@ -1,0 +1,19 @@
+{
+  "checkId": "ADTRUST-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An inbound trust allows external authentication",
+  "auditData": {
+    "Errors": {},
+    "Trusts": [
+      {
+        "TrustType": "External",
+        "TrustDirection": "Inbound",
+        "TrustPartner": "trusted.com",
+        "WithinForest": false,
+        "IsTransitive": false
+      }
+    ]
+  }
+}

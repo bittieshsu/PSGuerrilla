@@ -1,0 +1,11 @@
+{
+  "checkId": "ADPWD-019",
+  "theater": "Reconnaissance",
+  "scenario": "not-implemented",
+  "expectedStatus": "SKIP",
+  "description": "Entra password protection requires Azure portal (not collected)",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "checkId": "M365PP-001",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Environment creation open to non-admins",
+  "auditData": {
+    "M365Services": {
+      "PowerPlatform": {
+        "EnvironmentCreationRestricted": false,
+        "DisableEnvironmentCreationByNonAdminUsers": false
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

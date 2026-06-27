@@ -1,0 +1,18 @@
+{
+  "checkId": "EMAIL-002",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A domain has no valid DKIM",
+  "auditData": {
+    "Errors": {},
+    "DnsRecords": {
+      "example.com": {
+        "DKIM": {
+          "Valid": false,
+          "Details": "no key"
+        }
+      }
+    }
+  }
+}

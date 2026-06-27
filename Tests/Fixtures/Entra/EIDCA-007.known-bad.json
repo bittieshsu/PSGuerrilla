@@ -1,0 +1,36 @@
+{
+  "checkId": "EIDCA-007",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "no Conditional Access policy enforces MFA",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "conditions": {
+            "users": {
+              "includeUsers": [
+                "All"
+              ]
+            },
+            "applications": {
+              "includeApplications": [
+                "All"
+              ]
+            }
+          },
+          "displayName": "Block Legacy Auth",
+          "id": "p1",
+          "state": "enabled",
+          "grantControls": {
+            "builtInControls": [
+              "block"
+            ]
+          }
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

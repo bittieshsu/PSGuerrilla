@@ -1,0 +1,22 @@
+{
+  "checkId": "ADTIER-003",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No hypervisor service accounts in Tier-0 groups",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "ObjectClass": "user",
+            "SamAccountName": "a",
+            "Description": "admin",
+            "DisplayName": "Admin"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

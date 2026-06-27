@@ -1,0 +1,27 @@
+{
+  "checkId": "AZIAM-007",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "High Azure Policy non-compliance (>10%)",
+  "auditData": {
+    "AzureIAM": {
+      "PolicyStates": [
+        {
+          "Summary": {
+            "results": {
+              "nonCompliantResources": 50,
+              "totalResources": 100
+            }
+          }
+        }
+      ],
+      "Subscriptions": [
+        {
+          "id": "sub1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

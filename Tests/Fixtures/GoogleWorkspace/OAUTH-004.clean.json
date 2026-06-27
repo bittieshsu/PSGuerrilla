@@ -1,0 +1,19 @@
+{
+  "checkId": "OAUTH-004",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Only low-risk-scope OAuth apps",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "scope": "https://www.googleapis.com/auth/spreadsheets.readonly",
+          "app_name": "Safe"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checkId": "ADSCRIPT-009",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A NETLOGON file has an unusual extension",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "NetlogonFiles": [
+        {
+          "Extension": ".unknown",
+          "Size": 100,
+          "RelativePath": "x.unknown"
+        }
+      ],
+      "ScriptAnalysis": []
+    }
+  }
+}

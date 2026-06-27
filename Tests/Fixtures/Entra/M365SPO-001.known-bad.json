@@ -1,0 +1,16 @@
+{
+  "checkId": "M365SPO-001",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Anonymous external + guest sharing enabled",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "SharingCapability": "ExternalUserAndGuestSharing"
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

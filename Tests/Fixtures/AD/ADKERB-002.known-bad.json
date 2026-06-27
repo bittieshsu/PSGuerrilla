@@ -1,0 +1,19 @@
+{
+  "checkId": "ADKERB-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Kerberoastable account is RC4-only",
+  "auditData": {
+    "Errors": {},
+    "Kerberos": {
+      "KerberoastableAccounts": [
+        {
+          "SamAccountName": "svc1",
+          "AdminCount": 0,
+          "EncryptionTypes": 4
+        }
+      ]
+    }
+  }
+}

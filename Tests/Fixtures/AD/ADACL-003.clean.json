@@ -1,0 +1,13 @@
+{
+  "checkId": "ADACL-003",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No non-default GenericWrite on critical objects",
+  "auditData": {
+    "ACLs": {
+      "DangerousACEs": []
+    },
+    "Errors": {}
+  }
+}

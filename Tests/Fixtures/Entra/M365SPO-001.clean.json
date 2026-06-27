@@ -1,0 +1,16 @@
+{
+  "checkId": "M365SPO-001",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "External sharing disabled",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "SharingCapability": "Disabled"
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

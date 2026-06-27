@@ -1,0 +1,26 @@
+{
+  "checkId": "EIDAPP-013",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Admin consent workflow enabled with reviewers",
+  "auditData": {
+    "TenantConfig": {
+      "AdminConsentRequestPolicy": {
+        "remindersEnabled": true,
+        "requestExpiresInDays": 30,
+        "reviewers": [
+          {
+            "query": "group:admin",
+            "queryType": "directoryObject",
+            "queryRoot": ""
+          }
+        ],
+        "notificationsEnabled": true,
+        "isEnabled": true
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

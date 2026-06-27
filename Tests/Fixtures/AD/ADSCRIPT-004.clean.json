@@ -1,0 +1,19 @@
+{
+  "checkId": "ADSCRIPT-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No logon scripts with hardcoded credentials",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "ScriptAnalysis": [
+        {
+          "RelativePath": "logon.ps1",
+          "HardcodedCredentials": false,
+          "CredentialMatches": []
+        }
+      ]
+    }
+  }
+}

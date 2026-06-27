@@ -1,0 +1,21 @@
+{
+  "checkId": "M365SPO-005",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Enabled SPO-scoped DLP policy exists",
+  "auditData": {
+    "M365Services": {
+      "DlpPolicies": [
+        {
+          "Mode": "Enable",
+          "Name": "P1",
+          "Workload": "SharePoint",
+          "Enabled": null
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

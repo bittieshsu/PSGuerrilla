@@ -1,0 +1,17 @@
+{
+  "checkId": "M365PP-001",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Environment creation restricted",
+  "auditData": {
+    "M365Services": {
+      "PowerPlatform": {
+        "EnvironmentCreationRestricted": true,
+        "DisableEnvironmentCreationByNonAdminUsers": null
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

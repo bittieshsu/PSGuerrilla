@@ -1,0 +1,22 @@
+{
+  "checkId": "EMAIL-022",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A user has auto-forwarding to external",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GmailSettings": {
+      "u1@e.com": {
+        "filters": [],
+        "autoForwarding": {
+          "emailAddress": "ext@a.com",
+          "enabled": true
+        },
+        "forwardingAddresses": [],
+        "sendAs": []
+      }
+    }
+  }
+}

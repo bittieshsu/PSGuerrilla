@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-040",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An anti-spam policy has allowed-sender domains",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiSpamPolicies": [
+          {
+            "Name": "P1",
+            "AllowedSenderDomains": [
+              "example.com"
+            ]
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

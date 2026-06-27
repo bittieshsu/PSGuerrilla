@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-009",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Print Spooler running on DCs (StartType=2)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDCPolicy": {
+        "Services": {
+          "Spooler": {
+            "StartType": 2
+          }
+        }
+      }
+    }
+  }
+}

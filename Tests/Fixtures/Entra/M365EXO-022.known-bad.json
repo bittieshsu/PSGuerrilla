@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-022",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A sharing policy shares calendar with all domains (*)",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "SharingPolicies": [
+          {
+            "Name": "Open",
+            "Domains": [
+              "*:CalendarSharing"
+            ]
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

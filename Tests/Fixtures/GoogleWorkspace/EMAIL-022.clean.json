@@ -1,0 +1,30 @@
+{
+  "checkId": "EMAIL-022",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No forwarding rules of any kind",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "suspended": false
+      }
+    ],
+    "GmailSettings": {
+      "u1@e.com": {
+        "filters": [],
+        "autoForwarding": {
+          "enabled": false
+        },
+        "forwardingAddresses": [],
+        "sendAs": [
+          {
+            "sendAsEmail": "u1@e.com"
+          }
+        ]
+      }
+    }
+  }
+}

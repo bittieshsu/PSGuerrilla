@@ -1,0 +1,11 @@
+{
+  "checkId": "ADTRUST-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No foreign/external domain trusts",
+  "auditData": {
+    "Errors": {},
+    "Trusts": []
+  }
+}

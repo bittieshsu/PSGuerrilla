@@ -1,0 +1,25 @@
+{
+  "checkId": "ADACL-013",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Non-default principal can modify gPLink on domain root",
+  "auditData": {
+    "ACLs": {
+      "CriticalObjectACLs": {
+        "Domain Root": {
+          "ACEs": [
+            {
+              "ActiveDirectoryRights": "GenericWrite",
+              "IdentityReference": "CORP\\U",
+              "ObjectTypeGUID": null,
+              "IdentitySID": "S-1-5-21-1111111111-2222222222-3333333333-1601",
+              "AccessControlType": "Allow"
+            }
+          ]
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

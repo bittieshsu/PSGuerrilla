@@ -1,0 +1,24 @@
+{
+  "checkId": "OAUTH-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Unconfigured third-party app access blocked",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "api_controls.unconfigured_third_party_apps": [
+          {
+            "setting": {
+              "value": {
+                "accessLevel": "BLOCKED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

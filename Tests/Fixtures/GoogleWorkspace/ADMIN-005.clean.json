@@ -1,0 +1,17 @@
+{
+  "checkId": "ADMIN-005",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "User inventory compiled (informational)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "archived": false,
+        "suspended": false
+      }
+    ]
+  }
+}

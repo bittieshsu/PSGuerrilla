@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-008",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Domain shared contacts not exposed in directory",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "directory.workspace_resource_type_visibility": [
+          {
+            "setting": {
+              "value": {
+                "domainSharedContacts": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

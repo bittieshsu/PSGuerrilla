@@ -1,0 +1,25 @@
+{
+  "checkId": "EIDAUTH-013",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Banned password protection enabled",
+  "auditData": {
+    "AuthMethods": {
+      "DirectorySettings": [
+        {
+          "displayName": "Password Rule Settings",
+          "values": [
+            {
+              "name": "EnableBannedPasswordCheck",
+              "value": "True"
+            }
+          ],
+          "templateId": "5cf42378-d67d-4f36-ba46-e8b86229381d"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

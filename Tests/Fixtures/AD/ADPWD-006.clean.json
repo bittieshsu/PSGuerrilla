@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-006",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Account lockout threshold 5 (1-10)",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "DefaultPolicy": {
+        "LockoutThreshold": 5
+      }
+    }
+  }
+}

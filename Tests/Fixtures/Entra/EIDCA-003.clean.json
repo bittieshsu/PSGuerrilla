@@ -1,0 +1,21 @@
+{
+  "checkId": "EIDCA-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No CA policies stuck in report-only",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "P1",
+          "id": "p1",
+          "createdDateTime": "2025-01-01T00:00:00Z"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

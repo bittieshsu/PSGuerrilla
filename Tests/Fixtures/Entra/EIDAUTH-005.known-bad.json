@@ -1,0 +1,23 @@
+{
+  "checkId": "EIDAUTH-005",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "50% of users lack MFA (>5% gap)",
+  "auditData": {
+    "AuthMethods": {
+      "UserRegistrationDetails": [
+        {
+          "isMfaRegistered": false,
+          "userPrincipalName": "u1@contoso.com",
+          "id": "1"
+        },
+        {
+          "isMfaRegistered": true,
+          "userPrincipalName": "u2@contoso.com",
+          "id": "2"
+        }
+      ]
+    }
+  }
+}

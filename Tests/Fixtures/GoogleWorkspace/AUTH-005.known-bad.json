@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-005",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Password reuse allowed",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "security.password": [
+          {
+            "setting": {
+              "value": {
+                "allowReuse": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

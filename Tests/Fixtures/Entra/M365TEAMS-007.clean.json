@@ -1,0 +1,23 @@
+{
+  "checkId": "M365TEAMS-007",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Third-party Teams apps restricted to an allow-list",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "AppPermissionPolicies": [
+          {
+            "DefaultCatalogAppsType": "BlockAllApps",
+            "PrivateCatalogAppsType": "AllowedAppList",
+            "GlobalCatalogAppsType": "AllowedAppList",
+            "Identity": "Global"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

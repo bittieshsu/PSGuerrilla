@@ -1,0 +1,19 @@
+{
+  "checkId": "OAUTH-002",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A third-party OAuth app is authorized (review)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "scope": "userinfo.email",
+          "app_name": "App1"
+        }
+      }
+    ]
+  }
+}

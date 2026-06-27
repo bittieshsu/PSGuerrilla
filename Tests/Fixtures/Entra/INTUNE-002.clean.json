@@ -1,0 +1,21 @@
+{
+  "checkId": "INTUNE-002",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All devices compliant",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "ComplianceSummary": {
+        "errorDeviceCount": 0,
+        "notEvaluatedDeviceCount": 0,
+        "compliantDeviceCount": 10,
+        "conflictDeviceCount": 0,
+        "inGracePeriodCount": 0,
+        "nonCompliantDeviceCount": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-006",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "External Chat spaces disabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "chat.chat_external_spaces": [
+          {
+            "setting": {
+              "value": {
+                "enabled": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

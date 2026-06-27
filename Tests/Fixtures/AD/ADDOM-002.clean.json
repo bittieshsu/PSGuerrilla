@@ -1,0 +1,14 @@
+{
+  "checkId": "ADDOM-002",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Domain functional level current (>=7)",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "DomainFunctionalLevelName": "2016",
+      "DomainFunctionalLevel": 7
+    }
+  }
+}

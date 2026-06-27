@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-042",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Safe Links URL scanning not enabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "SafeLinksPolicies": [
+          {
+            "Name": "P1",
+            "ScanUrls": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

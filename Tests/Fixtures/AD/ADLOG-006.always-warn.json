@@ -1,0 +1,10 @@
+{
+  "checkId": "ADLOG-006",
+  "theater": "Reconnaissance",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "WEF SubscriptionManager requires host registry check",
+  "auditData": {
+    "Errors": {}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checkId": "ADACL-014",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A GPO is editable by a non-default principal",
+  "auditData": {
+    "ACLs": {
+      "GPOPermissions": {
+        "Default Domain Policy": {
+          "CanEdit": [
+            "CORP\\UnprivUser"
+          ],
+          "DN": "cn=p,DC=t,DC=l"
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

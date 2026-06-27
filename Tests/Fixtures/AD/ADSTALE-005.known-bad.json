@@ -1,0 +1,21 @@
+{
+  "checkId": "ADSTALE-005",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An obsolete-OS computer exists",
+  "auditData": {
+    "StaleObjects": {
+      "TotalComputers": 100,
+      "ObsoleteOSComputers": [
+        {
+          "Enabled": true,
+          "OperatingSystem": "Windows Server 2003",
+          "DN": "CN=OLD,DC=t,DC=l",
+          "SamAccountName": "OLD$"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

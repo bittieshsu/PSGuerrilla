@@ -1,0 +1,25 @@
+{
+  "checkId": "LOG-005",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "System-defined alert inactive (medium severity => WARN)",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "rule.system_defined_alerts": [
+          {
+            "setting": {
+              "value": {
+                "displayName": "Suspicious login",
+                "state": "INACTIVE"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

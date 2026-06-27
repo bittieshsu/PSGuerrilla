@@ -1,0 +1,24 @@
+{
+  "checkId": "OAUTH-006",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "App approval workflow not enabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "api_controls.app_approval_requests": [
+          {
+            "setting": {
+              "value": {
+                "allowedForAll": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

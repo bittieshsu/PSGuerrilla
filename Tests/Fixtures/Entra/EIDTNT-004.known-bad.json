@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDTNT-004",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Anyone (incl guests) can invite",
+  "auditData": {
+    "TenantConfig": {
+      "AuthorizationPolicy": {
+        "allowInvitesFrom": "everyone"
+      }
+    },
+    "Errors": {}
+  }
+}

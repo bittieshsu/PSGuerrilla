@@ -1,0 +1,22 @@
+{
+  "checkId": "M365EXO-039",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A spam action is set to a non-approved value",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiSpamPolicies": [
+          {
+            "HighConfidenceSpamAction": "Quarantine",
+            "SpamAction": "Delete",
+            "Name": "P1"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

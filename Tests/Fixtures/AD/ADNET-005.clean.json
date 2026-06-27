@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-005",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "LLMNR disabled (0)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Registry": {
+          "MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\EnableMulticast": {
+            "Value": "0"
+          }
+        }
+      }
+    }
+  }
+}

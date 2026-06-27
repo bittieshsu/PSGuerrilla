@@ -1,0 +1,22 @@
+{
+  "checkId": "ADPRIV-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Account Operators has a member",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Account Operators": [
+          {
+            "Enabled": true,
+            "IsGroup": false,
+            "ObjectClass": "user",
+            "SamAccountName": "m1"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "checkId": "ADPRIV-010",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No privileged account flagged non-expiring password",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "UACFlags": {
+            "DONT_EXPIRE_PASSWORD": false
+          },
+          "SamAccountName": "admin1",
+          "DistinguishedName": "CN=admin1,CN=Users,DC=test,DC=local"
+        }
+      ]
+    }
+  }
+}

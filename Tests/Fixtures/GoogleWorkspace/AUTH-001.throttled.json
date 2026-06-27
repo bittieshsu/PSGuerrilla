@@ -1,0 +1,13 @@
+{
+  "checkId": "AUTH-001",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "User inventory collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "Users": null,
+    "Errors": {
+      "Users": "Admin SDK 429: rate limit exceeded for users.list"
+    }
+  }
+}

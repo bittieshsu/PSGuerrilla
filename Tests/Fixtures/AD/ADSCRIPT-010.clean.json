@@ -1,0 +1,20 @@
+{
+  "checkId": "ADSCRIPT-010",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No UNC paths to non-DC servers in scripts",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "ScriptAnalysis": [
+        {
+          "UNCPaths": [],
+          "RelativePath": "local.ps1",
+          "ExternalResources": false,
+          "ExternalResourceList": []
+        }
+      ]
+    }
+  }
+}

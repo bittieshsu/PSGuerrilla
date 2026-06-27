@@ -1,0 +1,16 @@
+{
+  "checkId": "ADPRIV-022",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "krbtgt password age 90 days is within the safe threshold (<=180)",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "KrbtgtAccount": {
+        "KeyVersionNumber": 3,
+        "PwdAgeDays": 90
+      }
+    },
+    "Errors": {}
+  }
+}

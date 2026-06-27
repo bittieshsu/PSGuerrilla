@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDCA-007",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "ConditionalAccess collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": null
+    },
+    "Errors": {
+      "ConditionalAccess": "Graph 429: conditionalAccess/policies throttled."
+    }
+  }
+}

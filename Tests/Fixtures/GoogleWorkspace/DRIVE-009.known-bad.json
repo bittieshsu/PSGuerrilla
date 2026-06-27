@@ -1,0 +1,49 @@
+{
+  "checkId": "DRIVE-009",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Six Drive-scope OAuth apps (6-10)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "scope": "drive",
+          "app_name": "A1"
+        }
+      },
+      {
+        "Params": {
+          "scope": "drive.file",
+          "app_name": "A2"
+        }
+      },
+      {
+        "Params": {
+          "scope": "drive.readonly",
+          "app_name": "A3"
+        }
+      },
+      {
+        "Params": {
+          "scope": "drive",
+          "app_name": "A4"
+        }
+      },
+      {
+        "Params": {
+          "scope": "drive",
+          "app_name": "A5"
+        }
+      },
+      {
+        "Params": {
+          "scope": "drive",
+          "app_name": "A6"
+        }
+      }
+    ]
+  }
+}

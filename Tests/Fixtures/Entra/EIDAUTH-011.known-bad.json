@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDAUTH-011",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Self-service password reset not enabled",
+  "auditData": {
+    "AuthMethods": {
+      "AuthorizationPolicy": {
+        "allowedToUseSSPR": false
+      }
+    }
+  }
+}

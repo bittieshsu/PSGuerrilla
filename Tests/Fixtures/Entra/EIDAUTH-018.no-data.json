@@ -1,0 +1,13 @@
+{
+  "checkId": "EIDAUTH-018",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Auth method configs not available",
+  "auditData": {
+    "AuthMethods": {
+      "MethodConfigurations": []
+    },
+    "Errors": {}
+  }
+}

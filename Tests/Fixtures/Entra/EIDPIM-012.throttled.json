@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDPIM-012",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "PIM collection failed",
+  "auditData": {
+    "Errors": {
+      "PIM": "Graph error"
+    },
+    "PIM": {
+      "GlobalAdmins": null
+    }
+  }
+}

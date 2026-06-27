@@ -1,0 +1,11 @@
+{
+  "checkId": "EIDPIM-014",
+  "theater": "Infiltration",
+  "scenario": "not-implemented",
+  "expectedStatus": "SKIP",
+  "description": "PIM notification settings need beta PIM policy endpoints",
+  "auditData": {
+    "PIM": {},
+    "Errors": {}
+  }
+}

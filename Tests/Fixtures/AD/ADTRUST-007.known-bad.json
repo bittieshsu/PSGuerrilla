@@ -1,0 +1,23 @@
+{
+  "checkId": "ADTRUST-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "An Azure AD trust is present (review)",
+  "auditData": {
+    "Errors": {},
+    "Trusts": [
+      {
+        "SIDFilteringEnabled": false,
+        "IsAzureAD": true,
+        "TrustDirection": "Bidirectional",
+        "TrustType": "External",
+        "FlatName": "CONTOSO",
+        "WhenCreated": "2023-01-01T00:00:00Z",
+        "SelectiveAuthentication": false,
+        "WhenChanged": "2023-01-01T00:00:00Z",
+        "TrustPartner": "contoso.onmicrosoft.com"
+      }
+    ]
+  }
+}

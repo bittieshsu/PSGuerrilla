@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPRIV-029",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Protected Users group is empty",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "ProtectedUsersMembers": []
+    },
+    "Errors": {}
+  }
+}

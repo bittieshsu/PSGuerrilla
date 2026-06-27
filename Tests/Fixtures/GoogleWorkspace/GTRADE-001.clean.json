@@ -1,0 +1,19 @@
+{
+  "checkId": "GTRADE-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "delegation grants exist and hold only read-only scopes",
+  "auditData": {
+    "DomainWideDelegation": [
+      {
+        "scopes": [
+          "https://www.googleapis.com/auth/spreadsheets.readonly",
+          "https://www.googleapis.com/auth/drive.readonly"
+        ],
+        "clientId": "100000000000000000003"
+      }
+    ],
+    "Errors": {}
+  }
+}

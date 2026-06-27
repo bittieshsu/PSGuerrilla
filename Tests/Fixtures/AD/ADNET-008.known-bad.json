@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "WPAD service not disabled via policy",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Services": {
+          "WinHttpAutoProxySvc": {
+            "StartType": 3
+          }
+        }
+      }
+    }
+  }
+}

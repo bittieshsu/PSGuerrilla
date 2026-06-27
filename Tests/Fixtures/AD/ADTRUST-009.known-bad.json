@@ -1,0 +1,19 @@
+{
+  "checkId": "ADTRUST-009",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "An orphaned/stale trust (>365 days) is present",
+  "auditData": {
+    "Errors": {},
+    "Trusts": [
+      {
+        "TrustType": "External",
+        "TrustDirection": "Outbound",
+        "TrustPartner": "old-domain.com",
+        "WhenChanged": "2023-01-01T00:00:00Z",
+        "TrustSID": "S-1-5-21-1-2-3"
+      }
+    ]
+  }
+}

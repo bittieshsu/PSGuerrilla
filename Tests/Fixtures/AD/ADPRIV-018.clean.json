@@ -1,0 +1,18 @@
+{
+  "checkId": "ADPRIV-018",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All privileged accounts have logged in",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "SamAccountName": "admin1",
+          "LastLogonTimestamp": "2026-05-01T00:00:00Z"
+        }
+      ]
+    }
+  }
+}

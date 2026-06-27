@@ -1,0 +1,11 @@
+{
+  "checkId": "ADPRIV-028",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No non-default principals hold DCSync rights",
+  "auditData": {
+    "Errors": {},
+    "DCSyncAccounts": []
+  }
+}

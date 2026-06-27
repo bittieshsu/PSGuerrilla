@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-015",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Support access restricted to U.S. Google staff",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "access_management.user_scoping": [
+          {
+            "setting": {
+              "value": {
+                "allowedAudience": "US_GOOGLE_STAFF"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

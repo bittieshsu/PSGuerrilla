@@ -1,0 +1,24 @@
+{
+  "checkId": "ADSCRIPT-010",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Logon script references a non-DC UNC path",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "ScriptAnalysis": [
+        {
+          "UNCPaths": [
+            "\\\\fileserver\\share"
+          ],
+          "RelativePath": "remote.ps1",
+          "ExternalResources": true,
+          "ExternalResourceList": [
+            "\\\\fileserver\\share\\tools.exe"
+          ]
+        }
+      ]
+    }
+  }
+}

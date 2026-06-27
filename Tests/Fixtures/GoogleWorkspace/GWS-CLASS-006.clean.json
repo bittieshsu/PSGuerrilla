@@ -1,0 +1,24 @@
+{
+  "checkId": "GWS-CLASS-006",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Only verified teachers can create classes",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "classroom.teacher_permissions": [
+          {
+            "setting": {
+              "value": {
+                "whoCanCreateClasses": "VERIFIED_TEACHERS_ONLY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

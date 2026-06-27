@@ -1,0 +1,18 @@
+{
+  "checkId": "ADMIN-006",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "High stale-login rate (>20%)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "primaryEmail": "stale@e.com",
+        "suspended": false,
+        "lastLoginTime": null
+      }
+    ]
+  }
+}

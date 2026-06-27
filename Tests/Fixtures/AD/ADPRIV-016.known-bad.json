@@ -1,0 +1,19 @@
+{
+  "checkId": "ADPRIV-016",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A privileged account uses a weak/known password",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "PasswordAnalysis": {
+        "WeakPasswords": [
+          {
+            "SamAccountName": "admin1"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDAPP-006",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A high-privilege consent grant exists",
+  "auditData": {
+    "Applications": {
+      "ConsentGrants": [
+        {
+          "resourceId": "graph",
+          "clientId": "c1",
+          "scope": "User.ReadWrite.All",
+          "consentType": "AllPrincipals"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "checkId": "AZIAM-005",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Storage accounts enforce HTTPS, no public blob, TLS1.2",
+  "auditData": {
+    "AzureIAM": {
+      "Subscriptions": [
+        {
+          "id": "s1"
+        }
+      ],
+      "Errors": {},
+      "StorageAccounts": [
+        {
+          "name": "st1",
+          "properties": {
+            "minimumTlsVersion": "TLS1_2",
+            "supportsHttpsTrafficOnly": true,
+            "allowBlobPublicAccess": false
+          }
+        }
+      ]
+    }
+  }
+}

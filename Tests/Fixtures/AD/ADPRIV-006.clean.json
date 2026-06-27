@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPRIV-006",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Backup Operators empty",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Backup Operators": []
+      }
+    },
+    "Errors": {}
+  }
+}

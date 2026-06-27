@@ -1,0 +1,26 @@
+{
+  "checkId": "M365TEAMS-006",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Chat permission role is Full",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "MessagingPolicies": [
+          {
+            "AllowUserEditMessage": true,
+            "AllowUserChat": true,
+            "AllowOwnerDeleteMessage": true,
+            "AllowUrlPreviews": true,
+            "AllowUserDeleteMessage": true,
+            "ChatPermissionRole": "Full",
+            "Identity": "Global"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "checkId": "ADPWD-001",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Default policy weak (length 8, no complexity, history 12)",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "DefaultPolicy": {
+        "PasswordHistoryCount": 12,
+        "PasswordComplexity": false,
+        "LockoutThreshold": 0,
+        "MinPasswordLength": 8,
+        "ReversibleEncryption": true
+      }
+    }
+  }
+}

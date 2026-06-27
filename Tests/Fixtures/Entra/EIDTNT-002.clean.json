@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDTNT-002",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Default user role cannot create apps/groups/tenants",
+  "auditData": {
+    "TenantConfig": {
+      "AuthorizationPolicy": {
+        "defaultUserRolePermissions": {
+          "allowedToCreateSecurityGroups": false,
+          "allowedToCreateTenants": false,
+          "allowedToCreateApps": false,
+          "allowedToReadOtherUsers": true
+        }
+      }
+    }
+  }
+}

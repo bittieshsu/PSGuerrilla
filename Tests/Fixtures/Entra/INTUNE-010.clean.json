@@ -1,0 +1,19 @@
+{
+  "checkId": "INTUNE-010",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "an EDR configuration profile is deployed",
+  "auditData": {
+    "Intune": {
+      "DeviceConfigurations": [
+        {
+          "@odata.type": "#microsoft.graph.endpointDetectionAndResponsePolicy",
+          "displayName": "MDE Onboarding",
+          "id": "c1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

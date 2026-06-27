@@ -1,0 +1,28 @@
+{
+  "checkId": "EIDAPP-019",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No suspicious redirect URIs",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "Safe",
+          "spa": {
+            "redirectUris": []
+          },
+          "web": {
+            "redirectUris": [
+              "https://contoso.com/cb"
+            ]
+          },
+          "appId": "a1",
+          "publicClient": {
+            "redirectUris": []
+          }
+        }
+      ]
+    }
+  }
+}

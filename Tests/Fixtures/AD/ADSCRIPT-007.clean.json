@@ -1,0 +1,18 @@
+{
+  "checkId": "ADSCRIPT-007",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No world-writable logon scripts",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "ScriptAnalysis": [
+        {
+          "WorldWritable": false,
+          "RelativePath": "logon.ps1"
+        }
+      ]
+    }
+  }
+}

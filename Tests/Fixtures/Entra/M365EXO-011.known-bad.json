@@ -1,0 +1,28 @@
+{
+  "checkId": "M365EXO-011",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Auto-forward domain and forwarding transport rule (2 issues)",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "TransportRules": [
+          {
+            "BlindCopyTo": null,
+            "RedirectMessageTo": "attacker@ext.com",
+            "State": "Enabled"
+          }
+        ],
+        "RemoteDomains": [
+          {
+            "DomainName": "*",
+            "AutoForwardEnabled": true
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

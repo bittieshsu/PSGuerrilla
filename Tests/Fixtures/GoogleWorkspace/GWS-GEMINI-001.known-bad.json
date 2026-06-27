@@ -1,0 +1,24 @@
+{
+  "checkId": "GWS-GEMINI-001",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Gemini app enabled (license gating not verifiable)",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gemini_app.service_status": [
+          {
+            "setting": {
+              "value": {
+                "serviceState": "ENABLED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

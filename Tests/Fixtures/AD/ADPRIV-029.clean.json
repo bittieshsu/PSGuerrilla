@@ -1,0 +1,18 @@
+{
+  "checkId": "ADPRIV-029",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Protected Users group is populated",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "ProtectedUsersMembers": [
+        {
+          "SamAccountName": "a",
+          "Enabled": true
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

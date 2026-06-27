@@ -1,0 +1,16 @@
+{
+  "checkId": "M365SPO-002",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Guest access expires within 90 days",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "ExternalUserExpireInDays": 45
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

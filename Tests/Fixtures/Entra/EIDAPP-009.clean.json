@@ -1,0 +1,22 @@
+{
+  "checkId": "EIDAPP-009",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No stale service principals",
+  "auditData": {
+    "Applications": {
+      "ServicePrincipals": [
+        {
+          "displayName": "SP1",
+          "id": "sp1",
+          "appId": "a1",
+          "signInActivity": {
+            "lastSignInDateTime": "2026-06-01T00:00:00Z"
+          }
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

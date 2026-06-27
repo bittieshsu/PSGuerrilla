@@ -1,0 +1,19 @@
+{
+  "checkId": "ADKERB-002",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Kerberoastable account supports AES",
+  "auditData": {
+    "Errors": {},
+    "Kerberos": {
+      "KerberoastableAccounts": [
+        {
+          "SamAccountName": "svc1",
+          "AdminCount": 0,
+          "EncryptionTypes": 24
+        }
+      ]
+    }
+  }
+}

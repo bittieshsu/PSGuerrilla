@@ -1,0 +1,16 @@
+{
+  "checkId": "EIDFED-009",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Federation collection failed",
+  "auditData": {
+    "Federation": {
+      "FederationConfigs": null,
+      "Errors": {}
+    },
+    "Errors": {
+      "Federation": "Graph error"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "checkId": "EIDFED-005",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Cloud-only tenant (no on-prem sync)",
+  "auditData": {
+    "Federation": {
+      "Users": {
+        "SyncedCount": 0
+      },
+      "Errors": {},
+      "OnPremisesSyncSettings": null,
+      "OnPremisesSyncEnabled": false
+    },
+    "Errors": {}
+  }
+}

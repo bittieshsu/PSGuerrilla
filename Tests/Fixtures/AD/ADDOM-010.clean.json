@@ -1,0 +1,20 @@
+{
+  "checkId": "ADDOM-010",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All sites have subnets assigned",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "Sites": [
+        {
+          "Name": "Site1",
+          "Subnets": [
+            "10.0.0.0/8"
+          ]
+        }
+      ]
+    }
+  }
+}

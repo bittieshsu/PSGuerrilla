@@ -1,0 +1,37 @@
+{
+  "checkId": "EIDCA-007",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "an enabled CA policy requires MFA for all users on all cloud apps",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "conditions": {
+            "users": {
+              "includeUsers": [
+                "All"
+              ]
+            },
+            "applications": {
+              "includeApplications": [
+                "All"
+              ]
+            }
+          },
+          "displayName": "MFA for All",
+          "id": "p1",
+          "state": "enabled",
+          "grantControls": {
+            "authenticationStrength": null,
+            "builtInControls": [
+              "mfa"
+            ]
+          }
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

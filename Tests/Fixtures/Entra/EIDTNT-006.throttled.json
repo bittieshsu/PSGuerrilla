@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDTNT-006",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "TenantConfig collection failed",
+  "auditData": {
+    "TenantConfig": {
+      "Errors": {}
+    },
+    "Errors": {
+      "TenantConfig": "Graph error"
+    }
+  }
+}

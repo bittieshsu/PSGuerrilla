@@ -1,0 +1,20 @@
+{
+  "checkId": "ADGPO-014",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "An MSI package is staged in a GPO SYSVOL folder",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "ScriptFiles": [],
+          "PreferenceFiles": [
+            "app.msi"
+          ]
+        }
+      }
+    }
+  }
+}

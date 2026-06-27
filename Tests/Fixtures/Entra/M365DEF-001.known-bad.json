@@ -1,0 +1,23 @@
+{
+  "checkId": "M365DEF-001",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Preset Defender policy present but disabled",
+  "auditData": {
+    "M365Services": {
+      "Defender": {
+        "ProtectionPolicyRules": [
+          {
+            "Name": "Standard",
+            "Identity": "Standard",
+            "Priority": 1,
+            "State": "Disabled"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

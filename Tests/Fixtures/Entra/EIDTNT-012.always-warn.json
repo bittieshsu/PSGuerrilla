@@ -1,0 +1,12 @@
+{
+  "checkId": "EIDTNT-012",
+  "theater": "Infiltration",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "Long-term log retention requires manual verification",
+  "auditData": {
+    "TenantConfig": {
+      "SubscribedSkus": []
+    }
+  }
+}

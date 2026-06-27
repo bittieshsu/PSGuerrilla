@@ -1,0 +1,26 @@
+{
+  "checkId": "ADCS-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Authenticated Users hold WriteOwner on a template",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateTemplates": [
+        {
+          "EnrollmentPermissions": [
+            {
+              "Right": "WriteOwner",
+              "Identity": "Authenticated Users",
+              "SID": "S-1-5-11"
+            }
+          ],
+          "DisplayName": "Vuln",
+          "IsPublished": true,
+          "Name": "Vuln"
+        }
+      ]
+    }
+  }
+}

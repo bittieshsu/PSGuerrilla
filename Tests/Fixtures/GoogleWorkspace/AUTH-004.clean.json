@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-004",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Minimum password length 12",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "security.password": [
+          {
+            "setting": {
+              "value": {
+                "minimumLength": 12
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "checkId": "ADACL-016",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "ObjectACLs collection failed",
+  "auditData": {
+    "Errors": {
+      "ObjectACLs": "collector error"
+    },
+    "ACLs": null
+  }
+}

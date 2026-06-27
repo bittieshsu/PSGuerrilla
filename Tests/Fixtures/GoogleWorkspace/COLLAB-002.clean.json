@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-002",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Meet join audience restricted to trusted",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "meet.meet_joining": [
+          {
+            "setting": {
+              "value": {
+                "allowedAudience": "TRUSTED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

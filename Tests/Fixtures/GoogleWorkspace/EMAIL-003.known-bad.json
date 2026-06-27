@@ -1,0 +1,19 @@
+{
+  "checkId": "EMAIL-003",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "no valid DMARC record present",
+  "auditData": {
+    "DnsRecords": {
+      "example.com": {
+        "DMARC": {
+          "Valid": false,
+          "Policy": null,
+          "Details": "DMARC record not found"
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

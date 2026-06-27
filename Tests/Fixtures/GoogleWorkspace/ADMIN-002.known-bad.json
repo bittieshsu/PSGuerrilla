@@ -1,0 +1,21 @@
+{
+  "checkId": "ADMIN-002",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Assignments exist but no custom roles (no FAIL path)",
+  "objectShape": false,
+  "auditData": {
+    "Roles": [
+      {
+        "isSystemRole": true
+      }
+    ],
+    "RoleAssignments": [
+      {
+        "id": "1"
+      }
+    ],
+    "Errors": {}
+  }
+}

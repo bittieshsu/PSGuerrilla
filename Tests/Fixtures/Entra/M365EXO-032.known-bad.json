@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-032",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No anti-phish impersonation protection",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiPhishPolicies": [
+          {
+            "EnableTargetedUserProtection": false,
+            "Name": "P1",
+            "EnableTargetedDomainsProtection": false,
+            "EnableOrganizationDomainsProtection": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "checkId": "EIDCA-008",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Legacy auth blocked for all users",
+  "auditData": {
+    "Errors": {},
+    "ConditionalAccess": {
+      "Errors": {},
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "BlockLegacy",
+          "grantControls": {
+            "builtInControls": [
+              "block"
+            ]
+          },
+          "conditions": {
+            "users": {
+              "includeUsers": [
+                "All"
+              ]
+            },
+            "clientAppTypes": [
+              "exchangeActiveSync",
+              "other"
+            ]
+          },
+          "id": "p1"
+        }
+      ]
+    }
+  }
+}

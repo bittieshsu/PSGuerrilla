@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-036",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Connection filter safe-list disabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "ConnectionFilterPolicies": [
+          {
+            "Name": "P1",
+            "EnableSafeList": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

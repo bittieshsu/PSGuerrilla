@@ -1,0 +1,22 @@
+{
+  "checkId": "ADKERB-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "a workstation is trusted for unconstrained delegation",
+  "auditData": {
+    "Kerberos": {
+      "UnconstrainedDelegation": [
+        {
+          "DN": "CN=WORKSTATION01,CN=Computers,DC=contoso,DC=com",
+          "ObjectClass": [
+            "computer"
+          ],
+          "DnsHostName": "workstation01.contoso.com",
+          "SamAccountName": "WORKSTATION01$"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

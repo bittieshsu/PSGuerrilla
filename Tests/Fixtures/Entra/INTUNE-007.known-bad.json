@@ -1,0 +1,20 @@
+{
+  "checkId": "INTUNE-007",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No disk encryption policy deployed",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "DeviceConfigurations": [
+        {
+          "@odata.type": "#microsoft.graph.windowsFirewallConfiguration",
+          "id": "c1",
+          "displayName": "Firewall Policy"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "checkId": "EIDCA-018",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Security-info registration requires a managed device",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "Reg",
+          "id": "p1",
+          "grantControls": {
+            "builtInControls": [
+              "compliantDevice"
+            ]
+          },
+          "conditions": {
+            "applications": {
+              "includeUserActions": [
+                "registerSecurityInformation"
+              ]
+            },
+            "users": {
+              "includeUsers": [
+                "All"
+              ]
+            }
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

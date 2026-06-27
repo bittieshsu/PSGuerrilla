@@ -1,0 +1,18 @@
+{
+  "checkId": "ADGPO-018",
+  "theater": "Reconnaissance",
+  "scenario": "audit-present",
+  "expectedStatus": "WARN",
+  "description": "Audit-policy GPO present (verify coverage)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "PreferenceFiles": [],
+          "HasRegistryPol": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "checkId": "EMAIL-016",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Link shortener + external image scanning enabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gmail.links_and_external_images": [
+          {
+            "setting": {
+              "value": {
+                "enableShortenerScanning": true,
+                "enableExternalImageScanning": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

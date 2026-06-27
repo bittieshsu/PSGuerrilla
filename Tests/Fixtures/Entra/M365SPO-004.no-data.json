@@ -1,0 +1,16 @@
+{
+  "checkId": "M365SPO-004",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Site creation restriction data unavailable",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "SelfServiceSiteCreationDisabled": null
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

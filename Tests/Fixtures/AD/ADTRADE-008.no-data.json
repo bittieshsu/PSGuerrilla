@@ -1,0 +1,13 @@
+{
+  "checkId": "ADTRADE-008",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Key Admins groups not resolved",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "KeyAdminGroupsFound": false
+    }
+  }
+}

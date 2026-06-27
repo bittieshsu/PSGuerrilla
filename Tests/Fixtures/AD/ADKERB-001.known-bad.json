@@ -1,0 +1,21 @@
+{
+  "checkId": "ADKERB-001",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A user account has an SPN (Kerberoastable)",
+  "auditData": {
+    "Kerberos": {
+      "KerberoastableAccounts": [
+        {
+          "AdminCount": 0,
+          "SamAccountName": "svc",
+          "SPNs": [
+            "mssql/db"
+          ]
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

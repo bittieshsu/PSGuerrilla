@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-017",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "LAPS deployed with managed expiration",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "LAPSExpirationDays": null,
+      "LAPSType": "Windows",
+      "LAPSDeployed": true
+    }
+  }
+}

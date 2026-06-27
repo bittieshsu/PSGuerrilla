@@ -1,0 +1,19 @@
+{
+  "checkId": "EMAIL-003",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "DMARC valid with an enforcing policy (reject)",
+  "auditData": {
+    "DnsRecords": {
+      "example.com": {
+        "DMARC": {
+          "Valid": true,
+          "Policy": "reject",
+          "Details": ""
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

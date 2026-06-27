@@ -1,0 +1,19 @@
+{
+  "checkId": "ADLOG-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Process-creation cmdline auditing enabled (1)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Registry": {
+          "MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit\\ProcessCreationIncludeCmdLine_Enabled": {
+            "Value": "1"
+          }
+        }
+      }
+    }
+  }
+}

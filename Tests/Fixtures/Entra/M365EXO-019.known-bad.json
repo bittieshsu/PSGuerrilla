@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-019",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No DMARC record specifies an aggregate address",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DomainMailSecurity": [
+          {
+            "Domain": "c.com",
+            "DMARC": {
+              "Record": "v=DMARC1;p=none"
+            }
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "checkId": "EIDAPP-008",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An app credential is already expired",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "A1",
+          "appId": "a1",
+          "passwordCredentials": [
+            {
+              "endDateTime": "2020-01-01T00:00:00Z",
+              "keyId": "k1"
+            }
+          ],
+          "keyCredentials": []
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "checkId": "ADMIN-002",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Custom roles and assignments configured",
+  "objectShape": false,
+  "auditData": {
+    "Roles": [
+      {
+        "isSystemRole": false,
+        "isSuperAdminRole": false
+      }
+    ],
+    "RoleAssignments": [
+      {
+        "id": "1"
+      }
+    ],
+    "Errors": {}
+  }
+}

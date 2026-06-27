@@ -1,0 +1,26 @@
+{
+  "checkId": "EMAIL-011",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "POP and IMAP disabled for all users",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "suspended": false
+      }
+    ],
+    "GmailSettings": {
+      "u1@e.com": {
+        "pop": {
+          "accessWindow": "disabled"
+        },
+        "imap": {
+          "enabled": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "checkId": "ADDOM-014",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "LDAP channel binding always enforced (2)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "g1": {
+          "RegistryPolicies": [
+            {
+              "Value": 2,
+              "ValueName": "LdapEnforceChannelBinding"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

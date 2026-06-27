@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDAPP-011",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Applications collection failed",
+  "auditData": {
+    "Applications": {
+      "Errors": {}
+    },
+    "Errors": {
+      "Applications": "Graph error"
+    }
+  }
+}

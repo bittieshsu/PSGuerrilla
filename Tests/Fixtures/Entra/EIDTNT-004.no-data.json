@@ -1,0 +1,13 @@
+{
+  "checkId": "EIDTNT-004",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Authorization policy not available",
+  "auditData": {
+    "TenantConfig": {
+      "AuthorizationPolicy": null
+    },
+    "Errors": {}
+  }
+}

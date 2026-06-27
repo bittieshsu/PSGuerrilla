@@ -1,0 +1,22 @@
+{
+  "checkId": "ADDOM-016",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "NTLMv2-only enforced via GPO (>=3)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "guid1": {
+          "RegistryPolicies": [
+            {
+              "ValueName": "LmCompatibilityLevel",
+              "Value": 5
+            }
+          ]
+        }
+      }
+    }
+  }
+}

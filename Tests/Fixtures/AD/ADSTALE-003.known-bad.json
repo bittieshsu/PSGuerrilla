@@ -1,0 +1,23 @@
+{
+  "checkId": "ADSTALE-003",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A disabled account retains group memberships",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "TotalDisabled": 10,
+      "DisabledWithGroups": [
+        {
+          "SamAccountName": "d1",
+          "GroupCount": 2,
+          "DN": "CN=d1,DC=t,DC=l",
+          "Groups": [
+            "CN=G1,DC=t,DC=l"
+          ]
+        }
+      ]
+    }
+  }
+}

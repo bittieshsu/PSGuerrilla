@@ -1,0 +1,25 @@
+{
+  "checkId": "M365EXO-003",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Anti-phish policy exists but impersonation protection off",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiPhishPolicies": [
+          {
+            "EnableMailboxIntelligenceProtection": false,
+            "PhishThresholdLevel": 1,
+            "Name": "Default",
+            "Enabled": true,
+            "EnableTargetedDomainsProtection": false,
+            "EnableTargetedUserProtection": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

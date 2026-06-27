@@ -1,0 +1,11 @@
+{
+  "checkId": "DEVICE-010",
+  "theater": "Fortification",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "Device setting not exposed via API (manual)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {}
+  }
+}

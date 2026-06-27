@@ -1,0 +1,24 @@
+{
+  "checkId": "ADTRUST-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A foreign/external domain trust is present (review)",
+  "auditData": {
+    "Errors": {},
+    "Trusts": [
+      {
+        "ForestTransitive": false,
+        "TrustDirection": "Bidirectional",
+        "TreatAsExternal": false,
+        "SIDFilteringEnabled": false,
+        "TrustType": "External",
+        "SelectiveAuthentication": false,
+        "WhenCreated": "2023-01-01T00:00:00Z",
+        "IsTransitive": true,
+        "WithinForest": false,
+        "TrustPartner": "external-org.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checkId": "ADACL-013",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No gPLink-modify rights on critical OUs",
+  "auditData": {
+    "ACLs": {
+      "CriticalObjectACLs": {
+        "Domain Controllers OU": {
+          "ACEs": []
+        },
+        "Domain Root": {
+          "ACEs": []
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

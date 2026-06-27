@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPRIV-021",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No adminCount orphans",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "AdminCountOrphans": []
+    }
+  }
+}

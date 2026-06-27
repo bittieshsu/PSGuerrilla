@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-010",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "WebClient (WebDAV) auto-start (2)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Services": {
+          "WebClient": {
+            "StartType": 2
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "checkId": "M365TEAMS-007",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Teams app permission policy data unavailable",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "AppPermissionPolicies": null
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

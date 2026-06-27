@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Minimum password length 7 (<8)",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "DefaultPolicy": {
+        "MinPasswordLength": 7
+      }
+    }
+  }
+}

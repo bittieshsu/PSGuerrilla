@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-044",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Only some required protection alerts present",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "ProtectionAlerts": [
+          {
+            "Name": "Suspicious Connector Activity",
+            "Disabled": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

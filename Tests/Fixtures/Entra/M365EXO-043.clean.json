@@ -1,0 +1,20 @@
+{
+  "checkId": "M365EXO-043",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Safe Links click tracking enabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "SafeLinksPolicies": [
+          {
+            "DoNotTrackUserClicks": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

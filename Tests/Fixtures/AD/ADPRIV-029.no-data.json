@@ -1,0 +1,11 @@
+{
+  "checkId": "ADPRIV-029",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Protected Users data unavailable (key absent)",
+  "auditData": {
+    "PrivilegedAccounts": {},
+    "Errors": {}
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "checkId": "ADDOM-013",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "LDAP signing required via GPO (>=2)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "guid1": {
+          "RegistryPolicies": [
+            {
+              "ValueName": "LDAPServerIntegrity",
+              "Value": 2
+            }
+          ]
+        }
+      }
+    }
+  }
+}

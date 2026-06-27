@@ -1,0 +1,25 @@
+{
+  "checkId": "M365DEF-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "AIR and Threat Explorer enabled",
+  "auditData": {
+    "M365Services": {
+      "Defender": {
+        "ProtectionPolicyRules": [
+          {
+            "Name": "Standard",
+            "State": "Enabled"
+          }
+        ],
+        "ThreatExplorerEnabled": true,
+        "AIRConfiguration": {
+          "Enabled": true
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

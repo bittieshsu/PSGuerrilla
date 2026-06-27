@@ -1,0 +1,22 @@
+{
+  "checkId": "M365TEAMS-004",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Anonymous join with PSTN lobby bypass",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "MeetingPolicies": [
+          {
+            "AllowAnonymousUsersToJoinMeeting": true,
+            "Identity": "Global",
+            "AllowPSTNUsersToBypassLobby": true
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

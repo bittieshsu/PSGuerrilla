@@ -1,0 +1,13 @@
+{
+  "checkId": "ADTIER-001",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "TierZeroSignals collection failed",
+  "auditData": {
+    "Errors": {
+      "TierZeroSignals": "collector error"
+    },
+    "TierZero": null
+  }
+}

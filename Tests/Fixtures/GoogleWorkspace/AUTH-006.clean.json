@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-006",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Web session duration <= 12 hours",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "security.session_controls": [
+          {
+            "setting": {
+              "value": {
+                "webSessionDuration": "43200s"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkId": "GTRADE-005",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A custom role carries write/admin privileges",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Roles": [
+      {
+        "roleName": "OverReach",
+        "rolePrivileges": [
+          {
+            "privilegeName": "USERS_CREATE"
+          }
+        ],
+        "isSuperAdminRole": false,
+        "isSystemRole": false
+      }
+    ]
+  }
+}

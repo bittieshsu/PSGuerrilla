@@ -1,0 +1,14 @@
+{
+  "checkId": "ADSTALE-006",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No unsupported-OS computers",
+  "auditData": {
+    "StaleObjects": {
+      "TotalComputers": 100,
+      "UnsupportedOSComputers": []
+    },
+    "Errors": {}
+  }
+}

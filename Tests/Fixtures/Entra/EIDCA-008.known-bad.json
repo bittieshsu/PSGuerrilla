@@ -1,0 +1,33 @@
+{
+  "checkId": "EIDCA-008",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No CA policy blocks legacy authentication",
+  "auditData": {
+    "Errors": {},
+    "ConditionalAccess": {
+      "Errors": {},
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "MFA",
+          "grantControls": {
+            "builtInControls": [
+              "mfa"
+            ]
+          },
+          "conditions": {
+            "users": {
+              "includeUsers": [
+                "All"
+              ]
+            },
+            "clientAppTypes": []
+          },
+          "id": "p1"
+        }
+      ]
+    }
+  }
+}

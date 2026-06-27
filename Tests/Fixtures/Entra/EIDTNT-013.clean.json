@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDTNT-013",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Notification contacts configured",
+  "auditData": {
+    "TenantConfig": {
+      "Organization": {
+        "privacyProfile": null,
+        "securityComplianceNotificationMails": [],
+        "technicalNotificationMails": [
+          "tech@c.com"
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

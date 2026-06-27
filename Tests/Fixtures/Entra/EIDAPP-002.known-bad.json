@@ -1,0 +1,28 @@
+{
+  "checkId": "EIDAPP-002",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An app requests Application.ReadWrite.All (Role)",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "Risky",
+          "requiredResourceAccess": [
+            {
+              "resourceAppId": "00000003-0000-0000-c000-000000000000",
+              "resourceAccess": [
+                {
+                  "type": "Role",
+                  "id": "1bfefb4e-e0b5-418b-a88f-73c46d2cc8e9"
+                }
+              ]
+            }
+          ],
+          "appId": "a1"
+        }
+      ]
+    }
+  }
+}

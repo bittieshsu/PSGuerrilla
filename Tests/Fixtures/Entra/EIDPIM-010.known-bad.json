@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDPIM-010",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "PIM not configured (no eligible assignments)",
+  "auditData": {
+    "PIM": {
+      "Errors": {},
+      "RoleAssignmentSchedules": [],
+      "RoleEligibilitySchedules": []
+    },
+    "Errors": {}
+  }
+}

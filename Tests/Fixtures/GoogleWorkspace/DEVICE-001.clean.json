@@ -1,0 +1,21 @@
+{
+  "checkId": "DEVICE-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All registered mobile devices are managed (>=95%)",
+  "objectShape": false,
+  "auditData": {
+    "MobileDevices": [
+      {
+        "status": "APPROVED",
+        "managementType": "ADVANCED"
+      },
+      {
+        "status": "APPROVED",
+        "managementType": "ADVANCED"
+      }
+    ],
+    "Errors": {}
+  }
+}

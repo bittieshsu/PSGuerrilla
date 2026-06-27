@@ -1,0 +1,21 @@
+{
+  "checkId": "EIDAUTH-004",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A user has only weak (SMS/phone) MFA",
+  "auditData": {
+    "AuthMethods": {
+      "UserRegistrationDetails": [
+        {
+          "id": "1",
+          "isMfaRegistered": true,
+          "userPrincipalName": "u@t",
+          "methodsRegistered": [
+            "mobilePhone"
+          ]
+        }
+      ]
+    }
+  }
+}

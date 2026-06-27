@@ -1,0 +1,13 @@
+{
+  "checkId": "ADLOG-003",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Network config not assessed",
+  "auditData": {
+    "Errors": {
+      "NetworkConfig": "collector error"
+    },
+    "Network": null
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "checkId": "M365TEAMS-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Meeting lobby restricts external/auto-admit",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "MeetingPolicies": [
+          {
+            "AllowExternalParticipantGiveRequestControl": false,
+            "AutoAdmittedUsers": "EveryoneInCompany",
+            "Identity": "Global"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

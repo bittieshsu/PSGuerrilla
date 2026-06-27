@@ -1,0 +1,25 @@
+{
+  "checkId": "ADPRIV-024",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Service account in Domain Admins",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "Enabled": true,
+            "ObjectClass": "user",
+            "SamAccountName": "svc_app",
+            "IsServiceAccount": true,
+            "ServicePrincipalName": [
+              "app/h"
+            ]
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

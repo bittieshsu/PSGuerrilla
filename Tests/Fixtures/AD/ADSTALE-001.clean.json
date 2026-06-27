@@ -1,0 +1,14 @@
+{
+  "checkId": "ADSTALE-001",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No inactive user accounts",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "InactiveUsers": [],
+      "TotalUsers": 100
+    }
+  }
+}

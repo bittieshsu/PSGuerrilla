@@ -1,0 +1,20 @@
+{
+  "checkId": "ADPRIV-023",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "krbtgt account is enabled",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "KrbtgtAccount": {
+        "UACFlags": {
+          "ACCOUNTDISABLE": false,
+          "USE_DES_KEY_ONLY": false
+        },
+        "PwdAgeDays": 90,
+        "WhenCreated": "2024-01-01T00:00:00Z"
+      }
+    }
+  }
+}

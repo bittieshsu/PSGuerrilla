@@ -1,0 +1,16 @@
+{
+  "checkId": "EIDFED-003",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Federation collection failed (FAIL path needs a crafted X.509 cert)",
+  "auditData": {
+    "Errors": {
+      "Federation": "Graph error"
+    },
+    "Federation": {
+      "Errors": {},
+      "FederationConfigs": null
+    }
+  }
+}

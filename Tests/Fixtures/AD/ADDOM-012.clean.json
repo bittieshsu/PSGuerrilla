@@ -1,0 +1,19 @@
+{
+  "checkId": "ADDOM-012",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "AD-integrated zones require secure dynamic updates",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "DnsZones": [
+        {
+          "DynamicUpdate": 2,
+          "Name": "c.com",
+          "ZoneType": "AD-Forward"
+        }
+      ]
+    }
+  }
+}

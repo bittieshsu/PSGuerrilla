@@ -1,0 +1,17 @@
+{
+  "checkId": "EIDFED-011",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Device writeback enabled",
+  "auditData": {
+    "Federation": {
+      "OnPremisesSyncSettings": {
+        "features": {
+          "deviceWritebackEnabled": true
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

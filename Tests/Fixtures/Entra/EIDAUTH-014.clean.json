@@ -1,0 +1,25 @@
+{
+  "checkId": "EIDAUTH-014",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Custom banned password list configured",
+  "auditData": {
+    "AuthMethods": {
+      "DirectorySettings": [
+        {
+          "displayName": "Password Rule Settings",
+          "values": [
+            {
+              "value": "password1,password2",
+              "name": "BannedPasswordList"
+            }
+          ],
+          "templateId": "5cf42378-d67d-4f36-ba46-e8b86229381d"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

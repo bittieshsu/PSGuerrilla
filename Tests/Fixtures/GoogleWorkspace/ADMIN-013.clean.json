@@ -1,0 +1,23 @@
+{
+  "checkId": "ADMIN-013",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Two active super admins (2-4 range)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "b@e.com"
+      }
+    ]
+  }
+}

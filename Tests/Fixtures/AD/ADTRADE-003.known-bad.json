@@ -1,0 +1,19 @@
+{
+  "checkId": "ADTRADE-003",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A BitLocker recovery key is older than 365 days",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "BitLockerKeys": [
+        {
+          "ParentComputer": "COMP1",
+          "DistinguishedName": "CN=Key",
+          "WhenCreated": "2023-01-01T00:00:00Z"
+        }
+      ]
+    }
+  }
+}

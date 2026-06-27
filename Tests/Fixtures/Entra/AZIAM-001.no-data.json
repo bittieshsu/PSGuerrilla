@@ -1,0 +1,10 @@
+{
+  "checkId": "AZIAM-001",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Azure IAM data unavailable",
+  "auditData": {
+    "AzureIAM": null
+  }
+}

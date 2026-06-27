@@ -1,0 +1,17 @@
+{
+  "checkId": "DRIVE-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Drive external sharing OFF",
+  "objectShape": false,
+  "auditData": {
+    "CloudIdentityPolicies": null,
+    "Errors": {},
+    "OrgUnitPolicies": {
+      "/": {
+        "driveExternalSharing": "OFF"
+      }
+    }
+  }
+}

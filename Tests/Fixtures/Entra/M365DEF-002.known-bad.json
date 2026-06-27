@@ -1,0 +1,24 @@
+{
+  "checkId": "M365DEF-002",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A high-severity Defender alert is disabled",
+  "auditData": {
+    "M365Services": {
+      "Defender": {
+        "ProtectionAlerts": [
+          {
+            "Name": "Crit",
+            "Severity": "High",
+            "IsEnabled": false,
+            "Category": "ThreatProtection",
+            "Disabled": true
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "checkId": "ADPWD-016",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "LAPS not deployed",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "TotalComputers": 100,
+      "LAPSComputers": 0,
+      "LAPSDeployed": false,
+      "LAPSType": "None"
+    }
+  }
+}

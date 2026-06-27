@@ -1,0 +1,20 @@
+{
+  "checkId": "INTUNE-009",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No ASR policy deployed",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "DeviceConfigurations": [
+        {
+          "@odata.type": "#microsoft.graph.windowsFirewallConfiguration",
+          "id": "c1",
+          "displayName": "Firewall Policy"
+        }
+      ]
+    }
+  }
+}

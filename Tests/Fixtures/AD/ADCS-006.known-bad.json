@@ -1,0 +1,26 @@
+{
+  "checkId": "ADCS-006",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Authenticated Users hold WriteDacl on a template (ESC4)",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateTemplates": [
+        {
+          "EnrollmentPermissions": [
+            {
+              "Right": "WriteDacl",
+              "Identity": "Authenticated Users",
+              "SID": "S-1-5-11"
+            }
+          ],
+          "DisplayName": "Vuln",
+          "IsPublished": true,
+          "Name": "Vuln"
+        }
+      ]
+    }
+  }
+}

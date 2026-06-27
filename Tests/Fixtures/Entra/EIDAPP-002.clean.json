@@ -1,0 +1,18 @@
+{
+  "checkId": "EIDAPP-002",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No app requests high-risk Graph application permissions",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "Benign",
+          "requiredResourceAccess": [],
+          "appId": "a1"
+        }
+      ]
+    }
+  }
+}

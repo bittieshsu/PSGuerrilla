@@ -1,0 +1,15 @@
+{
+  "checkId": "INTUNE-017",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Intune security baselines not assessed",
+  "auditData": {
+    "Errors": {
+      "Intune": "Graph 429"
+    },
+    "Intune": {
+      "Errors": {}
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "checkId": "GTRADE-003",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A group allows anyone to join",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GroupSettings": {
+      "g@e.com": {
+        "allowExternalMembers": "false",
+        "whoCanJoin": "ANYONE_CAN_JOIN",
+        "email": "g@e.com"
+      }
+    }
+  }
+}

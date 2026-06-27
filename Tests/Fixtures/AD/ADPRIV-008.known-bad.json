@@ -1,0 +1,22 @@
+{
+  "checkId": "ADPRIV-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "DnsAdmins has a member",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "DnsAdmins": [
+          {
+            "Enabled": true,
+            "IsGroup": false,
+            "ObjectClass": "user",
+            "SamAccountName": "m1"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "checkId": "EMAIL-018",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Content compliance rules configured",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gmail.content_compliance": [
+          {
+            "setting": {
+              "value": {
+                "contentComplianceRules": [
+                  {
+                    "ruleName": "r1"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

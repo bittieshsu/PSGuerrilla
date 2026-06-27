@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDTNT-006",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Few cross-tenant partners (<=5)",
+  "auditData": {
+    "TenantConfig": {
+      "CrossTenantPartners": [
+        {
+          "tenantId": "11111111-1111-1111-1111-111111111111",
+          "isServiceProvider": false
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

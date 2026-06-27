@@ -1,0 +1,27 @@
+{
+  "checkId": "ADSCRIPT-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "SYSVOL writable by Authenticated Users",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "SysvolPermissions": {
+        "AccessRules": [
+          {
+            "Identity": "BUILTIN\\Administrators",
+            "AccessType": "Allow",
+            "Rights": "FullControl"
+          },
+          {
+            "Identity": "Authenticated Users",
+            "AccessType": "Allow",
+            "Rights": "Write"
+          }
+        ],
+        "Owner": "BUILTIN\\Administrators"
+      }
+    }
+  }
+}

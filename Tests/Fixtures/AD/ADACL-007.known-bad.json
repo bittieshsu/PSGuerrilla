@@ -1,0 +1,21 @@
+{
+  "checkId": "ADACL-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Everyone holds GenericAll on the domain root",
+  "auditData": {
+    "Errors": {},
+    "ACLs": {
+      "DangerousACEs": [
+        {
+          "ActiveDirectoryRights": "GenericAll",
+          "IdentityReference": "Everyone",
+          "IdentitySID": "S-1-1-0",
+          "ObjectName": "Domain Root",
+          "ObjectDN": "DC=corp,DC=local"
+        }
+      ]
+    }
+  }
+}

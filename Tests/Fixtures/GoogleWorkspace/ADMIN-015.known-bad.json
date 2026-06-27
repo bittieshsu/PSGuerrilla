@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-015",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Support access allows non-U.S. staff",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "access_management.user_scoping": [
+          {
+            "setting": {
+              "value": {
+                "allowedAudience": "EU_GOOGLE_STAFF"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

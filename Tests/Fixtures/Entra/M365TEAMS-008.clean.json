@@ -1,0 +1,22 @@
+{
+  "checkId": "M365TEAMS-008",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No third-party cloud storage providers enabled",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "GuestConfig": {
+          "AllowGoogleDrive": false,
+          "AllowShareFile": false,
+          "AllowDropBox": false,
+          "AllowBox": false,
+          "AllowEgnyte": false
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

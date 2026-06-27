@@ -1,0 +1,30 @@
+{
+  "checkId": "M365EXO-028",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Common executable file types blocked",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "MalwarePolicies": [
+          {
+            "FileTypes": [
+              "exe",
+              "cmd",
+              "vbe",
+              "vbs",
+              "js",
+              "ps1",
+              "bat"
+            ],
+            "EnableFileFilter": true,
+            "Name": "P1"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

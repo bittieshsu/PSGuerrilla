@@ -1,0 +1,17 @@
+{
+  "checkId": "EIDFED-007",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Password hash sync disabled",
+  "auditData": {
+    "Federation": {
+      "OnPremisesSyncSettings": {
+        "features": {
+          "passwordHashSyncEnabled": false
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

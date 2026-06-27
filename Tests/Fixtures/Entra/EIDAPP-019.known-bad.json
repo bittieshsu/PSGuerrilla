@@ -1,0 +1,28 @@
+{
+  "checkId": "EIDAPP-019",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "An app has a localhost/http redirect URI",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "Bad",
+          "spa": {
+            "redirectUris": []
+          },
+          "web": {
+            "redirectUris": [
+              "http://localhost/auth"
+            ]
+          },
+          "appId": "a1",
+          "publicClient": {
+            "redirectUris": []
+          }
+        }
+      ]
+    }
+  }
+}

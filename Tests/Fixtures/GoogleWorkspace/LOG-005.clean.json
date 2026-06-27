@@ -1,0 +1,25 @@
+{
+  "checkId": "LOG-005",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "A system-defined alert is active",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "rule.system_defined_alerts": [
+          {
+            "setting": {
+              "value": {
+                "displayName": "Suspicious login",
+                "state": "ACTIVE"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

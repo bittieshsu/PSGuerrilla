@@ -1,0 +1,16 @@
+{
+  "checkId": "M365SPO-002",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Guest expiration data unavailable",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "ExternalUserExpireInDays": null
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

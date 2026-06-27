@@ -1,0 +1,23 @@
+{
+  "checkId": "ADSCRIPT-006",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A logon script contains plaintext passwords",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "ScriptAnalysis": [
+        {
+          "PasswordMatches": [
+            {
+              "Pattern": "secret"
+            }
+          ],
+          "PlaintextPasswords": true,
+          "RelativePath": "logon.ps1"
+        }
+      ]
+    }
+  }
+}

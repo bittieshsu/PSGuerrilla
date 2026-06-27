@@ -1,0 +1,23 @@
+{
+  "checkId": "EIDCA-009",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No CA policy requires device compliance",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "grantControls": {
+            "builtInControls": [
+              "mfa"
+            ]
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

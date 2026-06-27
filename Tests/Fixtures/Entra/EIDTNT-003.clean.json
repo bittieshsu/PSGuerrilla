@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDTNT-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Guest access restricted (most-limited role)",
+  "auditData": {
+    "TenantConfig": {
+      "AuthorizationPolicy": {
+        "guestUserRoleId": "2af84b1e-32c8-42b7-82bc-daa82404023b"
+      }
+    }
+  }
+}

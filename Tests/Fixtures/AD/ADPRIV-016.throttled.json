@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPRIV-016",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "PasswordHashQuality collection failed",
+  "auditData": {
+    "Errors": {
+      "PasswordHashQuality": "DSInternals replication denied"
+    },
+    "PrivilegedAccounts": null
+  }
+}

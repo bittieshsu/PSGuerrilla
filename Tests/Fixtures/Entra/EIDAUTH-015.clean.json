@@ -1,0 +1,26 @@
+{
+  "checkId": "EIDAUTH-015",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "A CA policy blocks legacy authentication",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "conditions": {
+            "clientAppTypes": [
+              "exchangeActiveSync"
+            ]
+          },
+          "state": "enabled",
+          "grantControls": {
+            "builtInControls": [
+              "block"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

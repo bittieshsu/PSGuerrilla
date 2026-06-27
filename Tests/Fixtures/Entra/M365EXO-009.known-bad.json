@@ -1,0 +1,22 @@
+{
+  "checkId": "M365EXO-009",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "All DKIM signing configs disabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DkimSigningConfig": [
+          {
+            "Enabled": false,
+            "Status": "Disabled",
+            "Domain": "c.com"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

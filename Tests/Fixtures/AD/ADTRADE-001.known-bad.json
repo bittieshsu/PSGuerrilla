@@ -1,0 +1,19 @@
+{
+  "checkId": "ADTRADE-001",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "cpassword exposure found in SYSVOL",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "CpasswordHits": [
+        {
+          "ExposedUser": "svc",
+          "FilePath": "Groups.xml"
+        }
+      ],
+      "SysvolReadable": true
+    }
+  }
+}

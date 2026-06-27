@@ -1,0 +1,27 @@
+{
+  "checkId": "ADPWD-011",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Accounts share a password hash",
+  "auditData": {
+    "ModuleAvailability": {
+      "DSInternals": true
+    },
+    "Errors": {},
+    "PasswordPolicies": {
+      "DuplicateHashGroups": [
+        {
+          "Accounts": [
+            {
+              "SamAccountName": "u1"
+            },
+            {
+              "SamAccountName": "u2"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

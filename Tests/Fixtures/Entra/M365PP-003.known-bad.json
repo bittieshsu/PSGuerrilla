@@ -1,0 +1,17 @@
+{
+  "checkId": "M365PP-003",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Tenant isolation disabled",
+  "auditData": {
+    "M365Services": {
+      "PowerPlatform": {
+        "TenantIsolationEnabled": false,
+        "TenantIsolationConfig": null
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

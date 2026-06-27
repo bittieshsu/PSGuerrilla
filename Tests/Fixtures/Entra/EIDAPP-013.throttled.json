@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDAPP-013",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Admin consent request policy not assessed",
+  "auditData": {
+    "TenantConfig": {
+      "Errors": {}
+    },
+    "Errors": {
+      "TenantConfig": "Graph 429"
+    }
+  }
+}

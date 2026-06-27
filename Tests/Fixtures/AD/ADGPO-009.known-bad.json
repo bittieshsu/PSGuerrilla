@@ -1,0 +1,24 @@
+{
+  "checkId": "ADGPO-009",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Linked GPO has no Apply permission",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "GPOPermissions": {
+        "P1": {
+          "CanApply": []
+        }
+      },
+      "GPOs": [
+        {
+          "GUID": "{1}",
+          "IsLinked": true,
+          "DisplayName": "P1"
+        }
+      ]
+    }
+  }
+}

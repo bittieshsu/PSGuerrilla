@@ -1,0 +1,22 @@
+{
+  "checkId": "ADPRIV-006",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Backup Operators has a member",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Backup Operators": [
+          {
+            "Enabled": true,
+            "IsGroup": false,
+            "ObjectClass": "user",
+            "SamAccountName": "m1"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

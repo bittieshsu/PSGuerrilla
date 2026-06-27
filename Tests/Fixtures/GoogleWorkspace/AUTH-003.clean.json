@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-003",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "2SV enforcement requires a phishing-resistant security key",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "security.two_step_verification_enforcement_factor": [
+          {
+            "setting": {
+              "value": {
+                "allowedSignInFactorSet": "SECURITY_KEY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

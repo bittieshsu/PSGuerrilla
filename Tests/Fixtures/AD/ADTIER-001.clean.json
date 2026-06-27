@@ -1,0 +1,13 @@
+{
+  "checkId": "ADTIER-001",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No MSOL_ accounts present",
+  "auditData": {
+    "Errors": {},
+    "TierZero": {
+      "MsolAccounts": []
+    }
+  }
+}

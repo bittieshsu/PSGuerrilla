@@ -1,0 +1,16 @@
+{
+  "checkId": "DRIVE-002",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Default link sharing UNRESTRICTED",
+  "objectShape": false,
+  "auditData": {
+    "OrgUnitPolicies": {
+      "/": {
+        "defaultLinkSharing": "UNRESTRICTED"
+      }
+    },
+    "Errors": {}
+  }
+}

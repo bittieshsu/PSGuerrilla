@@ -1,0 +1,14 @@
+{
+  "checkId": "ADSTALE-003",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No disabled accounts retain group memberships",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "TotalDisabled": 10,
+      "DisabledWithGroups": []
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "checkId": "M365DEF-002",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Defender protection alert data unavailable",
+  "auditData": {
+    "M365Services": {
+      "Defender": {
+        "ProtectionAlerts": null
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

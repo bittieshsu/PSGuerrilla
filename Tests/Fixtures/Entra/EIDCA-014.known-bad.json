@@ -1,0 +1,21 @@
+{
+  "checkId": "EIDCA-014",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No session-control CA policies",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "NoSess",
+          "id": "p1",
+          "sessionControls": null
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

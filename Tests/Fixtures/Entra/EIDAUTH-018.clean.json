@@ -1,0 +1,27 @@
+{
+  "checkId": "EIDAUTH-018",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Authenticator shows app + location in notifications",
+  "auditData": {
+    "AuthMethods": {
+      "MethodConfigurations": [
+        {
+          "state": "enabled",
+          "featureSettings": {
+            "displayAppInformationRequiredState": {
+              "state": "enabled"
+            },
+            "displayLocationInformationRequiredState": {
+              "state": "enabled"
+            }
+          },
+          "id": "MicrosoftAuthenticator",
+          "@odata.type": "microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

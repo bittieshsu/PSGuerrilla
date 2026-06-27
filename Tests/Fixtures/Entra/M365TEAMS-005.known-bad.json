@@ -1,0 +1,23 @@
+{
+  "checkId": "M365TEAMS-005",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Cloud recording without OneDrive storage",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "MeetingPolicies": [
+          {
+            "AllowCloudRecording": true,
+            "RecordingStorageMode": "Stream",
+            "AllowTranscription": true,
+            "Identity": "Global"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

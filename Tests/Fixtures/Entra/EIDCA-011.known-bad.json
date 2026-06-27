@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDCA-011",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No named locations configured",
+  "auditData": {
+    "ConditionalAccess": {
+      "NamedLocations": [],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

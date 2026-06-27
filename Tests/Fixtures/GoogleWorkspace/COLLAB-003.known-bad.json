@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-003",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Meet permits anonymous join",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "meet.safety_domain": [
+          {
+            "setting": {
+              "value": {
+                "usersAllowedToJoin": "ANONYMOUS"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

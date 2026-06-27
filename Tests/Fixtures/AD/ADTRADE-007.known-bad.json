@@ -1,0 +1,25 @@
+{
+  "checkId": "ADTRADE-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An OU allows low-priv dMSA creation (BadSuccessor)",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "DmsaClassPresent": true,
+      "DmsaAclCollected": true,
+      "BadSuccessorOus": [
+        {
+          "RiskyAces": [
+            {
+              "Principal": "Domain Users",
+              "Scope": "Subtree"
+            }
+          ],
+          "Name": "OU=Workstations"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkId": "M365EXO-024",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "An enabled EXO-scoped DLP policy exists",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DlpCompliancePolicies": [
+          {
+            "ExchangeLocation": [
+              "All"
+            ],
+            "Mode": "Enforce",
+            "Enabled": true
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

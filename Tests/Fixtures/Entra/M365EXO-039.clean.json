@@ -1,0 +1,22 @@
+{
+  "checkId": "M365EXO-039",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Spam actions quarantine/JMF (no delete/allow)",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiSpamPolicies": [
+          {
+            "HighConfidenceSpamAction": "Quarantine",
+            "SpamAction": "MoveToJmf",
+            "Name": "P1"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

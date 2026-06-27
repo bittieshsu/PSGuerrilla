@@ -1,0 +1,23 @@
+{
+  "checkId": "M365EXO-019",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "DMARC records specify an aggregate (rua) address",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DomainMailSecurity": [
+          {
+            "Domain": "c.com",
+            "DMARC": {
+              "Record": "v=DMARC1;p=reject;rua=mailto:r@c.com"
+            }
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

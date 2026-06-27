@@ -1,0 +1,19 @@
+{
+  "checkId": "AUTH-013",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A super admin inactive >90 days",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "admin@e.com",
+        "lastLoginTime": "2026-01-01T00:00:00Z"
+      }
+    ]
+  }
+}

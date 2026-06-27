@@ -1,0 +1,21 @@
+{
+  "checkId": "ADPRIV-011",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No privileged account flagged password-not-required",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "UACFlags": {
+            "PASSWD_NOTREQD": false
+          },
+          "SamAccountName": "admin1",
+          "DistinguishedName": "CN=admin1,CN=Users,DC=test,DC=local"
+        }
+      ]
+    }
+  }
+}

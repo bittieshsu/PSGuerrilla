@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-012",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Meet host management enabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "meet.safety_host_management": [
+          {
+            "setting": {
+              "value": {
+                "enableHostManagement": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

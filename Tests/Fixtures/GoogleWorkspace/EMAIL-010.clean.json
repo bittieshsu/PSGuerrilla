@@ -1,0 +1,16 @@
+{
+  "checkId": "EMAIL-010",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No send-as aliases configured",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GmailSettings": {
+      "u@e.com": {
+        "sendAs": []
+      }
+    }
+  }
+}

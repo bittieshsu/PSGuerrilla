@@ -1,0 +1,22 @@
+{
+  "checkId": "ADPRIV-009",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Nested group inside Domain Admins",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "DistinguishedName": "CN=nested,DC=t,DC=l",
+            "IsGroup": true,
+            "ObjectClass": "group",
+            "SamAccountName": "nested"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

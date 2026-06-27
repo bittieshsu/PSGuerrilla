@@ -1,0 +1,28 @@
+{
+  "checkId": "AZIAM-004",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Key Vaults use RBAC + purge protection",
+  "auditData": {
+    "AzureIAM": {
+      "KeyVaults": [
+        {
+          "location": "eastus",
+          "properties": {
+            "enableSoftDelete": true,
+            "enablePurgeProtection": true,
+            "enableRbacAuthorization": true
+          },
+          "name": "v1"
+        }
+      ],
+      "Subscriptions": [
+        {
+          "id": "s1"
+        }
+      ],
+      "Errors": {}
+    }
+  }
+}

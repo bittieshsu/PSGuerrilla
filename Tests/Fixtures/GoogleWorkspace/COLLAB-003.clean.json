@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-003",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Meet requires signed-in users",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "meet.safety_domain": [
+          {
+            "setting": {
+              "value": {
+                "usersAllowedToJoin": "LOGGED_IN"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

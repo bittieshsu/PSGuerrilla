@@ -1,0 +1,14 @@
+{
+  "checkId": "ADPATH-001",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "PrivilegedMembers collection failed",
+  "auditData": {
+    "Errors": {
+      "PrivilegedMembers": "collector error"
+    },
+    "PrivilegedAccounts": null,
+    "ACLs": null
+  }
+}

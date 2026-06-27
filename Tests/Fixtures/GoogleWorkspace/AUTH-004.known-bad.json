@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-004",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Minimum password length 6 (<8)",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "security.password": [
+          {
+            "setting": {
+              "value": {
+                "minimumLength": 6
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

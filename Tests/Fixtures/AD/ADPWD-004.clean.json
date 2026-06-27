@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Minimum password length 14",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "DefaultPolicy": {
+        "MinPasswordLength": 14
+      }
+    }
+  }
+}

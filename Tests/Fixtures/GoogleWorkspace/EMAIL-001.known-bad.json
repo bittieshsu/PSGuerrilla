@@ -1,0 +1,19 @@
+{
+  "checkId": "EMAIL-001",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "SPF ends in +all, allowing any host to send",
+  "auditData": {
+    "DnsRecords": {
+      "example.com": {
+        "SPF": {
+          "Valid": true,
+          "Record": "v=spf1 include:_spf.google.com +all",
+          "Details": ""
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checkId": "EIDAPP-008",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No expired/expiring app credentials",
+  "auditData": {
+    "Applications": {
+      "AppRegistrations": [
+        {
+          "displayName": "A1",
+          "appId": "a1",
+          "passwordCredentials": [],
+          "keyCredentials": []
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "checkId": "ADPRIV-022",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "krbtgt password age 4000 days exceeds the failing threshold (>365)",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "KrbtgtAccount": {
+        "KeyVersionNumber": 1,
+        "PwdAgeDays": 4000
+      }
+    },
+    "Errors": {}
+  }
+}

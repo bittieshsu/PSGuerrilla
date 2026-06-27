@@ -1,0 +1,13 @@
+{
+  "checkId": "ADKERB-004",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "KerberosConfig collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "Kerberos": null,
+    "Errors": {
+      "KerberosConfig": "Kerberos delegation query failed: domain controller unreachable."
+    }
+  }
+}

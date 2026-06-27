@@ -1,0 +1,15 @@
+{
+  "checkId": "INTUNE-002",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Intune compliance summary not assessed",
+  "auditData": {
+    "Errors": {
+      "Intune": "Graph 429"
+    },
+    "Intune": {
+      "Errors": {}
+    }
+  }
+}

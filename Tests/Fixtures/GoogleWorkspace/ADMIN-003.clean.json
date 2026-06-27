@@ -1,0 +1,19 @@
+{
+  "checkId": "ADMIN-003",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No custom admin roles",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Roles": [
+      {
+        "isSystemRole": true
+      },
+      {
+        "isSuperAdminRole": true
+      }
+    ]
+  }
+}

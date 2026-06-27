@@ -1,0 +1,17 @@
+{
+  "checkId": "EIDFED-008",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Pass-through authentication not enabled",
+  "auditData": {
+    "Federation": {
+      "OnPremisesSyncSettings": {
+        "features": {
+          "passThroughAuthenticationEnabled": false
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

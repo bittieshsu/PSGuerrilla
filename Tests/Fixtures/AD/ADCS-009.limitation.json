@@ -1,0 +1,19 @@
+{
+  "checkId": "ADCS-009",
+  "theater": "Reconnaissance",
+  "scenario": "limitation",
+  "expectedStatus": "WARN",
+  "description": "EDITF_ATTRIBUTESUBJECTALTNAME2 lives in CA registry, not LDAP (cannot assess)",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateAuthorities": [
+        {
+          "DNSHostName": "ca1.test.local",
+          "Flags": 0,
+          "Name": "CA1"
+        }
+      ]
+    }
+  }
+}

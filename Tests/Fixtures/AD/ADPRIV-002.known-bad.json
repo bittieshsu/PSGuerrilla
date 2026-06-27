@@ -1,0 +1,34 @@
+{
+  "checkId": "ADPRIV-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "3 user members in Enterprise Admins exceeds threshold (>2)",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Enterprise Admins": [
+          {
+            "ObjectClass": "user",
+            "SamAccountName": "ea1",
+            "Enabled": true,
+            "IsGroup": false
+          },
+          {
+            "ObjectClass": "user",
+            "SamAccountName": "ea2",
+            "Enabled": true,
+            "IsGroup": false
+          },
+          {
+            "ObjectClass": "user",
+            "SamAccountName": "ea3",
+            "Enabled": true,
+            "IsGroup": false
+          }
+        ]
+      }
+    }
+  }
+}

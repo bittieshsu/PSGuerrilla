@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-005",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Password complexity enabled",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "DefaultPolicy": {
+        "PasswordComplexity": true
+      }
+    }
+  }
+}

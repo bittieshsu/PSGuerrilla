@@ -1,0 +1,13 @@
+{
+  "checkId": "EIDFED-011",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Sync settings not available",
+  "auditData": {
+    "Federation": {
+      "OnPremisesSyncSettings": null
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkId": "EIDCA-006",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Fewer than two break-glass accounts identified",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "P1",
+          "conditions": {
+            "users": {
+              "excludeUsers": []
+            }
+          },
+          "id": "p1"
+        }
+      ]
+    }
+  }
+}

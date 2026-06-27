@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPWD-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Max password age unset/0 (never expires)",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "DefaultPolicy": {
+        "MinPasswordLength": 14
+      }
+    }
+  }
+}

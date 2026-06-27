@@ -1,0 +1,25 @@
+{
+  "checkId": "M365EXO-002",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "An anti-spam policy is configured",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiSpamPolicies": [
+          {
+            "HighConfidenceSpamAction": "Quarantine",
+            "BulkSpamAction": "MoveToJmf",
+            "BulkThreshold": 6,
+            "Name": "Default",
+            "SpamAction": "MoveToJmf",
+            "IsDefault": true
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

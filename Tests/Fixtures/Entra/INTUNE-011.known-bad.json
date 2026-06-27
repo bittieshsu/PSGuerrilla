@@ -1,0 +1,14 @@
+{
+  "checkId": "INTUNE-011",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No app protection policy configured",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "AppProtectionPolicies": []
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "checkId": "EIDCA-005",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "CA exclusion group present (review)",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "conditions": {
+            "users": {
+              "excludeGroups": [
+                "g-456"
+              ]
+            }
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

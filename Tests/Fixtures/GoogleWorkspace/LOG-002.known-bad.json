@@ -1,0 +1,12 @@
+{
+  "checkId": "LOG-002",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No alert rules configured (no reachable FAIL path)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "AlertRules": []
+  }
+}

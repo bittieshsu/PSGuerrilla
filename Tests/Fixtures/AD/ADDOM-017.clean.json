@@ -1,0 +1,19 @@
+{
+  "checkId": "ADDOM-017",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "NTLMv2-only fully enforced (5)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "g1": {
+          "SecuritySettings": {
+            "LmCompatibilityLevel": 5
+          }
+        }
+      }
+    }
+  }
+}

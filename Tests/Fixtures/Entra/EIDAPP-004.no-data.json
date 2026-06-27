@@ -1,0 +1,12 @@
+{
+  "checkId": "EIDAPP-004",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Service principals unavailable",
+  "auditData": {
+    "Applications": {
+      "ServicePrincipals": []
+    }
+  }
+}

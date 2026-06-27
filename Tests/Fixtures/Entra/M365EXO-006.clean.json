@@ -1,0 +1,20 @@
+{
+  "checkId": "M365EXO-006",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "A Safe Links policy is configured",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "SafeLinksPolicies": [
+          {
+            "EnableSafeLinksForEmail": true,
+            "Name": "SL1",
+            "ScanUrls": true
+          }
+        ]
+      }
+    }
+  }
+}

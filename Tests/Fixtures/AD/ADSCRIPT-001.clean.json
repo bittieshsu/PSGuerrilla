@@ -1,0 +1,27 @@
+{
+  "checkId": "ADSCRIPT-001",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "NETLOGON write restricted to admins",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "NetlogonPermissions": {
+        "AccessRules": [
+          {
+            "Identity": "BUILTIN\\Administrators",
+            "AccessType": "Allow",
+            "Rights": "FullControl"
+          },
+          {
+            "Identity": "NT AUTHORITY\\SYSTEM",
+            "AccessType": "Allow",
+            "Rights": "Read"
+          }
+        ],
+        "Owner": "BUILTIN\\Administrators"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkId": "EMAIL-009",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No user has auto-forwarding enabled",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "suspended": false
+      }
+    ],
+    "GmailSettings": {
+      "u1@e.com": {
+        "autoForwarding": {
+          "enabled": false
+        }
+      }
+    }
+  }
+}

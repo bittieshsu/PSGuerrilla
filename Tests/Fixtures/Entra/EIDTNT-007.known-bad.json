@@ -1,0 +1,22 @@
+{
+  "checkId": "EIDTNT-007",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "security defaults disabled and no enabled CA policy replaces them",
+  "auditData": {
+    "TenantConfig": {
+      "SecurityDefaults": {
+        "isEnabled": false
+      }
+    },
+    "Errors": {},
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "disabled"
+        }
+      ]
+    }
+  }
+}

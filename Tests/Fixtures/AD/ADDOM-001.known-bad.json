@@ -1,0 +1,14 @@
+{
+  "checkId": "ADDOM-001",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Forest functional level legacy (<6)",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "ForestFunctionalLevel": 4,
+      "ForestFunctionalLevelName": "2003"
+    }
+  }
+}

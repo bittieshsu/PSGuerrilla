@@ -1,0 +1,13 @@
+{
+  "checkId": "ADTIER-003",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "PrivilegedMembers failed",
+  "auditData": {
+    "PrivilegedAccounts": null,
+    "Errors": {
+      "PrivilegedMembers": "referral returned from server"
+    }
+  }
+}

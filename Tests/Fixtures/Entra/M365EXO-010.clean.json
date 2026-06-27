@@ -1,0 +1,22 @@
+{
+  "checkId": "M365EXO-010",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No CAS mailbox plan enables POP/IMAP",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "CASMailboxPlans": [
+          {
+            "Name": "P1",
+            "PopEnabled": false,
+            "ImapEnabled": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

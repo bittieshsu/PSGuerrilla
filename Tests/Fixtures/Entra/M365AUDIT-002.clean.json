@@ -1,0 +1,17 @@
+{
+  "checkId": "M365AUDIT-002",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Audit log retention >= 365 days",
+  "auditData": {
+    "M365Services": {
+      "AuditConfig": {
+        "AdminAuditLogAgeLimit": "365.00:00:00",
+        "AuditLogAgeLimit": "365.00:00:00"
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

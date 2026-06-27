@@ -1,0 +1,20 @@
+{
+  "checkId": "ADCS-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No low-priv write ACEs on PKI container objects",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "PKIObjects": [
+        {
+          "Name": "CN=PKS",
+          "Permissions": [],
+          "ObjectClass": "container",
+          "DN": "CN=Public Key Services,..."
+        }
+      ]
+    }
+  }
+}

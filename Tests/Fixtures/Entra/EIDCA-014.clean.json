@@ -1,0 +1,29 @@
+{
+  "checkId": "EIDCA-014",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Session-control CA policy present",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "Sess",
+          "id": "p1",
+          "sessionControls": {
+            "cloudAppSecurity": null,
+            "signInFrequency": {
+              "value": 1,
+              "isEnabled": true
+            },
+            "persistentBrowser": null,
+            "applicationEnforcedRestrictions": null
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

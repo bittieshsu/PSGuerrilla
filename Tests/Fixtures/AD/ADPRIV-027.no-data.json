@@ -1,0 +1,14 @@
+{
+  "checkId": "ADPRIV-027",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "DC security template not readable",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "UserRightsAssignment": {
+        "RemoteInteractiveLogon": null
+      }
+    }
+  }
+}

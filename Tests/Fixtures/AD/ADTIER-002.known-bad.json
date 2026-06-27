@@ -1,0 +1,21 @@
+{
+  "checkId": "ADTIER-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A Veeam backup account is in Domain Admins",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "Description": "backup service",
+            "DisplayName": "Veeam Backup",
+            "SamAccountName": "veeam_svc"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "checkId": "DRIVE-010",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No active Drive-scoped DLP rule",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "rule.dlp": [
+          {
+            "setting": {
+              "value": {
+                "state": "ACTIVE",
+                "action": {
+                  "gmailAction": {}
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

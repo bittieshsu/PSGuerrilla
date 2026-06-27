@@ -1,0 +1,35 @@
+{
+  "checkId": "EIDCA-002",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No universal MFA coverage (2+ gaps)",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "conditions": {
+            "applications": {
+              "includeApplications": [
+                "App1"
+              ]
+            },
+            "users": {
+              "includeUsers": [
+                "SomeGroup"
+              ]
+            }
+          },
+          "state": "enabled",
+          "grantControls": {
+            "builtInControls": [
+              "block"
+            ]
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

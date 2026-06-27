@@ -1,0 +1,18 @@
+{
+  "checkId": "ADKERB-010",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Kerberos ticket lifetimes within recommended limits",
+  "auditData": {
+    "Errors": {},
+    "Kerberos": {
+      "KerberosPolicy": {
+        "MaxClockSkew": null,
+        "MaxServiceAge": null,
+        "MaxRenewAge": 7,
+        "MaxTicketAge": 10
+      }
+    }
+  }
+}

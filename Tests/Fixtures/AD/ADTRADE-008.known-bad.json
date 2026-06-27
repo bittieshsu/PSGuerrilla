@@ -1,0 +1,27 @@
+{
+  "checkId": "ADTRADE-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A user is a member of Key Admins",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "KeyAdmins": [
+        {
+          "ObjectClass": "group"
+        },
+        {
+          "ObjectClass": "user",
+          "SamAccountName": "bad"
+        }
+      ],
+      "EnterpriseKeyAdmins": [
+        {
+          "ObjectClass": "group"
+        }
+      ],
+      "KeyAdminGroupsFound": true
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "checkId": "ADSTALE-007",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No orphaned Foreign Security Principals",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "OrphanedFSPs": []
+    }
+  }
+}

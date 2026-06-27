@@ -1,0 +1,13 @@
+{
+  "checkId": "ADDOM-018",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "GroupPolicyObjects failed",
+  "auditData": {
+    "Errors": {
+      "GroupPolicyObjects": "collector error"
+    },
+    "GroupPolicies": null
+  }
+}

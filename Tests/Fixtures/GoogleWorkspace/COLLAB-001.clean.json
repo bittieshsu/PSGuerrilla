@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Automatic Meet recording disabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "meet.automatic_recording": [
+          {
+            "setting": {
+              "value": {
+                "enabled": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

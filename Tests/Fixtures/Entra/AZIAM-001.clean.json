@@ -1,0 +1,24 @@
+{
+  "checkId": "AZIAM-001",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Role-assignment inventory available across subscriptions",
+  "auditData": {
+    "AzureIAM": {
+      "Subscriptions": [
+        {
+          "name": "prod",
+          "id": "s1"
+        }
+      ],
+      "Errors": {},
+      "RoleAssignments": [
+        {
+          "name": "r1",
+          "_subscriptionId": "s1"
+        }
+      ]
+    }
+  }
+}

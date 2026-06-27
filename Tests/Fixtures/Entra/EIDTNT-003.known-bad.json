@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDTNT-003",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Guests have member-equivalent access",
+  "auditData": {
+    "TenantConfig": {
+      "AuthorizationPolicy": {
+        "guestUserRoleId": "a0b1b346-4d3e-4e8b-98f8-753987be4970"
+      }
+    }
+  }
+}

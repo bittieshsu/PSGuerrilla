@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "WPAD (WinHttpAutoProxySvc) disabled (StartType 4)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDomainPolicy": {
+        "Services": {
+          "WinHttpAutoProxySvc": {
+            "StartType": 4
+          }
+        }
+      }
+    }
+  }
+}

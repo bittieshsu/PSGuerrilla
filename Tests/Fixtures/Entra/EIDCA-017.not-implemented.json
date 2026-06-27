@@ -1,0 +1,12 @@
+{
+  "checkId": "EIDCA-017",
+  "theater": "Infiltration",
+  "scenario": "not-implemented",
+  "expectedStatus": "SKIP",
+  "description": "High-risk user notification recipients not readable via Graph",
+  "auditData": {
+    "Errors": {},
+    "RiskyUsers": [],
+    "RiskDetections": []
+  }
+}

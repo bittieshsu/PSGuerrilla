@@ -1,0 +1,19 @@
+{
+  "checkId": "EMAIL-004",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A domain lacks valid MTA-STS",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "DnsRecords": {
+      "example.com": {
+        "MTASTS": {
+          "Details": "Not found",
+          "Valid": false
+        }
+      }
+    }
+  }
+}

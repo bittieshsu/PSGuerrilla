@@ -1,0 +1,15 @@
+{
+  "checkId": "M365AUDIT-001",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Audit configuration collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "M365Services": {
+      "AuditConfig": null
+    },
+    "Errors": {
+      "M365Services": "Get-AdminAuditLogConfig failed: connection timed out."
+    }
+  }
+}

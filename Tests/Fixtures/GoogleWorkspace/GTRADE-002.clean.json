@@ -1,0 +1,17 @@
+{
+  "checkId": "GTRADE-002",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No group is viewable by anyone on the internet",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GroupSettings": {
+      "g@e.com": {
+        "whoCanViewGroup": "ALL_MEMBERS_CAN_VIEW",
+        "email": "g@e.com"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checkId": "AUTH-010",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A super admin has a recovery email set",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "recoveryEmail": "r@e.com",
+        "recoveryPhone": null,
+        "primaryEmail": "admin@e.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPRIV-022",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "PrivilegedMembers collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "PrivilegedAccounts": null,
+    "Errors": {
+      "PrivilegedMembers": "krbtgt object query timed out."
+    }
+  }
+}

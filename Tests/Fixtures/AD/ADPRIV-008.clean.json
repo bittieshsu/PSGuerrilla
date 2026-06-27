@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPRIV-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "DnsAdmins empty",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "DnsAdmins": []
+      }
+    },
+    "Errors": {}
+  }
+}

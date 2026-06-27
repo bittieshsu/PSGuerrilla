@@ -1,0 +1,13 @@
+{
+  "checkId": "ADSTALE-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No orphaned SID History entries",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "OrphanedSIDHistory": []
+    }
+  }
+}

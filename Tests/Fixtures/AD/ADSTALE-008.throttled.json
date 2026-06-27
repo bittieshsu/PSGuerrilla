@@ -1,0 +1,13 @@
+{
+  "checkId": "ADSTALE-008",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Stale object data not assessed",
+  "auditData": {
+    "Errors": {
+      "StaleObjects": "collector error"
+    },
+    "StaleObjects": null
+  }
+}

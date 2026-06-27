@@ -1,0 +1,13 @@
+{
+  "checkId": "ADKERB-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "no computer accounts with unconstrained delegation",
+  "auditData": {
+    "Kerberos": {
+      "UnconstrainedDelegation": []
+    },
+    "Errors": {}
+  }
+}

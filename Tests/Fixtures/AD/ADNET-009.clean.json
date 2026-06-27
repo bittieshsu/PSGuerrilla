@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-009",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Print Spooler disabled on DCs (StartType=4)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDCPolicy": {
+        "Services": {
+          "Spooler": {
+            "StartType": 4
+          }
+        }
+      }
+    }
+  }
+}

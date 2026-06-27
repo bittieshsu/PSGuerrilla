@@ -1,0 +1,20 @@
+{
+  "checkId": "ADTRADE-010",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A gMSA password is broadly retrievable",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "GmsaAccounts": [
+        {
+          "NonTier0Retrievable": false,
+          "BroadlyRetrievable": true,
+          "SamAccountName": "svc-app$"
+        }
+      ],
+      "GmsaCollected": true
+    }
+  }
+}

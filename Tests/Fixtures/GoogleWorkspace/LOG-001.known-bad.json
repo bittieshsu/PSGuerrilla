@@ -1,0 +1,14 @@
+{
+  "checkId": "LOG-001",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Business edition (limited retention, no FAIL path)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Tenant": {
+      "edition": "business"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "checkId": "EIDTNT-005",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Cross-tenant access settings unavailable",
+  "auditData": {
+    "TenantConfig": {
+      "CrossTenantAccess": null
+    }
+  }
+}

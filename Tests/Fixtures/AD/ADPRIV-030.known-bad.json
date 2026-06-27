@@ -1,0 +1,25 @@
+{
+  "checkId": "ADPRIV-030",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Privileged account missing from Protected Users",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "ProtectedUsersMembers": [],
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "Enabled": true,
+            "IsServiceAccount": false,
+            "IsComputer": false,
+            "SamAccountName": "a",
+            "ObjectClass": "user",
+            "DistinguishedName": "CN=a,DC=t,DC=l"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "checkId": "EIDAUTH-015",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No CA policy blocks legacy authentication",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "conditions": {
+            "clientAppTypes": [
+              "browser"
+            ]
+          },
+          "state": "enabled",
+          "grantControls": {
+            "builtInControls": [
+              "mfa"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

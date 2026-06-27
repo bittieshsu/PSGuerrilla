@@ -1,0 +1,18 @@
+{
+  "checkId": "EMAIL-002",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All domains have valid DKIM",
+  "auditData": {
+    "Errors": {},
+    "DnsRecords": {
+      "example.com": {
+        "DKIM": {
+          "Valid": true,
+          "Details": ""
+        }
+      }
+    }
+  }
+}

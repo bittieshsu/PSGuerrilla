@@ -1,0 +1,22 @@
+{
+  "checkId": "AUTH-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "all active users have 2SV enforced (100% >= 95%)",
+  "auditData": {
+    "Users": [
+      {
+        "suspended": false,
+        "isEnforcedIn2Sv": true,
+        "primaryEmail": "user1@example.com"
+      },
+      {
+        "suspended": false,
+        "isEnforcedIn2Sv": true,
+        "primaryEmail": "user2@example.com"
+      }
+    ],
+    "Errors": {}
+  }
+}

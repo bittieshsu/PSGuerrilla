@@ -1,0 +1,24 @@
+{
+  "checkId": "ADTRADE-002",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All config-partition servers match known DCs",
+  "auditData": {
+    "DomainControllers": [
+      {
+        "Name": "dc1",
+        "FQDN": "dc1.t.l"
+      }
+    ],
+    "Tradecraft": {
+      "ConfigPartitionServers": [
+        {
+          "DNSHostName": "dc1.t.l",
+          "CN": "dc1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

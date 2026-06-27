@@ -1,0 +1,20 @@
+{
+  "checkId": "ADGPO-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A non-admin can edit a GPO",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "GPOPermissions": {
+        "G1": {
+          "CanEdit": [
+            "Domain Admins",
+            "CORP\\UntrustedUser"
+          ]
+        }
+      }
+    }
+  }
+}

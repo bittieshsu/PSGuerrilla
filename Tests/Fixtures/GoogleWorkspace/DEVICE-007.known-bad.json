@@ -1,0 +1,12 @@
+{
+  "checkId": "DEVICE-007",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No Chrome policies configured",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "ChromePolicies": null
+  }
+}

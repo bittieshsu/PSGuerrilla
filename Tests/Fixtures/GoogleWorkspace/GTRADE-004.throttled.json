@@ -1,0 +1,14 @@
+{
+  "checkId": "GTRADE-004",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "User data not assessed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "Users": "Admin SDK 429"
+    },
+    "Users": null
+  }
+}

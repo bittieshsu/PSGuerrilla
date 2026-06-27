@@ -1,0 +1,21 @@
+{
+  "checkId": "ADSCRIPT-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Logon script references external resources",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "ScriptAnalysis": [
+        {
+          "RelativePath": "deploy.ps1",
+          "ExternalResources": true,
+          "ExternalResourceList": [
+            "http://internal/config.xml"
+          ]
+        }
+      ]
+    }
+  }
+}

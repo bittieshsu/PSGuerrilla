@@ -1,0 +1,20 @@
+{
+  "checkId": "ADTRADE-010",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "gMSA present, none broadly retrievable",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "GmsaAccounts": [
+        {
+          "NonTier0Retrievable": false,
+          "BroadlyRetrievable": false,
+          "SamAccountName": "svc-app$"
+        }
+      ],
+      "GmsaCollected": true
+    }
+  }
+}

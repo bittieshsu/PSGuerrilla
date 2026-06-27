@@ -1,0 +1,26 @@
+{
+  "checkId": "EIDPIM-003",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A permanent Global Admin assignment should be eligible",
+  "auditData": {
+    "PIM": {
+      "Errors": {},
+      "RoleDefinitions": [
+        {
+          "id": "62e90394-69f5-4237-9190-012177145e10",
+          "displayName": "Global Administrator"
+        }
+      ],
+      "RoleAssignments": [
+        {
+          "roleDefinitionId": "62e90394-69f5-4237-9190-012177145e10",
+          "principalId": "u1"
+        }
+      ],
+      "RoleEligibilitySchedules": []
+    },
+    "Errors": {}
+  }
+}

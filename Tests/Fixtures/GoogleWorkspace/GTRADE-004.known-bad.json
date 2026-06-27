@@ -1,0 +1,73 @@
+{
+  "checkId": "GTRADE-004",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Excessive super admins (>10)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a1@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a2@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a3@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a4@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a5@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a6@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a7@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a8@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a9@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a10@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a11@e.com"
+      },
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "primaryEmail": "a12@e.com"
+      }
+    ]
+  }
+}

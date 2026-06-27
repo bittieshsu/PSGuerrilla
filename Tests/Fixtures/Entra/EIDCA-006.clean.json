@@ -1,0 +1,52 @@
+{
+  "checkId": "EIDCA-006",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Two+ break-glass accounts excluded from most CA policies",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "P1",
+          "conditions": {
+            "users": {
+              "excludeUsers": [
+                "bg1",
+                "bg2"
+              ]
+            }
+          },
+          "id": "p1"
+        },
+        {
+          "state": "enabled",
+          "displayName": "P2",
+          "conditions": {
+            "users": {
+              "excludeUsers": [
+                "bg1",
+                "bg2"
+              ]
+            }
+          },
+          "id": "p2"
+        },
+        {
+          "state": "enabled",
+          "displayName": "P3",
+          "conditions": {
+            "users": {
+              "excludeUsers": [
+                "bg1",
+                "bg2"
+              ]
+            }
+          },
+          "id": "p3"
+        }
+      ]
+    }
+  }
+}

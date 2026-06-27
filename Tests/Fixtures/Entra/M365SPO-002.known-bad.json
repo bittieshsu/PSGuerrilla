@@ -1,0 +1,16 @@
+{
+  "checkId": "M365SPO-002",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Guest access expiration not configured",
+  "auditData": {
+    "M365Services": {
+      "SharePoint": {
+        "ExternalUserExpireInDays": 0
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

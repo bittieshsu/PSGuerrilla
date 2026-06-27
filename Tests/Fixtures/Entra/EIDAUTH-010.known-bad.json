@@ -1,0 +1,21 @@
+{
+  "checkId": "EIDAUTH-010",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "TAP enabled but reusable (not one-time)",
+  "auditData": {
+    "AuthMethods": {
+      "MethodConfigurations": [
+        {
+          "state": "enabled",
+          "id": "TemporaryAccessPass",
+          "maximumLifetimeInMinutes": 120,
+          "isUsableOnce": false
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

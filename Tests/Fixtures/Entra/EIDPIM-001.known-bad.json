@@ -1,0 +1,56 @@
+{
+  "checkId": "EIDPIM-001",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "6 Global Administrators exceeds the failing threshold (>5)",
+  "auditData": {
+    "Errors": {},
+    "PIM": {
+      "GlobalAdmins": [
+        {
+          "userPrincipalName": "admin1@contoso.com",
+          "displayName": "Admin 1",
+          "id": "1",
+          "accountEnabled": true,
+          "userType": "Member"
+        },
+        {
+          "userPrincipalName": "admin2@contoso.com",
+          "displayName": "Admin 2",
+          "id": "2",
+          "accountEnabled": true,
+          "userType": "Member"
+        },
+        {
+          "userPrincipalName": "admin3@contoso.com",
+          "displayName": "Admin 3",
+          "id": "3",
+          "accountEnabled": true,
+          "userType": "Member"
+        },
+        {
+          "userPrincipalName": "admin4@contoso.com",
+          "displayName": "Admin 4",
+          "id": "4",
+          "accountEnabled": true,
+          "userType": "Member"
+        },
+        {
+          "userPrincipalName": "admin5@contoso.com",
+          "displayName": "Admin 5",
+          "id": "5",
+          "accountEnabled": true,
+          "userType": "Member"
+        },
+        {
+          "userPrincipalName": "admin6@contoso.com",
+          "displayName": "Admin 6",
+          "id": "6",
+          "accountEnabled": true,
+          "userType": "Member"
+        }
+      ]
+    }
+  }
+}

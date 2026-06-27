@@ -1,0 +1,15 @@
+{
+  "checkId": "M365AUDIT-001",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "unified audit log ingestion is disabled",
+  "auditData": {
+    "M365Services": {
+      "AuditConfig": {
+        "UnifiedAuditLogIngestionEnabled": false
+      }
+    },
+    "Errors": {}
+  }
+}

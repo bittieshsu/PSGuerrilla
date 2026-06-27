@@ -1,0 +1,24 @@
+{
+  "checkId": "M365EXO-045",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Enabled protection alerts have recipients",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "ProtectionAlerts": [
+          {
+            "Name": "A1",
+            "Disabled": false,
+            "NotifyUser": [
+              "admin@c.com"
+            ]
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

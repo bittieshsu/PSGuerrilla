@@ -1,0 +1,24 @@
+{
+  "checkId": "ADGPO-023",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "LAPS GPO present but not linked",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "HasRegistryPol": false
+        }
+      },
+      "GPOs": [
+        {
+          "GUID": "{1}",
+          "DisplayName": "LAPS Policy",
+          "IsLinked": false
+        }
+      ]
+    }
+  }
+}

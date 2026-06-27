@@ -1,0 +1,20 @@
+{
+  "checkId": "ADTIER-007",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No service-named accounts in Tier-0 groups",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "SamAccountName": "jsmith",
+            "ObjectClass": "user"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkId": "ADSCRIPT-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A logon script contains hardcoded credentials",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "ScriptAnalysis": [
+        {
+          "RelativePath": "logon.ps1",
+          "HardcodedCredentials": true,
+          "CredentialMatches": [
+            {
+              "Pattern": "secret"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

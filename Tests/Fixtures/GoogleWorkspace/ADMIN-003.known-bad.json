@@ -1,0 +1,21 @@
+{
+  "checkId": "ADMIN-003",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A custom admin role exists (review)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Roles": [
+      {
+        "isSystemRole": true
+      },
+      {
+        "roleName": "Custom1",
+        "isSuperAdminRole": false,
+        "isSystemRole": false
+      }
+    ]
+  }
+}

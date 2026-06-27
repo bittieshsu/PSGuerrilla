@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPWD-002",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No fine-grained password policies defined",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "FineGrainedPolicies": []
+    }
+  }
+}

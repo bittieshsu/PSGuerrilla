@@ -1,0 +1,22 @@
+{
+  "checkId": "M365EXO-015",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All domains have valid SPF",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DomainMailSecurity": [
+          {
+            "SPF": {
+              "Record": "v=spf1 -all",
+              "Valid": true
+            },
+            "Domain": "contoso.com"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "checkId": "ADACL-016",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No ACL-based attack paths",
+  "auditData": {
+    "Errors": {},
+    "ACLs": {
+      "DangerousACEs": []
+    }
+  }
+}

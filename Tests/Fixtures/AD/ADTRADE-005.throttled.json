@@ -1,0 +1,13 @@
+{
+  "checkId": "ADTRADE-005",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "TradecraftSignals failed",
+  "auditData": {
+    "Errors": {
+      "TradecraftSignals": "collector error"
+    },
+    "Tradecraft": null
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-008",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Default remote domain blocks auto-forward",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "RemoteDomains": [
+          {
+            "DomainName": "*",
+            "AutoForwardEnabled": false
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

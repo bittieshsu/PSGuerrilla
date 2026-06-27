@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPWD-009",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No users with password-never-expires",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "UsersPasswordNeverExpires": []
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkId": "EIDCA-010",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No location-based CA policies",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "state": "enabled",
+          "displayName": "NoLoc",
+          "id": "p1",
+          "conditions": {
+            "locations": null
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

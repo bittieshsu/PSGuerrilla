@@ -1,0 +1,19 @@
+{
+  "checkId": "GTRADE-006",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No over-scoped OAuth grants",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "scope": "https://www.googleapis.com/auth/drive.readonly",
+          "app_name": "Nice"
+        }
+      }
+    ]
+  }
+}

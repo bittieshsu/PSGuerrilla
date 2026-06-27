@@ -1,0 +1,16 @@
+{
+  "checkId": "M365TEAMS-003",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Teams meeting policy data unavailable",
+  "auditData": {
+    "M365Services": {
+      "Teams": {
+        "MeetingPolicies": null
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-040",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No anti-spam allowed-sender domains",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AntiSpamPolicies": [
+          {
+            "Name": "P1",
+            "AllowedSenderDomains": []
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

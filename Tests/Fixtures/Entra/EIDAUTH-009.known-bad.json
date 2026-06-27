@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDAUTH-009",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Windows Hello for Business not enabled",
+  "auditData": {
+    "AuthMethods": {
+      "MethodConfigurations": [
+        {
+          "id": "windowsHelloForBusiness",
+          "state": "disabled"
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

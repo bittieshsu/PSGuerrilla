@@ -1,0 +1,11 @@
+{
+  "checkId": "DEVICE-002",
+  "theater": "Fortification",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "Setting not exposed via Admin SDK — manual verification",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {}
+  }
+}

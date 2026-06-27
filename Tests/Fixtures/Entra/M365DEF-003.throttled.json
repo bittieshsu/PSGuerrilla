@@ -1,0 +1,15 @@
+{
+  "checkId": "M365DEF-003",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Defender data not assessed",
+  "auditData": {
+    "M365Services": {
+      "Errors": {}
+    },
+    "Errors": {
+      "M365Services": "EXO connect failed"
+    }
+  }
+}

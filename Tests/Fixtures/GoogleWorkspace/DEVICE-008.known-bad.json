@@ -1,0 +1,12 @@
+{
+  "checkId": "DEVICE-008",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No Chrome extension policy (no FAIL path)",
+  "objectShape": false,
+  "auditData": {
+    "ChromePolicies": {},
+    "Errors": {}
+  }
+}

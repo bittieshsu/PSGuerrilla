@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDAPP-004",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No first-party Microsoft SP carries custom credentials",
+  "auditData": {
+    "Applications": {
+      "ServicePrincipals": [
+        {
+          "appOwnerOrganizationId": "other-tenant",
+          "displayName": "SP1",
+          "appId": "sp1",
+          "id": "1"
+        }
+      ]
+    }
+  }
+}

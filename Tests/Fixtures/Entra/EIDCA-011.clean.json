@@ -1,0 +1,21 @@
+{
+  "checkId": "EIDCA-011",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Named locations configured",
+  "auditData": {
+    "ConditionalAccess": {
+      "NamedLocations": [
+        {
+          "displayName": "Office IP",
+          "id": "l1",
+          "@odata.type": "#microsoft.graph.ipNamedLocation",
+          "isTrusted": true
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

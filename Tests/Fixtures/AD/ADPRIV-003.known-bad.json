@@ -1,0 +1,28 @@
+{
+  "checkId": "ADPRIV-003",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Schema Admins has 2 members",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Schema Admins": [
+          {
+            "Enabled": true,
+            "IsGroup": false,
+            "ObjectClass": "user",
+            "SamAccountName": "m1"
+          },
+          {
+            "Enabled": true,
+            "IsGroup": false,
+            "ObjectClass": "user",
+            "SamAccountName": "m2"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

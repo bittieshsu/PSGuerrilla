@@ -1,0 +1,23 @@
+{
+  "checkId": "ADGPO-010",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A GPO version mismatch between AD and SYSVOL",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {},
+      "GPOVersionMismatch": [
+        {
+          "DisplayName": "P1",
+          "SYSVOLVersionComputer": 0,
+          "ADVersionComputer": 0,
+          "SYSVOLVersionUser": 2,
+          "ADVersionUser": 1,
+          "GUID": "{1}"
+        }
+      ]
+    }
+  }
+}

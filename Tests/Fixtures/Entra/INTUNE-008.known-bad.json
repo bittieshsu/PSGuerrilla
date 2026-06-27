@@ -1,0 +1,18 @@
+{
+  "checkId": "INTUNE-008",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No Defender/antivirus profile deployed",
+  "auditData": {
+    "Intune": {
+      "DeviceConfigurations": [
+        {
+          "displayName": "Other",
+          "@odata.type": "microsoft.graph.someOtherConfiguration",
+          "id": "1"
+        }
+      ]
+    }
+  }
+}

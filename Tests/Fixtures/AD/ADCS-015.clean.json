@@ -1,0 +1,20 @@
+{
+  "checkId": "ADCS-015",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No published v1 templates with low-priv enrollment",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateTemplates": [
+        {
+          "SchemaVersion": 1,
+          "EnrollmentPermissions": [],
+          "IsPublished": false,
+          "ExtendedKeyUsageOIDs": []
+        }
+      ]
+    }
+  }
+}

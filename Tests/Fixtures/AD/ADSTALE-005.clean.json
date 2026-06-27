@@ -1,0 +1,14 @@
+{
+  "checkId": "ADSTALE-005",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No obsolete-OS computers",
+  "auditData": {
+    "StaleObjects": {
+      "TotalComputers": 100,
+      "ObsoleteOSComputers": []
+    },
+    "Errors": {}
+  }
+}

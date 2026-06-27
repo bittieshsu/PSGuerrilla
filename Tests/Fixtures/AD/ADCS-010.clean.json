@@ -1,0 +1,25 @@
+{
+  "checkId": "ADCS-010",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "no dangerous ACLs on CA enrollment-service objects",
+  "auditData": {
+    "CertificateServices": {
+      "PKIObjects": [
+        {
+          "Permissions": [],
+          "DN": "CN=CA1,CN=Enrollment Services,CN=Public Key Services,CN=Services,CN=Configuration,DC=contoso,DC=com",
+          "Name": "CA1"
+        }
+      ],
+      "CertificateAuthorities": [
+        {
+          "Name": "CA1",
+          "DNSHostName": "ca1.contoso.com"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

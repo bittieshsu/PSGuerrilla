@@ -1,0 +1,21 @@
+{
+  "checkId": "EIDAUTH-004",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Users have strong MFA methods",
+  "auditData": {
+    "AuthMethods": {
+      "UserRegistrationDetails": [
+        {
+          "id": "1",
+          "isMfaRegistered": true,
+          "userPrincipalName": "u@t",
+          "methodsRegistered": [
+            "microsoftAuthenticatorPush"
+          ]
+        }
+      ]
+    }
+  }
+}

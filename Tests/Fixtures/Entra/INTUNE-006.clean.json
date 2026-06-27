@@ -1,0 +1,20 @@
+{
+  "checkId": "INTUNE-006",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Windows Update ring policy deployed",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "DeviceConfigurations": [
+        {
+          "@odata.type": "#microsoft.graph.windowsUpdateForBusinessConfiguration",
+          "id": "c1",
+          "displayName": "Windows Update Ring"
+        }
+      ]
+    }
+  }
+}

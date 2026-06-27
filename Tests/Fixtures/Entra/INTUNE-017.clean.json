@@ -1,0 +1,21 @@
+{
+  "checkId": "INTUNE-017",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "A security baseline is assigned",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "SecurityBaselines": [
+        {
+          "publishedDateTime": "2025-01-01",
+          "templateType": "Windows11",
+          "id": "b1",
+          "displayName": "Windows 11 Security Baseline"
+        }
+      ]
+    }
+  }
+}

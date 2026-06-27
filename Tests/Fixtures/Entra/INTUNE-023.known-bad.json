@@ -1,0 +1,12 @@
+{
+  "checkId": "INTUNE-023",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No operation approval policies configured",
+  "auditData": {
+    "Intune": {
+      "OperationApprovalPolicies": []
+    }
+  }
+}

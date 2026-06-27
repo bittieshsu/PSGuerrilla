@@ -1,0 +1,24 @@
+{
+  "checkId": "EIDAPP-020",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Group-specific consent enabled",
+  "auditData": {
+    "AuthMethods": {
+      "DirectorySettings": [
+        {
+          "displayName": "Group.Unified",
+          "values": [
+            {
+              "value": "true",
+              "name": "EnableGroupSpecificConsent"
+            }
+          ],
+          "templateId": "62375ab9-6b52-47ed-826b-58e47e0e304b"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

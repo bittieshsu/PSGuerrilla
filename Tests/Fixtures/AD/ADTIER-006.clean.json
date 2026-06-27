@@ -1,0 +1,25 @@
+{
+  "checkId": "ADTIER-006",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Tier-0 admins live under a dedicated admin OU",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Enterprise Admins": [],
+        "Backup Operators": [],
+        "Schema Admins": [],
+        "Domain Admins": [
+          {
+            "DistinguishedName": "CN=t0,OU=Tier-0,OU=Admin,DC=t,DC=l",
+            "ObjectClass": "user",
+            "SamAccountName": "t0",
+            "Group": "Domain Admins"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

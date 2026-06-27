@@ -1,0 +1,23 @@
+{
+  "checkId": "ADPRIV-024",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No service accounts in privileged groups",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "Enabled": true,
+            "ObjectClass": "user",
+            "SamAccountName": "a",
+            "IsServiceAccount": false,
+            "ServicePrincipalName": []
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "checkId": "M365EXO-046",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Unified audit log ingestion enabled",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "AdminAuditLogConfig": {
+          "UnifiedAuditLogIngestionEnabled": true
+        }
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

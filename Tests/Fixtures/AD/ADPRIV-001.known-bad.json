@@ -1,0 +1,52 @@
+{
+  "checkId": "ADPRIV-001",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "6 effective members in Domain Admins exceeds the failing threshold (>5)",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "Enabled": true,
+            "ObjectClass": "user",
+            "IsGroup": false,
+            "SamAccountName": "admin1"
+          },
+          {
+            "Enabled": true,
+            "ObjectClass": "user",
+            "IsGroup": false,
+            "SamAccountName": "admin2"
+          },
+          {
+            "Enabled": true,
+            "ObjectClass": "user",
+            "IsGroup": false,
+            "SamAccountName": "admin3"
+          },
+          {
+            "Enabled": true,
+            "ObjectClass": "user",
+            "IsGroup": false,
+            "SamAccountName": "admin4"
+          },
+          {
+            "Enabled": true,
+            "ObjectClass": "user",
+            "IsGroup": false,
+            "SamAccountName": "admin5"
+          },
+          {
+            "Enabled": true,
+            "ObjectClass": "user",
+            "IsGroup": false,
+            "SamAccountName": "admin6"
+          }
+        ]
+      }
+    },
+    "Errors": {}
+  }
+}

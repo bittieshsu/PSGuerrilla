@@ -1,0 +1,23 @@
+{
+  "checkId": "GTRADE-005",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No custom role carries super-admin-equivalent privileges",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Roles": [
+      {
+        "roleName": "Reader",
+        "rolePrivileges": [
+          {
+            "privilegeName": "USERS_RETRIEVE"
+          }
+        ],
+        "isSuperAdminRole": false,
+        "isSystemRole": false
+      }
+    ]
+  }
+}

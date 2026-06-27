@@ -1,0 +1,17 @@
+{
+  "checkId": "ADTRUST-010",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Trust password older than 180 days",
+  "auditData": {
+    "Trusts": [
+      {
+        "TrustDirection": "Bidirectional",
+        "WhenChanged": "2020-01-01T00:00:00Z",
+        "TrustPartner": "p.com"
+      }
+    ],
+    "Errors": {}
+  }
+}

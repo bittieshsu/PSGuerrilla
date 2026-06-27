@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPWD-017",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "LAPS not deployed",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "LAPSDeployed": false
+    }
+  }
+}

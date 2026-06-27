@@ -1,0 +1,18 @@
+{
+  "checkId": "M365AUDIT-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Unified + admin audit logging enabled",
+  "auditData": {
+    "M365Services": {
+      "AuditConfig": {
+        "AdminAuditLogEnabled": true,
+        "UnifiedAuditLogIngestionEnabled": true,
+        "LogLevel": "Verbose"
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "checkId": "ADDOM-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Domain functional level legacy (<6)",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "DomainFunctionalLevelName": "2000",
+      "DomainFunctionalLevel": 3
+    }
+  }
+}

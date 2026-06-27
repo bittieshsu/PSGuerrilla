@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-035",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No connection-filter IP allow-list entries",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "ConnectionFilterPolicies": [
+          {
+            "Name": "Default",
+            "IPAllowList": []
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

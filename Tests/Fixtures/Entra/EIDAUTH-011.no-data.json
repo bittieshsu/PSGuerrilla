@@ -1,0 +1,12 @@
+{
+  "checkId": "EIDAUTH-011",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Authorization policy unavailable",
+  "auditData": {
+    "AuthMethods": {
+      "AuthorizationPolicy": null
+    }
+  }
+}

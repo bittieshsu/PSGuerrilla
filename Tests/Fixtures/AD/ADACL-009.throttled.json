@@ -1,0 +1,13 @@
+{
+  "checkId": "ADACL-009",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "ObjectACLs failed",
+  "auditData": {
+    "ACLs": null,
+    "Errors": {
+      "ObjectACLs": "LDAP ACL read failed"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "checkId": "OAUTH-009",
+  "theater": "Fortification",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "Service-account key inventory requires Cloud Console",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {}
+  }
+}

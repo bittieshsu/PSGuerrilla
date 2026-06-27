@@ -1,0 +1,22 @@
+{
+  "checkId": "ADGPO-014",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No MSI packages in GPO SYSVOL folders",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "ScriptFiles": [
+            "b.bat"
+          ],
+          "PreferenceFiles": [
+            "a.xml"
+          ]
+        }
+      }
+    }
+  }
+}

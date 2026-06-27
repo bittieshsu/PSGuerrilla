@@ -1,0 +1,32 @@
+{
+  "checkId": "ADPATH-001",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No non-default principals control Tier-0 objects",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Domain Admins": [
+          {
+            "IsGroup": false,
+            "SamAccountName": "da1",
+            "SID": "S-1-5-21-1111111111-2222222222-3333333333-512"
+          }
+        ]
+      }
+    },
+    "ACLs": {
+      "DangerousACEs": [
+        {
+          "IsInherited": false,
+          "ObjectTypeGUID": null,
+          "IdentityReference": "BUILTIN\\Administrators",
+          "IdentitySID": "S-1-5-32-544",
+          "ObjectName": "Domain Root"
+        }
+      ]
+    }
+  }
+}

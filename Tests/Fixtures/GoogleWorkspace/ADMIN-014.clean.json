@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-014",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Access Approvals required",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "access_approval.axa_user_scoping": [
+          {
+            "setting": {
+              "value": {
+                "requiresCustomerApproval": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

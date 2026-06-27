@@ -1,0 +1,19 @@
+{
+  "checkId": "ADNET-002",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "LDAP channel binding disabled (0)",
+  "auditData": {
+    "Errors": {},
+    "Network": {
+      "DefaultDCPolicy": {
+        "Registry": {
+          "MACHINE\\System\\CurrentControlSet\\Services\\NTDS\\Parameters\\LdapEnforceChannelBinding": {
+            "Value": "0"
+          }
+        }
+      }
+    }
+  }
+}

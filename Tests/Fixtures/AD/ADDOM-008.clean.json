@@ -1,0 +1,13 @@
+{
+  "checkId": "ADDOM-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Tombstone lifetime >= 180 days",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "TombstoneLifetime": 180
+    }
+  }
+}

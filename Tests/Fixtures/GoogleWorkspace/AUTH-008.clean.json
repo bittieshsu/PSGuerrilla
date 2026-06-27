@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-008",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Less secure apps blocked",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "security.less_secure_apps": [
+          {
+            "setting": {
+              "value": {
+                "allowLessSecureApps": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

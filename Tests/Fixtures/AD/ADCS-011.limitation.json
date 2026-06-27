@@ -1,0 +1,17 @@
+{
+  "checkId": "ADCS-011",
+  "theater": "Reconnaissance",
+  "scenario": "limitation",
+  "expectedStatus": "WARN",
+  "description": "HTTP enrollment endpoints require IIS inspection, not LDAP (cannot assess)",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateAuthorities": [
+        {
+          "DNSHostName": "ca1.test.local"
+        }
+      ]
+    }
+  }
+}

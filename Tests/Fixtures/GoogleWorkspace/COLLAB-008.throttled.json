@@ -1,0 +1,13 @@
+{
+  "checkId": "COLLAB-008",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Calendar policy not assessed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "CloudIdentityPolicies": "collector error"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "checkId": "ADGPO-020",
+  "theater": "Reconnaissance",
+  "scenario": "informational",
+  "expectedStatus": "WARN",
+  "description": "PowerShell-policy GPO presence (informational)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "HasRegistryPol": false
+        }
+      },
+      "GPOs": [
+        {
+          "DisplayName": "Default Domain Policy"
+        }
+      ]
+    }
+  }
+}

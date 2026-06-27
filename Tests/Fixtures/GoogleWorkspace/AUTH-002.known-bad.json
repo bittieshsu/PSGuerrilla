@@ -1,0 +1,38 @@
+{
+  "checkId": "AUTH-002",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "20% 2SV enrollment (<80%)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isEnrolledIn2Sv": true,
+        "suspended": false,
+        "primaryEmail": "u1@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": false,
+        "suspended": false,
+        "primaryEmail": "u2@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": false,
+        "suspended": false,
+        "primaryEmail": "u3@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": false,
+        "suspended": false,
+        "primaryEmail": "u4@e.com"
+      },
+      {
+        "isEnrolledIn2Sv": false,
+        "suspended": false,
+        "primaryEmail": "u5@e.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "checkId": "DEVICE-008",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Chrome policy not assessed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "ChromePolicies": "collector error"
+    }
+  }
+}

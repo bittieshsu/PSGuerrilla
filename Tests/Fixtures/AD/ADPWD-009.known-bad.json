@@ -1,0 +1,18 @@
+{
+  "checkId": "ADPWD-009",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A user has password-never-expires set",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "UsersPasswordNeverExpires": [
+        {
+          "SamAccountName": "svc",
+          "AdminCount": 0
+        }
+      ]
+    }
+  }
+}

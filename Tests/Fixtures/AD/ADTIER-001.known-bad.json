@@ -1,0 +1,19 @@
+{
+  "checkId": "ADTIER-001",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "MSOL_ account sits in CN=Users with an old password",
+  "auditData": {
+    "Errors": {},
+    "TierZero": {
+      "MsolAccounts": [
+        {
+          "PasswordAgeDays": 400,
+          "SamAccountName": "MSOL_abc",
+          "DistinguishedName": "CN=MSOL_abc,CN=Users,DC=test,DC=local"
+        }
+      ]
+    }
+  }
+}

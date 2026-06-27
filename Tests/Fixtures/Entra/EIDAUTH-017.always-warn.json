@@ -1,0 +1,22 @@
+{
+  "checkId": "EIDAUTH-017",
+  "theater": "Infiltration",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "CA-based vs per-user MFA conflict check (informational)",
+  "auditData": {
+    "ConditionalAccess": {
+      "Policies": [
+        {
+          "grantControls": {
+            "builtInControls": [
+              "mfa"
+            ]
+          },
+          "state": "enabled"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

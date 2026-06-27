@@ -1,0 +1,18 @@
+{
+  "checkId": "ADGPO-018",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No audit-policy GPO detected",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "PreferenceFiles": [],
+          "HasRegistryPol": false
+        }
+      }
+    }
+  }
+}

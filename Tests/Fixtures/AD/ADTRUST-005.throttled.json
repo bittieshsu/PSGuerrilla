@@ -1,0 +1,13 @@
+{
+  "checkId": "ADTRUST-005",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "TrustRelationships collection failed",
+  "auditData": {
+    "Errors": {
+      "TrustRelationships": "collector error"
+    },
+    "Trusts": null
+  }
+}

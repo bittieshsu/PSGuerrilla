@@ -1,0 +1,18 @@
+{
+  "checkId": "EMAIL-004",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "MTA-STS valid for all domains",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "DnsRecords": {
+      "example.com": {
+        "MTASTS": {
+          "Valid": true
+        }
+      }
+    }
+  }
+}

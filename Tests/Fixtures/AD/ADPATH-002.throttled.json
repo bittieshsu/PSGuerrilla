@@ -1,0 +1,14 @@
+{
+  "checkId": "ADPATH-002",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "ObjectACLs collection failed",
+  "auditData": {
+    "Errors": {
+      "ObjectACLs": "collector error"
+    },
+    "PrivilegedAccounts": null,
+    "ACLs": null
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "checkId": "EMAIL-019",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "No active Gmail DLP rule (rule inactive)",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "rule.dlp": [
+          {
+            "setting": {
+              "value": {
+                "state": "INACTIVE",
+                "action": {
+                  "gmailAction": {
+                    "action": "REJECT"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "checkId": "ADGPO-011",
+  "theater": "Reconnaissance",
+  "scenario": "informational",
+  "expectedStatus": "WARN",
+  "description": "GPO registry/preference inventory (informational, always WARN)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "HasPreferences": false,
+          "HasRegistryPol": true
+        }
+      }
+    }
+  }
+}

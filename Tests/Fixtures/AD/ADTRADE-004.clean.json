@@ -1,0 +1,13 @@
+{
+  "checkId": "ADTRADE-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No RODCs (PRP hygiene N/A)",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "Rodcs": []
+    }
+  }
+}

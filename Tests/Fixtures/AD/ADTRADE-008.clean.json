@@ -1,0 +1,23 @@
+{
+  "checkId": "ADTRADE-008",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Key Admins / Enterprise Key Admins empty",
+  "auditData": {
+    "Errors": {},
+    "Tradecraft": {
+      "KeyAdmins": [
+        {
+          "ObjectClass": "group"
+        }
+      ],
+      "EnterpriseKeyAdmins": [
+        {
+          "ObjectClass": "group"
+        }
+      ],
+      "KeyAdminGroupsFound": true
+    }
+  }
+}

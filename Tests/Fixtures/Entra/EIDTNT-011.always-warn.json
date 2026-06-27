@@ -1,0 +1,8 @@
+{
+  "checkId": "EIDTNT-011",
+  "theater": "Infiltration",
+  "scenario": "always-warn",
+  "expectedStatus": "WARN",
+  "description": "Diagnostic settings require manual portal verification",
+  "auditData": {}
+}

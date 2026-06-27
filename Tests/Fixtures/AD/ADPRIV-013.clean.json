@@ -1,0 +1,21 @@
+{
+  "checkId": "ADPRIV-013",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No privileged account flagged reversible encryption",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "UACFlags": {
+            "ENCRYPTED_TEXT_PWD_ALLOWED": false
+          },
+          "SamAccountName": "admin1",
+          "DistinguishedName": "CN=admin1,CN=Users,DC=test,DC=local"
+        }
+      ]
+    }
+  }
+}

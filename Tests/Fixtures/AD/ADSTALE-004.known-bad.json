@@ -1,0 +1,21 @@
+{
+  "checkId": "ADSTALE-004",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "An enabled account has an expired password",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "ExpiredNotDisabled": [
+        {
+          "SamAccountName": "e1",
+          "Enabled": true,
+          "PwdLastSet": "2023-01-01T00:00:00Z",
+          "DN": "CN=e1,DC=t,DC=l"
+        }
+      ],
+      "TotalUsers": 100
+    }
+  }
+}

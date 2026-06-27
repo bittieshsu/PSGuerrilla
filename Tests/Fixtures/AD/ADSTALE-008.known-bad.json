@@ -1,0 +1,22 @@
+{
+  "checkId": "ADSTALE-008",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "An object has orphaned SID History entries",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "OrphanedSIDHistory": [
+        {
+          "SamAccountName": "u1",
+          "OrphanedSIDs": [
+            "S-1-5-21-1-1-1-500"
+          ],
+          "TotalSIDHistory": 1,
+          "DN": "CN=u1,DC=t,DC=l"
+        }
+      ]
+    }
+  }
+}

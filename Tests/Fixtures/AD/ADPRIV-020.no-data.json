@@ -1,0 +1,13 @@
+{
+  "checkId": "ADPRIV-020",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "AdminSDHolder ACL data not available (object-only PASS/FAIL not JSON-representable)",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "AdminSDHolderACL": null
+    }
+  }
+}

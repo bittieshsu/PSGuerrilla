@@ -1,0 +1,13 @@
+{
+  "checkId": "ADKERB-009",
+  "theater": "Reconnaissance",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Encryption type data unavailable",
+  "auditData": {
+    "Kerberos": {
+      "EncryptionTypes": null
+    },
+    "Errors": {}
+  }
+}

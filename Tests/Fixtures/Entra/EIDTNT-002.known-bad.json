@@ -1,0 +1,19 @@
+{
+  "checkId": "EIDTNT-002",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Default user role can create apps and groups (2+ issues)",
+  "auditData": {
+    "TenantConfig": {
+      "AuthorizationPolicy": {
+        "defaultUserRolePermissions": {
+          "allowedToCreateSecurityGroups": true,
+          "allowedToCreateTenants": true,
+          "allowedToCreateApps": true,
+          "allowedToReadOtherUsers": true
+        }
+      }
+    }
+  }
+}

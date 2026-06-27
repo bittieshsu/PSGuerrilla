@@ -1,0 +1,30 @@
+{
+  "checkId": "ADCS-017",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "V1 no-EKU template enrollable by Everyone",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateTemplates": [
+        {
+          "DisplayName": "V1",
+          "EnrollmentPermissions": [
+            {
+              "Identity": "Everyone",
+              "Right": "Enroll",
+              "SID": "S-1-1-0"
+            }
+          ],
+          "ExtendedKeyUsage": [],
+          "SchemaVersion": 1,
+          "Name": "V1",
+          "ExtendedKeyUsageOIDs": [],
+          "RASignaturesRequired": 0,
+          "IsPublished": true
+        }
+      ]
+    }
+  }
+}

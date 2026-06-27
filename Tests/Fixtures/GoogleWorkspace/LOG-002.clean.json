@@ -1,0 +1,28 @@
+{
+  "checkId": "LOG-002",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Five or more alert rules configured",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "AlertRules": [
+      {
+        "name": "R1"
+      },
+      {
+        "name": "R2"
+      },
+      {
+        "name": "R3"
+      },
+      {
+        "name": "R4"
+      },
+      {
+        "name": "R5"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "checkId": "EIDFED-009",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Federated IdP MFA behavior configured",
+  "auditData": {
+    "Federation": {
+      "FederationConfigs": [
+        {
+          "DomainName": "c.com",
+          "Config": {
+            "promptLoginBehavior": "NativeClient",
+            "preferredAuthenticationProtocol": "wsfed",
+            "federatedIdpMfaBehavior": "acceptIfMfaDoneByFederatedIdp"
+          }
+        }
+      ],
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

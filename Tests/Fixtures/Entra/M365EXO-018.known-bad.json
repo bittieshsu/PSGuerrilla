@@ -1,0 +1,24 @@
+{
+  "checkId": "M365EXO-018",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "DMARC p=none (no reject)",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "DomainMailSecurity": [
+          {
+            "Domain": "c.com",
+            "DMARC": {
+              "Record": "v=DMARC1; p=none",
+              "Policy": "none"
+            }
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

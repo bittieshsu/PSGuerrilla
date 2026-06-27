@@ -1,0 +1,13 @@
+{
+  "checkId": "ADDOM-009",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "AD Recycle Bin enabled",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "RecycleBinEnabled": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "checkId": "ADPRIV-026",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A non-Tier-0 principal holds the DC logon right",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "UserRightsAssignment": {
+        "InteractiveLogon": [
+          {
+            "Name": "CORP\\User",
+            "IsExpected": false,
+            "Sid": "S-1-5-21-1111111111-2222222222-3333333333-1601"
+          }
+        ]
+      }
+    }
+  }
+}

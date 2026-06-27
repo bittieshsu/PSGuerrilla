@@ -1,0 +1,18 @@
+{
+  "checkId": "GTRADE-003",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No groups allow open join / external members",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GroupSettings": {
+      "g@e.com": {
+        "allowExternalMembers": "false",
+        "whoCanJoin": "CAN_REQUEST_TO_JOIN",
+        "email": "g@e.com"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "checkId": "ADACL-002",
+  "theater": "Reconnaissance",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "ObjectACLs collection failed; must be Not Assessed, never PASS",
+  "auditData": {
+    "ACLs": null,
+    "Errors": {
+      "ObjectACLs": "LDAP ACL read failed: insufficient access rights."
+    }
+  }
+}

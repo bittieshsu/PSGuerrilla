@@ -1,0 +1,19 @@
+{
+  "checkId": "ADACL-004",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "WriteDacl held only by a default admin (SYSTEM)",
+  "auditData": {
+    "Errors": {},
+    "ACLs": {
+      "DangerousACEs": [
+        {
+          "ActiveDirectoryRights": "WriteDacl",
+          "IdentityReference": "NT AUTHORITY\\SYSTEM",
+          "IdentitySID": "S-1-5-18"
+        }
+      ]
+    }
+  }
+}

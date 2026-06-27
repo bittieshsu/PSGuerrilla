@@ -1,0 +1,19 @@
+{
+  "checkId": "ADPRIV-017",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Privileged password changed recently",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "AllPrivilegedUsers": [
+        {
+          "Enabled": true,
+          "PwdLastSet": "2026-05-01T00:00:00Z",
+          "SamAccountName": "a"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

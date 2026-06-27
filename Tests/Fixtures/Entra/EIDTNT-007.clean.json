@@ -1,0 +1,18 @@
+{
+  "checkId": "EIDTNT-007",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "security defaults are enabled",
+  "auditData": {
+    "TenantConfig": {
+      "SecurityDefaults": {
+        "isEnabled": true
+      }
+    },
+    "Errors": {},
+    "ConditionalAccess": {
+      "Policies": []
+    }
+  }
+}

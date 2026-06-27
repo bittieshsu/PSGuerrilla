@@ -1,0 +1,13 @@
+{
+  "checkId": "ADSTALE-011",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No stale DNS records",
+  "auditData": {
+    "Errors": {},
+    "StaleObjects": {
+      "StaleDNSRecords": []
+    }
+  }
+}

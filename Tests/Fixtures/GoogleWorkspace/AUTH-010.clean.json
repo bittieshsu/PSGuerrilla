@@ -1,0 +1,20 @@
+{
+  "checkId": "AUTH-010",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No super admin has self-service recovery configured",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "isAdmin": true,
+        "suspended": false,
+        "recoveryEmail": null,
+        "recoveryPhone": null,
+        "primaryEmail": "admin@e.com"
+      }
+    ]
+  }
+}

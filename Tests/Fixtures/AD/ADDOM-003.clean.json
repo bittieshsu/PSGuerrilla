@@ -1,0 +1,14 @@
+{
+  "checkId": "ADDOM-003",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Schema version current (>=88)",
+  "auditData": {
+    "Errors": {},
+    "Domain": {
+      "SchemaVersion": 88,
+      "SchemaVersionName": "2016"
+    }
+  }
+}

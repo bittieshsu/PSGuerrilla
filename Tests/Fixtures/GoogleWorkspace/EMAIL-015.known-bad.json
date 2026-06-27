@@ -1,0 +1,24 @@
+{
+  "checkId": "EMAIL-015",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Future attachment-safety auto-apply off (no FAIL path)",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gmail.email_attachment_safety": [
+          {
+            "setting": {
+              "value": {
+                "applyFutureRecommendedSettingsAutomatically": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

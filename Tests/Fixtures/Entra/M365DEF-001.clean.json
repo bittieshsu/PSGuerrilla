@@ -1,0 +1,23 @@
+{
+  "checkId": "M365DEF-001",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "A preset Defender protection policy is enabled",
+  "auditData": {
+    "M365Services": {
+      "Defender": {
+        "ProtectionPolicyRules": [
+          {
+            "Name": "Standard",
+            "Identity": "Standard",
+            "Priority": 1,
+            "State": "Enabled"
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

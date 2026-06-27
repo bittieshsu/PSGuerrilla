@@ -1,0 +1,22 @@
+{
+  "checkId": "ADGPO-019",
+  "theater": "Reconnaissance",
+  "scenario": "informational",
+  "expectedStatus": "WARN",
+  "description": "Windows Firewall GPO presence (informational)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "HasRegistryPol": false
+        }
+      },
+      "GPOs": [
+        {
+          "DisplayName": "Default Domain Policy"
+        }
+      ]
+    }
+  }
+}

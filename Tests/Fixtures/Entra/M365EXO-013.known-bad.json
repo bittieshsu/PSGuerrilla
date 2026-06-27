@@ -1,0 +1,21 @@
+{
+  "checkId": "M365EXO-013",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A remote domain allows auto-forward",
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "RemoteDomains": [
+          {
+            "DomainName": "*",
+            "AutoForwardEnabled": true
+          }
+        ]
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

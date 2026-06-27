@@ -1,0 +1,19 @@
+{
+  "checkId": "ADSCRIPT-005",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No LOLBins referenced in logon scripts",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "ScriptAnalysis": [
+        {
+          "RelativePath": "logon.bat",
+          "LOLBinsFound": [],
+          "LOLBinsUsage": false
+        }
+      ]
+    }
+  }
+}

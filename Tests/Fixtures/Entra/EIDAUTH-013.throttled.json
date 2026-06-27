@@ -1,0 +1,15 @@
+{
+  "checkId": "EIDAUTH-013",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "AuthMethods collection failed",
+  "auditData": {
+    "AuthMethods": {
+      "Errors": {}
+    },
+    "Errors": {
+      "AuthMethods": "Graph error"
+    }
+  }
+}

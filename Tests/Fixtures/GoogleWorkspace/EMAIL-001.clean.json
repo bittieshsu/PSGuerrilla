@@ -1,0 +1,19 @@
+{
+  "checkId": "EMAIL-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "SPF valid with a hard/soft-fail qualifier on every domain",
+  "auditData": {
+    "DnsRecords": {
+      "example.com": {
+        "SPF": {
+          "Valid": true,
+          "Record": "v=spf1 include:_spf.google.com ~all",
+          "Details": ""
+        }
+      }
+    },
+    "Errors": {}
+  }
+}

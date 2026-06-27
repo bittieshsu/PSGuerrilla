@@ -1,0 +1,25 @@
+{
+  "checkId": "EIDPIM-012",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Two+ break-glass Global Admins by naming pattern",
+  "auditData": {
+    "Errors": {},
+    "PIM": {
+      "Errors": {},
+      "GlobalAdmins": [
+        {
+          "displayName": "Break-Glass 1",
+          "onPremisesSyncEnabled": false,
+          "userPrincipalName": "breakglass1@contoso.com"
+        },
+        {
+          "displayName": "Break-Glass 2",
+          "onPremisesSyncEnabled": false,
+          "userPrincipalName": "bg-admin2@contoso.com"
+        }
+      ]
+    }
+  }
+}

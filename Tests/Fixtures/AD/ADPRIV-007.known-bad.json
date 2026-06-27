@@ -1,0 +1,21 @@
+{
+  "checkId": "ADPRIV-007",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Print Operators group has a member",
+  "auditData": {
+    "Errors": {},
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Print Operators": [
+          {
+            "SamAccountName": "u1",
+            "ObjectClass": "user",
+            "Enabled": true
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "checkId": "EIDAUTH-008",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Few users passwordless-capable (<30%)",
+  "auditData": {
+    "AuthMethods": {
+      "UserRegistrationDetails": [
+        {
+          "isPasswordlessCapable": false,
+          "methodsRegistered": []
+        },
+        {
+          "isPasswordlessCapable": false,
+          "methodsRegistered": []
+        },
+        {
+          "isPasswordlessCapable": false,
+          "methodsRegistered": []
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

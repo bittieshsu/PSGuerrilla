@@ -1,0 +1,16 @@
+{
+  "checkId": "ADPWD-013",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No dictionary-based passwords",
+  "auditData": {
+    "PasswordPolicies": {
+      "DictionaryMatchUsers": []
+    },
+    "ModuleAvailability": {
+      "DSInternals": true
+    },
+    "Errors": {}
+  }
+}

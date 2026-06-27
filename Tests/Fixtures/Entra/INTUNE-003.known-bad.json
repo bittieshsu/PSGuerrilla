@@ -1,0 +1,27 @@
+{
+  "checkId": "INTUNE-003",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "All managed devices non-compliant (>10%)",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "ManagedDevices": [
+        {
+          "lastSyncDateTime": "2026-06-26",
+          "deviceName": "PC1",
+          "complianceState": "noncompliant",
+          "operatingSystem": "Windows 11"
+        },
+        {
+          "lastSyncDateTime": "2026-06-26",
+          "deviceName": "PC2",
+          "complianceState": "noncompliant",
+          "operatingSystem": "Windows 11"
+        }
+      ]
+    }
+  }
+}

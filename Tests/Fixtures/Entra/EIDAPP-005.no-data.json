@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDAPP-005",
+  "theater": "Infiltration",
+  "scenario": "no-data",
+  "expectedStatus": "SKIP",
+  "description": "Application/service-principal inventory unavailable; must be Not Assessed, never PASS",
+  "auditData": {
+    "Errors": {},
+    "Applications": {
+      "AppRegistrations": null,
+      "ServicePrincipals": null
+    }
+  }
+}

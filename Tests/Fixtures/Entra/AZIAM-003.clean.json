@@ -1,0 +1,18 @@
+{
+  "checkId": "AZIAM-003",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Resource-group assignment inventory (informational)",
+  "auditData": {
+    "AzureIAM": {
+      "RoleAssignments": [],
+      "Subscriptions": [
+        {
+          "id": "sub1"
+        }
+      ]
+    },
+    "Errors": {}
+  }
+}

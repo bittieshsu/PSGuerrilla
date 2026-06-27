@@ -1,0 +1,13 @@
+{
+  "checkId": "ADKERB-001",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No Kerberoastable accounts",
+  "auditData": {
+    "Kerberos": {
+      "KerberoastableAccounts": []
+    },
+    "Errors": {}
+  }
+}

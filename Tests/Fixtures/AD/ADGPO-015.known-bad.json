@@ -1,0 +1,19 @@
+{
+  "checkId": "ADGPO-015",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "GPO deploys scheduled tasks (review)",
+  "auditData": {
+    "Errors": {},
+    "GroupPolicies": {
+      "SYSVOLContent": {
+        "G1": {
+          "PreferenceFiles": [
+            "ScheduledTasks.xml"
+          ]
+        }
+      }
+    }
+  }
+}

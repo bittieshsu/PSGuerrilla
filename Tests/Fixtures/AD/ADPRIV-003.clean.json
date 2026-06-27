@@ -1,0 +1,15 @@
+{
+  "checkId": "ADPRIV-003",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Schema Admins empty",
+  "auditData": {
+    "PrivilegedAccounts": {
+      "PrivilegedGroups": {
+        "Schema Admins": []
+      }
+    },
+    "Errors": {}
+  }
+}

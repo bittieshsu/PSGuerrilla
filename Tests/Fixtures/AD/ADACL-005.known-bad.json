@@ -1,0 +1,19 @@
+{
+  "checkId": "ADACL-005",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "WriteOwner held by a non-default principal",
+  "auditData": {
+    "Errors": {},
+    "ACLs": {
+      "DangerousACEs": [
+        {
+          "ActiveDirectoryRights": "WriteOwner",
+          "IdentityReference": "CORP\\BadUser",
+          "IdentitySID": "S-1-5-21-1111111111-2222222222-3333333333-1601"
+        }
+      ]
+    }
+  }
+}

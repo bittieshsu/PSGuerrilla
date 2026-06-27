@@ -1,0 +1,20 @@
+{
+  "checkId": "EIDPIM-012",
+  "theater": "Infiltration",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Fewer than two break-glass Global Admins",
+  "auditData": {
+    "Errors": {},
+    "PIM": {
+      "Errors": {},
+      "GlobalAdmins": [
+        {
+          "displayName": "Regular Admin",
+          "onPremisesSyncEnabled": false,
+          "userPrincipalName": "admin1@contoso.com"
+        }
+      ]
+    }
+  }
+}

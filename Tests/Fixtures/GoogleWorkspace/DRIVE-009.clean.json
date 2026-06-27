@@ -1,0 +1,19 @@
+{
+  "checkId": "DRIVE-009",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Few Drive-scope OAuth apps (<=5)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "scope": "drive",
+          "app_name": "A1"
+        }
+      }
+    ]
+  }
+}

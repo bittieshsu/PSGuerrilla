@@ -1,0 +1,20 @@
+{
+  "checkId": "ADSCRIPT-009",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "NETLOGON files have expected extensions/structure",
+  "auditData": {
+    "Errors": {},
+    "LogonScripts": {
+      "NetlogonFiles": [
+        {
+          "Extension": ".bat",
+          "Size": 100,
+          "RelativePath": "logon.bat"
+        }
+      ],
+      "ScriptAnalysis": []
+    }
+  }
+}

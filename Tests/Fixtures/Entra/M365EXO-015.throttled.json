@@ -1,0 +1,15 @@
+{
+  "checkId": "M365EXO-015",
+  "theater": "Infiltration",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Exchange collection failed",
+  "auditData": {
+    "Errors": {
+      "M365Services": "EXO connect failed"
+    },
+    "M365Services": {
+      "Exchange": null
+    }
+  }
+}

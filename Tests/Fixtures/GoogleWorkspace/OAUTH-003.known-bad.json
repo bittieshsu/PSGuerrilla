@@ -1,0 +1,48 @@
+{
+  "checkId": "OAUTH-003",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Six third-party apps hold high-risk scopes",
+  "auditData": {
+    "Errors": {},
+    "OAuthApps": [
+      {
+        "Params": {
+          "app_name": "A1",
+          "scope": "gmail.readonly"
+        }
+      },
+      {
+        "Params": {
+          "app_name": "A2",
+          "scope": "admin.directory.user"
+        }
+      },
+      {
+        "Params": {
+          "app_name": "A3",
+          "scope": "drive"
+        }
+      },
+      {
+        "Params": {
+          "app_name": "A4",
+          "scope": "calendar"
+        }
+      },
+      {
+        "Params": {
+          "app_name": "A5",
+          "scope": "contacts"
+        }
+      },
+      {
+        "Params": {
+          "app_name": "A6",
+          "scope": "directory"
+        }
+      }
+    ]
+  }
+}

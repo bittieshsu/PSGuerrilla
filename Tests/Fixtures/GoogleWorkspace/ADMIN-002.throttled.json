@@ -1,0 +1,13 @@
+{
+  "checkId": "ADMIN-002",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "Role data not assessed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "Roles": "collector error"
+    }
+  }
+}

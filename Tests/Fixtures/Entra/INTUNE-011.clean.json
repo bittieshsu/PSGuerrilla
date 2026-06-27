@@ -1,0 +1,20 @@
+{
+  "checkId": "INTUNE-011",
+  "theater": "Infiltration",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "App protection policy configured",
+  "auditData": {
+    "Errors": {},
+    "Intune": {
+      "Errors": {},
+      "AppProtectionPolicies": [
+        {
+          "@odata.type": "#microsoft.graph.iosManagedAppProtection",
+          "id": "p1",
+          "displayName": "iOS App Protection"
+        }
+      ]
+    }
+  }
+}

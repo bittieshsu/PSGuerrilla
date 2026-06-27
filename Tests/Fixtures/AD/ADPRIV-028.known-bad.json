@@ -1,0 +1,16 @@
+{
+  "checkId": "ADPRIV-028",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A non-default principal holds DCSync replication rights",
+  "auditData": {
+    "Errors": {},
+    "DCSyncAccounts": [
+      {
+        "SamAccountName": "attacker",
+        "DistinguishedName": "CN=attacker,CN=Users,DC=test,DC=local"
+      }
+    ]
+  }
+}

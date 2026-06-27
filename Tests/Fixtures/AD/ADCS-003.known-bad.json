@@ -1,0 +1,31 @@
+{
+  "checkId": "ADCS-003",
+  "theater": "Reconnaissance",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Published template has Any-Purpose EKU with low-priv enroll and no RA signature (ESC2)",
+  "auditData": {
+    "Errors": {},
+    "CertificateServices": {
+      "CertificateTemplates": [
+        {
+          "SchemaVersion": 3,
+          "IsPublished": true,
+          "EnrollmentPermissions": [
+            {
+              "Right": "Enroll",
+              "Identity": "Authenticated Users",
+              "SID": "S-1-5-11"
+            }
+          ],
+          "DisplayName": "Vuln",
+          "RASignaturesRequired": 0,
+          "ExtendedKeyUsageOIDs": [
+            "2.5.29.37.0"
+          ],
+          "Name": "Vuln"
+        }
+      ]
+    }
+  }
+}

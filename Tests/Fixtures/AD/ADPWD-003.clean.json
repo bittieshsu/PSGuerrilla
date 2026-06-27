@@ -1,0 +1,18 @@
+{
+  "checkId": "ADPWD-003",
+  "theater": "Reconnaissance",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No FGPP weaker than the default policy",
+  "auditData": {
+    "Errors": {},
+    "PasswordPolicies": {
+      "DefaultPolicy": {
+        "PasswordComplexity": true,
+        "PasswordHistoryCount": 24,
+        "MinPasswordLength": 14
+      },
+      "FineGrainedPolicies": []
+    }
+  }
+}
