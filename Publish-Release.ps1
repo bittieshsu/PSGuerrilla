@@ -59,6 +59,13 @@ if (Test-Path $contract) {
     Ok 'collector contract tests green'
 } else { Write-Host "  [warn] contract tests not found at $contract — skipping gate B" -ForegroundColor Yellow }
 
+# 2c) GATE C — Zero Trust schema (every check must declare pillar + weight).
+Write-Host "-- gate C: Zero Trust check-definition schema --"
+$ztSchema = Join-Path $root 'Tests' 'Unit' 'ZeroTrustSchema.Tests.ps1'
+& pwsh -NoProfile -c "`$r = Invoke-Pester -Path '$ztSchema' -Output None -PassThru; exit `$r.FailedCount" | Out-Host
+if ($LASTEXITCODE -ne 0) { Fail "Zero Trust schema RED — a check is missing pillar/weight. Release blocked." }
+Ok 'Zero Trust schema green (all checks declare pillar + weight)'
+
 # 3) Manifest validity + ReleaseNotes length.
 $null = Test-ModuleManifest (Join-Path $root 'PSGuerrilla.psd1')
 $rn = (Import-PowerShellDataFile (Join-Path $root 'PSGuerrilla.psd1')).PrivateData.PSData.ReleaseNotes

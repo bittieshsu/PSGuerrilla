@@ -8,6 +8,8 @@
       "name": "2SV Enforcement",
       "description": "Two-step verification (2SV/MFA) should be enforced for all users to prevent account takeover via stolen credentials",
       "severity": "Critical",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
       "subcategory": "Multi-Factor Authentication",
       "recommendedValue": "Enforced for all organizational units",
       "remediationUrl": "https://admin.google.com/ac/security/2sv",
@@ -16,9 +18,16 @@
       "referenceTitle": "Google: Protect your business with 2-Step Verification",
       "affectedLabel": "Active users without 2SV enforced",
       "compliance": {
-        "nistSp80053": ["IA-2(1)", "IA-2(2)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.1"]
+        "nistSp80053": [
+          "IA-2(1)",
+          "IA-2(2)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.1"
+        ]
       }
     },
     {
@@ -26,6 +35,8 @@
       "name": "2SV Enrollment Rate",
       "description": "All active users should have 2SV enrolled. Low enrollment rates leave accounts vulnerable to credential-based attacks",
       "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 2,
       "subcategory": "Multi-Factor Authentication",
       "recommendedValue": "95% or higher enrollment among active users",
       "remediationUrl": "https://admin.google.com/ac/reporting/report/user/security",
@@ -34,9 +45,15 @@
       "referenceTitle": "Google: Deploy 2-Step Verification",
       "affectedLabel": "Active users not enrolled in 2SV",
       "compliance": {
-        "nistSp80053": ["IA-2(1)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.2"]
+        "nistSp80053": [
+          "IA-2(1)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.2"
+        ]
       }
     },
     {
@@ -44,6 +61,8 @@
       "name": "2SV Method Strength",
       "description": "Security keys should be the primary 2SV method. SMS and voice-based 2SV are vulnerable to SIM-swapping and interception attacks",
       "severity": "Medium",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
       "subcategory": "Multi-Factor Authentication",
       "recommendedValue": "Security keys enforced as primary method",
       "remediationUrl": "https://admin.google.com/ac/security/2sv",
@@ -51,9 +70,17 @@
       "referenceUrl": "https://www.vectra.ai/blog/the-hidden-risks-of-sms-based-multi-factor-authentication",
       "referenceTitle": "Why SMS-based MFA is vulnerable (SIM-swap & interception)",
       "compliance": {
-        "nistSp80053": ["IA-2(1)", "IA-2(12)"],
-        "mitreAttack": ["T1111", "T1078.004"],
-        "cisBenchmark": ["1.3"]
+        "nistSp80053": [
+          "IA-2(1)",
+          "IA-2(12)"
+        ],
+        "mitreAttack": [
+          "T1111",
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.3"
+        ]
       }
     },
     {
@@ -61,6 +88,8 @@
       "name": "Password Minimum Length",
       "description": "Password minimum length should be at least 12 characters to resist brute-force and dictionary attacks",
       "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 2,
       "subcategory": "Password Policy",
       "recommendedValue": "Minimum 12 characters",
       "remediationUrl": "https://admin.google.com/ac/security/passwordmanagement",
@@ -68,9 +97,16 @@
       "referenceUrl": "https://www.strongdm.com/blog/nist-password-guidelines",
       "referenceTitle": "NIST password guidelines: why length resists brute force",
       "compliance": {
-        "nistSp80053": ["IA-5(1)"],
-        "mitreAttack": ["T1110.001", "T1110.003"],
-        "cisBenchmark": ["1.4"]
+        "nistSp80053": [
+          "IA-5(1)"
+        ],
+        "mitreAttack": [
+          "T1110.001",
+          "T1110.003"
+        ],
+        "cisBenchmark": [
+          "1.4"
+        ]
       }
     },
     {
@@ -78,6 +114,8 @@
       "name": "Password Reuse Restriction",
       "description": "Users should not be able to reuse recent passwords, preventing credential cycling attacks",
       "severity": "Medium",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
       "subcategory": "Password Policy",
       "recommendedValue": "Password reuse not allowed",
       "remediationUrl": "https://admin.google.com/ac/security/passwordmanagement",
@@ -85,9 +123,15 @@
       "referenceUrl": "https://knowledge.workspace.google.com/admin/users/enforce-and-monitor-password-requirements-for-users",
       "referenceTitle": "Google: Enforce and monitor password requirements",
       "compliance": {
-        "nistSp80053": ["IA-5(1)"],
-        "mitreAttack": ["T1110.004"],
-        "cisBenchmark": ["1.5"]
+        "nistSp80053": [
+          "IA-5(1)"
+        ],
+        "mitreAttack": [
+          "T1110.004"
+        ],
+        "cisBenchmark": [
+          "1.5"
+        ]
       }
     },
     {
@@ -95,6 +139,8 @@
       "name": "Session Duration",
       "description": "Web session duration should be limited to reduce the window for session hijacking and unauthorized access from shared devices",
       "severity": "Medium",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 1,
       "subcategory": "Session Management",
       "recommendedValue": "Session duration of 12 hours or less",
       "remediationUrl": "https://admin.google.com/ac/security/session",
@@ -102,9 +148,16 @@
       "referenceUrl": "https://knowledge.workspace.google.com/admin/security/set-session-length-for-google-services",
       "referenceTitle": "Google: Set session length for Google services",
       "compliance": {
-        "nistSp80053": ["AC-12", "SC-23"],
-        "mitreAttack": ["T1550.004"],
-        "cisBenchmark": ["1.6"]
+        "nistSp80053": [
+          "AC-12",
+          "SC-23"
+        ],
+        "mitreAttack": [
+          "T1550.004"
+        ],
+        "cisBenchmark": [
+          "1.6"
+        ]
       }
     },
     {
@@ -112,6 +165,8 @@
       "name": "SSO Configuration",
       "description": "If SSO is configured, it should use secure protocols and trusted identity providers",
       "severity": "Medium",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 1,
       "subcategory": "Single Sign-On",
       "recommendedValue": "SAML SSO properly configured with trusted IdP",
       "remediationUrl": "https://admin.google.com/ac/security/ssoprofile",
@@ -119,9 +174,16 @@
       "referenceUrl": "https://knowledge.workspace.google.com/admin/apps/best-practices-for-third-party-idp-and-google-workspace-configuration",
       "referenceTitle": "Google: Best practices for third-party IdP configuration",
       "compliance": {
-        "nistSp80053": ["IA-2(6)", "IA-8"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.7"]
+        "nistSp80053": [
+          "IA-2(6)",
+          "IA-8"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.7"
+        ]
       }
     },
     {
@@ -129,6 +191,8 @@
       "name": "Less Secure Apps Access",
       "description": "Less secure apps (apps that don't support modern authentication) should be blocked to prevent credential exposure",
       "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
       "subcategory": "App Access",
       "recommendedValue": "Disabled for all users",
       "remediationUrl": "https://admin.google.com/ac/security/lsa",
@@ -136,9 +200,16 @@
       "referenceUrl": "https://knowledge.workspace.google.com/admin/sync/transition-from-less-secure-apps-to-oauth",
       "referenceTitle": "Google: Transition from less secure apps to OAuth",
       "compliance": {
-        "nistSp80053": ["IA-5(2)"],
-        "mitreAttack": ["T1078.004", "T1110"],
-        "cisBenchmark": ["1.8"]
+        "nistSp80053": [
+          "IA-5(2)"
+        ],
+        "mitreAttack": [
+          "T1078.004",
+          "T1110"
+        ],
+        "cisBenchmark": [
+          "1.8"
+        ]
       }
     },
     {
@@ -146,6 +217,8 @@
       "name": "App Passwords Policy",
       "description": "App-specific passwords bypass 2SV and should be controlled. If allowed, they should require 2SV enrollment first",
       "severity": "Medium",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
       "subcategory": "App Access",
       "recommendedValue": "App passwords restricted or disabled",
       "remediationUrl": "https://admin.google.com/ac/security/2sv",
@@ -153,9 +226,15 @@
       "referenceUrl": "https://support.google.com/a/answer/9176599",
       "referenceTitle": "Google: How 2-Step Verification works with legacy apps",
       "compliance": {
-        "nistSp80053": ["IA-5(1)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.9"]
+        "nistSp80053": [
+          "IA-5(1)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.9"
+        ]
       }
     },
     {
@@ -163,6 +242,8 @@
       "name": "Recovery Options Configuration",
       "description": "User self-service recovery should be configured appropriately. Super admins should not have personal recovery options to prevent social engineering",
       "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
       "subcategory": "Account Recovery",
       "recommendedValue": "Super admins: no personal recovery. Regular users: recovery options allowed with admin override",
       "remediationUrl": "https://admin.google.com/ac/security/accountrecovery",
@@ -171,9 +252,17 @@
       "referenceTitle": "Google: Allow super administrators to recover their password",
       "affectedLabel": "Super admins with personal recovery options",
       "compliance": {
-        "nistSp80053": ["IA-5(1)", "AC-2(4)"],
-        "mitreAttack": ["T1078.004", "T1098"],
-        "cisBenchmark": ["1.10"]
+        "nistSp80053": [
+          "IA-5(1)",
+          "AC-2(4)"
+        ],
+        "mitreAttack": [
+          "T1078.004",
+          "T1098"
+        ],
+        "cisBenchmark": [
+          "1.10"
+        ]
       }
     },
     {
@@ -181,6 +270,8 @@
       "name": "Login Challenge Settings",
       "description": "Login challenges should be enabled to provide additional verification when suspicious login attempts are detected",
       "severity": "Medium",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 1,
       "subcategory": "Login Security",
       "recommendedValue": "Login challenges enabled with employee ID or other verification",
       "remediationUrl": "https://admin.google.com/ac/security/loginchallenges",
@@ -188,9 +279,15 @@
       "referenceUrl": "https://support.google.com/a/answer/6002699",
       "referenceTitle": "Google: Protect accounts with security challenges",
       "compliance": {
-        "nistSp80053": ["IA-2(13)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.11"]
+        "nistSp80053": [
+          "IA-2(13)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.11"
+        ]
       }
     },
     {
@@ -198,6 +295,8 @@
       "name": "Super Admin 2SV Enrollment",
       "description": "All super admin accounts must have 2SV enrolled. Super admins have unrestricted access to all settings and data",
       "severity": "Critical",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
       "subcategory": "Multi-Factor Authentication",
       "recommendedValue": "100% of super admins enrolled in 2SV",
       "remediationUrl": "https://admin.google.com/ac/reporting/report/user/security",
@@ -206,9 +305,16 @@
       "referenceTitle": "Google: About 2SV enforcement for admins",
       "affectedLabel": "Super admins without 2SV enrolled",
       "compliance": {
-        "nistSp80053": ["IA-2(1)", "IA-2(11)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.12"]
+        "nistSp80053": [
+          "IA-2(1)",
+          "IA-2(11)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.12"
+        ]
       }
     },
     {
@@ -216,6 +322,8 @@
       "name": "Stale Super Admin Accounts",
       "description": "Super admin accounts that have not logged in recently may be orphaned and at risk of compromise. All super admin accounts should be actively managed",
       "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 2,
       "subcategory": "Account Hygiene",
       "recommendedValue": "No super admin accounts inactive for more than 90 days",
       "remediationUrl": "https://admin.google.com/ac/users",
@@ -224,9 +332,16 @@
       "referenceTitle": "Google Cloud: Super administrator account best practices",
       "affectedLabel": "Stale super admin accounts",
       "compliance": {
-        "nistSp80053": ["AC-2(3)", "AC-2(4)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.13"]
+        "nistSp80053": [
+          "AC-2(3)",
+          "AC-2(4)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.13"
+        ]
       }
     },
     {
@@ -234,6 +349,8 @@
       "name": "2SV Enrollment Allowed",
       "description": "Users must be allowed to enroll in two-step verification. Disabling 2SV enrollment blocks MFA adoption and leaves accounts protected by passwords alone",
       "severity": "Medium",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
       "subcategory": "Multi-Factor Authentication",
       "recommendedValue": "2SV enrollment allowed in all organizational units",
       "remediationUrl": "https://admin.google.com/ac/security/2sv",
@@ -241,9 +358,15 @@
       "referenceUrl": "https://support.google.com/a/answer/9176657",
       "referenceTitle": "Google: Turn on 2-Step Verification",
       "compliance": {
-        "nistSp80053": ["IA-2(1)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.2"]
+        "nistSp80053": [
+          "IA-2(1)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.2"
+        ]
       }
     },
     {
@@ -251,6 +374,8 @@
       "name": "2SV Enrollment Grace Period",
       "description": "The grace period before newly added users must enroll in 2SV should be short. A long grace period leaves accounts unprotected by MFA for an extended window after creation",
       "severity": "Low",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 2,
       "subcategory": "Multi-Factor Authentication",
       "recommendedValue": "Grace period of 7 days (168 hours) or less",
       "remediationUrl": "https://admin.google.com/ac/security/2sv",
@@ -258,9 +383,15 @@
       "referenceUrl": "https://support.google.com/a/answer/9176657",
       "referenceTitle": "Google: Set a 2-Step Verification enrollment period",
       "compliance": {
-        "nistSp80053": ["IA-2(1)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.2"]
+        "nistSp80053": [
+          "IA-2(1)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.2"
+        ]
       }
     },
     {
@@ -268,6 +399,8 @@
       "name": "Advanced Protection Self-Enrollment",
       "description": "Allowing self-enrollment in the Advanced Protection Program lets high-risk users adopt the strongest available account protections without admin intervention",
       "severity": "Low",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 1,
       "subcategory": "Account Security",
       "recommendedValue": "Advanced Protection self-enrollment allowed in all organizational units",
       "remediationUrl": "https://admin.google.com/ac/security/advanced-protection",
@@ -275,9 +408,15 @@
       "referenceUrl": "https://support.google.com/a/answer/9378686",
       "referenceTitle": "Google: Protect users with the Advanced Protection Program",
       "compliance": {
-        "nistSp80053": ["IA-2(1)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["1.14"]
+        "nistSp80053": [
+          "IA-2(1)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "1.14"
+        ]
       }
     },
     {
@@ -285,6 +424,8 @@
       "name": "Super Admin Account Self-Recovery",
       "description": "Self-service account recovery for super admins is an account-takeover path via social engineering and should be turned off. Super admins should be recovered only by another administrator",
       "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
       "subcategory": "Account Security",
       "recommendedValue": "Super admin self-recovery disabled in all organizational units",
       "remediationUrl": "https://admin.google.com/ac/security/accountrecovery",
@@ -292,9 +433,17 @@
       "referenceUrl": "https://support.google.com/a/answer/9436964",
       "referenceTitle": "Google: Allow super administrators to recover their password",
       "compliance": {
-        "nistSp80053": ["IA-4", "AC-6(5)"],
-        "mitreAttack": ["T1078.004", "T1098"],
-        "cisBenchmark": ["1.15"]
+        "nistSp80053": [
+          "IA-4",
+          "AC-6(5)"
+        ],
+        "mitreAttack": [
+          "T1078.004",
+          "T1098"
+        ],
+        "cisBenchmark": [
+          "1.15"
+        ]
       }
     }
   ]

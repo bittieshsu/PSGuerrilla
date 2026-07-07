@@ -8,14 +8,24 @@
       "name": "Super Admin Account Inventory",
       "description": "All super admin accounts should be inventoried and reviewed. Super admins have unrestricted access to all organizational settings and data",
       "severity": "Critical",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Admin Roles",
       "recommendedValue": "All super admin accounts documented and justified with clear business need",
       "remediationUrl": "https://admin.google.com/ac/users",
       "remediationSteps": "Admin Console > Directory > Users > Filter by admin role > Review all super admin accounts and remove unnecessary assignments",
       "compliance": {
-        "nistSp80053": ["AC-2(7)", "AC-6(1)"],
-        "mitreAttack": ["T1078.004", "T1087.004"],
-        "cisBenchmark": ["4.1"]
+        "nistSp80053": [
+          "AC-2(7)",
+          "AC-6(1)"
+        ],
+        "mitreAttack": [
+          "T1078.004",
+          "T1087.004"
+        ],
+        "cisBenchmark": [
+          "4.1"
+        ]
       }
     },
     {
@@ -23,14 +33,24 @@
       "name": "Admin Role Assignments Audit",
       "description": "Administrative role assignments should follow the principle of least privilege. Custom roles should be used instead of broad built-in roles",
       "severity": "High",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Admin Roles",
       "recommendedValue": "All admin role assignments reviewed with least-privilege custom roles used where possible",
       "remediationUrl": "https://admin.google.com/ac/roles",
       "remediationSteps": "Admin Console > Account > Admin roles > Review each role assignment > Replace broad roles with scoped custom roles",
       "compliance": {
-        "nistSp80053": ["AC-6(1)", "AC-2(7)"],
-        "mitreAttack": ["T1078.004", "T1098.003"],
-        "cisBenchmark": ["4.2"]
+        "nistSp80053": [
+          "AC-6(1)",
+          "AC-2(7)"
+        ],
+        "mitreAttack": [
+          "T1078.004",
+          "T1098.003"
+        ],
+        "cisBenchmark": [
+          "4.2"
+        ]
       }
     },
     {
@@ -38,14 +58,23 @@
       "name": "Delegated Admin Permissions Review",
       "description": "Custom admin roles should be reviewed to ensure delegated permissions are appropriately scoped and do not grant excessive access",
       "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Admin Roles",
       "recommendedValue": "Custom admin roles scoped to minimum necessary permissions",
       "remediationUrl": "https://admin.google.com/ac/roles",
       "remediationSteps": "Admin Console > Account > Admin roles > Review each custom role > Verify permissions are scoped appropriately",
       "compliance": {
-        "nistSp80053": ["AC-6(1)", "AC-3"],
-        "mitreAttack": ["T1098.003"],
-        "cisBenchmark": ["4.3"]
+        "nistSp80053": [
+          "AC-6(1)",
+          "AC-3"
+        ],
+        "mitreAttack": [
+          "T1098.003"
+        ],
+        "cisBenchmark": [
+          "4.3"
+        ]
       }
     },
     {
@@ -53,14 +82,24 @@
       "name": "Inactive/Suspended Admin Accounts",
       "description": "Suspended or inactive users should not retain admin role assignments. These accounts may be targeted for reactivation attacks",
       "severity": "High",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Admin Roles",
       "recommendedValue": "No suspended or inactive users with admin role assignments",
       "remediationUrl": "https://admin.google.com/ac/users",
       "remediationSteps": "Admin Console > Directory > Users > Filter suspended users > Remove admin roles from any suspended accounts",
       "compliance": {
-        "nistSp80053": ["AC-2(3)", "AC-2(4)"],
-        "mitreAttack": ["T1078.004", "T1098"],
-        "cisBenchmark": ["4.4"]
+        "nistSp80053": [
+          "AC-2(3)",
+          "AC-2(4)"
+        ],
+        "mitreAttack": [
+          "T1078.004",
+          "T1098"
+        ],
+        "cisBenchmark": [
+          "4.4"
+        ]
       }
     },
     {
@@ -68,14 +107,23 @@
       "name": "User Account Inventory",
       "description": "User account inventory should be maintained with clear counts of active, suspended, and archived accounts for governance",
       "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "User Management",
       "recommendedValue": "Complete user inventory with all accounts in appropriate active/suspended/archived state",
       "remediationUrl": "https://admin.google.com/ac/users",
       "remediationSteps": "Admin Console > Directory > Users > Review user list > Suspend or archive accounts that are no longer needed",
       "compliance": {
-        "nistSp80053": ["AC-2", "CM-8"],
-        "mitreAttack": ["T1087.004"],
-        "cisBenchmark": ["4.5"]
+        "nistSp80053": [
+          "AC-2",
+          "CM-8"
+        ],
+        "mitreAttack": [
+          "T1087.004"
+        ],
+        "cisBenchmark": [
+          "4.5"
+        ]
       }
     },
     {
@@ -83,14 +131,22 @@
       "name": "Stale User Accounts",
       "description": "User accounts with no login in 90 or more days may be orphaned and should be reviewed for suspension or deletion",
       "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 0,
       "subcategory": "User Management",
       "recommendedValue": "No user accounts inactive for more than 90 days without documented justification",
       "remediationUrl": "https://admin.google.com/ac/users",
       "remediationSteps": "Admin Console > Directory > Users > Sort by last sign-in > Review and suspend accounts inactive for 90+ days",
       "compliance": {
-        "nistSp80053": ["AC-2(3)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["4.6"]
+        "nistSp80053": [
+          "AC-2(3)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "4.6"
+        ]
       }
     },
     {
@@ -98,14 +154,23 @@
       "name": "OU Structure Review",
       "description": "The organizational unit structure should be reviewed to ensure policies can be effectively applied at the appropriate scope",
       "severity": "Low",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Directory",
       "recommendedValue": "OU structure documented with clear policy mapping",
       "remediationUrl": "https://admin.google.com/ac/orgunits",
       "remediationSteps": "Admin Console > Directory > Organizational units > Review OU hierarchy and ensure it aligns with policy application needs",
       "compliance": {
-        "nistSp80053": ["CM-6", "AC-2"],
-        "mitreAttack": ["T1087.004"],
-        "cisBenchmark": ["4.7"]
+        "nistSp80053": [
+          "CM-6",
+          "AC-2"
+        ],
+        "mitreAttack": [
+          "T1087.004"
+        ],
+        "cisBenchmark": [
+          "4.7"
+        ]
       }
     },
     {
@@ -113,14 +178,24 @@
       "name": "Directory Sharing Settings",
       "description": "Directory sharing controls who can view organizational contacts and profiles. External directory sharing should be limited",
       "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Directory",
       "recommendedValue": "Directory sharing restricted to internal users only",
       "remediationUrl": "https://admin.google.com/ac/appsettings/986702928867/contactsharing",
       "remediationSteps": "Admin Console > Directory > Directory settings > Sharing settings > Restrict contact sharing to domain users",
       "compliance": {
-        "nistSp80053": ["AC-3", "AC-22"],
-        "mitreAttack": ["T1087.004", "T1589"],
-        "cisBenchmark": ["4.8"]
+        "nistSp80053": [
+          "AC-3",
+          "AC-22"
+        ],
+        "mitreAttack": [
+          "T1087.004",
+          "T1589"
+        ],
+        "cisBenchmark": [
+          "4.8"
+        ]
       }
     },
     {
@@ -128,14 +203,23 @@
       "name": "User Profile Visibility",
       "description": "User profile information visibility should be controlled to limit reconnaissance potential from external actors",
       "severity": "Low",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Directory",
       "recommendedValue": "User profile visibility restricted to internal users",
       "remediationUrl": "https://admin.google.com/ac/appsettings/986702928867/profilesharing",
       "remediationSteps": "Admin Console > Directory > Directory settings > Profile sharing > Restrict profile visibility",
       "compliance": {
-        "nistSp80053": ["AC-22", "AC-3"],
-        "mitreAttack": ["T1589.002"],
-        "cisBenchmark": ["4.9"]
+        "nistSp80053": [
+          "AC-22",
+          "AC-3"
+        ],
+        "mitreAttack": [
+          "T1589.002"
+        ],
+        "cisBenchmark": [
+          "4.9"
+        ]
       }
     },
     {
@@ -143,14 +227,24 @@
       "name": "Groups Settings and External Membership",
       "description": "Google Groups that allow external members can expose internal communications and data to unauthorized parties",
       "severity": "High",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 2,
       "subcategory": "Groups",
       "recommendedValue": "External group membership disabled or restricted to specific groups with documented justification",
       "remediationUrl": "https://admin.google.com/ac/appsettings/651400000067/sharing",
       "remediationSteps": "Admin Console > Apps > Google Workspace > Groups for Business > Sharing settings > Restrict external membership",
       "compliance": {
-        "nistSp80053": ["AC-3", "AC-4"],
-        "mitreAttack": ["T1530", "T1213.003"],
-        "cisBenchmark": ["4.10"]
+        "nistSp80053": [
+          "AC-3",
+          "AC-4"
+        ],
+        "mitreAttack": [
+          "T1530",
+          "T1213.003"
+        ],
+        "cisBenchmark": [
+          "4.10"
+        ]
       }
     },
     {
@@ -158,14 +252,23 @@
       "name": "Group Creation Restrictions",
       "description": "Group creation should be restricted to prevent proliferation of unmanaged groups that may expose organizational data",
       "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Groups",
       "recommendedValue": "Group creation restricted to admins or specific delegated roles",
       "remediationUrl": "https://admin.google.com/ac/appsettings/651400000067/sharing",
       "remediationSteps": "Admin Console > Apps > Google Workspace > Groups for Business > Sharing settings > Restrict who can create groups",
       "compliance": {
-        "nistSp80053": ["CM-7", "AC-6"],
-        "mitreAttack": ["T1136.003"],
-        "cisBenchmark": ["4.11"]
+        "nistSp80053": [
+          "CM-7",
+          "AC-6"
+        ],
+        "mitreAttack": [
+          "T1136.003"
+        ],
+        "cisBenchmark": [
+          "4.11"
+        ]
       }
     },
     {
@@ -173,14 +276,24 @@
       "name": "Groups for Business Settings",
       "description": "Groups for Business settings control group features including external posting, member visibility, and content sharing",
       "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Groups",
       "recommendedValue": "Groups for Business configured with restricted external access and posting",
       "remediationUrl": "https://admin.google.com/ac/appsettings/651400000067/sharing",
       "remediationSteps": "Admin Console > Apps > Google Workspace > Groups for Business > Sharing settings > Review all settings",
       "compliance": {
-        "nistSp80053": ["AC-3", "AC-4"],
-        "mitreAttack": ["T1530", "T1213.003"],
-        "cisBenchmark": ["4.12"]
+        "nistSp80053": [
+          "AC-3",
+          "AC-4"
+        ],
+        "mitreAttack": [
+          "T1530",
+          "T1213.003"
+        ],
+        "cisBenchmark": [
+          "4.12"
+        ]
       }
     },
     {
@@ -188,14 +301,23 @@
       "name": "Super Admin Count",
       "description": "The number of super admin accounts should be between 2 and 4. Too few creates a single point of failure; too many increases the attack surface",
       "severity": "High",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Admin Roles",
       "recommendedValue": "2-4 super admin accounts",
       "remediationUrl": "https://admin.google.com/ac/users",
       "remediationSteps": "Admin Console > Directory > Users > Filter by super admin role > Adjust count to 2-4 by removing unnecessary super admins or adding a backup",
       "compliance": {
-        "nistSp80053": ["AC-6(1)", "AC-2(7)"],
-        "mitreAttack": ["T1078.004"],
-        "cisBenchmark": ["4.13"]
+        "nistSp80053": [
+          "AC-6(1)",
+          "AC-2(7)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": [
+          "4.13"
+        ]
       }
     },
     {
@@ -203,14 +325,24 @@
       "name": "Assured Controls - Access Approvals Enabled",
       "description": "Access Approvals should be enabled so that Google support staff must request and obtain organizational approval before accessing covered data, reducing the risk of unauthorized provider access.",
       "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Assured Controls",
       "recommendedValue": "Access Approvals enabled (Google staff require customer approval before accessing data)",
       "remediationUrl": "https://admin.google.com/ac/managedsettings",
       "remediationSteps": "Admin Console > Data > Compliance > Access Management / Access Approvals > Enable the requirement for Google support staff to request approval before accessing organizational data. Requires Assured Controls.",
       "compliance": {
-        "scuba": ["GWS.ASSUREDCONTROLS.1.1v1"],
-        "nistSp80053": ["AC-3", "AC-6", "AU-9"],
-        "mitreAttack": ["T1199"],
+        "scuba": [
+          "GWS.ASSUREDCONTROLS.1.1v1"
+        ],
+        "nistSp80053": [
+          "AC-3",
+          "AC-6",
+          "AU-9"
+        ],
+        "mitreAttack": [
+          "T1199"
+        ],
         "cisBenchmark": []
       }
     },
@@ -219,14 +351,23 @@
       "name": "Assured Controls - Support Access Restricted to U.S. Staff",
       "description": "Support access should be restricted to Google staff located in the United States to maintain data sovereignty and prevent covered data from being handled by non-U.S. personnel.",
       "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Assured Controls",
       "recommendedValue": "Support access audience restricted to U.S. Google staff",
       "remediationUrl": "https://admin.google.com/ac/managedsettings",
       "remediationSteps": "Admin Console > Data > Compliance > Access Management > Set the allowed support audience to U.S. Google staff only. Requires Assured Controls.",
       "compliance": {
-        "scuba": ["GWS.ASSUREDCONTROLS.1.2v1"],
-        "nistSp80053": ["AC-3", "SA-9"],
-        "mitreAttack": ["T1199"],
+        "scuba": [
+          "GWS.ASSUREDCONTROLS.1.2v1"
+        ],
+        "nistSp80053": [
+          "AC-3",
+          "SA-9"
+        ],
+        "mitreAttack": [
+          "T1199"
+        ],
         "cisBenchmark": []
       }
     },
@@ -235,14 +376,23 @@
       "name": "Assured Controls - Multi-Region Data Processing Disabled",
       "description": "Data processing across multiple regions should be disabled for all Google Workspace products so that covered data is processed only within its designated storage region, preserving data sovereignty.",
       "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
       "subcategory": "Assured Controls",
       "recommendedValue": "Data processing limited to the storage region (multi-region processing disabled)",
       "remediationUrl": "https://admin.google.com/ac/managedsettings",
       "remediationSteps": "Admin Console > Data > Compliance > Data regions > Enable 'Limit data processing to the chosen storage region' across Calendar, Drive and Docs, Gmail, Chat, Meet, and Gemini. Requires Assured Controls / Data Regions.",
       "compliance": {
-        "scuba": ["GWS.ASSUREDCONTROLS.2.1v1"],
-        "nistSp80053": ["SC-7", "AC-4"],
-        "mitreAttack": ["T1530"],
+        "scuba": [
+          "GWS.ASSUREDCONTROLS.2.1v1"
+        ],
+        "nistSp80053": [
+          "SC-7",
+          "AC-4"
+        ],
+        "mitreAttack": [
+          "T1530"
+        ],
         "cisBenchmark": []
       }
     }

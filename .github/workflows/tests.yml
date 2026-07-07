@@ -38,3 +38,15 @@ jobs:
           ./Tests/Invoke-FixtureTests.ps1
           # Invoke-FixtureTests.ps1 exits 1 if any check's verdict != expected,
           # which fails the job and blocks the merge.
+
+      - name: Zero Trust schema + collector-contract tests
+        shell: pwsh
+        run: |
+          Install-Module Pester -MinimumVersion 5.5.0 -Force -Scope CurrentUser -SkipPublisherCheck -ErrorAction SilentlyContinue
+          $r = Invoke-Pester -Path @(
+            'Tests/Unit/ZeroTrustSchema.Tests.ps1',
+            'Tests/Unit/Private/Entra/CollectorQueryContract.Tests.ps1'
+          ) -Output Detailed -PassThru
+          # Every check must declare a ZT pillar + weight (schema), and collectors must
+          # request the exact Graph endpoints/params (contract). Either failing = red.
+          if ($r.FailedCount -gt 0) { exit 1 }

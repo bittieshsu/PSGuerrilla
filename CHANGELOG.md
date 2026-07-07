@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.39.0] - 2026-07-07
+
+### Added
+- **Zero Trust posture, first-class.** Every check now declares a `zeroTrustPillar` (CISA ZTMM v2.0) and `zeroTrustWeight` (0–3) in its definition, and those flow onto every finding — so `(Invoke-Infiltration …).Findings | Where-Object ZeroTrustPillar -eq 'Identity'` and pipeline-computed pillar scores work end to end, not as a report-side decoration. New public function **`Get-ZeroTrustScore`** rolls findings into a weighted posture score per pillar (credit: PASS 1.0 / WARN 0.5 / FAIL 0; Not-Assessed excluded from the denominator so uncollected controls never skew it) and reports a **CoverageConfidence** — Solid / Moderate / Directional — so a score computed from a thin pillar (e.g. Data) says so instead of reading as authoritative. The Infiltration HTML report renders the per-pillar posture line on its cover.
+- A **Zero Trust schema test** (wired into CI and the release gate) fails the build if any check omits its pillar or weight, making "declare your ZT stance" mechanically un-skippable at authoring time.
+
+### Changed
+- Description narrowed "Azure" → "Azure identity-plane" to match actual coverage (identity/config posture, not full resource-plane CSPM).
+
 ## [2.38.0] - 2026-06-28
 
 ### Fixed

@@ -23,6 +23,8 @@ function New-AuditFinding {
         Category         = $CheckDefinition._categoryName ?? ''
         Subcategory      = $CheckDefinition.subcategory ?? ''
         Severity         = $CheckDefinition.severity
+        ZeroTrustPillar  = $CheckDefinition.zeroTrustPillar
+        ZeroTrustWeight  = $CheckDefinition.zeroTrustWeight ?? 0
         Status           = $Status
         Description      = $CheckDefinition.description
         CurrentValue     = $CurrentValue

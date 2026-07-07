@@ -143,6 +143,17 @@ function Export-InfiltrationReportHtml {
     [void]$html.AppendLine("<div class=`"stat`"><div class=`"num`" style=`"color:var(--dim)`">$skipCount</div><div class=`"lbl`">Skipped</div></div>")
     [void]$html.AppendLine('</div></div>')
 
+    # Zero Trust posture (CISA ZTMM) — pillar scores that disclose their own coverage.
+    $ztScores = @($findings | Get-ZeroTrustScore)
+    if ($ztScores.Count) {
+        $ztLine = ($ztScores | ForEach-Object {
+            $pct  = if ($null -ne $_.ScorePercent) { "$($_.ScorePercent)%" } else { 'n/a' }
+            $mark = if ($_.CoverageConfidence -ne 'Solid') { " <span style=`"opacity:.7`">($($_.CoverageConfidence))</span>" } else { '' }
+            "$(& $esc $_.Pillar) <strong>$pct</strong>$mark"
+        }) -join ' &middot; '
+        [void]$html.AppendLine("<div class=`"zt-posture`" style=`"text-align:center;margin:0 0 1.5rem;color:var(--dim);font-size:.85rem`"><strong style=`"color:var(--parchment)`">Zero Trust posture</strong> (CISA ZTMM): $ztLine</div>")
+    }
+
     # Severity breakdown
     if ($failCount -gt 0) {
         [void]$html.AppendLine('<div class="stats">')
