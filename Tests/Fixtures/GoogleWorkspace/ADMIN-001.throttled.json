@@ -1,0 +1,13 @@
+{
+  "checkId": "ADMIN-001",
+  "theater": "Fortification",
+  "scenario": "throttled",
+  "expectedStatus": "SKIP",
+  "description": "User inventory not collected",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "Users": "Directory API 429"
+    }
+  }
+}

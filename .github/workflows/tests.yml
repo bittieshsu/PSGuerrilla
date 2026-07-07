@@ -1,0 +1,40 @@
+name: golden-fixture tests
+
+# Detection-logic gate: runs the cross-platform golden-fixture suite on every push
+# to main and every PR. Intentionally scoped to Tests/Invoke-FixtureTests.ps1 (the
+# 1,590-fixture verdict suite) — NOT the full Tests/Unit, which contains Windows-only
+# tests (Task Scheduler / Event Log) that would false-red on Linux runners.
+#
+# The runner exits non-zero if any fixture's actual Status != expected, so a red run
+# blocks the merge. Enable branch protection on `main` requiring this check, and cut
+# releases only from a green commit (the release SHA should show a passing run here).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Private/**'
+      - 'Public/**'
+      - 'Data/**'
+      - 'Tests/**'
+      - 'PSGuerrilla.psd1'
+      - 'PSGuerrilla.psm1'
+      - '.github/workflows/tests.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  golden-fixtures:
+    name: Golden-fixture detection suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run golden-fixture detection tests
+        shell: pwsh
+        run: |
+          Write-Host "PowerShell $($PSVersionTable.PSVersion)"
+          ./Tests/Invoke-FixtureTests.ps1
+          # Invoke-FixtureTests.ps1 exits 1 if any check's verdict != expected,
+          # which fails the job and blocks the merge.

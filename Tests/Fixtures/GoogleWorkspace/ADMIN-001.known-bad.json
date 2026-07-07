@@ -1,0 +1,23 @@
+{
+  "checkId": "ADMIN-001",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "No active super admins (only a suspended one)",
+  "objectShape": false,
+  "auditData": {
+    "Users": [
+      {
+        "suspended": false,
+        "primaryEmail": "user@contoso.com",
+        "isAdmin": false
+      },
+      {
+        "suspended": true,
+        "primaryEmail": "old-admin@contoso.com",
+        "isAdmin": true
+      }
+    ],
+    "Errors": {}
+  }
+}

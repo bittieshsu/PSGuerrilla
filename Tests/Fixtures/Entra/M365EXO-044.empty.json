@@ -1,0 +1,17 @@
+{
+  "checkId": "M365EXO-044",
+  "theater": "Infiltration",
+  "scenario": "empty",
+  "expectedStatus": "FAIL",
+  "description": "Zero protection alert policies on a connected tenant (empty-array trap regression)",
+  "objectShape": false,
+  "auditData": {
+    "M365Services": {
+      "Exchange": {
+        "ProtectionAlerts": []
+      },
+      "Errors": {}
+    },
+    "Errors": {}
+  }
+}

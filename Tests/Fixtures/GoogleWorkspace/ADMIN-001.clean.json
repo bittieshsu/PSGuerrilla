@@ -1,0 +1,23 @@
+{
+  "checkId": "ADMIN-001",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Active super admin present",
+  "objectShape": false,
+  "auditData": {
+    "Users": [
+      {
+        "suspended": false,
+        "primaryEmail": "admin@contoso.com",
+        "isAdmin": true
+      },
+      {
+        "suspended": false,
+        "primaryEmail": "user@contoso.com",
+        "isAdmin": false
+      }
+    ],
+    "Errors": {}
+  }
+}
