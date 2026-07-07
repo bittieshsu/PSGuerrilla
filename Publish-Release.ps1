@@ -89,7 +89,16 @@ if ($DryRun) {
     Write-Host "DRY RUN — all gates green. WOULD publish PSGuerrilla $version to $Repository." -ForegroundColor Cyan
     exit 0
 }
-if ([string]::IsNullOrWhiteSpace($ApiKey)) { Fail 'no ApiKey. Pass -ApiKey or set $env:PSGALLERY_KEY (never commit it).' }
+if ([string]::IsNullOrWhiteSpace($ApiKey)) {
+    # No key in $env:PSGALLERY_KEY / -ApiKey. Prompt for it HERE, in your terminal.
+    # -AsSecureString means it's hidden on screen and never written to shell history,
+    # a file, or any transcript — it lives only in this process until publish, then is gone.
+    if ([Environment]::UserInteractive -or $Host.UI.RawUI) {
+        $sec = Read-Host 'PSGallery API key (hidden; paste here, not into chat)' -AsSecureString
+        $ApiKey = [System.Net.NetworkCredential]::new('', $sec).Password
+    }
+    if ([string]::IsNullOrWhiteSpace($ApiKey)) { Fail 'no ApiKey. Set $env:PSGALLERY_KEY or paste at the prompt — never commit it or put it in chat.' }
+}
 Import-Module Microsoft.PowerShell.PSResourceGet -MinimumVersion 1.1.0 -Force
 Publish-PSResource -Path $pkg -Repository $Repository -ApiKey $ApiKey -ErrorAction Stop
 Write-Host "PUBLISHED PSGuerrilla $version to $Repository." -ForegroundColor Green
