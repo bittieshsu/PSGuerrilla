@@ -1,0 +1,17 @@
+{
+  "checkId": "EIDTNT-015",
+  "theater": "Infiltration",
+  "scenario": "not-assessed",
+  "expectedStatus": "SKIP",
+  "description": "GDAP collection failed (403) \u2014 must be Not Assessed, never a clean pass",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "TenantConfig": {
+      "DelegatedAdminRelationships": [],
+      "Errors": {
+        "DelegatedAdminRelationships": "Response status code does not indicate success: 403 (Forbidden)."
+      }
+    }
+  }
+}

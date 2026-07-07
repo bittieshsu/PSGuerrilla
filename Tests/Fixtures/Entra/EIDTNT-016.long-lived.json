@@ -1,0 +1,32 @@
+{
+  "checkId": "EIDTNT-016",
+  "theater": "Infiltration",
+  "scenario": "long-lived",
+  "expectedStatus": "WARN",
+  "description": "Active relationship auto-extends 730 days (>365)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "TenantConfig": {
+      "DelegatedAdminRelationships": [
+        {
+          "id": "rel-msp-partner",
+          "displayName": "MSP Partner",
+          "status": "active",
+          "duration": "P730D",
+          "customer": {
+            "tenantId": "11111111-1111-1111-1111-111111111111",
+            "displayName": "Our District"
+          },
+          "accessDetails": {
+            "unifiedRoles": [
+              {
+                "roleDefinitionId": "4a5d8f65-41da-4de4-8968-e035b65339cf"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

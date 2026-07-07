@@ -290,6 +290,53 @@
           "1.3.1"
         ]
       }
+    },
+    {
+      "id": "EIDTNT-015",
+      "name": "Privileged Partner Delegated Admin Access (GDAP)",
+      "description": "Granular Delegated Admin Privileges (GDAP) let a CSP or managed-services partner hold standing administrative roles in your tenant. This relationship is invisible in most day-to-day admin views, is rarely reviewed, and is a Kaseya-class propagation path: an attacker who compromises one partner inherits delegated administration in every downstream customer tenant at once. A partner relationship that carries a Tier-0 / high-impact directory role (Global Administrator, Privileged Role Administrator, Privileged/Authentication Administrator, Security Administrator, User/Password/Application/Cloud Application Administrator) is effectively an external set of keys to the kingdom. This check inventories active delegatedAdminRelationships and FAILS when any active relationship grants one of those privileged roles; it warns when non-privileged partner access exists so it can be confirmed and scoped, and passes only when there is no active partner delegated administration. Empty results are treated as 'no relationships' only when the collection succeeded — a failed call surfaces as Not Assessed, never as a clean pass.",
+      "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
+      "subcategory": "Partner & Delegated Access",
+      "recommendedValue": "No active GDAP relationship grants a privileged directory role; partner access is least-privilege, time-bound, and reviewed",
+      "remediationUrl": "https://learn.microsoft.com/en-us/partner-center/customers/gdap-introduction",
+      "remediationSteps": "Review every active partner delegated admin (GDAP) relationship in Microsoft Entra admin center > Identity > External Identities > Cross-tenant access (Partner-led) and in the Microsoft 365 admin center > Settings > Partner relationships. For each relationship, remove Tier-0 / high-impact roles (Global Administrator, Privileged Role Administrator, Privileged Authentication Administrator, Security Administrator, User/Password/Application/Cloud Application Administrator) unless there is a documented, time-bound need. Replace standing privileged delegation with least-privilege roles, request just-in-time elevation through the partner's own PIM where possible, and terminate any relationship that is no longer required. Confirm the partner's own tenant enforces phishing-resistant MFA for the admins who exercise this access.",
+      "compliance": {
+        "nistSp80053": [
+          "AC-2",
+          "AC-3",
+          "AC-6",
+          "PS-7",
+          "SA-9"
+        ],
+        "cisM365": [
+          "1.1.3"
+        ]
+      }
+    },
+    {
+      "id": "EIDTNT-016",
+      "name": "Partner Delegated Admin Grant Hygiene (Long-Lived GDAP)",
+      "description": "A GDAP relationship's duration is its auto-extension window: when it lapses it renews itself for that period without any human review. A long auto-extend (beyond a year) is therefore a standing, self-renewing grant of partner administrative access — the opposite of just-in-time — and is exactly the kind of forgotten relationship that outlives the engagement that created it. This check inspects active delegatedAdminRelationships and warns when any relationship auto-extends beyond 365 days; a relationship whose duration cannot be determined is treated conservatively as long-lived rather than assumed fine. It passes only when all active relationships auto-extend within a year. This is a hygiene/governance signal that complements EIDTNT-015 (which grades the privilege the partner holds); here the concern is how long the grant persists unreviewed.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 2,
+      "subcategory": "Partner & Delegated Access",
+      "recommendedValue": "All active GDAP relationships auto-extend within 365 days and are reviewed on each renewal",
+      "remediationUrl": "https://learn.microsoft.com/en-us/partner-center/customers/gdap-manage-lifecycle",
+      "remediationSteps": "For each active partner delegated admin (GDAP) relationship, set the shortest auto-extension duration that fits the engagement (avoid multi-year standing grants), and schedule a review at each renewal. In the Microsoft 365 admin center under Settings > Partner relationships, confirm each relationship is still required and terminate stale ones. Prefer short, renewable delegations over long-lived auto-extending access so that partner administration is re-authorized deliberately rather than by default.",
+      "compliance": {
+        "nistSp80053": [
+          "AC-2",
+          "AC-2(3)",
+          "PS-7",
+          "SA-9"
+        ],
+        "cisM365": [
+          "1.1.3"
+        ]
+      }
     }
   ]
 }

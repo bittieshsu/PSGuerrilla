@@ -6,8 +6,11 @@
 # Gemini baselines. Sites and Classroom settings are read from the Cloud Identity Policy
 # API (the same source used by the existing Collaboration/Drive/Admin checks). Gemini's
 # granular controls (Alpha features, conversation history/retention, sharing) are NOT
-# exposed by the Admin SDK or the Cloud Identity Policy API today — those checks honestly
-# return SKIP / Not Assessed with an Admin console path instead of fabricating a result.
+# exposed by the Admin SDK or the Cloud Identity Policy API. Those checks INFER their
+# state from admin audit-log setting-change events (Get-FortificationData ->
+# ConvertTo-GeminiDerivedSettings — the same source ScubaGoggles derives them from) and
+# LABEL the verdict as inferred. When no change-event exists in the retention window the
+# state is unknowable to us and to ScubaGoggles alike, so the check honestly SKIPs.
 # Per the project honesty rule: never PASS on uncollectable data.
 
 function Invoke-GwsServiceChecks {
@@ -396,11 +399,24 @@ function Test-FortificationGWSGEMINI002 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
 
-    # SKIP-only: no read API exposes the Gemini Alpha-features toggle.
-    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-        -CurrentValue 'Gemini Alpha-features setting is not exposed via the Cloud Identity Policy API or Admin SDK. Not Assessed — verify in Admin Console > Generative AI > Gemini for Workspace > Alpha features (should be turned off)' `
-        -OrgUnitPath $OrgUnitPath `
-        -Details @{ Note = 'No read API for GWS.GEMINI.2.1; ScubaGoggles derives this from Admin audit-log events, which this read-only theater does not replay' }
+    # No config API exposes the Alpha-features toggle. Infer it from the admin
+    # audit log (ScubaGoggles method); if no change-event exists, honestly SKIP.
+    $d = if ($AuditData.GeminiDerivedSettings) { $AuditData.GeminiDerivedSettings['AlphaFeatures'] } else { $null }
+    if (-not $d) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Gemini Alpha-features setting is exposed by no config API and no admin change-event was found in the audit-log window. Not Assessed — verify in Admin Console > Generative AI > Gemini for Workspace > Alpha features (should be off)' `
+            -OrgUnitPath $OrgUnitPath `
+            -Details @{ Note = 'GWS.GEMINI.2.1 has no read API; inferred from admin audit-log events (ScubaGoggles method) when a change exists. No change event found — Not Assessed.' }
+    }
+
+    $status = if ($d.Value -eq 'off') { 'PASS' } else { 'FAIL' }
+    $cv = if ($d.Value -eq 'off') {
+        "Inferred from audit-log ($($d.Timestamp)): Alpha features OFF"
+    } else {
+        "Inferred from audit-log ($($d.Timestamp)): Alpha features ON — should be off"
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status $status `
+        -CurrentValue $cv -OrgUnitPath $OrgUnitPath -Details (Get-GeminiInferredDetails -Derived $d)
 }
 
 # ── GWS-GEMINI-003: Conversation History Enabled (GWS.GEMINI.3.1v1) ──────────
@@ -408,11 +424,23 @@ function Test-FortificationGWSGEMINI003 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
 
-    # SKIP-only: no read API exposes the Gemini conversation-history toggle.
-    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-        -CurrentValue 'Gemini conversation-history setting is not exposed via the Cloud Identity Policy API or Admin SDK. Not Assessed — verify in Admin Console > Generative AI > Gemini app > Gemini conversation history (should be enabled)' `
-        -OrgUnitPath $OrgUnitPath `
-        -Details @{ Note = 'No read API for GWS.GEMINI.3.1; ScubaGoggles derives this from Admin audit-log events' }
+    # No config API exposes conversation-history. Infer from the admin audit log.
+    $d = if ($AuditData.GeminiDerivedSettings) { $AuditData.GeminiDerivedSettings['ConversationHistory'] } else { $null }
+    if (-not $d) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Gemini conversation-history setting is exposed by no config API and no admin change-event was found in the audit-log window. Not Assessed — verify in Admin Console > Generative AI > Gemini app > Gemini conversation history (should be enabled)' `
+            -OrgUnitPath $OrgUnitPath `
+            -Details @{ Note = 'GWS.GEMINI.3.1 has no read API; inferred from admin audit-log events when a change exists. No change event found — Not Assessed.' }
+    }
+
+    $status = if ($d.Value -eq 'on') { 'PASS' } else { 'WARN' }
+    $cv = if ($d.Value -eq 'on') {
+        "Inferred from audit-log ($($d.Timestamp)): conversation history ENABLED"
+    } else {
+        "Inferred from audit-log ($($d.Timestamp)): conversation history DISABLED — should be enabled for oversight/eDiscovery"
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status $status `
+        -CurrentValue $cv -OrgUnitPath $OrgUnitPath -Details (Get-GeminiInferredDetails -Derived $d)
 }
 
 # ── GWS-GEMINI-004: Conversation Retention >= 18 Months (GWS.GEMINI.3.2v1) ───
@@ -420,11 +448,19 @@ function Test-FortificationGWSGEMINI004 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
 
-    # SKIP-only: no read API exposes the Gemini conversation-retention period.
-    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-        -CurrentValue 'Gemini conversation-retention period is not exposed via the Cloud Identity Policy API or Admin SDK. Not Assessed — verify in Admin Console > Generative AI > Gemini app > Gemini conversation history (retention should be at least 18 months)' `
-        -OrgUnitPath $OrgUnitPath `
-        -Details @{ Note = 'No read API for GWS.GEMINI.3.2; ScubaGoggles derives this from Admin audit-log events' }
+    # No config API exposes the retention period. Infer from the admin audit log.
+    $d = if ($AuditData.GeminiDerivedSettings) { $AuditData.GeminiDerivedSettings['RetentionMonths'] } else { $null }
+    if (-not $d) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Gemini conversation-retention period is exposed by no config API and no admin change-event was found in the audit-log window. Not Assessed — verify in Admin Console > Generative AI > Gemini app > Gemini conversation history (retention should be at least 18 months)' `
+            -OrgUnitPath $OrgUnitPath `
+            -Details @{ Note = 'GWS.GEMINI.3.2 has no read API; inferred from admin audit-log events when a change exists. No change event found — Not Assessed.' }
+    }
+
+    $status = if ([int]$d.Value -ge 18) { 'PASS' } else { 'WARN' }
+    $cv = "Inferred from audit-log ($($d.Timestamp)): retention $($d.Value) month(s)" + $(if ([int]$d.Value -ge 18) { '' } else { ' — should be at least 18' })
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status $status `
+        -CurrentValue $cv -OrgUnitPath $OrgUnitPath -Details (Get-GeminiInferredDetails -Derived $d)
 }
 
 # ── GWS-GEMINI-005: Conversation Sharing Disabled (GWS.GEMINI.4.1v1) ─────────
@@ -432,9 +468,21 @@ function Test-FortificationGWSGEMINI005 {
     [CmdletBinding()]
     param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
 
-    # SKIP-only: no read API exposes the Gemini conversation-sharing toggle.
-    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
-        -CurrentValue 'Gemini conversation-sharing setting is not exposed via the Cloud Identity Policy API or Admin SDK. Not Assessed — verify in Admin Console > Generative AI > Gemini app > Sharing (conversation sharing via link should be OFF)' `
-        -OrgUnitPath $OrgUnitPath `
-        -Details @{ Note = 'No read API for GWS.GEMINI.4.1; ScubaGoggles derives this from Admin audit-log events' }
+    # No config API exposes conversation-sharing. Infer from the admin audit log.
+    $d = if ($AuditData.GeminiDerivedSettings) { $AuditData.GeminiDerivedSettings['ConversationSharing'] } else { $null }
+    if (-not $d) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Gemini conversation-sharing setting is exposed by no config API and no admin change-event was found in the audit-log window. Not Assessed — verify in Admin Console > Generative AI > Gemini app > Sharing (conversation sharing via link should be OFF)' `
+            -OrgUnitPath $OrgUnitPath `
+            -Details @{ Note = 'GWS.GEMINI.4.1 has no read API; inferred from admin audit-log events when a change exists. No change event found — Not Assessed.' }
+    }
+
+    $status = if ($d.Value -eq 'off') { 'PASS' } else { 'FAIL' }
+    $cv = if ($d.Value -eq 'off') {
+        "Inferred from audit-log ($($d.Timestamp)): conversation sharing via link OFF"
+    } else {
+        "Inferred from audit-log ($($d.Timestamp)): conversation sharing via link ON — should be off (data-exposure risk)"
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status $status `
+        -CurrentValue $cv -OrgUnitPath $OrgUnitPath -Details (Get-GeminiInferredDetails -Derived $d)
 }

@@ -1,0 +1,35 @@
+{
+  "checkId": "EIDTNT-015",
+  "theater": "Infiltration",
+  "scenario": "scoped",
+  "expectedStatus": "WARN",
+  "description": "Active GDAP relationship with only non-privileged roles",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "TenantConfig": {
+      "DelegatedAdminRelationships": [
+        {
+          "id": "rel-licensing-reseller",
+          "displayName": "Licensing Reseller",
+          "status": "active",
+          "duration": "P365D",
+          "customer": {
+            "tenantId": "11111111-1111-1111-1111-111111111111",
+            "displayName": "Our District"
+          },
+          "accessDetails": {
+            "unifiedRoles": [
+              {
+                "roleDefinitionId": "4a5d8f65-41da-4de4-8968-e035b65339cf"
+              },
+              {
+                "roleDefinitionId": "729827e3-9c14-49f7-bb1b-9608f156bbb8"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

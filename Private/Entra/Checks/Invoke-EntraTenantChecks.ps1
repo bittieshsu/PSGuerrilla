@@ -639,3 +639,133 @@ function Test-InfiltrationEIDTNT014 {
             NeverExpireDomains    = @($neverExpireDomains | ForEach-Object { $_.id })
         }
 }
+
+# ── EIDTNT-015: Privileged Partner Delegated Admin Access (GDAP) ──────────
+function Test-InfiltrationEIDTNT015 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition)
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition `
+        -ErrorMap @($AuditData.Errors, $AuditData.TenantConfig.Errors) `
+        -SourceKey @('TenantConfig', 'DelegatedAdminRelationships') `
+        -Subject 'partner delegated admin (GDAP) relationships'
+    if ($na) { return $na }
+
+    # Tier-0 / high-impact directory roles. A partner holding any of these has
+    # standing keys to the kingdom across the delegation. roleDefinitionId (GUID)
+    # is stable and locale-independent, so match on it, not the display name.
+    $privilegedRoleIds = @(
+        '62e90394-69f5-4237-9190-012177145e10' # Global Administrator
+        'e8611ab8-c189-46e8-94e1-60213ab1f814' # Privileged Role Administrator
+        '7be44c8a-adaf-4e2a-84d6-ab2649e08a13' # Privileged Authentication Administrator
+        '194ae4cb-b126-40b2-bd5b-6091b380977d' # Security Administrator
+        'fe930be7-5e62-47db-91af-98c3a49a38b1' # User Administrator
+        '9b895d92-2cd3-44c7-9d02-a6ac2d5ea5c3' # Application Administrator
+        '158c047a-c907-4556-b7ef-446551a6b5f7' # Cloud Application Administrator
+        'c4e39bd9-1100-46d3-8c65-fb160da0071f' # Authentication Administrator
+        '966707d0-3269-4727-9be2-8c3a10f19b9d' # Password Administrator
+    )
+
+    $relationships = @($AuditData.TenantConfig.DelegatedAdminRelationships)
+    # Only 'active' relationships confer live access. 'created' / 'approvalPending'
+    # / 'terminated' etc. are not standing access.
+    $active = @($relationships | Where-Object { $_.status -eq 'active' })
+
+    if ($active.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue 'No active partner delegated admin (GDAP) relationships' `
+            -Details @{
+                TotalRelationships  = $relationships.Count
+                ActiveRelationships = 0
+            }
+    }
+
+    $privilegedGrants = [System.Collections.Generic.List[object]]::new()
+    foreach ($rel in $active) {
+        $roleIds = @($rel.accessDetails.unifiedRoles | ForEach-Object { $_.roleDefinitionId })
+        $hit = @($roleIds | Where-Object { $privilegedRoleIds -contains $_ })
+        if ($hit.Count -gt 0) {
+            $privilegedGrants.Add([ordered]@{
+                Partner           = $rel.displayName
+                CustomerTenantId  = $rel.customer.tenantId
+                PrivilegedRoleIds = $hit
+                TotalRoleCount    = $roleIds.Count
+            })
+        }
+    }
+
+    if ($privilegedGrants.Count -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue "$($privilegedGrants.Count) of $($active.Count) active partner delegated admin relationship(s) grant a privileged directory role" `
+            -Details @{
+                ActiveRelationships = $active.Count
+                PrivilegedCount     = $privilegedGrants.Count
+                PrivilegedGrants    = @($privilegedGrants)
+            }
+    }
+
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
+        -CurrentValue "$($active.Count) active partner delegated admin relationship(s) present with non-privileged roles — confirm each partner and scope are still required" `
+        -Details @{
+            ActiveRelationships = $active.Count
+            PrivilegedCount     = 0
+            Partners            = @($active | ForEach-Object { $_.displayName })
+        }
+}
+
+# ── EIDTNT-016: Partner Delegated Admin Grant Hygiene (Long-Lived GDAP) ───
+function Test-InfiltrationEIDTNT016 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition)
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition `
+        -ErrorMap @($AuditData.Errors, $AuditData.TenantConfig.Errors) `
+        -SourceKey @('TenantConfig', 'DelegatedAdminRelationships') `
+        -Subject 'partner delegated admin (GDAP) relationships'
+    if ($na) { return $na }
+
+    # GDAP 'duration' is the auto-extension window (ISO-8601, e.g. P730D). A long
+    # auto-extend is a standing, self-renewing grant that renews without review —
+    # the opposite of just-in-time. Flag active relationships auto-extending
+    # beyond a year. Parse the day count from P<n>D; an unparseable/absent
+    # duration is treated as long-lived (conservative — an unknown must not read
+    # as fine).
+    $longLivedThresholdDays = 365
+
+    $relationships = @($AuditData.TenantConfig.DelegatedAdminRelationships)
+    $active = @($relationships | Where-Object { $_.status -eq 'active' })
+
+    if ($active.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue 'No active partner delegated admin (GDAP) relationships to review' `
+            -Details @{ ActiveRelationships = 0 }
+    }
+
+    $longLived = [System.Collections.Generic.List[object]]::new()
+    foreach ($rel in $active) {
+        $days = $null
+        if ($rel.duration -match '^P(\d+)D$') { $days = [int]$Matches[1] }
+        $isLong = ($null -eq $days) -or ($days -gt $longLivedThresholdDays)
+        if ($isLong) {
+            $longLived.Add([ordered]@{
+                Partner  = $rel.displayName
+                Duration = $rel.duration
+                Days     = $days
+            })
+        }
+    }
+
+    if ($longLived.Count -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
+            -CurrentValue "$($longLived.Count) of $($active.Count) active partner delegated admin relationship(s) auto-extend beyond $longLivedThresholdDays days — long-lived standing grants that renew without review" `
+            -Details @{
+                ActiveRelationships = $active.Count
+                LongLivedCount      = $longLived.Count
+                LongLived           = @($longLived)
+            }
+    }
+
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "All $($active.Count) active partner delegated admin relationship(s) auto-extend within $longLivedThresholdDays days" `
+        -Details @{ ActiveRelationships = $active.Count; LongLivedCount = 0 }
+}

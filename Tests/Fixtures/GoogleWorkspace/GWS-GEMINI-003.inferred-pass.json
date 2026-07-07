@@ -1,0 +1,19 @@
+{
+  "checkId": "GWS-GEMINI-003",
+  "theater": "Fortification",
+  "scenario": "inferred-pass",
+  "expectedStatus": "PASS",
+  "description": "Conversation history inferred ENABLED",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GeminiDerivedSettings": {
+      "ConversationHistory": {
+        "Value": "on",
+        "RawValue": "on",
+        "SettingName": "Gemini for Workspace - setting",
+        "Timestamp": "2026-05-01T12:00:00.000Z"
+      }
+    }
+  }
+}

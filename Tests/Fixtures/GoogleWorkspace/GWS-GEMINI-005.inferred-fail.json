@@ -1,0 +1,19 @@
+{
+  "checkId": "GWS-GEMINI-005",
+  "theater": "Fortification",
+  "scenario": "inferred-fail",
+  "expectedStatus": "FAIL",
+  "description": "Conversation sharing inferred ON",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GeminiDerivedSettings": {
+      "ConversationSharing": {
+        "Value": "on",
+        "RawValue": "on",
+        "SettingName": "Gemini for Workspace - setting",
+        "Timestamp": "2026-05-01T12:00:00.000Z"
+      }
+    }
+  }
+}

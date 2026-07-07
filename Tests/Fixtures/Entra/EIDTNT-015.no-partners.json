@@ -1,0 +1,14 @@
+{
+  "checkId": "EIDTNT-015",
+  "theater": "Infiltration",
+  "scenario": "no-partners",
+  "expectedStatus": "PASS",
+  "description": "No delegated admin relationships at all",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "TenantConfig": {
+      "DelegatedAdminRelationships": []
+    }
+  }
+}

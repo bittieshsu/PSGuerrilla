@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.40.0] - 2026-07-07
+
+### Added
+- **Partner / GDAP delegated-access review (2 new Entra checks).** Granular Delegated Admin Privileges (GDAP) let a CSP or managed-services partner hold standing admin roles in your tenant — invisible in most consoles, rarely reviewed, and the Kaseya-class propagation path (compromise one partner, inherit delegated admin across every downstream tenant). **EIDTNT-015** inventories active `delegatedAdminRelationships` and FAILS when any grants a Tier-0 / high-impact directory role (Global Admin, Privileged Role/Authentication Admin, Security Admin, User/Password/Application/Cloud Application Admin), WARNs on non-privileged partner access, and PASSes only when there is none. **EIDTNT-016** flags long-lived grants — relationships that auto-extend beyond a year renew themselves without review. Both carry a Zero Trust stance (Identity/Governance) and, critically, treat a *failed* collection as Not Assessed rather than a clean pass. Backed by a collector query-contract test and 10 golden fixtures (including the terminated-relationship and collection-failure edge cases).
+- **Gemini deep-settings coverage via audit-log inference (GWS-GEMINI-002/003/004/005).** These four settings (Alpha features, conversation history, retention, sharing) are exposed by *no* Google config or policy API. Rather than a blanket SKIP, PSGuerrilla now infers their state from Google Admin audit-log setting-change events — the same source CISA ScubaGoggles derives them from — and **labels every such verdict as inferred** (with the source event's timestamp), never as a direct config read. When no change-event exists in the audit-log retention window the state is genuinely unknowable (to any tool), so the check honestly SKIPs. A pure derivation function (`ConvertTo-GeminiDerivedSettings`) is unit-tested for most-recent-wins, value normalization, and the safe-absence fallback; 8 new fixtures cover the inferred verdicts.
+
+### Fixed
+- **DEVICE-009 false-WARN on a tenant with zero Chrome OS devices.** An empty `ChromeDevices` array was hitting the empty-array truthiness trap (`-not @()` is `$true`) and short-circuiting to a spurious warning instead of the author's own "no Chrome OS devices registered → PASS" branch. Collection failure is still correctly Not Assessed via the source guard.
+
 ## [2.39.0] - 2026-07-07
 
 ### Added

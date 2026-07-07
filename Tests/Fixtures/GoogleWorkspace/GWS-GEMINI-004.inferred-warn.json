@@ -1,0 +1,19 @@
+{
+  "checkId": "GWS-GEMINI-004",
+  "theater": "Fortification",
+  "scenario": "inferred-warn",
+  "expectedStatus": "WARN",
+  "description": "Retention inferred 6 months (<18)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GeminiDerivedSettings": {
+      "RetentionMonths": {
+        "Value": 6,
+        "RawValue": "6",
+        "SettingName": "Gemini for Workspace - setting",
+        "Timestamp": "2026-05-01T12:00:00.000Z"
+      }
+    }
+  }
+}

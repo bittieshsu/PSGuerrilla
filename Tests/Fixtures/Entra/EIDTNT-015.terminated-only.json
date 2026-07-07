@@ -1,0 +1,32 @@
+{
+  "checkId": "EIDTNT-015",
+  "theater": "Infiltration",
+  "scenario": "terminated-only",
+  "expectedStatus": "PASS",
+  "description": "A privileged relationship exists but is terminated, not active",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "TenantConfig": {
+      "DelegatedAdminRelationships": [
+        {
+          "id": "rel-old-partner",
+          "displayName": "Old Partner",
+          "status": "terminated",
+          "duration": "P365D",
+          "customer": {
+            "tenantId": "11111111-1111-1111-1111-111111111111",
+            "displayName": "Our District"
+          },
+          "accessDetails": {
+            "unifiedRoles": [
+              {
+                "roleDefinitionId": "62e90394-69f5-4237-9190-012177145e10"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

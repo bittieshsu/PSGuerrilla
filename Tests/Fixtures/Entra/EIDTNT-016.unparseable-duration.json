@@ -1,0 +1,32 @@
+{
+  "checkId": "EIDTNT-016",
+  "theater": "Infiltration",
+  "scenario": "unparseable-duration",
+  "expectedStatus": "WARN",
+  "description": "Duration missing/unparseable is treated conservatively as long-lived",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "TenantConfig": {
+      "DelegatedAdminRelationships": [
+        {
+          "id": "rel-mystery-partner",
+          "displayName": "Mystery Partner",
+          "status": "active",
+          "duration": "",
+          "customer": {
+            "tenantId": "11111111-1111-1111-1111-111111111111",
+            "displayName": "Our District"
+          },
+          "accessDetails": {
+            "unifiedRoles": [
+              {
+                "roleDefinitionId": "4a5d8f65-41da-4de4-8968-e035b65339cf"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -39,8 +39,10 @@ function Get-FortificationData {
         LoggingAlerting  = @('AlertRules')
         # Sites/Classroom/Gemini checks read only CloudIdentityPolicies, which is collected
         # unconditionally below (step 16). 'Customer' is always added so the category still
-        # resolves a data need and the tenant header populates.
-        GwsService       = @('Customer')
+        # resolves a data need and the tenant header populates. GeminiAuditSettings pulls the
+        # admin audit log to infer the deep Gemini toggles that NO config API exposes
+        # (GWS-GEMINI-002/003/004/005) — the same source ScubaGoggles derives them from.
+        GwsService       = @('Customer', 'GeminiAuditSettings')
         Tradecraft       = @('DomainWideDelegation', 'Users', 'Roles', 'OAuthApps', 'Groups', 'GroupSettings')
     }
 
@@ -90,6 +92,7 @@ function Get-FortificationData {
         OAuthApps           = @()
         DomainWideDelegation = @()
         CloudIdentityPolicies = $null
+        GeminiDerivedSettings = @{}
         Errors              = @{}
     }
 
@@ -439,6 +442,40 @@ function Get-FortificationData {
             $data.OAuthApps = @($oauthEvents ?? @())
         } catch {
             $data.Errors['OAuthApps'] = $_.Exception.Message
+        }
+    }
+
+    # ── 12b. Gemini Deep Settings (inferred from admin audit log) ─────────
+    # The Gemini Alpha-features / conversation-history / retention / sharing
+    # toggles are exposed by NO Google config or policy API. The only
+    # programmatic signal is the admin audit log: a CHANGE_APPLICATION_SETTING
+    # event is written when an admin changes one. This is exactly how CISA
+    # ScubaGoggles derives these settings. We replay those events and take the
+    # most-recent value per setting. This is INFERENCE, not a config read, and
+    # the checks label their verdicts accordingly. It shares ScubaGoggles' blind
+    # spot: a setting never changed within the retention window produces no event
+    # and is honestly SKIP'd — an absent value is never guessed into a pass.
+    if (& $needsSource 'GeminiAuditSettings') {
+        if (-not $Quiet) {
+            Write-ProgressLine -Phase AUDITING -Message 'Inferring Gemini settings from admin audit log'
+        }
+        try {
+            $reportsToken = Get-GoogleAccessToken `
+                -ServiceAccountKeyPath $ServiceAccountKeyPath `
+                -AdminEmail $AdminEmail `
+                -Scopes @('https://www.googleapis.com/auth/admin.reports.audit.readonly')
+
+            # Admin setting-change events. 180 days keeps us inside the admin audit
+            # retention window; older changes are unknowable to us AND to ScubaGoggles.
+            $adminEvents = Invoke-GoogleReportsApi `
+                -AccessToken $reportsToken `
+                -ApplicationName 'admin' `
+                -StartTime ([datetime]::UtcNow.AddDays(-180)) `
+                -Quiet:$Quiet
+
+            $data.GeminiDerivedSettings = ConvertTo-GeminiDerivedSettings -Events @($adminEvents ?? @())
+        } catch {
+            $data.Errors['GeminiAuditSettings'] = $_.Exception.Message
         }
     }
 

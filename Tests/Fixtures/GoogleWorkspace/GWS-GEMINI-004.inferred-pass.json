@@ -1,0 +1,19 @@
+{
+  "checkId": "GWS-GEMINI-004",
+  "theater": "Fortification",
+  "scenario": "inferred-pass",
+  "expectedStatus": "PASS",
+  "description": "Retention inferred 18 months",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "GeminiDerivedSettings": {
+      "RetentionMonths": {
+        "Value": 18,
+        "RawValue": "18",
+        "SettingName": "Gemini for Workspace - setting",
+        "Timestamp": "2026-05-01T12:00:00.000Z"
+      }
+    }
+  }
+}

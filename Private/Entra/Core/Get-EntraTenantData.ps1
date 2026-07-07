@@ -20,6 +20,7 @@ function Get-EntraTenantData {
         AdminUnits              = @()
         Domains                 = @()
         AdminConsentRequestPolicy = $null
+        DelegatedAdminRelationships = @()
         Errors                  = @{}
     }
 
@@ -115,6 +116,24 @@ function Get-EntraTenantData {
             -Uri '/policies/adminConsentRequestPolicy'
     } catch {
         $data.Errors['AdminConsentRequestPolicy'] = $_.Exception.Message
+    }
+
+    # ── Partner Delegated Admin (GDAP) Relationships ──────────────────────
+    # CSP/partner delegated administration is a Kaseya-class propagation path
+    # (compromise one partner -> inherit delegated admin in every downstream
+    # customer tenant) yet is invisible in most admin consoles and rarely
+    # reviewed. Collected so EIDTNT-015/016 can grade privileged exposure and
+    # grant hygiene. Failure is recorded, not swallowed: an empty result reaches
+    # the checks as "no relationships" ONLY when the call succeeded — a failed
+    # call is Not Assessed via Errors['DelegatedAdminRelationships'], never a pass.
+    if (-not $Quiet) {
+        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting partner delegated admin (GDAP) relationships'
+    }
+    try {
+        $data.DelegatedAdminRelationships = @(Invoke-GraphApi -AccessToken $AccessToken `
+            -Uri '/tenantRelationships/delegatedAdminRelationships' -Paginate -Quiet:$Quiet)
+    } catch {
+        $data.Errors['DelegatedAdminRelationships'] = $_.Exception.Message
     }
 
     if (-not $Quiet) {

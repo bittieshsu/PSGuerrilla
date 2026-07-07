@@ -83,4 +83,23 @@ Describe 'Collector query contracts' {
             }
         }
     }
+
+    Context 'Get-EntraTenantData — partner delegated admin (GDAP) relationships' {
+        BeforeAll {
+            Mock -ModuleName PSGuerrilla Invoke-GraphApi { return @() }
+            InModuleScope PSGuerrilla { Get-EntraTenantData -AccessToken 'x' -Quiet } | Out-Null
+        }
+
+        It 'queries /tenantRelationships/delegatedAdminRelationships (else EIDTNT-015/016 never see partner access)' {
+            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+                $Uri -eq '/tenantRelationships/delegatedAdminRelationships'
+            }
+        }
+
+        It 'paginates the relationships list (a truncated first page would under-count partner grants)' {
+            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+                $Uri -eq '/tenantRelationships/delegatedAdminRelationships' -and $Paginate
+            }
+        }
+    }
 }
