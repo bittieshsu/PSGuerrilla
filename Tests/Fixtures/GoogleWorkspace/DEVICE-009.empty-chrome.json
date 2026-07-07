@@ -1,0 +1,12 @@
+{
+  "checkId": "DEVICE-009",
+  "theater": "Fortification",
+  "scenario": "empty-chrome",
+  "expectedStatus": "PASS",
+  "description": "Chrome devices collected but zero registered => PASS (was false-WARN via -not @() trap)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "ChromeDevices": []
+  }
+}

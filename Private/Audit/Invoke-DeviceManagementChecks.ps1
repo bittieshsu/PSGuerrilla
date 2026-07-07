@@ -203,7 +203,10 @@ function Test-FortificationDEVICE009 {
         -SourceKey 'ChromeDevices' -Subject 'Chrome OS device inventory'
     if ($na) { return $na }
 
-    if (-not $AuditData.ChromeDevices) {
+    # $null (not collected) -> WARN; but @() (collected, zero devices) must reach the PASS
+    # below, not be swallowed here by `-not @()`. The NA guard above already SKIPs on a
+    # collection error, so an empty array here genuinely means "zero Chrome OS devices."
+    if ($null -eq $AuditData.ChromeDevices) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
             -CurrentValue 'Chrome OS device data not available. Verify in Admin Console > Devices > Chrome > Devices that Chrome OS devices are managed' `
             -OrgUnitPath $OrgUnitPath
