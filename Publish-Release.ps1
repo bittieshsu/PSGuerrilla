@@ -109,3 +109,27 @@ if ([string]::IsNullOrWhiteSpace($ApiKey)) {
 Import-Module Microsoft.PowerShell.PSResourceGet -MinimumVersion 1.1.0 -Force
 Publish-PSResource -Path $pkg -Repository $Repository -ApiKey $ApiKey -ErrorAction Stop
 Write-Host "PUBLISHED PSGuerrilla $version to $Repository." -ForegroundColor Green
+
+# ── Tag + GitHub release so the repo and the Gallery don't diverge ──────────
+# Historical gap flagged by the validation host: the Gallery advanced to 2.4x while
+# git tags froze at v2.9.x. Every published version now gets a matching tag + release.
+$tag = "v$version"
+if (& git -C $root rev-parse -q --verify "refs/tags/$tag" *> $null; $LASTEXITCODE -eq 0) {
+    Write-Host "tag $tag already exists — skipping tag/release." -ForegroundColor Yellow
+} else {
+    & git -C $root tag -a $tag -m "PSGuerrilla $version"
+    & git -C $root push origin $tag
+    Write-Host "tagged $tag and pushed" -ForegroundColor Green
+    if (Get-Command gh -ErrorAction SilentlyContinue) {
+        # This version's release-notes paragraph becomes the GitHub release body.
+        $notes = (Import-PowerShellDataFile (Join-Path $root 'PSGuerrilla.psd1')).PrivateData.PSData.ReleaseNotes
+        $body = ($notes -split '(?=v\d+\.\d+\.\d+:)' | Where-Object { $_ -like "v$version*" } | Select-Object -First 1)
+        if ([string]::IsNullOrWhiteSpace($body)) { $body = "PSGuerrilla $version — see CHANGELOG.md." }
+        Push-Location $root
+        try { $body | & gh release create $tag --title "PSGuerrilla $version" --notes-file - ; Write-Host "created GitHub release $tag" -ForegroundColor Green }
+        catch { Write-Host "gh release create failed ($_). Tag is pushed; create the release manually." -ForegroundColor Yellow }
+        finally { Pop-Location }
+    } else {
+        Write-Host "gh CLI not found — tag pushed, but create the GitHub release manually." -ForegroundColor Yellow
+    }
+}
