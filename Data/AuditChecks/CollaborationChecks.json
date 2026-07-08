@@ -500,6 +500,85 @@
           "SC-28"
         ]
       }
+    },
+    {
+      "id": "COLLAB-017",
+      "name": "Calendar external interoperability managed (GWS.CALENDAR.3.1)",
+      "description": "SCuBA GWS.CALENDAR.3.1 requires that Calendar Interop (sharing free/busy and calendar data with an external system such as Microsoft Exchange) be off unless it is deliberately managed. Interop bridges calendar data to an outside platform. This check reads calendar.interoperability and warns any organizational unit where enableInteroperability is on.",
+      "severity": "Low",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
+      "subcategory": "Calendar Security",
+      "recommendedValue": "Calendar interoperability disabled unless deliberately managed",
+      "remediationSteps": "In the Admin console under Apps > Google Workspace > Calendar > Calendar Interop management, disable interoperability unless a reviewed integration requires it.",
+      "compliance": {
+        "scuba": [
+          "GWS.CALENDAR.3.1v1"
+        ],
+        "nistSp80053": [
+          "AC-4",
+          "SC-7"
+        ]
+      }
+    },
+    {
+      "id": "COLLAB-018",
+      "name": "Calendar appointment payments disabled (GWS.CALENDAR.4.1)",
+      "description": "SCuBA GWS.CALENDAR.4.1 recommends that paid appointment schedules be disabled. This check reads calendar.appointment_schedules and warns any organizational unit where enablePayments is on.",
+      "severity": "Low",
+      "zeroTrustPillar": "Governance",
+      "zeroTrustWeight": 1,
+      "subcategory": "Calendar Security",
+      "recommendedValue": "Paid appointment schedules disabled",
+      "remediationSteps": "In Google Calendar appointment-schedule settings, disable payments unless the organization deliberately uses paid appointments.",
+      "compliance": {
+        "scuba": [
+          "GWS.CALENDAR.4.1v1"
+        ],
+        "nistSp80053": [
+          "CM-7"
+        ]
+      }
+    },
+    {
+      "id": "COLLAB-019",
+      "name": "Meet automatic recording off by default (GWS.MEET.5.1)",
+      "description": "SCuBA GWS.MEET.5.1 recommends that automatic recording in Google Meet be off by default. Auto-recording captures and stores meeting video/audio — sensitive when students are present — without a deliberate decision. This check reads meet.automatic_recording and warns any organizational unit where it is enabled by default.",
+      "severity": "Low",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 2,
+      "subcategory": "Meet Safety",
+      "recommendedValue": "Automatic recording disabled by default",
+      "remediationSteps": "In Google Meet settings, disable automatic recording by default so meetings are recorded only when a host deliberately starts a recording.",
+      "compliance": {
+        "scuba": [
+          "GWS.MEET.5.1v1"
+        ],
+        "nistSp80053": [
+          "SI-12",
+          "SC-28"
+        ]
+      }
+    },
+    {
+      "id": "GROUP-006",
+      "name": "Groups are visible in the directory (GWS.GROUPS.4.1)",
+      "description": "SCuBA GWS.GROUPS.4.1 requires that groups not be hideable from the directory — hidden groups undermine transparency and oversight of who can be reached and what access exists. This check reads the groups_for_business.groups_sharing policy and warns any organizational unit where owners can hide groups (ownersCanHideGroups) or new groups are hidden by default (newGroupsAreHidden).",
+      "severity": "Low",
+      "zeroTrustPillar": "Visibility & Analytics",
+      "zeroTrustWeight": 1,
+      "subcategory": "Group Sharing",
+      "recommendedValue": "Owners cannot hide groups and new groups are not hidden by default",
+      "remediationSteps": "In Groups for Business settings, prevent group owners from hiding groups from the directory and ensure new groups are not hidden by default, preserving directory transparency.",
+      "compliance": {
+        "scuba": [
+          "GWS.GROUPS.4.1v1"
+        ],
+        "nistSp80053": [
+          "AC-22",
+          "AU-6"
+        ]
+      }
     }
   ]
 }

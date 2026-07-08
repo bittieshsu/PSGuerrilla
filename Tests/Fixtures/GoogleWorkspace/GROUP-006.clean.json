@@ -1,0 +1,25 @@
+{
+  "checkId": "GROUP-006",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "not hidden",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "groups_for_business.groups_sharing": [
+          {
+            "setting": {
+              "value": {
+                "ownersCanHideGroups": false,
+                "newGroupsAreHidden": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-017",
+  "theater": "Fortification",
+  "scenario": "warn",
+  "expectedStatus": "WARN",
+  "description": "interop on",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "calendar.interoperability": [
+          {
+            "setting": {
+              "value": {
+                "enableInteroperability": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

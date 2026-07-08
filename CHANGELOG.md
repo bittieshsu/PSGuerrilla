@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.46.2] - 2026-07-08
+
+### Added
+- **Four Google Workspace SCuBA controls that close the last ScubaGoggles config-coverage concessions.** These are the remaining controls ScubaGoggles evaluates from a configuration setting that PSGuerrilla did not: **COLLAB-017** (GWS.CALENDAR.3.1) warns when Calendar interoperability is enabled (calendar data bridged to an external system); **COLLAB-018** (GWS.CALENDAR.4.1) warns on paid appointment schedules; **COLLAB-019** (GWS.MEET.5.1) warns when Meet automatic recording is on by default (meeting capture without a deliberate decision); **GROUP-006** (GWS.GROUPS.4.1) warns when groups can be hidden from the directory (transparency). All read Cloud Identity Policy settings, weakest-OU-wins, absent policy = Not Assessed, tagged with GWS.* IDs. 12 fixtures. After this, every GWS SCuBA control ScubaGoggles derives from configuration is covered; the only controls left unautomated (Chat content-reporting, Meet Gemini settings, Calendar interop-management manual step) are ones ScubaGoggles does not config-automate either — manual or audit-log-derived for both tools.
+
 ## [2.46.1] - 2026-07-08
 
 Consolidated PSGallery release carrying everything accumulated since 2.40.1 — the SCuBA EXO + CIS reconciliation closes, Entra ID Governance entitlement-management hygiene, Copilot Studio AI-agent governance, and the full Google Workspace SCuBA baseline closes (Gmail, Groups, Chat, Meet) with provable `GWS.*` crosswalk tagging.

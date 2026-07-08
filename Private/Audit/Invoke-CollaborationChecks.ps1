@@ -574,3 +574,77 @@ function Test-FortificationCOLLAB016 {
     return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
         -CurrentValue "Automatic transcription is off by default in all $($r.Vals.Count) targeted policy/policies" -OrgUnitPath $OrgUnitPath
 }
+
+# ── COLLAB-017: GWS.CALENDAR.3.1 — Calendar interoperability managed ───────
+function Test-FortificationCOLLAB017 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    $r = Get-CollabPolicyValues -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath -Type 'calendar.interoperability' -Field 'enableInteroperability' -Subject 'Calendar interoperability policy'
+    if ($r.Na) { return $r.Na }
+    $on = @($r.Vals | Where-Object { $_ -eq $true })
+    if ($on.Count -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
+            -CurrentValue "Calendar interoperability is enabled in $($on.Count) of $($r.Vals.Count) targeted policy/policies — calendar data bridges to an external system" -OrgUnitPath $OrgUnitPath
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "Calendar interoperability is off in all $($r.Vals.Count) targeted policy/policies" -OrgUnitPath $OrgUnitPath
+}
+
+# ── COLLAB-018: GWS.CALENDAR.4.1 — Appointment payments disabled ───────────
+function Test-FortificationCOLLAB018 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    $r = Get-CollabPolicyValues -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath -Type 'calendar.appointment_schedules' -Field 'enablePayments' -Subject 'Calendar appointment-schedule policy'
+    if ($r.Na) { return $r.Na }
+    $on = @($r.Vals | Where-Object { $_ -eq $true })
+    if ($on.Count -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
+            -CurrentValue "Paid appointment schedules are enabled in $($on.Count) of $($r.Vals.Count) targeted policy/policies" -OrgUnitPath $OrgUnitPath
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "Paid appointment schedules are disabled in all $($r.Vals.Count) targeted policy/policies" -OrgUnitPath $OrgUnitPath
+}
+
+# ── COLLAB-019: GWS.MEET.5.1 — Automatic recording off by default ──────────
+function Test-FortificationCOLLAB019 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    $r = Get-CollabPolicyValues -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath -Type 'meet.automatic_recording' -Field 'enabled' -Subject 'Meet automatic-recording policy'
+    if ($r.Na) { return $r.Na }
+    $on = @($r.Vals | Where-Object { $_ -eq $true })
+    if ($on.Count -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
+            -CurrentValue "Automatic recording is on by default in $($on.Count) of $($r.Vals.Count) targeted policy/policies — meetings are captured without a deliberate decision" -OrgUnitPath $OrgUnitPath
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "Automatic recording is off by default in all $($r.Vals.Count) targeted policy/policies" -OrgUnitPath $OrgUnitPath
+}
+
+# ── GROUP-006: GWS.GROUPS.4.1 — Groups visible in the directory ────────────
+function Test-FortificationGROUP006 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey @('CloudIdentityPolicies', 'OrgUnits') -Subject 'Groups for Business sharing policy'
+    if ($na) { return $na }
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' -OrgUnitPath $OrgUnitPath
+    }
+    # GWS.GROUPS.4.1 is non-compliant if owners can hide groups OR new groups are hidden by default.
+    $ownerHide = @(Resolve-GooglePolicyValue -Policies $pol -Type 'groups_for_business.groups_sharing' -Field 'ownersCanHideGroups')
+    $newHidden = @(Resolve-GooglePolicyValue -Policies $pol -Type 'groups_for_business.groups_sharing' -Field 'newGroupsAreHidden')
+    if ($ownerHide.Count -eq 0 -and $newHidden.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'No groups_for_business.groups_sharing hide-group settings returned for this tenant' -OrgUnitPath $OrgUnitPath
+    }
+    $oh = @($ownerHide | Where-Object { $_ -eq $true })
+    $nh = @($newHidden | Where-Object { $_ -eq $true })
+    if ($oh.Count -gt 0 -or $nh.Count -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
+            -CurrentValue "Groups can be hidden from the directory (owners-can-hide in $($oh.Count), new-groups-hidden in $($nh.Count) targeted policy/policies)" -OrgUnitPath $OrgUnitPath
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue 'Groups are visible in the directory (not hideable, not hidden by default)' -OrgUnitPath $OrgUnitPath
+}

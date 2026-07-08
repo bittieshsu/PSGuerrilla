@@ -1,0 +1,24 @@
+{
+  "checkId": "COLLAB-018",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "payments off",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "calendar.appointment_schedules": [
+          {
+            "setting": {
+              "value": {
+                "enablePayments": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
