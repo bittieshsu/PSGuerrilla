@@ -114,7 +114,8 @@ Write-Host "PUBLISHED PSGuerrilla $version to $Repository." -ForegroundColor Gre
 # Historical gap flagged by the validation host: the Gallery advanced to 2.4x while
 # git tags froze at v2.9.x. Every published version now gets a matching tag + release.
 $tag = "v$version"
-if (& git -C $root rev-parse -q --verify "refs/tags/$tag" *> $null; $LASTEXITCODE -eq 0) {
+& git -C $root rev-parse -q --verify "refs/tags/$tag" *> $null
+if ($LASTEXITCODE -eq 0) {
     Write-Host "tag $tag already exists — skipping tag/release." -ForegroundColor Yellow
 } else {
     & git -C $root tag -a $tag -m "PSGuerrilla $version"
