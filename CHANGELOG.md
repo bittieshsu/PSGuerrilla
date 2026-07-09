@@ -2,6 +2,16 @@
 
 > **Project rename.** This module was published as `PSGuerrilla` through version 2.46.1 and is now `Guerrilla`, effective **v2.46.3** (2026-07-08). The repository and the PowerShell Gallery package are both `Guerrilla`; the old `PSGuerrilla` package remains on the Gallery frozen at its last version. Existing installs migrate automatically (per-user data and safehouse credentials carry forward transparently, see v2.46.3 below). Changelog entries for versions published as `PSGuerrilla` are left exactly as they were at the time; history is not rewritten.
 
+## [2.46.4] - 2026-07-09
+
+### Added
+- **GRLA provenance schema on every check definition.** Four fields on all 618 checks: `provenance` (`baseline` | `original` | `build-ahead`), `source_url`, `source_read_date`, `official_id`. Seven checks are classified `original`, the attack paths no configuration baseline models yet (domain-wide delegation org-takeover, super-admin sprawl and super-admin-equivalent roles, over-scoped OAuth grants, sensitive-scope connected apps, and partner/GDAP delegated access). No check ID was renamed. A new `Tests/Unit/ProvenanceSchema.Tests.ps1` gates it: an invalid provenance, an `original` carrying an `official_id`, or a `build-ahead` missing its source is a red build.
+- **Derived test-summary artifact.** `Invoke-FixtureTests.ps1 -EmitSummary` writes `test-summary.json` (check count, executed fixtures, pass/fail, module version, git SHA, and per-check verdict scenarios) and fails if the fixture-file count does not equal the number executed. The CI gate emits and uploads it. This is the single derived source the public documentation renders every count from, so a published number can only change when a green run proves it.
+
+### Changed
+- **Documentation.** Full README rewrite leading with what Guerrilla is (agentless, read-only, PowerShell 7), the three theaters, 618 checks, and the golden-fixture discipline. CONTRIBUTING rewritten as a contribution ladder (report a wrong verdict, propose a check, contribute fixture data, write the check and its fixtures), with rung-matched GitHub issue templates.
+- **SCuBA crosswalk hygiene.** CISA consolidated the Exchange Online baseline numbering and moved several topics into the Defender baseline. Four Exchange Online SCuBA tags are remapped to the current CISA Defender controls (required alerts, alerts destination, unified audit logging, audit retention); 24 stale tags that reference controls with no clear current equivalent are removed rather than guessed. No check verdict logic changed.
+
 ## [2.46.3] - 2026-07-08
 
 ### Changed
