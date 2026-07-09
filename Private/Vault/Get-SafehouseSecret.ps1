@@ -29,11 +29,21 @@ function Get-SafehouseSecret {
     )
 
     if (-not (Get-Command Get-SecretVault -ErrorAction SilentlyContinue)) { return $null }
-    if (-not (Get-SecretVault -Name $VaultName -ErrorAction SilentlyContinue)) { return $null }
 
-    try {
-        Get-Secret -Name $VaultKey -Vault $VaultName -AsPlainText -ErrorAction Stop
-    } catch {
-        $null
+    $tryVault = {
+        param($v)
+        if (-not (Get-SecretVault -Name $v -ErrorAction SilentlyContinue)) { return $null }
+        try { Get-Secret -Name $VaultKey -Vault $v -AsPlainText -ErrorAction Stop } catch { $null }
     }
+
+    $val = & $tryVault $VaultName
+    if (-not [string]::IsNullOrEmpty($val)) { return $val }
+
+    # Back-compat: the module was renamed PSGuerrilla -> Guerrilla, changing the default
+    # vault name. If the current default vault has no value, fall back to a legacy
+    # 'PSGuerrilla' vault so an existing install's safehouse credentials keep resolving.
+    if ($VaultName -eq 'Guerrilla') {
+        return (& $tryVault 'PSGuerrilla')
+    }
+    return $null
 }

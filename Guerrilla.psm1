@@ -21,14 +21,31 @@ function Get-GuerrillaDataRoot {
     # everything is Windows anyway).
     $onWindows = if (Test-Path variable:IsWindows) { $IsWindows } else { $true }
 
-    if ($onWindows) {
-        return Join-Path $env:APPDATA 'Guerrilla'
+    $newRoot = if ($onWindows) {
+        Join-Path $env:APPDATA 'Guerrilla'
+    } elseif ($IsMacOS) {
+        Join-Path $HOME 'Library/Application Support/Guerrilla'
+    } else {
+        $base = if ($env:XDG_CONFIG_HOME) { $env:XDG_CONFIG_HOME } else { Join-Path $HOME '.config' }
+        Join-Path $base 'Guerrilla'
     }
-    if ($IsMacOS) {
-        return Join-Path $HOME 'Library/Application Support/Guerrilla'
+
+    # Back-compat: the module was renamed PSGuerrilla -> Guerrilla. If this install
+    # predates the rename, carry the old per-user data (reports, config, patrol state)
+    # forward exactly once — when the new root does not yet exist but the old one does.
+    # Idempotent: after the first migration the new root exists and this is skipped.
+    if (-not (Test-Path $newRoot)) {
+        $oldRoot = Join-Path (Split-Path $newRoot -Parent) 'PSGuerrilla'
+        if ((Test-Path $oldRoot) -and @(Get-ChildItem -LiteralPath $oldRoot -Force -ErrorAction SilentlyContinue).Count -gt 0) {
+            try {
+                Copy-Item -LiteralPath $oldRoot -Destination $newRoot -Recurse -Force -ErrorAction Stop
+                Write-Verbose "Migrated Guerrilla data from $oldRoot to $newRoot (post-rename)."
+            } catch {
+                Write-Verbose "Guerrilla data migration from $oldRoot failed: $($_.Exception.Message)"
+            }
+        }
     }
-    $base = if ($env:XDG_CONFIG_HOME) { $env:XDG_CONFIG_HOME } else { Join-Path $HOME '.config' }
-    return Join-Path $base 'Guerrilla'
+    return $newRoot
 }
 
 # Helper used during module bootstrap to turn "10.0.0.0/16" into the
