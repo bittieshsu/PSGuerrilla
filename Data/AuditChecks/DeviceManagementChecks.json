@@ -26,7 +26,11 @@
         "cisBenchmark": [
           "6.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-002",
@@ -50,7 +54,11 @@
         "cisBenchmark": [
           "6.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-003",
@@ -74,7 +82,11 @@
         "cisBenchmark": [
           "6.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-004",
@@ -98,7 +110,11 @@
         "cisBenchmark": [
           "6.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-005",
@@ -122,7 +138,11 @@
         "cisBenchmark": [
           "6.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-006",
@@ -146,7 +166,11 @@
         "cisBenchmark": [
           "6.6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-007",
@@ -171,7 +195,11 @@
         "cisBenchmark": [
           "6.7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-008",
@@ -195,7 +223,11 @@
         "cisBenchmark": [
           "6.8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-009",
@@ -219,7 +251,11 @@
         "cisBenchmark": [
           "6.9"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-010",
@@ -243,7 +279,11 @@
         "cisBenchmark": [
           "6.10"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DEVICE-011",
@@ -267,7 +307,11 @@
         "cisBenchmark": [
           "6.11"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

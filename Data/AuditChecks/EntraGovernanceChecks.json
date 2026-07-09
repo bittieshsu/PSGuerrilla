@@ -15,9 +15,20 @@
       "remediationUrl": "https://entra.microsoft.com/#view/Microsoft_Azure_ELMAdmin/AccessPackageMenuBlade",
       "remediationSteps": "In Microsoft Entra admin center > Identity Governance > Entitlement management > Access packages, open each package's policies and enable 'Require approval' for policies that grant sensitive or externally-scoped access. Reserve auto-approval for low-risk, internally-scoped self-service packages, and document that decision. Pair approval with access reviews so standing grants are re-justified.",
       "compliance": {
-        "nistSp80053": ["AC-2", "AC-2(1)", "AC-6", "PM-10"],
-        "cisM365": ["1.1.1"]
-      }
+        "nistSp80053": [
+          "AC-2",
+          "AC-2(1)",
+          "AC-6",
+          "PM-10"
+        ],
+        "cisM365": [
+          "1.1.1"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDGOV-002",
@@ -31,9 +42,19 @@
       "remediationUrl": "https://entra.microsoft.com/#view/Microsoft_Azure_ELMAdmin/AccessPackageMenuBlade",
       "remediationSteps": "For each access-package assignment policy, enable access reviews under the policy's lifecycle settings: choose a recurrence (for example quarterly), reviewers (self, manager, or a named reviewer), and an auto-remove action for denied or unreviewed assignments so unused access is revoked automatically.",
       "compliance": {
-        "nistSp80053": ["AC-2(3)", "AC-6(7)", "PM-10"],
-        "cisM365": ["1.1.1"]
-      }
+        "nistSp80053": [
+          "AC-2(3)",
+          "AC-6(7)",
+          "PM-10"
+        ],
+        "cisM365": [
+          "1.1.1"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDGOV-003",
@@ -47,9 +68,18 @@
       "remediationUrl": "https://entra.microsoft.com/#view/Microsoft_Azure_ELMAdmin/AccessPackageMenuBlade",
       "remediationSteps": "In each assignment policy's lifecycle settings, set an assignment expiration (a number of days or a fixed end date) instead of 'Assignments never expire'. Users re-request through the access-package flow when they still need the access, keeping grants deliberate.",
       "compliance": {
-        "nistSp80053": ["AC-2", "AC-2(3)"],
-        "cisM365": ["1.1.1"]
-      }
+        "nistSp80053": [
+          "AC-2",
+          "AC-2(3)"
+        ],
+        "cisM365": [
+          "1.1.1"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDGOV-004",
@@ -63,9 +93,20 @@
       "remediationUrl": "https://entra.microsoft.com/#view/Microsoft_Azure_ELMAdmin/AccessPackageMenuBlade",
       "remediationSteps": "For policies whose allowed-target scope includes external or all users, either narrow the scope to specific connected organizations, or require approval (and preferably access reviews) on the policy. Never leave a broadly-scoped external eligibility policy auto-approved.",
       "compliance": {
-        "nistSp80053": ["AC-2", "AC-3", "AC-6", "SA-9"],
-        "cisM365": ["1.1.1"]
-      }
+        "nistSp80053": [
+          "AC-2",
+          "AC-3",
+          "AC-6",
+          "SA-9"
+        ],
+        "cisM365": [
+          "1.1.1"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDGOV-005",
@@ -79,9 +120,19 @@
       "remediationUrl": "https://entra.microsoft.com/#view/Microsoft_Azure_ELMAdmin/CatalogMenuBlade",
       "remediationSteps": "In Identity Governance > Entitlement management > Catalogs, review each catalog with external visibility enabled. Disable external visibility on catalogs that only serve internal access packages, keeping external discoverability limited to catalogs deliberately built for partner or guest collaboration.",
       "compliance": {
-        "nistSp80053": ["AC-3", "AC-22", "SA-9"],
-        "cisM365": ["1.1.1"]
-      }
+        "nistSp80053": [
+          "AC-3",
+          "AC-22",
+          "SA-9"
+        ],
+        "cisM365": [
+          "1.1.1"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

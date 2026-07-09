@@ -25,7 +25,11 @@
         "cisAd": [
           "9.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADLOG-002",
@@ -49,7 +53,11 @@
         "cisAd": [
           "9.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADLOG-003",
@@ -72,7 +80,11 @@
         "cisAd": [
           "9.2.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADLOG-004",
@@ -96,7 +108,11 @@
         "cisAd": [
           "9.1.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADLOG-005",
@@ -119,7 +135,11 @@
         "cisAd": [
           "9.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADLOG-006",
@@ -142,7 +162,11 @@
         "cisAd": [
           "9.4.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADLOG-007",
@@ -165,7 +189,11 @@
         "cisAd": [
           "9.4.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

@@ -28,7 +28,11 @@
         "cisBenchmark": [
           "1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-002",
@@ -54,7 +58,11 @@
         "cisBenchmark": [
           "1.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-003",
@@ -85,7 +93,11 @@
           "GWS.COMMONCONTROLS.1.1v1",
           "GWS.COMMONCONTROLS.1.3v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-004",
@@ -119,7 +131,11 @@
           "GWS.COMMONCONTROLS.5.5v1",
           "GWS.COMMONCONTROLS.5.6v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-005",
@@ -152,7 +168,11 @@
           "GWS.COMMONCONTROLS.5.5v1",
           "GWS.COMMONCONTROLS.5.6v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-006",
@@ -181,7 +201,11 @@
         "scuba": [
           "GWS.COMMONCONTROLS.4.1v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-007",
@@ -207,7 +231,11 @@
         "cisBenchmark": [
           "1.7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-008",
@@ -236,7 +264,11 @@
         "scuba": [
           "GWS.COMMONCONTROLS.10.5v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-009",
@@ -261,7 +293,11 @@
         "cisBenchmark": [
           "1.9"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-010",
@@ -289,7 +325,11 @@
         "cisBenchmark": [
           "1.10"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-011",
@@ -314,7 +354,11 @@
         "cisBenchmark": [
           "1.11"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-012",
@@ -341,7 +385,11 @@
         "cisBenchmark": [
           "1.12"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-013",
@@ -368,7 +416,11 @@
         "cisBenchmark": [
           "1.13"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-014",
@@ -400,7 +452,11 @@
           "GWS.COMMONCONTROLS.1.4v1",
           "GWS.COMMONCONTROLS.1.5v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-015",
@@ -428,7 +484,11 @@
         "scuba": [
           "GWS.COMMONCONTROLS.1.4v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-016",
@@ -453,7 +513,11 @@
         "cisBenchmark": [
           "1.14"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AUTH-017",
@@ -483,7 +547,11 @@
         "scuba": [
           "GWS.COMMONCONTROLS.8.1v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

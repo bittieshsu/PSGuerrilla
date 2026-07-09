@@ -24,7 +24,11 @@
         "cisAd": [
           "10.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTRADE-002",
@@ -47,7 +51,11 @@
         "cisAd": [
           "10.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTRADE-003",
@@ -70,7 +78,11 @@
         "cisAd": [
           "10.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTRADE-004",
@@ -92,7 +104,11 @@
         "cisAd": [
           "10.4.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTRADE-005",
@@ -119,7 +135,11 @@
         "cisAd": [
           "6.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTRADE-006",
@@ -147,7 +167,11 @@
         "cisAd": [
           "6.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTRADE-007",
@@ -174,7 +198,11 @@
         "cisAd": [
           "6.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTRADE-008",
@@ -201,7 +229,11 @@
         "cisAd": [
           "6.2.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTRADE-009",
@@ -228,7 +260,11 @@
         "cisAd": [
           "6.4.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTRADE-010",
@@ -255,7 +291,11 @@
         "cisAd": [
           "6.5.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

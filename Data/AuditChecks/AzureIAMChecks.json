@@ -21,7 +21,11 @@
         "cisAzure": [
           "1.23"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AZIAM-002",
@@ -40,7 +44,11 @@
         "cisAzure": [
           "1.23"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AZIAM-003",
@@ -56,7 +64,11 @@
         "nistSp80053": [
           "AC-6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AZIAM-004",
@@ -76,7 +88,11 @@
         "cisAzure": [
           "8.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AZIAM-005",
@@ -96,7 +112,11 @@
         "cisAzure": [
           "3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AZIAM-006",
@@ -115,7 +135,11 @@
         "cisAzure": [
           "6.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AZIAM-007",
@@ -134,7 +158,11 @@
         "cisAzure": [
           "2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AZIAM-008",
@@ -150,7 +178,11 @@
         "nistSp80053": [
           "AC-2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AZIAM-009",
@@ -169,7 +201,11 @@
         "cisAzure": [
           "1.23"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AZIAM-010",
@@ -185,7 +221,11 @@
         "nistSp80053": [
           "CM-6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

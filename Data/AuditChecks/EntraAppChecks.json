@@ -18,7 +18,11 @@
         "nistSp80053": [
           "CM-8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-002",
@@ -41,7 +45,11 @@
         "cisM365": [
           "5.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-003",
@@ -63,7 +71,11 @@
         "mitreAttack": [
           "T1098.001"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-004",
@@ -82,7 +94,11 @@
         "mitreAttack": [
           "T1098.001"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-005",
@@ -102,7 +118,11 @@
         "mitreAttack": [
           "T1098.001"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-006",
@@ -121,7 +141,11 @@
         "mitreAttack": [
           "T1098.002"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-007",
@@ -140,7 +164,11 @@
         "cisAzure": [
           "1.23"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-008",
@@ -160,7 +188,11 @@
         "nistSp80053": [
           "IA-5(1)"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-009",
@@ -176,7 +208,11 @@
         "nistSp80053": [
           "AC-2(3)"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-010",
@@ -195,7 +231,11 @@
         "cisM365": [
           "5.3.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-011",
@@ -217,7 +257,11 @@
         "cisM365": [
           "5.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-012",
@@ -240,7 +284,11 @@
         "cisM365": [
           "5.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-013",
@@ -262,7 +310,11 @@
         "cisM365": [
           "5.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-014",
@@ -281,7 +333,11 @@
         "mitreAttack": [
           "T1098.002"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-015",
@@ -300,7 +356,11 @@
         "mitreAttack": [
           "T1098.003"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-016",
@@ -319,7 +379,11 @@
         "cisAzure": [
           "8.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-017",
@@ -335,7 +399,11 @@
         "nistSp80053": [
           "AU-6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-018",
@@ -355,7 +423,11 @@
         "mitreAttack": [
           "T1098"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-019",
@@ -374,7 +446,11 @@
         "mitreAttack": [
           "T1566.002"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAPP-020",
@@ -401,7 +477,11 @@
         "cisM365": [
           "5.1.6.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

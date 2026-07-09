@@ -19,7 +19,11 @@
         "eidsca": [
           "AP01"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AP04",
@@ -42,7 +46,11 @@
         "eidsca": [
           "AP04"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AP05",
@@ -62,7 +70,11 @@
         "eidsca": [
           "AP05"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AP06",
@@ -82,7 +94,11 @@
         "eidsca": [
           "AP06"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AP07",
@@ -102,7 +118,11 @@
         "eidsca": [
           "AP07"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AP08",
@@ -122,7 +142,11 @@
         "eidsca": [
           "AP08"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AP09",
@@ -142,7 +166,11 @@
         "eidsca": [
           "AP09"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AP10",
@@ -162,7 +190,11 @@
         "eidsca": [
           "AP10"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AP14",
@@ -182,7 +214,11 @@
         "eidsca": [
           "AP14"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-CP01",
@@ -202,7 +238,11 @@
         "eidsca": [
           "CP01"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-CP03",
@@ -222,7 +262,11 @@
         "eidsca": [
           "CP03"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-CP04",
@@ -242,7 +286,11 @@
         "eidsca": [
           "CP04"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-PR01",
@@ -262,7 +310,11 @@
         "eidsca": [
           "PR01"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-PR02",
@@ -282,7 +334,11 @@
         "eidsca": [
           "PR02"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-PR03",
@@ -302,7 +358,11 @@
         "eidsca": [
           "PR03"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-PR05",
@@ -322,7 +382,11 @@
         "eidsca": [
           "PR05"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-PR06",
@@ -342,7 +406,11 @@
         "eidsca": [
           "PR06"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-ST08",
@@ -362,7 +430,11 @@
         "eidsca": [
           "ST08"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-ST09",
@@ -382,7 +454,11 @@
         "eidsca": [
           "ST09"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AG01",
@@ -405,7 +481,11 @@
         "eidsca": [
           "AG01"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AG02",
@@ -425,7 +505,11 @@
         "eidsca": [
           "AG02"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AG03",
@@ -445,7 +529,11 @@
         "eidsca": [
           "AG03"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AM01",
@@ -465,7 +553,11 @@
         "eidsca": [
           "AM01"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AM02",
@@ -485,7 +577,11 @@
         "eidsca": [
           "AM02"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AM03",
@@ -505,7 +601,11 @@
         "eidsca": [
           "AM03"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AM04",
@@ -525,7 +625,11 @@
         "eidsca": [
           "AM04"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AM06",
@@ -545,7 +649,11 @@
         "eidsca": [
           "AM06"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AM07",
@@ -565,7 +673,11 @@
         "eidsca": [
           "AM07"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AM09",
@@ -585,7 +697,11 @@
         "eidsca": [
           "AM09"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AM10",
@@ -605,7 +721,11 @@
         "eidsca": [
           "AM10"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AF01",
@@ -625,7 +745,11 @@
         "eidsca": [
           "AF01"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AF02",
@@ -645,7 +769,11 @@
         "eidsca": [
           "AF02"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AF03",
@@ -665,7 +793,11 @@
         "eidsca": [
           "AF03"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AF04",
@@ -685,7 +817,11 @@
         "eidsca": [
           "AF04"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AF05",
@@ -705,7 +841,11 @@
         "eidsca": [
           "AF05"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AF06",
@@ -725,7 +865,11 @@
         "eidsca": [
           "AF06"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AT01",
@@ -745,7 +889,11 @@
         "eidsca": [
           "AT01"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AT02",
@@ -765,7 +913,11 @@
         "eidsca": [
           "AT02"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AV01",
@@ -785,7 +937,11 @@
         "eidsca": [
           "AV01"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-AS04",
@@ -805,7 +961,11 @@
         "eidsca": [
           "AS04"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-CR01",
@@ -825,7 +985,11 @@
         "eidsca": [
           "CR01"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-CR02",
@@ -845,7 +1009,11 @@
         "eidsca": [
           "CR02"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-CR03",
@@ -865,7 +1033,11 @@
         "eidsca": [
           "CR03"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDSCA-CR04",
@@ -885,7 +1057,11 @@
         "eidsca": [
           "CR04"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

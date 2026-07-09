@@ -26,7 +26,11 @@
         "cisBenchmark": [
           "7.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "LOG-002",
@@ -50,7 +54,11 @@
         "cisBenchmark": [
           "7.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "LOG-003",
@@ -74,7 +82,11 @@
         "cisBenchmark": [
           "7.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "LOG-004",
@@ -99,7 +111,11 @@
         "cisBenchmark": [
           "7.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "LOG-005",
@@ -123,7 +139,11 @@
         "cisBenchmark": [
           "7.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "LOG-006",
@@ -147,7 +167,11 @@
         "cisBenchmark": [
           "7.6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

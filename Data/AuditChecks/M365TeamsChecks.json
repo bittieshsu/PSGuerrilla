@@ -23,7 +23,11 @@
         "cisM365": [
           "8.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365TEAMS-002",
@@ -42,7 +46,11 @@
         "cisM365": [
           "8.1.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365TEAMS-003",
@@ -64,7 +72,11 @@
         "cisM365": [
           "8.5.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365TEAMS-004",
@@ -87,7 +99,11 @@
         "cisM365": [
           "8.5.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365TEAMS-005",
@@ -110,7 +126,11 @@
         "cisM365": [
           "8.5.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365TEAMS-006",
@@ -133,7 +153,11 @@
         "cisM365": [
           "8.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365TEAMS-007",
@@ -158,7 +182,11 @@
           "8.6.1",
           "8.4.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365TEAMS-008",
@@ -174,7 +202,11 @@
         "nistSp80053": [
           "AC-21"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

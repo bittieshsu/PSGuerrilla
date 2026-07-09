@@ -31,7 +31,11 @@
           "GWS.DRIVEDOCS.1.2v1",
           "GWS.DRIVEDOCS.1.6v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-002",
@@ -55,7 +59,11 @@
         "cisBenchmark": [
           "2.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-003",
@@ -80,7 +88,11 @@
         "cisBenchmark": [
           "2.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-004",
@@ -108,7 +120,11 @@
           "GWS.DRIVEDOCS.2.1v1",
           "GWS.DRIVEDOCS.2.2v1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-005",
@@ -132,7 +148,11 @@
         "cisBenchmark": [
           "2.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-006",
@@ -157,7 +177,11 @@
         "cisBenchmark": [
           "2.6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-007",
@@ -181,7 +205,11 @@
         "cisBenchmark": [
           "2.7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-008",
@@ -206,7 +234,11 @@
         "cisBenchmark": [
           "2.8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-009",
@@ -231,7 +263,11 @@
         "cisBenchmark": [
           "2.9"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-010",
@@ -256,7 +292,11 @@
         "cisBenchmark": [
           "2.10"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-011",
@@ -280,7 +320,11 @@
         "cisBenchmark": [
           "2.11"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-012",
@@ -304,7 +348,11 @@
         "cisBenchmark": [
           "2.12"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-013",
@@ -329,7 +377,11 @@
         "cisBenchmark": [
           "2.13"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-014",
@@ -350,7 +402,11 @@
           "AC-3",
           "SC-7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-015",
@@ -370,7 +426,11 @@
           "AC-22",
           "SI-10"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "DRIVE-016",
@@ -390,7 +450,11 @@
           "AC-3",
           "CM-6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

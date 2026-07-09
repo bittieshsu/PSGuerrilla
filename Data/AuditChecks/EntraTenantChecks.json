@@ -17,7 +17,11 @@
         "nistSp80053": [
           "CM-2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-002",
@@ -40,7 +44,11 @@
         "cisM365": [
           "1.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-003",
@@ -65,7 +73,11 @@
         "cisM365": [
           "1.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-004",
@@ -87,7 +99,11 @@
         "cisM365": [
           "1.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-005",
@@ -109,7 +125,11 @@
         "cisM365": [
           "1.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-006",
@@ -129,7 +149,11 @@
         "cisM365": [
           "1.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-007",
@@ -152,7 +176,11 @@
         "cisM365": [
           "1.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-008",
@@ -168,7 +196,11 @@
         "nistSp80053": [
           "CM-8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-009",
@@ -184,7 +216,11 @@
         "nistSp80053": [
           "AC-2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-010",
@@ -200,7 +236,11 @@
         "nistSp80053": [
           "CM-8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-011",
@@ -227,7 +267,11 @@
         "cisM365": [
           "3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-012",
@@ -249,7 +293,11 @@
         "cisM365": [
           "3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-013",
@@ -265,7 +313,11 @@
         "nistSp80053": [
           "AU-5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-014",
@@ -289,7 +341,11 @@
         "cisM365": [
           "1.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-015",
@@ -313,7 +369,11 @@
         "cisM365": [
           "1.1.3"
         ]
-      }
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDTNT-016",
@@ -336,7 +396,11 @@
         "cisM365": [
           "1.1.3"
         ]
-      }
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

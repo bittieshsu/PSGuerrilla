@@ -25,7 +25,11 @@
         "cisM365": [
           "7.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365SPO-002",
@@ -47,7 +51,11 @@
         "cisM365": [
           "7.2.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365SPO-003",
@@ -71,7 +79,11 @@
         "cisM365": [
           "7.2.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365SPO-004",
@@ -90,7 +102,11 @@
         "cisM365": [
           "7.2.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365SPO-005",
@@ -110,7 +126,11 @@
           "AC-4",
           "SC-7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

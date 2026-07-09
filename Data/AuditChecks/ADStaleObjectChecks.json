@@ -23,7 +23,11 @@
         "cisAd": [
           "9.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-002",
@@ -45,7 +49,11 @@
         "cisAd": [
           "9.1.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-003",
@@ -65,7 +73,11 @@
         "cisAd": [
           "9.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-004",
@@ -87,7 +99,11 @@
         "cisAd": [
           "9.2.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-005",
@@ -113,7 +129,11 @@
         "cisAd": [
           "9.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-006",
@@ -138,7 +158,11 @@
         "cisAd": [
           "9.3.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-007",
@@ -157,7 +181,11 @@
         "cisAd": [
           "9.4.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-008",
@@ -179,7 +207,11 @@
         "cisAd": [
           "9.4.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-009",
@@ -198,7 +230,11 @@
         "cisAd": [
           "9.5.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-010",
@@ -220,7 +256,11 @@
         "cisAd": [
           "9.5.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSTALE-011",
@@ -239,7 +279,11 @@
         "cisAd": [
           "9.5.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

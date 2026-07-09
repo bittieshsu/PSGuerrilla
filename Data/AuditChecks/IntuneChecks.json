@@ -17,7 +17,11 @@
         "nistSp80053": [
           "CM-8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-002",
@@ -33,7 +37,11 @@
         "nistSp80053": [
           "CM-6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-003",
@@ -49,7 +57,11 @@
         "nistSp80053": [
           "CM-6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-004",
@@ -65,7 +77,11 @@
         "nistSp80053": [
           "CM-8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-005",
@@ -81,7 +97,11 @@
         "nistSp80053": [
           "CM-6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-006",
@@ -97,7 +117,11 @@
         "nistSp80053": [
           "SI-2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-007",
@@ -116,7 +140,11 @@
         "cisM365": [
           "1.1.17"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-008",
@@ -135,7 +163,11 @@
         "mitreAttack": [
           "T1562.001"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-009",
@@ -154,7 +186,11 @@
         "mitreAttack": [
           "T1059"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-010",
@@ -173,7 +209,11 @@
         "mitreAttack": [
           "T1562.001"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-011",
@@ -189,7 +229,11 @@
         "nistSp80053": [
           "AC-19"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-012",
@@ -205,7 +249,11 @@
         "nistSp80053": [
           "AC-19"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-013",
@@ -221,7 +269,11 @@
         "nistSp80053": [
           "IA-3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-014",
@@ -237,7 +289,11 @@
         "nistSp80053": [
           "CM-2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-015",
@@ -253,7 +309,11 @@
         "nistSp80053": [
           "SC-28"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-016",
@@ -269,7 +329,11 @@
         "nistSp80053": [
           "SC-7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-017",
@@ -286,7 +350,11 @@
           "CM-6",
           "SI-2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-018",
@@ -305,7 +373,11 @@
         "mitreAttack": [
           "T1059.001"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-019",
@@ -321,7 +393,11 @@
         "nistSp80053": [
           "CM-11"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-020",
@@ -337,7 +413,11 @@
         "nistSp80053": [
           "CM-8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-021",
@@ -354,7 +434,11 @@
           "AU-6",
           "MP-6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-022",
@@ -370,7 +454,11 @@
         "nistSp80053": [
           "AC-19"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "INTUNE-023",
@@ -395,7 +483,11 @@
         "cisBenchmark": [
           "16.7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

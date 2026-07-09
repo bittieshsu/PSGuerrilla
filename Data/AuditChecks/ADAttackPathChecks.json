@@ -26,7 +26,11 @@
           "T1484.001"
         ],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPATH-002",
@@ -51,7 +55,11 @@
           "T1484.001"
         ],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

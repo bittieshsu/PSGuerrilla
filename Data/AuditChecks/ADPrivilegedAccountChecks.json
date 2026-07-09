@@ -32,7 +32,11 @@
         "cisAd": [
           "4.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-002",
@@ -63,7 +67,11 @@
         "cisAd": [
           "4.1.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-003",
@@ -93,7 +101,11 @@
         "cisAd": [
           "4.1.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-004",
@@ -123,7 +135,11 @@
         "cisAd": [
           "4.1.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-005",
@@ -150,7 +166,11 @@
         "cisAd": [
           "4.1.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-006",
@@ -177,7 +197,11 @@
         "cisAd": [
           "4.1.6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-007",
@@ -204,7 +228,11 @@
         "cisAd": [
           "4.1.7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-008",
@@ -231,7 +259,11 @@
         "cisAd": [
           "4.1.8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-009",
@@ -258,7 +290,11 @@
         "cisAd": [
           "4.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-010",
@@ -287,7 +323,11 @@
         "cisAd": [
           "4.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-011",
@@ -313,7 +353,11 @@
         "cisAd": [
           "4.3.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-012",
@@ -339,7 +383,11 @@
         "cisAd": [
           "4.3.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-013",
@@ -369,7 +417,11 @@
         "cisAd": [
           "4.3.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-014",
@@ -396,7 +448,11 @@
         "cisAd": [
           "4.3.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-015",
@@ -425,7 +481,11 @@
         "cisAd": [
           "4.4.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-016",
@@ -452,7 +512,11 @@
         "cisAd": [
           "4.5.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-017",
@@ -477,7 +541,11 @@
         "cisAd": [
           "4.5.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-018",
@@ -500,7 +568,11 @@
         "cisAd": [
           "4.6.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-019",
@@ -527,7 +599,11 @@
         "cisAd": [
           "4.6.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-020",
@@ -555,7 +631,11 @@
         "cisAd": [
           "4.7.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-021",
@@ -578,7 +658,11 @@
         "cisAd": [
           "4.7.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-022",
@@ -608,7 +692,11 @@
         "cisAd": [
           "4.8.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-023",
@@ -635,7 +723,11 @@
         "cisAd": [
           "4.8.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-024",
@@ -662,7 +754,11 @@
         "cisAd": [
           "4.9.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-025",
@@ -685,7 +781,11 @@
         "cisAd": [
           "4.6.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-026",
@@ -715,7 +815,11 @@
         "cisAd": [
           "4.10.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-027",
@@ -746,7 +850,11 @@
         "cisAd": [
           "4.10.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-028",
@@ -775,7 +883,11 @@
         "cisAd": [
           "4.11.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-029",
@@ -806,7 +918,11 @@
         "cisAd": [
           "4.12.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADPRIV-030",
@@ -834,7 +950,11 @@
         "cisAd": [
           "4.12.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

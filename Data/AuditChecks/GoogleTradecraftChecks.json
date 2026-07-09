@@ -29,7 +29,11 @@
         "cisBenchmark": [
           "1.x"
         ]
-      }
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GTRADE-002",
@@ -55,7 +59,11 @@
         "cisBenchmark": [
           "1.x"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GTRADE-003",
@@ -82,7 +90,11 @@
         "cisBenchmark": [
           "1.x"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GTRADE-004",
@@ -108,7 +120,11 @@
         "cisBenchmark": [
           "1.x"
         ]
-      }
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GTRADE-005",
@@ -134,7 +150,11 @@
         "cisBenchmark": [
           "1.x"
         ]
-      }
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GTRADE-006",
@@ -161,7 +181,11 @@
         "cisBenchmark": [
           "1.x"
         ]
-      }
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

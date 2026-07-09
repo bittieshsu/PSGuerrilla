@@ -26,7 +26,11 @@
         "cisBenchmark": [
           "3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "OAUTH-002",
@@ -51,7 +55,11 @@
         "cisBenchmark": [
           "3.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "OAUTH-003",
@@ -77,7 +85,11 @@
         "cisBenchmark": [
           "3.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "OAUTH-004",
@@ -101,7 +113,11 @@
         "cisBenchmark": [
           "3.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "OAUTH-005",
@@ -126,7 +142,11 @@
         "cisBenchmark": [
           "3.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "OAUTH-006",
@@ -150,7 +170,11 @@
         "cisBenchmark": [
           "3.6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "OAUTH-007",
@@ -175,7 +199,11 @@
         "cisBenchmark": [
           "3.7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "OAUTH-008",
@@ -200,7 +228,11 @@
         "cisBenchmark": [
           "3.8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "OAUTH-009",
@@ -225,7 +257,11 @@
         "cisBenchmark": [
           "3.9"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "OAUTH-010",
@@ -251,7 +287,11 @@
         "cisBenchmark": [
           "3.10"
         ]
-      }
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

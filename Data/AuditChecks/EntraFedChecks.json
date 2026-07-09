@@ -17,7 +17,11 @@
         "nistSp80053": [
           "CM-8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-002",
@@ -36,7 +40,11 @@
         "mitreAttack": [
           "T1556.006"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-003",
@@ -55,7 +63,11 @@
         "mitreAttack": [
           "T1556.006"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-004",
@@ -74,7 +86,11 @@
         "mitreAttack": [
           "T1556.006"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-005",
@@ -93,7 +109,11 @@
         "mitreAttack": [
           "T1078.004"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-006",
@@ -109,7 +129,11 @@
         "nistSp80053": [
           "AC-2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-007",
@@ -125,7 +149,11 @@
         "nistSp80053": [
           "IA-5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-008",
@@ -144,7 +172,11 @@
         "mitreAttack": [
           "T1556"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-009",
@@ -161,7 +193,11 @@
           "CM-6",
           "IA-8(4)"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-010",
@@ -177,7 +213,11 @@
         "nistSp80053": [
           "AC-7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-011",
@@ -193,7 +233,11 @@
         "nistSp80053": [
           "IA-3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-012",
@@ -209,7 +253,11 @@
         "nistSp80053": [
           "AC-2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDFED-013",
@@ -233,7 +281,11 @@
         "anssi": [
           "R36"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

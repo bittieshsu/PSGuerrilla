@@ -24,7 +24,11 @@
         "cisAd": [
           "6.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADNET-002",
@@ -47,7 +51,11 @@
         "cisAd": [
           "6.1.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADNET-003",
@@ -70,7 +78,11 @@
         "cisAd": [
           "6.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADNET-004",
@@ -93,7 +105,11 @@
         "cisAd": [
           "6.2.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADNET-005",
@@ -115,7 +131,11 @@
         "cisAd": [
           "6.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADNET-006",
@@ -137,7 +157,11 @@
         "cisAd": [
           "6.3.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADNET-007",
@@ -161,7 +185,11 @@
         "cisAd": [
           "6.3.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADNET-008",
@@ -184,7 +212,11 @@
         "cisAd": [
           "6.3.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADNET-009",
@@ -207,7 +239,11 @@
         "cisAd": [
           "6.4.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADNET-010",
@@ -230,7 +266,11 @@
         "cisAd": [
           "6.4.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

@@ -26,7 +26,11 @@
           "T1530"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-CLASS-001",
@@ -51,7 +55,11 @@
           "T1530"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-CLASS-002",
@@ -76,7 +84,11 @@
           "T1567"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-CLASS-003",
@@ -102,7 +114,11 @@
           "T1530"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-CLASS-004",
@@ -127,7 +143,11 @@
           "T1195.002"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-CLASS-005",
@@ -152,7 +172,11 @@
           "T1531"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-CLASS-006",
@@ -177,7 +201,11 @@
           "T1136"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-GEMINI-001",
@@ -202,7 +230,11 @@
           "T1530"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-GEMINI-002",
@@ -227,7 +259,11 @@
           "T1530"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-GEMINI-003",
@@ -252,7 +288,11 @@
           "T1070"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-GEMINI-004",
@@ -276,7 +316,11 @@
           "T1070"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "GWS-GEMINI-005",
@@ -301,7 +345,11 @@
           "T1567"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

@@ -14,8 +14,16 @@
       "recommendedValue": "No published agent uses 'Any' or 'Any multitenant' access control; access is restricted to specific authenticated users or security groups",
       "remediationSteps": "In Copilot Studio, open each flagged agent's Security > Authentication and access settings and change the access control away from 'Any' / 'Any multitenant' to authenticated access restricted to your organization (and ideally to specific security groups). Re-publish the agent after tightening access.",
       "compliance": {
-        "nistSp80053": ["AC-3", "AC-6", "SC-7"]
-      }
+        "nistSp80053": [
+          "AC-3",
+          "AC-6",
+          "SC-7"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AIAGENT-002",
@@ -28,8 +36,16 @@
       "recommendedValue": "Every published agent requires authentication (user-authentication type is not 'None' and authentication is always enforced, not 'As Needed')",
       "remediationSteps": "In Copilot Studio, set each agent's authentication to require sign-in (Microsoft Entra ID authentication) rather than 'No authentication', and ensure authentication is always enforced rather than triggered only as needed. Re-publish after the change.",
       "compliance": {
-        "nistSp80053": ["IA-2", "AC-3", "AC-14"]
-      }
+        "nistSp80053": [
+          "IA-2",
+          "AC-3",
+          "AC-14"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AIAGENT-003",
@@ -42,8 +58,15 @@
       "recommendedValue": "Published agents are actively maintained; stale published agents are reviewed or retired",
       "remediationSteps": "Review each dormant published agent. Retire agents that are no longer needed (unpublish and delete), and for agents still in use, confirm their access controls, authentication, and connected tools are still appropriate, then update them to reset the maintenance clock.",
       "compliance": {
-        "nistSp80053": ["CM-8", "SA-9"]
-      }
+        "nistSp80053": [
+          "CM-8",
+          "SA-9"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "AIAGENT-004",
@@ -56,8 +79,16 @@
       "recommendedValue": "Authenticated agents that front sensitive data are scoped to specific authorized security groups rather than all authenticated users",
       "remediationSteps": "For agents that front sensitive data, configure authorized security groups in the agent's access settings so only members of those groups can interact with the agent. Leave tenant-wide access only for agents deliberately intended for all staff.",
       "compliance": {
-        "nistSp80053": ["AC-2", "AC-3", "AC-6"]
-      }
+        "nistSp80053": [
+          "AC-2",
+          "AC-3",
+          "AC-6"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

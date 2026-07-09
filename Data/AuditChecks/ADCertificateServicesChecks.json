@@ -26,7 +26,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-002",
@@ -54,7 +58,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-003",
@@ -82,7 +90,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-004",
@@ -109,7 +121,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-005",
@@ -136,7 +152,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-006",
@@ -164,7 +184,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-007",
@@ -191,7 +215,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-008",
@@ -219,7 +247,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-009",
@@ -247,7 +279,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-010",
@@ -274,7 +310,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-011",
@@ -303,7 +343,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-012",
@@ -331,7 +375,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-013",
@@ -359,7 +407,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-014",
@@ -387,7 +439,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-015",
@@ -411,7 +467,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-016",
@@ -437,7 +497,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-017",
@@ -461,7 +525,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-018",
@@ -487,7 +555,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADCS-019",
@@ -512,7 +584,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

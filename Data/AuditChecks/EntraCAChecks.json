@@ -22,7 +22,11 @@
           "5.2.1"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-002",
@@ -48,7 +52,11 @@
           "5.2.2"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-003",
@@ -69,7 +77,11 @@
           "5.2.1"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-004",
@@ -92,7 +104,11 @@
         "cisBenchmark": [],
         "cisM365": [],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-005",
@@ -116,7 +132,11 @@
         "cisBenchmark": [],
         "cisM365": [],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-006",
@@ -141,7 +161,11 @@
           "1.1.4"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-007",
@@ -172,7 +196,11 @@
           "5.2.2.1"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-008",
@@ -202,7 +230,11 @@
           "5.2.2.3"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-009",
@@ -229,7 +261,11 @@
           "5.2.2.2"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-010",
@@ -251,7 +287,11 @@
         "cisBenchmark": [],
         "cisM365": [],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-011",
@@ -272,7 +312,11 @@
         "cisBenchmark": [],
         "cisM365": [],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-012",
@@ -301,7 +345,11 @@
           "5.2.2.7"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-013",
@@ -329,7 +377,11 @@
           "5.2.2.8"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-014",
@@ -353,7 +405,11 @@
           "5.2.2.6"
         ],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-015",
@@ -376,7 +432,11 @@
         "cisBenchmark": [],
         "cisM365": [],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-016",
@@ -398,7 +458,11 @@
         "cisBenchmark": [],
         "cisM365": [],
         "cisAzure": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-017",
@@ -424,7 +488,11 @@
           "T1078.004"
         ],
         "cisM365": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDCA-018",
@@ -450,7 +518,11 @@
           "T1556.006"
         ],
         "cisM365": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

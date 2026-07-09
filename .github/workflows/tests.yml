@@ -49,12 +49,13 @@ jobs:
           path: Tests/test-summary.json
           if-no-files-found: error
 
-      - name: Zero Trust schema + collector-contract tests
+      - name: Schema + collector-contract tests
         shell: pwsh
         run: |
           Install-Module Pester -MinimumVersion 5.5.0 -Force -Scope CurrentUser -SkipPublisherCheck -ErrorAction SilentlyContinue
           $r = Invoke-Pester -Path @(
             'Tests/Unit/ZeroTrustSchema.Tests.ps1',
+            'Tests/Unit/ProvenanceSchema.Tests.ps1',
             'Tests/Unit/Private/Entra/CollectorQueryContract.Tests.ps1'
           ) -Output Detailed -PassThru
           # Every check must declare a ZT pillar + weight (schema), and collectors must

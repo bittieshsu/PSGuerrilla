@@ -29,7 +29,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-002",
@@ -57,7 +61,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-003",
@@ -82,7 +90,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-004",
@@ -110,7 +122,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-005",
@@ -136,7 +152,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-006",
@@ -164,7 +184,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-007",
@@ -192,7 +216,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-008",
@@ -218,7 +246,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-009",
@@ -242,7 +274,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-010",
@@ -269,7 +305,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADSCRIPT-011",
@@ -296,7 +336,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

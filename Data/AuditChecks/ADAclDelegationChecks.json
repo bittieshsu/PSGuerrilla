@@ -29,7 +29,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-002",
@@ -57,7 +61,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-003",
@@ -85,7 +93,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-004",
@@ -114,7 +126,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-005",
@@ -142,7 +158,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-006",
@@ -169,7 +189,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-007",
@@ -197,7 +221,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-008",
@@ -222,7 +250,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-009",
@@ -249,7 +281,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-010",
@@ -277,7 +313,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-011",
@@ -303,7 +343,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-012",
@@ -329,7 +373,11 @@
         "anssi": [],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-013",
@@ -355,7 +403,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-014",
@@ -382,7 +434,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-015",
@@ -411,7 +467,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADACL-016",
@@ -440,7 +500,11 @@
         ],
         "nsaAsd": [],
         "cisAd": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

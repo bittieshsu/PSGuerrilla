@@ -25,7 +25,11 @@
         "cisM365": [
           "5.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-002",
@@ -52,7 +56,11 @@
         "cisM365": [
           "5.2.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-003",
@@ -68,7 +76,11 @@
         "nistSp80053": [
           "IA-2(1)"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-004",
@@ -94,7 +106,11 @@
         "cisM365": [
           "5.2.2.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-005",
@@ -118,7 +134,11 @@
         "cisM365": [
           "5.2.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-006",
@@ -137,7 +157,11 @@
         "nistSp80053": [
           "IA-2(6)"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-007",
@@ -157,7 +181,11 @@
         "mitreAttack": [
           "T1556"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-008",
@@ -176,7 +204,11 @@
         "nistSp80053": [
           "IA-2(6)"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-009",
@@ -196,7 +228,11 @@
         "cisM365": [
           "5.2.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-010",
@@ -215,7 +251,11 @@
         "mitreAttack": [
           "T1078"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-011",
@@ -235,7 +275,11 @@
         "cisM365": [
           "5.2.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-012",
@@ -254,7 +298,11 @@
         "cisM365": [
           "5.2.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-013",
@@ -278,7 +326,11 @@
         "cisM365": [
           "5.2.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-014",
@@ -297,7 +349,11 @@
         "cisM365": [
           "5.2.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-015",
@@ -324,7 +380,11 @@
         "cisM365": [
           "5.2.2.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-016",
@@ -344,7 +404,11 @@
         "mitreAttack": [
           "T1078"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-017",
@@ -363,7 +427,11 @@
         "cisM365": [
           "5.2.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "EIDAUTH-018",
@@ -394,7 +462,11 @@
           "AM06",
           "AM09"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

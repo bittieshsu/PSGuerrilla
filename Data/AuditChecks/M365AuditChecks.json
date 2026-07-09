@@ -27,7 +27,11 @@
         "cisM365": [
           "3.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365AUDIT-002",
@@ -49,7 +53,11 @@
         "cisM365": [
           "3.1.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365AUDIT-003",
@@ -65,7 +73,11 @@
         "nistSp80053": [
           "AU-6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

@@ -24,7 +24,11 @@
         "cisM365": [
           "9.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365PP-002",
@@ -47,7 +51,11 @@
         "cisM365": [
           "9.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "M365PP-003",
@@ -70,7 +78,11 @@
         "cisM365": [
           "9.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

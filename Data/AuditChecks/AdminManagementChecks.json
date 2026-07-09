@@ -26,7 +26,11 @@
         "cisBenchmark": [
           "4.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-002",
@@ -51,7 +55,11 @@
         "cisBenchmark": [
           "4.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-003",
@@ -75,7 +83,11 @@
         "cisBenchmark": [
           "4.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-004",
@@ -100,7 +112,11 @@
         "cisBenchmark": [
           "4.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-005",
@@ -124,7 +140,11 @@
         "cisBenchmark": [
           "4.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-006",
@@ -147,7 +167,11 @@
         "cisBenchmark": [
           "4.6"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-007",
@@ -171,7 +195,11 @@
         "cisBenchmark": [
           "4.7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-008",
@@ -196,7 +224,11 @@
         "cisBenchmark": [
           "4.8"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-009",
@@ -220,7 +252,11 @@
         "cisBenchmark": [
           "4.9"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-010",
@@ -245,7 +281,11 @@
         "cisBenchmark": [
           "4.10"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-011",
@@ -269,7 +309,11 @@
         "cisBenchmark": [
           "4.11"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-012",
@@ -294,7 +338,11 @@
         "cisBenchmark": [
           "4.12"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-013",
@@ -318,7 +366,11 @@
         "cisBenchmark": [
           "4.13"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-014",
@@ -344,7 +396,11 @@
           "T1199"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-015",
@@ -369,7 +425,11 @@
           "T1199"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-016",
@@ -394,7 +454,11 @@
           "T1530"
         ],
         "cisBenchmark": []
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-017",
@@ -415,7 +479,11 @@
           "AC-6",
           "CM-7"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADMIN-018",
@@ -435,7 +503,11 @@
           "SC-28",
           "AC-3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

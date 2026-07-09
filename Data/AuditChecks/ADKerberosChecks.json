@@ -26,7 +26,11 @@
         "cisAd": [
           "7.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-002",
@@ -53,7 +57,11 @@
         "cisAd": [
           "7.1.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-003",
@@ -78,7 +86,11 @@
         "cisAd": [
           "7.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-004",
@@ -103,7 +115,11 @@
         "cisAd": [
           "7.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-005",
@@ -128,7 +144,11 @@
         "cisAd": [
           "7.3.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-006",
@@ -150,7 +170,11 @@
         "cisAd": [
           "7.3.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-007",
@@ -172,7 +196,11 @@
         "cisAd": [
           "7.3.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-008",
@@ -194,7 +222,11 @@
         "cisAd": [
           "7.3.5"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-009",
@@ -220,7 +252,11 @@
         "cisAd": [
           "7.4.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-010",
@@ -239,7 +275,11 @@
         "cisAd": [
           "7.5.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADKERB-011",
@@ -258,7 +298,11 @@
         "cisAd": [
           "7.1.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

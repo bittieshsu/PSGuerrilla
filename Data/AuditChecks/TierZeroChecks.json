@@ -25,7 +25,11 @@
         "cisAd": [
           "8.1.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTIER-002",
@@ -47,7 +51,11 @@
         "cisAd": [
           "8.2.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTIER-003",
@@ -69,7 +77,11 @@
         "cisAd": [
           "8.2.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTIER-004",
@@ -92,7 +104,11 @@
         "cisAd": [
           "8.2.3"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTIER-005",
@@ -114,7 +130,11 @@
         "cisAd": [
           "8.2.4"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTIER-006",
@@ -137,7 +157,11 @@
         "cisAd": [
           "8.3.1"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     },
     {
       "id": "ADTIER-007",
@@ -160,7 +184,11 @@
         "cisAd": [
           "8.3.2"
         ]
-      }
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }
