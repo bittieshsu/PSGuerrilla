@@ -871,7 +871,12 @@
       "provenance": "baseline",
       "source_url": null,
       "source_read_date": null,
-      "official_id": null
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-assessed"
+      ]
     },
     {
       "id": "EMAIL-031",
@@ -895,7 +900,12 @@
       "provenance": "baseline",
       "source_url": null,
       "source_read_date": null,
-      "official_id": null
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-assessed"
+      ]
     }
   ]
 }

@@ -82,6 +82,30 @@ if ($failed -gt 0) {
         ForEach-Object { Write-Host ("  {0} [{1}] expected {2} got {3}" -f $_.CheckId, $_.Scenario, $_.ExpectedStatus, $_.ActualStatus) -ForegroundColor Red }
 }
 
+# --- Branch-coverage assertion (opt-in per check via verdictPaths) -------------
+# A scalar check has three verdict branches; a multi-field check has one per field
+# it inspects, and three fixtures cover a third of it while wearing the same badge.
+# A check that DECLARES its verdict paths (authored by reading the function, not the
+# fixtures) must ship a fixture exercising each named path, or the run fails. This is
+# how a multi-field check proves every branch instead of proving that some fixture
+# passed. Checks that do not declare paths are not gated here; the catalog badges
+# them by observed coverage so the claim on the page stays honest either way.
+$defByCheck = @{}
+foreach ($c in $cases) { if (-not $defByCheck.ContainsKey($c.CheckId)) { $defByCheck[$c.CheckId] = $c.Definition } }
+$branchGaps = @()
+foreach ($g in ($results | Group-Object CheckId)) {
+    $declared = $defByCheck[$g.Name].verdictPaths
+    if (-not $declared) { continue }
+    $observed = @($g.Group.Scenario)
+    foreach ($p in $declared) {
+        if ($observed -notcontains $p) { $branchGaps += "  $($g.Name): declared verdict path '$p' has no fixture" }
+    }
+}
+if ($branchGaps.Count -gt 0) {
+    Write-Host "`nBRANCH-COVERAGE FAILURES (declared verdict path with no fixture):" -ForegroundColor Red
+    $branchGaps | ForEach-Object { Write-Host $_ -ForegroundColor Red }
+}
+
 if ($EmitSummary) {
     # Universe of checks = the schema-tested definitions, counted here (not stored).
     $defIds = New-Object System.Collections.Generic.HashSet[string]
@@ -98,11 +122,22 @@ if ($EmitSummary) {
 
     $perCheck = [ordered]@{}
     foreach ($g in ($results | Group-Object CheckId | Sort-Object Name)) {
+        # Guard the @($null) trap: a check with no verdictPaths must yield an EMPTY
+        # array (count 0), not @($null) (count 1), or every check falsely reads 'declared'.
+        $rawPaths = $defByCheck[$g.Name].verdictPaths
+        $declared = if ($null -eq $rawPaths) { @() } else { @($rawPaths) }
         $perCheck[$g.Name] = [ordered]@{
             fixtureCount = $g.Count
             allPassed    = (@($g.Group | Where-Object { -not $_.Passed }).Count -eq 0)
             theater      = $g.Group[0].Theater
             severity     = "$($g.Group[0].Severity)"
+            # branchCoverage: 'declared' means the check enumerated its verdict paths and
+            # every one is fixture-proven (asserted above). 'observed' means we only know
+            # the verdicts the existing fixtures happen to exercise. The badge must not
+            # claim full branch coverage for 'observed'.
+            declaredPaths  = $declared
+            branchCoverage = ($declared.Count -gt 0 ? 'declared' : 'observed')
+            verdictsProven = @($g.Group.ExpectedStatus | Sort-Object -Unique)
             scenarios    = @($g.Group | Sort-Object Scenario | ForEach-Object {
                 [ordered]@{ scenario = $_.Scenario; expected = $_.ExpectedStatus; actual = $_.ActualStatus; passed = [bool]$_.Passed }
             })
@@ -152,4 +187,4 @@ if ($Publish) {
     & (Join-Path $root 'Local' 'Publish-GuerrillaTestResultsSqlite.ps1') @publishArgs
 }
 
-exit ($failed -gt 0 ? 1 : 0)
+exit (($failed -gt 0 -or $branchGaps.Count -gt 0) ? 1 : 0)
