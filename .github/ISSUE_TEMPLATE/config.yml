@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Write a check and its fixtures (rung 4)
+    url: https://github.com/jimrtyler/Guerrilla/blob/main/CONTRIBUTING.md
+    about: Ready to write the code? The contribution ladder shows how a check and its fixtures fit together.
+  - name: How verdicts are tested (the fixture framework)
+    url: https://guerrilla.army/docs/validation
+    about: What a golden fixture is, the three assertions, and a real fixture walked through line by line.

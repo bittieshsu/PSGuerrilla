@@ -1,0 +1,46 @@
+name: Propose a check
+description: Guerrilla should catch something it does not. Tell us what, and the real incident behind it.
+title: "[Proposed check] "
+labels: ["proposed-check"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The best proposals come with a story: the incident, the red-team finding, or the audit gap that
+        made you wish the tool had flagged it. You do not need to know how to build it. Proposals that
+        become checks are credited in the release notes.
+  - type: textarea
+    id: what
+    attributes:
+      label: What should Guerrilla check?
+      description: The misconfiguration or attack path, in plain language.
+    validations:
+      required: true
+  - type: textarea
+    id: incident
+    attributes:
+      label: Why does it matter? What is the story behind it?
+      description: The real-world incident, finding, or gap that motivated this. This is the most useful part.
+    validations:
+      required: true
+  - type: textarea
+    id: pass
+    attributes:
+      label: What does a healthy environment look like?
+      description: The configuration or state that should PASS.
+    validations:
+      required: true
+  - type: textarea
+    id: fail
+    attributes:
+      label: What does the bad state look like?
+      description: The configuration or state that should FAIL. This becomes the known-bad fixture.
+    validations:
+      required: true
+  - type: dropdown
+    id: theater
+    attributes:
+      label: Which theater?
+      options: ["Active Directory", "Entra / Azure / Microsoft 365 / Intune", "Google Workspace", "Not sure"]
+    validations:
+      required: false

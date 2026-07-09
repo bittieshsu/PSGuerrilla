@@ -1,0 +1,47 @@
+name: Contribute fixture data (unusual tenant shape)
+description: Your environment is shaped in a way Guerrilla probably has not tested. Share the shape and the expected answer.
+title: "[Fixture] "
+labels: ["fixture-data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Real tenants are stranger than any maintainer invents, and a tenant shape we have not modeled is
+        valuable as a fixture. You do not have to write the fixture file: describe the shape, paste the
+        relevant scrubbed configuration, and tell us the verdict you expect. Credited in the release notes.
+  - type: input
+    id: check
+    attributes:
+      label: Which check or area does this shape affect?
+      placeholder: EIDFED-004, or "hybrid federation with two sync servers"
+    validations:
+      required: true
+  - type: textarea
+    id: shape
+    attributes:
+      label: Describe the shape
+      description: What is unusual about this environment, and why it might trip up a check.
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant configuration (scrubbed)
+      description: Paste only the structure and values that drive the verdict. This will be rendered as code.
+      render: json
+    validations:
+      required: true
+  - type: dropdown
+    id: expected
+    attributes:
+      label: What verdict should Guerrilla give for this shape?
+      options: ["PASS", "FAIL", "WARN", "Not Assessed"]
+    validations:
+      required: true
+  - type: checkboxes
+    id: scrub
+    attributes:
+      label: Sensitive data
+      options:
+        - label: I have removed real names, tenant IDs, domains, and secrets. Only structure and verdict-driving values remain.
+          required: true

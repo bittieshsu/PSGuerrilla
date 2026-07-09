@@ -1,0 +1,47 @@
+name: Report a wrong verdict
+description: A Guerrilla check gave the wrong answer for your environment. Tell us the story; no stack trace needed.
+title: "[Wrong verdict] "
+labels: ["wrong-verdict"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for catching this. You do not need a repro script or logs. Just tell us what the
+        check said, what is actually true, and how you know. A maintainer will turn it into a fixture
+        that both fixes it and keeps it fixed. You are credited in the release notes.
+  - type: input
+    id: check
+    attributes:
+      label: Which check?
+      description: The check ID from the report if you have it (for example EIDCA-003), or just what it was about.
+      placeholder: EIDCA-003, or "the MFA-for-admins check"
+    validations:
+      required: true
+  - type: dropdown
+    id: said
+    attributes:
+      label: What did it say?
+      options: ["PASS", "FAIL", "WARN", "Not Assessed", "Something else / not sure"]
+    validations:
+      required: true
+  - type: textarea
+    id: reality
+    attributes:
+      label: What is actually true in your environment?
+      description: In plain language. What is the real configuration or state?
+    validations:
+      required: true
+  - type: textarea
+    id: howknow
+    attributes:
+      label: How do you know?
+      description: Where you saw the real state (an admin console screen, a policy export, a support case). Screenshots welcome, not required.
+    validations:
+      required: true
+  - type: dropdown
+    id: theater
+    attributes:
+      label: Which theater? (optional)
+      options: ["Active Directory", "Entra / Azure / Microsoft 365 / Intune", "Google Workspace", "Not sure"]
+    validations:
+      required: false
