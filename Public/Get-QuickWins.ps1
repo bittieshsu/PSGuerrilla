@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-QuickWins {
     <#
@@ -46,7 +46,7 @@ function Get-QuickWins {
 
     # Load findings from state if not provided
     if (-not $Findings -or $Findings.Count -eq 0) {
-        $dataDir = Get-PSGuerrillaDataRoot
+        $dataDir = Get-GuerrillaDataRoot
         $findingsFiles = @()
         if (Test-Path $dataDir) {
             $findingsFiles = @(Get-ChildItem -Path $dataDir -Filter '*.findings.json' -ErrorAction SilentlyContinue)

@@ -1,12 +1,12 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Guards the "absence of evidence != compliance" contract: a check whose source
 # data failed to collect must report Not Assessed (SKIP), never PASS.
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 
     $script:Def = @{ id = 'ADTRUST-001'; name = 'Trust Relationships'; severity = 'High' }
 }
@@ -81,13 +81,13 @@ Describe 'AD trust checks honour collection failure' {
 
 Describe 'Invoke-GraphApi fail-loud contract' {
     It 'THROWS on retry-exhausted failure by default (so the collector records it)' {
-        Mock Invoke-RestMethod -ModuleName PSGuerrilla { throw 'network down' }
+        Mock Invoke-RestMethod -ModuleName Guerrilla { throw 'network down' }
         { Invoke-GraphApi -AccessToken 'x' -Uri '/organization' -MaxRetries 1 } |
             Should -Throw
     }
 
     It 'returns $null on the same failure when -ReturnNullOnError is set (monitor path)' {
-        Mock Invoke-RestMethod -ModuleName PSGuerrilla { throw 'network down' }
+        Mock Invoke-RestMethod -ModuleName Guerrilla { throw 'network down' }
         $r = Invoke-GraphApi -AccessToken 'x' -Uri '/organization' -MaxRetries 1 -ReturnNullOnError -WarningAction SilentlyContinue
         $r | Should -BeNullOrEmpty
     }

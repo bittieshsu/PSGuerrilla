@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-GuerrillaGuiAsync {
     <#
@@ -9,7 +9,7 @@ function Invoke-GuerrillaGuiAsync {
     .DESCRIPTION
         Used to drive long-running cmdlets (Invoke-Reconnaissance, Invoke-Campaign,
         etc.) without freezing the GUI. The Action runs in its own runspace with the
-        PSGuerrilla module imported and any caller-supplied parameters available as
+        Guerrilla module imported and any caller-supplied parameters available as
         $args. OnLog (optional) receives Verbose / Information streams; OnComplete
         gets the final return value; OnError gets the terminating error if any.
 
@@ -53,7 +53,7 @@ function Invoke-GuerrillaGuiAsync {
 
     # NOTE: do NOT rely on InitialSessionState.ImportPSModule() with a full manifest
     # path — it expects module *names* and silently fails to load a module given a
-    # .psd1 path, leaving the runspace with none of PSGuerrilla's commands (the scan
+    # .psd1 path, leaving the runspace with none of Guerrilla's commands (the scan
     # cmdlet then fails with "term not recognized"). Import explicitly inside the
     # worker script instead, with -ErrorAction Stop so a genuine load failure is
     # surfaced through OnError rather than swallowed.

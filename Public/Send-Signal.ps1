@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Send-Signal {
     [CmdletBinding()]
@@ -25,10 +25,10 @@ function Send-Signal {
 
     process {
         $validTypes = @(
-            'PSGuerrilla.ScanResult'
-            'PSGuerrilla.SurveillanceResult'
-            'PSGuerrilla.WatchtowerResult'
-            'PSGuerrilla.WiretapResult'
+            'Guerrilla.ScanResult'
+            'Guerrilla.SurveillanceResult'
+            'Guerrilla.WatchtowerResult'
+            'Guerrilla.WiretapResult'
         )
         $isValid = $false
         if ($ScanResult) {
@@ -37,7 +37,7 @@ function Send-Signal {
             }
         }
         if (-not $isValid) {
-            Write-Warning 'Send-Signal requires a PSGuerrilla result object. Pipe from Invoke-Recon, Invoke-Surveillance, Invoke-Watchtower, or Invoke-Wiretap.'
+            Write-Warning 'Send-Signal requires a Guerrilla result object. Pipe from Invoke-Recon, Invoke-Surveillance, Invoke-Watchtower, or Invoke-Wiretap.'
             return
         }
 
@@ -191,7 +191,7 @@ function Send-Signal {
         if ($threats.Count -eq 0) {
             Write-Verbose "No threats at $minLevel or above to alert on."
             return [PSCustomObject]@{
-                PSTypeName = 'PSGuerrilla.AlertResult'
+                PSTypeName = 'Guerrilla.AlertResult'
                 Sent       = $false
                 Reason     = "No threats at $minLevel or above"
                 Results    = @()
@@ -215,7 +215,7 @@ function Send-Signal {
             if ($unsuppressed.Count -eq 0) {
                 Write-Verbose "All $($threats.Count) threat(s) suppressed by deduplication."
                 return [PSCustomObject]@{
-                    PSTypeName = 'PSGuerrilla.AlertResult'
+                    PSTypeName = 'Guerrilla.AlertResult'
                     Sent       = $false
                     Reason     = "All threats suppressed (within ${suppressionHours}h window)"
                     Results    = @()
@@ -231,7 +231,7 @@ function Send-Signal {
 
         $critCount = @($threats | Where-Object ThreatLevel -eq 'CRITICAL').Count
         $highCount = @($threats | Where-Object ThreatLevel -eq 'HIGH').Count
-        $subject = "[PSGuerrilla] $($threats.Count) threat(s) detected"
+        $subject = "[Guerrilla] $($threats.Count) threat(s) detected"
         if ($critCount -gt 0) { $subject += " - $critCount CRITICAL" }
         if ($highCount -gt 0) { $subject += " - $highCount HIGH" }
 
@@ -246,7 +246,7 @@ function Send-Signal {
             Write-GuerrillaText '--- SMS Content ---' -Color Parchment
             Write-Host $smsContent
             return [PSCustomObject]@{
-                PSTypeName = 'PSGuerrilla.AlertResult'
+                PSTypeName = 'Guerrilla.AlertResult'
                 Sent       = $false
                 Reason     = 'DryRun'
                 Results    = @()
@@ -273,7 +273,7 @@ function Send-Signal {
         if ($enabledProviders.Count -eq 0) {
             Write-Warning 'No alert providers are enabled. Configure providers with Set-Safehouse.'
             return [PSCustomObject]@{
-                PSTypeName = 'PSGuerrilla.AlertResult'
+                PSTypeName = 'Guerrilla.AlertResult'
                 Sent       = $false
                 Reason     = 'No providers enabled'
                 Results    = @()
@@ -307,7 +307,7 @@ function Send-Signal {
                         -Subject $subject `
                         -HtmlBody $htmlContent `
                         -TextBody $textContent `
-                        -FromName ($sg.fromName ?? 'PSGuerrilla Signals')
+                        -FromName ($sg.fromName ?? 'Guerrilla Signals')
                     $allResults.Add($result)
                     Write-Verbose "SendGrid: $($result.Message)"
                 } else {
@@ -517,7 +517,7 @@ function Send-Signal {
                 $result = Send-SignalEventLog `
                     -Threats $provThreats `
                     -Subject $subject `
-                    -Source ($el.source ?? 'PSGuerrilla') `
+                    -Source ($el.source ?? 'Guerrilla') `
                     -LogName ($el.logName ?? 'Application')
                 $allResults.Add($result)
                 Write-Verbose "EventLog: $($result.Message)"
@@ -548,7 +548,7 @@ function Send-Signal {
         }
 
         return [PSCustomObject]@{
-            PSTypeName = 'PSGuerrilla.AlertResult'
+            PSTypeName = 'Guerrilla.AlertResult'
             Sent       = $anySuccess
             Reason     = if ($anySuccess) { 'Alerts dispatched' } else { 'All providers failed' }
             Results    = @($allResults)

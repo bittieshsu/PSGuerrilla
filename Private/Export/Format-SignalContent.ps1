@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Format-SignalContent {
     [CmdletBinding()]
@@ -36,9 +36,9 @@ function Format-SignalContent {
                 $topInd = if ($t.Indicators.Count -gt 0) { $t.Indicators[0] } else { 'Suspicious activity' }
                 # Truncate indicator for SMS
                 if ($topInd.Length -gt 100) { $topInd = $topInd.Substring(0, 97) + '...' }
-                return "PSGuerrilla SIGNAL: NEW COMPROMISE - $($t.Email) (Score:$($t.ThreatScore.ToString('N0')), $($t.ThreatLevel)). $topInd. Details emailed."
+                return "Guerrilla SIGNAL: NEW COMPROMISE - $($t.Email) (Score:$($t.ThreatScore.ToString('N0')), $($t.ThreatLevel)). $topInd. Details emailed."
             } else {
-                $parts = @("PSGuerrilla SIGNAL: $($Threats.Count) new threats detected.")
+                $parts = @("Guerrilla SIGNAL: $($Threats.Count) new threats detected.")
                 if ($critCount -gt 0) { $parts += "$critCount CRITICAL" }
                 if ($highCount -gt 0) { $parts += "$highCount HIGH" }
                 if ($medCount -gt 0)  { $parts += "$medCount MEDIUM" }
@@ -51,7 +51,7 @@ function Format-SignalContent {
 
         'Text' {
             $lines = @()
-            $lines += 'PSGuerrilla Field Report Alert'
+            $lines += 'Guerrilla Field Report Alert'
             $lines += '=' * 50
             $lines += "Scan Time: $scanTime UTC"
             $lines += "Users Scanned: $usersScanned"
@@ -78,7 +78,7 @@ function Format-SignalContent {
 
             [void]$sb.Append(@"
 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif; max-width: 700px; margin: 0 auto; background: #0d1117; color: #e6edf3; padding: 24px; border-radius: 8px;">
-<h2 style="margin: 0 0 8px; color: #e6edf3;">PSGuerrilla Field Report Alert</h2>
+<h2 style="margin: 0 0 8px; color: #e6edf3;">Guerrilla Field Report Alert</h2>
 <p style="color: #8b949e; margin: 0 0 16px;">Scan: $scanTime UTC | $usersScanned users scanned | $eventsAnalyzed events analyzed</p>
 <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
 <tr>

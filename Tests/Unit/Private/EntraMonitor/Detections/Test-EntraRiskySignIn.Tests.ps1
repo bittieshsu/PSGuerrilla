@@ -1,5 +1,5 @@
 # ┌───────────────────────────────────────────────────────────────────────────┐
-# │  PSGuerrilla — Tactical Security Assessment Framework                    │
+# │  Guerrilla — Tactical Security Assessment Framework                    │
 # │  Jim Tyler, Microsoft MVP                                                │
 # └───────────────────────────────────────────────────────────────────────────┘
 #

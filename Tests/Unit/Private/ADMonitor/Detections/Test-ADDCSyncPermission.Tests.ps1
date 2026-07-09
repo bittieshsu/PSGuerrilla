@@ -1,6 +1,6 @@
 <#
 *******************************************************************************
-*  PSGuerrilla — Jim Tyler, Microsoft MVP                            *
+*  Guerrilla — Jim Tyler, Microsoft MVP                            *
 *  Copyright (c) 2026 Jim Tyler. All rights reserved.                        *
 *  License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/                    *
 *******************************************************************************

@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────────────────────────────────────
-# PSGuerrilla — Security Audit & Continuous Monitoring for Enterprise Environments
+# Guerrilla — Security Audit & Continuous Monitoring for Enterprise Environments
 # ─────────────────────────────────────────────────────────────────────────────
 # Author:     Jim Tyler, Microsoft MVP
 # Book:       "PowerShell for Systems Engineers"

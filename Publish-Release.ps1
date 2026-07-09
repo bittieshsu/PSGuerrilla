@@ -1,7 +1,7 @@
 #requires -version 7.0
 <#
 .SYNOPSIS
-    The ONLY supported way to publish PSGuerrilla to PSGallery. Mechanically couples
+    The ONLY supported way to publish Guerrilla to PSGallery. Mechanically couples
     a release to green: runs the golden-fixture detection suite AND the collector
     query-contract tests, and refuses to publish if either is red (or the tree is dirty).
 
@@ -37,8 +37,8 @@ $root = $PSScriptRoot
 function Fail($m) { Write-Host "ABORT: $m" -ForegroundColor Red; exit 1 }
 function Ok($m)   { Write-Host "  [ok] $m" -ForegroundColor Green }
 
-$version = (Import-PowerShellDataFile (Join-Path $root 'PSGuerrilla.psd1')).ModuleVersion
-Write-Host "== Publish-Release: PSGuerrilla $version ($([string](& git -C $root rev-parse --short HEAD))) ==" -ForegroundColor Cyan
+$version = (Import-PowerShellDataFile (Join-Path $root 'Guerrilla.psd1')).ModuleVersion
+Write-Host "== Publish-Release: Guerrilla $version ($([string](& git -C $root rev-parse --short HEAD))) ==" -ForegroundColor Cyan
 
 # 0) Clean, committed tree — a release ships a known SHA, not a working copy.
 if (& git -C $root status --porcelain) { Fail 'working tree is dirty. Commit or stash before releasing.' }
@@ -67,8 +67,8 @@ if ($LASTEXITCODE -ne 0) { Fail "Zero Trust schema RED — a check is missing pi
 Ok 'Zero Trust schema green (all checks declare pillar + weight)'
 
 # 3) Manifest validity + ReleaseNotes length.
-$null = Test-ModuleManifest (Join-Path $root 'PSGuerrilla.psd1')
-$rn = (Import-PowerShellDataFile (Join-Path $root 'PSGuerrilla.psd1')).PrivateData.PSData.ReleaseNotes
+$null = Test-ModuleManifest (Join-Path $root 'Guerrilla.psd1')
+$rn = (Import-PowerShellDataFile (Join-Path $root 'Guerrilla.psd1')).PrivateData.PSData.ReleaseNotes
 if ($rn.Length -ge 10000) { Fail "ReleaseNotes is $($rn.Length) chars (PSGallery limit 10000)." }
 Ok "manifest valid; ReleaseNotes $($rn.Length) chars"
 
@@ -77,7 +77,7 @@ Ok "manifest valid; ReleaseNotes $($rn.Length) chars"
 #    Author and dies with a misleading 'No author' error) + this release script itself.
 $stage = Join-Path ([System.IO.Path]::GetTempPath()) "psg-release-$version"
 if (Test-Path $stage) { Remove-Item $stage -Recurse -Force }
-$pkg = Join-Path $stage 'PSGuerrilla'
+$pkg = Join-Path $stage 'Guerrilla'
 New-Item -ItemType Directory -Path $pkg -Force | Out-Null
 # Write the archive to a file first — piping `git archive | tar` through the PowerShell
 # pipeline corrupts the binary tar stream. -o avoids the pipe entirely.
@@ -88,12 +88,12 @@ Remove-Item $tar -Force -ErrorAction SilentlyContinue
 foreach ($ex in 'Tests', '.github', '.PSScriptAnalyzerSettings.psd1', 'Publish-Release.ps1', '.gitignore', '.gitattributes') {
     Remove-Item (Join-Path $pkg $ex) -Recurse -Force -ErrorAction SilentlyContinue
 }
-$null = Test-ModuleManifest (Join-Path $pkg 'PSGuerrilla.psd1')
+$null = Test-ModuleManifest (Join-Path $pkg 'Guerrilla.psd1')
 Ok "staged clean package at $pkg"
 
 # 5) Publish (or report, in dry run).
 if ($DryRun) {
-    Write-Host "DRY RUN — all gates green. WOULD publish PSGuerrilla $version to $Repository." -ForegroundColor Cyan
+    Write-Host "DRY RUN — all gates green. WOULD publish Guerrilla $version to $Repository." -ForegroundColor Cyan
     exit 0
 }
 if ([string]::IsNullOrWhiteSpace($ApiKey)) {
@@ -108,7 +108,7 @@ if ([string]::IsNullOrWhiteSpace($ApiKey)) {
 }
 Import-Module Microsoft.PowerShell.PSResourceGet -MinimumVersion 1.1.0 -Force
 Publish-PSResource -Path $pkg -Repository $Repository -ApiKey $ApiKey -ErrorAction Stop
-Write-Host "PUBLISHED PSGuerrilla $version to $Repository." -ForegroundColor Green
+Write-Host "PUBLISHED Guerrilla $version to $Repository." -ForegroundColor Green
 
 # ── Tag + GitHub release so the repo and the Gallery don't diverge ──────────
 # Historical gap flagged by the validation host: the Gallery advanced to 2.4x while
@@ -118,16 +118,16 @@ $tag = "v$version"
 if ($LASTEXITCODE -eq 0) {
     Write-Host "tag $tag already exists — skipping tag/release." -ForegroundColor Yellow
 } else {
-    & git -C $root tag -a $tag -m "PSGuerrilla $version"
+    & git -C $root tag -a $tag -m "Guerrilla $version"
     & git -C $root push origin $tag
     Write-Host "tagged $tag and pushed" -ForegroundColor Green
     if (Get-Command gh -ErrorAction SilentlyContinue) {
         # This version's release-notes paragraph becomes the GitHub release body.
-        $notes = (Import-PowerShellDataFile (Join-Path $root 'PSGuerrilla.psd1')).PrivateData.PSData.ReleaseNotes
+        $notes = (Import-PowerShellDataFile (Join-Path $root 'Guerrilla.psd1')).PrivateData.PSData.ReleaseNotes
         $body = ($notes -split '(?=v\d+\.\d+\.\d+:)' | Where-Object { $_ -like "v$version*" } | Select-Object -First 1)
-        if ([string]::IsNullOrWhiteSpace($body)) { $body = "PSGuerrilla $version — see CHANGELOG.md." }
+        if ([string]::IsNullOrWhiteSpace($body)) { $body = "Guerrilla $version — see CHANGELOG.md." }
         Push-Location $root
-        try { $body | & gh release create $tag --title "PSGuerrilla $version" --notes-file - ; Write-Host "created GitHub release $tag" -ForegroundColor Green }
+        try { $body | & gh release create $tag --title "Guerrilla $version" --notes-file - ; Write-Host "created GitHub release $tag" -ForegroundColor Green }
         catch { Write-Host "gh release create failed ($_). Tag is pushed; create the release manually." -ForegroundColor Yellow }
         finally { Pop-Location }
     } else {

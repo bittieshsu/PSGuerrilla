@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Send-SignalDigest {
     <#
@@ -45,7 +45,7 @@ function Send-SignalDigest {
         }
     }
 
-    $dataDir = Get-PSGuerrillaDataRoot
+    $dataDir = Get-GuerrillaDataRoot
     $digestHistoryPath = Join-Path $dataDir 'digest-history.json'
 
     # Check if digest interval has elapsed
@@ -118,10 +118,10 @@ function Send-SignalDigest {
     $trend = if ($delta -gt 0) { "+$delta" } elseif ($delta -lt 0) { "$delta" } else { 'no change' }
 
     # Build digest content
-    $subject = "[PSGuerrilla] $Period Digest - $totalThreats threat(s) ($trend)"
+    $subject = "[Guerrilla] $Period Digest - $totalThreats threat(s) ($trend)"
 
     $textBody = @"
-PSGuerrilla $Period Security Digest
+Guerrilla $Period Security Digest
 ========================================
 
 Period: Last $windowHours hours
@@ -136,12 +136,12 @@ Threat Summary:
   TOTAL:    $totalThreats ($trend from previous digest)
 
 Generated: $([datetime]::UtcNow.ToString('yyyy-MM-dd HH:mm:ss')) UTC
-PSGuerrilla v2.1.0
+Guerrilla v2.1.0
 "@
 
     $htmlBody = @"
 <html><body style="font-family:Consolas,monospace;background:#1a1a1a;color:#ffd7af;padding:20px;">
-<h2 style="color:#afaf5f;">PSGuerrilla $Period Digest</h2>
+<h2 style="color:#afaf5f;">Guerrilla $Period Digest</h2>
 <p>Period: Last $windowHours hours | Scans: $totalScans | Theaters: $($theatersActive -join ', ')</p>
 <table style="border-collapse:collapse;margin:10px 0;">
 <tr><td style="color:#af0000;padding:4px 12px;">CRITICAL</td><td style="color:#fff;padding:4px 12px;">$criticalTotal</td></tr>
@@ -150,7 +150,7 @@ PSGuerrilla v2.1.0
 <tr><td style="color:#d7af5f;padding:4px 12px;">LOW</td><td style="color:#fff;padding:4px 12px;">$lowTotal</td></tr>
 <tr style="border-top:1px solid #585858;"><td style="color:#afaf5f;padding:4px 12px;font-weight:bold;">TOTAL</td><td style="color:#fff;padding:4px 12px;font-weight:bold;">$totalThreats ($trend)</td></tr>
 </table>
-<p style="color:#585858;font-size:0.85em;">Generated $([datetime]::UtcNow.ToString('yyyy-MM-dd HH:mm:ss')) UTC | PSGuerrilla v2.1.0</p>
+<p style="color:#585858;font-size:0.85em;">Generated $([datetime]::UtcNow.ToString('yyyy-MM-dd HH:mm:ss')) UTC | Guerrilla v2.1.0</p>
 </body></html>
 "@
 
@@ -188,7 +188,7 @@ PSGuerrilla v2.1.0
                 if ($sg.apiKey -and $sg.fromEmail -and $sg.toEmails.Count -gt 0) {
                     $r = Send-SignalSendGrid -ApiKey $sg.apiKey -FromEmail $sg.fromEmail `
                         -ToEmails $sg.toEmails -Subject $subject -HtmlBody $htmlBody -TextBody $textBody `
-                        -FromName ($sg.fromName ?? 'PSGuerrilla Digest')
+                        -FromName ($sg.fromName ?? 'Guerrilla Digest')
                     $allResults.Add($r)
                 }
             }
@@ -231,7 +231,7 @@ PSGuerrilla v2.1.0
                         Indicators  = @("$criticalTotal critical, $highTotal high, $mediumTotal medium, $lowTotal low ($trend)")
                     }
                     $digestScanResult = [PSCustomObject]@{
-                        PSTypeName    = 'PSGuerrilla.DigestResult'
+                        PSTypeName    = 'Guerrilla.DigestResult'
                         ScanId        = "digest-$([datetime]::UtcNow.ToString('yyyyMMddHHmmss'))"
                         Timestamp     = [datetime]::UtcNow
                         CriticalCount = $criticalTotal

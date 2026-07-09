@@ -20,13 +20,13 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Send-SignalMailgun' {
     Context 'Successful send' {
         It 'returns success result' {
-            Mock Invoke-RestMethod { @{ id = '<msg-id>' } } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { @{ id = '<msg-id>' } } -ModuleName Guerrilla
             $result = Send-SignalMailgun -ApiKey 'key-test' -Domain 'mg.test.com' -FromEmail 'from@t.com' -ToEmails @('to@t.com') -Subject 'Test' -HtmlBody '<p>Test</p>'
             $result.Provider | Should -Be 'Mailgun'
             $result.Success | Should -BeTrue
@@ -36,16 +36,16 @@ Describe 'Send-SignalMailgun' {
 
     Context 'API URL construction' {
         It 'uses correct Mailgun API URL with domain' {
-            Mock Invoke-RestMethod { @{ id = '<msg>' } } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { @{ id = '<msg>' } } -ModuleName Guerrilla
             Send-SignalMailgun -ApiKey 'key-t' -Domain 'mg.example.com' -FromEmail 'f@t.com' -ToEmails @('t@t.com') -Subject 'T' -HtmlBody '<p>T</p>'
-            Should -Invoke Invoke-RestMethod -ModuleName PSGuerrilla -ParameterFilter { $Uri -match 'mg.example.com' }
+            Should -Invoke Invoke-RestMethod -ModuleName Guerrilla -ParameterFilter { $Uri -match 'mg.example.com' }
         }
     }
 
     Context 'Retry on failure' {
         It 'retries once on failure' {
-            & (Get-Module PSGuerrilla) { $script:_testMgCallCount = 0 }
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            & (Get-Module Guerrilla) { $script:_testMgCallCount = 0 }
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 $script:_testMgCallCount++
                 if ($script:_testMgCallCount -eq 1) { throw 'API Error' }
                 @{ id = '<retry-msg>' }
@@ -55,7 +55,7 @@ Describe 'Send-SignalMailgun' {
         }
 
         It 'returns failure when both attempts fail' {
-            Mock Invoke-RestMethod { throw 'Permanent failure' } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { throw 'Permanent failure' } -ModuleName Guerrilla
             $result = Send-SignalMailgun -ApiKey 'key-t' -Domain 'mg.t.com' -FromEmail 'f@t.com' -ToEmails @('t@t.com') -Subject 'T' -HtmlBody '<p>T</p>'
             $result.Success | Should -BeFalse
             $result.Error | Should -Not -BeNullOrEmpty

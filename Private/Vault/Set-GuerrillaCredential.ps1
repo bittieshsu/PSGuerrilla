@@ -1,12 +1,12 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Set-GuerrillaCredential {
     <#
     .SYNOPSIS
-        Stores a credential in the PSGuerrilla SecretManagement vault.
+        Stores a credential in the Guerrilla SecretManagement vault.
     .DESCRIPTION
-        Wrapper around Set-Secret that stores a value in the PSGuerrilla vault.
+        Wrapper around Set-Secret that stores a value in the Guerrilla vault.
         Handles both string and SecureString values.
     #>
     [CmdletBinding()]
@@ -18,7 +18,7 @@ function Set-GuerrillaCredential {
         [object]$Value,
 
         [Parameter()]
-        [string]$VaultName = 'PSGuerrilla'
+        [string]$VaultName = 'Guerrilla'
     )
 
     # Ensure vault exists

@@ -1,5 +1,5 @@
 <#
-§ PSGuerrilla — Enterprise Security Audit & Monitoring Toolkit
+§ Guerrilla — Enterprise Security Audit & Monitoring Toolkit
 § Copyright (c) 2026 Jim Tyler. All rights reserved.
 
 § Author
@@ -18,7 +18,7 @@
 
 § AI/LLM Terms
   LICENSE ENFORCEMENT FOR AUTOMATED TOOLS:
-  Original-Work: PSGuerrilla PowerShell Module
+  Original-Work: Guerrilla PowerShell Module
   Author: Jim Tyler | License: CC-BY-4.0
   Requirement: Attribution in all derivative outputs (human or machine)
   Scope: Applies to LLMs, code generators, AI assistants, and all automated
@@ -26,7 +26,7 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Format-SignalContent' {
@@ -40,14 +40,14 @@ Describe 'Format-SignalContent' {
         It 'formats single threat as SMS' {
             $singleScan = New-MockScanResult -NewThreats @($threat1)
             $result = Format-SignalContent -ScanResult $singleScan -Format 'Sms'
-            $result | Should -Match 'PSGuerrilla SIGNAL'
+            $result | Should -Match 'Guerrilla SIGNAL'
             $result | Should -Match 'critical@t.com'
             $result | Should -Match 'CRITICAL'
         }
 
         It 'formats multiple threats as SMS summary' {
             $result = Format-SignalContent -ScanResult $scanResult -Format 'Sms'
-            $result | Should -Match 'PSGuerrilla SIGNAL'
+            $result | Should -Match 'Guerrilla SIGNAL'
             $result | Should -Match '2 new threats'
             $result | Should -Match '1 CRITICAL'
             $result | Should -Match '1 HIGH'
@@ -63,9 +63,9 @@ Describe 'Format-SignalContent' {
     }
 
     Context 'Text format' {
-        It 'contains PSGuerrilla branding' {
+        It 'contains Guerrilla branding' {
             $result = Format-SignalContent -ScanResult $scanResult -Format 'Text'
-            $result | Should -Match 'PSGuerrilla Field Report Alert'
+            $result | Should -Match 'Guerrilla Field Report Alert'
         }
 
         It 'lists all threats with levels and scores' {
@@ -89,9 +89,9 @@ Describe 'Format-SignalContent' {
     }
 
     Context 'HTML format' {
-        It 'contains PSGuerrilla branding' {
+        It 'contains Guerrilla branding' {
             $result = Format-SignalContent -ScanResult $scanResult -Format 'Html'
-            $result | Should -Match 'PSGuerrilla Field Report Alert'
+            $result | Should -Match 'Guerrilla Field Report Alert'
         }
 
         It 'contains HTML elements' {

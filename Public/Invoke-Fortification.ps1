@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-Fortification {
     [CmdletBinding()]
@@ -23,7 +23,7 @@ function Invoke-Fortification {
         [string]$ConfigPath,
         [Alias('MissionConfig')]
         [string]$ConfigFile,
-        [string]$VaultName = 'PSGuerrilla',
+        [string]$VaultName = 'Guerrilla',
 
         [ValidateSet('Guerrilla', 'Professional', 'Slate')]
         [string]$ReportStyle = 'Professional',
@@ -105,7 +105,7 @@ function Invoke-Fortification {
                    else { $null }
         $outDir  = if ($OutputDirectory) { $OutputDirectory }
                    elseif ($config -and $config.output.directory) { $config.output.directory }
-                   else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
+                   else { Join-Path (Get-GuerrillaDataRoot) 'Reports' }
 
         # Final fallback: the safehouse vault under the default keys Set-Safehouse
         # stores interactively — so a vault-only setup (no mission-config file) scans
@@ -345,7 +345,7 @@ function Invoke-Fortification {
 
         # --- Emit result object ---
         $result = [PSCustomObject]@{
-            PSTypeName     = 'PSGuerrilla.AuditResult'
+            PSTypeName     = 'Guerrilla.AuditResult'
             ScanId         = $scanId
             Timestamp      = $scanStart
             TenantDomain   = $auditData.Tenant.Domain ?? $admin.Split('@')[-1]

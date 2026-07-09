@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Collector query-contract tests.
@@ -19,14 +19,14 @@
 
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '..' '..' '..' 'Helpers' 'TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Collector query contracts' {
 
     Context 'Get-EntraTenantData — cross-tenant access' {
         BeforeAll {
-            Mock -ModuleName PSGuerrilla Invoke-GraphApi {
+            Mock -ModuleName Guerrilla Invoke-GraphApi {
                 if ($Uri -like '*crossTenantAccessPolicy/default') {
                     return [pscustomobject]@{
                         b2bCollaborationInbound  = [pscustomobject]@{ usersAndGroups = [pscustomobject]@{ accessType = 'blocked'; targets = @() } }
@@ -36,11 +36,11 @@ Describe 'Collector query contracts' {
                 if ($Uri -like '*crossTenantAccessPolicy') { return [pscustomobject]@{ id = 'default' } }
                 return $null
             }
-            $script:tenant = InModuleScope PSGuerrilla { Get-EntraTenantData -AccessToken 'x' -Quiet }
+            $script:tenant = InModuleScope Guerrilla { Get-EntraTenantData -AccessToken 'x' -Quiet }
         }
 
         It 'fetches the /default cross-tenant access policy (not just the container)' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
                 $Uri -eq '/policies/crossTenantAccessPolicy/default'
             }
         }
@@ -53,12 +53,12 @@ Describe 'Collector query contracts' {
 
     Context 'Get-IntuneData — device configuration profiles' {
         BeforeAll {
-            Mock -ModuleName PSGuerrilla Invoke-GraphApi { return @() }
-            InModuleScope PSGuerrilla { Get-IntuneData -AccessToken 'x' -Quiet } | Out-Null
+            Mock -ModuleName Guerrilla Invoke-GraphApi { return @() }
+            InModuleScope Guerrilla { Get-IntuneData -AccessToken 'x' -Quiet } | Out-Null
         }
 
         It 'requests deviceConfigurations with $expand=assignments (else INTUNE-005 false-FAILs)' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
                 $Uri -eq '/deviceManagement/deviceConfigurations' -and
                 $QueryParameters -and $QueryParameters['$expand'] -eq 'assignments'
             }
@@ -67,18 +67,18 @@ Describe 'Collector query contracts' {
 
     Context 'Get-EntraPIMData — eligible role assignments' {
         BeforeAll {
-            Mock -ModuleName PSGuerrilla Invoke-GraphApi { return @() }
-            InModuleScope PSGuerrilla { Get-EntraPIMData -AccessToken 'x' -Quiet } | Out-Null
+            Mock -ModuleName Guerrilla Invoke-GraphApi { return @() }
+            InModuleScope Guerrilla { Get-EntraPIMData -AccessToken 'x' -Quiet } | Out-Null
         }
 
         It 'queries roleEligibilitySchedules (definitions), which carry standing eligibility' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
                 $Uri -eq '/roleManagement/directory/roleEligibilitySchedules'
             }
         }
 
         It 'does NOT use roleEligibilityScheduleInstances for the eligibility source (0 instances => false "PIM not configured")' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 0 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-GraphApi -Times 0 -Exactly -ParameterFilter {
                 $Uri -eq '/roleManagement/directory/roleEligibilityScheduleInstances'
             }
         }
@@ -86,18 +86,18 @@ Describe 'Collector query contracts' {
 
     Context 'Get-EntraTenantData — partner delegated admin (GDAP) relationships' {
         BeforeAll {
-            Mock -ModuleName PSGuerrilla Invoke-GraphApi { return @() }
-            InModuleScope PSGuerrilla { Get-EntraTenantData -AccessToken 'x' -Quiet } | Out-Null
+            Mock -ModuleName Guerrilla Invoke-GraphApi { return @() }
+            InModuleScope Guerrilla { Get-EntraTenantData -AccessToken 'x' -Quiet } | Out-Null
         }
 
         It 'queries /tenantRelationships/delegatedAdminRelationships (else EIDTNT-015/016 never see partner access)' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
                 $Uri -eq '/tenantRelationships/delegatedAdminRelationships'
             }
         }
 
         It 'paginates the relationships list (a truncated first page would under-count partner grants)' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
                 $Uri -eq '/tenantRelationships/delegatedAdminRelationships' -and $Paginate
             }
         }
@@ -105,21 +105,21 @@ Describe 'Collector query contracts' {
 
     Context 'Get-EntraGovernanceData — entitlement management' {
         BeforeAll {
-            Mock -ModuleName PSGuerrilla Invoke-GraphApi { return @() }
-            InModuleScope PSGuerrilla { Get-EntraGovernanceData -AccessToken 'x' -Quiet } | Out-Null
+            Mock -ModuleName Guerrilla Invoke-GraphApi { return @() }
+            InModuleScope Guerrilla { Get-EntraGovernanceData -AccessToken 'x' -Quiet } | Out-Null
         }
 
         It 'queries assignmentPolicies (the source EIDGOV-001..004 grade)' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
                 $Uri -eq '/identityGovernance/entitlementManagement/assignmentPolicies'
             }
         }
 
         It 'queries catalogs (EIDGOV-005) and access packages' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
                 $Uri -eq '/identityGovernance/entitlementManagement/catalogs'
             }
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-GraphApi -Times 1 -Exactly -ParameterFilter {
                 $Uri -eq '/identityGovernance/entitlementManagement/accessPackages'
             }
         }
@@ -128,7 +128,7 @@ Describe 'Collector query contracts' {
     Context 'Get-PowerPlatformData — Copilot Studio agents (Dataverse)' {
         BeforeAll {
             # Mock the two Dataverse stages: global discovery, then per-env bots query.
-            Mock -ModuleName PSGuerrilla Invoke-RestMethod {
+            Mock -ModuleName Guerrilla Invoke-RestMethod {
                 if ($Uri -like '*globaldisco*discovery/v2.0/Instances*') {
                     return [pscustomobject]@{ value = @([pscustomobject]@{ ApiUrl = 'https://org1.api.crm.dynamics.com'; FriendlyName = 'Env1'; State = 0 }) }
                 }
@@ -137,25 +137,25 @@ Describe 'Collector query contracts' {
                 }
                 return [pscustomobject]@{ value = @() }
             }
-            $script:pp = InModuleScope PSGuerrilla {
+            $script:pp = InModuleScope Guerrilla {
                 Get-PowerPlatformData -GlobalDiscoToken 'gds' -TokenFactory { param($u) 'envtok' } -Quiet
             }
         }
 
         It 'discovers environments via the Global Discovery Service (State eq 0)' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-RestMethod -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-RestMethod -Times 1 -Exactly -ParameterFilter {
                 $Uri -like '*globaldisco.crm.dynamics.com/api/discovery/v2.0/Instances*' -and $Uri -like '*State eq 0*'
             }
         }
 
         It 'queries the per-environment bots table for unmanaged agents' {
-            Should -Invoke -ModuleName PSGuerrilla -Scope Context Invoke-RestMethod -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke -ModuleName Guerrilla -Scope Context Invoke-RestMethod -Times 1 -Exactly -ParameterFilter {
                 $Uri -like 'https://org1.api.crm.dynamics.com/api/data/v9.2/bots*' -and $Uri -like '*ismanaged eq false*'
             }
         }
 
         It 'returns Not-Assessed (empty + Errors) when no auth context is supplied' {
-            $r = InModuleScope PSGuerrilla { Get-PowerPlatformData }
+            $r = InModuleScope Guerrilla { Get-PowerPlatformData }
             $r.Agents.Count | Should -Be 0
             $r.Errors['Agents'] | Should -Not -BeNullOrEmpty
         }

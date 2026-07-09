@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Initialize-ConfigMigration {
     [CmdletBinding()]
@@ -10,7 +10,7 @@ function Initialize-ConfigMigration {
     if (-not $onWindows) { return }
 
     $oldDir = Join-Path $env:APPDATA 'PSRecon'
-    $newDir = Get-PSGuerrillaDataRoot
+    $newDir = Get-GuerrillaDataRoot
 
     # Skip if old dir doesn't exist or new dir already has config
     if (-not (Test-Path $oldDir)) { return }
@@ -27,7 +27,7 @@ function Initialize-ConfigMigration {
         $newPath = Join-Path $newDir $file
         if (Test-Path $oldPath) {
             Copy-Item -Path $oldPath -Destination $newPath -Force
-            Write-Verbose "Migrated $file from PSRecon to PSGuerrilla"
+            Write-Verbose "Migrated $file from PSRecon to Guerrilla"
         }
     }
 
@@ -39,23 +39,23 @@ function Initialize-ConfigMigration {
 
             # Update output directory if it pointed to old path
             if ($config.output -and $config.output.directory -and $config.output.directory -match 'PSRecon') {
-                $config.output.directory = $config.output.directory -replace 'PSRecon', 'PSGuerrilla'
+                $config.output.directory = $config.output.directory -replace 'PSRecon', 'Guerrilla'
             }
 
             # Update scheduling task name if it was the old default
             if ($config.scheduling -and $config.scheduling.taskName -eq 'PSRecon-ScheduledScan') {
-                $config.scheduling.taskName = 'PSGuerrilla-Patrol'
+                $config.scheduling.taskName = 'Guerrilla-Patrol'
             }
 
             # Update sendgrid fromName if it was the old default
             if ($config.alerting -and $config.alerting.providers -and
                 $config.alerting.providers.sendgrid -and
                 $config.alerting.providers.sendgrid.fromName -eq 'PSRecon Alerts') {
-                $config.alerting.providers.sendgrid.fromName = 'PSGuerrilla Signals'
+                $config.alerting.providers.sendgrid.fromName = 'Guerrilla Signals'
             }
 
             $config | ConvertTo-Json -Depth 10 | Set-Content -Path $newConfigPath -Encoding UTF8
-            Write-Verbose "Updated migrated config with PSGuerrilla values"
+            Write-Verbose "Updated migrated config with Guerrilla values"
         } catch {
             Write-Warning "Config migration: failed to update internal values: $_"
         }
@@ -66,8 +66,8 @@ function Initialize-ConfigMigration {
     $newReports = Join-Path $newDir 'Reports'
     if ((Test-Path $oldReports) -and -not (Test-Path $newReports)) {
         Copy-Item -Path $oldReports -Destination $newReports -Recurse -Force
-        Write-Verbose "Migrated Reports directory from PSRecon to PSGuerrilla"
+        Write-Verbose "Migrated Reports directory from PSRecon to Guerrilla"
     }
 
-    Write-Host "PSGuerrilla: Migrated configuration from PSRecon. Old config preserved at $oldDir"
+    Write-Host "Guerrilla: Migrated configuration from PSRecon. Old config preserved at $oldDir"
 }

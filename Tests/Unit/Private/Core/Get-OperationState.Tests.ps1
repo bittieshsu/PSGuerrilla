@@ -1,6 +1,6 @@
 # ______________________________________________________________________________
 #
-#  PSGuerrilla
+#  Guerrilla
 #  Jim Tyler — Microsoft MVP
 #  "PowerShell for Systems Engineers"
 # ______________________________________________________________________________
@@ -21,7 +21,7 @@
 # ______________________________________________________________________________
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Get-OperationState' {

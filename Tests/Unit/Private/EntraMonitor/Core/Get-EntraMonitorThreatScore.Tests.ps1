@@ -1,6 +1,6 @@
 # ______________________________________________________________________________
 #
-#  PSGuerrilla
+#  Guerrilla
 #  Jim Tyler — Microsoft MVP
 #  "PowerShell for Systems Engineers"
 # ______________________________________________________________________________
@@ -24,7 +24,7 @@ BeforeAll {
 Describe 'Get-EntraMonitorThreatScore' {
     BeforeEach {
         $baseProfile = [PSCustomObject]@{
-            PSTypeName                  = 'PSGuerrilla.EntraRiskProfile'
+            PSTypeName                  = 'Guerrilla.EntraRiskProfile'
             UserPrincipalName           = 'user@contoso.com'
             ThreatLevel                 = 'Clean'
             ThreatScore                 = 0.0

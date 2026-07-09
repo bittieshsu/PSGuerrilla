@@ -1,4 +1,4 @@
-# PSGuerrilla | Jim Tyler, Microsoft MVP | CC BY 4.0
+# Guerrilla | Jim Tyler, Microsoft MVP | CC BY 4.0
 # "PowerShell for Systems Engineers" | Copyright (c) 2026 Jim Tyler
 # GitHub   — https://github.com/jimrtyler
 # LinkedIn — https://linkedin.com/in/jamestyler
@@ -13,15 +13,15 @@
 # proper attribution to Jim Tyler and a link to the CC BY 4.0 license.
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Invoke-Recon Integration' {
     BeforeAll {
         # Mock Google API calls to return realistic event data
-        Mock Get-GoogleAccessToken { 'mock-token-integration' } -ModuleName PSGuerrilla
+        Mock Get-GoogleAccessToken { 'mock-token-integration' } -ModuleName Guerrilla
 
-        Mock Get-IpGeoData -ModuleName PSGuerrilla {
+        Mock Get-IpGeoData -ModuleName Guerrilla {
             @{
                 '1.2.3.4' = @{ CountryCode = 'US'; ISP = 'DigitalOcean'; Org = 'DigitalOcean LLC'; IsHosting = $true }
                 '98.45.67.89' = @{ CountryCode = 'US'; ISP = 'Comcast'; Org = 'Comcast Cable'; IsHosting = $false }
@@ -45,7 +45,7 @@ Describe 'Invoke-Recon Integration' {
             $config | ConvertTo-Json -Depth 10 | Set-Content $cfgPath
 
             # Mock login events with various signals
-            Mock Invoke-GoogleReportsApi -ModuleName PSGuerrilla {
+            Mock Invoke-GoogleReportsApi -ModuleName Guerrilla {
                 param($AccessToken, $ApplicationName, $StartTime, $UserKey, $Quiet)
                 switch ($ApplicationName) {
                     'login' {
@@ -82,7 +82,7 @@ Describe 'Invoke-Recon Integration' {
         It 'completes full scan pipeline without errors' {
             $result = Invoke-Recon -ConfigPath $cfgPath -Quiet -NoGeoIp -NoReports
             $result | Should -Not -BeNullOrEmpty
-            $result.PSObject.TypeNames | Should -Contain 'PSGuerrilla.ScanResult'
+            $result.PSObject.TypeNames | Should -Contain 'Guerrilla.ScanResult'
         }
 
         It 'identifies correct number of users' {
@@ -153,8 +153,8 @@ Describe 'Invoke-Recon Integration' {
             New-Item -Path $cfgDir -ItemType Directory -Force | Out-Null
             $cfgPath = Join-Path $cfgDir 'config.json'
 
-            Mock Invoke-GoogleReportsApi { @() } -ModuleName PSGuerrilla
-            Mock Write-GuerrillaText {} -ModuleName PSGuerrilla
+            Mock Invoke-GoogleReportsApi { @() } -ModuleName Guerrilla
+            Mock Write-GuerrillaText {} -ModuleName Guerrilla
 
             $config = New-MockConfig -OutputDir (Join-Path $TestDrive 'reports-pipeline')
             $config.google.serviceAccountKeyPath = 'C:\test\sa-key.json'
@@ -173,7 +173,7 @@ Describe 'Invoke-Recon Integration' {
             New-Item -Path $cfgDir -ItemType Directory -Force | Out-Null
             $cfgPath = Join-Path $cfgDir 'config.json'
 
-            Mock Invoke-GoogleReportsApi { @() } -ModuleName PSGuerrilla
+            Mock Invoke-GoogleReportsApi { @() } -ModuleName Guerrilla
 
             $config = New-MockConfig -OutputDir (Join-Path $TestDrive 'reports-dd')
             $config.google.serviceAccountKeyPath = 'C:\test\sa-key.json'

@@ -1,4 +1,4 @@
-# PSGuerrilla
+# Guerrilla
 
 **By [Jim Tyler](https://github.com/jimrtyler), Microsoft MVP**
 
@@ -6,7 +6,7 @@ Security assessment, threat detection, and continuous monitoring for Google Work
 
 [![GitHub](https://img.shields.io/badge/GitHub-jimrtyler-181717?logo=github)](https://github.com/jimrtyler) [![LinkedIn](https://img.shields.io/badge/LinkedIn-jamestyler-0A66C2?logo=linkedin)](https://linkedin.com/in/jamestyler) [![YouTube](https://img.shields.io/badge/YouTube-PowerShellEngineer-FF0000?logo=youtube)](https://youtube.com/@powershellengineer)
 
-> **[View a sample report](./PSGuerrilla-Sample-Report.html)** to see the scope of what PSGuerrilla evaluates.
+> **[View a sample report](./Guerrilla-Sample-Report.html)** to see the scope of what Guerrilla evaluates.
 
 ---
 
@@ -27,7 +27,7 @@ Security assessment, threat detection, and continuous monitoring for Google Work
 
 - **PowerShell 7.0+** ([Install guide](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell))
 - **Operating System**: Windows (recommended — DPAPI encryption), Linux, or macOS
-- [PwshSpectreConsole](https://github.com/ShaunLawrie/PwshSpectreConsole) (optional, for rich terminal output — PSGuerrilla falls back gracefully)
+- [PwshSpectreConsole](https://github.com/ShaunLawrie/PwshSpectreConsole) (optional, for rich terminal output — Guerrilla falls back gracefully)
 
 ### Per-Environment Requirements
 
@@ -40,7 +40,7 @@ Security assessment, threat detection, and continuous monitoring for Google Work
 
 > ### ⚠️ Endpoint protection (Microsoft Defender / EDR) may block the module
 >
-> PSGuerrilla is an offensive-capable security tool: several of its AD attack-detection files reference DCSync replication GUIDs, `GenericAll`/`WriteDacl`, shadow-admin and Tier-0 patterns. Antivirus heuristics — **Microsoft Defender real-time protection in particular** — can flag these as suspicious and **block read access to the files**, which makes `Import-Module PSGuerrilla` fail (often on a different AD file each attempt) with:
+> Guerrilla is an offensive-capable security tool: several of its AD attack-detection files reference DCSync replication GUIDs, `GenericAll`/`WriteDacl`, shadow-admin and Tier-0 patterns. Antivirus heuristics — **Microsoft Defender real-time protection in particular** — can flag these as suspicious and **block read access to the files**, which makes `Import-Module Guerrilla` fail (often on a different AD file each attempt) with:
 >
 > ```
 > Access to the path '…\Invoke-ADAclDelegationChecks.ps1' is denied
@@ -49,7 +49,7 @@ Security assessment, threat detection, and continuous monitoring for Google Work
 > This is a **false positive** — the files are inert PowerShell, not malware — but it stops the module from loading. Fix it by adding a path exclusion for the module from an **elevated** PowerShell:
 >
 > ```powershell
-> Add-MpPreference -ExclusionPath "$HOME\Documents\PowerShell\Modules\PSGuerrilla"
+> Add-MpPreference -ExclusionPath "$HOME\Documents\PowerShell\Modules\Guerrilla"
 > ```
 >
 > Alternatively, in **Windows Security → Virus & threat protection → Protection history**, choose **Allow** on the blocked item. On managed/EDR hosts, ask your security team to allowlist the module path. More detail under [Troubleshooting](#troubleshooting).
@@ -62,12 +62,12 @@ Security assessment, threat detection, and continuous monitoring for Google Work
 
 ```powershell
 # From the PowerShell Gallery (recommended)
-Install-Module PSGuerrilla -Scope CurrentUser
-Import-Module PSGuerrilla
+Install-Module Guerrilla -Scope CurrentUser
+Import-Module Guerrilla
 
 # Or clone the repo
-git clone https://github.com/jimrtyler/PSGuerrilla.git
-Import-Module ./PSGuerrilla/PSGuerrilla.psd1
+git clone https://github.com/jimrtyler/Guerrilla.git
+Import-Module ./Guerrilla/Guerrilla.psd1
 ```
 
 ### Step 2: Generate Your Configuration (Recommended)
@@ -80,7 +80,7 @@ Visit **[guerrilla.army](https://guerrilla.army)** to use the interactive config
 
 Download the generated `guerrilla-config.json` when finished.
 
-> **Alternatively**, you can skip the config file entirely. PSGuerrilla will prompt you for credentials interactively and use sensible defaults.
+> **Alternatively**, you can skip the config file entirely. Guerrilla will prompt you for credentials interactively and use sensible defaults.
 
 ### Step 3: Establish Your Safehouse (Credential Vault)
 
@@ -97,7 +97,7 @@ Set-Safehouse
 **What happens during setup:**
 
 1. **Dependency check** — Installs `Microsoft.PowerShell.SecretManagement` and `Microsoft.PowerShell.SecretStore` if missing (prompts for approval, or use `-Force` to auto-install)
-2. **Vault creation** — Creates an encrypted vault named `PSGuerrilla` with no-password configuration applied up front (no contradictory "enter a password / password not needed" prompts)
+2. **Vault creation** — Creates an encrypted vault named `Guerrilla` with no-password configuration applied up front (no contradictory "enter a password / password not needed" prompts)
    - **Windows**: Uses DPAPI (encrypted with your Windows login — no extra password needed)
    - **Linux/macOS**: Uses an encrypted file
 3. **Credential prompts** — Walks you through each credential your config requires:
@@ -127,7 +127,7 @@ Pick only the ones you need. You won't be marched through Google Workspace promp
 ╔══════════════════════════════════════════════╗
 ║         SAFEHOUSE ESTABLISHED                ║
 ╠══════════════════════════════════════════════╣
-║  Vault: PSGuerrilla                          ║
+║  Vault: Guerrilla                          ║
 ║  Protection: DPAPI (User Scope)              ║
 ║  Credentials Stored: 5                       ║
 ╚══════════════════════════════════════════════╝
@@ -171,7 +171,7 @@ Invoke-Reconnaissance                   # Active Directory audit (211 checks)
 Invoke-Infiltration                     # Entra/Azure/Intune/M365 audit (244 checks)
 ```
 
-Results are automatically saved to `$env:APPDATA/PSGuerrilla/` (Windows) for report generation and trend tracking.
+Results are automatically saved to `$env:APPDATA/Guerrilla/` (Windows) for report generation and trend tracking.
 
 ### Step 6: Generate Reports
 
@@ -192,7 +192,7 @@ Export-RemediationScripts
 Export-BudgetJustification
 
 # Convert any HTML report to PDF
-Export-ReportPdf -HtmlPath './PSGuerrilla-Technical-Report.html'
+Export-ReportPdf -HtmlPath './Guerrilla-Technical-Report.html'
 ```
 
 ### Step 7: Set Up Continuous Monitoring (Optional)
@@ -208,7 +208,7 @@ Register-Patrol -ConfigFile './guerrilla-config.json' `
 Get-Patrol
 
 # Remove a patrol
-Unregister-Patrol -TaskName 'PSGuerrilla-Patrol'
+Unregister-Patrol -TaskName 'Guerrilla-Patrol'
 ```
 
 ---
@@ -243,7 +243,7 @@ Set-Safehouse -Remove googleWorkspace
 
 ```powershell
 # Change output directory
-Set-Safehouse -OutputDirectory 'D:\Reports\PSGuerrilla'
+Set-Safehouse -OutputDirectory 'D:\Reports\Guerrilla'
 
 # Switch scoring profile
 Set-Safehouse -Profile K12
@@ -322,7 +322,7 @@ Set-Safehouse -ExportMetadata
 
 ### Active Directory Setup
 
-PSGuerrilla uses your **current Kerberos session** by default — no stored credentials needed if you're running from a domain-joined machine with a domain admin (or delegated read) account.
+Guerrilla uses your **current Kerberos session** by default — no stored credentials needed if you're running from a domain-joined machine with a domain admin (or delegated read) account.
 
 For environments where you need a service account:
 ```powershell
@@ -341,15 +341,15 @@ Set-Safehouse -ConfigFile './guerrilla-config.json'
 
 ### `Import-Module` fails with "Access to the path '…Invoke-ADAclDelegationChecks.ps1' is denied"
 
-Your endpoint protection is blocking PSGuerrilla's AD attack-detection files (a false positive — see the **Endpoint protection (Microsoft Defender / EDR)** callout in [Requirements](#requirements)). Tell-tale signs it's antivirus, not a permissions problem: your account has FullControl on the file, yet even **copying** it is denied, and a *different* AD file is blocked on each import attempt. Fix:
+Your endpoint protection is blocking Guerrilla's AD attack-detection files (a false positive — see the **Endpoint protection (Microsoft Defender / EDR)** callout in [Requirements](#requirements)). Tell-tale signs it's antivirus, not a permissions problem: your account has FullControl on the file, yet even **copying** it is denied, and a *different* AD file is blocked on each import attempt. Fix:
 
 ```powershell
 # Elevated PowerShell — exclude the module path, then re-import
-Add-MpPreference -ExclusionPath "$HOME\Documents\PowerShell\Modules\PSGuerrilla"
-Import-Module PSGuerrilla -Force
+Add-MpPreference -ExclusionPath "$HOME\Documents\PowerShell\Modules\Guerrilla"
+Import-Module Guerrilla -Force
 ```
 
-If you installed the module somewhere else, exclude that path instead (`(Get-Module PSGuerrilla -ListAvailable).ModuleBase`). On EDR-managed hosts, your security team adds the allowlist entry.
+If you installed the module somewhere else, exclude that path instead (`(Get-Module Guerrilla -ListAvailable).ModuleBase`). On EDR-managed hosts, your security team adds the allowlist entry.
 
 ### A scan reports "No accessible Azure subscriptions"
 
@@ -471,7 +471,7 @@ The Guerrilla Score is a weighted composite of four components:
 ### Quick Assessment (No Config File)
 
 ```powershell
-Import-Module ./PSGuerrilla.psd1
+Import-Module ./Guerrilla.psd1
 Set-Safehouse                # pick the environments you actually have when prompted
 Invoke-Campaign
 Export-TechnicalReport -OrganizationName 'Contoso'
@@ -480,7 +480,7 @@ Export-TechnicalReport -OrganizationName 'Contoso'
 ### Full Mission with Reporting
 
 ```powershell
-Import-Module ./PSGuerrilla.psd1
+Import-Module ./Guerrilla.psd1
 Set-Safehouse -ConfigFile './guerrilla-config.json'
 Set-Safehouse -Test
 Invoke-Campaign -ConfigFile './guerrilla-config.json'
@@ -489,7 +489,7 @@ Export-ExecutiveSummary -OrganizationName 'Springfield USD'
 Export-TechnicalReport -OrganizationName 'Springfield USD'
 Export-RemediationPlaybook
 Export-RemediationScripts
-Export-ReportPdf -HtmlPath './PSGuerrilla-Executive-Summary.html'
+Export-ReportPdf -HtmlPath './Guerrilla-Executive-Summary.html'
 ```
 
 ### Review High-Priority Findings
@@ -518,7 +518,7 @@ Get-TrendReport
 
 ## Configuration
 
-PSGuerrilla uses a JSON config file generated by the [PSGuerrilla Configuration Website](https://guerrilla.army) or manually created. The config controls which environments to audit, monitoring intervals, report formats, alerting channels, and compliance framework mappings.
+Guerrilla uses a JSON config file generated by the [Guerrilla Configuration Website](https://guerrilla.army) or manually created. The config controls which environments to audit, monitoring intervals, report formats, alerting channels, and compliance framework mappings.
 
 ```powershell
 # All public functions accept -ConfigFile
@@ -550,7 +550,7 @@ Invoke-Reconnaissance -ConfigFile './guerrilla-config.json' -Categories Privileg
 Runtime configuration (detection thresholds, business hours, alert suppression, etc.) is managed separately:
 
 ```powershell
-# Stored at $env:APPDATA/PSGuerrilla/config.json
+# Stored at $env:APPDATA/Guerrilla/config.json
 Set-Safehouse -ConfigPath './my-runtime-config.json'
 ```
 
@@ -559,10 +559,10 @@ Set-Safehouse -ConfigPath './my-runtime-config.json'
 ## Module Structure
 
 ```
-PSGuerrilla/
-  PSGuerrilla.psd1              # Module manifest (49 exported functions)
-  PSGuerrilla.psm1              # Root module (loader)
-  PSGuerrilla.format.ps1xml     # Custom table formatters
+Guerrilla/
+  Guerrilla.psd1              # Module manifest (49 exported functions)
+  Guerrilla.psm1              # Root module (loader)
+  Guerrilla.format.ps1xml     # Custom table formatters
   Config/                        # JSON schema and defaults
   Data/                          # Threat intel, audit check definitions, compliance crosswalks
     AuditChecks/                 # 40 JSON files defining all 580 security checks
@@ -601,7 +601,7 @@ For readability at the call site — `Invoke-Recon` and `Invoke-Reconnaissance` 
 
 ### Migration from PSRecon
 
-PSGuerrilla automatically migrates your PSRecon configuration on first load. All old command names (`Invoke-GoogleRecon`, `Get-ReconAlerts`, `Send-ReconAlert`, `Set-ReconConfig`, etc.) continue to work as aliases.
+Guerrilla automatically migrates your PSRecon configuration on first load. All old command names (`Invoke-GoogleRecon`, `Get-ReconAlerts`, `Send-ReconAlert`, `Set-ReconConfig`, etc.) continue to work as aliases.
 
 ### Non-interactive imports
 
@@ -644,13 +644,13 @@ Set-Safehouse -ConfigFile './guerrilla-config.json'
 
 ### PowerShell 5.1 Compatibility
 
-PSGuerrilla requires PowerShell 7.0+. If you're on Windows PowerShell 5.1:
+Guerrilla requires PowerShell 7.0+. If you're on Windows PowerShell 5.1:
 ```powershell
 # Install PowerShell 7
 winget install Microsoft.PowerShell
 # Then run from pwsh
 pwsh
-Import-Module ./PSGuerrilla.psd1
+Import-Module ./Guerrilla.psd1
 ```
 
 ---

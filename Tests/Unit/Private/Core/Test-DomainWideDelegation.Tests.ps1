@@ -1,5 +1,5 @@
 <#
-§ PSGuerrilla — Enterprise Security Audit & Monitoring Toolkit
+§ Guerrilla — Enterprise Security Audit & Monitoring Toolkit
 § Copyright (c) 2026 Jim Tyler. All rights reserved.
 
 § Author

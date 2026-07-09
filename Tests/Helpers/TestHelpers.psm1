@@ -1,8 +1,8 @@
 
 # --- Module import helper ---
 
-function Import-PSGuerrilla {
-    $modulePath = (Resolve-Path (Join-Path $PSScriptRoot '../../PSGuerrilla.psm1')).Path
+function Import-Guerrilla {
+    $modulePath = (Resolve-Path (Join-Path $PSScriptRoot '../../Guerrilla.psm1')).Path
     $env:PSGUERRILLA_QUIET = '1'
     $env:PSGUERRILLA_TEST = '1'
     Import-Module $modulePath -Force -DisableNameChecking -Global
@@ -79,7 +79,7 @@ function New-MockScanResult {
         [int]$TotalEventsAnalyzed = 5000
     )
     [PSCustomObject]@{
-        PSTypeName          = 'PSGuerrilla.ScanResult'
+        PSTypeName          = 'Guerrilla.ScanResult'
         ScanId              = [guid]::NewGuid().ToString()
         Timestamp           = [datetime]::UtcNow
         DaysAnalyzed        = 30
@@ -110,7 +110,7 @@ function New-MockUserProfile {
         [bool]$WasRemediated = $false
     )
     [PSCustomObject]@{
-        PSTypeName              = 'PSGuerrilla.UserProfile'
+        PSTypeName              = 'Guerrilla.UserProfile'
         Email                   = $Email
         ThreatLevel             = $ThreatLevel
         ThreatScore             = $ThreatScore
@@ -152,7 +152,7 @@ function New-MockConfig {
             enabled            = $true
             minimumThreatLevel = 'HIGH'
             providers          = @{
-                sendgrid = @{ enabled = $false; apiKey = ''; fromEmail = ''; fromName = 'PSGuerrilla Signals'; toEmails = @() }
+                sendgrid = @{ enabled = $false; apiKey = ''; fromEmail = ''; fromName = 'Guerrilla Signals'; toEmails = @() }
                 mailgun  = @{ enabled = $false; apiKey = ''; domain = ''; fromEmail = ''; toEmails = @() }
                 twilio   = @{ enabled = $false; accountSid = ''; authToken = ''; fromNumber = ''; toNumbers = @() }
             }
@@ -164,7 +164,7 @@ function New-MockConfig {
             additionalSuspiciousCountries = @()
         }
         scheduling = @{
-            taskName        = 'PSGuerrilla-Patrol'
+            taskName        = 'Guerrilla-Patrol'
             intervalMinutes = 60
         }
     }
@@ -190,7 +190,7 @@ function New-MockAuditFinding {
         [hashtable]$Details = @{}
     )
     [PSCustomObject]@{
-        PSTypeName       = 'PSGuerrilla.AuditFinding'
+        PSTypeName       = 'Guerrilla.AuditFinding'
         CheckId          = $CheckId
         CheckName        = $CheckName
         Category         = $Category
@@ -281,7 +281,7 @@ function New-MockAuditResult {
     $medCount  = @($Findings | Where-Object { $_.Severity -eq 'Medium' -and $_.Status -eq 'FAIL' }).Count
     $lowCount  = @($Findings | Where-Object { $_.Severity -eq 'Low' -and $_.Status -eq 'FAIL' }).Count
     [PSCustomObject]@{
-        PSTypeName     = 'PSGuerrilla.AuditResult'
+        PSTypeName     = 'Guerrilla.AuditResult'
         ScanId         = [guid]::NewGuid().ToString()
         Timestamp      = [datetime]::UtcNow
         TenantDomain   = $Domain
@@ -437,8 +437,8 @@ function Invoke-GuerrillaCheckFixture {
         [Parameter(Mandatory)][hashtable]$Definition,
         [Parameter(Mandatory)][string]$FunctionName
     )
-    $mod = Get-Module PSGuerrilla
-    if (-not $mod) { throw 'PSGuerrilla module is not imported; call Import-PSGuerrilla first.' }
+    $mod = Get-Module Guerrilla
+    if (-not $mod) { throw 'Guerrilla module is not imported; call Import-Guerrilla first.' }
     & $mod {
         param($AuditData, $Definition, $FunctionName)
         $cmd = Get-Command $FunctionName -ErrorAction SilentlyContinue

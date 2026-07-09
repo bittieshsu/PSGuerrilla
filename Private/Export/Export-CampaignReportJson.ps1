@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Export-CampaignReportJson {
     [CmdletBinding()]
@@ -13,7 +13,7 @@ function Export-CampaignReportJson {
 
     $moduleVersion = '2.0.0'
     try {
-        $manifestPath = Join-Path (Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Parent) 'PSGuerrilla.psd1'
+        $manifestPath = Join-Path (Split-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) -Parent) 'Guerrilla.psd1'
         if (Test-Path $manifestPath) {
             $manifest = Import-PowerShellDataFile -Path $manifestPath -ErrorAction SilentlyContinue
             if ($manifest.ModuleVersion) { $moduleVersion = $manifest.ModuleVersion }
@@ -22,7 +22,7 @@ function Export-CampaignReportJson {
 
     $output = @{
         schemaVersion = 1
-        generator     = "PSGuerrilla v$moduleVersion"
+        generator     = "Guerrilla v$moduleVersion"
         scanId        = $Result.ScanId
         scanStart     = $Result.ScanStart.ToString('o')
         scanEnd       = $Result.ScanEnd.ToString('o')

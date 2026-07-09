@@ -1,5 +1,5 @@
 <#
-§ PSGuerrilla — Enterprise Security Audit & Monitoring Toolkit
+§ Guerrilla — Enterprise Security Audit & Monitoring Toolkit
 § Copyright (c) 2026 Jim Tyler. All rights reserved.
 
 § Author
@@ -24,7 +24,7 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Send-SignalSlack' {
@@ -34,44 +34,44 @@ Describe 'Send-SignalSlack' {
 
     Context 'Successful send' {
         It 'returns success result' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
-            $result = Send-SignalSlack -WebhookUrl 'https://hooks.slack.com/services/T00/B00/xxx' -Subject '[PSGuerrilla] Alert' -Threats @($threat)
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
+            $result = Send-SignalSlack -WebhookUrl 'https://hooks.slack.com/services/T00/B00/xxx' -Subject '[Guerrilla] Alert' -Threats @($threat)
             $result.Provider | Should -Be 'Slack'
             $result.Success | Should -BeTrue
             $result.Error | Should -BeNullOrEmpty
         }
 
         It 'includes threat count in message' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
-            $result = Send-SignalSlack -WebhookUrl 'https://hooks.slack.com/services/T00/B00/xxx' -Subject '[PSGuerrilla] Alert' -Threats @($threat)
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
+            $result = Send-SignalSlack -WebhookUrl 'https://hooks.slack.com/services/T00/B00/xxx' -Subject '[Guerrilla] Alert' -Threats @($threat)
             $result.Message | Should -Match '1 threat'
         }
     }
 
     Context 'Block Kit payload' {
         It 'contains header block with subject' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
             Send-SignalSlack -WebhookUrl 'https://hooks.slack.com/services/T00/B00/xxx' -Subject 'Test Alert' -Threats @($threat)
-            Should -Invoke Invoke-RestMethod -ModuleName PSGuerrilla -ParameterFilter { $Body -match '"type":"header"' }
+            Should -Invoke Invoke-RestMethod -ModuleName Guerrilla -ParameterFilter { $Body -match '"type":"header"' }
         }
 
         It 'includes threat details in section blocks' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
             Send-SignalSlack -WebhookUrl 'https://hooks.slack.com/services/T00/B00/xxx' -Subject 'Test' -Threats @($threat)
-            Should -Invoke Invoke-RestMethod -ModuleName PSGuerrilla -ParameterFilter { $Body -match 'victim@t.com' }
+            Should -Invoke Invoke-RestMethod -ModuleName Guerrilla -ParameterFilter { $Body -match 'victim@t.com' }
         }
 
         It 'includes threat level emoji for CRITICAL' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
             Send-SignalSlack -WebhookUrl 'https://hooks.slack.com/services/T00/B00/xxx' -Subject 'Test' -Threats @($threat)
-            Should -Invoke Invoke-RestMethod -ModuleName PSGuerrilla -ParameterFilter { $Body -match 'red_circle' }
+            Should -Invoke Invoke-RestMethod -ModuleName Guerrilla -ParameterFilter { $Body -match 'red_circle' }
         }
     }
 
     Context 'Retry on failure' {
         It 'retries once and returns success if retry works' {
-            & (Get-Module PSGuerrilla) { $script:_testSlackCallCount = 0 }
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            & (Get-Module Guerrilla) { $script:_testSlackCallCount = 0 }
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 $script:_testSlackCallCount++
                 if ($script:_testSlackCallCount -eq 1) { throw 'API Error' }
                 $null
@@ -82,7 +82,7 @@ Describe 'Send-SignalSlack' {
         }
 
         It 'returns failure when both attempts fail' {
-            Mock Invoke-RestMethod { throw 'Permanent failure' } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { throw 'Permanent failure' } -ModuleName Guerrilla
             $result = Send-SignalSlack -WebhookUrl 'https://hooks.slack.com/services/T00/B00/xxx' -Subject 'Test' -Threats @($threat)
             $result.Success | Should -BeFalse
             $result.Error | Should -Not -BeNullOrEmpty

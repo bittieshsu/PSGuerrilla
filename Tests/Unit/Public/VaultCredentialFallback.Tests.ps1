@@ -1,16 +1,16 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
 # Verifies that scan cmdlets fall back to the safehouse vault (default keys) for
 # credentials when no -ConfigFile / parameters / config.json values are supplied.
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Vault credential fallback' {
 
     Context 'Invoke-Fortification (Google Workspace)' {
         It 'resolves the service account + admin email from the vault default keys' {
-            InModuleScope PSGuerrilla {
+            InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret {
                     switch ($VaultKey) {
                         'GUERRILLA_GWS_SA'             { '{"type":"service_account","client_email":"sa@x.iam","private_key":"k"}' }
@@ -32,7 +32,7 @@ Describe 'Vault credential fallback' {
         }
 
         It 'still throws the required-parameter error when the vault is empty' {
-            InModuleScope PSGuerrilla {
+            InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret { $null }
                 Mock Write-OperationHeader {}
                 Mock Write-ProgressLine {}
@@ -42,7 +42,7 @@ Describe 'Vault credential fallback' {
         }
 
         It 'does not consult the vault when ServiceAccountKeyPath is passed explicitly' {
-            InModuleScope PSGuerrilla {
+            InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret { $null }
                 Mock Get-FortificationScopes { @('scope1') }
                 Mock Write-OperationHeader {}
@@ -58,7 +58,7 @@ Describe 'Vault credential fallback' {
 
     Context 'Invoke-Infiltration (Entra / Azure / M365)' {
         It 'resolves tenant/client/secret from the vault default keys' {
-            InModuleScope PSGuerrilla {
+            InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret {
                     switch ($VaultKey) {
                         'GUERRILLA_GRAPH_TENANT'   { 'tenant-guid' }
@@ -78,7 +78,7 @@ Describe 'Vault credential fallback' {
         }
 
         It 'still throws the required-parameter error when the vault is empty' {
-            InModuleScope PSGuerrilla {
+            InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret { $null }
                 Mock Write-OperationHeader {}
                 Mock Write-ProgressLine {}
@@ -90,7 +90,7 @@ Describe 'Vault credential fallback' {
 
     Context 'Invoke-Campaign (all theaters)' {
         It 'feeds vault-resolved creds into the Workspace and Cloud theaters' {
-            InModuleScope PSGuerrilla {
+            InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret {
                     switch ($VaultKey) {
                         'GUERRILLA_GWS_SA'             { '{"type":"service_account","client_email":"sa@x","private_key":"k"}' }

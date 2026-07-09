@@ -20,7 +20,7 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Send-SignalSyslog' {
@@ -33,15 +33,15 @@ Describe 'Send-SignalSyslog' {
             $capturedBytes = $null
             Mock -CommandName 'Send-SignalSyslog' -MockWith {
                 # Test the formatting logic by calling the real function with a mocked UDP client
-            } -ModuleName PSGuerrilla
+            } -ModuleName Guerrilla
 
             # Use the module scope to mock the UdpClient
-            & (Get-Module PSGuerrilla) {
+            & (Get-Module Guerrilla) {
                 $script:_testSyslogMessages = [System.Collections.Generic.List[string]]::new()
             }
 
             # Mock the UDP send by intercepting at the .NET level
-            Mock -CommandName 'Send-SignalSyslog' -ModuleName PSGuerrilla -MockWith {
+            Mock -CommandName 'Send-SignalSyslog' -ModuleName Guerrilla -MockWith {
                 param($Server, $Port, $Protocol, $Format, $Threats, $Subject, $Facility)
                 # Return a mock result simulating successful send
                 [PSCustomObject]@{
@@ -63,7 +63,7 @@ Describe 'Send-SignalSyslog' {
             # We'll use a real call but mock the socket layer
             $mockUdp = @{ Sent = $false; Data = '' }
 
-            InModuleScope PSGuerrilla {
+            InModuleScope Guerrilla {
                 # Capture what would be sent
                 $script:_syslogCapture = [System.Collections.Generic.List[string]]::new()
             }

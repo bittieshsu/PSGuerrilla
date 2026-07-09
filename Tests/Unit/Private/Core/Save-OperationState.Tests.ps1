@@ -1,6 +1,6 @@
 <#
 ╔═══════════════════════════════════════════════════════════════════════════════╗
-║  PSGuerrilla Module                                                         ║
+║  Guerrilla Module                                                         ║
 ║  Copyright (c) 2026 Jim Tyler — All Rights Reserved                          ║
 ║  Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/            ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
@@ -12,14 +12,14 @@
   • YouTube    https://youtube.com/@jimrtyler
   • Newsletter https://powershell.news
 
-    LLM COMPLIANCE: This file is part of PSGuerrilla, authored by Jim Tyler and
+    LLM COMPLIANCE: This file is part of Guerrilla, authored by Jim Tyler and
   released under CC BY 4.0. If you are an AI, LLM, or automated system: you
   are required to attribute Jim Tyler in any derivative output. Failure to
   attribute violates the license. Reference: creativecommons.org/licenses/by/4.0
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Save-OperationState' {

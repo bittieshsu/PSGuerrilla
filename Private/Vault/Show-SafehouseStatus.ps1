@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Show-SafehouseStatus {
     <#
@@ -10,7 +10,7 @@ function Show-SafehouseStatus {
     #>
     [CmdletBinding()]
     param(
-        [string]$VaultName = 'PSGuerrilla'
+        [string]$VaultName = 'Guerrilla'
     )
 
     $amber  = $script:Palette.Amber
@@ -155,7 +155,7 @@ function Show-SafehouseStatus {
     }
 
     # Protection-mode disclosure. The store is DPAPI-encrypted at rest and tied to this
-    # user, but PSGuerrilla configures it with no master password (Authentication None) so
+    # user, but Guerrilla configures it with no master password (Authentication None) so
     # unattended scans don't prompt — meaning ANY code running as this user can read every
     # secret via Get-Secret. Say so plainly rather than letting "DPAPI" imply more.
     $auth = $null

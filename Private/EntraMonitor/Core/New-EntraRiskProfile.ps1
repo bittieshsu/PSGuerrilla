@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function New-EntraRiskProfile {
     [CmdletBinding()]
@@ -22,7 +22,7 @@ function New-EntraRiskProfile {
     }
 
     $profile = [PSCustomObject]@{
-        PSTypeName                = 'PSGuerrilla.EntraRiskProfile'
+        PSTypeName                = 'Guerrilla.EntraRiskProfile'
         UserPrincipalName         = $UserPrincipalName
         ThreatLevel               = 'Clean'
         ThreatScore               = 0.0

@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #Requires -Version 7.0
 <#
@@ -10,11 +10,11 @@
 
 $ErrorActionPreference = 'Stop'
 $env:PSGUERRILLA_QUIET = '1'
-Import-Module (Join-Path $PSScriptRoot '..' 'PSGuerrilla.psd1') -Force
+Import-Module (Join-Path $PSScriptRoot '..' 'Guerrilla.psd1') -Force
 
 # Gather everything inside module scope (private functions + $script: caches), then
 # assert in script scope where the test helper is visible.
-$r = & (Get-Module PSGuerrilla) {
+$r = & (Get-Module Guerrilla) {
     $def = @{ id = 'ADTIER-002'; name = 'x'; severity = 'High'; _categoryName = 'TierZero' }
     $hit = [pscustomobject]@{ Group = 'Domain Admins'; SamAccountName = 'svc_veeam'; MatchedKeyword = 'veeam' }
 

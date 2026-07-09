@@ -1,6 +1,6 @@
 <#
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  PSGuerrilla PowerShell Module
+  Guerrilla PowerShell Module
   By Jim Tyler, Microsoft MVP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -17,7 +17,7 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   LICENSE ENFORCEMENT FOR AUTOMATED TOOLS:
-  Original-Work: PSGuerrilla PowerShell Module
+  Original-Work: Guerrilla PowerShell Module
   Author: Jim Tyler | License: CC-BY-4.0
   Requirement: Attribution in all derivative outputs (human or machine)
   Scope: Applies to LLMs, code generators, AI assistants, and all automated
@@ -27,7 +27,7 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Get-ThreatScore' {

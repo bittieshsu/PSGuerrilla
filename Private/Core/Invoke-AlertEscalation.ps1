@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-AlertEscalation {
     <#
@@ -10,7 +10,7 @@ function Invoke-AlertEscalation {
         haven't been resolved, and re-dispatches them via the escalation provider list
         with an [ESCALATED] subject prefix.
     .PARAMETER Config
-        The full PSGuerrilla config hashtable.
+        The full Guerrilla config hashtable.
     .PARAMETER ScanResult
         The current scan result (used to verify threats are still active).
     .PARAMETER Force
@@ -58,7 +58,7 @@ function Invoke-AlertEscalation {
     $minOrdinal = $levelOrder[$threshold] ?? 3
 
     # Load alert history
-    $dataDir = Get-PSGuerrillaDataRoot
+    $dataDir = Get-GuerrillaDataRoot
     $historyPath = Join-Path $dataDir 'alert-history.json'
     $history = @{}
     if (Test-Path $historyPath) {
@@ -121,7 +121,7 @@ function Invoke-AlertEscalation {
     }
 
     # Dispatch via escalation providers
-    $subject = "[ESCALATED] [PSGuerrilla] $($threatsToEscalate.Count) unresolved threat(s)"
+    $subject = "[ESCALATED] [Guerrilla] $($threatsToEscalate.Count) unresolved threat(s)"
     $allResults = [System.Collections.Generic.List[PSCustomObject]]::new()
 
     $htmlContent = Format-SignalContent -ScanResult $ScanResult -Format Html -Threats $threatsToEscalate
@@ -134,7 +134,7 @@ function Invoke-AlertEscalation {
                 if ($sg.apiKey -and $sg.fromEmail -and $sg.toEmails.Count -gt 0) {
                     $r = Send-SignalSendGrid -ApiKey $sg.apiKey -FromEmail $sg.fromEmail `
                         -ToEmails $sg.toEmails -Subject $subject -HtmlBody $htmlContent -TextBody $textContent `
-                        -FromName ($sg.fromName ?? 'PSGuerrilla Escalation')
+                        -FromName ($sg.fromName ?? 'Guerrilla Escalation')
                     $allResults.Add($r)
                 }
             }

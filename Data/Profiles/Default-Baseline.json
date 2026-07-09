@@ -1,7 +1,7 @@
 {
   "profileId": "default",
   "profileName": "Default Baseline",
-  "description": "Standard security baseline suitable for general organizations. Mirrors the hardcoded defaults in PSGuerrilla core modules.",
+  "description": "Standard security baseline suitable for general organizations. Mirrors the hardcoded defaults in Guerrilla core modules.",
   "version": "2.1.0",
 
   "threatScoring": {

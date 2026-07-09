@@ -1,11 +1,11 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Export-GuerrillaJUnit {
     <#
     .SYNOPSIS
-        Exports PSGuerrilla findings as JUnit XML — the format GitHub Actions, Azure DevOps, and GitLab
-        render natively as pass/fail — so PSGuerrilla results show up in CI/CD pipelines.
+        Exports Guerrilla findings as JUnit XML — the format GitHub Actions, Azure DevOps, and GitLab
+        render natively as pass/fail — so Guerrilla results show up in CI/CD pipelines.
 
     .DESCRIPTION
         Turns any theater's findings (AD / Entra / M365 / Google Workspace) into a JUnit test report:
@@ -17,10 +17,10 @@ function Export-GuerrillaJUnit {
         Audit findings, e.g. (Invoke-Infiltration -PassThru).Findings.
 
     .PARAMETER OutputPath
-        Destination .xml. Default ./PSGuerrilla-results.xml.
+        Destination .xml. Default ./Guerrilla-results.xml.
 
     .PARAMETER SuiteName
-        Top-level <testsuites> name. Default 'PSGuerrilla'.
+        Top-level <testsuites> name. Default 'Guerrilla'.
 
     .PARAMETER WarningsAsFailures
         Treat WARN findings as failures (so CI gates on them too).
@@ -31,14 +31,14 @@ function Export-GuerrillaJUnit {
         if ((Export-GuerrillaJUnit -Findings $r.Findings).Failures) { exit 1 }   # gate the pipeline
     #>
     [CmdletBinding()]
-    [OutputType('PSGuerrilla.JUnitExport')]
+    [OutputType('Guerrilla.JUnitExport')]
     param(
         [Parameter(Mandatory)]
         [AllowEmptyCollection()]
         [PSCustomObject[]]$Findings,
 
-        [string]$OutputPath = (Join-Path (Get-Location) 'PSGuerrilla-results.xml'),
-        [string]$SuiteName = 'PSGuerrilla',
+        [string]$OutputPath = (Join-Path (Get-Location) 'Guerrilla-results.xml'),
+        [string]$SuiteName = 'Guerrilla',
         [switch]$WarningsAsFailures
     )
 
@@ -98,7 +98,7 @@ function Export-GuerrillaJUnit {
     Set-Content -Path $OutputPath -Value $sb.ToString() -Encoding UTF8
 
     [PSCustomObject]@{
-        PSTypeName = 'PSGuerrilla.JUnitExport'
+        PSTypeName = 'Guerrilla.JUnitExport'
         Path       = $OutputPath
         Tests      = $totalTests
         Failures   = $totalFail

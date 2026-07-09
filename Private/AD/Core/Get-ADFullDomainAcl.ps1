@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Full-domain ACL collector. Where Get-ADObjectACLs reads the six critical Tier-0 objects,
@@ -15,7 +15,7 @@
 #
 # Performance: one paged LDAP query pulls nTSecurityDescriptor in binary form for the whole
 # population; each DACL is parsed from bytes (no per-object DirectoryEntry bind). Opt-in and
-# MaxObjects-capped because on a large domain this is the heaviest read PSGuerrilla performs.
+# MaxObjects-capped because on a large domain this is the heaviest read Guerrilla performs.
 
 # Pure predicate: does this ACE grant dangerous control? Mirrors Get-ADObjectACLs exactly so the
 # full-domain sweep and the critical-object pass agree on what "dangerous" means. Testable offline.

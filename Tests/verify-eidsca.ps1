@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # EIDSCA evaluator + dispatcher: Resolve-EidscaControl evaluates the 44-control catalog against the raw
@@ -10,8 +10,8 @@
 $ErrorActionPreference = 'Stop'
 $env:PSGUERRILLA_QUIET = '1'
 $root = Split-Path $PSScriptRoot -Parent
-Import-Module (Join-Path $root 'PSGuerrilla.psd1') -Force
-$mod = Get-Module PSGuerrilla
+Import-Module (Join-Path $root 'Guerrilla.psd1') -Force
+$mod = Get-Module Guerrilla
 
 $results = [System.Collections.Generic.List[object]]::new()
 function Add-R($n, $ok, $d) { $results.Add([PSCustomObject]@{ Name = $n; Pass = [bool]$ok; Detail = $d }) }
@@ -57,7 +57,7 @@ $goodAudit = @{
 $out = & $mod {
     param($audit)
     # Load the catalog as the dispatcher does
-    $cat = Get-Content (Join-Path (Split-Path (Get-Module PSGuerrilla).Path) 'Data/AuditChecks/EidscaChecks.json') -Raw | ConvertFrom-Json -AsHashtable
+    $cat = Get-Content (Join-Path (Split-Path (Get-Module Guerrilla).Path) 'Data/AuditChecks/EidscaChecks.json') -Raw | ConvertFrom-Json -AsHashtable
     $byId = @{}; foreach ($c in $cat.checks) { $byId[$c.id] = $c }
     $sources = @{
         AuthorizationPolicy = $audit.AuthMethods.AuthorizationPolicy

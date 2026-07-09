@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-Watchtower {
     <#
@@ -7,7 +7,7 @@ function Invoke-Watchtower {
         Continuous Active Directory baseline-change monitoring.
 
     .DESCRIPTION
-        Invoke-Watchtower is the AD theater of PSGuerrilla's continuous-monitoring
+        Invoke-Watchtower is the AD theater of Guerrilla's continuous-monitoring
         suite (alongside Invoke-Surveillance for Entra sign-in risk and Invoke-Wiretap
         for M365 audit logs). It snapshots security-relevant AD state — privileged
         group membership, AdminSDHolder, GPO/ACL changes, trusts, krbtgt, delegation,
@@ -43,7 +43,7 @@ function Invoke-Watchtower {
         # Subsequent run; reports Tier-0 changes since the last baseline.
 
     .NOTES
-        Baseline state is stored under the per-user PSGuerrilla data root (theater 'ad').
+        Baseline state is stored under the per-user Guerrilla data root (theater 'ad').
     #>
     [CmdletBinding()]
     param(
@@ -121,7 +121,7 @@ function Invoke-Watchtower {
     # Resolve output directory
     $outDir = if ($OutputDirectory) { $OutputDirectory }
               elseif ($config -and $config.ContainsKey('output') -and $config.output.directory) { $config.output.directory }
-              else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
+              else { Join-Path (Get-GuerrillaDataRoot) 'Reports' }
 
     if (-not (Test-Path $outDir)) {
         New-Item -Path $outDir -ItemType Directory -Force | Out-Null
@@ -218,7 +218,7 @@ function Invoke-Watchtower {
         }
 
         return [PSCustomObject]@{
-            PSTypeName           = 'PSGuerrilla.WatchtowerResult'
+            PSTypeName           = 'Guerrilla.WatchtowerResult'
             ScanId               = $scanId
             Timestamp            = $timestamp
             Theater              = 'ActiveDirectory'
@@ -387,7 +387,7 @@ function Invoke-Watchtower {
 
     # ── 16. Return result object ───────────────────────────────────────
     return [PSCustomObject]@{
-        PSTypeName           = 'PSGuerrilla.WatchtowerResult'
+        PSTypeName           = 'Guerrilla.WatchtowerResult'
         ScanId               = $scanId
         Timestamp            = $timestamp
         Theater              = 'ActiveDirectory'

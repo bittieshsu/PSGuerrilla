@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Test-EventLogSourceExists {
     <#
@@ -26,7 +26,7 @@ function Send-SignalEventLog {
     .SYNOPSIS
         Writes threat alerts to the Windows Event Log.
     .DESCRIPTION
-        Creates PSGuerrilla events in the Windows Application event log. Requires the event
+        Creates Guerrilla events in the Windows Application event log. Requires the event
         source to be registered (needs admin elevation for first-time setup). Gracefully
         skips if not elevated and source doesn't exist.
     .PARAMETER Threats
@@ -34,7 +34,7 @@ function Send-SignalEventLog {
     .PARAMETER Subject
         Alert subject line used in the event message.
     .PARAMETER Source
-        Event log source name. Default: 'PSGuerrilla'.
+        Event log source name. Default: 'Guerrilla'.
     .PARAMETER LogName
         Event log name. Default: 'Application'.
     #>
@@ -43,9 +43,9 @@ function Send-SignalEventLog {
         [Parameter(Mandatory)]
         [PSCustomObject[]]$Threats,
 
-        [string]$Subject = '[PSGuerrilla] Threat Detection',
+        [string]$Subject = '[Guerrilla] Threat Detection',
 
-        [string]$Source = 'PSGuerrilla',
+        [string]$Source = 'Guerrilla',
         [string]$LogName = 'Application'
     )
 
@@ -109,7 +109,7 @@ Threat Score: $score
 Indicators:
   - $indicators
 
-Source: PSGuerrilla v2.1.0
+Source: Guerrilla v2.1.0
 Timestamp: $([datetime]::UtcNow.ToString('o'))
 "@
 

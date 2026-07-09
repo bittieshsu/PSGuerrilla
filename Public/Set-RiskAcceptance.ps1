@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Set-RiskAcceptance {
     <#
@@ -49,7 +49,7 @@ function Set-RiskAcceptance {
     $riskPath = if ($ConfigPath) {
         $ConfigPath
     } else {
-        Join-Path (Get-PSGuerrillaDataRoot) 'risk-acceptance.json'
+        Join-Path (Get-GuerrillaDataRoot) 'risk-acceptance.json'
     }
 
     $riskDir = Split-Path $riskPath -Parent
@@ -87,7 +87,7 @@ function Set-RiskAcceptance {
     $acceptances | ConvertTo-Json -Depth 5 | Set-Content -Path $riskPath -Encoding UTF8
 
     return [PSCustomObject]@{
-        PSTypeName    = 'PSGuerrilla.RiskAcceptance'
+        PSTypeName    = 'Guerrilla.RiskAcceptance'
         CheckId       = $CheckId
         Justification = $Justification
         AcceptedBy    = $AcceptedBy

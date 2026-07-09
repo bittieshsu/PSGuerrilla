@@ -5,7 +5,7 @@
 # Run:  pwsh -NoProfile -STA -File Tests\Manual\Test-GuiAsyncDrain.ps1
 [CmdletBinding()]
 param(
-    [string]$ModulePath = (Join-Path $PSScriptRoot '..\..\PSGuerrilla.psd1')
+    [string]$ModulePath = (Join-Path $PSScriptRoot '..\..\Guerrilla.psd1')
 )
 
 Add-Type -AssemblyName WindowsBase
@@ -17,12 +17,12 @@ $script:done = '<unset>'
 
 # An action that mimics Write-ProgressLine output: several Write-Host -NoNewline
 # fragments with ANSI codes that should reassemble into one clean log line.
-# CRITICALLY it also resolves a real PSGuerrilla public cmdlet — this is what
+# CRITICALLY it also resolves a real Guerrilla public cmdlet — this is what
 # proves the module is actually imported in the worker runspace (the gap that let
 # the "term 'Invoke-Reconnaissance' is not recognized" bug ship).
 $action = {
     if (-not (Get-Command Invoke-Reconnaissance -ErrorAction SilentlyContinue)) {
-        throw "PSGuerrilla module not imported in worker runspace — Invoke-Reconnaissance not found"
+        throw "Guerrilla module not imported in worker runspace — Invoke-Reconnaissance not found"
     }
     $e = [char]27
     Write-Host "  $e[38;5;240m[1750 UTC] $e[0m" -NoNewline
@@ -44,7 +44,7 @@ $onLog      = { param($m) $script:logs.Add($m) }
 $onComplete = { param($r) $script:done = "OK: $r"; [System.Windows.Threading.Dispatcher]::ExitAllFrames() }
 $onError    = { param($e) $script:done = "ERR: $e"; [System.Windows.Threading.Dispatcher]::ExitAllFrames() }
 
-& (Get-Module PSGuerrilla) {
+& (Get-Module Guerrilla) {
     param($ModulePath, $Action, $Dispatcher, $OnLog, $OnComplete, $OnError)
     Invoke-GuerrillaGuiAsync `
         -ModulePath  $ModulePath `

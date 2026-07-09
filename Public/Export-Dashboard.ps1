@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Export-Dashboard {
     <#
@@ -13,7 +13,7 @@ function Export-Dashboard {
     .PARAMETER ScanResults
         Array of scan result objects. If not provided, reads from latest state.
     .PARAMETER OutputPath
-        File path for the HTML output. Default: PSGuerrilla-Dashboard.html
+        File path for the HTML output. Default: Guerrilla-Dashboard.html
     .PARAMETER OrganizationName
         Organization name for the report header.
     .EXAMPLE
@@ -29,9 +29,9 @@ function Export-Dashboard {
         [string]$OrganizationName = 'Organization'
     )
 
-    if (-not $OutputPath) { $OutputPath = Join-Path (Get-Location) 'PSGuerrilla-Dashboard.html' }
+    if (-not $OutputPath) { $OutputPath = Join-Path (Get-Location) 'Guerrilla-Dashboard.html' }
 
-    $dataDir = Get-PSGuerrillaDataRoot
+    $dataDir = Get-GuerrillaDataRoot
 
     # Load findings if not provided
     if (-not $Findings -or $Findings.Count -eq 0) {
@@ -67,7 +67,7 @@ function Export-Dashboard {
         -OrganizationName $OrganizationName
 
     return [PSCustomObject]@{
-        PSTypeName = 'PSGuerrilla.Dashboard'
+        PSTypeName = 'Guerrilla.Dashboard'
         Success    = $true
         Path       = (Resolve-Path $OutputPath).Path
         Message    = "Dashboard exported to $OutputPath"

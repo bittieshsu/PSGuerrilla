@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-Reconnaissance {
     [CmdletBinding()]
@@ -78,7 +78,7 @@ function Invoke-Reconnaissance {
 
     $outDir = if ($OutputDirectory) { $OutputDirectory }
               elseif ($config -and $config.output.directory) { $config.output.directory }
-              else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
+              else { Join-Path (Get-GuerrillaDataRoot) 'Reports' }
 
     # Test mode renders zeroed timestamps for deterministic demo/sample output. Set here
     # (before any console output) and self-healing — a real run resets it to $false.
@@ -328,7 +328,7 @@ function Invoke-Reconnaissance {
 
     # --- Emit result object ---
     $result = [PSCustomObject]@{
-        PSTypeName     = 'PSGuerrilla.ReconResult'
+        PSTypeName     = 'Guerrilla.ReconResult'
         ScanId         = $scanId
         Timestamp      = $scanStart
         DomainName     = $domainName

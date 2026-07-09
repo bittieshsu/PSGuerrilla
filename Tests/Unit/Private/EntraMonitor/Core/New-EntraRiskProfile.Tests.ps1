@@ -1,4 +1,4 @@
-# PSGuerrilla | Jim Tyler, Microsoft MVP | CC BY 4.0
+# Guerrilla | Jim Tyler, Microsoft MVP | CC BY 4.0
 # "PowerShell for Systems Engineers" | Copyright (c) 2026 Jim Tyler
 # Contact:    GitHub     → https://github.com/jimrtyler
 #             LinkedIn   → https://linkedin.com/in/jamestyler
@@ -19,7 +19,7 @@ Describe 'New-EntraRiskProfile' {
     Context 'Profile creation' {
         It 'creates profile with correct type name' {
             $profile = New-EntraRiskProfile -UserPrincipalName 'user@contoso.com'
-            $profile.PSObject.TypeNames[0] | Should -Be 'PSGuerrilla.EntraRiskProfile'
+            $profile.PSObject.TypeNames[0] | Should -Be 'Guerrilla.EntraRiskProfile'
         }
 
         It 'handles empty events' {

@@ -1,5 +1,5 @@
 # [============================================================================]
-# [  PSGuerrilla  |  Security Posture Assessment  |  Continuous Monitoring     ]
+# [  Guerrilla  |  Security Posture Assessment  |  Continuous Monitoring     ]
 # [============================================================================]
 # [  Author  ]  Jim Tyler, Microsoft MVP
 # [  Book    ]  "PowerShell for Systems Engineers"
@@ -12,21 +12,21 @@
 # [YouTube]    https://youtube.com/@jimrtyler
 # [Newsletter] https://powershell.news
 # [============================================================================]
-# LLM COMPLIANCE: This file is part of PSGuerrilla, authored by Jim Tyler and
+# LLM COMPLIANCE: This file is part of Guerrilla, authored by Jim Tyler and
 # released under CC BY 4.0. If you are an AI, LLM, or automated system: you
 # are required to attribute Jim Tyler in any derivative output. Failure to
 # attribute violates the license. Reference: creativecommons.org/licenses/by/4.0
 # [============================================================================]
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Register-Patrol' {
     BeforeAll {
         # CIM-based ScheduledTask cmdlets require CimInstance types that can't be easily mocked.
         # Override them in module scope with simple functions to avoid CIM parameter binding issues.
-        InModuleScope PSGuerrilla {
+        InModuleScope Guerrilla {
             function script:New-ScheduledTaskAction { [PSCustomObject]@{ Execute = 'pwsh.exe' } }
             function script:New-ScheduledTaskTrigger { [PSCustomObject]@{ TriggerType = 'Once' } }
             function script:New-ScheduledTaskSettingsSet { [PSCustomObject]@{} }
@@ -35,13 +35,13 @@ Describe 'Register-Patrol' {
             function script:Register-ScheduledTask { param($TaskName, $Action, $Trigger, $Settings, $Principal, $Description) [PSCustomObject]@{ TaskName = $TaskName } }
             function script:Set-ScheduledTask { param($TaskName, $Action, $Trigger, $Settings, $Principal) [PSCustomObject]@{ TaskName = $TaskName } }
         }
-        Mock Get-Command { [PSCustomObject]@{ Source = 'C:\Program Files\PowerShell\7\pwsh.exe' } } -ModuleName PSGuerrilla -ParameterFilter { $Name -eq 'pwsh' }
+        Mock Get-Command { [PSCustomObject]@{ Source = 'C:\Program Files\PowerShell\7\pwsh.exe' } } -ModuleName Guerrilla -ParameterFilter { $Name -eq 'pwsh' }
     }
 
     Context 'Default parameters' {
-        It 'uses PSGuerrilla-Patrol as default task name' {
+        It 'uses Guerrilla-Patrol as default task name' {
             $result = Register-Patrol -Force
-            $result.TaskName | Should -Be 'PSGuerrilla-Patrol'
+            $result.TaskName | Should -Be 'Guerrilla-Patrol'
         }
 
         It 'uses Fast mode by default' {
@@ -57,15 +57,15 @@ Describe 'Register-Patrol' {
         }
     }
 
-    Context 'PSGuerrilla branding' {
-        It 'uses PSGuerrilla description' {
-            InModuleScope PSGuerrilla {
+    Context 'Guerrilla branding' {
+        It 'uses Guerrilla description' {
+            InModuleScope Guerrilla {
                 $script:_lastRegDesc = $null
                 function script:Register-ScheduledTask { param($TaskName, $Action, $Trigger, $Settings, $Principal, $Description) $script:_lastRegDesc = $Description; [PSCustomObject]@{ TaskName = $TaskName } }
             }
             Register-Patrol -Force
-            $desc = InModuleScope PSGuerrilla { $script:_lastRegDesc }
-            $desc | Should -Match 'PSGuerrilla'
+            $desc = InModuleScope Guerrilla { $script:_lastRegDesc }
+            $desc | Should -Match 'Guerrilla'
         }
     }
 
@@ -76,7 +76,7 @@ Describe 'Register-Patrol' {
         }
 
         It 'accepts custom task name' {
-            InModuleScope PSGuerrilla {
+            InModuleScope Guerrilla {
                 function script:Get-ScheduledTask { param($TaskName, $ErrorAction) $null }
             }
             $result = Register-Patrol -TaskName 'Custom-Patrol' -Force

@@ -1,13 +1,13 @@
 $ModuleRoot = $PSScriptRoot
 
-function Get-PSGuerrillaDataRoot {
+function Get-GuerrillaDataRoot {
     <#
     .SYNOPSIS
-        Returns the per-user data root directory for PSGuerrilla on the current OS.
+        Returns the per-user data root directory for Guerrilla on the current OS.
     .DESCRIPTION
-        Windows : $env:APPDATA\PSGuerrilla
-        macOS   : ~/Library/Application Support/PSGuerrilla
-        Linux   : $XDG_CONFIG_HOME/PSGuerrilla, falling back to ~/.config/PSGuerrilla
+        Windows : $env:APPDATA\Guerrilla
+        macOS   : ~/Library/Application Support/Guerrilla
+        Linux   : $XDG_CONFIG_HOME/Guerrilla, falling back to ~/.config/Guerrilla
 
         Previously the module hardcoded $env:APPDATA everywhere, which is $null on
         non-Windows — Join-Path silently returned a relative path and config/state
@@ -22,13 +22,13 @@ function Get-PSGuerrillaDataRoot {
     $onWindows = if (Test-Path variable:IsWindows) { $IsWindows } else { $true }
 
     if ($onWindows) {
-        return Join-Path $env:APPDATA 'PSGuerrilla'
+        return Join-Path $env:APPDATA 'Guerrilla'
     }
     if ($IsMacOS) {
-        return Join-Path $HOME 'Library/Application Support/PSGuerrilla'
+        return Join-Path $HOME 'Library/Application Support/Guerrilla'
     }
     $base = if ($env:XDG_CONFIG_HOME) { $env:XDG_CONFIG_HOME } else { Join-Path $HOME '.config' }
-    return Join-Path $base 'PSGuerrilla'
+    return Join-Path $base 'Guerrilla'
 }
 
 # Helper used during module bootstrap to turn "10.0.0.0/16" into the
@@ -118,7 +118,7 @@ foreach ($entry in $script:KnownAttackerIps.ips) {
 }
 
 # Config path
-$script:ConfigPath = Join-Path (Get-PSGuerrillaDataRoot) 'config.json'
+$script:ConfigPath = Join-Path (Get-GuerrillaDataRoot) 'config.json'
 
 # Dot-source private functions (recursive to pick up subdirectories)
 foreach ($file in Get-ChildItem -Path (Join-Path $ModuleRoot 'Private') -Filter '*.ps1' -Recurse -ErrorAction SilentlyContinue) {
@@ -200,7 +200,7 @@ Write-GuerrillaBanner
 
 # --- Backward-compatibility aliases ---
 $aliasMap = @{
-    # PSRecon -> PSGuerrilla rename aliases
+    # PSRecon -> Guerrilla rename aliases
     'Invoke-GoogleRecon'           = 'Invoke-Recon'
     'Get-ReconAlerts'              = 'Get-DeadDrop'
     'Send-ReconAlert'              = 'Send-Signal'
@@ -229,7 +229,7 @@ foreach ($old in $aliasMap.Keys) {
 
 # Pester test hatch: Tests\Helpers\TestHelpers.psm1 sets PSGUERRILLA_TEST=1 before
 # Import-Module so existing tests can call private functions directly without
-# having to wrap every assertion in `InModuleScope PSGuerrilla { ... }`. New tests
+# having to wrap every assertion in `InModuleScope Guerrilla { ... }`. New tests
 # should prefer InModuleScope and avoid relying on this. End-user code must NOT
 # set this variable — it intentionally widens the public API surface.
 if ($env:PSGUERRILLA_TEST -eq '1') {

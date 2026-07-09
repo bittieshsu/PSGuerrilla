@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Send-SignalWebhook {
     [CmdletBinding()]
@@ -20,7 +20,7 @@ function Send-SignalWebhook {
 
     # Build generic JSON payload suitable for SIEM ingestion
     $payload = @{
-        source    = 'PSGuerrilla'
+        source    = 'Guerrilla'
         version   = '2.0.0'
         timestamp = [datetime]::UtcNow.ToString('o')
         scan      = @{

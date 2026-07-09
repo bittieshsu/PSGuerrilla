@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-EntraFedChecks {
     [CmdletBinding()]
@@ -580,7 +580,7 @@ function Test-InfiltrationEIDFED013 {
     param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
     # The Entra Connect (formerly Azure AD Connect) build is an attribute of the
-    # on-premises Connect SERVER, not a cloud directory property. PSGuerrilla's Entra
+    # on-premises Connect SERVER, not a cloud directory property. Guerrilla's Entra
     # theater is agentless Graph, so we read the version authoritatively only when the
     # audit is running on/near the Connect host. Detection layers, in order of trust:
     #   1. Server-side authoritative read (registry / ADSync module) — best.

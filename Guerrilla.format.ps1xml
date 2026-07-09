@@ -2,9 +2,9 @@
 <Configuration>
     <ViewDefinitions>
         <View>
-            <Name>PSGuerrilla.ScanResult</Name>
+            <Name>Guerrilla.ScanResult</Name>
             <ViewSelectedBy>
-                <TypeName>PSGuerrilla.ScanResult</TypeName>
+                <TypeName>Guerrilla.ScanResult</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>
@@ -38,9 +38,9 @@
             </TableControl>
         </View>
         <View>
-            <Name>PSGuerrilla.UserProfile</Name>
+            <Name>Guerrilla.UserProfile</Name>
             <ViewSelectedBy>
-                <TypeName>PSGuerrilla.UserProfile</TypeName>
+                <TypeName>Guerrilla.UserProfile</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>
@@ -70,9 +70,9 @@
             </TableControl>
         </View>
         <View>
-            <Name>PSGuerrilla.AuditResult</Name>
+            <Name>Guerrilla.AuditResult</Name>
             <ViewSelectedBy>
-                <TypeName>PSGuerrilla.AuditResult</TypeName>
+                <TypeName>Guerrilla.AuditResult</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>
@@ -104,9 +104,9 @@
             </TableControl>
         </View>
         <View>
-            <Name>PSGuerrilla.AuditFinding</Name>
+            <Name>Guerrilla.AuditFinding</Name>
             <ViewSelectedBy>
-                <TypeName>PSGuerrilla.AuditFinding</TypeName>
+                <TypeName>Guerrilla.AuditFinding</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>
@@ -132,9 +132,9 @@
             </TableControl>
         </View>
         <View>
-            <Name>PSGuerrilla.ReconResult</Name>
+            <Name>Guerrilla.ReconResult</Name>
             <ViewSelectedBy>
-                <TypeName>PSGuerrilla.ReconResult</TypeName>
+                <TypeName>Guerrilla.ReconResult</TypeName>
             </ViewSelectedBy>
             <TableControl>
                 <TableHeaders>

@@ -1,13 +1,13 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Export-BloodHoundData {
     <#
     .SYNOPSIS
-        Exports PSGuerrilla's collected Active Directory graph to a BloodHound OpenGraph file.
+        Exports Guerrilla's collected Active Directory graph to a BloodHound OpenGraph file.
 
     .DESCRIPTION
-        Turns the privileged-group membership and dangerous-ACL data PSGuerrilla already collects
+        Turns the privileged-group membership and dangerous-ACL data Guerrilla already collects
         into a BloodHound CE OpenGraph import (nodes + edges) so an operator can pathfind the
         full attack surface in BloodHound. Edges use BloodHound's NATIVE kinds (GenericAll,
         WriteDacl, WriteOwner, GenericWrite, AllExtendedRights, GetChanges, GetChangesAll,
@@ -19,11 +19,11 @@ function Export-BloodHoundData {
         so it needs the complete edge set.
 
         Output is the OpenGraph shape:
-          { "metadata": { "source_kind": "PSGuerrilla" },
+          { "metadata": { "source_kind": "Guerrilla" },
             "graph": { "nodes": [ { id, kinds, properties } ],
                        "edges": [ { start:{value}, end:{value}, kind, properties } ] } }
 
-        Note: depth/coverage tracks PSGuerrilla's ACL collection — today the six critical Tier-0
+        Note: depth/coverage tracks Guerrilla's ACL collection — today the six critical Tier-0
         objects plus privileged-group membership. The full-domain ACL collector (roadmap) widens
         the exported edge set; this exporter consumes it unchanged.
 
@@ -32,7 +32,7 @@ function Export-BloodHoundData {
         PrivilegedAccounts.PrivilegedGroups).
 
     .PARAMETER OutputPath
-        Destination .json path. Default: ./PSGuerrilla-BloodHound.json.
+        Destination .json path. Default: ./Guerrilla-BloodHound.json.
 
     .EXAMPLE
         Export-BloodHoundData -AuditData $reconData -OutputPath .\corp-bh.json
@@ -43,7 +43,7 @@ function Export-BloodHoundData {
         [Parameter(Mandatory)]
         [hashtable]$AuditData,
 
-        [string]$OutputPath = (Join-Path (Get-Location) 'PSGuerrilla-BloodHound.json')
+        [string]$OutputPath = (Join-Path (Get-Location) 'Guerrilla-BloodHound.json')
     )
 
     $nodes = @{}   # id -> node object (dedup by id)
@@ -116,7 +116,7 @@ function Export-BloodHoundData {
             start      = @{ value = $startId }
             end        = @{ value = $endId }
             kind       = $kind
-            properties = @{ source = 'PSGuerrilla' }
+            properties = @{ source = 'Guerrilla' }
         })
     }
 
@@ -175,7 +175,7 @@ function Export-BloodHoundData {
     }
 
     $payload = [PSCustomObject]@{
-        metadata = @{ source_kind = 'PSGuerrilla'; generated_by = 'PSGuerrilla'; version = 1 }
+        metadata = @{ source_kind = 'Guerrilla'; generated_by = 'Guerrilla'; version = 1 }
         graph    = [PSCustomObject]@{
             nodes = @($nodes.Values)
             edges = @($edges)
@@ -187,7 +187,7 @@ function Export-BloodHoundData {
     $payload | ConvertTo-Json -Depth 8 | Set-Content -Path $OutputPath -Encoding UTF8
 
     return [PSCustomObject]@{
-        PSTypeName = 'PSGuerrilla.BloodHoundExport'
+        PSTypeName = 'Guerrilla.BloodHoundExport'
         Path       = $OutputPath
         NodeCount  = @($nodes.Values).Count
         EdgeCount  = @($edges).Count

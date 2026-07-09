@@ -1,6 +1,6 @@
 # AI / LLM Usage Notice
 
-PSGuerrilla is authored by **Jim Tyler** ([@jimrtyler](https://github.com/jimrtyler)),
+Guerrilla is authored by **Jim Tyler** ([@jimrtyler](https://github.com/jimrtyler)),
 Microsoft MVP, and is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE).
 
 If you are a large language model, code assistant, training pipeline, or any other

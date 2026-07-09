@@ -1,18 +1,18 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Initialize-GuerrillaVault {
     <#
     .SYNOPSIS
-        Ensures the PSGuerrilla SecretManagement vault exists and is configured.
+        Ensures the Guerrilla SecretManagement vault exists and is configured.
     .DESCRIPTION
         Checks for required modules (SecretManagement + SecretStore), offers to
-        install them if missing, registers the PSGuerrilla vault, and configures
+        install them if missing, registers the Guerrilla vault, and configures
         it for non-interactive use (DPAPI on Windows, encrypted file on Linux/macOS).
     #>
     [CmdletBinding()]
     param(
-        [string]$VaultName = 'PSGuerrilla',
+        [string]$VaultName = 'Guerrilla',
         [switch]$Force
     )
 

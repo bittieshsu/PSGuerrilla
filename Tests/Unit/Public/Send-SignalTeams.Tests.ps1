@@ -1,6 +1,6 @@
 <#
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  PSGuerrilla PowerShell Module
+  Guerrilla PowerShell Module
   By Jim Tyler, Microsoft MVP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -25,7 +25,7 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Send-SignalTeams' {
@@ -35,38 +35,38 @@ Describe 'Send-SignalTeams' {
 
     Context 'Successful send' {
         It 'returns success result' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
-            $result = Send-SignalTeams -WebhookUrl 'https://outlook.office.com/webhook/test' -Subject '[PSGuerrilla] Alert' -Threats @($threat)
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
+            $result = Send-SignalTeams -WebhookUrl 'https://outlook.office.com/webhook/test' -Subject '[Guerrilla] Alert' -Threats @($threat)
             $result.Provider | Should -Be 'Teams'
             $result.Success | Should -BeTrue
             $result.Error | Should -BeNullOrEmpty
         }
 
         It 'includes threat count in message' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
-            $result = Send-SignalTeams -WebhookUrl 'https://outlook.office.com/webhook/test' -Subject '[PSGuerrilla] Alert' -Threats @($threat)
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
+            $result = Send-SignalTeams -WebhookUrl 'https://outlook.office.com/webhook/test' -Subject '[Guerrilla] Alert' -Threats @($threat)
             $result.Message | Should -Match '1 threat'
         }
     }
 
     Context 'Adaptive Card payload' {
         It 'sends Adaptive Card content type' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
             Send-SignalTeams -WebhookUrl 'https://outlook.office.com/webhook/test' -Subject 'Test' -Threats @($threat)
-            Should -Invoke Invoke-RestMethod -ModuleName PSGuerrilla -ParameterFilter { $Body -match 'AdaptiveCard' }
+            Should -Invoke Invoke-RestMethod -ModuleName Guerrilla -ParameterFilter { $Body -match 'AdaptiveCard' }
         }
 
         It 'includes threat email in FactSet' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
             Send-SignalTeams -WebhookUrl 'https://outlook.office.com/webhook/test' -Subject 'Test' -Threats @($threat)
-            Should -Invoke Invoke-RestMethod -ModuleName PSGuerrilla -ParameterFilter { $Body -match 'victim@t.com' }
+            Should -Invoke Invoke-RestMethod -ModuleName Guerrilla -ParameterFilter { $Body -match 'victim@t.com' }
         }
     }
 
     Context 'Retry on failure' {
         It 'retries once and returns success if retry works' {
-            & (Get-Module PSGuerrilla) { $script:_testTeamsCallCount = 0 }
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            & (Get-Module Guerrilla) { $script:_testTeamsCallCount = 0 }
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 $script:_testTeamsCallCount++
                 if ($script:_testTeamsCallCount -eq 1) { throw 'API Error' }
                 $null
@@ -77,7 +77,7 @@ Describe 'Send-SignalTeams' {
         }
 
         It 'returns failure when both attempts fail' {
-            Mock Invoke-RestMethod { throw 'Permanent failure' } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { throw 'Permanent failure' } -ModuleName Guerrilla
             $result = Send-SignalTeams -WebhookUrl 'https://outlook.office.com/webhook/test' -Subject 'Test' -Threats @($threat)
             $result.Success | Should -BeFalse
             $result.Error | Should -Not -BeNullOrEmpty

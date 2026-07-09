@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-ReconDemo {
     [CmdletBinding()]
@@ -9,7 +9,7 @@ function Invoke-ReconDemo {
     )
 
     if (-not $OutputPath) {
-        $outDir = Join-Path (Get-PSGuerrillaDataRoot) 'Reports'
+        $outDir = Join-Path (Get-GuerrillaDataRoot) 'Reports'
         if (-not (Test-Path $outDir)) { New-Item -Path $outDir -ItemType Directory -Force | Out-Null }
         $OutputPath = Join-Path $outDir "demo_field_report_$(Get-Date -Format 'yyyyMMdd_HHmmss').html"
     }
@@ -41,7 +41,7 @@ function Invoke-ReconDemo {
     # USER 1: CRITICAL — known attacker IP + impossible travel + brute force success
     # ============================================================
     $u1 = [PSCustomObject]@{
-        PSTypeName              = 'PSGuerrilla.UserProfile'
+        PSTypeName              = 'Guerrilla.UserProfile'
         Email                   = 'sarah.chen@acme.com'
         ThreatLevel             = 'CRITICAL'
         ThreatScore             = 260.0
@@ -121,7 +121,7 @@ function Invoke-ReconDemo {
     # USER 2: CRITICAL — confirmed compromised, reauth from Azure, OAuth grant
     # ============================================================
     $u2 = [PSCustomObject]@{
-        PSTypeName              = 'PSGuerrilla.UserProfile'
+        PSTypeName              = 'Guerrilla.UserProfile'
         Email                   = 'james.rodriguez@acme.com'
         ThreatLevel             = 'CRITICAL'
         ThreatScore             = 185.0
@@ -185,7 +185,7 @@ function Invoke-ReconDemo {
     # USER 3: HIGH — impossible travel + Tor + suspicious UA
     # ============================================================
     $u3 = [PSCustomObject]@{
-        PSTypeName              = 'PSGuerrilla.UserProfile'
+        PSTypeName              = 'Guerrilla.UserProfile'
         Email                   = 'mike.oconnor@acme.com'
         ThreatLevel             = 'HIGH'
         ThreatScore             = 85.0
@@ -255,7 +255,7 @@ function Invoke-ReconDemo {
     # USER 4: HIGH — VPN + brute force attempt + suspicious country
     # ============================================================
     $u4 = [PSCustomObject]@{
-        PSTypeName              = 'PSGuerrilla.UserProfile'
+        PSTypeName              = 'Guerrilla.UserProfile'
         Email                   = 'anna.petrov@acme.com'
         ThreatLevel             = 'HIGH'
         ThreatScore             = 75.0
@@ -316,7 +316,7 @@ function Invoke-ReconDemo {
     # USER 5: MEDIUM — cloud logins + after hours + new device
     # ============================================================
     $u5 = [PSCustomObject]@{
-        PSTypeName              = 'PSGuerrilla.UserProfile'
+        PSTypeName              = 'Guerrilla.UserProfile'
         Email                   = 'david.kim@acme.com'
         ThreatLevel             = 'MEDIUM'
         ThreatScore             = 40.0
@@ -363,7 +363,7 @@ function Invoke-ReconDemo {
     # USER 6: MEDIUM — Tor exit node + user agent anomaly
     # ============================================================
     $u6 = [PSCustomObject]@{
-        PSTypeName              = 'PSGuerrilla.UserProfile'
+        PSTypeName              = 'Guerrilla.UserProfile'
         Email                   = 'lisa.nakamura@acme.com'
         ThreatLevel             = 'MEDIUM'
         ThreatScore             = 45.0
@@ -408,7 +408,7 @@ function Invoke-ReconDemo {
     # USER 7: LOW — new device only
     # ============================================================
     $u7 = [PSCustomObject]@{
-        PSTypeName              = 'PSGuerrilla.UserProfile'
+        PSTypeName              = 'Guerrilla.UserProfile'
         Email                   = 'robert.patel@acme.com'
         ThreatLevel             = 'LOW'
         ThreatScore             = 10.0
@@ -444,7 +444,7 @@ function Invoke-ReconDemo {
     # USER 8: LOW — after-hours only
     # ============================================================
     $u8 = [PSCustomObject]@{
-        PSTypeName              = 'PSGuerrilla.UserProfile'
+        PSTypeName              = 'Guerrilla.UserProfile'
         Email                   = 'emily.watson@acme.com'
         ThreatLevel             = 'LOW'
         ThreatScore             = 15.0

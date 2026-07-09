@@ -1,6 +1,6 @@
 {
   "version": "2.1.0",
-  "description": "Threat actor profiles relevant to K-12 and education environments. Maps actor TTPs to PSGuerrilla detection indicators and MITRE ATT&CK techniques.",
+  "description": "Threat actor profiles relevant to K-12 and education environments. Maps actor TTPs to Guerrilla detection indicators and MITRE ATT&CK techniques.",
   "profiles": [
     {
       "id": "TA-EDU-001",

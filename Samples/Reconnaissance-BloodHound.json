@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "source_kind": "PSGuerrilla",
+    "source_kind": "Guerrilla",
     "version": 1,
-    "generated_by": "PSGuerrilla"
+    "generated_by": "Guerrilla"
   },
   "graph": {
     "nodes": [
@@ -71,7 +71,7 @@
         },
         "kind": "MemberOf",
         "properties": {
-          "source": "PSGuerrilla"
+          "source": "Guerrilla"
         }
       },
       {
@@ -83,7 +83,7 @@
         },
         "kind": "GenericAll",
         "properties": {
-          "source": "PSGuerrilla"
+          "source": "Guerrilla"
         }
       },
       {
@@ -95,7 +95,7 @@
         },
         "kind": "WriteDacl",
         "properties": {
-          "source": "PSGuerrilla"
+          "source": "Guerrilla"
         }
       }
     ]

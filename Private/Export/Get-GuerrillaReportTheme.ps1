@@ -1,12 +1,12 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 
 # Report theming engine. A "style" maps to (a) a palette of CSS custom properties
 # that every HTML exporter references by the SAME variable names, and (b) a
 # lexicon flag deciding whether the tactical "guerrilla" score labels
 # (FORTRESS / EXPOSED FLANK / OVERRUN) are kept or replaced with plain,
-# risk-based infosec language. The PSGuerrilla / Jim Tyler footer attribution is
+# risk-based infosec language. The Guerrilla / Jim Tyler footer attribution is
 # never themed away — it is emitted by every exporter regardless of style.
 
 function Get-GuerrillaReportTheme {

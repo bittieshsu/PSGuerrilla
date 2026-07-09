@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-ResourceConstrainedFixes {
     <#
@@ -87,7 +87,7 @@ function Get-ResourceConstrainedFixes {
         $hours = $effortHours[$effort] ?? 4
 
         $results.Add([PSCustomObject]@{
-            PSTypeName       = 'PSGuerrilla.ResourceConstrainedFix'
+            PSTypeName       = 'Guerrilla.ResourceConstrainedFix'
             CheckId          = $checkId
             CheckName        = $finding.Name ?? $finding.CheckName ?? $checkId
             Description      = $finding.Description ?? ''

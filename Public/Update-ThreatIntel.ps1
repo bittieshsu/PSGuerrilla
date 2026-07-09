@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Update-ThreatIntel {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'Low')]
@@ -23,7 +23,7 @@ function Update-ThreatIntel {
                 Write-GuerrillaText "  - $err" -Color Amber
             }
         }
-        Write-GuerrillaText 'Reload the module to apply: Import-Module PSGuerrilla -Force' -Color Dim
+        Write-GuerrillaText 'Reload the module to apply: Import-Module Guerrilla -Force' -Color Dim
     } else {
         Write-GuerrillaText "No update needed: $($result.Reason)" -Color Dim
     }

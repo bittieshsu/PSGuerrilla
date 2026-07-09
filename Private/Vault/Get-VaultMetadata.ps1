@@ -1,17 +1,17 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-VaultMetadata {
     <#
     .SYNOPSIS
-        Reads the PSGuerrilla vault metadata entry.
+        Reads the Guerrilla vault metadata entry.
     .DESCRIPTION
         Retrieves the GUERRILLA_VAULT_METADATA secret which stores JSON metadata
         about all credentials in the vault (stored dates, expiration, descriptions).
     #>
     [CmdletBinding()]
     param(
-        [string]$VaultName = 'PSGuerrilla'
+        [string]$VaultName = 'Guerrilla'
     )
 
     $metadataKey = 'GUERRILLA_VAULT_METADATA'

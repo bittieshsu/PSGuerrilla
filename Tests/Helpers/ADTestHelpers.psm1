@@ -511,7 +511,7 @@ function New-MockReconResult {
     $lowCount  = @($failFindings | Where-Object Severity -eq 'Low').Count
 
     [PSCustomObject]@{
-        PSTypeName     = 'PSGuerrilla.ReconResult'
+        PSTypeName     = 'Guerrilla.ReconResult'
         ScanId         = [guid]::NewGuid().ToString()
         Timestamp      = [datetime]::UtcNow
         DomainName     = $DomainName

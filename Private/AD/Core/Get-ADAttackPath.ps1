@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 
 # AD attack-path analysis. Turns the flat "dangerous ACE" findings into named
@@ -18,7 +18,7 @@
 # kept out of the "non-privileged, highest-risk" count rather than surfaced as surprises.
 #
 # NOTE: full domain-wide transitive CONTROL chaining (low-priv user -> GenericWrite group
-# -> ... -> DA) needs a full-domain ACL collector, which PSGuerrilla does not yet run (it
+# -> ... -> DA) needs a full-domain ACL collector, which Guerrilla does not yet run (it
 # reads ACLs on the 6 critical objects only). That deeper traversal is the next roadmap
 # increment; this engine is structured so additional edge sources can feed straight in.
 
@@ -168,7 +168,7 @@ function Get-ADAttackPath {
         } else { $map.Impact }
 
         $paths.Add([PSCustomObject]@{
-            PSTypeName         = 'PSGuerrilla.AttackPath'
+            PSTypeName         = 'Guerrilla.AttackPath'
             Source             = $principal
             SourceSID          = $sid
             SourceIsPrivileged = [bool]$alreadyPrivileged
@@ -204,7 +204,7 @@ function Get-ADAttackPath {
                 $key = "nest|$gName|$t0Group"
                 if (-not $seen.Add($key)) { continue }
                 $paths.Add([PSCustomObject]@{
-                    PSTypeName         = 'PSGuerrilla.AttackPath'
+                    PSTypeName         = 'Guerrilla.AttackPath'
                     Source             = $gName
                     SourceSID          = $gSid
                     SourceIsPrivileged = $false   # the pivot group itself IS the escalation surface

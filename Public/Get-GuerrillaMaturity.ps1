@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-GuerrillaMaturity {
     <#
@@ -7,7 +7,7 @@ function Get-GuerrillaMaturity {
         Computes a CMMI-style 1-5 security-maturity level from audit findings.
 
     .DESCRIPTION
-        Turns a set of PSGuerrilla audit findings into an executive-grade maturity rating
+        Turns a set of Guerrilla audit findings into an executive-grade maturity rating
         (Active Directory, Google Workspace, or Entra/M365 — anything that produces findings).
 
         Like a maturity model should, the WORST unmet control anchors the score: a single
@@ -41,7 +41,7 @@ function Get-GuerrillaMaturity {
         "AD maturity: Level $($m.OverallLevel) ($($m.OverallLabel))"
     #>
     [CmdletBinding()]
-    [OutputType('PSGuerrilla.Maturity')]
+    [OutputType('Guerrilla.Maturity')]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
         [AllowNull()]
@@ -110,7 +110,7 @@ function Get-GuerrillaMaturity {
         } else { @() }
 
         [PSCustomObject]@{
-            PSTypeName        = 'PSGuerrilla.Maturity'
+            PSTypeName        = 'Guerrilla.Maturity'
             Theater           = $Theater
             OverallLevel      = $overallLevel
             OverallLabel      = $levelLabels[$overallLevel]

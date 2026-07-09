@@ -5,7 +5,7 @@ function Get-ZeroTrustScore {
         disclose how much coverage backs each score.
 
     .DESCRIPTION
-        Rolls PSGuerrilla findings up by their ZeroTrustPillar / ZeroTrustWeight into a
+        Rolls Guerrilla findings up by their ZeroTrustPillar / ZeroTrustWeight into a
         weighted posture score per pillar:
 
             score% = 100 * Σ(weight × credit) / Σ(weight)   over ASSESSED checks
@@ -22,7 +22,7 @@ function Get-ZeroTrustScore {
         over a thin basis without saying so.
 
     .PARAMETER Finding
-        PSGuerrilla.AuditFinding objects (pipeline). Typically the .Findings of an
+        Guerrilla.AuditFinding objects (pipeline). Typically the .Findings of an
         Invoke-Campaign / Invoke-Infiltration / Invoke-Reconnaissance / Invoke-Fortification
         result, e.g.  (Invoke-Infiltration ...).Findings | Get-ZeroTrustScore
 
@@ -40,7 +40,7 @@ function Get-ZeroTrustScore {
         $r.Findings | Get-ZeroTrustScore | Where-Object CoverageConfidence -ne 'Directional'
     #>
     [CmdletBinding()]
-    [OutputType('PSGuerrilla.ZeroTrustPillarScore')]
+    [OutputType('Guerrilla.ZeroTrustPillarScore')]
     param(
         [Parameter(ValueFromPipeline)]
         [object[]]$Finding,
@@ -69,7 +69,7 @@ function Get-ZeroTrustScore {
                      elseif ($items.Count -lt $SolidThreshold)   { 'Moderate' }
                      else                                        { 'Solid' }
             [PSCustomObject]@{
-                PSTypeName         = 'PSGuerrilla.ZeroTrustPillarScore'
+                PSTypeName         = 'Guerrilla.ZeroTrustPillarScore'
                 Pillar             = $g.Name
                 ScorePercent       = $score
                 CoverageConfidence = $conf

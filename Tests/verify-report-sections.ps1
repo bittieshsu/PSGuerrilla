@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Shared report sections (Security Maturity, Attack Paths to Tier-0) and their inclusion in all three
@@ -9,15 +9,15 @@
 $ErrorActionPreference = 'Stop'
 $env:PSGUERRILLA_QUIET = '1'
 $root = Split-Path $PSScriptRoot -Parent
-Import-Module (Join-Path $root 'PSGuerrilla.psd1') -Force
-$mod = Get-Module PSGuerrilla
+Import-Module (Join-Path $root 'Guerrilla.psd1') -Force
+$mod = Get-Module Guerrilla
 
 $results = [System.Collections.Generic.List[object]]::new()
 function Add-R($n, $ok, $d) { $results.Add([PSCustomObject]@{ Name = $n; Pass = [bool]$ok; Detail = $d }) }
 
 function New-F($id, $cat, $status, $sev, [hashtable]$details = @{}, $cv = '') {
     [PSCustomObject]@{
-        PSTypeName = 'PSGuerrilla.AuditFinding'
+        PSTypeName = 'Guerrilla.AuditFinding'
         CheckId = $id; CheckName = "$id check"; Category = $cat; Subcategory = ''
         Severity = $sev; Status = $status; Description = 'desc'; CurrentValue = $cv
         RecommendedValue = 'rec'; OrgUnitPath = '/'; RemediationUrl = ''; RemediationSteps = 'fix it'

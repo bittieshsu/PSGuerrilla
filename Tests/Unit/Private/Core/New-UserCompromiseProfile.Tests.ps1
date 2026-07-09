@@ -1,6 +1,6 @@
 # ______________________________________________________________________________
 #
-#  PSGuerrilla
+#  Guerrilla
 #  Jim Tyler — Microsoft MVP
 #  "PowerShell for Systems Engineers"
 # ______________________________________________________________________________
@@ -20,14 +20,14 @@
 # ______________________________________________________________________________
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'New-UserCompromiseProfile' {
     Context 'Basic profile creation' {
         It 'creates a profile with correct PSTypeName' {
             $profile = New-UserCompromiseProfile -Email 'test@example.com'
-            $profile.PSObject.TypeNames | Should -Contain 'PSGuerrilla.UserProfile'
+            $profile.PSObject.TypeNames | Should -Contain 'Guerrilla.UserProfile'
         }
 
         It 'sets email correctly' {
@@ -63,7 +63,7 @@ Describe 'New-UserCompromiseProfile' {
 
     Context 'Known attacker IP detection' {
         It 'detects logins from known attacker IPs' {
-            $attackerIp = & (Get-Module PSGuerrilla) { $script:AttackerIpSet | Select-Object -First 1 }
+            $attackerIp = & (Get-Module Guerrilla) { $script:AttackerIpSet | Select-Object -First 1 }
             if (-not $attackerIp) {
                 Set-ItResult -Skipped -Because 'No attacker IPs loaded'
                 return
@@ -87,7 +87,7 @@ Describe 'New-UserCompromiseProfile' {
 
     Context 'Reauth from cloud detection' {
         It 'detects reauth login type from cloud IPs' {
-            $attackerIp = & (Get-Module PSGuerrilla) { $script:AttackerIpSet | Select-Object -First 1 }
+            $attackerIp = & (Get-Module Guerrilla) { $script:AttackerIpSet | Select-Object -First 1 }
             if (-not $attackerIp) {
                 Set-ItResult -Skipped -Because 'No attacker IPs loaded'
                 return
@@ -117,7 +117,7 @@ Describe 'New-UserCompromiseProfile' {
 
     Context 'OAuth from cloud detection' {
         It 'detects OAuth authorize from cloud IPs' {
-            $attackerIp = & (Get-Module PSGuerrilla) { $script:AttackerIpSet | Select-Object -First 1 }
+            $attackerIp = & (Get-Module Guerrilla) { $script:AttackerIpSet | Select-Object -First 1 }
             if (-not $attackerIp) {
                 Set-ItResult -Skipped -Because 'No attacker IPs loaded'
                 return

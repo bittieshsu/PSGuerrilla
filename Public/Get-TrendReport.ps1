@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-TrendReport {
     <#
@@ -38,11 +38,11 @@ function Get-TrendReport {
     $historyPath = if ($ConfigPath) {
         $ConfigPath
     } else {
-        Join-Path (Get-PSGuerrillaDataRoot) 'score-trend-history.json'
+        Join-Path (Get-GuerrillaDataRoot) 'score-trend-history.json'
     }
 
     # Also check the single-entry score history file
-    $singleHistoryPath = Join-Path (Get-PSGuerrillaDataRoot) 'guerrilla-score-history.json'
+    $singleHistoryPath = Join-Path (Get-GuerrillaDataRoot) 'guerrilla-score-history.json'
 
     $history = @()
 
@@ -99,7 +99,7 @@ function Get-TrendReport {
     $trendDirection = if ($delta -gt 2) { 'Improving' } elseif ($delta -lt -2) { 'Declining' } else { 'Stable' }
 
     $summary = [PSCustomObject]@{
-        PSTypeName     = 'PSGuerrilla.TrendReport'
+        PSTypeName     = 'Guerrilla.TrendReport'
         EntryCount     = $history.Count
         LatestScore    = $latestScore
         AverageScore   = [int][Math]::Round(($scores | Measure-Object -Average).Average, 0)

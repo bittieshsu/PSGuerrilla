@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Export-InfiltrationReportJson {
     [CmdletBinding()]
@@ -20,7 +20,7 @@ function Export-InfiltrationReportJson {
             scanId       = $Result.ScanId
             timestamp    = $Result.ScanStart.ToString('o')
             tenantId     = $Result.TenantId
-            generator    = 'PSGuerrilla'
+            generator    = 'Guerrilla'
             reportType   = 'Entra ID / Azure / M365 Infiltration Audit'
             version      = '2.0.0'
             duration     = $Result.Duration.ToString()

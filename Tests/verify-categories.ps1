@@ -1,6 +1,6 @@
 # ______________________________________________________________________________
 #
-#  PSGuerrilla
+#  Guerrilla
 #  Jim Tyler — Microsoft MVP
 #  "PowerShell for Systems Engineers"
 # ______________________________________________________________________________
@@ -25,19 +25,19 @@
 <#
 .SYNOPSIS
     Verifies all 7 category check functions (excluding Authentication) work correctly
-    with mock audit data inside the PSGuerrilla module scope.
+    with mock audit data inside the Guerrilla module scope.
 
 .DESCRIPTION
-    Imports PSGuerrilla and exercises each Invoke-*Checks function with realistic mock
+    Imports Guerrilla and exercises each Invoke-*Checks function with realistic mock
     data, then reports the number of findings and a pass/fail/warn/skip/error breakdown.
 #>
 
 $ErrorActionPreference = 'Stop'
 
 # ── Import the module ────────────────────────────────────────────────────────
-$modulePath = Join-Path $PSScriptRoot '..' 'PSGuerrilla.psd1'
+$modulePath = Join-Path $PSScriptRoot '..' 'Guerrilla.psd1'
 $modulePath = (Resolve-Path $modulePath).Path
-Write-Host "`n=== Importing PSGuerrilla from $modulePath ===" -ForegroundColor Cyan
+Write-Host "`n=== Importing Guerrilla from $modulePath ===" -ForegroundColor Cyan
 Import-Module $modulePath -Force -ErrorAction Stop
 Write-Host "Module imported successfully.`n" -ForegroundColor Green
 
@@ -394,7 +394,7 @@ foreach ($cat in $categories) {
     Write-Host "`n>>> Testing: $($cat.Name) ($($cat.Function))" -ForegroundColor Yellow
 
     try {
-        $findings = & (Get-Module PSGuerrilla) {
+        $findings = & (Get-Module Guerrilla) {
             param($AuditData, $FuncName)
             & $FuncName -AuditData $AuditData
         } -AuditData $mockAuditData -FuncName $cat.Function

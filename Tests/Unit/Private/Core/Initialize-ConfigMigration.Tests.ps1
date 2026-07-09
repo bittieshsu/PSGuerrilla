@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────────────────────────────────────
-# PSGuerrilla — Security Audit & Continuous Monitoring for Enterprise Environments
+# Guerrilla — Security Audit & Continuous Monitoring for Enterprise Environments
 # ─────────────────────────────────────────────────────────────────────────────
 # Author:     Jim Tyler, Microsoft MVP
 # Book:       "PowerShell for Systems Engineers"
@@ -18,7 +18,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Initialize-ConfigMigration' {
@@ -36,12 +36,12 @@ Describe 'Initialize-ConfigMigration' {
     }
 
     Context 'New config already exists' {
-        It 'skips migration when PSGuerrilla config already exists' {
+        It 'skips migration when Guerrilla config already exists' {
             $originalAppdata = $env:APPDATA
             try {
                 $env:APPDATA = $TestDrive
                 $oldDir = Join-Path $TestDrive 'PSRecon'
-                $newDir = Join-Path $TestDrive 'PSGuerrilla'
+                $newDir = Join-Path $TestDrive 'Guerrilla'
                 New-Item -Path $oldDir -ItemType Directory -Force | Out-Null
                 New-Item -Path $newDir -ItemType Directory -Force | Out-Null
                 @{ test = 'old' } | ConvertTo-Json | Set-Content (Join-Path $oldDir 'config.json')
@@ -62,12 +62,12 @@ Describe 'Initialize-ConfigMigration' {
         BeforeEach {
             # Clean up any leftover directories from previous tests
             $oldClean = Join-Path $TestDrive 'PSRecon'
-            $newClean = Join-Path $TestDrive 'PSGuerrilla'
+            $newClean = Join-Path $TestDrive 'Guerrilla'
             if (Test-Path $oldClean) { Remove-Item -Path $oldClean -Recurse -Force }
             if (Test-Path $newClean) { Remove-Item -Path $newClean -Recurse -Force }
         }
 
-        It 'copies config.json from PSRecon to PSGuerrilla' {
+        It 'copies config.json from PSRecon to Guerrilla' {
             $originalAppdata = $env:APPDATA
             try {
                 $env:APPDATA = $TestDrive
@@ -87,14 +87,14 @@ Describe 'Initialize-ConfigMigration' {
 
                 Initialize-ConfigMigration
 
-                $newConfigPath = Join-Path $TestDrive 'PSGuerrilla/config.json'
+                $newConfigPath = Join-Path $TestDrive 'Guerrilla/config.json'
                 Test-Path $newConfigPath | Should -BeTrue
             } finally {
                 $env:APPDATA = $originalAppdata
             }
         }
 
-        It 'copies state.json from PSRecon to PSGuerrilla' {
+        It 'copies state.json from PSRecon to Guerrilla' {
             $originalAppdata = $env:APPDATA
             try {
                 $env:APPDATA = $TestDrive
@@ -105,7 +105,7 @@ Describe 'Initialize-ConfigMigration' {
 
                 Initialize-ConfigMigration
 
-                $newStatePath = Join-Path $TestDrive 'PSGuerrilla/state.json'
+                $newStatePath = Join-Path $TestDrive 'Guerrilla/state.json'
                 Test-Path $newStatePath | Should -BeTrue
             } finally {
                 $env:APPDATA = $originalAppdata
@@ -131,11 +131,11 @@ Describe 'Initialize-ConfigMigration' {
 
                 Initialize-ConfigMigration
 
-                $migrated = Get-Content (Join-Path $TestDrive 'PSGuerrilla/config.json') -Raw | ConvertFrom-Json -AsHashtable
-                $migrated.output.directory | Should -Match 'PSGuerrilla'
+                $migrated = Get-Content (Join-Path $TestDrive 'Guerrilla/config.json') -Raw | ConvertFrom-Json -AsHashtable
+                $migrated.output.directory | Should -Match 'Guerrilla'
                 $migrated.output.directory | Should -Not -Match 'PSRecon'
-                $migrated.scheduling.taskName | Should -Be 'PSGuerrilla-Patrol'
-                $migrated.alerting.providers.sendgrid.fromName | Should -Be 'PSGuerrilla Signals'
+                $migrated.scheduling.taskName | Should -Be 'Guerrilla-Patrol'
+                $migrated.alerting.providers.sendgrid.fromName | Should -Be 'Guerrilla Signals'
             } finally {
                 $env:APPDATA = $originalAppdata
             }
@@ -153,7 +153,7 @@ Describe 'Initialize-ConfigMigration' {
 
                 Initialize-ConfigMigration
 
-                $newReportsPath = Join-Path $TestDrive 'PSGuerrilla/Reports/report.csv'
+                $newReportsPath = Join-Path $TestDrive 'Guerrilla/Reports/report.csv'
                 Test-Path $newReportsPath | Should -BeTrue
             } finally {
                 $env:APPDATA = $originalAppdata

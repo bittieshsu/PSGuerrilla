@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-ComplianceCrosswalk {
     <#
@@ -41,7 +41,7 @@ function Get-ComplianceCrosswalk {
 
     # Load findings from state if not provided
     if (-not $Findings -or $Findings.Count -eq 0) {
-        $dataDir = Get-PSGuerrillaDataRoot
+        $dataDir = Get-GuerrillaDataRoot
         $findingsFiles = @()
         if (Test-Path $dataDir) {
             $findingsFiles = @(Get-ChildItem -Path $dataDir -Filter '*.findings.json' -ErrorAction SilentlyContinue)
@@ -108,7 +108,7 @@ function Get-ComplianceCrosswalk {
             $controls = @($controls | Select-Object -Unique)
             if ($controls.Count -eq 0) { continue }
             $results.Add([PSCustomObject]@{
-                PSTypeName       = 'PSGuerrilla.ComplianceMapping'
+                PSTypeName       = 'Guerrilla.ComplianceMapping'
                 CheckId          = $checkId
                 CheckName        = $checkName
                 Status           = $finding.Status
@@ -131,7 +131,7 @@ function Get-ComplianceCrosswalk {
             }
             foreach ($fw in $frameworks.GetEnumerator()) {
                 $results.Add([PSCustomObject]@{
-                    PSTypeName       = 'PSGuerrilla.ComplianceMapping'
+                    PSTypeName       = 'Guerrilla.ComplianceMapping'
                     CheckId          = $checkId
                     CheckName        = $mapping.checkName ?? $checkName
                     Status           = $finding.Status

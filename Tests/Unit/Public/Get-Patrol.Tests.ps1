@@ -20,34 +20,34 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Get-Patrol' {
     Context 'Task does not exist' {
         It 'warns and returns null when task not found' {
-            Mock Get-ScheduledTask { $null } -ModuleName PSGuerrilla
+            Mock Get-ScheduledTask { $null } -ModuleName Guerrilla
             $result = Get-Patrol -WarningAction SilentlyContinue -WarningVariable warn
             $result | Should -BeNullOrEmpty
             $warn.Count | Should -BeGreaterThan 0
-            $warn[0] | Should -Match 'PSGuerrilla-Patrol'
+            $warn[0] | Should -Match 'Guerrilla-Patrol'
         }
     }
 
     Context 'Task exists' {
         It 'returns task info object' {
-            Mock Get-ScheduledTask -ModuleName PSGuerrilla {
+            Mock Get-ScheduledTask -ModuleName Guerrilla {
                 $trigger = [PSCustomObject]@{}
                 $trigger | Add-Member -MemberType ScriptMethod -Name ToString -Value { 'Every 60 minutes' } -Force
                 [PSCustomObject]@{
-                    TaskName    = 'PSGuerrilla-Patrol'
+                    TaskName    = 'Guerrilla-Patrol'
                     State       = 'Ready'
-                    Description = 'PSGuerrilla automated reconnaissance patrol'
+                    Description = 'Guerrilla automated reconnaissance patrol'
                     Actions     = @([PSCustomObject]@{ Execute = 'pwsh.exe'; Arguments = '-Command ...' })
                     Triggers    = @($trigger)
                 }
             }
-            Mock Get-ScheduledTaskInfo -ModuleName PSGuerrilla {
+            Mock Get-ScheduledTaskInfo -ModuleName Guerrilla {
                 [PSCustomObject]@{
                     LastRunTime      = [datetime]::Now.AddHours(-1)
                     LastTaskResult   = 0
@@ -57,15 +57,15 @@ Describe 'Get-Patrol' {
             }
 
             $result = Get-Patrol
-            $result.TaskName | Should -Be 'PSGuerrilla-Patrol'
+            $result.TaskName | Should -Be 'Guerrilla-Patrol'
             $result.State | Should -Be 'Ready'
-            $result.Description | Should -Match 'PSGuerrilla'
+            $result.Description | Should -Match 'Guerrilla'
         }
 
-        It 'uses default PSGuerrilla-Patrol task name' {
-            Mock Get-ScheduledTask { $null } -ModuleName PSGuerrilla
+        It 'uses default Guerrilla-Patrol task name' {
+            Mock Get-ScheduledTask { $null } -ModuleName Guerrilla
             Get-Patrol -WarningAction SilentlyContinue
-            Should -Invoke Get-ScheduledTask -ModuleName PSGuerrilla -ParameterFilter { $TaskName -eq 'PSGuerrilla-Patrol' }
+            Should -Invoke Get-ScheduledTask -ModuleName Guerrilla -ParameterFilter { $TaskName -eq 'Guerrilla-Patrol' }
         }
     }
 }

@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-GuerrillaCIGate {
     <#
@@ -7,7 +7,7 @@ function Get-GuerrillaCIGate {
         Decides whether a CI/CD build should fail based on the findings and a severity threshold.
 
     .DESCRIPTION
-        The gating primitive behind the PSGuerrilla GitHub Action / pipeline templates. Given findings
+        The gating primitive behind the Guerrilla GitHub Action / pipeline templates. Given findings
         and a -FailOn threshold, returns whether the build should fail and how many findings triggered it.
         Only FAIL findings gate (plus WARN when -WarningsAsFailures); SKIP / "Not Assessed" never gate.
 
@@ -26,7 +26,7 @@ function Get-GuerrillaCIGate {
         if ($g.ShouldFail) { exit 1 }
     #>
     [CmdletBinding()]
-    [OutputType('PSGuerrilla.CIGate')]
+    [OutputType('Guerrilla.CIGate')]
     param(
         [Parameter(Mandatory)]
         [AllowEmptyCollection()]
@@ -51,7 +51,7 @@ function Get-GuerrillaCIGate {
     }
 
     [PSCustomObject]@{
-        PSTypeName  = 'PSGuerrilla.CIGate'
+        PSTypeName  = 'Guerrilla.CIGate'
         FailOn      = $FailOn
         ShouldFail  = ($gating.Count -gt 0)
         GatingCount = $gating.Count

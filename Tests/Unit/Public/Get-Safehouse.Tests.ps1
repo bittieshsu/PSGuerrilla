@@ -1,5 +1,5 @@
 <#
-§ PSGuerrilla — Enterprise Security Audit & Monitoring Toolkit
+§ Guerrilla — Enterprise Security Audit & Monitoring Toolkit
 § Copyright (c) 2026 Jim Tyler. All rights reserved.
 
 § Author
@@ -24,7 +24,7 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Get-Safehouse' {

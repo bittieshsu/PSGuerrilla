@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Show-GuerrillaWindow {
     <#
@@ -12,7 +12,7 @@ function Show-GuerrillaWindow {
     #>
     [CmdletBinding()]
     param(
-        [string]$VaultName  = 'PSGuerrilla',
+        [string]$VaultName  = 'Guerrilla',
         [string]$ConfigPath,
         [ValidateSet('Operations', 'Safehouse', 'Patrol', 'Signals', 'Reports', 'Settings', 'Source', 'Branding')]
         [string]$StartOn    = 'Operations',
@@ -24,14 +24,14 @@ function Show-GuerrillaWindow {
 
     $theme       = Get-GuerrillaGuiTheme
     $brushes     = $theme.Brushes
-    $reportsDir  = Join-Path (Get-PSGuerrillaDataRoot) 'Reports'
+    $reportsDir  = Join-Path (Get-GuerrillaDataRoot) 'Reports'
 
     # XAML for the entire window. Bound at parse time — no runtime DataBinding.
     # Naming convention: x:Name="<tab>_<purpose>" so handlers stay greppable.
     $xaml = @'
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PSGuerrilla — Operations Console"
+        Title="Guerrilla — Operations Console"
         Height="720" Width="1100"
         MinHeight="560" MinWidth="900"
         Background="#F4F6F8"
@@ -262,7 +262,7 @@ function Show-GuerrillaWindow {
     <Border Grid.Column="0" Background="#FFFFFF" BorderBrush="#E2E8F0" BorderThickness="0,0,1,0">
       <DockPanel>
         <StackPanel DockPanel.Dock="Top" Margin="0,20,0,12">
-          <TextBlock Text="PSGuerrilla" Foreground="#1F2933" FontSize="20" FontWeight="Bold" Margin="20,0,20,4"/>
+          <TextBlock Text="Guerrilla" Foreground="#1F2933" FontSize="20" FontWeight="Bold" Margin="20,0,20,4"/>
           <TextBlock Text="Operations Console" Foreground="#94A3B8" FontSize="11" Margin="20,0,20,16"/>
           <Border Height="1" Background="#E2E8F0" Margin="0,0,0,8"/>
         </StackPanel>
@@ -640,7 +640,7 @@ function Show-GuerrillaWindow {
           <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Report Branding (White-Label)" FontSize="22" FontWeight="Bold" Foreground="#1F2933" Margin="0,0,0,4"/>
-        <TextBlock Grid.Row="1" Text="Add your firm's details to the header of generated reports. The &quot;Generated with PSGuerrilla by Jim Tyler, Microsoft MVP&quot; attribution always remains in the footer. Saved to your config and applied on the next scan." Foreground="#94A3B8" Margin="0,0,0,16" TextWrapping="Wrap"/>
+        <TextBlock Grid.Row="1" Text="Add your firm's details to the header of generated reports. The &quot;Generated with Guerrilla by Jim Tyler, Microsoft MVP&quot; attribution always remains in the footer. Saved to your config and applied on the next scan." Foreground="#94A3B8" Margin="0,0,0,16" TextWrapping="Wrap"/>
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
           <Grid Margin="0,0,16,0">
             <Grid.ColumnDefinitions>
@@ -1339,13 +1339,13 @@ function Show-GuerrillaWindow {
                 ThreatLevel = 'CRITICAL'
                 Email       = 'test-alert@psguerrilla.local'
                 Entity      = 'test-alert@psguerrilla.local'
-                Description = 'PSGuerrilla synthetic test alert (no real finding).'
+                Description = 'Guerrilla synthetic test alert (no real finding).'
                 RiskScore   = 100
                 Reasons     = @('This is a test signal triggered from the Signals tab.')
             }
-            $subject = '[PSGuerrilla] Test alert'
-            $textBody = "PSGuerrilla test alert.`nIf you received this, the '$Type' provider is wired up correctly."
-            $htmlBody = "<p>PSGuerrilla test alert.</p><p>If you received this, the <b>$Type</b> provider is wired up correctly.</p>"
+            $subject = '[Guerrilla] Test alert'
+            $textBody = "Guerrilla test alert.`nIf you received this, the '$Type' provider is wired up correctly."
+            $htmlBody = "<p>Guerrilla test alert.</p><p>If you received this, the <b>$Type</b> provider is wired up correctly.</p>"
 
             # Resolve provider settings the same way Send-Signal does: non-secret bits from
             # config.alerting.providers.<type>, the secret from the vault.
@@ -1366,7 +1366,7 @@ function Show-GuerrillaWindow {
                 'teams'     { Send-SignalTeams     -WebhookUrl $secret -Subject $subject -Threats @($threat) }
                 'slack'     { Send-SignalSlack     -WebhookUrl $secret -Subject $subject -Threats @($threat) -TextBody $textBody }
                 'webhook'   {
-                    $scan = [PSCustomObject]@{ PSTypeName = 'PSGuerrilla.ScanResult'; FlaggedUsers = @($threat); NewThreats = @($threat) }
+                    $scan = [PSCustomObject]@{ PSTypeName = 'Guerrilla.ScanResult'; FlaggedUsers = @($threat); NewThreats = @($threat) }
                     $headers = @{}
                     if ($prov -and $prov.headers) { foreach ($k in $prov.headers.Keys) { $headers[$k] = $prov.headers[$k] } }
                     Send-SignalWebhook -WebhookUrl $secret -Threats @($threat) -ScanResult $scan -Headers $headers -AuthToken ($prov.authToken ?? '')
@@ -1396,7 +1396,7 @@ function Show-GuerrillaWindow {
                     Send-SignalSyslog -Server $server -Port ($prov.port ?? 514) -Protocol ($prov.protocol ?? 'UDP') -Format ($prov.format ?? 'CEF') -Threats @($threat) -Subject $subject -Facility ($prov.facility ?? 1)
                 }
                 'eventlog'  {
-                    Send-SignalEventLog -Threats @($threat) -Subject $subject -Source (($prov.source) ?? 'PSGuerrilla') -LogName (($prov.logName) ?? 'Application')
+                    Send-SignalEventLog -Threats @($threat) -Subject $subject -Source (($prov.source) ?? 'Guerrilla') -LogName (($prov.logName) ?? 'Application')
                 }
                 default     { throw "Unknown provider type '$Type'." }
             }
@@ -1707,7 +1707,7 @@ function Show-GuerrillaWindow {
     }
     $haveLock = $false
     try {
-        $m = New-Object System.Threading.Mutex($false, 'Global\PSGuerrilla.GuiSingleInstance')
+        $m = New-Object System.Threading.Mutex($false, 'Global\Guerrilla.GuiSingleInstance')
         try { $haveLock = $m.WaitOne(0) }
         catch [System.Threading.AbandonedMutexException] { $haveLock = $true }  # prior owner died without releasing
         if ($haveLock) { $script:GuerrillaGuiMutex = $m } else { $m.Dispose() }
@@ -1722,7 +1722,7 @@ function Show-GuerrillaWindow {
         # outright traps the user. Let them open anyway; only the genuine two-live-windows case
         # risks state clobbering, and they're told.
         $resp = [System.Windows.MessageBox]::Show(
-            "PSGuerrilla appears to already be open in another window. Two windows share the same config/state files (last save wins).`n`nOpen a new window anyway?`n  Yes = open it now    No = switch to the existing window (Alt+Tab)",
+            "Guerrilla appears to already be open in another window. Two windows share the same config/state files (last save wins).`n`nOpen a new window anyway?`n  Yes = open it now    No = switch to the existing window (Alt+Tab)",
             'Already running', 'YesNo', 'Warning')
         if ($resp -ne 'Yes') { return }
         # Proceeding without the lock — the other process owns it, so we must not release it on close.

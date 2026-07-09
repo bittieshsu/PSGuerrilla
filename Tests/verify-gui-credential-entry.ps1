@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Verifies the GUI "Add Credential" modal's testable logic (the WPF dialog itself is
@@ -9,8 +9,8 @@
 $ErrorActionPreference = 'Stop'
 $env:PSGUERRILLA_QUIET = '1'
 $root = Split-Path $PSScriptRoot -Parent
-Import-Module (Join-Path $root 'PSGuerrilla.psd1') -Force
-$mod = Get-Module PSGuerrilla
+Import-Module (Join-Path $root 'Guerrilla.psd1') -Force
+$mod = Get-Module Guerrilla
 
 $results = [System.Collections.Generic.List[object]]::new()
 function Add-R($n, $ok, $d) { $results.Add([PSCustomObject]@{ Name = $n; Pass = [bool]$ok; Detail = $d }) }
@@ -59,7 +59,7 @@ $saved = & $mod {
         @{ VaultKey = 'GUERRILLA_GRAPH_SECRET'; Value = 'sek'; Type = 'clientSecret'; Environment = 'microsoftGraph'; Description = 'S'; ExpirationDate = '2027-01-01' }
         @{ VaultKey = 'GUERRILLA_EMPTY'; Value = ''; Type = 'x'; Environment = 'x'; Description = 'skip me' }   # must be skipped
     )
-    $n = Save-SafehouseCredentialSet -Entries $entries -VaultName 'PSGuerrilla'
+    $n = Save-SafehouseCredentialSet -Entries $entries -VaultName 'Guerrilla'
     [PSCustomObject]@{ Count = $n; Written = $script:__w; Meta = $script:__meta }
 }
 Add-R 'Save stored 2 (empty value skipped)' ($saved.Count -eq 2) ("count=$($saved.Count) written=$($saved.Written -join ',')")

@@ -1,6 +1,6 @@
 {
   "version": "2.1.0",
-  "description": "Cost tier and effort estimates for PSGuerrilla audit checks. Used by Get-QuickWins and Export-BudgetJustification to prioritize remediation actions.",
+  "description": "Cost tier and effort estimates for Guerrilla audit checks. Used by Get-QuickWins and Export-BudgetJustification to prioritize remediation actions.",
 
   "costTiers": {
     "Free": { "label": "Free", "description": "No additional cost — configuration change in existing tools", "annualCostRange": "$0" },

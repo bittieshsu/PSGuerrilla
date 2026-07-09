@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Export-SurveillanceReportHtml {
     [CmdletBinding()]
@@ -48,7 +48,7 @@ function Export-SurveillanceReportHtml {
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PSGuerrilla Surveillance Report - $(& $esc $TimestampStr)</title>
+<title>Guerrilla Surveillance Report - $(& $esc $TimestampStr)</title>
 <style>
   :root {
     --bg: #1a1f16; --surface: #242b1e; --surface-alt: #2d3526; --border: #3d4a35;
@@ -186,7 +186,7 @@ function Export-SurveillanceReportHtml {
 </style>
 </head>
 <body>
-<h1>&#x2694; PSGuerrilla Surveillance Report</h1>
+<h1>&#x2694; Guerrilla Surveillance Report</h1>
 <div class="subtitle">
   Generated $(& $esc $TimestampStr) &mdash;
   $($AllEventsCount.ToString('N0')) events analyzed across $DaysBack days &mdash; Entra ID
@@ -589,7 +589,7 @@ function Export-SurveillanceReportHtml {
     [void]$html.Append(@"
 <div style="margin-top: 40px; padding-top: 16px; border-top: 2px solid var(--border);
             color: var(--dim); font-size: 0.8em; text-align: center; letter-spacing: 1px;">
-  &#x2694; PSGuerrilla Surveillance Report &nbsp;|&nbsp;
+  &#x2694; Guerrilla Surveillance Report &nbsp;|&nbsp;
   $(& $esc $TimestampStr) &nbsp;|&nbsp;
   $($AllEventsCount.ToString('N0')) events &nbsp;|&nbsp; $($AllProfilesCount.ToString('N0')) identities &nbsp;|&nbsp;
   Guerrilla Score: $guerrillaScore ($($scoreInfo.Label))

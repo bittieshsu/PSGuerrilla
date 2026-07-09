@@ -1,6 +1,6 @@
 <#
 *******************************************************************************
-*  PSGuerrilla — Jim Tyler, Microsoft MVP                            *
+*  Guerrilla — Jim Tyler, Microsoft MVP                            *
 *  Copyright (c) 2026 Jim Tyler. All rights reserved.                        *
 *  License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/                    *
 *******************************************************************************
@@ -21,33 +21,33 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Unregister-Patrol' {
     Context 'Task does not exist' {
         It 'warns when task not found' {
-            Mock Get-ScheduledTask { $null } -ModuleName PSGuerrilla
+            Mock Get-ScheduledTask { $null } -ModuleName Guerrilla
             Unregister-Patrol -WarningAction SilentlyContinue -WarningVariable warn
             $warn.Count | Should -BeGreaterThan 0
-            $warn[0] | Should -Match 'PSGuerrilla-Patrol'
+            $warn[0] | Should -Match 'Guerrilla-Patrol'
         }
     }
 
     Context 'Task exists' {
         BeforeEach {
-            Mock Get-ScheduledTask { [PSCustomObject]@{ TaskName = 'PSGuerrilla-Patrol' } } -ModuleName PSGuerrilla
-            Mock Unregister-ScheduledTask {} -ModuleName PSGuerrilla
+            Mock Get-ScheduledTask { [PSCustomObject]@{ TaskName = 'Guerrilla-Patrol' } } -ModuleName Guerrilla
+            Mock Unregister-ScheduledTask {} -ModuleName Guerrilla
         }
 
-        It 'uses PSGuerrilla-Patrol as default task name' {
+        It 'uses Guerrilla-Patrol as default task name' {
             Unregister-Patrol -Force
-            Should -Invoke Get-ScheduledTask -ModuleName PSGuerrilla -ParameterFilter { $TaskName -eq 'PSGuerrilla-Patrol' }
+            Should -Invoke Get-ScheduledTask -ModuleName Guerrilla -ParameterFilter { $TaskName -eq 'Guerrilla-Patrol' }
         }
 
         It 'removes task with -Force' {
             Unregister-Patrol -Force
-            Should -Invoke Unregister-ScheduledTask -ModuleName PSGuerrilla -Times 1
+            Should -Invoke Unregister-ScheduledTask -ModuleName Guerrilla -Times 1
         }
     }
 }

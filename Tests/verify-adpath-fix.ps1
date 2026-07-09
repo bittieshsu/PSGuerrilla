@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Regression for the v2.10.1 ADPATH-001 false-positive report: the engine must NOT
@@ -11,8 +11,8 @@
 $ErrorActionPreference = 'Stop'
 $env:PSGUERRILLA_QUIET = '1'
 $root = Split-Path $PSScriptRoot -Parent
-Import-Module (Join-Path $root 'PSGuerrilla.psd1') -Force
-$mod = Get-Module PSGuerrilla
+Import-Module (Join-Path $root 'Guerrilla.psd1') -Force
+$mod = Get-Module Guerrilla
 
 $dom = 'S-1-5-21-1111111111-2222222222-3333333333'
 $ace = {

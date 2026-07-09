@@ -2,13 +2,16 @@
 
 ## [2.46.3] - 2026-07-08
 
+### Changed
+- **Renamed the module `PSGuerrilla` → `Guerrilla`.** First release under the new name (repository and PSGallery module both `Guerrilla`); the old `PSGuerrilla` package remains on the Gallery frozen at its last version. Note two consequences for an existing install: the per-user data directory moved from `…/PSGuerrilla` to `…/Guerrilla`, and the default SecretManagement vault name changed from `PSGuerrilla` to `Guerrilla` — existing safehouse credentials and patrol state are not picked up automatically and need to be re-registered (or migrated).
+
 ### Added
-- **Ten Google Workspace SCuBA controls closing the last config-automated gaps — verified zero concessions.** A rigorous setting-level diff against ScubaGoggles' Rego (every configuration setting it reads vs every one PSGuerrilla reads) surfaced real gaps the earlier family-level pass missed. Now closed: **EMAIL-025** (GMAIL.1.1 mail delegation), **EMAIL-026** (GMAIL.9.1 POP/IMAP access — a modern-auth/MFA bypass), **EMAIL-027** (GMAIL.8.1 user email/contacts import), **EMAIL-028** (GMAIL.10.1 Workspace Sync for Outlook), **EMAIL-029** (GMAIL.18.1 spam-override sender lists), **DRIVE-014** (DRIVEDOCS.4.1 Drive SDK API access — a data-exfil channel), **DRIVE-015** (DRIVEDOCS.1.9 external-file sharing warning), **DRIVE-016** (DRIVEDOCS.3.1 file security update), **ADMIN-017** (COMMONCONTROLS.10.3 internal apps auto-trust), **ADMIN-018** (COMMONCONTROLS.15.1 data-at-rest region). All read Cloud Identity Policy settings, weakest-OU-wins, absent policy = Not Assessed, tagged with GWS.* IDs. 30 golden fixtures. After this, PSGuerrilla reads every configuration setting ScubaGoggles reads (or assesses the same control via a more thorough mechanism — e.g., per-user forwarding enumeration); the only unautomated controls are ones ScubaGoggles does not automate from configuration either.
+- **Ten Google Workspace SCuBA controls closing the last config-automated gaps — verified zero concessions.** A rigorous setting-level diff against ScubaGoggles' Rego (every configuration setting it reads vs every one Guerrilla reads) surfaced real gaps the earlier family-level pass missed. Now closed: **EMAIL-025** (GMAIL.1.1 mail delegation), **EMAIL-026** (GMAIL.9.1 POP/IMAP access — a modern-auth/MFA bypass), **EMAIL-027** (GMAIL.8.1 user email/contacts import), **EMAIL-028** (GMAIL.10.1 Workspace Sync for Outlook), **EMAIL-029** (GMAIL.18.1 spam-override sender lists), **DRIVE-014** (DRIVEDOCS.4.1 Drive SDK API access — a data-exfil channel), **DRIVE-015** (DRIVEDOCS.1.9 external-file sharing warning), **DRIVE-016** (DRIVEDOCS.3.1 file security update), **ADMIN-017** (COMMONCONTROLS.10.3 internal apps auto-trust), **ADMIN-018** (COMMONCONTROLS.15.1 data-at-rest region). All read Cloud Identity Policy settings, weakest-OU-wins, absent policy = Not Assessed, tagged with GWS.* IDs. 30 golden fixtures. After this, Guerrilla reads every configuration setting ScubaGoggles reads (or assesses the same control via a more thorough mechanism — e.g., per-user forwarding enumeration); the only unautomated controls are ones ScubaGoggles does not automate from configuration either.
 
 ## [2.46.2] - 2026-07-08
 
 ### Added
-- **Four Google Workspace SCuBA controls that close the last ScubaGoggles config-coverage concessions.** These are the remaining controls ScubaGoggles evaluates from a configuration setting that PSGuerrilla did not: **COLLAB-017** (GWS.CALENDAR.3.1) warns when Calendar interoperability is enabled (calendar data bridged to an external system); **COLLAB-018** (GWS.CALENDAR.4.1) warns on paid appointment schedules; **COLLAB-019** (GWS.MEET.5.1) warns when Meet automatic recording is on by default (meeting capture without a deliberate decision); **GROUP-006** (GWS.GROUPS.4.1) warns when groups can be hidden from the directory (transparency). All read Cloud Identity Policy settings, weakest-OU-wins, absent policy = Not Assessed, tagged with GWS.* IDs. 12 fixtures. After this, every GWS SCuBA control ScubaGoggles derives from configuration is covered; the only controls left unautomated (Chat content-reporting, Meet Gemini settings, Calendar interop-management manual step) are ones ScubaGoggles does not config-automate either — manual or audit-log-derived for both tools.
+- **Four Google Workspace SCuBA controls that close the last ScubaGoggles config-coverage concessions.** These are the remaining controls ScubaGoggles evaluates from a configuration setting that Guerrilla did not: **COLLAB-017** (GWS.CALENDAR.3.1) warns when Calendar interoperability is enabled (calendar data bridged to an external system); **COLLAB-018** (GWS.CALENDAR.4.1) warns on paid appointment schedules; **COLLAB-019** (GWS.MEET.5.1) warns when Meet automatic recording is on by default (meeting capture without a deliberate decision); **GROUP-006** (GWS.GROUPS.4.1) warns when groups can be hidden from the directory (transparency). All read Cloud Identity Policy settings, weakest-OU-wins, absent policy = Not Assessed, tagged with GWS.* IDs. 12 fixtures. After this, every GWS SCuBA control ScubaGoggles derives from configuration is covered; the only controls left unautomated (Chat content-reporting, Meet Gemini settings, Calendar interop-management manual step) are ones ScubaGoggles does not config-automate either — manual or audit-log-derived for both tools.
 
 ## [2.46.1] - 2026-07-08
 
@@ -43,7 +46,7 @@ Consolidated PSGallery release carrying everything accumulated since 2.40.1 — 
 ## [2.42.0] - 2026-07-08
 
 ### Added
-- **Entra ID Governance — entitlement-management hygiene (new category, 5 checks).** Access packages are a standing-grant mechanism that is rarely reviewed after creation; PSGuerrilla previously did not inspect them at all. A new `Governance` category collects entitlement-management assignment policies and catalogs and grades them: **EIDGOV-001** flags assignment policies that grant access without approval; **EIDGOV-002** flags policies without recurring access reviews; **EIDGOV-003** flags perpetual (never-expiring) assignments; **EIDGOV-004** FAILs when a policy allows external/all-users eligibility without approval (WARNs when approval-gated); **EIDGOV-005** flags externally-visible catalogs for review. A failed collection is Not Assessed; an empty-but-collected result means entitlement management is simply not in use (PASS, nothing to govern). Backed by a collector query-contract test (asserts the three `entitlementManagement` endpoints) and 18 golden fixtures. Field names for entitlement-management sub-settings are best-effort pending live validation on a governance-licensed tenant; absent fields degrade to the safe branch, never a fabricated verdict.
+- **Entra ID Governance — entitlement-management hygiene (new category, 5 checks).** Access packages are a standing-grant mechanism that is rarely reviewed after creation; Guerrilla previously did not inspect them at all. A new `Governance` category collects entitlement-management assignment policies and catalogs and grades them: **EIDGOV-001** flags assignment policies that grant access without approval; **EIDGOV-002** flags policies without recurring access reviews; **EIDGOV-003** flags perpetual (never-expiring) assignments; **EIDGOV-004** FAILs when a policy allows external/all-users eligibility without approval (WARNs when approval-gated); **EIDGOV-005** flags externally-visible catalogs for review. A failed collection is Not Assessed; an empty-but-collected result means entitlement management is simply not in use (PASS, nothing to govern). Backed by a collector query-contract test (asserts the three `entitlementManagement` endpoints) and 18 golden fixtures. Field names for entitlement-management sub-settings are best-effort pending live validation on a governance-licensed tenant; absent fields degrade to the safe branch, never a fabricated verdict.
 
 ## [2.41.0] - 2026-07-07
 
@@ -59,7 +62,7 @@ Consolidated PSGallery release carrying everything accumulated since 2.40.1 — 
 
 ### Added
 - **Partner / GDAP delegated-access review (2 new Entra checks).** Granular Delegated Admin Privileges (GDAP) let a CSP or managed-services partner hold standing admin roles in your tenant — invisible in most consoles, rarely reviewed, and the Kaseya-class propagation path (compromise one partner, inherit delegated admin across every downstream tenant). **EIDTNT-015** inventories active `delegatedAdminRelationships` and FAILS when any grants a Tier-0 / high-impact directory role (Global Admin, Privileged Role/Authentication Admin, Security Admin, User/Password/Application/Cloud Application Admin), WARNs on non-privileged partner access, and PASSes only when there is none. **EIDTNT-016** flags long-lived grants — relationships that auto-extend beyond a year renew themselves without review. Both carry a Zero Trust stance (Identity/Governance) and, critically, treat a *failed* collection as Not Assessed rather than a clean pass. Backed by a collector query-contract test and 10 golden fixtures (including the terminated-relationship and collection-failure edge cases).
-- **Gemini deep-settings coverage via audit-log inference (GWS-GEMINI-002/003/004/005).** These four settings (Alpha features, conversation history, retention, sharing) are exposed by *no* Google config or policy API. Rather than a blanket SKIP, PSGuerrilla now infers their state from Google Admin audit-log setting-change events — the same source CISA ScubaGoggles derives them from — and **labels every such verdict as inferred** (with the source event's timestamp), never as a direct config read. When no change-event exists in the audit-log retention window the state is genuinely unknowable (to any tool), so the check honestly SKIPs. A pure derivation function (`ConvertTo-GeminiDerivedSettings`) is unit-tested for most-recent-wins, value normalization, and the safe-absence fallback; 8 new fixtures cover the inferred verdicts.
+- **Gemini deep-settings coverage via audit-log inference (GWS-GEMINI-002/003/004/005).** These four settings (Alpha features, conversation history, retention, sharing) are exposed by *no* Google config or policy API. Rather than a blanket SKIP, Guerrilla now infers their state from Google Admin audit-log setting-change events — the same source CISA ScubaGoggles derives them from — and **labels every such verdict as inferred** (with the source event's timestamp), never as a direct config read. When no change-event exists in the audit-log retention window the state is genuinely unknowable (to any tool), so the check honestly SKIPs. A pure derivation function (`ConvertTo-GeminiDerivedSettings`) is unit-tested for most-recent-wins, value normalization, and the safe-absence fallback; 8 new fixtures cover the inferred verdicts.
 
 ### Fixed
 - **DEVICE-009 false-WARN on a tenant with zero Chrome OS devices.** An empty `ChromeDevices` array was hitting the empty-array truthiness trap (`-not @()` is `$true`) and short-circuiting to a spurious warning instead of the author's own "no Chrome OS devices registered → PASS" branch. Collection failure is still correctly Not Assessed via the source guard.
@@ -128,7 +131,7 @@ Read-only; no check-count or public-surface change. 580 checks; 49 public functi
 ## [2.32.1] - 2026-06-25
 
 ### Fixed
-- **GUI single-instance guard falsely reported "PSGuerrilla is already open in another window."** The old guard used `Mutex(initiallyOwned, …, [ref]$createdNew)` and blocked whenever the named mutex still *existed* — so a launch that closed abnormally or was force-killed (more likely now that the console is hidden) left the handle open and permanently blocked new launches. The guard now self-heals: it disposes a stale handle from the current session, reclaims an abandoned lock from a dead process (`WaitOne(0)` + `AbandonedMutexException`), and always releases the lock on close via a `finally`.
+- **GUI single-instance guard falsely reported "Guerrilla is already open in another window."** The old guard used `Mutex(initiallyOwned, …, [ref]$createdNew)` and blocked whenever the named mutex still *existed* — so a launch that closed abnormally or was force-killed (more likely now that the console is hidden) left the handle open and permanently blocked new launches. The guard now self-heals: it disposes a stale handle from the current session, reclaims an abandoned lock from a dead process (`WaitOne(0)` + `AbandonedMutexException`), and always releases the lock on close via a `finally`.
 
 ## [2.32.0] - 2026-06-25
 
@@ -247,7 +250,7 @@ _Security config as code — JUnit output for CI/CD pipelines._
 - **`Export-GuerrillaJUnit`** — converts any theater's findings (AD / Entra / M365 / Google Workspace) to **JUnit XML**, the format GitHub Actions, Azure DevOps, and GitLab render natively as pass/fail. One `<testsuite>` per category, one `<testcase>` per check: **FAIL → `<failure>`** (typed by severity), **SKIP/ERROR → `<skipped>`** ("Not Assessed", never a silent pass), WARN passes with output (or `-WarningsAsFailures` to gate on it too). Returns `{Tests; Failures; Skipped; Passed}` so a pipeline can `if ($r.Failures) { exit 1 }`.
 
 ### Notes
-- PSGuerrilla results now render natively in CI/CD pipelines, across **all four theaters**. Copy-paste GitHub Actions / Azure DevOps / GitLab templates are available; a dedicated GitHub Action is a follow-on.
+- Guerrilla results now render natively in CI/CD pipelines, across **all four theaters**. Copy-paste GitHub Actions / Azure DevOps / GitLab templates are available; a dedicated GitHub Action is a follow-on.
 - 48 public functions; check counts unchanged (517). Test: `Tests/verify-junit.ps1` (14/14 — valid XML, per-category suites, FAIL/SKIP/WARN mapping, `-WarningsAsFailures`, XML escaping, gating counts).
 - Remaining roadmap: the interactive report (filter + Indicators of Exposure), deeper Exchange Online coverage, and additional Entra ID governance checks.
 
@@ -273,7 +276,7 @@ _Full EIDSCA coverage — the 44-control Entra ID Security Config Analyzer basel
 
 ### Added
 - **Full EIDSCA baseline (44 controls)** as a new **`Eidsca`** category covering the EIDSCA control set (AF/AG/AM/AS/AT/AV authentication-method controls, AP authorization-policy, CP/CR consent, PR password-protection, ST guest-group settings). Each control is evaluated against its documented Microsoft Graph setting (Graph object + exact property path + operator + expected value), defined in `Data/AuditChecks/EidscaChecks.json`.
-- A data-driven evaluator (`Resolve-EidscaControl`) runs the catalog against the raw Graph policy objects PSGuerrilla **already collects** (`authenticationMethodsPolicy`, `authorizationPolicy`, `adminConsentRequestPolicy`, directory `settings`) — no new collection needed. Surfaced via `Get-ComplianceCrosswalk -Framework EIDSCA` and the new category in `Invoke-Infiltration`.
+- A data-driven evaluator (`Resolve-EidscaControl`) runs the catalog against the raw Graph policy objects Guerrilla **already collects** (`authenticationMethodsPolicy`, `authorizationPolicy`, `adminConsentRequestPolicy`, directory `settings`) — no new collection needed. Surfaced via `Get-ComplianceCrosswalk -Framework EIDSCA` and the new category in `Invoke-Infiltration`.
 
 ### Changed
 - EIDSCA coverage went from **10 approximate tags → 44 controls evaluated**. The interim `eidsca` tags on existing Entra checks (v2.22.0) were removed so the dedicated EIDSCA category owns the framework (no duplicate crosswalk rows).
@@ -302,7 +305,7 @@ _Fixes from the v2.22.0 live-validation pass — the attack-path visuals now ren
 
 ## [2.22.0] - 2026-06-21
 
-_CISA SCuBA baseline crosswalk — PSGuerrilla now produces a SCuBA secure-configuration mapping, not just prose references._
+_CISA SCuBA baseline crosswalk — Guerrilla now produces a SCuBA secure-configuration mapping, not just prose references._
 
 ### Added
 - **CISA SCuBA crosswalk**: 55 Entra/M365 checks now carry `scuba` compliance tags mapping to the published CISA SCuBA baseline policy IDs (MS.AAD / MS.EXO / MS.SHAREPOINT / MS.TEAMS / MS.DEFENDER / MS.POWERPLATFORM). `Get-ComplianceCrosswalk -Framework SCUBA` emits per-policy mapping rows, and the Executive Summary auto-surfaces a "SCUBA: N gap(s)" chip. **~76% of the assessable SCuBA baseline mapped** (72 of 95 policies; see the coverage matrix). Baseline IDs were taken from CISA's published SCuBA baselines, not fabricated.
@@ -333,7 +336,7 @@ _All four HTML report types now carry maturity + attack paths; sample reports re
 ### Changed
 - **`Export-TechnicalReport`** (the README-linked "all checks" report) now also includes the **Security Maturity** and **Attack Paths to Tier-0** sections, so all four report types (Reconnaissance, Fortification, Campaign, Technical) are consistent.
 - Shared section accent colour made theme-portable (`--deep-orange`, defined in every report theme) so the sections render correctly in the Technical report's standalone stylesheet.
-- **Sample/showcase reports regenerated**: every sample now shows maturity; the AD, Campaign, and Technical samples show full attack-path chains; the AD sample shows the BloodHound callout. Added a **Campaign sample** (`Samples/Campaign-AllFail.html`) and a **sample BloodHound export** (`Samples/Reconnaissance-BloodHound.json`). `Generate-SampleReports.ps1` now also (re)generates the README root sample (`PSGuerrilla-Sample-Report.html`) so it can't fall behind the templates again.
+- **Sample/showcase reports regenerated**: every sample now shows maturity; the AD, Campaign, and Technical samples show full attack-path chains; the AD sample shows the BloodHound callout. Added a **Campaign sample** (`Samples/Campaign-AllFail.html`) and a **sample BloodHound export** (`Samples/Reconnaissance-BloodHound.json`). `Generate-SampleReports.ps1` now also (re)generates the README root sample (`Guerrilla-Sample-Report.html`) so it can't fall behind the templates again.
 
 ### Notes
 - Report/presentation only — no engine, check, or scoring changes. Check counts and 46 public functions unchanged. Test: `Tests/verify-report-sections.ps1` (18/18 — now covers all four report types).
@@ -341,7 +344,7 @@ _All four HTML report types now carry maturity + attack paths; sample reports re
 
 ## [2.20.0] - 2026-06-21
 
-_Reports now showcase what PSGuerrilla actually does — maturity, attack paths, and the BloodHound export are no longer buried._
+_Reports now showcase what Guerrilla actually does — maturity, attack paths, and the BloodHound export are no longer buried._
 
 ### Added
 - **AD reconnaissance report** (`Export-ReconnaissanceReportHtml`) gains three sections:
@@ -371,21 +374,21 @@ _Full-domain ACL collector — shallow one-hop findings become deep low-priv →
 - **Chains now actually form.** ACE records previously carried no `ObjectClass` or `ObjectSID`, so the transitive engine could never classify an ACE target as a group node (`grp:`) and chains dead-ended regardless of coverage. Every ACE the full-domain collector emits now carries **`ObjectClass` + `ObjectSID` + `ObjectName`**, so a principal with `GenericAll`/`WriteDacl`/`WriteOwner` over a group anywhere in the Tier-0 membership closure produces a real transitive path (e.g. `HelpDesk --GenericAll--> CORP-Helpdesk-Admins --MemberOf--> Domain Admins`), and BloodHound keys the target node by SID.
 
 ### Notes
-- **Opt-in** (off by default — it is the heaviest read PSGuerrilla performs). `MaxObjects` cap of 50000 with **explicit truncation reporting** (`FullDomainTruncated` + a log line — never a silent cap). SID→name resolution is cached. Read-only throughout.
+- **Opt-in** (off by default — it is the heaviest read Guerrilla performs). `MaxObjects` cap of 50000 with **explicit truncation reporting** (`FullDomainTruncated` + a log line — never a silent cap). SID→name resolution is cached. Read-only throughout.
 - Detection vocabulary matches the critical-object pass (GenericAll/GenericWrite/WriteDacl/WriteOwner + dangerous extended rights + WriteProperty on dangerous GUIDs incl. `member`, `msDS-KeyCredentialLink`, DCSync, ForceChangePassword), with self-ACE / SELF / CREATOR OWNER skips on top of the existing default-principal ignores; the engine still applies its own default-principal exclusion downstream.
 - 46 public functions. Test: `Tests/verify-fulldomain-acl.ps1` (18/18 — dangerous-ACE predicate, the `ObjectClass`/`ObjectSID` chain fix end-to-end through the engine, a regression guard proving no `ObjectClass` → no chain, and SID-keyed BloodHound nodes). Check counts unchanged.
 - Remaining: cartography (the visual domain/trust/attack-path map). The next depth lever beyond this is full-domain *group membership* (control edges already land in the existing Tier-0 closure; all-group membership widens multi-control-hop chains through non-privileged groups).
 
 ## [2.18.0] - 2026-06-20
 
-_BloodHound export — PSGuerrilla now feeds the best attack-path graph tool, free._
+_BloodHound export — Guerrilla now feeds the best attack-path graph tool, free._
 
 ### Added
 - **`Export-BloodHoundData`** — exports the collected AD graph (privileged-group membership + dangerous ACLs) to a **BloodHound CE OpenGraph** file. Nodes are **SID-keyed** (overlay cleanly with native SharpHound data) and edges use BloodHound's **native kinds** (`GenericAll`, `WriteDacl`, `WriteOwner`, `GenericWrite`, `AllExtendedRights`, `GetChanges`, `GetChangesAll`, `MemberOf`) so BloodHound's built-in pathfinding works over them directly. Unlike the in-report engine, the export includes the **full** graph (no default-principal exclusion) — BloodHound does its own reachability analysis. Import via BloodHound CE > Administration > File Ingest.
 - **`Invoke-Reconnaissance -BloodHoundPath <file>`** writes the export as part of a normal scan; the result object gains `BloodHoundPath`.
 
 ### Notes
-- This makes PSGuerrilla a **free BloodHound feeder** — the agentless, quiet collector that also hands you a graph (SharpHound gets flagged by EDR; this doesn't touch endpoints). Exported edge coverage tracks ACL collection (the six critical Tier-0 objects + privileged membership today); the full-domain ACL collector (roadmap) widens it and the exporter consumes it unchanged.
+- This makes Guerrilla a **free BloodHound feeder** — the agentless, quiet collector that also hands you a graph (SharpHound gets flagged by EDR; this doesn't touch endpoints). Exported edge coverage tracks ACL collection (the six critical Tier-0 objects + privileged membership today); the full-domain ACL collector (roadmap) widens it and the exporter consumes it unchanged.
 - Read-only. 46 public functions. Test: `Tests/verify-bloodhound-export.ps1` (12/12 — OpenGraph shape, SID-keyed nodes, native edge kinds incl. replication→GetChangesAll, MemberOf, provenance). Check counts unchanged.
 - Remaining: the **full-domain ACL collector** (deepens both ADPATH-002 and this export) and **cartography**.
 
@@ -575,7 +578,7 @@ _GWS-1 complete — the Cloud Identity policy data layer (v2.10.8) is now wired 
 ## [2.10.6] - 2026-06-19
 
 ### Documentation
-- **Defender / EDR false-positive guidance (the most common first-run failure).** PSGuerrilla's AD attack-detection files (DCSync GUIDs, `GenericAll`/`WriteDacl`, shadow-admin, Tier-0 patterns) can trip antivirus heuristics — Microsoft Defender real-time protection in particular blocks *read* access to them, so `Import-Module` fails with *"Access to the path '…Invoke-ADAclDelegationChecks.ps1' is denied"* (often a different AD file each attempt). README now documents this prominently in **Requirements** with the `Add-MpPreference -ExclusionPath` fix and a Protection-history "Allow" alternative, plus a dedicated **Troubleshooting** section. Surfaced by the v2.10.4 live validation.
+- **Defender / EDR false-positive guidance (the most common first-run failure).** Guerrilla's AD attack-detection files (DCSync GUIDs, `GenericAll`/`WriteDacl`, shadow-admin, Tier-0 patterns) can trip antivirus heuristics — Microsoft Defender real-time protection in particular blocks *read* access to them, so `Import-Module` fails with *"Access to the path '…Invoke-ADAclDelegationChecks.ps1' is denied"* (often a different AD file each attempt). README now documents this prominently in **Requirements** with the `Add-MpPreference -ExclusionPath` fix and a Protection-history "Allow" alternative, plus a dedicated **Troubleshooting** section. Surfaced by the v2.10.4 live validation.
 - Added **`AppCatalog.Read.All`** to the documented Entra app-registration scopes (the Teams app-catalog collection calls `/appCatalogs/teamsApps`; without the scope that portion logs a handled 403 and stays empty). Added Troubleshooting entries for that 403 and for the "No accessible Azure subscriptions" SKIP.
 
 ## [2.10.5] - 2026-06-19
@@ -644,7 +647,7 @@ _GUI + Safehouse fixes from the live GUI/Safehouse validation pass._
 - **AD attack-path analysis** (`ADPATH-001`, new **"AttackPath"** category). `Invoke-Reconnaissance` now turns the flat dangerous-ACL findings into named **privilege-escalation paths to Tier-0**, each annotated with the concrete takeover technique it enables (e.g. *"CORP\HelpDesk --[WriteDacl]--> Domain Root ⇒ can grant themselves DCSync replication rights and extract every domain hash — Domain Admin equivalent"*). v1 models the highest-value edge class — non-default control (GenericAll / WriteDacl / WriteOwner / replication rights) over a Tier-0 object (the domain root, AdminSDHolder, the Domain Controllers OU, the GPO / Configuration / Schema containers) — which is a **one-hop path to Domain Admin equivalence**. Paths from genuinely **non-privileged** principals are surfaced first as the highest risk. Built entirely on the already-collected ACL + privileged-group data (no new collection); runs under `-Categories All` or `ACLDelegation` / `AttackPath`. **AD coverage is now 204 checks across 15 categories** (460 total).
 
 ### Notes
-- This is the first increment of the roadmap's headline gap (graph-based attack-path computation). Full **domain-wide transitive** path computation (low-priv user → nested-group control → Domain Admins) requires a full-domain ACL collector, which PSGuerrilla does not yet run (it reads ACLs on the 6 critical objects only); that deeper traversal is the next step, and the engine (`Get-ADAttackPath`) is structured to take additional edge sources directly.
+- This is the first increment of the roadmap's headline gap (graph-based attack-path computation). Full **domain-wide transitive** path computation (low-priv user → nested-group control → Domain Admins) requires a full-domain ACL collector, which Guerrilla does not yet run (it reads ACLs on the 6 critical objects only); that deeper traversal is the next step, and the engine (`Get-ADAttackPath`) is structured to take additional edge sources directly.
 - Regression tests added to `Tests/verify-core-fixes.ps1` (the engine derives paths, flags non-privileged sources, and the check returns FAIL/PASS/SKIP correctly).
 
 ## [2.9.4] - 2026-06-18
@@ -718,7 +721,7 @@ _Surfaced by a live-environment validation pass against a production Active Dire
 ## [2.8.1] - 2026-06-17
 
 ### Fixed
-- **Entra / Azure / M365 (Infiltration) scans launched from the GUI appeared to hang.** The scan actually completed, but the GUI's `OnComplete` callback called the module-**private** `Get-PSGuerrillaDataRoot`, which isn't resolvable inside a `GetNewClosure()` closure — so the callback threw *before* resetting the UI, leaving the progress bar spinning on "still working…". The AD and Google Workspace paths were unaffected because their result objects carry `HtmlReportPath` and skipped that branch. Two fixes: the callback now uses the already-captured `$session.ReportsDir` instead of the private function, and `Invoke-Infiltration` now returns `HtmlReportPath` (like the other theaters) so the GUI opens the exact report.
+- **Entra / Azure / M365 (Infiltration) scans launched from the GUI appeared to hang.** The scan actually completed, but the GUI's `OnComplete` callback called the module-**private** `Get-GuerrillaDataRoot`, which isn't resolvable inside a `GetNewClosure()` closure — so the callback threw *before* resetting the UI, leaving the progress bar spinning on "still working…". The AD and Google Workspace paths were unaffected because their result objects carry `HtmlReportPath` and skipped that branch. Two fixes: the callback now uses the already-captured `$session.ReportsDir` instead of the private function, and `Invoke-Infiltration` now returns `HtmlReportPath` (like the other theaters) so the GUI opens the exact report.
 - **Poor contrast in the GUI dropdowns and left navigation.** The "Report style" (and Settings) dropdown popups used WPF's default light system theme, rendering the near-white item text invisible. `ComboBoxItem` now has an explicit dark control template (dark background + light text, with an amber highlight + dark text on hover). The left-nav button text was also dimmed and has been brightened for legibility.
 
 ## [2.8.0] - 2026-06-17
@@ -730,7 +733,7 @@ _Surfaced by a live-environment validation pass against a production Active Dire
   - **Slate** — a modern dark dashboard theme, also with plain risk-based labels.
 
   A new theming engine (`Get-GuerrillaReportTheme`) drives a shared palette of CSS custom properties, so all three audit reports (AD / Google Workspace / Entra-M365) share one consistent look per style.
-- **White-label branding.** A new **"Branding"** tab in `Show-Guerrilla` captures firm name, logo (file path or URL), consultant name + email, client / assessed-org name, and a confidentiality banner. These render in the report header (firm + logo, "Prepared by", "Prepared for") with the confidentiality banner across the top. Branding is saved to your config and applied to every subsequent scan. **The "Generated with PSGuerrilla by Jim Tyler, Microsoft MVP" footer attribution is always preserved** regardless of theme or branding.
+- **White-label branding.** A new **"Branding"** tab in `Show-Guerrilla` captures firm name, logo (file path or URL), consultant name + email, client / assessed-org name, and a confidentiality banner. These render in the report header (firm + logo, "Prepared by", "Prepared for") with the confidentiality banner across the top. Branding is saved to your config and applied to every subsequent scan. **The "Generated with Guerrilla by Jim Tyler, Microsoft MVP" footer attribution is always preserved** regardless of theme or branding.
 - Showcase sample reports in the Professional theme with demo branding: `Samples/*-AllFail-Professional.html`.
 
 ### Notes
@@ -779,7 +782,7 @@ _Surfaced by a live-environment validation pass against a production Active Dire
 
 ### Added
 - **Scans auto-resolve credentials from the safehouse vault.** Previously `Invoke-Fortification`, `Invoke-Infiltration`, and `Invoke-Campaign` only read the vault when handed a `-ConfigFile` (guerrilla-config.json) mission file — so an interactive `Set-Safehouse` setup (no config file) couldn't scan at all, failing with `ServiceAccountKeyPath is required` / `TenantId is required`, including from the `Show-Guerrilla` GUI. These cmdlets now fall back — as a last resort, after explicit parameters and `config.json` — to the default vault keys `Set-Safehouse` stores: `GUERRILLA_GWS_SA` (+ `_ADMIN_EMAIL`) for Google Workspace and `GUERRILLA_GRAPH_TENANT` / `GUERRILLA_GRAPH_CLIENTID` / `GUERRILLA_GRAPH_SECRET` for Entra/Azure/M365. A populated safehouse now "just works" for every theater from both the CLI and the GUI.
-- `-VaultName` parameter (default `PSGuerrilla`) on `Invoke-Fortification` / `Invoke-Infiltration` / `Invoke-Campaign`, so non-default/custom vaults resolve correctly. `Show-Guerrilla` passes the active vault name automatically.
+- `-VaultName` parameter (default `Guerrilla`) on `Invoke-Fortification` / `Invoke-Infiltration` / `Invoke-Campaign`, so non-default/custom vaults resolve correctly. `Show-Guerrilla` passes the active vault name automatically.
 - `Get-SafehouseSecret` private helper — a graceful counterpart to `Get-GuerrillaCredential` that returns `$null` on a miss (vault/key absent, SecretManagement not installed) instead of throwing, for "fall back to the safehouse" resolution.
 
 ### Notes
@@ -794,7 +797,7 @@ _Surfaced by a live-environment validation pass against a production Active Dire
 
 ### Fixed
 - **Show-Guerrilla scans failed instantly with `The term 'Invoke-Reconnaissance' is not recognized`.** Two bugs in the worker runspace that drives a scan:
-  1. The module was never imported into the runspace — the code used `InitialSessionState.ImportPSModule()` with a full `.psd1` **path**, but that API expects a module **name** and silently does nothing with a path, so the runspace started with none of PSGuerrilla's commands. The worker now calls `Import-Module <manifest> -ErrorAction Stop` explicitly (with `-Verbose:$false` so the import's own load messages don't flood the scan log).
+  1. The module was never imported into the runspace — the code used `InitialSessionState.ImportPSModule()` with a full `.psd1` **path**, but that API expects a module **name** and silently does nothing with a path, so the runspace started with none of Guerrilla's commands. The worker now calls `Import-Module <manifest> -ErrorAction Stop` explicitly (with `-Verbose:$false` so the import's own load messages don't flood the scan log).
   2. The scan action was passed across the runspace boundary as a live scriptblock object, which retains affinity to the GUI runspace that created it — so it ran against the wrong runspace/thread and couldn't see the module even once imported (and could corrupt the engine). The action is now marshalled as source text and rehydrated inside the worker via `[scriptblock]::Create()`.
 
   No scan could be launched from the GUI before this fix. The CLI cmdlets were unaffected.
@@ -837,7 +840,7 @@ _Surfaced by a live-environment validation pass against a production Active Dire
 ## [2.0.0] - 2026-02-27
 
 ### Changed
-- **Renamed module from PSRecon to PSGuerrilla** with guerrilla warfare-themed cmdlet names
+- **Renamed module from PSRecon to Guerrilla** with guerrilla warfare-themed cmdlet names
 - `Invoke-GoogleRecon` -> `Invoke-Recon`
 - `Get-ReconAlerts` -> `Get-DeadDrop`
 - `Send-ReconAlert` -> `Send-Signal`
@@ -850,14 +853,14 @@ _Surfaced by a live-environment validation pass against a production Active Dire
 - `Unregister-ReconScheduledTask` -> `Unregister-Patrol`
 - `Get-ReconScheduledTask` -> `Get-Patrol`
 - Reorganized Private functions into subdirectories: `Core/`, `Google/`, `Export/`, `Console/`
-- Updated all type names: `PSRecon.*` -> `PSGuerrilla.*`
-- Updated config/state paths: `$APPDATA/PSRecon` -> `$APPDATA/PSGuerrilla`
-- Updated scheduled task name: `PSRecon-ScheduledScan` -> `PSGuerrilla-Patrol`
+- Updated all type names: `PSRecon.*` -> `Guerrilla.*`
+- Updated config/state paths: `$APPDATA/PSRecon` -> `$APPDATA/Guerrilla`
+- Updated scheduled task name: `PSRecon-ScheduledScan` -> `Guerrilla-Patrol`
 - Updated all branding strings and alert content
 
 ### Added
 - Backward-compatible aliases for all 11 old PSRecon function names
-- Automatic config migration from `$APPDATA/PSRecon` to `$APPDATA/PSGuerrilla`
+- Automatic config migration from `$APPDATA/PSRecon` to `$APPDATA/Guerrilla`
 - MIT License
 - This changelog
 

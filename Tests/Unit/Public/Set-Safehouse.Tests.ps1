@@ -20,7 +20,7 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Set-Safehouse' {
@@ -42,12 +42,12 @@ Describe 'Set-Safehouse' {
             $config.scheduling | Should -Not -BeNullOrEmpty
         }
 
-        It 'sets PSGuerrilla defaults in new config' {
+        It 'sets Guerrilla defaults in new config' {
             $cfgPath = Join-Path $TestDrive 'guerrilla-defaults/config.json'
             Set-Safehouse -MinimumAlertLevel HIGH -ConfigPath $cfgPath
             $config = Get-Content $cfgPath -Raw | ConvertFrom-Json -AsHashtable
-            $config.output.directory | Should -Match 'PSGuerrilla'
-            $config.scheduling.taskName | Should -Be 'PSGuerrilla-Patrol'
+            $config.output.directory | Should -Match 'Guerrilla'
+            $config.scheduling.taskName | Should -Be 'Guerrilla-Patrol'
             $config.detection.businessHoursStart | Should -Be 7
         }
 

@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Export-WiretapReportHtml {
     <#
@@ -61,7 +61,7 @@ function Export-WiretapReportHtml {
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PSGuerrilla Wiretap Report - $(& $esc $timestampStr)</title>
+<title>Guerrilla Wiretap Report - $(& $esc $timestampStr)</title>
 <style>
   :root {
     --bg: #1a1f16; --surface: #242b1e; --surface-alt: #2d3526; --border: #3d4a35;
@@ -180,7 +180,7 @@ function Export-WiretapReportHtml {
 </style>
 </head>
 <body>
-<h1>&#x1f50a; PSGuerrilla Wiretap Report</h1>
+<h1>&#x1f50a; Guerrilla Wiretap Report</h1>
 <div class="subtitle">
   Generated $(& $esc $timestampStr) &mdash;
   Tenant: $(& $esc $TenantId) &mdash;
@@ -431,7 +431,7 @@ function Export-WiretapReportHtml {
     [void]$html.Append(@"
 <div style="margin-top: 40px; padding-top: 16px; border-top: 2px solid var(--border);
             color: var(--dim); font-size: 0.8em; text-align: center; letter-spacing: 1px;">
-  &#x1f50a; PSGuerrilla Wiretap Report &nbsp;|&nbsp;
+  &#x1f50a; Guerrilla Wiretap Report &nbsp;|&nbsp;
   $(& $esc $timestampStr) &nbsp;|&nbsp;
   Tenant: $(& $esc $TenantId) &nbsp;|&nbsp;
   $($TotalEvents.ToString('N0')) events &nbsp;|&nbsp;

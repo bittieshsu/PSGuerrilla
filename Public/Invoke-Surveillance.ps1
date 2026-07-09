@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-Surveillance {
     <#
@@ -39,7 +39,7 @@ function Invoke-Surveillance {
         Full: All three endpoints including directory audits. Default: Fast.
 
     .PARAMETER OutputDirectory
-        Directory for report output. Default: per-user data dir + /PSGuerrilla/Reports
+        Directory for report output. Default: per-user data dir + /Guerrilla/Reports
         (Windows: $env:APPDATA; macOS: ~/Library/Application Support; Linux: $XDG_CONFIG_HOME or ~/.config)
 
     .PARAMETER Force
@@ -52,7 +52,7 @@ function Invoke-Surveillance {
         Suppress console output.
 
     .PARAMETER ConfigPath
-        Path to PSGuerrilla configuration file.
+        Path to Guerrilla configuration file.
 
     .EXAMPLE
         Invoke-Surveillance -TenantId 'contoso.onmicrosoft.com' -ClientId $appId -ClientSecret $secret
@@ -95,7 +95,7 @@ function Invoke-Surveillance {
         [Alias('MissionConfig')]
         [string]$ConfigFile,
 
-        [string]$VaultName = 'PSGuerrilla'
+        [string]$VaultName = 'Guerrilla'
     )
 
     $vaultName = $VaultName
@@ -180,7 +180,7 @@ function Invoke-Surveillance {
             else { 'Fast' }
     $outDir = if ($OutputDirectory) { $OutputDirectory }
               elseif ($config -and $config.output.directory) { $config.output.directory }
-              else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
+              else { Join-Path (Get-GuerrillaDataRoot) 'Reports' }
 
     # Final fallback: the safehouse vault under the default keys Set-Safehouse stores
     # interactively — so a vault-only setup (no mission-config file) runs without extra
@@ -594,7 +594,7 @@ function Invoke-Surveillance {
 
     # --- 15. Emit result object ---
     $result = [PSCustomObject]@{
-        PSTypeName            = 'PSGuerrilla.SurveillanceResult'
+        PSTypeName            = 'Guerrilla.SurveillanceResult'
         ScanId                = $scanId
         Timestamp             = $scanStart
         Theater               = 'EntraID'

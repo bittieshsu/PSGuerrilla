@@ -203,7 +203,7 @@
   },
   "credentials": {
     "strategy": "secretManagement",
-    "vaultName": "PSGuerrilla",
+    "vaultName": "Guerrilla",
     "references": {
       "googleWorkspace": {
         "type": "serviceAccount",

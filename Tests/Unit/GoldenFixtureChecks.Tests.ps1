@@ -23,7 +23,7 @@ Describe 'Golden-fixture check verdicts' {
 
     BeforeAll {
         Import-Module (Join-Path $PSScriptRoot '..' 'Helpers' 'TestHelpers.psm1') -Force
-        Import-PSGuerrilla
+        Import-Guerrilla
     }
 
     It '<Family>/<CheckId> [<Scenario>] => <ExpectedStatus>' -ForEach $FixtureCases {

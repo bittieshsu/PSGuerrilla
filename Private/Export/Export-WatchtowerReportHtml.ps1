@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Export-WatchtowerReportHtml {
     [CmdletBinding()]
@@ -63,7 +63,7 @@ function Export-WatchtowerReportHtml {
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PSGuerrilla Watchtower Report - $(& $esc $timestampStr)</title>
+<title>Guerrilla Watchtower Report - $(& $esc $timestampStr)</title>
 <style>
   :root {
     --bg: #1a1f16; --surface: #242b1e; --surface-alt: #2d3526; --border: #3d4a35;
@@ -198,7 +198,7 @@ function Export-WatchtowerReportHtml {
 </style>
 </head>
 <body>
-<h1>&#x1f6e1; PSGuerrilla Watchtower Report</h1>
+<h1>&#x1f6e1; Guerrilla Watchtower Report</h1>
 <div class="subtitle">
   Generated $(& $esc $timestampStr) &mdash; Domain: $(& $esc $DomainName) &mdash; Mode: $(& $esc $ScanMode) &mdash; Scan ID: $(& $esc $ScanId)
 </div>
@@ -498,7 +498,7 @@ function Export-WatchtowerReportHtml {
     [void]$html.Append(@"
 <div style="margin-top: 40px; padding-top: 16px; border-top: 2px solid var(--border);
             color: var(--dim); font-size: 0.8em; text-align: center; letter-spacing: 1px;">
-  &#x1f6e1; PSGuerrilla Watchtower Report &nbsp;|&nbsp;
+  &#x1f6e1; Guerrilla Watchtower Report &nbsp;|&nbsp;
   $(& $esc $timestampStr) &nbsp;|&nbsp;
   Domain: $(& $esc $DomainName) &nbsp;|&nbsp;
   $totalFlagged flagged change(s) &nbsp;|&nbsp;

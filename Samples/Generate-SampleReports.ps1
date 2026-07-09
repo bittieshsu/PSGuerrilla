@@ -1,5 +1,5 @@
 # ┌───────────────────────────────────────────────────────────────────────────┐
-# │  PSGuerrilla — Tactical Security Assessment Framework                    │
+# │  Guerrilla — Tactical Security Assessment Framework                    │
 # │  Jim Tyler, Microsoft MVP                                                │
 # └───────────────────────────────────────────────────────────────────────────┘
 #
@@ -22,7 +22,7 @@
 # Jim Tyler as the original creator. See LICENSE for binding terms.
 <#
 .SYNOPSIS
-    Generates sample HTML reports for PSGuerrilla with every check flagged as FAIL.
+    Generates sample HTML reports for Guerrilla with every check flagged as FAIL.
 .DESCRIPTION
     Loads all audit check definitions and creates mock AuditFinding objects with
     Status = FAIL for every check. Calls the module's actual HTML export functions
@@ -40,7 +40,7 @@ $ErrorActionPreference = 'Stop'
 
 # Import module (quiet to suppress banner)
 $env:PSGUERRILLA_QUIET = '1'
-Import-Module (Join-Path $PSScriptRoot '../PSGuerrilla.psd1') -Force
+Import-Module (Join-Path $PSScriptRoot '../Guerrilla.psd1') -Force
 $env:PSGUERRILLA_QUIET = $null
 
 $samplesDir = $PSScriptRoot
@@ -133,7 +133,7 @@ function New-AllFailFindings {
             }
 
             $finding = [PSCustomObject]@{
-                PSTypeName       = 'PSGuerrilla.AuditFinding'
+                PSTypeName       = 'Guerrilla.AuditFinding'
                 CheckId          = $check.id
                 CheckName        = $check.name
                 Category         = $defs.categoryName
@@ -241,7 +241,7 @@ function Get-ScoreLabel {
 }
 
 # Get module reference for calling private export functions
-$mod = Get-Module PSGuerrilla
+$mod = Get-Module Guerrilla
 
 # ============================================================================
 # REPORT 1: Fortification (Google Workspace)
@@ -379,7 +379,7 @@ $entraScore = Get-PostureScore -Findings $entraFindings
 $entraPath = Join-Path $samplesDir "Infiltration-AllFail$styleSuffix.html"
 
 $infiltrationResult = [PSCustomObject]@{
-    PSTypeName = 'PSGuerrilla.InfiltrationResult'
+    PSTypeName = 'Guerrilla.InfiltrationResult'
     TenantId   = '00000000-0000-0000-0000-000000000000'
     ScanStart  = [datetime]::UtcNow
     Findings   = $entraFindings
@@ -417,7 +417,7 @@ $campaignScore = Get-PostureScore -Findings $campaignFindings
 $campaignPath = Join-Path $samplesDir "Campaign-AllFail$styleSuffix.html"
 
 $campaignResult = [PSCustomObject]@{
-    PSTypeName    = 'PSGuerrilla.CampaignResult'
+    PSTypeName    = 'Guerrilla.CampaignResult'
     Findings      = $campaignFindings
     OverallScore  = $campaignScore.OverallScore
     ScoreLabel    = (Get-ScoreLabel -Score $campaignScore.OverallScore)
@@ -446,7 +446,7 @@ Write-Host "  -> $campaignPath ($($campaignFindings.Count) checks, score: $($cam
 # it in the generator means it can never silently fall behind the report templates again.
 if ($Style -eq 'Guerrilla') {
     Write-Host 'Generating Technical report (README sample)...' -ForegroundColor Cyan
-    $techPath = Join-Path $PSScriptRoot '../PSGuerrilla-Sample-Report.html'
+    $techPath = Join-Path $PSScriptRoot '../Guerrilla-Sample-Report.html'
     & $mod {
         param($Findings, $OutputPath)
         Export-TechnicalReport -Findings $Findings -OutputPath $OutputPath -OrganizationName 'Sample Organization (All Checks Failing)'

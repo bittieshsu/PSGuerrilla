@@ -1,12 +1,12 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Send-SignalSyslog {
     <#
     .SYNOPSIS
         Sends threat alerts to a syslog server in CEF or LEEF format.
     .DESCRIPTION
-        Formats PSGuerrilla threat data as CEF (Common Event Format) or LEEF (Log Event Extended Format)
+        Formats Guerrilla threat data as CEF (Common Event Format) or LEEF (Log Event Extended Format)
         messages and sends them to a syslog server via UDP or TCP.
     .PARAMETER Server
         Syslog server hostname or IP address.
@@ -39,7 +39,7 @@ function Send-SignalSyslog {
         [Parameter(Mandatory)]
         [PSCustomObject[]]$Threats,
 
-        [string]$Subject = '[PSGuerrilla] Threat Detection',
+        [string]$Subject = '[Guerrilla] Threat Detection',
 
         [ValidateRange(0, 23)]
         [int]$Facility = 1
@@ -84,12 +84,12 @@ function Send-SignalSyslog {
             $sigId = "PSG-$($threat.ThreatLevel)"
             $name = "$($threat.ThreatLevel) threat: $email" -replace '\|', '_'
             $extension = "src=$email suser=$email cs1=$indicators cs1Label=Indicators cn1=$score cn1Label=ThreatScore"
-            $message = "<$priority>$timestamp $hostname CEF:0|PSGuerrilla|ThreatDetection|2.1.0|$sigId|$name|$cefSeverity|$extension"
+            $message = "<$priority>$timestamp $hostname CEF:0|Guerrilla|ThreatDetection|2.1.0|$sigId|$name|$cefSeverity|$extension"
         } else {
             # LEEF:Version|Vendor|Product|Version|EventID|Extension
             $eventId = "PSG-$($threat.ThreatLevel)"
             $extension = "src=$email`tsuser=$email`tsev=$($threat.ThreatLevel)`tThreatScore=$score`tIndicators=$indicators"
-            $message = "<$priority>$timestamp $hostname LEEF:2.0|PSGuerrilla|ThreatDetection|2.1.0|$eventId|$extension"
+            $message = "<$priority>$timestamp $hostname LEEF:2.0|Guerrilla|ThreatDetection|2.1.0|$eventId|$extension"
         }
 
         try {

@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Standalone verification of the GUI + Safehouse audit fixes:
@@ -11,9 +11,9 @@
 $ErrorActionPreference = 'Stop'
 $env:PSGUERRILLA_QUIET = '1'
 $root = Split-Path $PSScriptRoot -Parent
-Import-Module (Join-Path $root 'PSGuerrilla.psd1') -Force
+Import-Module (Join-Path $root 'Guerrilla.psd1') -Force
 
-$mod = Get-Module PSGuerrilla
+$mod = Get-Module Guerrilla
 $results = [System.Collections.Generic.List[object]]::new()
 function Add-Result($name, $ok, $detail) { $results.Add([PSCustomObject]@{ Name = $name; Pass = [bool]$ok; Detail = $detail }) }
 
@@ -40,7 +40,7 @@ $writtenKeys = & $mod {
             twilio   = @{ accountSid = 'AC1'; authToken = 'tw-token'; from = '+1'; to = '+2' }
         } }
     }
-    Invoke-CredentialMigration -Config $config -VaultName 'PSGuerrilla' -ConfigPath $CfgPath 6>$null
+    Invoke-CredentialMigration -Config $config -VaultName 'Guerrilla' -ConfigPath $CfgPath 6>$null
     $script:__written
 } $saPath $cfgPath
 
@@ -68,7 +68,7 @@ $view = & $mod {
             [PSCustomObject]@{ Name = 'GUERRILLA_PUSHOVER_1' }         # present, unregistered (legacy)
         )
     }
-    Get-SafehouseCredentialView -VaultName 'PSGuerrilla'
+    Get-SafehouseCredentialView -VaultName 'Guerrilla'
 }
 
 Add-Result 'SH-2 registered keys retained' ($view.ContainsKey('GUERRILLA_GWS_SA') -and $view.ContainsKey('GUERRILLA_GRAPH_SECRET')) ''

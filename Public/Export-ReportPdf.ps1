@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Export-ReportPdf {
     <#
@@ -18,7 +18,7 @@ function Export-ReportPdf {
     .PARAMETER BrowserPath
         Override path to the browser executable.
     .EXAMPLE
-        Export-ReportPdf -HtmlPath ./PSGuerrilla-Executive-Summary.html
+        Export-ReportPdf -HtmlPath ./Guerrilla-Executive-Summary.html
     .EXAMPLE
         Export-ExecutiveSummary -OutputPath ./summary.html; Export-ReportPdf -HtmlPath ./summary.html -OutputPath ./summary.pdf
     #>
@@ -105,7 +105,7 @@ function Export-ReportPdf {
         if (Test-Path $OutputPath) {
             $fileSize = (Get-Item $OutputPath).Length
             return [PSCustomObject]@{
-                PSTypeName = 'PSGuerrilla.PdfExport'
+                PSTypeName = 'Guerrilla.PdfExport'
                 Success    = $true
                 Path       = (Resolve-Path $OutputPath).Path
                 Message    = "PDF exported to $OutputPath ($([Math]::Round($fileSize / 1KB, 1)) KB)"
@@ -114,7 +114,7 @@ function Export-ReportPdf {
             }
         } else {
             return [PSCustomObject]@{
-                PSTypeName = 'PSGuerrilla.PdfExport'
+                PSTypeName = 'Guerrilla.PdfExport'
                 Success    = $false
                 Message    = "PDF generation completed but output file not found at $OutputPath"
                 Path       = $null
@@ -122,7 +122,7 @@ function Export-ReportPdf {
         }
     } catch {
         return [PSCustomObject]@{
-            PSTypeName = 'PSGuerrilla.PdfExport'
+            PSTypeName = 'Guerrilla.PdfExport'
             Success    = $false
             Message    = "PDF export failed: $_"
             Path       = $null

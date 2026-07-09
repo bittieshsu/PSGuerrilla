@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-RiskAcceptance {
     <#
@@ -38,7 +38,7 @@ function Get-RiskAcceptance {
     $riskPath = if ($ConfigPath) {
         $ConfigPath
     } else {
-        Join-Path (Get-PSGuerrillaDataRoot) 'risk-acceptance.json'
+        Join-Path (Get-GuerrillaDataRoot) 'risk-acceptance.json'
     }
 
     if (-not (Test-Path $riskPath)) {
@@ -75,7 +75,7 @@ function Get-RiskAcceptance {
         if ($Status -eq 'Expired' -and -not $isExpired) { continue }
 
         $results.Add([PSCustomObject]@{
-            PSTypeName    = 'PSGuerrilla.RiskAcceptance'
+            PSTypeName    = 'Guerrilla.RiskAcceptance'
             CheckId       = $entry.Key
             Justification = $val.justification ?? ''
             AcceptedBy    = $val.acceptedBy ?? ''

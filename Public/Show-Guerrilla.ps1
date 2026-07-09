@@ -1,10 +1,10 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Show-Guerrilla {
     <#
     .SYNOPSIS
-        Opens the PSGuerrilla operations GUI — a WPF window for managing credentials,
+        Opens the Guerrilla operations GUI — a WPF window for managing credentials,
         running scans, viewing reports, and configuring continuous monitoring.
 
     .DESCRIPTION
@@ -25,7 +25,7 @@ function Show-Guerrilla {
           * Inspector  — browse and read the source of every scan, check, and helper
             function in the module, filtered by area or searched by name.
           * Branding   — white-label report fields (firm, logo, consultant, client,
-            confidentiality). The PSGuerrilla / Jim Tyler footer attribution is kept.
+            confidentiality). The Guerrilla / Jim Tyler footer attribution is kept.
 
         The GUI is a wrapper around the existing public cmdlets — every action it
         takes is the equivalent of running Set-Safehouse / Invoke-Reconnaissance /
@@ -35,10 +35,10 @@ function Show-Guerrilla {
         Windows only. The CLI cmdlets remain cross-platform.
 
     .PARAMETER VaultName
-        SecretManagement vault name. Default: PSGuerrilla.
+        SecretManagement vault name. Default: Guerrilla.
 
     .PARAMETER ConfigPath
-        Path to the runtime config.json. Default: per-user data dir + /PSGuerrilla/config.json.
+        Path to the runtime config.json. Default: per-user data dir + /Guerrilla/config.json.
         Alias: RuntimeConfig.
 
     .PARAMETER StartOn
@@ -58,12 +58,12 @@ function Show-Guerrilla {
         # Opens directly to the Reports browser.
 
     .EXAMPLE
-        Show-Guerrilla -VaultName 'PSGuerrilla-DR'
+        Show-Guerrilla -VaultName 'Guerrilla-DR'
         # Opens against a non-default vault (useful for multi-tenant or DR setups).
     #>
     [CmdletBinding()]
     param(
-        [string]$VaultName = 'PSGuerrilla',
+        [string]$VaultName = 'Guerrilla',
 
         [Alias('RuntimeConfig')]
         [string]$ConfigPath,
@@ -87,23 +87,23 @@ function Show-Guerrilla {
     }
 
     # The runspace inside Invoke-GuerrillaGuiAsync needs to know where to import
-    # PSGuerrilla from. Resolve the .psd1 next to this loaded module.
+    # Guerrilla from. Resolve the .psd1 next to this loaded module.
     $manifestPath = $null
-    $loadedModule = Get-Module -Name PSGuerrilla -ErrorAction SilentlyContinue
+    $loadedModule = Get-Module -Name Guerrilla -ErrorAction SilentlyContinue
     if ($loadedModule -and $loadedModule.Path) {
         $manifestPath = if ($loadedModule.Path -like '*.psd1') {
             $loadedModule.Path
         } else {
-            Join-Path (Split-Path -Parent $loadedModule.Path) 'PSGuerrilla.psd1'
+            Join-Path (Split-Path -Parent $loadedModule.Path) 'Guerrilla.psd1'
         }
     }
     if (-not $manifestPath -or -not (Test-Path $manifestPath)) {
         # Fallback: look two levels up from this script (Public\Show-Guerrilla.ps1 -> module root)
-        $candidate = Resolve-Path (Join-Path $PSScriptRoot '..\PSGuerrilla.psd1') -ErrorAction SilentlyContinue
+        $candidate = Resolve-Path (Join-Path $PSScriptRoot '..\Guerrilla.psd1') -ErrorAction SilentlyContinue
         if ($candidate) { $manifestPath = $candidate.Path }
     }
     if (-not $manifestPath -or -not (Test-Path $manifestPath)) {
-        throw "Could not resolve the PSGuerrilla manifest path. The GUI's background runspace needs it to import the module. Try Import-Module PSGuerrilla -Force then retry."
+        throw "Could not resolve the Guerrilla manifest path. The GUI's background runspace needs it to import the module. Try Import-Module Guerrilla -Force then retry."
     }
 
     # Hide the host PowerShell console while the GUI is open so the experience reads

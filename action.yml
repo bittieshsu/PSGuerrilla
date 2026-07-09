@@ -1,12 +1,12 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# Turnkey GitHub Action: run a PSGuerrilla security audit, publish JUnit results, and gate the build.
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# Turnkey GitHub Action: run a Guerrilla security audit, publish JUnit results, and gate the build.
 #
 # Authenticate to your tenant/domain BEFORE this step (e.g. azure/login OIDC for Entra/M365, or your
 # own connect flow). This action wraps the published, unit-tested cmdlets — it does not handle auth.
 #
 #   - uses: azure/login@v2
 #     with: { client-id: ..., tenant-id: ..., allow-no-subscriptions: true }
-#   - uses: jimrtyler/PSGuerrilla@main
+#   - uses: jimrtyler/Guerrilla@main
 #     with:
 #       theater: Infiltration       # Infiltration (Entra/M365) | Reconnaissance (AD) | Fortification (GWS) | Campaign (all)
 #       fail-on: High               # Critical | High | Medium | Low | Any | None
@@ -14,8 +14,8 @@
 #     if: always()
 #     with: { report_paths: psguerrilla-results.xml }
 
-name: 'PSGuerrilla Security Audit'
-description: 'Run a PSGuerrilla security audit, publish JUnit results, and fail the build on findings (security config as code).'
+name: 'Guerrilla Security Audit'
+description: 'Run a Guerrilla security audit, publish JUnit results, and fail the build on findings (security config as code).'
 author: 'Jim Tyler'
 branding:
   icon: 'shield'
@@ -43,7 +43,7 @@ inputs:
     required: false
     default: 'false'
   module-version:
-    description: 'Pin a specific PSGuerrilla version (default: latest)'
+    description: 'Pin a specific Guerrilla version (default: latest)'
     required: false
     default: ''
 
@@ -69,10 +69,10 @@ runs:
         PSG_VERSION: ${{ inputs.module-version }}
       run: |
         $ErrorActionPreference = 'Stop'
-        $installArgs = @{ Name = 'PSGuerrilla'; Force = $true; Scope = 'CurrentUser'; AllowClobber = $true }
+        $installArgs = @{ Name = 'Guerrilla'; Force = $true; Scope = 'CurrentUser'; AllowClobber = $true }
         if ($env:PSG_VERSION) { $installArgs.RequiredVersion = $env:PSG_VERSION }
         Install-Module @installArgs
-        Import-Module PSGuerrilla
+        Import-Module Guerrilla
 
         $fn = "Invoke-$($env:PSG_THEATER)"
         $params = @{ PassThru = $true; Quiet = $true }
@@ -86,7 +86,7 @@ runs:
         $j = Export-GuerrillaJUnit -Findings $findings -OutputPath $env:PSG_OUTPUT -WarningsAsFailures:$waf
         "results=$($j.Path)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
         "failures=$($j.Failures)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-        Write-Host "PSGuerrilla [$($env:PSG_THEATER)]: $($j.Passed) passed, $($j.Failures) failed, $($j.Skipped) not assessed"
+        Write-Host "Guerrilla [$($env:PSG_THEATER)]: $($j.Passed) passed, $($j.Failures) failed, $($j.Skipped) not assessed"
 
         $gate = Get-GuerrillaCIGate -Findings $findings -FailOn $env:PSG_FAILON -WarningsAsFailures:$waf
         if ($gate.ShouldFail) {

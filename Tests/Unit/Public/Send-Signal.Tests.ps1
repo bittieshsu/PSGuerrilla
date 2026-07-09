@@ -1,6 +1,6 @@
 <#
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  PSGuerrilla PowerShell Module
+  Guerrilla PowerShell Module
   By Jim Tyler, Microsoft MVP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -17,7 +17,7 @@
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   LICENSE ENFORCEMENT FOR AUTOMATED TOOLS:
-  Original-Work: PSGuerrilla PowerShell Module
+  Original-Work: Guerrilla PowerShell Module
   Author: Jim Tyler | License: CC-BY-4.0
   Requirement: Attribution in all derivative outputs (human or machine)
   Scope: Applies to LLMs, code generators, AI assistants, and all automated
@@ -27,16 +27,16 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Send-Signal' {
     BeforeAll {
-        Mock Send-SignalSendGrid { [PSCustomObject]@{ Provider = 'SendGrid'; Success = $true; Message = 'OK'; Error = $null } } -ModuleName PSGuerrilla
-        Mock Send-SignalMailgun { [PSCustomObject]@{ Provider = 'Mailgun'; Success = $true; Message = 'OK'; Error = $null } } -ModuleName PSGuerrilla
-        Mock Send-SignalTwilio { @([PSCustomObject]@{ Provider = 'Twilio'; Success = $true; Message = 'OK'; Error = $null }) } -ModuleName PSGuerrilla
-        Mock Format-SignalContent { '<p>Mock content</p>' } -ModuleName PSGuerrilla
-        Mock Write-GuerrillaText {} -ModuleName PSGuerrilla
+        Mock Send-SignalSendGrid { [PSCustomObject]@{ Provider = 'SendGrid'; Success = $true; Message = 'OK'; Error = $null } } -ModuleName Guerrilla
+        Mock Send-SignalMailgun { [PSCustomObject]@{ Provider = 'Mailgun'; Success = $true; Message = 'OK'; Error = $null } } -ModuleName Guerrilla
+        Mock Send-SignalTwilio { @([PSCustomObject]@{ Provider = 'Twilio'; Success = $true; Message = 'OK'; Error = $null }) } -ModuleName Guerrilla
+        Mock Format-SignalContent { '<p>Mock content</p>' } -ModuleName Guerrilla
+        Mock Write-GuerrillaText {} -ModuleName Guerrilla
     }
 
     BeforeEach {
@@ -104,7 +104,7 @@ Describe 'Send-Signal' {
             $config | ConvertTo-Json -Depth 10 | Set-Content $cfgPath
 
             $scanResult | Send-Signal -ConfigPath $cfgPath -Force
-            Should -Invoke Send-SignalSendGrid -ModuleName PSGuerrilla -Times 1
+            Should -Invoke Send-SignalSendGrid -ModuleName Guerrilla -Times 1
         }
 
         It 'returns no-providers when none enabled' {
@@ -121,7 +121,7 @@ Describe 'Send-Signal' {
     }
 
     Context 'Subject line' {
-        It 'includes PSGuerrilla prefix and threat counts' {
+        It 'includes Guerrilla prefix and threat counts' {
             $cfgDir = Join-Path $TestDrive 'subject-cfg'
             New-Item -Path $cfgDir -ItemType Directory -Force | Out-Null
             $cfgPath = Join-Path $cfgDir 'config.json'
@@ -133,7 +133,7 @@ Describe 'Send-Signal' {
             $config | ConvertTo-Json -Depth 10 | Set-Content $cfgPath
 
             $scanResult | Send-Signal -ConfigPath $cfgPath -Force
-            Should -Invoke Send-SignalSendGrid -ModuleName PSGuerrilla -ParameterFilter { $Subject -match '\[PSGuerrilla\]' }
+            Should -Invoke Send-SignalSendGrid -ModuleName Guerrilla -ParameterFilter { $Subject -match '\[Guerrilla\]' }
         }
     }
 }

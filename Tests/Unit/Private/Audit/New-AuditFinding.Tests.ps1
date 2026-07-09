@@ -1,6 +1,6 @@
 <#
 *******************************************************************************
-*  PSGuerrilla — Jim Tyler, Microsoft MVP                            *
+*  Guerrilla — Jim Tyler, Microsoft MVP                            *
 *  Copyright (c) 2026 Jim Tyler. All rights reserved.                        *
 *  License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/                    *
 *******************************************************************************
@@ -20,7 +20,7 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'New-AuditFinding' {
@@ -29,9 +29,9 @@ Describe 'New-AuditFinding' {
     }
 
     Context 'Creates finding with correct structure' {
-        It 'Returns a PSGuerrilla.AuditFinding object' {
+        It 'Returns a Guerrilla.AuditFinding object' {
             $finding = New-AuditFinding -CheckDefinition $checkDef -Status 'FAIL' -CurrentValue 'Not enforced'
-            $finding.PSObject.TypeNames | Should -Contain 'PSGuerrilla.AuditFinding'
+            $finding.PSObject.TypeNames | Should -Contain 'Guerrilla.AuditFinding'
         }
 
         It 'Populates all fields from check definition' {

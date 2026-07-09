@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-DeadDrop {
     [CmdletBinding()]
@@ -39,7 +39,7 @@ function Get-DeadDrop {
             $profiles = foreach ($email in $state.alertedUsers.Keys) {
                 $u = $state.alertedUsers[$email]
                 [PSCustomObject]@{
-                    PSTypeName    = 'PSGuerrilla.UserProfile'
+                    PSTypeName    = 'Guerrilla.UserProfile'
                     Email         = $email
                     ThreatLevel   = $u.lastThreatLevel
                     ThreatScore   = $u.lastThreatScore
@@ -48,10 +48,10 @@ function Get-DeadDrop {
                     AlertCount    = $u.alertCount
                 }
             }
-        } elseif ($ScanResult -and $ScanResult.PSObject.TypeNames -contains 'PSGuerrilla.ScanResult') {
+        } elseif ($ScanResult -and $ScanResult.PSObject.TypeNames -contains 'Guerrilla.ScanResult') {
             $profiles = if ($NewOnly) { $ScanResult.NewThreats } else { $ScanResult.FlaggedUsers }
         } else {
-            Write-Warning 'Provide a PSGuerrilla.ScanResult via pipeline or use -FromStateFile.'
+            Write-Warning 'Provide a Guerrilla.ScanResult via pipeline or use -FromStateFile.'
             return
         }
 

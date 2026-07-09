@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Read-MissionConfig {
     <#
@@ -28,7 +28,7 @@ function Read-MissionConfig {
 
     # Validate required fields
     if (-not $config.version) {
-        throw "Invalid configuration file: missing 'version' field. Is this a guerrilla-config.json from the PSGuerrilla website?"
+        throw "Invalid configuration file: missing 'version' field. Is this a guerrilla-config.json from the Guerrilla website?"
     }
 
     # Build credential requirements list
@@ -170,6 +170,6 @@ function Read-MissionConfig {
         Reporting              = if ($config.reporting) { $config.reporting } else { $null }
         Alerting               = if ($config.alerting) { $config.alerting } else { $null }
         CredentialStrategy     = if ($config.credentials) { $config.credentials.strategy } else { 'secretManagement' }
-        VaultName              = if ($config.credentials -and $config.credentials.vaultName) { $config.credentials.vaultName } else { 'PSGuerrilla' }
+        VaultName              = if ($config.credentials -and $config.credentials.vaultName) { $config.credentials.vaultName } else { 'Guerrilla' }
     }
 }

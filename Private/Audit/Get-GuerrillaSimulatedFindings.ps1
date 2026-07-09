@@ -1,12 +1,12 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 
 # Test-mode support. Builds a full set of all-FAIL audit findings for a theater
 # straight from the shipped check definitions, with no live connection or data
 # collection. Used by the -TestMode switch on the scan cmdlets so an operator can
 # preview a report (and verify branding / themes) without touching a real tenant.
-# Findings are real PSGuerrilla.AuditFinding objects, so every downstream feature
+# Findings are real Guerrilla.AuditFinding objects, so every downstream feature
 # (scoring, branding, report styles, affected-accounts lists) works unchanged.
 
 # Produce a realistic "bad" CurrentValue for a check based on its name/severity.

@@ -16,7 +16,7 @@
 
 .PARAMETER DbPath
     SQLite file to publish to. Defaults to the migrated local copy under
-    ~/Documents/PSGuerrilla-Data/ (see Tests/Local/Publish-GuerrillaTestResultsSqlite.ps1).
+    ~/Documents/Guerrilla-Data/ (see Tests/Local/Publish-GuerrillaTestResultsSqlite.ps1).
 
 .EXAMPLE
     pwsh Tests/Invoke-FixtureTests.ps1
@@ -34,7 +34,7 @@ $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 
 Import-Module (Join-Path $root 'Helpers' 'TestHelpers.psm1') -Force
-Import-PSGuerrilla
+Import-Guerrilla
 
 $theaterByFamily = @{ AD = 'Reconnaissance'; Entra = 'Infiltration'; GoogleWorkspace = 'Fortification' }
 
@@ -91,7 +91,7 @@ if ($Publish) {
         passed         = $passed
         failed         = $failed
         duration_ms    = [int]$sw.ElapsedMilliseconds
-        module_version = "$((Import-PowerShellDataFile (Join-Path $root '..' 'PSGuerrilla.psd1')).ModuleVersion)"
+        module_version = "$((Import-PowerShellDataFile (Join-Path $root '..' 'Guerrilla.psd1')).ModuleVersion)"
     }
     $publishArgs = @{ Summary = $summary; Results = $results }
     if ($DbPath) { $publishArgs.DbPath = $DbPath }

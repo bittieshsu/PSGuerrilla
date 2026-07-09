@@ -1,12 +1,12 @@
-# Contributing to PSGuerrilla
+# Contributing to Guerrilla
 
 ## Project Structure
 
 ```
-PSGuerrilla/
-  PSGuerrilla.psm1          # Module loader (auto-loads all Private/ functions recursively)
-  PSGuerrilla.psd1          # Module manifest
-  PSGuerrilla.format.ps1xml # Custom format views
+Guerrilla/
+  Guerrilla.psm1          # Module loader (auto-loads all Private/ functions recursively)
+  Guerrilla.psd1          # Module manifest
+  Guerrilla.format.ps1xml # Custom format views
 
   Public/                   # Exported cmdlets
     Invoke-Recon.ps1        # Phase 1 — Google Workspace compromise assessment
@@ -95,13 +95,13 @@ Private functions that perform technical operations keep descriptive names:
 
 ### Type names
 
-- `PSGuerrilla.ScanResult` — output of `Invoke-Recon`
-- `PSGuerrilla.UserProfile` — per-user compromise profile
-- `PSGuerrilla.AlertResult` — output of `Send-Signal`
-- `PSGuerrilla.ReconnaissanceResult` — output of `Invoke-Reconnaissance` (AD audit)
-- `PSGuerrilla.InfiltrationResult` — output of `Invoke-Infiltration` (cloud audit)
-- `PSGuerrilla.AuditFinding` — individual check result (used by Phase 2 and Phase 3)
-- `PSGuerrilla.CampaignResult` — output of `Invoke-Campaign` (unified audit)
+- `Guerrilla.ScanResult` — output of `Invoke-Recon`
+- `Guerrilla.UserProfile` — per-user compromise profile
+- `Guerrilla.AlertResult` — output of `Send-Signal`
+- `Guerrilla.ReconnaissanceResult` — output of `Invoke-Reconnaissance` (AD audit)
+- `Guerrilla.InfiltrationResult` — output of `Invoke-Infiltration` (cloud audit)
+- `Guerrilla.AuditFinding` — individual check result (used by Phase 2 and Phase 3)
+- `Guerrilla.CampaignResult` — output of `Invoke-Campaign` (unified audit)
 
 ## Writing Tests
 
@@ -116,7 +116,7 @@ Private functions that perform technical operations keep descriptive names:
 ```powershell
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Function-Name' {
@@ -135,10 +135,10 @@ Describe 'Function-Name' {
 - `New-MockLoginEvent` — login event hashtable
 - `New-MockTokenEvent` — OAuth token event hashtable
 - `New-MockAdminEvent` — admin action event hashtable
-- `New-MockScanResult` — PSGuerrilla.ScanResult object
-- `New-MockUserProfile` — PSGuerrilla.UserProfile object
+- `New-MockScanResult` — Guerrilla.ScanResult object
+- `New-MockUserProfile` — Guerrilla.UserProfile object
 - `New-MockConfig` — full config hashtable
-- `New-MockAuditFinding` — PSGuerrilla.AuditFinding object (Phase 2/3)
+- `New-MockAuditFinding` — Guerrilla.AuditFinding object (Phase 2/3)
 - `New-MockGraphToken` — Graph API access token (Phase 3)
 - `New-MockEntraData` — Entra ID data collection hashtable (Phase 3)
 

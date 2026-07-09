@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-GuerrillaScoreCalculation {
     <#
@@ -113,7 +113,7 @@ function Get-GuerrillaScoreCalculation {
     $label = Get-GuerrillaScoreLabel -Score $compositeScore
 
     return [PSCustomObject]@{
-        PSTypeName    = 'PSGuerrilla.GuerrillaScore'
+        PSTypeName    = 'Guerrilla.GuerrillaScore'
         Score         = $compositeScore
         Label         = $label.Label
         LabelColor    = $label.Color

@@ -1,5 +1,5 @@
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# >>> PSGuerrilla                                                           >>>
+# >>> Guerrilla                                                           >>>
 # >>> Jim Tyler, Microsoft MVP                                              >>>
 # >>> Copyright (c) 2026 Jim Tyler                                                  >>>
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -21,12 +21,12 @@
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Config Migration Integration' {
     Context 'End-to-end migration' {
-        It 'migrates full PSRecon config to PSGuerrilla' {
+        It 'migrates full PSRecon config to Guerrilla' {
             $originalAppdata = $env:APPDATA
             try {
                 $env:APPDATA = $TestDrive
@@ -89,7 +89,7 @@ Describe 'Config Migration Integration' {
                 Initialize-ConfigMigration
 
                 # Verify new config exists
-                $newDir = Join-Path $TestDrive 'PSGuerrilla'
+                $newDir = Join-Path $TestDrive 'Guerrilla'
                 Test-Path (Join-Path $newDir 'config.json') | Should -BeTrue
                 Test-Path (Join-Path $newDir 'state.json') | Should -BeTrue
                 Test-Path (Join-Path $newDir 'Reports/report.csv') | Should -BeTrue
@@ -101,9 +101,9 @@ Describe 'Config Migration Integration' {
                 $migrated.google.adminEmail | Should -Be 'admin@corp.com'
 
                 # PSRecon references updated
-                $migrated.output.directory | Should -Match 'PSGuerrilla'
-                $migrated.scheduling.taskName | Should -Be 'PSGuerrilla-Patrol'
-                $migrated.alerting.providers.sendgrid.fromName | Should -Be 'PSGuerrilla Signals'
+                $migrated.output.directory | Should -Match 'Guerrilla'
+                $migrated.scheduling.taskName | Should -Be 'Guerrilla-Patrol'
+                $migrated.alerting.providers.sendgrid.fromName | Should -Be 'Guerrilla Signals'
 
                 # State preserved
                 $migratedState = Get-Content (Join-Path $newDir 'state.json') -Raw | ConvertFrom-Json -AsHashtable
@@ -125,12 +125,12 @@ Describe 'Config Migration Integration' {
     }
 
     Context 'Idempotent migration' {
-        It 'does not re-migrate if PSGuerrilla config already exists' {
+        It 'does not re-migrate if Guerrilla config already exists' {
             $originalAppdata = $env:APPDATA
             try {
                 $env:APPDATA = $TestDrive
                 $oldDir = Join-Path $TestDrive 'PSRecon'
-                $newDir = Join-Path $TestDrive 'PSGuerrilla'
+                $newDir = Join-Path $TestDrive 'Guerrilla'
                 New-Item -Path $oldDir -ItemType Directory -Force | Out-Null
                 New-Item -Path $newDir -ItemType Directory -Force | Out-Null
 

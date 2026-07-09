@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-SafehouseSecret {
     <#
@@ -18,14 +18,14 @@ function Get-SafehouseSecret {
     .PARAMETER VaultKey
         The secret name to read (e.g. 'GUERRILLA_GWS_SA').
     .PARAMETER VaultName
-        The SecretManagement vault. Default: PSGuerrilla.
+        The SecretManagement vault. Default: Guerrilla.
     #>
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
         [string]$VaultKey,
 
-        [string]$VaultName = 'PSGuerrilla'
+        [string]$VaultName = 'Guerrilla'
     )
 
     if (-not (Get-Command Get-SecretVault -ErrorAction SilentlyContinue)) { return $null }

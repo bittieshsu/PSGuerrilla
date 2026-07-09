@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-Lookout {
     <#
@@ -7,7 +7,7 @@ function Invoke-Lookout {
         Continuous Google Workspace security-posture (configuration-drift) monitoring.
 
     .DESCRIPTION
-        Invoke-Lookout is the Google Workspace theater of PSGuerrilla's continuous-monitoring
+        Invoke-Lookout is the Google Workspace theater of Guerrilla's continuous-monitoring
         suite (alongside Invoke-Surveillance for Entra sign-in risk, Invoke-Watchtower for
         Active Directory baseline change, and Invoke-Wiretap for M365 audit logs).
 
@@ -48,7 +48,7 @@ function Invoke-Lookout {
         # Subsequent run; reports controls that newly FAIL (drift) and ones that were resolved.
 
     .NOTES
-        Baseline state is stored under the per-user PSGuerrilla data root (theater 'workspace').
+        Baseline state is stored under the per-user Guerrilla data root (theater 'workspace').
         Read-only against Google Workspace.
     #>
     [CmdletBinding()]
@@ -72,7 +72,7 @@ function Invoke-Lookout {
         [Alias('MissionConfig')]
         [string]$ConfigFile,
 
-        [string]$VaultName = 'PSGuerrilla'
+        [string]$VaultName = 'Guerrilla'
     )
 
     $cfgPath = if ($ConfigPath) { $ConfigPath } else { $script:ConfigPath }
@@ -103,7 +103,7 @@ function Invoke-Lookout {
     if ($findings.Count -eq 0) {
         if (-not $Quiet) { Write-Warning 'LOOKOUT: Fortification returned no findings (no Workspace connection / credentials?). Nothing to baseline.' }
         return [PSCustomObject]@{
-            PSTypeName           = 'PSGuerrilla.LookoutResult'
+            PSTypeName           = 'Guerrilla.LookoutResult'
             ScanId               = $scanId
             Timestamp            = $timestamp
             Theater              = 'GoogleWorkspace'
@@ -164,7 +164,7 @@ function Invoke-Lookout {
         }
 
         return [PSCustomObject]@{
-            PSTypeName           = 'PSGuerrilla.LookoutResult'
+            PSTypeName           = 'Guerrilla.LookoutResult'
             ScanId               = $scanId
             Timestamp            = $timestamp
             Theater              = 'GoogleWorkspace'
@@ -228,7 +228,7 @@ function Invoke-Lookout {
     # ── 7. Optional JSON drift report ──────────────────────────────────────────
     $reportPaths = @{}
     if (-not $NoReports -and $newFailures.Count -gt 0) {
-        $outDir = if ($OutputDirectory) { $OutputDirectory } else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
+        $outDir = if ($OutputDirectory) { $OutputDirectory } else { Join-Path (Get-GuerrillaDataRoot) 'Reports' }
         if (-not (Test-Path $outDir)) { New-Item -Path $outDir -ItemType Directory -Force | Out-Null }
         $jsonPath = Join-Path $outDir "lookout_workspace_${timestampStr}.json"
         @{
@@ -248,7 +248,7 @@ function Invoke-Lookout {
 
     # ── 8. Return result ───────────────────────────────────────────────────────
     return [PSCustomObject]@{
-        PSTypeName           = 'PSGuerrilla.LookoutResult'
+        PSTypeName           = 'Guerrilla.LookoutResult'
         ScanId               = $scanId
         Timestamp            = $timestamp
         Theater              = 'GoogleWorkspace'

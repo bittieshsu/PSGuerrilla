@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Write-ReconnaissanceReport {
     [CmdletBinding()]
@@ -114,6 +114,6 @@ function Write-ReconnaissanceReport {
     }
 
     Write-GuerrillaText '  ─────────────────────────────────────────────────────────────' -Color Dim
-    Write-GuerrillaText '  PSGuerrilla AD Reconnaissance complete.' -Color Olive
+    Write-GuerrillaText '  Guerrilla AD Reconnaissance complete.' -Color Olive
     Write-Host ''
 }

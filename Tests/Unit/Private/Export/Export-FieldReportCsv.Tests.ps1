@@ -1,6 +1,6 @@
 <#
 ╔═══════════════════════════════════════════════════════════════════════════════╗
-║  PSGuerrilla Module                                                         ║
+║  Guerrilla Module                                                         ║
 ║  Copyright (c) 2026 Jim Tyler — All Rights Reserved                          ║
 ║  Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/            ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
@@ -19,7 +19,7 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Export-FieldReportCsv' {

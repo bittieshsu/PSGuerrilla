@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Proves the audit-log inference MECHANISM behind the Gemini deep-setting checks
@@ -12,13 +12,13 @@
 
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '..' '..' '..' 'Helpers' 'TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'ConvertTo-GeminiDerivedSettings' {
 
     It 'derives on/off and month values from Gemini setting-change events' {
-        $r = InModuleScope PSGuerrilla {
+        $r = InModuleScope Guerrilla {
             $e = @(
                 @{ EventName='CHANGE_APPLICATION_SETTING'; Timestamp='2026-05-01T10:00:00.000Z'; Params=@{ APPLICATION_NAME='Gemini for Workspace'; SETTING_NAME='Gemini Alpha features';         NEW_VALUE='false' } }
                 @{ EventName='CHANGE_APPLICATION_SETTING'; Timestamp='2026-05-02T10:00:00.000Z'; Params=@{ APPLICATION_NAME='Gemini for Workspace'; SETTING_NAME='Gemini conversation history';   NEW_VALUE='true'  } }
@@ -34,7 +34,7 @@ Describe 'ConvertTo-GeminiDerivedSettings' {
     }
 
     It 'takes the MOST RECENT event per setting as the current state' {
-        $r = InModuleScope PSGuerrilla {
+        $r = InModuleScope Guerrilla {
             $e = @(
                 @{ EventName='CHANGE_APPLICATION_SETTING'; Timestamp='2026-01-01T10:00:00.000Z'; Params=@{ APPLICATION_NAME='Gemini for Workspace'; SETTING_NAME='Gemini Alpha features'; NEW_VALUE='true'  } }
                 @{ EventName='CHANGE_APPLICATION_SETTING'; Timestamp='2026-06-01T10:00:00.000Z'; Params=@{ APPLICATION_NAME='Gemini for Workspace'; SETTING_NAME='Gemini Alpha features'; NEW_VALUE='false' } }
@@ -46,7 +46,7 @@ Describe 'ConvertTo-GeminiDerivedSettings' {
     }
 
     It 'omits a setting whose value cannot be interpreted (=> check SKIPs, no guess)' {
-        $r = InModuleScope PSGuerrilla {
+        $r = InModuleScope Guerrilla {
             $e = @( @{ EventName='CHANGE_APPLICATION_SETTING'; Timestamp='2026-05-01T10:00:00.000Z'; Params=@{ APPLICATION_NAME='Gemini for Workspace'; SETTING_NAME='Gemini Alpha features'; NEW_VALUE='purple' } } )
             ConvertTo-GeminiDerivedSettings -Events $e
         }
@@ -57,7 +57,7 @@ Describe 'ConvertTo-GeminiDerivedSettings' {
         # Live finding: gen-AI settings use SETTING_NAME=gen_ai_* (no "gemini"/"generative"
         # substring) and can fire under CHANGE_CHROME_OS_USER_SETTING. The derivation must
         # still catch a targeted setting under that naming/event.
-        $r = InModuleScope PSGuerrilla {
+        $r = InModuleScope Guerrilla {
             $e = @( @{ EventName='CHANGE_CHROME_OS_USER_SETTING'; Timestamp='2026-05-01T10:00:00.000Z'; Params=@{ SETTING_NAME='gen_ai_alpha_features'; NEW_VALUE='false' } } )
             ConvertTo-GeminiDerivedSettings -Events $e
         }
@@ -68,7 +68,7 @@ Describe 'ConvertTo-GeminiDerivedSettings' {
         # The real observed gen_ai wallpaper/image settings must NOT map to any of the
         # four GWS-GEMINI checks — the app-scope broadening stays safe because the
         # per-setting sub-pattern still gates.
-        $r = InModuleScope PSGuerrilla {
+        $r = InModuleScope Guerrilla {
             $e = @(
                 @{ EventName='CHANGE_CHROME_OS_USER_SETTING'; Timestamp='2026-05-01T10:00:00.000Z'; Params=@{ SETTING_NAME='gen_ai_wallpaper_settings';    NEW_VALUE='true' } }
                 @{ EventName='CHANGE_CHROME_OS_USER_SETTING'; Timestamp='2026-05-01T10:00:00.000Z'; Params=@{ SETTING_NAME='gen_ai_inline_image_settings'; NEW_VALUE='true' } }
@@ -80,7 +80,7 @@ Describe 'ConvertTo-GeminiDerivedSettings' {
     }
 
     It 'ignores non-Gemini application setting changes' {
-        $r = InModuleScope PSGuerrilla {
+        $r = InModuleScope Guerrilla {
             $e = @( @{ EventName='CHANGE_APPLICATION_SETTING'; Timestamp='2026-05-01T10:00:00.000Z'; Params=@{ APPLICATION_NAME='Drive and Docs'; SETTING_NAME='Drive sharing'; NEW_VALUE='true' } } )
             ConvertTo-GeminiDerivedSettings -Events $e
         }
@@ -88,7 +88,7 @@ Describe 'ConvertTo-GeminiDerivedSettings' {
     }
 
     It 'returns an empty map for no events (never throws, never fabricates)' {
-        $r = InModuleScope PSGuerrilla { ConvertTo-GeminiDerivedSettings -Events @() }
+        $r = InModuleScope Guerrilla { ConvertTo-GeminiDerivedSettings -Events @() }
         $r.Keys.Count | Should -Be 0
     }
 }

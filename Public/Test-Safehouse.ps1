@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Test-Safehouse {
     <#
@@ -12,7 +12,7 @@ function Test-Safehouse {
     .PARAMETER ConfigFile
         Path to guerrilla-config.json to determine which environments to test.
     .PARAMETER VaultName
-        Name of the SecretManagement vault. Default: PSGuerrilla.
+        Name of the SecretManagement vault. Default: Guerrilla.
     .EXAMPLE
         Test-Safehouse -ConfigFile .\guerrilla-config.json
     #>
@@ -20,7 +20,7 @@ function Test-Safehouse {
     param(
         [Alias('MissionConfig')]
         [string]$ConfigFile,
-        [string]$VaultName = 'PSGuerrilla'
+        [string]$VaultName = 'Guerrilla'
     )
 
     # ── Colors ──────────────────────────────────────────────────────────────
@@ -431,7 +431,7 @@ function Test-Safehouse {
                                 -ApiToken $pushCfg.apiToken `
                                 -UserKey $pushCfg.userKey `
                                 -Message 'Safehouse signal test — push notifications operational.' `
-                                -Title 'PSGuerrilla Signal Test' `
+                                -Title 'Guerrilla Signal Test' `
                                 -Priority -1 `
                                 -Sound 'pushover'
                             $swPush.Stop()
@@ -483,7 +483,7 @@ function Test-Safehouse {
                         # Live email delivery test
                         $swSend = [System.Diagnostics.Stopwatch]::StartNew()
                         try {
-                            $testSubject = "PSGuerrilla Signal Test — $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+                            $testSubject = "Guerrilla Signal Test — $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
                             $testHtml = @"
 <div style="font-family: Consolas, monospace; background: #1a1a1a; color: #c6a61f; padding: 24px; border: 1px solid #3a3a3a;">
 <h2 style="margin-top:0; color: #f5f0e6;">SAFEHOUSE SIGNAL TEST</h2>

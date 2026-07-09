@@ -1,6 +1,6 @@
 {
   "version": "2.1.0",
-  "description": "Maps PSGuerrilla audit check IDs to compliance framework requirements. Covers FERPA, COPPA, CIPA, NIST SP 800-171, and state education technology privacy laws.",
+  "description": "Maps Guerrilla audit check IDs to compliance framework requirements. Covers FERPA, COPPA, CIPA, NIST SP 800-171, and state education technology privacy laws.",
   "frameworks": {
     "FERPA": {
       "fullName": "Family Educational Rights and Privacy Act",

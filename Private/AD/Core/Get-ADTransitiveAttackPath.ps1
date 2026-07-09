@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Transitive attack-path engine. Where Get-ADAttackPath (ADPATH-001) reports single-hop
@@ -9,7 +9,7 @@
 # The graph is directed and every edge points "toward more privilege": A -> B means
 # controlling (or being) A lets an attacker reach B's position. BFS gives the shortest chain.
 #
-# Path DEPTH is bounded by the collected ACL coverage: today PSGuerrilla collects ACLs on the
+# Path DEPTH is bounded by the collected ACL coverage: today Guerrilla collects ACLs on the
 # six critical Tier-0 objects only, so most chains are 1 hop. The full-domain ACL collector
 # (roadmap, live-gated) populates control edges over arbitrary objects and unlocks deep chains;
 # this engine consumes them unchanged. The resolver below is validated for arbitrary depth.
@@ -173,7 +173,7 @@ function Get-ADTransitiveAttackPath {
             "$f --[$($_.Edge)]--> $t"
         }) -join '  ==>  '
         [PSCustomObject]@{
-            PSTypeName         = 'PSGuerrilla.TransitiveAttackPath'
+            PSTypeName         = 'Guerrilla.TransitiveAttackPath'
             Source             = $srcName
             SourceIsPrivileged = [bool]$isPriv
             Length             = $r.Length

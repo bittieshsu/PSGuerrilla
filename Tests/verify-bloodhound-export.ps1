@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Export-BloodHoundData: emits a BloodHound OpenGraph file (nodes + edges) from collected
@@ -8,7 +8,7 @@
 $ErrorActionPreference = 'Stop'
 $env:PSGUERRILLA_QUIET = '1'
 $root = Split-Path $PSScriptRoot -Parent
-Import-Module (Join-Path $root 'PSGuerrilla.psd1') -Force
+Import-Module (Join-Path $root 'Guerrilla.psd1') -Force
 
 $results = [System.Collections.Generic.List[object]]::new()
 function Add-R($n, $ok, $d) { $results.Add([PSCustomObject]@{ Name = $n; Pass = [bool]$ok; Detail = $d }) }
@@ -36,7 +36,7 @@ try {
 
     $json = Get-Content $tmp -Raw | ConvertFrom-Json
     Add-R 'valid JSON parses'              ($null -ne $json) ""
-    Add-R 'metadata.source_kind set'       ($json.metadata.source_kind -eq 'PSGuerrilla') ("got=$($json.metadata.source_kind)")
+    Add-R 'metadata.source_kind set'       ($json.metadata.source_kind -eq 'Guerrilla') ("got=$($json.metadata.source_kind)")
     Add-R 'graph.nodes present'            (@($json.graph.nodes).Count -gt 0) ("n=$(@($json.graph.nodes).Count)")
     Add-R 'graph.edges present'            (@($json.graph.edges).Count -gt 0) ("e=$(@($json.graph.edges).Count)")
 
@@ -61,7 +61,7 @@ try {
     Add-R 'MemberOf edge member->group'    ($e4.Count -eq 1) ("got=$($e4.Count)")
 
     # Edges carry provenance
-    Add-R 'edges tagged source=PSGuerrilla' (@($json.graph.edges | Where-Object { $_.properties.source -eq 'PSGuerrilla' }).Count -eq @($json.graph.edges).Count) ""
+    Add-R 'edges tagged source=Guerrilla' (@($json.graph.edges | Where-Object { $_.properties.source -eq 'Guerrilla' }).Count -eq @($json.graph.edges).Count) ""
 
     # Well-known group name -> real SID so the node overlays SharpHound instead of a parallel NAME: node.
     # Member SIDs are S-1-5-21-1-2-3-* so the domain SID derives to S-1-5-21-1-2-3; Domain Admins -> -512.

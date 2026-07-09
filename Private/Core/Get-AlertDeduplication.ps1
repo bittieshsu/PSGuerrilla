@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-AlertDeduplication {
     <#
@@ -25,7 +25,7 @@ function Get-AlertDeduplication {
         [string]$HistoryPath
     )
 
-    $dataDir = Get-PSGuerrillaDataRoot
+    $dataDir = Get-GuerrillaDataRoot
     $path = if ($HistoryPath) { $HistoryPath } else { Join-Path $dataDir 'alert-history.json' }
 
     # Build dedup key: SHA256 of email:threatLevel:sortedIndicators
@@ -99,7 +99,7 @@ function Save-AlertHistory {
         [string]$HistoryPath
     )
 
-    $dataDir = Get-PSGuerrillaDataRoot
+    $dataDir = Get-GuerrillaDataRoot
     $path = if ($HistoryPath) { $HistoryPath } else { Join-Path $dataDir 'alert-history.json' }
 
     # Load existing history

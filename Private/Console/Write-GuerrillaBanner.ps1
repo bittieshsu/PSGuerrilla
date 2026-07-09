@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Write-GuerrillaBanner {
     [CmdletBinding()]
@@ -22,7 +22,7 @@ function Write-GuerrillaBanner {
     # actual module version (it had: previous bug, banner said 2.1.0 while
     # ModuleVersion was 2.3.0).
     $version = try {
-        (Import-PowerShellDataFile (Join-Path $script:ModuleRoot 'PSGuerrilla.psd1') -ErrorAction Stop).ModuleVersion
+        (Import-PowerShellDataFile (Join-Path $script:ModuleRoot 'Guerrilla.psd1') -ErrorAction Stop).ModuleVersion
     } catch { 'unknown' }
     $awsCount = $script:ParsedAwsNetworks.Count
     $cloudCount = $script:ParsedCloudNetworks.Count

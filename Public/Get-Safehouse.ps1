@@ -1,10 +1,10 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Get-Safehouse {
     <#
     .SYNOPSIS
-        Retrieves PSGuerrilla configuration and vault status.
+        Retrieves Guerrilla configuration and vault status.
 
     .DESCRIPTION
         Returns the current runtime configuration. Credential values are stored in the
@@ -12,14 +12,14 @@ function Get-Safehouse {
         Use Set-Safehouse -Status for a formatted vault status display.
 
     .PARAMETER ConfigPath
-        Path to the PSGuerrilla runtime config file. Default: per-user data dir + \PSGuerrilla\config.json
+        Path to the Guerrilla runtime config file. Default: per-user data dir + \Guerrilla\config.json
         (Windows: $env:APPDATA; macOS: ~/Library/Application Support; Linux: $XDG_CONFIG_HOME or ~/.config)
 
     .PARAMETER ShowSecrets
         Include secret values from the vault in the output (use with caution).
 
     .PARAMETER VaultName
-        Name of the SecretManagement vault. Default: PSGuerrilla
+        Name of the SecretManagement vault. Default: Guerrilla
 
     .EXAMPLE
         Get-Safehouse
@@ -34,7 +34,7 @@ function Get-Safehouse {
         [Alias('RuntimeConfig')]
         [string]$ConfigPath,
         [switch]$ShowSecrets,
-        [string]$VaultName = 'PSGuerrilla'
+        [string]$VaultName = 'Guerrilla'
     )
 
     $path = if ($ConfigPath) { $ConfigPath } else { $script:ConfigPath }

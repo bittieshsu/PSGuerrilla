@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Send-SignalPushover {
     <#
@@ -8,7 +8,7 @@ function Send-SignalPushover {
     .DESCRIPTION
         Delivers alert notifications to Pushover mobile/desktop apps using
         the Pushover Message API. Supports priority levels mapped from
-        PSGuerrilla threat levels, with optional sound and URL parameters.
+        Guerrilla threat levels, with optional sound and URL parameters.
     .PARAMETER ApiToken
         Pushover application API token.
     .PARAMETER UserKey
@@ -31,7 +31,7 @@ function Send-SignalPushover {
     .PARAMETER Expire
         Required when Priority=2. Seconds before notification stops retrying (max 10800).
     .EXAMPLE
-        Send-SignalPushover -ApiToken $token -UserKey $user -Message '3 CRITICAL threats detected' -Title 'PSGuerrilla Alert' -Priority 1
+        Send-SignalPushover -ApiToken $token -UserKey $user -Message '3 CRITICAL threats detected' -Title 'Guerrilla Alert' -Priority 1
     #>
     [CmdletBinding()]
     param(
@@ -44,7 +44,7 @@ function Send-SignalPushover {
         [Parameter(Mandatory)]
         [string]$Message,
 
-        [string]$Title = 'PSGuerrilla Signal',
+        [string]$Title = 'Guerrilla Signal',
 
         [ValidateRange(-2, 2)]
         [int]$Priority = 0,

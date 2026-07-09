@@ -1,6 +1,6 @@
 <#
 ╔═══════════════════════════════════════════════════════════════════════════════╗
-║  PSGuerrilla Module                                                         ║
+║  Guerrilla Module                                                         ║
 ║  Copyright (c) 2026 Jim Tyler — All Rights Reserved                          ║
 ║  Licensed under CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/            ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
@@ -19,7 +19,7 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Get-IpGeoData' {
@@ -32,7 +32,7 @@ Describe 'Get-IpGeoData' {
 
     Context 'Deduplication' {
         It 'deduplicates IPs before sending' {
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 @(
                     @{ status = 'success'; query = '1.2.3.4'; countryCode = 'US'; isp = 'Test'; org = 'Test'; hosting = $false }
                 )
@@ -45,7 +45,7 @@ Describe 'Get-IpGeoData' {
 
     Context 'Successful batch response' {
         It 'parses batch response correctly' {
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 @(
                     @{ status = 'success'; query = '8.8.8.8'; countryCode = 'US'; isp = 'Google'; org = 'Google LLC'; hosting = $true }
                     @{ status = 'success'; query = '1.1.1.1'; countryCode = 'AU'; isp = 'Cloudflare'; org = 'Cloudflare Inc'; hosting = $true }
@@ -63,7 +63,7 @@ Describe 'Get-IpGeoData' {
 
     Context 'Failed lookups' {
         It 'sets null for failed IP lookups' {
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 @(
                     @{ status = 'fail'; query = '999.999.999.999' }
                 )
@@ -76,21 +76,21 @@ Describe 'Get-IpGeoData' {
 
     Context 'Batch splitting' {
         It 'splits large IP lists into batches' {
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 @(@{ status = 'success'; query = '10.0.0.1'; countryCode = 'US'; isp = 'T'; org = 'T'; hosting = $false })
             }
             # Generate 150 unique IPs
             $ips = 1..150 | ForEach-Object { "10.0.$([Math]::Floor($_ / 256)).$($_ % 256)" }
             $result = Get-IpGeoData -IpAddresses $ips -BatchSize 100
             # Should make at least 2 calls
-            Should -Invoke Invoke-RestMethod -ModuleName PSGuerrilla -Times 2 -Exactly
+            Should -Invoke Invoke-RestMethod -ModuleName Guerrilla -Times 2 -Exactly
         }
     }
 
     Context 'API error handling' {
         It 'retries once on failure' {
-            & (Get-Module PSGuerrilla) { $script:_testGeoCallCount = 0 }
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            & (Get-Module Guerrilla) { $script:_testGeoCallCount = 0 }
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 $script:_testGeoCallCount++
                 if ($script:_testGeoCallCount -eq 1) { throw 'Connection refused' }
                 @(@{ status = 'success'; query = '1.2.3.4'; countryCode = 'US'; isp = 'T'; org = 'T'; hosting = $false })
@@ -101,7 +101,7 @@ Describe 'Get-IpGeoData' {
         }
 
         It 'returns null for all IPs when both attempts fail' {
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla { throw 'Server error' }
+            Mock Invoke-RestMethod -ModuleName Guerrilla { throw 'Server error' }
             $result = Get-IpGeoData -IpAddresses @('1.2.3.4', '5.6.7.8')
             $result['1.2.3.4'] | Should -BeNullOrEmpty
             $result['5.6.7.8'] | Should -BeNullOrEmpty
@@ -110,7 +110,7 @@ Describe 'Get-IpGeoData' {
 
     Context 'Null/empty filtering' {
         It 'filters out empty strings from input' {
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 @(@{ status = 'success'; query = '1.2.3.4'; countryCode = 'US'; isp = 'T'; org = 'T'; hosting = $false })
             }
             $result = Get-IpGeoData -IpAddresses @('', '1.2.3.4', '', $null)

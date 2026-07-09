@@ -23,14 +23,14 @@
 
 .PARAMETER DbPath
     SQLite file to append to. Defaults to
-    ~/Documents/PSGuerrilla-Data/psguerrilla_supabase_backup.sqlite (the migrated
+    ~/Documents/Guerrilla-Data/psguerrilla_supabase_backup.sqlite (the migrated
     local copy), so publishing continues that history.
 #>
 [CmdletBinding(SupportsShouldProcess)]
 param(
     [Parameter(Mandatory)][hashtable]$Summary,
     [Parameter(Mandatory)][object[]]$Results,
-    [string]$DbPath = (Join-Path ([Environment]::GetFolderPath('UserProfile')) 'Documents' 'PSGuerrilla-Data' 'psguerrilla_supabase_backup.sqlite')
+    [string]$DbPath = (Join-Path ([Environment]::GetFolderPath('UserProfile')) 'Documents' 'Guerrilla-Data' 'psguerrilla_supabase_backup.sqlite')
 )
 
 $ErrorActionPreference = 'Stop'

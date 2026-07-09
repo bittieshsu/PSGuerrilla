@@ -17,8 +17,8 @@ on:
       - 'Public/**'
       - 'Data/**'
       - 'Tests/**'
-      - 'PSGuerrilla.psd1'
-      - 'PSGuerrilla.psm1'
+      - 'Guerrilla.psd1'
+      - 'Guerrilla.psm1'
       - '.github/workflows/tests.yml'
   pull_request:
     branches: [main]

@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Invoke-Recon {
     [CmdletBinding()]
@@ -92,7 +92,7 @@ function Invoke-Recon {
                     else { 'Fast' }
         $outDir   = if ($OutputDirectory) { $OutputDirectory }
                     elseif ($config -and $config.output.directory) { $config.output.directory }
-                    else { Join-Path (Get-PSGuerrillaDataRoot) 'Reports' }
+                    else { Join-Path (Get-GuerrillaDataRoot) 'Reports' }
 
         # Validate required parameters
         if (-not $keyPath) { throw 'ServiceAccountKeyPath is required. Provide it as a parameter or set it in config.' }
@@ -530,7 +530,7 @@ function Invoke-Recon {
 
         # --- Emit result object ---
         $result = [PSCustomObject]@{
-            PSTypeName          = 'PSGuerrilla.ScanResult'
+            PSTypeName          = 'Guerrilla.ScanResult'
             ScanId              = $scanId
             Timestamp           = $scanStart
             DaysAnalyzed        = $days

@@ -1,5 +1,5 @@
 # [============================================================================]
-# [  PSGuerrilla  |  Security Posture Assessment  |  Continuous Monitoring     ]
+# [  Guerrilla  |  Security Posture Assessment  |  Continuous Monitoring     ]
 # [============================================================================]
 # [  Author  ]  Jim Tyler, Microsoft MVP
 # [  Book    ]  "PowerShell for Systems Engineers"
@@ -22,18 +22,18 @@
 .SYNOPSIS
     Verifies that Export-FortificationReportHtml produces a valid, well-structured HTML report.
 .DESCRIPTION
-    Imports the PSGuerrilla module, creates mock data (findings, category scores, delta),
+    Imports the Guerrilla module, creates mock data (findings, category scores, delta),
     calls Export-FortificationReportHtml, then validates the output file.
 #>
 
 $ErrorActionPreference = 'Stop'
 
 # ── Import module ──────────────────────────────────────────────────────────────
-$modulePath = Join-Path $PSScriptRoot '..' 'PSGuerrilla.psd1'
+$modulePath = Join-Path $PSScriptRoot '..' 'Guerrilla.psd1'
 Import-Module $modulePath -Force
 
 # ── Run everything inside module scope so we can call the private function ─────
-$results = & (Get-Module PSGuerrilla) {
+$results = & (Get-Module Guerrilla) {
 
     # ── Mock Findings ──────────────────────────────────────────────────────────
     $findings = @(
@@ -276,7 +276,7 @@ $results = & (Get-Module PSGuerrilla) {
     }
 
     # ── Output path ───────────────────────────────────────────────────────────
-    $outDir = Join-Path ([System.IO.Path]::GetTempPath()) 'PSGuerrilla-HtmlTest'
+    $outDir = Join-Path ([System.IO.Path]::GetTempPath()) 'Guerrilla-HtmlTest'
     if (-not (Test-Path $outDir)) { New-Item -Path $outDir -ItemType Directory -Force | Out-Null }
     $filePath = Join-Path $outDir 'fortification-report-test.html'
 
@@ -337,7 +337,7 @@ Assert-Check 'Contains <html lang="en">'            ($content.Contains('<html la
 Assert-Check 'Contains </html> closing tag'          ($content.Contains('</html>'))
 Assert-Check 'Contains <head> section'               ($content.Contains('<head>'))
 Assert-Check 'Contains <body> section'               ($content.Contains('<body>'))
-Assert-Check 'Contains <title> element'              ($content -match '<title>.*PSGuerrilla.*</title>')
+Assert-Check 'Contains <title> element'              ($content -match '<title>.*Guerrilla.*</title>')
 
 # Score ring SVG
 Assert-Check 'Contains SVG score ring'               ($content.Contains('<svg') -and $content.Contains('score-ring'))
@@ -412,7 +412,7 @@ Assert-Check 'Contains delta resolved MAIL-004'             ($content.Contains('
 Assert-Check 'Contains delta resolved DATA-005'             ($content.Contains('DATA-005'))
 
 # Footer
-Assert-Check 'Contains PSGuerrilla version in footer'       ($content.Contains('PSGuerrilla v'))
+Assert-Check 'Contains Guerrilla version in footer'       ($content.Contains('Guerrilla v'))
 Assert-Check 'Contains Score: 67/100 in footer'             ($content.Contains('Score: 67/100'))
 
 # Basic HTML validity

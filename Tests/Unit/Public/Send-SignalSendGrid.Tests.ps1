@@ -1,5 +1,5 @@
 # ┌───────────────────────────────────────────────────────────────────────────┐
-# │  PSGuerrilla — Tactical Security Assessment Framework                    │
+# │  Guerrilla — Tactical Security Assessment Framework                    │
 # │  Jim Tyler, Microsoft MVP                                                │
 # └───────────────────────────────────────────────────────────────────────────┘
 #
@@ -24,13 +24,13 @@
 # code reproductions must credit Jim Tyler and link to the CC BY 4.0 license.
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Send-SignalSendGrid' {
     Context 'Successful send' {
         It 'returns success result' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
             $result = Send-SignalSendGrid -ApiKey 'SG.test' -FromEmail 'from@t.com' -ToEmails @('to@t.com') -Subject 'Test' -HtmlBody '<p>Test</p>'
             $result.Provider | Should -Be 'SendGrid'
             $result.Success | Should -BeTrue
@@ -38,24 +38,24 @@ Describe 'Send-SignalSendGrid' {
         }
 
         It 'includes recipient in message' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
             $result = Send-SignalSendGrid -ApiKey 'SG.test' -FromEmail 'from@t.com' -ToEmails @('alert@corp.com') -Subject 'Test' -HtmlBody '<p>T</p>'
             $result.Message | Should -Match 'alert@corp.com'
         }
     }
 
     Context 'Default from name' {
-        It 'uses PSGuerrilla Signals as default FromName' {
-            Mock Invoke-RestMethod { $null } -ModuleName PSGuerrilla
+        It 'uses Guerrilla Signals as default FromName' {
+            Mock Invoke-RestMethod { $null } -ModuleName Guerrilla
             Send-SignalSendGrid -ApiKey 'SG.test' -FromEmail 'f@t.com' -ToEmails @('t@t.com') -Subject 'T' -HtmlBody '<p>T</p>'
-            Should -Invoke Invoke-RestMethod -ModuleName PSGuerrilla -ParameterFilter { $Body -match 'PSGuerrilla Signals' }
+            Should -Invoke Invoke-RestMethod -ModuleName Guerrilla -ParameterFilter { $Body -match 'Guerrilla Signals' }
         }
     }
 
     Context 'Retry on failure' {
         It 'retries once and returns success if retry works' {
-            & (Get-Module PSGuerrilla) { $script:_testSgCallCount = 0 }
-            Mock Invoke-RestMethod -ModuleName PSGuerrilla {
+            & (Get-Module Guerrilla) { $script:_testSgCallCount = 0 }
+            Mock Invoke-RestMethod -ModuleName Guerrilla {
                 $script:_testSgCallCount++
                 if ($script:_testSgCallCount -eq 1) { throw 'API Error' }
                 $null
@@ -66,7 +66,7 @@ Describe 'Send-SignalSendGrid' {
         }
 
         It 'returns failure when both attempts fail' {
-            Mock Invoke-RestMethod { throw 'Permanent failure' } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { throw 'Permanent failure' } -ModuleName Guerrilla
             $result = Send-SignalSendGrid -ApiKey 'SG.test' -FromEmail 'f@t.com' -ToEmails @('t@t.com') -Subject 'T' -HtmlBody '<p>T</p>'
             $result.Success | Should -BeFalse
             $result.Error | Should -Not -BeNullOrEmpty

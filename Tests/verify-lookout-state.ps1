@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Invoke-Lookout REAL-state persistence (regression for the v2.12.0 ValidateSet bug where
@@ -11,8 +11,8 @@
 $ErrorActionPreference = 'Stop'
 $env:PSGUERRILLA_QUIET = '1'
 $root = Split-Path $PSScriptRoot -Parent
-Import-Module (Join-Path $root 'PSGuerrilla.psd1') -Force
-$mod = Get-Module PSGuerrilla
+Import-Module (Join-Path $root 'Guerrilla.psd1') -Force
+$mod = Get-Module Guerrilla
 
 $results = [System.Collections.Generic.List[object]]::new()
 function Add-R($n, $ok, $d) { $results.Add([PSCustomObject]@{ Name = $n; Pass = [bool]$ok; Detail = $d }) }
@@ -31,7 +31,7 @@ try {
             param($ServiceAccountKeyPath, $AdminEmail, $TargetOU, $IncludeChildOUs, $OutputDirectory,
                   $NoReports, $NoDelta, $Quiet, $ConfigPath, $ConfigFile, $VaultName, $ReportStyle, $TestMode, $Quick)
             $sc = if (@($script:ff).Count -gt 0) { (Get-AuditPostureScore -Findings $script:ff).OverallScore } else { 0 }
-            [PSCustomObject]@{ PSTypeName = 'PSGuerrilla.AuditResult'; Findings = $script:ff; OverallScore = $sc }
+            [PSCustomObject]@{ PSTypeName = 'Guerrilla.AuditResult'; Findings = $script:ff; OverallScore = $sc }
         }
         function F($id, $st, $sev = 'High') { [PSCustomObject]@{ CheckId = $id; CheckName = "n-$id"; Category = 'c'; Severity = $sev; Status = $st; CurrentValue = "v"; OrgUnitPath = '/' } }
 

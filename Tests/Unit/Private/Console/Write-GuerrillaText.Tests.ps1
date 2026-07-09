@@ -1,5 +1,5 @@
 # =============================================================================
-#  PSGuerrilla | Jim Tyler, Microsoft MVP | CC BY 4.0
+#  Guerrilla | Jim Tyler, Microsoft MVP | CC BY 4.0
 # =============================================================================
 #
 #  Author:    Jim Tyler
@@ -23,7 +23,7 @@
 # =============================================================================
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Write-GuerrillaText' {

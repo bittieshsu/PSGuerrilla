@@ -1,6 +1,6 @@
 <#
 *******************************************************************************
-*  PSGuerrilla — Jim Tyler, Microsoft MVP                            *
+*  Guerrilla — Jim Tyler, Microsoft MVP                            *
 *  Copyright (c) 2026 Jim Tyler. All rights reserved.                        *
 *  License: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/                    *
 *******************************************************************************
@@ -21,19 +21,19 @@
 #>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Get-CloudIpClassification' {
     BeforeEach {
         # Clear cache between tests (in module scope)
-        & (Get-Module PSGuerrilla) { $script:IpClassCache = @{} }
+        & (Get-Module Guerrilla) { $script:IpClassCache = @{} }
     }
 
     Context 'Known attacker IPs' {
         It 'returns known_attacker for IPs in the attacker set' {
             # Use first attacker IP from the loaded data (in module scope)
-            $attackerIp = & (Get-Module PSGuerrilla) { $script:AttackerIpSet | Select-Object -First 1 }
+            $attackerIp = & (Get-Module Guerrilla) { $script:AttackerIpSet | Select-Object -First 1 }
             if ($attackerIp) {
                 Get-CloudIpClassification -IpAddress $attackerIp | Should -Be 'known_attacker'
             } else {
@@ -76,7 +76,7 @@ Describe 'Get-CloudIpClassification' {
     Context 'Caching' {
         It 'caches results for repeated lookups' {
             Get-CloudIpClassification -IpAddress '192.168.1.1'
-            $cached = & (Get-Module PSGuerrilla) { $script:IpClassCache.ContainsKey('192.168.1.1') }
+            $cached = & (Get-Module Guerrilla) { $script:IpClassCache.ContainsKey('192.168.1.1') }
             $cached | Should -BeTrue
             # Second call should hit cache and return same value
             Get-CloudIpClassification -IpAddress '192.168.1.1' | Should -Be ''

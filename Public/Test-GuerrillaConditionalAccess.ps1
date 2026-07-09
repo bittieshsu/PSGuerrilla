@@ -1,5 +1,5 @@
-# PSGuerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
-# https://github.com/jimrtyler/PSGuerrilla | https://creativecommons.org/licenses/by/4.0/
+# Guerrilla - Jim Tyler, Microsoft MVP - CC BY 4.0
+# https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 function Test-GuerrillaConditionalAccess {
     <#
@@ -39,7 +39,7 @@ function Test-GuerrillaConditionalAccess {
         # Is legacy auth blocked for this user? -> .Result should be 'Block'
     #>
     [CmdletBinding(DefaultParameterSetName = 'App')]
-    [OutputType('PSGuerrilla.CAWhatIfResult')]
+    [OutputType('Guerrilla.CAWhatIfResult')]
     param(
         [Parameter(Mandatory)][string]$UserId,
         [Parameter(Mandatory)][string]$AccessToken,
@@ -94,7 +94,7 @@ function Test-GuerrillaConditionalAccess {
     }
 
     [PSCustomObject]@{
-        PSTypeName      = 'PSGuerrilla.CAWhatIfResult'
+        PSTypeName      = 'Guerrilla.CAWhatIfResult'
         UserId          = $UserId
         Context         = ($context.'@odata.type' -replace '#microsoft\.graph\.', '')
         Conditions      = $conditions

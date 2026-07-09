@@ -1,5 +1,5 @@
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# >>> PSGuerrilla                                                           >>>
+# >>> Guerrilla                                                           >>>
 # >>> Jim Tyler, Microsoft MVP                                              >>>
 # >>> Copyright (c) 2026 Jim Tyler                                                  >>>
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -21,17 +21,17 @@
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 BeforeAll {
     Import-Module (Join-Path $PSScriptRoot '../../Helpers/TestHelpers.psm1') -Force
-    Import-PSGuerrilla
+    Import-Guerrilla
 }
 
 Describe 'Send-SignalDigest' {
     BeforeEach {
         $configPath = Join-Path $TestDrive 'config.json'
-        $dataDir = Join-Path $TestDrive 'PSGuerrilla'
+        $dataDir = Join-Path $TestDrive 'Guerrilla'
         New-Item -Path $dataDir -ItemType Directory -Force | Out-Null
 
         # Set module config path
-        & (Get-Module PSGuerrilla) { $script:ConfigPath = $args[0] } $configPath
+        & (Get-Module Guerrilla) { $script:ConfigPath = $args[0] } $configPath
 
         # Override APPDATA for test isolation
         $originalAppData = $env:APPDATA
@@ -93,7 +93,7 @@ Describe 'Send-SignalDigest' {
                 totalThreats = 5
             } | ConvertTo-Json | Set-Content -Path $historyPath
 
-            Mock Invoke-RestMethod { @{ ok = $true } } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { @{ ok = $true } } -ModuleName Guerrilla
 
             $result = Send-SignalDigest -Period Daily -ConfigPath $configPath -Force
             $result.Provider | Should -Be 'Digest'
@@ -132,7 +132,7 @@ Describe 'Send-SignalDigest' {
                 lowCount      = 5
             } | ConvertTo-Json | Set-Content -Path (Join-Path $dataDir 'watchtower.state.json')
 
-            Mock Invoke-RestMethod { @{ ok = $true } } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { @{ ok = $true } } -ModuleName Guerrilla
 
             $result = Send-SignalDigest -Period Daily -ConfigPath $configPath -Force
             $result.Provider | Should -Be 'Digest'
@@ -170,7 +170,7 @@ Describe 'Send-SignalDigest' {
             }
             $config | ConvertTo-Json -Depth 10 | Set-Content -Path $configPath
 
-            Mock Invoke-RestMethod { @{ ok = $true } } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { @{ ok = $true } } -ModuleName Guerrilla
 
             Send-SignalDigest -Period Weekly -ConfigPath $configPath -Force
 
@@ -208,7 +208,7 @@ Describe 'Send-SignalDigest' {
                 criticalCount = 2; highCount = 3; mediumCount = 2; lowCount = 1
             } | ConvertTo-Json | Set-Content -Path (Join-Path $dataDir 'test.state.json')
 
-            Mock Invoke-RestMethod { @{ ok = $true } } -ModuleName PSGuerrilla
+            Mock Invoke-RestMethod { @{ ok = $true } } -ModuleName Guerrilla
 
             $result = Send-SignalDigest -Period Daily -ConfigPath $configPath -Force
             $result.Message | Should -Match '\+3'
