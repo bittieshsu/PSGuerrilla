@@ -1013,9 +1013,16 @@ function Test-FortificationEMAIL029 {
 
 # ── Test-GwsPolicyEnum: shared scalar-enum policy check (mirrors Test-GwsPolicyBoolean) ──
 function Test-GwsPolicyEnum {
+    # Two directions, mirroring how the ScubaGoggles Rego evaluates enum settings:
+    #   -CompliantValues    : PASS iff the value is IN this allow-list (bad = not in it).
+    #   -NonCompliantValues : PASS iff the value is NOT IN this bad-list (bad = in it).
+    # The bad-list form is required where the Rego fails on one specific value and passes
+    # everything else (e.g. GWS.COMMONCONTROLS.16.2 fails only on serviceState == ENABLED);
+    # an allow-list would wrongly fail an UNSPECIFIED value that the Rego passes.
     param(
         [hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath,
-        [string]$Type, [string]$Field, [string[]]$CompliantValues, [string]$Status, [string]$BadMsg, [string]$GoodMsg
+        [string]$Type, [string]$Field, [string[]]$CompliantValues, [string[]]$NonCompliantValues,
+        [string]$Status, [string]$BadMsg, [string]$GoodMsg
     )
     $pol = $AuditData.CloudIdentityPolicies
     if (-not $pol) {
@@ -1027,7 +1034,11 @@ function Test-GwsPolicyEnum {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
             -CurrentValue "No $Type policy returned for this tenant" -OrgUnitPath $OrgUnitPath
     }
-    $bad = @($vals | Where-Object { $_ -notin $CompliantValues })
+    $bad = if ($NonCompliantValues) {
+        @($vals | Where-Object { $_ -in $NonCompliantValues })
+    } else {
+        @($vals | Where-Object { $_ -notin $CompliantValues })
+    }
     if ($bad.Count -gt 0) {
         return New-AuditFinding -CheckDefinition $CheckDefinition -Status $Status `
             -CurrentValue "$BadMsg in $($bad.Count) of $($vals.Count) targeted policy/policies" -OrgUnitPath $OrgUnitPath

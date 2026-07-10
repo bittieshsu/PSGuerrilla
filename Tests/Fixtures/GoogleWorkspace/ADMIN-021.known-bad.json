@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-021",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Non-compliant: serviceState=DISABLED (services reachable)",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "enterprise_service_restrictions.service_status": [
+          {
+            "setting": {
+              "value": {
+                "serviceState": "DISABLED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

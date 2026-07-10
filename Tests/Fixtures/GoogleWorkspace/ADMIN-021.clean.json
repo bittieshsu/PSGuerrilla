@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-021",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Compliant: serviceState=ENABLED (restriction on)",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "enterprise_service_restrictions.service_status": [
+          {
+            "setting": {
+              "value": {
+                "serviceState": "ENABLED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

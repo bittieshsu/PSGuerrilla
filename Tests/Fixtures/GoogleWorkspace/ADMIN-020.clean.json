@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-020",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Compliant: accessLevel=BLOCK_ALL_SCOPES",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "api_controls.unconfigured_third_party_apps": [
+          {
+            "setting": {
+              "value": {
+                "accessLevel": "BLOCK_ALL_SCOPES"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

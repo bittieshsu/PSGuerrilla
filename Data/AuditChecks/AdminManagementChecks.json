@@ -537,6 +537,93 @@
         "known-bad",
         "not-assessed"
       ]
+    },
+    {
+      "id": "ADMIN-020",
+      "name": "Access to unconfigured third-party apps blocked (GWS.COMMONCONTROLS.10.4)",
+      "description": "SCuBA GWS.COMMONCONTROLS.10.4 requires that users SHALL NOT be allowed to access unconfigured third-party apps, because an app that has not been explicitly reviewed can request broad OAuth scopes and become a data-exfiltration or account-takeover path. This check reads the api_controls.unconfigured_third_party_apps Cloud Identity policy and flags any organizational unit whose access level is not BLOCK_ALL_SCOPES (the value that blocks all access to unconfigured apps).",
+      "severity": "High",
+      "zeroTrustPillar": "Applications & Workloads",
+      "zeroTrustWeight": 2,
+      "subcategory": "Third-Party App Access",
+      "recommendedValue": "Access level for unconfigured third-party apps set to BLOCK_ALL_SCOPES in all organizational units.",
+      "remediationSteps": "In the Google Admin console, under Security > API controls > App access control, set unconfigured third-party apps to 'Blocked', so users cannot grant any access to apps that have not been explicitly configured and reviewed.",
+      "compliance": {
+        "scuba": [
+          "GWS.COMMONCONTROLS.10.4v1"
+        ],
+        "nistSp80053": [
+          "AC-3",
+          "AC-6"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "ADMIN-021",
+      "name": "Additional Google services without individual control restricted (GWS.COMMONCONTROLS.16.1)",
+      "description": "SCuBA GWS.COMMONCONTROLS.16.1 recommends that Google services which do not have their own individual admin control be turned OFF for everyone. Google models this with inverted semantics: the enterprise_service_restrictions service must be ENABLED for those additional services to be restricted (blocked). This check reads the enterprise_service_restrictions.service_status Cloud Identity policy and flags any organizational unit where serviceState is not ENABLED, meaning users can still reach unconfigured additional services.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Applications & Workloads",
+      "zeroTrustWeight": 1,
+      "subcategory": "Service Management",
+      "recommendedValue": "enterprise_service_restrictions serviceState set to ENABLED (additional services restricted) in all organizational units.",
+      "remediationSteps": "In the Google Admin console, under Apps > Additional Google services, set the access setting for services without an individual control to OFF for everyone. This enables the enterprise service restriction so users cannot access those additional services.",
+      "compliance": {
+        "scuba": [
+          "GWS.COMMONCONTROLS.16.1v1"
+        ],
+        "nistSp80053": [
+          "CM-7",
+          "AC-6"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "ADMIN-022",
+      "name": "Early Access applications disabled (GWS.COMMONCONTROLS.16.2)",
+      "description": "SCuBA GWS.COMMONCONTROLS.16.2 recommends disabling user access to Early Access applications, which are pre-release features that have not completed Google's full review and may carry unassessed risk. This check reads the early_access_apps.service_status Cloud Identity policy and flags any organizational unit where serviceState is ENABLED.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Applications & Workloads",
+      "zeroTrustWeight": 1,
+      "subcategory": "Service Management",
+      "recommendedValue": "early_access_apps serviceState not ENABLED (Early Access applications disabled) in all organizational units.",
+      "remediationSteps": "In the Google Admin console, under Apps > Additional Google services > Early Access Apps, turn the service OFF for everyone so users cannot enable pre-release Early Access applications.",
+      "compliance": {
+        "scuba": [
+          "GWS.COMMONCONTROLS.16.2v1"
+        ],
+        "nistSp80053": [
+          "CM-7",
+          "SA-22"
+        ]
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-assessed"
+      ]
     }
   ]
 }

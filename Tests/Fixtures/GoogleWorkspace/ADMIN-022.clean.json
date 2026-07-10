@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-022",
+  "theater": "Fortification",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Compliant: serviceState=DISABLED",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "early_access_apps.service_status": [
+          {
+            "setting": {
+              "value": {
+                "serviceState": "DISABLED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-022",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Non-compliant: serviceState=ENABLED",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "early_access_apps.service_status": [
+          {
+            "setting": {
+              "value": {
+                "serviceState": "ENABLED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

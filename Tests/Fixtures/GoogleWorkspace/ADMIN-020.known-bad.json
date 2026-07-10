@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-020",
+  "theater": "Fortification",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Non-compliant: accessLevel=ALLOW_SIGN_IN_SCOPES_ONLY",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "api_controls.unconfigured_third_party_apps": [
+          {
+            "setting": {
+              "value": {
+                "accessLevel": "ALLOW_SIGN_IN_SCOPES_ONLY"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

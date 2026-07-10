@@ -690,3 +690,39 @@ function Test-FortificationADMIN019 {
         -Type 'data_regions.data_processing_region' -Field 'limitToStorageRegion' -SecureValue $true -Status 'FAIL' `
         -BadMsg 'Data processing is not limited to the storage region' -GoodMsg 'Data processing is limited to the storage region'
 }
+
+# ── ADMIN-020: Access to unconfigured third-party apps blocked (GWS.COMMONCONTROLS.10.4) ──
+function Test-FortificationADMIN020 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    # Compliant value is BLOCK_ALL_SCOPES. Per the ScubaGoggles Rego, the API enum values are
+    # UNSPECIFIED_UBER_BLOCK / BLOCK_ALL_SCOPES / ALLOW_SIGN_IN_SCOPES_ONLY (NOT the doc labels
+    # ACCESS_LEVEL_UNSPECIFIED / BLOCK_ALL / ALLOW_SIGN_IN_ONLY). Type dot-placement is derived,
+    # not live-confirmed: validate 'api_controls.unconfigured_third_party_apps' on first live run.
+    Test-GwsPolicyEnum -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Type 'api_controls.unconfigured_third_party_apps' -Field 'accessLevel' -CompliantValues @('BLOCK_ALL_SCOPES') -Status 'FAIL' `
+        -BadMsg 'Access to unconfigured third-party apps is not blocked' -GoodMsg 'Access to unconfigured third-party apps is blocked'
+}
+
+# ── ADMIN-021: Additional Google services without individual control restricted (GWS.COMMONCONTROLS.16.1) ──
+function Test-FortificationADMIN021 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    # INVERTED SEMANTICS (do not "fix"): serviceState ENABLED means the enterprise_service_restrictions
+    # service is ON, which BLOCKS access to additional services (the compliant "services OFF" outcome).
+    # The ScubaGoggles Rego flags an OU non-compliant when serviceState != ENABLED.
+    Test-GwsPolicyEnum -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Type 'enterprise_service_restrictions.service_status' -Field 'serviceState' -CompliantValues @('ENABLED') -Status 'WARN' `
+        -BadMsg 'Access to additional Google services without individual control is not restricted' -GoodMsg 'Access to additional Google services without individual control is restricted'
+}
+
+# ── ADMIN-022: Early Access applications disabled (GWS.COMMONCONTROLS.16.2) ──
+function Test-FortificationADMIN022 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    # Fails only when serviceState == ENABLED (early-access service on); DISABLED and any other value
+    # pass, matching the ScubaGoggles Rego, so this uses -NonCompliantValues, not an allow-list.
+    Test-GwsPolicyEnum -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Type 'early_access_apps.service_status' -Field 'serviceState' -NonCompliantValues @('ENABLED') -Status 'WARN' `
+        -BadMsg 'Early Access applications are enabled' -GoodMsg 'Early Access applications are disabled'
+}
