@@ -1,0 +1,37 @@
+{
+  "name": "newly-passing",
+  "description": "FAIL->PASS and WARN->PASS are confirmed remediations; PASS->WARN is a regression; FAIL->WARN is an improvement, not a pass.",
+  "previous": {
+    "schemaVersion": 1, "runId": "prev-1", "generatedAt": "2026-07-01T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 55, "pillarScores": { "Identity": 50 }, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "EIDAUTH-002", "orgUnitPath": "", "verdict": "FAIL", "severity": "Critical", "category": "Auth Methods", "zeroTrustPillar": "Identity", "evidenceHash": "a1" },
+      { "checkId": "EIDAPP-001", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "Applications", "zeroTrustPillar": "Applications & Workloads", "evidenceHash": "b1" },
+      { "checkId": "ADKERB-003", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "Kerberos", "zeroTrustPillar": "Identity", "evidenceHash": "c1" },
+      { "checkId": "ADCS-001", "orgUnitPath": "", "verdict": "FAIL", "severity": "Critical", "category": "Certificate Services", "zeroTrustPillar": "Identity", "evidenceHash": "d1" }
+    ]
+  },
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 71, "pillarScores": { "Identity": 72 }, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "EIDAUTH-002", "orgUnitPath": "", "verdict": "PASS", "severity": "Critical", "category": "Auth Methods", "zeroTrustPillar": "Identity", "evidenceHash": "a2" },
+      { "checkId": "EIDAPP-001", "orgUnitPath": "", "verdict": "PASS", "severity": "Medium", "category": "Applications", "zeroTrustPillar": "Applications & Workloads", "evidenceHash": "b2" },
+      { "checkId": "ADKERB-003", "orgUnitPath": "", "verdict": "WARN", "severity": "High", "category": "Kerberos", "zeroTrustPillar": "Identity", "evidenceHash": "c2" },
+      { "checkId": "ADCS-001", "orgUnitPath": "", "verdict": "WARN", "severity": "Critical", "category": "Certificate Services", "zeroTrustPillar": "Identity", "evidenceHash": "d2" }
+    ]
+  },
+  "expect": {
+    "baselineRun": false,
+    "versionSkew": false,
+    "counts": { "newlyFailing": 0, "lostVisibility": 0, "newlyPassing": 2, "regressed": 1, "improved": 1, "restoredVisibility": 0, "newChecks": 0, "retiredChecks": 0, "unchanged": 0 },
+    "scoreDelta": 16,
+    "notAssessedDelta": 0,
+    "contains": [
+      { "class": "NewlyPassing", "checkId": "EIDAUTH-002", "from": "FAIL", "to": "PASS" },
+      { "class": "NewlyPassing", "checkId": "EIDAPP-001", "from": "WARN", "to": "PASS" },
+      { "class": "Regressed", "checkId": "ADKERB-003", "from": "PASS", "to": "WARN" },
+      { "class": "Improved", "checkId": "ADCS-001", "from": "FAIL", "to": "WARN" }
+    ]
+  }
+}

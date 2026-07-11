@@ -1,0 +1,74 @@
+{
+  "name": "every-transition-at-once",
+  "description": "The silent-diff case: all twelve changed-verdict pairs, all four unchanged pairs, one NEW, and one RETIRED in a single diff. Every transition present in the inputs MUST appear in the output; the runner asserts count equality against an independently computed union, not just presence.",
+  "previous": {
+    "schemaVersion": 1, "runId": "prev-1", "generatedAt": "2026-07-01T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 65, "pillarScores": { "Identity": 60 }, "summary": { "notAssessed": 4 },
+    "checks": [
+      { "checkId": "T-PASSPASS", "orgUnitPath": "", "verdict": "PASS", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h1" },
+      { "checkId": "T-WARNWARN", "orgUnitPath": "", "verdict": "WARN", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h2" },
+      { "checkId": "T-FAILFAIL", "orgUnitPath": "", "verdict": "FAIL", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h3" },
+      { "checkId": "T-NANA", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h4" },
+      { "checkId": "T-PASSFAIL", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h5" },
+      { "checkId": "T-WARNFAIL", "orgUnitPath": "", "verdict": "WARN", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h6" },
+      { "checkId": "T-PASSNA", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h7" },
+      { "checkId": "T-WARNNA", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h8" },
+      { "checkId": "T-FAILNA", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h9" },
+      { "checkId": "T-FAILPASS", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h10" },
+      { "checkId": "T-WARNPASS", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h11" },
+      { "checkId": "T-PASSWARN", "orgUnitPath": "", "verdict": "PASS", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h12" },
+      { "checkId": "T-FAILWARN", "orgUnitPath": "", "verdict": "FAIL", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h13" },
+      { "checkId": "T-NAPASS", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h14" },
+      { "checkId": "T-NAWARN", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h15" },
+      { "checkId": "T-NAFAIL", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h16" },
+      { "checkId": "T-RETIRED", "orgUnitPath": "", "verdict": "FAIL", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h17" }
+    ]
+  },
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 61, "pillarScores": { "Identity": 58 }, "summary": { "notAssessed": 4 },
+    "checks": [
+      { "checkId": "T-PASSPASS", "orgUnitPath": "", "verdict": "PASS", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h1" },
+      { "checkId": "T-WARNWARN", "orgUnitPath": "", "verdict": "WARN", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h2" },
+      { "checkId": "T-FAILFAIL", "orgUnitPath": "", "verdict": "FAIL", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h3" },
+      { "checkId": "T-NANA", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "h4" },
+      { "checkId": "T-PASSFAIL", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j5" },
+      { "checkId": "T-WARNFAIL", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j6" },
+      { "checkId": "T-PASSNA", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j7" },
+      { "checkId": "T-WARNNA", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j8" },
+      { "checkId": "T-FAILNA", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j9" },
+      { "checkId": "T-FAILPASS", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j10" },
+      { "checkId": "T-WARNPASS", "orgUnitPath": "", "verdict": "PASS", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j11" },
+      { "checkId": "T-PASSWARN", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j12" },
+      { "checkId": "T-FAILWARN", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j13" },
+      { "checkId": "T-NAPASS", "orgUnitPath": "", "verdict": "PASS", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j14" },
+      { "checkId": "T-NAWARN", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j15" },
+      { "checkId": "T-NAFAIL", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j16" },
+      { "checkId": "T-NEW", "orgUnitPath": "", "verdict": "WARN", "severity": "Low", "category": "T", "zeroTrustPillar": "Identity", "evidenceHash": "j18" }
+    ]
+  },
+  "expect": {
+    "baselineRun": false,
+    "versionSkew": false,
+    "counts": { "newlyFailing": 2, "lostVisibility": 3, "newlyPassing": 2, "regressed": 1, "improved": 1, "restoredVisibility": 3, "newChecks": 1, "retiredChecks": 1, "unchanged": 4 },
+    "scoreDelta": -4,
+    "notAssessedDelta": 0,
+    "pillarDeltas": { "Identity": -2 },
+    "contains": [
+      { "class": "NewlyFailing", "checkId": "T-PASSFAIL", "from": "PASS", "to": "FAIL" },
+      { "class": "NewlyFailing", "checkId": "T-WARNFAIL", "from": "WARN", "to": "FAIL" },
+      { "class": "LostVisibility", "checkId": "T-PASSNA", "from": "PASS", "to": "Not Assessed" },
+      { "class": "LostVisibility", "checkId": "T-WARNNA", "from": "WARN", "to": "Not Assessed" },
+      { "class": "LostVisibility", "checkId": "T-FAILNA", "from": "FAIL", "to": "Not Assessed" },
+      { "class": "NewlyPassing", "checkId": "T-FAILPASS", "from": "FAIL", "to": "PASS" },
+      { "class": "NewlyPassing", "checkId": "T-WARNPASS", "from": "WARN", "to": "PASS" },
+      { "class": "Regressed", "checkId": "T-PASSWARN", "from": "PASS", "to": "WARN" },
+      { "class": "Improved", "checkId": "T-FAILWARN", "from": "FAIL", "to": "WARN" },
+      { "class": "RestoredVisibility", "checkId": "T-NAPASS", "from": "Not Assessed", "to": "PASS" },
+      { "class": "RestoredVisibility", "checkId": "T-NAWARN", "from": "Not Assessed", "to": "WARN" },
+      { "class": "RestoredVisibility", "checkId": "T-NAFAIL", "from": "Not Assessed", "to": "FAIL" },
+      { "class": "NewChecks", "checkId": "T-NEW", "from": null, "to": "WARN" },
+      { "class": "RetiredChecks", "checkId": "T-RETIRED", "from": "FAIL", "to": null }
+    ]
+  }
+}

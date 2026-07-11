@@ -1,0 +1,34 @@
+{
+  "name": "newly-failing",
+  "description": "PASS->FAIL and WARN->FAIL are both regressions and lead the diff; an unchanged PASS stays a count.",
+  "previous": {
+    "schemaVersion": 1, "runId": "prev-1", "generatedAt": "2026-07-01T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 80, "pillarScores": { "Identity": 90 }, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "EIDCA-003", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "Conditional Access", "zeroTrustPillar": "Identity", "evidenceHash": "aa11" },
+      { "checkId": "ADPWD-001", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "Passwords", "zeroTrustPillar": "Identity", "evidenceHash": "bb22" },
+      { "checkId": "DRIVE-001", "orgUnitPath": "/Sales", "verdict": "PASS", "severity": "High", "category": "Drive", "zeroTrustPillar": "Data", "evidenceHash": "cc33" }
+    ]
+  },
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 62, "pillarScores": { "Identity": 55 }, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "EIDCA-003", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "Conditional Access", "zeroTrustPillar": "Identity", "evidenceHash": "aa99" },
+      { "checkId": "ADPWD-001", "orgUnitPath": "", "verdict": "FAIL", "severity": "Medium", "category": "Passwords", "zeroTrustPillar": "Identity", "evidenceHash": "bb99" },
+      { "checkId": "DRIVE-001", "orgUnitPath": "/Sales", "verdict": "PASS", "severity": "High", "category": "Drive", "zeroTrustPillar": "Data", "evidenceHash": "cc33" }
+    ]
+  },
+  "expect": {
+    "baselineRun": false,
+    "versionSkew": false,
+    "counts": { "newlyFailing": 2, "lostVisibility": 0, "newlyPassing": 0, "regressed": 0, "improved": 0, "restoredVisibility": 0, "newChecks": 0, "retiredChecks": 0, "unchanged": 1 },
+    "scoreDelta": -18,
+    "notAssessedDelta": 0,
+    "pillarDeltas": { "Identity": -35 },
+    "contains": [
+      { "class": "NewlyFailing", "checkId": "EIDCA-003", "from": "PASS", "to": "FAIL", "evidenceChanged": true },
+      { "class": "NewlyFailing", "checkId": "ADPWD-001", "from": "WARN", "to": "FAIL" }
+    ]
+  }
+}

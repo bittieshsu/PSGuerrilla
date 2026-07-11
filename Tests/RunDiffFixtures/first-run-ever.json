@@ -1,0 +1,20 @@
+{
+  "name": "first-run-ever",
+  "description": "No baseline exists. The diff says so plainly and fabricates nothing: no transitions, no deltas, no NEW labels for the whole catalog.",
+  "previous": null,
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 74, "pillarScores": { "Identity": 70 }, "summary": { "notAssessed": 2 },
+    "checks": [
+      { "checkId": "EIDCA-001", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "a1" },
+      { "checkId": "EIDCA-002", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "b1" }
+    ]
+  },
+  "expect": {
+    "baselineRun": true,
+    "versionSkew": false,
+    "counts": { "newlyFailing": 0, "lostVisibility": 0, "newlyPassing": 0, "regressed": 0, "improved": 0, "restoredVisibility": 0, "newChecks": 0, "retiredChecks": 0, "unchanged": 0 },
+    "scoreDelta": null,
+    "notAssessedDelta": null
+  }
+}

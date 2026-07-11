@@ -1,0 +1,36 @@
+{
+  "name": "lost-visibility",
+  "description": "A check going dark from any assessed verdict is LOST VISIBILITY, its own class, never rendered as no change. This is how revoked read access or a broken collector hides an attacker.",
+  "previous": {
+    "schemaVersion": 1, "runId": "prev-1", "generatedAt": "2026-07-01T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 75, "pillarScores": { "Identity": 80, "Data": 70 }, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "EIDPIM-010", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "PIM", "zeroTrustPillar": "Identity", "evidenceHash": "a1" },
+      { "checkId": "M365EXO-004", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "Exchange", "zeroTrustPillar": "Data", "evidenceHash": "b2" },
+      { "checkId": "INTUNE-005", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "Intune", "zeroTrustPillar": "Devices", "evidenceHash": "c3" },
+      { "checkId": "AUTH-001", "orgUnitPath": "", "verdict": "PASS", "severity": "Critical", "category": "Auth", "zeroTrustPillar": "Identity", "evidenceHash": "d4" }
+    ]
+  },
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 78, "pillarScores": { "Identity": 80, "Data": 70 }, "summary": { "notAssessed": 3 },
+    "checks": [
+      { "checkId": "EIDPIM-010", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "High", "category": "PIM", "zeroTrustPillar": "Identity", "evidenceHash": "a9" },
+      { "checkId": "M365EXO-004", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Medium", "category": "Exchange", "zeroTrustPillar": "Data", "evidenceHash": "b9" },
+      { "checkId": "INTUNE-005", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "High", "category": "Intune", "zeroTrustPillar": "Devices", "evidenceHash": "c9" },
+      { "checkId": "AUTH-001", "orgUnitPath": "", "verdict": "PASS", "severity": "Critical", "category": "Auth", "zeroTrustPillar": "Identity", "evidenceHash": "d4" }
+    ]
+  },
+  "expect": {
+    "baselineRun": false,
+    "versionSkew": false,
+    "counts": { "newlyFailing": 0, "lostVisibility": 3, "newlyPassing": 0, "regressed": 0, "improved": 0, "restoredVisibility": 0, "newChecks": 0, "retiredChecks": 0, "unchanged": 1 },
+    "scoreDelta": 3,
+    "notAssessedDelta": 3,
+    "contains": [
+      { "class": "LostVisibility", "checkId": "EIDPIM-010", "from": "PASS", "to": "Not Assessed" },
+      { "class": "LostVisibility", "checkId": "M365EXO-004", "from": "WARN", "to": "Not Assessed" },
+      { "class": "LostVisibility", "checkId": "INTUNE-005", "from": "FAIL", "to": "Not Assessed" }
+    ]
+  }
+}

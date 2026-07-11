@@ -1,0 +1,21 @@
+{
+  "name": "unknown-verdict-throws",
+  "description": "The dishonest failure mode: an unknown verdict in the input must THROW, never be silently skipped or misclassified. A diff that drops what it does not understand is a false PASS.",
+  "previous": {
+    "schemaVersion": 1, "runId": "prev-1", "generatedAt": "2026-07-01T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 70, "pillarScores": {}, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "EIDCA-001", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "a1" }
+    ]
+  },
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 70, "pillarScores": {}, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "EIDCA-001", "orgUnitPath": "", "verdict": "BANANA", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "a1" }
+    ]
+  },
+  "expect": {
+    "throws": true
+  }
+}

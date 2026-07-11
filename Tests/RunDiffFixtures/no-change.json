@@ -1,0 +1,32 @@
+{
+  "name": "no-change",
+  "description": "All four verdicts unchanged, including a stable FAIL and a stable Not Assessed; unchanged is a count, never enumerated. Evidence changing under a stable verdict stays unchanged-class.",
+  "previous": {
+    "schemaVersion": 1, "runId": "prev-1", "generatedAt": "2026-07-01T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 66, "pillarScores": { "Identity": 60, "Data": 75 }, "summary": { "notAssessed": 1 },
+    "checks": [
+      { "checkId": "EIDCA-001", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "same1" },
+      { "checkId": "EIDCA-002", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "same2" },
+      { "checkId": "EIDCA-004", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "drift-a" },
+      { "checkId": "AIAGENT-001", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Medium", "category": "AI", "zeroTrustPillar": "Applications & Workloads", "evidenceHash": "same4" }
+    ]
+  },
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 66, "pillarScores": { "Identity": 60, "Data": 75 }, "summary": { "notAssessed": 1 },
+    "checks": [
+      { "checkId": "EIDCA-001", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "same1" },
+      { "checkId": "EIDCA-002", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "same2" },
+      { "checkId": "EIDCA-004", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "drift-b" },
+      { "checkId": "AIAGENT-001", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Medium", "category": "AI", "zeroTrustPillar": "Applications & Workloads", "evidenceHash": "same4" }
+    ]
+  },
+  "expect": {
+    "baselineRun": false,
+    "versionSkew": false,
+    "counts": { "newlyFailing": 0, "lostVisibility": 0, "newlyPassing": 0, "regressed": 0, "improved": 0, "restoredVisibility": 0, "newChecks": 0, "retiredChecks": 0, "unchanged": 4 },
+    "scoreDelta": 0,
+    "notAssessedDelta": 0,
+    "pillarDeltas": { "Identity": 0, "Data": 0 }
+  }
+}

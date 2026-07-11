@@ -1,0 +1,33 @@
+{
+  "name": "restored-visibility",
+  "description": "A check coming back from Not Assessed is restored visibility with its current verdict shown; a restoration straight to FAIL is visible failure, listed in this class.",
+  "previous": {
+    "schemaVersion": 1, "runId": "prev-1", "generatedAt": "2026-07-01T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 70, "pillarScores": {}, "summary": { "notAssessed": 3 },
+    "checks": [
+      { "checkId": "GWS-002", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "High", "category": "Workspace", "zeroTrustPillar": "Data", "evidenceHash": "a1" },
+      { "checkId": "GWS-003", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Medium", "category": "Workspace", "zeroTrustPillar": "Data", "evidenceHash": "b1" },
+      { "checkId": "GWS-004", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "High", "category": "Workspace", "zeroTrustPillar": "Data", "evidenceHash": "c1" }
+    ]
+  },
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 72, "pillarScores": {}, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "GWS-002", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "Workspace", "zeroTrustPillar": "Data", "evidenceHash": "a2" },
+      { "checkId": "GWS-003", "orgUnitPath": "", "verdict": "WARN", "severity": "Medium", "category": "Workspace", "zeroTrustPillar": "Data", "evidenceHash": "b2" },
+      { "checkId": "GWS-004", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "Workspace", "zeroTrustPillar": "Data", "evidenceHash": "c2" }
+    ]
+  },
+  "expect": {
+    "baselineRun": false,
+    "versionSkew": false,
+    "counts": { "newlyFailing": 0, "lostVisibility": 0, "newlyPassing": 0, "regressed": 0, "improved": 0, "restoredVisibility": 3, "newChecks": 0, "retiredChecks": 0, "unchanged": 0 },
+    "scoreDelta": 2,
+    "notAssessedDelta": -3,
+    "contains": [
+      { "class": "RestoredVisibility", "checkId": "GWS-002", "from": "Not Assessed", "to": "PASS" },
+      { "class": "RestoredVisibility", "checkId": "GWS-004", "from": "Not Assessed", "to": "FAIL" }
+    ]
+  }
+}

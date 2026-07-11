@@ -1,0 +1,32 @@
+{
+  "name": "org-unit-identity",
+  "description": "Identity is checkId|orgUnitPath: the same check in two org units diffs independently, and an OU appearing only now is NEW even though the checkId existed before.",
+  "previous": {
+    "schemaVersion": 1, "runId": "prev-1", "generatedAt": "2026-07-01T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 60, "pillarScores": {}, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "DRIVE-001", "orgUnitPath": "/Sales", "verdict": "PASS", "severity": "High", "category": "Drive", "zeroTrustPillar": "Data", "evidenceHash": "s1" },
+      { "checkId": "DRIVE-001", "orgUnitPath": "/Engineering", "verdict": "FAIL", "severity": "High", "category": "Drive", "zeroTrustPillar": "Data", "evidenceHash": "e1" }
+    ]
+  },
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.47.0",
+    "overallScore": 58, "pillarScores": {}, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "DRIVE-001", "orgUnitPath": "/Sales", "verdict": "FAIL", "severity": "High", "category": "Drive", "zeroTrustPillar": "Data", "evidenceHash": "s2" },
+      { "checkId": "DRIVE-001", "orgUnitPath": "/Engineering", "verdict": "FAIL", "severity": "High", "category": "Drive", "zeroTrustPillar": "Data", "evidenceHash": "e1" },
+      { "checkId": "DRIVE-001", "orgUnitPath": "/NewDept", "verdict": "PASS", "severity": "High", "category": "Drive", "zeroTrustPillar": "Data", "evidenceHash": "n1" }
+    ]
+  },
+  "expect": {
+    "baselineRun": false,
+    "versionSkew": false,
+    "counts": { "newlyFailing": 1, "lostVisibility": 0, "newlyPassing": 0, "regressed": 0, "improved": 0, "restoredVisibility": 0, "newChecks": 1, "retiredChecks": 0, "unchanged": 1 },
+    "scoreDelta": -2,
+    "notAssessedDelta": 0,
+    "contains": [
+      { "class": "NewlyFailing", "checkId": "DRIVE-001", "orgUnitPath": "/Sales", "from": "PASS", "to": "FAIL" },
+      { "class": "NewChecks", "checkId": "DRIVE-001", "orgUnitPath": "/NewDept", "from": null, "to": "PASS" }
+    ]
+  }
+}

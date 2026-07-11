@@ -1,0 +1,39 @@
+{
+  "name": "version-skew-new-and-retired",
+  "description": "Older catalog vs newer: a check added by the upgrade is NEW, never a transition; a check removed by the upgrade is RETIRED, never a transition; surviving checks still diff normally; versionSkew is flagged.",
+  "previous": {
+    "schemaVersion": 1, "runId": "prev-1", "generatedAt": "2026-06-01T10:00:00Z", "moduleVersion": "2.46.3",
+    "overallScore": 70, "pillarScores": { "Identity": 75, "Networks": 60 }, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "EIDCA-001", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "a1" },
+      { "checkId": "ADNET-004", "orgUnitPath": "", "verdict": "FAIL", "severity": "Medium", "category": "Network", "zeroTrustPillar": "Networks", "evidenceHash": "b1" },
+      { "checkId": "OLDCHECK-001", "orgUnitPath": "", "verdict": "FAIL", "severity": "Low", "category": "Legacy", "zeroTrustPillar": "Identity", "evidenceHash": "c1" },
+      { "checkId": "OLDCHECK-002", "orgUnitPath": "", "verdict": "Not Assessed", "severity": "Low", "category": "Legacy", "zeroTrustPillar": "Identity", "evidenceHash": "c2" }
+    ]
+  },
+  "current": {
+    "schemaVersion": 1, "runId": "curr-1", "generatedAt": "2026-07-08T10:00:00Z", "moduleVersion": "2.48.0",
+    "overallScore": 73, "pillarScores": { "Identity": 75, "Networks": 68 }, "summary": { "notAssessed": 0 },
+    "checks": [
+      { "checkId": "EIDCA-001", "orgUnitPath": "", "verdict": "PASS", "severity": "High", "category": "CA", "zeroTrustPillar": "Identity", "evidenceHash": "a1" },
+      { "checkId": "ADNET-004", "orgUnitPath": "", "verdict": "PASS", "severity": "Medium", "category": "Network", "zeroTrustPillar": "Networks", "evidenceHash": "b2" },
+      { "checkId": "NEWCHECK-001", "orgUnitPath": "", "verdict": "FAIL", "severity": "High", "category": "New Family", "zeroTrustPillar": "Identity", "evidenceHash": "d1" },
+      { "checkId": "NEWCHECK-002", "orgUnitPath": "", "verdict": "PASS", "severity": "Medium", "category": "New Family", "zeroTrustPillar": "Identity", "evidenceHash": "d2" }
+    ]
+  },
+  "expect": {
+    "baselineRun": false,
+    "versionSkew": true,
+    "counts": { "newlyFailing": 0, "lostVisibility": 0, "newlyPassing": 1, "regressed": 0, "improved": 0, "restoredVisibility": 0, "newChecks": 2, "retiredChecks": 2, "unchanged": 1 },
+    "scoreDelta": 3,
+    "notAssessedDelta": 0,
+    "pillarDeltas": { "Networks": 8 },
+    "contains": [
+      { "class": "NewChecks", "checkId": "NEWCHECK-001", "from": null, "to": "FAIL" },
+      { "class": "NewChecks", "checkId": "NEWCHECK-002", "from": null, "to": "PASS" },
+      { "class": "RetiredChecks", "checkId": "OLDCHECK-001", "from": "FAIL", "to": null },
+      { "class": "RetiredChecks", "checkId": "OLDCHECK-002", "from": "Not Assessed", "to": null },
+      { "class": "NewlyPassing", "checkId": "ADNET-004", "from": "FAIL", "to": "PASS" }
+    ]
+  }
+}
