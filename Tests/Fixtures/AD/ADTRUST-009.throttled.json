@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-009",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Trust relationships not assessed",

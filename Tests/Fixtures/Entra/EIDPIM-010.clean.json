@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "PIM eligible assignments configured",

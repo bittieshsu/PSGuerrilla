@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-016",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Data processing not region-limited",

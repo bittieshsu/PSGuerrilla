@@ -27,7 +27,7 @@ function Get-QuickWins {
         Get-QuickWins -Top 5 -MaxCostTier Free
         Returns top 5 free-only quick wins.
     .EXAMPLE
-        $findings = Invoke-Fortification -PassThru; Get-QuickWins -Findings $findings -Top 20
+        $findings = Invoke-GWSAudit -PassThru; Get-QuickWins -Findings $findings -Top 20
         Returns top 20 quick wins from specific findings.
     #>
     [CmdletBinding()]
@@ -65,7 +65,7 @@ function Get-QuickWins {
     }
 
     if (-not $Findings -or $Findings.Count -eq 0) {
-        Write-Warning 'No audit findings available. Run a scan first (Invoke-Fortification or Invoke-Reconnaissance).'
+        Write-Warning 'No audit findings available. Run a scan first (Invoke-GWSAudit or Invoke-ADAudit).'
         return @()
     }
 

@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-015",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Few passwords older than 365 days (<=20%)",

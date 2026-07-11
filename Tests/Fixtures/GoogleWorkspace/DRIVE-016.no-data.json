@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-016",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "no api",

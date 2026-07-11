@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-009",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Calendar external invitation warning requires manual verification",

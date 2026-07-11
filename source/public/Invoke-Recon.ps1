@@ -100,7 +100,7 @@ function Invoke-Recon {
 
         # --- Operation header ---
         if (-not $Quiet) {
-            Write-OperationHeader -Operation 'RECONNAISSANCE SWEEP' -Mode $mode -Target $admin -DaysBack $days
+            Write-OperationHeader -Operation 'RECON SWEEP' -Mode $mode -Target $admin -DaysBack $days
         }
 
         # --- Load state ---

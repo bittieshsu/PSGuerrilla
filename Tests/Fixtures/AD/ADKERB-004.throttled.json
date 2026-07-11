@@ -1,6 +1,6 @@
 {
   "checkId": "ADKERB-004",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "KerberosConfig collection failed; must be Not Assessed, never PASS",

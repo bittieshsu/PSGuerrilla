@@ -12,14 +12,14 @@
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 function New-Fixture {
-    param([string]$Family,[string]$CheckId,[string]$Theater,[string]$Scenario,[string]$ExpectedStatus,[string]$Description,[hashtable]$AuditData)
+    param([string]$Family,[string]$CheckId,[string]$Platform,[string]$Scenario,[string]$ExpectedStatus,[string]$Description,[hashtable]$AuditData)
     # CloudIdentity resolver checks need PSCustomObject value objects — flag those fixtures.
     $objShape = ($AuditData.ContainsKey('CloudIdentityPolicies') -and $AuditData['CloudIdentityPolicies'])
-    $obj=[ordered]@{ checkId=$CheckId; theater=$Theater; scenario=$Scenario; expectedStatus=$ExpectedStatus; description=$Description; objectShape=[bool]$objShape; auditData=$AuditData }
+    $obj=[ordered]@{ checkId=$CheckId; platform=$Platform; scenario=$Scenario; expectedStatus=$ExpectedStatus; description=$Description; objectShape=[bool]$objShape; auditData=$AuditData }
     $obj | ConvertTo-Json -Depth 14 | Set-Content -Path (Join-Path $root $Family "$CheckId.$Scenario.json") -Encoding utf8
     Write-Host "  $Family/$CheckId.$Scenario -> $ExpectedStatus"
 }
-$F='Fortification'; $G='GoogleWorkspace'
+$F='GWS'; $G='GoogleWorkspace'
 function Cip($type,$val){ @{ Errors=@{}; CloudIdentityPolicies=@{ ByType=@{ "$type"=@(@{ setting=@{ value=$val } }) } } } }
 
 # ── Authentication ──

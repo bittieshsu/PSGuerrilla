@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-010",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Device setting not exposed via API (manual)",

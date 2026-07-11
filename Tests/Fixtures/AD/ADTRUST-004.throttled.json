@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-004",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "TrustRelationships collection failed",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-016",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "LAPS deployed with >=80% coverage",

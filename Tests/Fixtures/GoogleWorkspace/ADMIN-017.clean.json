@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-017",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "secure",

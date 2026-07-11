@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-011",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Intune app protection policies not assessed",

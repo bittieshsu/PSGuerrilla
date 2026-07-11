@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-024",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Sandbox enabled",

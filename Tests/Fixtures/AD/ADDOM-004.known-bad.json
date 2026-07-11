@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-004",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Single domain controller (no redundancy)",

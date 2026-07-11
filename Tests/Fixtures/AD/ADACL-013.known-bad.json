@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-013",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Non-default principal can modify gPLink on domain root",

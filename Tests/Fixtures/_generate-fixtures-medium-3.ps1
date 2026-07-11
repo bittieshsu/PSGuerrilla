@@ -10,12 +10,12 @@
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 function New-Fixture {
-    param([string]$Family,[string]$CheckId,[string]$Theater,[string]$Scenario,[string]$ExpectedStatus,[string]$Description,[hashtable]$AuditData)
-    $obj=[ordered]@{ checkId=$CheckId; theater=$Theater; scenario=$Scenario; expectedStatus=$ExpectedStatus; description=$Description; auditData=$AuditData }
+    param([string]$Family,[string]$CheckId,[string]$Platform,[string]$Scenario,[string]$ExpectedStatus,[string]$Description,[hashtable]$AuditData)
+    $obj=[ordered]@{ checkId=$CheckId; platform=$Platform; scenario=$Scenario; expectedStatus=$ExpectedStatus; description=$Description; auditData=$AuditData }
     $obj | ConvertTo-Json -Depth 16 | Set-Content -Path (Join-Path $root $Family "$CheckId.$Scenario.json") -Encoding utf8
     Write-Host "  $Family/$CheckId.$Scenario -> $ExpectedStatus"
 }
-$I='Infiltration'
+$I='Entra'
 $skExo=@{ Errors=@{ M365Services='EXO connect failed' }; M365Services=@{ Errors=@{} } }
 function Exo($h){ @{ Errors=@{}; M365Services=@{ Errors=@{}; Exchange=$h } } }
 

@@ -300,14 +300,14 @@ function Show-GuerrillaWindow {
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="Run a scan" FontSize="22" FontWeight="Bold" Foreground="#1F2933" Margin="0,0,0,4"/>
-        <TextBlock Grid.Row="1" Text="Pick a theater, select categories, click Run. The HTML report opens when the scan completes." Foreground="#94A3B8" Margin="0,0,0,16"/>
+        <TextBlock Grid.Row="1" Text="Pick a platform, select categories, click Run. The HTML report opens when the scan completes." Foreground="#94A3B8" Margin="0,0,0,16"/>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,12">
-          <TextBlock Text="Theater:" Foreground="#64748B" VerticalAlignment="Center" Margin="0,0,12,0"/>
-          <RadioButton x:Name="ops_TheaterAD"        Content="Active Directory" GroupName="Theater" IsChecked="True"/>
-          <RadioButton x:Name="ops_TheaterWorkspace" Content="Google Workspace" GroupName="Theater"/>
-          <RadioButton x:Name="ops_TheaterCloud"     Content="Entra / Azure / M365" GroupName="Theater"/>
-          <RadioButton x:Name="ops_TheaterCampaign"  Content="All theaters (Campaign)" GroupName="Theater"/>
+          <TextBlock Text="Platform:" Foreground="#64748B" VerticalAlignment="Center" Margin="0,0,12,0"/>
+          <RadioButton x:Name="ops_PlatformAD"        Content="Active Directory" GroupName="Platform" IsChecked="True"/>
+          <RadioButton x:Name="ops_PlatformWorkspace" Content="Google Workspace" GroupName="Platform"/>
+          <RadioButton x:Name="ops_PlatformCloud"     Content="Entra / Azure / M365" GroupName="Platform"/>
+          <RadioButton x:Name="ops_PlatformCampaign"  Content="All platforms (Campaign)" GroupName="Platform"/>
         </StackPanel>
 
         <Border Grid.Row="3" BorderBrush="#E2E8F0" BorderThickness="1" Padding="12" Margin="0,0,0,12">
@@ -517,7 +517,7 @@ function Show-GuerrillaWindow {
         <DataGrid x:Name="rp_Grid" Grid.Row="2">
           <DataGrid.Columns>
             <DataGridTextColumn Header="Name"     Binding="{Binding Name}"     Width="*"/>
-            <DataGridTextColumn Header="Theater"  Binding="{Binding Theater}"  Width="140"/>
+            <DataGridTextColumn Header="Platform"  Binding="{Binding Platform}"  Width="140"/>
             <DataGridTextColumn Header="Size"     Binding="{Binding SizeKB}"   Width="80"/>
             <DataGridTextColumn Header="Modified" Binding="{Binding Modified}" Width="160"/>
           </DataGrid.Columns>
@@ -762,29 +762,29 @@ function Show-GuerrillaWindow {
         $session.Controls['ops_Progress'].Visibility = 'Collapsed'
     }
 
-    $loadCategoriesForTheater = {
+    $loadCategoriesForPlatform = {
         $panel = $session.Controls['ops_CategoryPanel']
         $panel.Children.Clear()
-        $categories = if ($session.Controls['ops_TheaterAD'].IsChecked) {
+        $categories = if ($session.Controls['ops_PlatformAD'].IsChecked) {
             @('DomainForest','Trusts','PrivilegedAccounts','PasswordPolicy','Kerberos','ACLDelegation',
               'GroupPolicy','LogonScripts','CertificateServices','StaleObjects','Network','TierZero','Logging','Tradecraft','AttackPath')
-        } elseif ($session.Controls['ops_TheaterWorkspace'].IsChecked) {
+        } elseif ($session.Controls['ops_PlatformWorkspace'].IsChecked) {
             @('Authentication','EmailSecurity','DriveSecurity','OAuthSecurity','AdminManagement',
               'Collaboration','DeviceManagement','LoggingAlerting')
-        } elseif ($session.Controls['ops_TheaterCloud'].IsChecked) {
+        } elseif ($session.Controls['ops_PlatformCloud'].IsChecked) {
             @('ConditionalAccess','AuthenticationMethods','PIM','Applications','Federation',
               'TenantConfig','AzureIAM','Intune','M365Services')
         } else {
             @()  # Campaign runs everything by default
         }
 
-        # Categories that start unchecked even though they belong to the theater.
+        # Categories that start unchecked even though they belong to the platform.
         # Email Security is opt-in for Google Workspace scans (noisier, slower set).
-        $defaultUnchecked = if ($session.Controls['ops_TheaterWorkspace'].IsChecked) { @('EmailSecurity') } else { @() }
+        $defaultUnchecked = if ($session.Controls['ops_PlatformWorkspace'].IsChecked) { @('EmailSecurity') } else { @() }
 
         if ($categories.Count -eq 0) {
             $panel.Children.Add([Windows.Controls.TextBlock]@{
-                Text       = 'Campaign runs the default set in each enabled theater.'
+                Text       = 'Campaign runs the default set in each enabled platform.'
                 Foreground = $brushes.Gray
                 Margin     = '0,4'
             })
@@ -835,8 +835,8 @@ function Show-GuerrillaWindow {
     }
 
     # ── Operations tab handlers ───────────────────────────────────────────
-    foreach ($r in @('ops_TheaterAD','ops_TheaterWorkspace','ops_TheaterCloud','ops_TheaterCampaign')) {
-        $session.Controls[$r].Add_Checked({ & $loadCategoriesForTheater })
+    foreach ($r in @('ops_PlatformAD','ops_PlatformWorkspace','ops_PlatformCloud','ops_PlatformCampaign')) {
+        $session.Controls[$r].Add_Checked({ & $loadCategoriesForPlatform })
     }
 
     $session.Controls['ops_BrowseOutput'].Add_Click({
@@ -864,9 +864,9 @@ function Show-GuerrillaWindow {
         $testMode     = [bool]$session.Controls['ops_TestMode'].IsChecked
         $selectedCats = & $getSelectedCategories
 
-        $cmdletName = if ($session.Controls['ops_TheaterAD'].IsChecked)        { 'Invoke-Reconnaissance' }
-                      elseif ($session.Controls['ops_TheaterWorkspace'].IsChecked) { 'Invoke-Fortification' }
-                      elseif ($session.Controls['ops_TheaterCloud'].IsChecked)     { 'Invoke-Infiltration' }
+        $cmdletName = if ($session.Controls['ops_PlatformAD'].IsChecked)        { 'Invoke-ADAudit' }
+                      elseif ($session.Controls['ops_PlatformWorkspace'].IsChecked) { 'Invoke-GWSAudit' }
+                      elseif ($session.Controls['ops_PlatformCloud'].IsChecked)     { 'Invoke-EntraAudit' }
                       else                                                          { 'Invoke-Campaign' }
 
         & $appendLog "Starting $cmdletName ($($selectedCats.Count) categories, mode=$mode)..."
@@ -878,7 +878,7 @@ function Show-GuerrillaWindow {
                   [bool]$NoReports, [bool]$NoDelta, [string[]]$Categories, [string]$VaultName,
                   [string]$ReportStyle, [bool]$TestMode)
             # Only pass parameters the target cmdlet actually declares. The four
-            # theater cmdlets have different surfaces (e.g. Invoke-Campaign has no
+            # platform cmdlets have different surfaces (e.g. Invoke-Campaign has no
             # -Categories/-NoReports; none take -ScanMode), so gating on the real
             # parameter set avoids "A parameter cannot be found that matches ..."
             # instead of maintaining brittle per-cmdlet name lists. The cmdlets
@@ -1126,7 +1126,7 @@ function Show-GuerrillaWindow {
         $msg = "Patrol registration runs a scheduled task that re-scans periodically.`r`n`r`n" +
                "To register from a PowerShell prompt:`r`n`r`n" +
                "    Register-Patrol -ConfigFile .\guerrilla-config.json ``r`n" +
-               "        -Theaters AD, Workspace ``r`n" +
+               "        -Platforms AD, Workspace ``r`n" +
                "        -IntervalMinutes 60 -SendAlerts`r`n`r`n" +
                "GUI-driven registration is on the roadmap."
         [System.Windows.MessageBox]::Show($msg, 'Register Patrol', 'OK', 'Information') | Out-Null
@@ -1422,11 +1422,11 @@ function Show-GuerrillaWindow {
         $files = Get-ChildItem -Path $session.ReportsDir -Filter '*.html' -File -ErrorAction SilentlyContinue |
                  Sort-Object LastWriteTime -Descending
         $rows = foreach ($f in $files) {
-            $theater = switch -Regex ($f.Name) {
+            $platform = switch -Regex ($f.Name) {
                 '^[Rr]econnaissance'  { 'Active Directory' }
                 '^[Ff]ortification'   { 'Workspace' }
                 '^[Ii]nfiltration'    { 'Cloud' }
-                '^[Cc]ampaign'        { 'All Theaters' }
+                '^[Cc]ampaign'        { 'All Platforms' }
                 '^[Ss]urveillance'    { 'Entra monitoring' }
                 '^[Ww]atchtower'      { 'AD monitoring' }
                 '^[Ww]iretap'         { 'M365 monitoring' }
@@ -1439,7 +1439,7 @@ function Show-GuerrillaWindow {
             }
             [PSCustomObject]@{
                 Name     = $f.Name
-                Theater  = $theater
+                Platform  = $platform
                 SizeKB   = [Math]::Round($f.Length / 1KB, 1)
                 Modified = $f.LastWriteTime.ToString('yyyy-MM-dd HH:mm')
                 FullPath = $f.FullName
@@ -1535,9 +1535,9 @@ function Show-GuerrillaWindow {
     $classifyFunctionArea = {
         param([string]$Rel, [string]$Name)
         $p = ($Rel -replace '\\', '/')
-        if ($p -match '^Private/AD/'     -or $Name -match '^(Test-ReconAD|Test-ReconTIER|Invoke-AD|Invoke-TierZero)') { return 'Active Directory' }
-        if ($p -match '^Private/Audit/'  -or $Name -match 'Fortification') { return 'Google Workspace' }
-        if ($p -match '^Private/Entra/'  -or $Name -match '^(Test-Infiltration|Invoke-Entra|Invoke-M365|Invoke-Azure|Invoke-Intune)') { return 'Entra / Azure / M365' }
+        if ($p -match '^Private/AD/'     -or $Name -match '^(Test-AD|Test-TIER|Invoke-AD|Invoke-TierZero)') { return 'Active Directory' }
+        if ($p -match '^Private/Audit/'  -or $Name -match '^(Test-(EMAIL|DRIVE|ADMIN|AUTH|COLLAB|GROUP|OAUTH|DEVICE|LOG|GTRADE|GWS)|Invoke-Gws|Invoke-Google)') { return 'Google Workspace' }
+        if ($p -match '^Private/Entra/'  -or $Name -match '^(Test-(EID|M365|INTUNE|AZIAM|AIAGENT)|Invoke-Entra|Invoke-M365|Invoke-Azure|Invoke-Intune)') { return 'Entra / Azure / M365' }
         if ($p -match 'Monitor')         { return 'Monitoring' }
         if ($p -match '^Private/Export/') { return 'Reporting & Export' }
         if ($p -match '^Private/Gui/')   { return 'GUI' }
@@ -1690,10 +1690,10 @@ function Show-GuerrillaWindow {
     $guiVersion = try { (Import-PowerShellDataFile $session.ModulePath).ModuleVersion } catch { $null }
     $session.Controls['nav_VersionText'].Text = if ($guiVersion) { "v$guiVersion" } else { '' }
     $session.Controls['nav_VaultText'].Text   = "Vault: $($session.VaultName)"
-    & $loadCategoriesForTheater
+    & $loadCategoriesForPlatform
     & $setActiveTab $StartOn
 
-    # Single-instance guard. Two windows share config.json + theater *-state.json files,
+    # Single-instance guard. Two windows share config.json + platform *-state.json files,
     # so a second instance would clobber state (last-writer-wins). Refuse the second window —
     # but self-heal: the old guard used initiallyOwned + createdNew, which reported "already
     # open" whenever the *named* mutex still existed (a launch that threw or was force-killed,

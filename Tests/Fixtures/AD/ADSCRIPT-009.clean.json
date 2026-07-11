@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-009",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "NETLOGON files have expected extensions/structure",

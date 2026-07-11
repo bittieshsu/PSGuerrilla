@@ -15,7 +15,7 @@ function Get-PowerPlatformData {
             agents and map the security-relevant fields.
 
         AUTH: Dataverse uses a DIFFERENT token audience than Graph, and each
-        environment is its own audience. This mirrors how Invoke-Infiltration
+        environment is its own audience. This mirrors how Invoke-EntraAudit
         already acquires a separate management.azure.com token for the Azure
         collector. -GlobalDiscoToken authenticates discovery; -TokenFactory is a
         scriptblock that returns a per-environment Dataverse token given an env URL
@@ -50,7 +50,7 @@ function Get-PowerPlatformData {
     }
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Discovering Power Platform environments (Dataverse)'
+        Write-ProgressLine -Phase ENTRA -Message 'Discovering Power Platform environments (Dataverse)'
     }
 
     # ── 1. Discover environments ─────────────────────────────────────────
@@ -98,7 +98,7 @@ function Get-PowerPlatformData {
     $data.Agents = @($agents)
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE `
+        Write-ProgressLine -Phase ENTRA `
             -Message "Copilot Studio: $($data.Agents.Count) agents across $($data.Environments.Count) environment(s)"
     }
 

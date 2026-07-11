@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Web session duration <= 12 hours",

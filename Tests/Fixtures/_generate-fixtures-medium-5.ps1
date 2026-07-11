@@ -9,12 +9,12 @@
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 function New-Fixture {
-    param([string]$Family,[string]$CheckId,[string]$Theater,[string]$Scenario,[string]$ExpectedStatus,[string]$Description,[hashtable]$AuditData)
-    $obj=[ordered]@{ checkId=$CheckId; theater=$Theater; scenario=$Scenario; expectedStatus=$ExpectedStatus; description=$Description; auditData=$AuditData }
+    param([string]$Family,[string]$CheckId,[string]$Platform,[string]$Scenario,[string]$ExpectedStatus,[string]$Description,[hashtable]$AuditData)
+    $obj=[ordered]@{ checkId=$CheckId; platform=$Platform; scenario=$Scenario; expectedStatus=$ExpectedStatus; description=$Description; auditData=$AuditData }
     $obj | ConvertTo-Json -Depth 14 | Set-Content -Path (Join-Path $root $Family "$CheckId.$Scenario.json") -Encoding utf8
     Write-Host "  $Family/$CheckId.$Scenario -> $ExpectedStatus"
 }
-$I='Infiltration'
+$I='Entra'
 $skInt=@{ Errors=@{ Intune='Graph 429' }; Intune=@{ Errors=@{} } }
 
 New-Fixture Entra INTUNE-005 $I clean PASS 'All configuration profiles are assigned' @{ Errors=@{}; Intune=@{ Errors=@{}; DeviceConfigurations=@(@{ id='c1'; displayName='P1'; '@odata.type'='#microsoft.graph.deviceConfiguration'; assignments=@(@{}) }) } }

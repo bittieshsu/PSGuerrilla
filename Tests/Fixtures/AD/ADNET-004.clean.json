@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-004",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "SMB client signing required (1)",

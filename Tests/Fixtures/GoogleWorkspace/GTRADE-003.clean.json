@@ -1,6 +1,6 @@
 {
   "checkId": "GTRADE-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No groups allow open join / external members",

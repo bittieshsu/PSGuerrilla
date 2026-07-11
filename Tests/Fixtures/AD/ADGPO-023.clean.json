@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-023",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "LAPS GPO present and linked",

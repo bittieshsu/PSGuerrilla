@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-016",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "not-assessed",
   "expectedStatus": "SKIP",
   "description": "GDAP collection failed \u2014 Not Assessed",

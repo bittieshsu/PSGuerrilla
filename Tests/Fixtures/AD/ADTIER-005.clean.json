@@ -1,6 +1,6 @@
 {
   "checkId": "ADTIER-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No database service accounts in Tier-0 groups",

@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-008",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Calendar external sharing exposes all info read/write",

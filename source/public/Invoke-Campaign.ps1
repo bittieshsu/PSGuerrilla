@@ -7,33 +7,36 @@ function Invoke-Campaign {
         Runs a unified security audit across Google Workspace, Active Directory, and Microsoft Cloud.
 
     .DESCRIPTION
-        Invoke-Campaign orchestrates a full-spectrum security assessment by calling the existing
-        Fortification (Google Workspace), Reconnaissance (Active Directory), and Infiltration
-        (Entra ID / Azure / Intune / M365) audits and combining their findings into one unified report.
+        Invoke-Campaign orchestrates a full-spectrum security assessment by calling the
+        Invoke-GWSAudit (Google Workspace), Invoke-ADAudit (Active Directory), and
+        Invoke-EntraAudit (Entra ID / Azure / Intune / M365) audits and combining their
+        findings into one unified report.
 
-        Each theater is optional — skip what doesn't apply to your org.
+        Each platform is optional — skip what doesn't apply to your org.
 
-    .PARAMETER Theaters
-        Which theaters to audit. Default: auto-detect from provided credentials.
-        Valid values: Workspace, AD, Cloud
+    .PARAMETER Platforms
+        Which platforms to audit. Default: auto-detect from provided credentials.
+        Valid values: AD, Entra, GWS (legacy values Workspace and Cloud are accepted
+        as synonyms for GWS and Entra). -Theaters is accepted as a deprecated alias
+        for this parameter.
 
     .PARAMETER ServiceAccountKeyPath
-        Google service account key JSON path (enables Workspace theater).
+        Google service account key JSON path (enables Workspace platform).
 
     .PARAMETER AdminEmail
-        Google Workspace admin email (enables Workspace theater).
+        Google Workspace admin email (enables Workspace platform).
 
     .PARAMETER Server
-        AD domain controller (enables AD theater). Omit to use current domain.
+        AD domain controller (enables AD platform). Omit to use current domain.
 
     .PARAMETER Credential
         AD credentials. Omit to use current user.
 
     .PARAMETER TenantId
-        Entra ID tenant ID (enables Cloud theater).
+        Entra ID tenant ID (enables Cloud platform).
 
     .PARAMETER ClientId
-        Entra app registration client ID (enables Cloud theater).
+        Entra app registration client ID (enables Cloud platform).
 
     .PARAMETER CertificateThumbprint
         Certificate thumbprint for Entra app-only auth.
@@ -58,18 +61,19 @@ function Invoke-Campaign {
         Path to Guerrilla configuration file.
 
     .EXAMPLE
-        Invoke-Campaign -Theaters Cloud -TenantId $t -ClientId $c -DeviceCode
+        Invoke-Campaign -Platforms Cloud -TenantId $t -ClientId $c -DeviceCode
 
     .EXAMPLE
-        Invoke-Campaign -Theaters AD, Cloud -TenantId $t -ClientId $c -ClientSecret $s
+        Invoke-Campaign -Platforms AD, Cloud -TenantId $t -ClientId $c -ClientSecret $s
 
     .EXAMPLE
         Invoke-Campaign -ServiceAccountKeyPath $key -AdminEmail $admin -TenantId $t -ClientId $c -DeviceCode
     #>
     [CmdletBinding()]
     param(
-        [ValidateSet('Workspace', 'AD', 'Cloud')]
-        [string[]]$Theaters,
+        [Alias('Theaters')]
+        [ValidateSet('AD', 'Entra', 'GWS', 'Workspace', 'Cloud')]
+        [string[]]$Platforms,
 
         # ── Google Workspace ──
         [string]$ServiceAccountKeyPath,
@@ -103,6 +107,15 @@ function Invoke-Campaign {
         [switch]$TestMode
     )
 
+    # Canonical platform names are AD / Entra / GWS; Workspace and Cloud remain
+    # accepted (pre-rename vocabulary) and normalize to the internal values used
+    # by the launch blocks below.
+    if ($Platforms) {
+        $Platforms = @($Platforms | ForEach-Object {
+            switch ($_) { 'GWS' { 'Workspace' } 'Entra' { 'Cloud' } default { $_ } }
+        } | Select-Object -Unique)
+    }
+
     $tempSaPath = $null
     $vaultName = $VaultName
     # --- Resolve mission config (guerrilla-config.json) ---
@@ -110,14 +123,14 @@ function Invoke-Campaign {
         $missionCfg = Read-MissionConfig -Path $ConfigFile
         $vaultName = $missionCfg.VaultName
 
-        # Determine theaters from enabled environments
-        if (-not $PSBoundParameters.ContainsKey('Theaters')) {
-            $Theaters = @()
-            if ($missionCfg.EnabledEnvironments.ContainsKey('googleWorkspace')) { $Theaters += 'Workspace' }
-            if ($missionCfg.EnabledEnvironments.ContainsKey('activeDirectory')) { $Theaters += 'AD' }
+        # Determine platforms from enabled environments
+        if (-not $PSBoundParameters.ContainsKey('Platforms')) {
+            $Platforms = @()
+            if ($missionCfg.EnabledEnvironments.ContainsKey('googleWorkspace')) { $Platforms += 'Workspace' }
+            if ($missionCfg.EnabledEnvironments.ContainsKey('activeDirectory')) { $Platforms += 'AD' }
             if ($missionCfg.EnabledEnvironments.ContainsKey('entraAzure') -or
                 $missionCfg.EnabledEnvironments.ContainsKey('m365') -or
-                $missionCfg.EnabledEnvironments.ContainsKey('intune')) { $Theaters += 'Cloud' }
+                $missionCfg.EnabledEnvironments.ContainsKey('intune')) { $Platforms += 'Cloud' }
         }
 
         # Resolve GWS credentials from vault
@@ -192,7 +205,7 @@ function Invoke-Campaign {
 
         # Final fallback: pull any still-missing credentials from the safehouse vault
         # under the default keys Set-Safehouse stores interactively. This runs before
-        # theater auto-detection and the per-theater requirement checks below, so a
+        # platform auto-detection and the per-platform requirement checks below, so a
         # vault-only setup (no mission-config file) drives a full campaign.
         if (-not $ServiceAccountKeyPath) {
             $saJson = Get-SafehouseSecret -VaultKey 'GUERRILLA_GWS_SA' -VaultName $vaultName
@@ -216,22 +229,22 @@ function Invoke-Campaign {
             if ($secretVal) { $ClientSecret = $secretVal | ConvertTo-SecureString -AsPlainText -Force }
         }
 
-        # --- Auto-detect theaters from provided credentials ---
-        if (-not $Theaters) {
+        # --- Auto-detect platforms from provided credentials ---
+        if (-not $Platforms) {
             if ($TestMode) {
                 # Test mode needs no credentials — simulate the full big report.
-                $Theaters = @('Workspace', 'AD', 'Cloud')
+                $Platforms = @('Workspace', 'AD', 'Cloud')
             }
             else {
-                $Theaters = @()
-                if ($ServiceAccountKeyPath -and $AdminEmail) { $Theaters += 'Workspace' }
+                $Platforms = @()
+                if ($ServiceAccountKeyPath -and $AdminEmail) { $Platforms += 'Workspace' }
                 if ($Server -or $Credential -or (Get-Command Get-ADDomain -ErrorAction SilentlyContinue)) {
-                    $Theaters += 'AD'
+                    $Platforms += 'AD'
                 }
-                if ($TenantId -and $ClientId) { $Theaters += 'Cloud' }
+                if ($TenantId -and $ClientId) { $Platforms += 'Cloud' }
 
-                if ($Theaters.Count -eq 0) {
-                    throw 'No theaters could be determined. Provide -Theaters or supply credentials for at least one theater.'
+                if ($Platforms.Count -eq 0) {
+                    throw 'No platforms could be determined. Provide -Platforms or supply credentials for at least one platform.'
                 }
             }
         }
@@ -241,22 +254,22 @@ function Invoke-Campaign {
 
         # --- Operation header ---
         if (-not $Quiet) {
-            $theaterLabel = $Theaters -join ' + '
-            Write-OperationHeader -Operation 'CAMPAIGN AUDIT' -Mode $theaterLabel -Target 'Full Spectrum' -DaysBack 0
+            $platformLabel = $Platforms -join ' + '
+            Write-OperationHeader -Operation 'CAMPAIGN AUDIT' -Mode $platformLabel -Target 'Full Spectrum' -DaysBack 0
         }
 
-        # --- Run each theater ---
-        $theaterResults = @{}
+        # --- Run each platform ---
+        $platformResults = @{}
         $allFindings = [System.Collections.Generic.List[PSCustomObject]]::new()
 
-        # ── Workspace Theater ──────────────────────────────────────────────
-        if ('Workspace' -in $Theaters) {
+        # ── Workspace Platform ──────────────────────────────────────────────
+        if ('Workspace' -in $Platforms) {
             if (-not $TestMode -and (-not $ServiceAccountKeyPath -or -not $AdminEmail)) {
-                throw 'Workspace theater requires -ServiceAccountKeyPath and -AdminEmail'
+                throw 'Workspace platform requires -ServiceAccountKeyPath and -AdminEmail'
             }
 
             if (-not $Quiet) {
-                Write-ProgressLine -Phase CAMPAIGN -Message 'Launching Workspace theater (Fortification)'
+                Write-ProgressLine -Phase CAMPAIGN -Message 'Launching Google Workspace audit'
             }
 
             $fortParams = @{
@@ -272,11 +285,11 @@ function Invoke-Campaign {
             if ($TestMode) { $fortParams['TestMode'] = $true }
 
             try {
-                $fortResult = Invoke-Fortification @fortParams
-                $theaterResults['Google Workspace'] = $fortResult
+                $fortResult = Invoke-GWSAudit @fortParams
+                $platformResults['Google Workspace'] = $fortResult
 
                 foreach ($f in @($fortResult.Findings)) {
-                    $f | Add-Member -NotePropertyName 'Theater' -NotePropertyValue 'Google Workspace' -Force
+                    $f | Add-Member -NotePropertyName 'Platform' -NotePropertyValue 'Google Workspace' -Force
                     $allFindings.Add($f)
                 }
 
@@ -284,15 +297,15 @@ function Invoke-Campaign {
                     Write-ProgressLine -Phase CAMPAIGN -Message "Workspace: $($fortResult.Findings.Count) checks, score $($fortResult.OverallScore)/100"
                 }
             } catch {
-                Write-Warning "Workspace theater failed: $_"
-                $theaterResults['Google Workspace'] = @{ Error = $_.Exception.Message }
+                Write-Warning "Workspace platform failed: $_"
+                $platformResults['Google Workspace'] = @{ Error = $_.Exception.Message }
             }
         }
 
-        # ── AD Theater ─────────────────────────────────────────────────────
-        if ('AD' -in $Theaters) {
+        # ── AD Platform ─────────────────────────────────────────────────────
+        if ('AD' -in $Platforms) {
             if (-not $Quiet) {
-                Write-ProgressLine -Phase CAMPAIGN -Message 'Launching AD theater (Reconnaissance)'
+                Write-ProgressLine -Phase CAMPAIGN -Message 'Launching Active Directory audit'
             }
 
             $reconParams = @{
@@ -307,11 +320,11 @@ function Invoke-Campaign {
             if ($TestMode) { $reconParams['TestMode'] = $true }
 
             try {
-                $reconResult = Invoke-Reconnaissance @reconParams
-                $theaterResults['Active Directory'] = $reconResult
+                $reconResult = Invoke-ADAudit @reconParams
+                $platformResults['Active Directory'] = $reconResult
 
                 foreach ($f in @($reconResult.Findings)) {
-                    $f | Add-Member -NotePropertyName 'Theater' -NotePropertyValue 'Active Directory' -Force
+                    $f | Add-Member -NotePropertyName 'Platform' -NotePropertyValue 'Active Directory' -Force
                     $allFindings.Add($f)
                 }
 
@@ -320,19 +333,19 @@ function Invoke-Campaign {
                     Write-ProgressLine -Phase CAMPAIGN -Message "AD ($domainLabel): $($reconResult.Findings.Count) checks, score $($reconResult.OverallScore)/100"
                 }
             } catch {
-                Write-Warning "AD theater failed: $_"
-                $theaterResults['Active Directory'] = @{ Error = $_.Exception.Message }
+                Write-Warning "AD platform failed: $_"
+                $platformResults['Active Directory'] = @{ Error = $_.Exception.Message }
             }
         }
 
-        # ── Cloud Theater ──────────────────────────────────────────────────
-        if ('Cloud' -in $Theaters) {
+        # ── Cloud Platform ──────────────────────────────────────────────────
+        if ('Cloud' -in $Platforms) {
             if (-not $TestMode -and (-not $TenantId -or -not $ClientId)) {
-                throw 'Cloud theater requires -TenantId and -ClientId'
+                throw 'Cloud platform requires -TenantId and -ClientId'
             }
 
             if (-not $Quiet) {
-                Write-ProgressLine -Phase CAMPAIGN -Message 'Launching Cloud theater (Infiltration)'
+                Write-ProgressLine -Phase CAMPAIGN -Message 'Launching Entra ID / M365 audit'
             }
 
             $infilParams = @{
@@ -350,11 +363,11 @@ function Invoke-Campaign {
             if ($TestMode) { $infilParams['TestMode'] = $true }
 
             try {
-                $infilResult = Invoke-Infiltration @infilParams
-                $theaterResults['Microsoft Cloud'] = $infilResult
+                $infilResult = Invoke-EntraAudit @infilParams
+                $platformResults['Microsoft Cloud'] = $infilResult
 
                 foreach ($f in @($infilResult.Findings)) {
-                    $f | Add-Member -NotePropertyName 'Theater' -NotePropertyValue 'Microsoft Cloud' -Force
+                    $f | Add-Member -NotePropertyName 'Platform' -NotePropertyValue 'Microsoft Cloud' -Force
                     $allFindings.Add($f)
                 }
 
@@ -362,8 +375,8 @@ function Invoke-Campaign {
                     Write-ProgressLine -Phase CAMPAIGN -Message "Cloud ($TenantId): $($infilResult.Findings.Count) checks, score $($infilResult.Score.OverallScore)/100"
                 }
             } catch {
-                Write-Warning "Cloud theater failed: $_"
-                $theaterResults['Microsoft Cloud'] = @{ Error = $_.Exception.Message }
+                Write-Warning "Cloud platform failed: $_"
+                $platformResults['Microsoft Cloud'] = @{ Error = $_.Exception.Message }
             }
         }
 
@@ -374,22 +387,22 @@ function Invoke-Campaign {
 
         $unifiedScore = Get-AuditPostureScore -Findings @($allFindings)
         $overallScore = $unifiedScore.OverallScore
-        $scoreLabel = Get-FortificationScoreLabel -Score $overallScore
+        $scoreLabel = Get-AuditScoreLabel -Score $overallScore
 
-        # --- Build per-theater score summary ---
-        $theaterScores = @{}
-        foreach ($theaterName in $theaterResults.Keys) {
-            $theaterFindings = @($allFindings | Where-Object Theater -eq $theaterName)
-            if ($theaterFindings.Count -gt 0) {
-                $ts = Get-AuditPostureScore -Findings $theaterFindings
-                $theaterScores[$theaterName] = @{
+        # --- Build per-platform score summary ---
+        $platformScores = @{}
+        foreach ($platformName in $platformResults.Keys) {
+            $platformFindings = @($allFindings | Where-Object Platform -eq $platformName)
+            if ($platformFindings.Count -gt 0) {
+                $ts = Get-AuditPostureScore -Findings $platformFindings
+                $platformScores[$platformName] = @{
                     Score        = $ts.OverallScore
-                    ScoreLabel   = Get-FortificationScoreLabel -Score $ts.OverallScore
-                    FindingCount = $theaterFindings.Count
-                    PassCount    = @($theaterFindings | Where-Object Status -eq 'PASS').Count
-                    FailCount    = @($theaterFindings | Where-Object Status -eq 'FAIL').Count
-                    WarnCount    = @($theaterFindings | Where-Object Status -eq 'WARN').Count
-                    SkipCount    = @($theaterFindings | Where-Object Status -in @('SKIP', 'ERROR')).Count
+                    ScoreLabel   = Get-AuditScoreLabel -Score $ts.OverallScore
+                    FindingCount = $platformFindings.Count
+                    PassCount    = @($platformFindings | Where-Object Status -eq 'PASS').Count
+                    FailCount    = @($platformFindings | Where-Object Status -eq 'FAIL').Count
+                    WarnCount    = @($platformFindings | Where-Object Status -eq 'WARN').Count
+                    SkipCount    = @($platformFindings | Where-Object Status -in @('SKIP', 'ERROR')).Count
                     CategoryScores = $ts.CategoryScores
                 }
             }
@@ -400,7 +413,7 @@ function Invoke-Campaign {
             Write-CampaignReport `
                 -OverallScore $overallScore `
                 -ScoreLabel $scoreLabel `
-                -TheaterScores $theaterScores `
+                -PlatformScores $platformScores `
                 -CategoryScores $unifiedScore.CategoryScores `
                 -Findings @($allFindings)
         }
@@ -415,13 +428,13 @@ function Invoke-Campaign {
             ScanStart      = $scanStart
             ScanEnd        = $scanEnd
             Duration       = $scanDuration
-            Theaters       = $Theaters
+            Platforms       = $Platforms
             OverallScore   = $overallScore
             ScoreLabel     = $scoreLabel
-            TheaterScores  = $theaterScores
+            PlatformScores  = $platformScores
             CategoryScores = $unifiedScore.CategoryScores
             Findings       = @($allFindings)
-            TheaterResults = $theaterResults
+            PlatformResults = $platformResults
         }
 
         if (-not (Test-Path $outDir)) {
@@ -468,7 +481,7 @@ function Invoke-Campaign {
         }
 
         if (-not $Quiet) {
-            Write-ProgressLine -Phase CAMPAIGN -Message "Campaign complete in $([Math]::Round($scanDuration.TotalSeconds, 1))s — $($allFindings.Count) checks across $($Theaters.Count) theater(s)"
+            Write-ProgressLine -Phase CAMPAIGN -Message "Campaign complete in $([Math]::Round($scanDuration.TotalSeconds, 1))s — $($allFindings.Count) checks across $($Platforms.Count) platform(s)"
         }
 
         return $result

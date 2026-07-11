@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-011",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "informational",
   "expectedStatus": "WARN",
   "description": "GPO registry/preference inventory (informational, always WARN)",

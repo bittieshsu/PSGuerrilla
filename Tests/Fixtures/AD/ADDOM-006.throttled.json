@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-006",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Domain info not collected",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A DC runs an obsolete OS",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Network config not assessed",

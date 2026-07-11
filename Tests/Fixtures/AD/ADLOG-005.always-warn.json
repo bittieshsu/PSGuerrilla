@@ -1,6 +1,6 @@
 {
   "checkId": "ADLOG-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Defender Tamper Protection set in MDE cloud (LDAP-blind)",

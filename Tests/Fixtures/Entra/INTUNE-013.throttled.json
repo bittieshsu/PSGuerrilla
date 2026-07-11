@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-013",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Intune enrollment configurations not assessed",

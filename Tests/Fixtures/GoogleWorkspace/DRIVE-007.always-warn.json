@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-007",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "File ownership transfer requires manual verification",

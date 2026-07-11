@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-019",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Print Spooler disabled on DCs via GPO",

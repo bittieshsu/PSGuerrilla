@@ -7,11 +7,11 @@ function Invoke-Lookout {
         Continuous Google Workspace security-posture (configuration-drift) monitoring.
 
     .DESCRIPTION
-        Invoke-Lookout is the Google Workspace theater of Guerrilla's continuous-monitoring
+        Invoke-Lookout is the Google Workspace platform of Guerrilla's continuous-monitoring
         suite (alongside Invoke-Surveillance for Entra sign-in risk, Invoke-Watchtower for
         Active Directory baseline change, and Invoke-Wiretap for M365 audit logs).
 
-        It runs the read-only Fortification posture audit, stores the result as a baseline,
+        It runs the read-only GWS posture audit, stores the result as a baseline,
         and on each subsequent run diffs the current posture against that baseline — surfacing
         newly-FAILing controls (drift) and controls that have been resolved, plus the change in
         the overall posture score. It complements Invoke-Recon (which watches user *behaviour*
@@ -19,7 +19,7 @@ function Invoke-Lookout {
 
         The first run establishes the baseline (no drift reported). Subsequent runs report the
         delta. This makes NO changes to Google Workspace — it only reads policy/config (the
-        same read-only collection Invoke-Fortification performs) and writes local state.
+        same read-only collection Invoke-GWSAudit performs) and writes local state.
 
         Pair with Register-Patrol to run it on a schedule with alert dispatch; new failures are
         surfaced on the result's .NewThreats so the patrol alert wiring picks them up.
@@ -34,7 +34,7 @@ function Invoke-Lookout {
         Org-unit path to audit. Default: '/'.
 
     .PARAMETER ScanMode
-        Fast (skips the slow per-user Gmail crawl, via Fortification -Quick) or Full. Default: Fast.
+        Fast (skips the slow per-user Gmail crawl, via Invoke-GWSAudit -Quick) or Full. Default: Fast.
 
     .PARAMETER Force
         Re-establish the baseline from the current posture instead of diffing against the stored one.
@@ -48,7 +48,7 @@ function Invoke-Lookout {
         # Subsequent run; reports controls that newly FAIL (drift) and ones that were resolved.
 
     .NOTES
-        Baseline state is stored under the per-user Guerrilla data root (theater 'workspace').
+        Baseline state is stored under the per-user Guerrilla data root (platform 'workspace').
         Read-only against Google Workspace.
     #>
     [CmdletBinding()]
@@ -96,17 +96,17 @@ function Invoke-Lookout {
     if ($IncludeChildOUs) { $fortParams.IncludeChildOUs = $true }
     if ($ScanMode -eq 'Fast') { $fortParams.Quick = $true }
 
-    $fort = Invoke-Fortification @fortParams
+    $fort = Invoke-GWSAudit @fortParams
     $findings = @($fort.Findings)
     $currentScore = if ($null -ne $fort.OverallScore) { $fort.OverallScore } else { 0 }
 
     if ($findings.Count -eq 0) {
-        if (-not $Quiet) { Write-Warning 'LOOKOUT: Fortification returned no findings (no Workspace connection / credentials?). Nothing to baseline.' }
+        if (-not $Quiet) { Write-Warning 'LOOKOUT: Invoke-GWSAudit returned no findings (no Workspace connection / credentials?). Nothing to baseline.' }
         return [PSCustomObject]@{
             PSTypeName           = 'Guerrilla.LookoutResult'
             ScanId               = $scanId
             Timestamp            = $timestamp
-            Theater              = 'GoogleWorkspace'
+            Platform              = 'GoogleWorkspace'
             ScanMode             = $ScanMode
             BaselineEstablished  = $false
             TotalChangesDetected = 0
@@ -117,7 +117,7 @@ function Invoke-Lookout {
         }
     }
 
-    # Lowercase-keyed projection for storage — Compare-FortificationState reads the previous
+    # Lowercase-keyed projection for storage — Compare-AuditState reads the previous
     # side via .checkId/.status/.orgUnitPath (the JSON-round-tripped shape).
     $storeFindings = @($findings | ForEach-Object {
         @{
@@ -131,15 +131,15 @@ function Invoke-Lookout {
         }
     })
 
-    # ── 2. Load theater state ──────────────────────────────────────────────────
-    $theaterState = Get-TheaterState -Theater 'workspace' -ConfigPath $cfgPath
-    $isFirstRun = $null -eq $theaterState
+    # ── 2. Load platform state ──────────────────────────────────────────────────
+    $platformState = Get-PlatformState -Platform 'workspace' -ConfigPath $cfgPath
+    $isFirstRun = $null -eq $platformState
 
     # ── 3. First run / Force: establish baseline and return ────────────────────
     if ($isFirstRun -or $Force) {
         $newState = @{
             schemaVersion    = 1
-            theater          = 'workspace'
+            platform          = 'workspace'
             findings         = $storeFindings
             overallScore     = $currentScore
             lastScanId       = $scanId
@@ -149,7 +149,7 @@ function Invoke-Lookout {
                 result = 'baseline_established'; changes = 0
             })
         }
-        Save-TheaterState -Theater 'workspace' -State $newState -ConfigPath $cfgPath
+        Save-PlatformState -Platform 'workspace' -State $newState -ConfigPath $cfgPath
 
         if (-not $Quiet) {
             $reason = if ($Force) { 'Force flag set' } else { 'First run' }
@@ -167,7 +167,7 @@ function Invoke-Lookout {
             PSTypeName           = 'Guerrilla.LookoutResult'
             ScanId               = $scanId
             Timestamp            = $timestamp
-            Theater              = 'GoogleWorkspace'
+            Platform              = 'GoogleWorkspace'
             ScanMode             = $ScanMode
             BaselineEstablished  = $true
             TotalChangesDetected = 0
@@ -181,7 +181,7 @@ function Invoke-Lookout {
     # ── 4. Diff current posture against baseline ───────────────────────────────
     if (-not $Quiet) { try { Write-ProgressLine -Phase ANALYZING -Message 'Comparing posture against baseline' } catch { } }
 
-    $drift = Compare-FortificationState -CurrentFindings $findings -PreviousState $theaterState
+    $drift = Compare-AuditState -CurrentFindings $findings -PreviousState $platformState
     $newFailures = @($drift.NewFailures)
     $resolved    = @($drift.Resolved)
 
@@ -204,16 +204,16 @@ function Invoke-Lookout {
     $lowCount      = @($newFailures | Where-Object { "$($_.Severity)" -match '(?i)^low'  }).Count
 
     # ── 5. Save updated baseline ───────────────────────────────────────────────
-    $theaterState['findings']         = $storeFindings
-    $theaterState['overallScore']     = $currentScore
-    $theaterState['lastScanId']       = $scanId
-    $theaterState['lastScanTimestamp'] = $timestamp.ToString('o')
-    $theaterState['scanHistory']      = @($theaterState.scanHistory) + @(@{
+    $platformState['findings']         = $storeFindings
+    $platformState['overallScore']     = $currentScore
+    $platformState['lastScanId']       = $scanId
+    $platformState['lastScanTimestamp'] = $timestamp.ToString('o')
+    $platformState['scanHistory']      = @($platformState.scanHistory) + @(@{
         scanId = $scanId; timestamp = $timestamp.ToString('o'); mode = $ScanMode
         result = if ($newFailures.Count -gt 0) { 'drift_detected' } else { 'clean' }
         changes = $newFailures.Count
     })
-    Save-TheaterState -Theater 'workspace' -State $theaterState -ConfigPath $cfgPath
+    Save-PlatformState -Platform 'workspace' -State $platformState -ConfigPath $cfgPath
 
     # ── 6. Console summary ─────────────────────────────────────────────────────
     if (-not $Quiet) {
@@ -234,7 +234,7 @@ function Invoke-Lookout {
         @{
             scanId        = $scanId
             timestamp     = $timestamp.ToString('o')
-            theater       = 'GoogleWorkspace'
+            platform       = 'GoogleWorkspace'
             scanMode      = $ScanMode
             previousScore = $drift.PreviousScore
             currentScore  = $drift.CurrentScore
@@ -251,7 +251,7 @@ function Invoke-Lookout {
         PSTypeName           = 'Guerrilla.LookoutResult'
         ScanId               = $scanId
         Timestamp            = $timestamp
-        Theater              = 'GoogleWorkspace'
+        Platform              = 'GoogleWorkspace'
         ScanMode             = $ScanMode
         BaselineEstablished  = $false
         TotalChangesDetected = $newFailures.Count

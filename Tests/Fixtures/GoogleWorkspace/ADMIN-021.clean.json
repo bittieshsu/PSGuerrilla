@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-021",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Compliant: serviceState=ENABLED (restriction on)",

@@ -1,6 +1,6 @@
 {
   "checkId": "LOG-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Domain-wide delegation not collected",

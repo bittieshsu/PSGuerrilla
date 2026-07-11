@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-013",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Admin consent workflow enabled with reviewers",

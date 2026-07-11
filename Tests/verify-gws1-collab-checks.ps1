@@ -42,41 +42,41 @@ $out = & $mod {
     $r = @{}
 
     # ── COLLAB-001: Meet automatic recording (bool, weakest-OU-wins) ──
-    $r.C001_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.automatic_recording' = @{ enabled = $true } }) }) 'Test-FortificationCOLLAB001'
-    $r.C001_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.automatic_recording' = @{ enabled = $false } }) }) 'Test-FortificationCOLLAB001'
-    $r.C001_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.automatic_recording' = @(@{ enabled = $false }, @{ enabled = $true }) }) }) 'Test-FortificationCOLLAB001'  # any-on -> FAIL
+    $r.C001_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.automatic_recording' = @{ enabled = $true } }) }) 'Test-COLLAB001'
+    $r.C001_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.automatic_recording' = @{ enabled = $false } }) }) 'Test-COLLAB001'
+    $r.C001_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.automatic_recording' = @(@{ enabled = $false }, @{ enabled = $true }) }) }) 'Test-COLLAB001'  # any-on -> FAIL
 
     # ── COLLAB-002: Meet join audience (enum) ──
-    $r.C002_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.meet_joining' = @{ allowedAudience = 'ALL' } }) }) 'Test-FortificationCOLLAB002'
-    $r.C002_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.meet_joining' = @{ allowedAudience = 'TRUSTED' } }) }) 'Test-FortificationCOLLAB002'
-    $r.C002_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.meet_joining' = @{ allowedAudience = 'SOMETHING_NEW' } }) }) 'Test-FortificationCOLLAB002'  # unknown -> WARN
+    $r.C002_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.meet_joining' = @{ allowedAudience = 'ALL' } }) }) 'Test-COLLAB002'
+    $r.C002_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.meet_joining' = @{ allowedAudience = 'TRUSTED' } }) }) 'Test-COLLAB002'
+    $r.C002_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.meet_joining' = @{ allowedAudience = 'SOMETHING_NEW' } }) }) 'Test-COLLAB002'  # unknown -> WARN
 
     # ── COLLAB-003: Meet anonymous join (enum) ──
-    $r.C003_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_domain' = @{ usersAllowedToJoin = 'ANONYMOUS' } }) }) 'Test-FortificationCOLLAB003'
-    $r.C003_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_domain' = @{ usersAllowedToJoin = 'LOGGED_IN' } }) }) 'Test-FortificationCOLLAB003'
-    $r.C003_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_domain' = @{ usersAllowedToJoin = 'SOMETHING_NEW' } }) }) 'Test-FortificationCOLLAB003'  # unknown -> WARN
+    $r.C003_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_domain' = @{ usersAllowedToJoin = 'ANONYMOUS' } }) }) 'Test-COLLAB003'
+    $r.C003_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_domain' = @{ usersAllowedToJoin = 'LOGGED_IN' } }) }) 'Test-COLLAB003'
+    $r.C003_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_domain' = @{ usersAllowedToJoin = 'SOMETHING_NEW' } }) }) 'Test-COLLAB003'  # unknown -> WARN
 
     # ── COLLAB-005: Chat history (bool, weakest-OU-wins) ──
-    $r.C005_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_history' = @{ historyOnByDefault = $false } }) }) 'Test-FortificationCOLLAB005'
-    $r.C005_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_history' = @{ historyOnByDefault = $true } }) }) 'Test-FortificationCOLLAB005'
-    $r.C005_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_history' = @(@{ historyOnByDefault = $true }, @{ historyOnByDefault = $false }) }) }) 'Test-FortificationCOLLAB005'  # any-off -> FAIL
+    $r.C005_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_history' = @{ historyOnByDefault = $false } }) }) 'Test-COLLAB005'
+    $r.C005_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_history' = @{ historyOnByDefault = $true } }) }) 'Test-COLLAB005'
+    $r.C005_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_history' = @(@{ historyOnByDefault = $true }, @{ historyOnByDefault = $false }) }) }) 'Test-COLLAB005'  # any-off -> FAIL
 
     # ── COLLAB-006: Chat external spaces (bool, weakest-OU-wins) ──
-    $r.C006_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_external_spaces' = @{ enabled = $true } }) }) 'Test-FortificationCOLLAB006'
-    $r.C006_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_external_spaces' = @{ enabled = $false } }) }) 'Test-FortificationCOLLAB006'
+    $r.C006_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_external_spaces' = @{ enabled = $true } }) }) 'Test-COLLAB006'
+    $r.C006_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.chat_external_spaces' = @{ enabled = $false } }) }) 'Test-COLLAB006'
 
     # ── Absent type -> SKIP (API available but no policy of this type returned) ──
     $other = @{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }
-    $r.C001_absent = St $other 'Test-FortificationCOLLAB001'
-    $r.C006_absent = St $other 'Test-FortificationCOLLAB006'
+    $r.C001_absent = St $other 'Test-COLLAB001'
+    $r.C006_absent = St $other 'Test-COLLAB006'
 
     # ── Unavailable API -> SKIP (sampled across the converted checks) ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.Skip001 = St $none 'Test-FortificationCOLLAB001'
-    $r.Skip002 = St $none 'Test-FortificationCOLLAB002'
-    $r.Skip003 = St $none 'Test-FortificationCOLLAB003'
-    $r.Skip005 = St $none 'Test-FortificationCOLLAB005'
-    $r.Skip006 = St $none 'Test-FortificationCOLLAB006'
+    $r.Skip001 = St $none 'Test-COLLAB001'
+    $r.Skip002 = St $none 'Test-COLLAB002'
+    $r.Skip003 = St $none 'Test-COLLAB003'
+    $r.Skip005 = St $none 'Test-COLLAB005'
+    $r.Skip006 = St $none 'Test-COLLAB006'
 
     $r
 }

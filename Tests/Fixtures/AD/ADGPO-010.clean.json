@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "GPO versions match AD and SYSVOL",

@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Chat policy not assessed",

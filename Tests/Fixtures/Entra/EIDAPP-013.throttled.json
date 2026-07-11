@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-013",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Admin consent request policy not assessed",

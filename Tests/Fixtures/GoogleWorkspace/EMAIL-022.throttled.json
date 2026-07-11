@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-022",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Per-user Gmail settings not assessed",

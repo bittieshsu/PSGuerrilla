@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-008",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "a delegation grant holds Gmail and Drive scopes",

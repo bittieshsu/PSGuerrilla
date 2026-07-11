@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "no valid DMARC record present",

@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-007",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Marketplace apps restricted to an allow-list",

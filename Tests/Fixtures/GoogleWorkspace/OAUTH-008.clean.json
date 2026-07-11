@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-008",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "domain-wide delegation grants hold no Gmail/Drive/Admin/Calendar scopes",

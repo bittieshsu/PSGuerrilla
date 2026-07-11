@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-023",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "LAPS GPO present but not linked",

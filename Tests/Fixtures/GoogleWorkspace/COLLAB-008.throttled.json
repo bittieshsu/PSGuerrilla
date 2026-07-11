@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-008",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Calendar policy not assessed",

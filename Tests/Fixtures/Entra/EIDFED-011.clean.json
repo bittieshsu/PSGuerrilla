@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-011",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Device writeback enabled",

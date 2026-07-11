@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-023",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Outbound gateways off",

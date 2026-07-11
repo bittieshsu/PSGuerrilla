@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-014",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "2SV enrollment allowed",

@@ -1,6 +1,6 @@
 {
   "checkId": "M365TEAMS-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Teams messaging policy data unavailable",

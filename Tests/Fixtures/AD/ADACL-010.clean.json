@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "DCSync rights held only by default admins",

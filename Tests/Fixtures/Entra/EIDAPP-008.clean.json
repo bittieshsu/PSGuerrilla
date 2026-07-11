@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-008",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No expired/expiring app credentials",

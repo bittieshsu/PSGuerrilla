@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-007",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "SSO configuration requires manual verification",

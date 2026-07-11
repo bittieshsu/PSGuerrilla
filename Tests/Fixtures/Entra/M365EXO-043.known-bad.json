@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-043",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Safe Links click tracking disabled",

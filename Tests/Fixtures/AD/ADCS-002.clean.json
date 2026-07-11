@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "no ESC1-vulnerable certificate templates",

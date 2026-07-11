@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-014",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "An MSI package is staged in a GPO SYSVOL folder",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Fewer than two break-glass accounts identified",

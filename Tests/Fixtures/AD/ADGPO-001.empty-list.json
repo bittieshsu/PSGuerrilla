@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-001",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "empty-list",
   "expectedStatus": "WARN",
   "description": "GPO data collected but zero GPOs in the domain — warns (was wrongly SKIPped by the -not @() guard)",

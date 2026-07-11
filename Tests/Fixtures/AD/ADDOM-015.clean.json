@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-015",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "SMB signing required via GPO (1)",

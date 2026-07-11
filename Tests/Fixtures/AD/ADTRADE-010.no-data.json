@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRADE-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "gMSA enumeration did not complete",

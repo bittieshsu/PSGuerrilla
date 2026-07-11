@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Org-unit policy not assessed",

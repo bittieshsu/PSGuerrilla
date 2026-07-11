@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-015",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Future attachment-safety settings auto-applied",

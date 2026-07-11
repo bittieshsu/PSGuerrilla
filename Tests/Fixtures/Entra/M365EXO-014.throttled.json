@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-014",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Exchange data not assessed",

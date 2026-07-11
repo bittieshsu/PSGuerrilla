@@ -32,4 +32,35 @@ Describe 'Zero Trust check-definition schema' {
         }
         $violations.Count | Should -Be 0
     }
+
+    It 'no check definition carries a theater field (retired concept; the platform is derived by the fixture gate)' {
+        # The theater codenames were retired in favor of platform names (AD / Entra / GWS).
+        # Definitions never store the platform (it is derived from the check tree and
+        # fixture families), so any theater-ish key reappearing in a definition is drift
+        # back to the retired concept and must be a RED build.
+        $findTheaterKeys = {
+            param($Check, $CheckId)
+            @($Check.PSObject.Properties.Name | Where-Object { $_ -match '(?i)theater' } |
+                ForEach-Object { "${CheckId}: retired field '$_'" })
+        }
+
+        # Poison self-test: prove the detector still fails on bad input before trusting
+        # its silence on the real definitions.
+        $poison = [PSCustomObject]@{ id = 'POISON-001'; theater = 'Fortification' }
+        @(& $findTheaterKeys $poison 'POISON-001').Count | Should -Be 1
+
+        $dataDir = (Resolve-Path (Join-Path $PSScriptRoot '..' '..' 'source' 'Data' 'AuditChecks')).Path
+        $violations = [System.Collections.Generic.List[string]]::new()
+        foreach ($file in Get-ChildItem -Path $dataDir -Filter *.json) {
+            $json = Get-Content -Path $file.FullName -Raw | ConvertFrom-Json
+            foreach ($c in @($json.checks)) {
+                if (-not $c.id) { continue }
+                foreach ($v in @(& $findTheaterKeys $c $c.id)) { $violations.Add($v) }
+            }
+        }
+        if ($violations.Count) {
+            throw "Retired-field violations ($($violations.Count)):`n" + ($violations -join "`n")
+        }
+        $violations.Count | Should -Be 0
+    }
 }

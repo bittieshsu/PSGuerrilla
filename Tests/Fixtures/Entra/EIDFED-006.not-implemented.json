@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "not-implemented",
   "expectedStatus": "SKIP",
   "description": "AAD Connect sync scope needs connector config (not via Graph)",

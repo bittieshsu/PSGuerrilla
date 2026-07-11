@@ -1,6 +1,6 @@
 {
   "checkId": "ADKERB-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Kerberos config not assessed",

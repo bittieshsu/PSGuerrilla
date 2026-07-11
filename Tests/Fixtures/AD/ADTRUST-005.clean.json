@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "External trust has SID filtering enabled",

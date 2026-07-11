@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-025",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Computer account in Domain Admins",

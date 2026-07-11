@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Custom roles and assignments configured",

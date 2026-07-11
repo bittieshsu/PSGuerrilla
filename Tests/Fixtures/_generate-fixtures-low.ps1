@@ -4,9 +4,9 @@
     Re-run: pwsh Tests/Fixtures/_generate-fixtures-low.ps1
 
     AD/Recon: ADDOM-011, ADGPO-002/003/004/005/024, ADPWD-018, ADSTALE-009/010.
-    Google/Fortification: ADMIN-007/009, AUTH-015/016, COLLAB-007/010/011, DEVICE-011,
+    Google/GWS: ADMIN-007/009, AUTH-015/016, COLLAB-007/010/011, DEVICE-011,
       DRIVE-012, EMAIL-020/021, GWS-SITES-001, GWS-CLASS-004/005, GWS-GEMINI-002/003/004, LOG-006.
-    Entra/Infiltration: EIDTNT-014.
+    Entra/Entra: EIDTNT-014.
 
     Always-WARN: COLLAB-007/010, DRIVE-012. Always-SKIP: GWS-GEMINI-002/003/004.
     Always-PASS (+SKIP guard): ADGPO-024, ADPWD-018, ADSTALE-009/010.
@@ -18,13 +18,13 @@
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 function New-Fixture {
-    param([string]$Family, [string]$CheckId, [string]$Theater, [string]$Scenario, [string]$ExpectedStatus, [string]$Description, [hashtable]$AuditData)
+    param([string]$Family, [string]$CheckId, [string]$Platform, [string]$Scenario, [string]$ExpectedStatus, [string]$Description, [hashtable]$AuditData)
     $objShape = ($AuditData.ContainsKey('CloudIdentityPolicies') -and $AuditData['CloudIdentityPolicies'])
-    $obj = [ordered]@{ checkId = $CheckId; theater = $Theater; scenario = $Scenario; expectedStatus = $ExpectedStatus; description = $Description; objectShape = [bool]$objShape; auditData = $AuditData }
+    $obj = [ordered]@{ checkId = $CheckId; platform = $Platform; scenario = $Scenario; expectedStatus = $ExpectedStatus; description = $Description; objectShape = [bool]$objShape; auditData = $AuditData }
     $obj | ConvertTo-Json -Depth 16 | Set-Content -Path (Join-Path $root $Family "$CheckId.$Scenario.json") -Encoding utf8
     Write-Host "  $Family/$CheckId.$Scenario -> $ExpectedStatus"
 }
-$R = 'Recon'; $F = 'Fortification'; $I = 'Infiltration'
+$R = 'AD'; $F = 'GWS'; $I = 'Entra'
 $AD = 'AD'; $G = 'GoogleWorkspace'; $EN = 'Entra'
 function Cip($type, $val) { @{ Errors = @{}; CloudIdentityPolicies = @{ ByType = @{ "$type" = @(@{ setting = @{ value = $val } }) } } } }
 $skCip = @{ Errors = @{}; CloudIdentityPolicies = $null }
@@ -71,7 +71,7 @@ New-Fixture $AD ADSTALE-009 $R throttled SKIP 'Stale objects not collected' @{ E
 New-Fixture $AD ADSTALE-010 $R clean PASS 'No printer objects published' @{ Errors = @{}; StaleObjects = @{ PrinterObjects = @() } }
 New-Fixture $AD ADSTALE-010 $R throttled SKIP 'Stale objects not collected' @{ Errors = @{ StaleObjects = 'AD enumeration failed' }; StaleObjects = @{} }
 
-# ───────────────────────── Google / Fortification ─────────────────────────
+# ───────────────────────── Google / GWS ─────────────────────────
 # ADMIN-007 OU structure — PASS when OrgUnits present / WARN when absent / SKIP on error
 New-Fixture $G ADMIN-007 $F clean PASS 'OrgUnit structure available' @{ Errors = @{}; Tenant = @{ OrgUnits = @(@{ orgUnitPath = '/' }, @{ orgUnitPath = '/Staff' }) } }
 New-Fixture $G ADMIN-007 $F known-bad WARN 'OrgUnit data unavailable' @{ Errors = @{}; Tenant = @{} }
@@ -144,7 +144,7 @@ New-Fixture $G LOG-006 $F clean PASS 'No domain-wide delegation grants with Repo
 New-Fixture $G LOG-006 $F known-bad WARN 'A delegation grant has Reports/Audit API access' @{ Errors = @{}; DomainWideDelegation = @(@{ clientId = '100200300'; scopes = @('https://www.googleapis.com/auth/admin.reports.audit.readonly') }) }
 New-Fixture $G LOG-006 $F throttled SKIP 'Domain-wide delegation not collected' @{ Errors = @{ DomainWideDelegation = 'Directory API error' } }
 
-# ───────────────────────── Entra / Infiltration ─────────────────────────
+# ───────────────────────── Entra / Entra ─────────────────────────
 # EIDTNT-014 managed-domain password expiry — PASS never-expire / FAIL finite expiry / SKIP no data
 New-Fixture $EN EIDTNT-014 $I clean PASS 'Managed domain passwords set to never expire' @{ Errors = @{}; TenantConfig = @{ Domains = @(@{ id = 'contoso.com'; authenticationType = 'Managed'; passwordValidityPeriodInDays = 2147483647 }) } }
 New-Fixture $EN EIDTNT-014 $I known-bad FAIL 'Managed domain enforces finite password expiry' @{ Errors = @{}; TenantConfig = @{ Domains = @(@{ id = 'contoso.com'; authenticationType = 'Managed'; passwordValidityPeriodInDays = 90 }) } }

@@ -5,7 +5,7 @@ function Write-ProgressLine {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [ValidateSet('SCANNING', 'ENRICHING', 'ANALYZING', 'REPORTING', 'SIGNALING', 'INFO', 'AUDITING', 'FORTIFYING', 'RECON', 'INFILTRATE', 'CAMPAIGN', 'WIRETAP')]
+        [ValidateSet('SCANNING', 'ENRICHING', 'ANALYZING', 'REPORTING', 'SIGNALING', 'INFO', 'AUDITING', 'GWS', 'RECON', 'ENTRA', 'CAMPAIGN', 'WIRETAP')]
         [string]$Phase,
 
         [Parameter(Mandatory)]
@@ -25,9 +25,9 @@ function Write-ProgressLine {
         'SIGNALING'  { 'Parchment' }
         'INFO'       { 'Dim' }
         'AUDITING'   { 'Sage' }
-        'FORTIFYING' { 'Gold' }
+        'GWS'        { 'Gold' }
         'RECON'      { 'Olive' }
-        'INFILTRATE' { 'Amber' }
+        'ENTRA'      { 'Amber' }
         'CAMPAIGN'   { 'Parchment' }
         'WIRETAP'    { 'Amber' }
     }

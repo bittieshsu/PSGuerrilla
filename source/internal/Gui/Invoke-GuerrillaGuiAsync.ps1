@@ -7,7 +7,7 @@ function Invoke-GuerrillaGuiAsync {
         Runs a scriptblock on a background runspace and posts its result back to the
         WPF UI thread via Dispatcher.
     .DESCRIPTION
-        Used to drive long-running cmdlets (Invoke-Reconnaissance, Invoke-Campaign,
+        Used to drive long-running cmdlets (Invoke-ADAudit, Invoke-Campaign,
         etc.) without freezing the GUI. The Action runs in its own runspace with the
         Guerrilla module imported and any caller-supplied parameters available as
         $args. OnLog (optional) receives Verbose / Information streams; OnComplete

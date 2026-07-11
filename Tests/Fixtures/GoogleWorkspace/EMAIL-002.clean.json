@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All domains have valid DKIM",

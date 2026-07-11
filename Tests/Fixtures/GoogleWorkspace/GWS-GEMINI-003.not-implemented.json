@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-GEMINI-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "not-implemented",
   "expectedStatus": "SKIP",
   "description": "Gemini conversation-history setting not exposed via API",

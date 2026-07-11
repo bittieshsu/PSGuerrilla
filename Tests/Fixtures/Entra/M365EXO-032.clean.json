@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-032",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Anti-phish impersonation protection enabled",

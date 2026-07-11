@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "OAuth token activity not assessed",

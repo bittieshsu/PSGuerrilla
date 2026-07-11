@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Intune device-configuration collection failed; must be Not Assessed, never PASS",

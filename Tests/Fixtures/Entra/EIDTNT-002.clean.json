@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Default user role cannot create apps/groups/tenants",

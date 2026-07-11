@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-006",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "All FSMO roles on a single DC",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "No location-based CA policies",

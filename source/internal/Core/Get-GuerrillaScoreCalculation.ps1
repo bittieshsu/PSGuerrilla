@@ -9,12 +9,12 @@ function Get-GuerrillaScoreCalculation {
         Calculates a weighted composite score from four components:
           - Posture (40%): Audit posture scores from AD + Cloud findings
           - Threats (30%): Inverse normalized threat count, weighted by severity
-          - Coverage (15%): Percentage of theaters actively monitored
+          - Coverage (15%): Percentage of platforms actively monitored
           - Trend (15%): Score delta from previous scan (improving = bonus)
     .PARAMETER AuditFindings
-        Array of audit finding objects (from Fortification/Reconnaissance theaters).
+        Array of audit finding objects (from the AD, Entra, and GWS audits).
     .PARAMETER ScanResults
-        Array of scan result objects from all theaters.
+        Array of scan result objects from all platforms.
     .PARAMETER PreviousScore
         Previous Guerrilla Score for trend calculation. If not provided, trend is neutral.
     .PARAMETER Profile
@@ -64,28 +64,27 @@ function Get-GuerrillaScoreCalculation {
     }
 
     # --- Component 3: Coverage Score (0-100) ---
-    $allTheaters = @('Fortification', 'Reconnaissance', 'Surveillance', 'Watchtower')
-    $activeTheaters = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+    $allPlatforms = @('Active Directory', 'Cloud', 'Surveillance', 'Watchtower')
+    $activePlatforms = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
 
     if ($AuditFindings -and $AuditFindings.Count -gt 0) {
-        # Fortification = AD checks, Reconnaissance = Cloud checks
         $hasAD = @($AuditFindings | Where-Object { $_.CheckId -match '^AD' }).Count -gt 0
         $hasCloud = @($AuditFindings | Where-Object { $_.CheckId -match '^(AUTH|ADMIN|EMAIL|COLLAB|DRIVE|OAUTH|DEVICE|LOG|EID|M365|AZIAM|INTUNE)' }).Count -gt 0
-        if ($hasAD) { $activeTheaters.Add('Fortification') | Out-Null }
-        if ($hasCloud) { $activeTheaters.Add('Reconnaissance') | Out-Null }
+        if ($hasAD) { $activePlatforms.Add('Active Directory') | Out-Null }
+        if ($hasCloud) { $activePlatforms.Add('Cloud') | Out-Null }
     }
 
     if ($ScanResults -and $ScanResults.Count -gt 0) {
         foreach ($result in $ScanResults) {
-            $theater = $result.Theater ?? $result.PSObject.TypeNames[0]
-            if ($theater -match 'Surveillance') { $activeTheaters.Add('Surveillance') | Out-Null }
-            if ($theater -match 'Watchtower') { $activeTheaters.Add('Watchtower') | Out-Null }
-            if ($theater -match 'Wiretap') { $activeTheaters.Add('Wiretap') | Out-Null }
+            $platform = $result.Platform ?? $result.PSObject.TypeNames[0]
+            if ($platform -match 'Surveillance') { $activePlatforms.Add('Surveillance') | Out-Null }
+            if ($platform -match 'Watchtower') { $activePlatforms.Add('Watchtower') | Out-Null }
+            if ($platform -match 'Wiretap') { $activePlatforms.Add('Wiretap') | Out-Null }
         }
     }
 
-    $coverageScore = if ($allTheaters.Count -gt 0) {
-        [int][Math]::Round(100 * ($activeTheaters.Count / $allTheaters.Count), 0)
+    $coverageScore = if ($allPlatforms.Count -gt 0) {
+        [int][Math]::Round(100 * ($activePlatforms.Count / $allPlatforms.Count), 0)
     } else { 0 }
 
     # --- Component 4: Trend Score (0-100) ---
@@ -123,7 +122,7 @@ function Get-GuerrillaScoreCalculation {
             Coverage = [PSCustomObject]@{ Score = $coverageScore; Weight = $weights.coverage; Weighted = [int][Math]::Round($coverageScore * $weights.coverage, 0) }
             Trend    = [PSCustomObject]@{ Score = $trendScore;    Weight = $weights.trend;    Weighted = [int][Math]::Round($trendScore * $weights.trend, 0) }
         }
-        ActiveTheaters = @($activeTheaters)
+        ActivePlatforms = @($activePlatforms)
         PreviousScore  = if ($PreviousScore -ge 0) { $PreviousScore } else { $null }
         Timestamp      = [datetime]::UtcNow
     }

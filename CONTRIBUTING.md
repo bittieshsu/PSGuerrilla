@@ -107,7 +107,7 @@ The shape of a check contribution:
    you could not read.
 
    ```powershell
-   function Test-InfiltrationEIDCA021 {
+   function Test-EIDCA021 {
        [CmdletBinding()]
        param([hashtable]$AuditData, [hashtable]$CheckDefinition)
 
@@ -174,7 +174,7 @@ For rung-4 contributors, the details behind the shapes above.
 ### Where things live
 
 ```
-Public/                 Exported cmdlets (Invoke-Reconnaissance, Invoke-Infiltration, ...)
+Public/                 Exported cmdlets (Invoke-ADAudit, Invoke-EntraAudit, ...)
 Private/
   AD/                   Active Directory collection and checks
   Entra/                Entra ID / Azure / Intune / M365 collectors and checks
@@ -191,10 +191,10 @@ Tests/
 
 ### Conventions
 
-- Public cmdlets use the theater vocabulary (`Invoke-Reconnaissance`,
-  `Invoke-Infiltration`, `Invoke-Fortification`, `Invoke-Campaign`,
+- Public cmdlets use the platform vocabulary (`Invoke-ADAudit`,
+  `Invoke-EntraAudit`, `Invoke-GWSAudit`, `Invoke-Campaign`,
   `Set-Safehouse`, `Register-Patrol`, `Send-Signal`).
-- Check functions are named `Test-<Theater><CheckId>` and are dispatched
+- Check functions are named `Test-<Platform><CheckId>` and are dispatched
   automatically; no registration step.
 - Findings are built with `New-AuditFinding`; do not construct result objects by
   hand.

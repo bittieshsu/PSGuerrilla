@@ -1,6 +1,6 @@
 {
   "checkId": "EIDSCA-PR03",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "fail",
   "expectedStatus": "FAIL",
   "description": "EIDSCA-PR03 non-compliant",

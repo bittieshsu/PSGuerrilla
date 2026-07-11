@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-GEMINI-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "not-implemented",
   "expectedStatus": "SKIP",
   "description": "Gemini Alpha-features setting not exposed via API",

@@ -1,6 +1,6 @@
 {
   "checkId": "LOG-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Alert rules not assessed",

@@ -1,6 +1,6 @@
 {
   "checkId": "AZIAM-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Resource locks deployed",

@@ -38,31 +38,31 @@ $out = & $mod {
     $r = @{}
 
     # ── LOG-004: cloud data sharing (Takeout / data export proxy) ──
-    $r.L004_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'cloud_sharing_options.cloud_data_sharing' = @{ sharingOptions = 'DISABLED' } }) }) 'Test-FortificationLOG004'
-    $r.L004_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'cloud_sharing_options.cloud_data_sharing' = @{ sharingOptions = 'ENABLED' } }) }) 'Test-FortificationLOG004'
-    $r.L004_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'cloud_sharing_options.cloud_data_sharing' = @{ sharingOptions = 'SOMETHING_NEW' } }) }) 'Test-FortificationLOG004'  # unknown enum -> WARN
+    $r.L004_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'cloud_sharing_options.cloud_data_sharing' = @{ sharingOptions = 'DISABLED' } }) }) 'Test-LOG004'
+    $r.L004_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'cloud_sharing_options.cloud_data_sharing' = @{ sharingOptions = 'ENABLED' } }) }) 'Test-LOG004'
+    $r.L004_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'cloud_sharing_options.cloud_data_sharing' = @{ sharingOptions = 'SOMETHING_NEW' } }) }) 'Test-LOG004'  # unknown enum -> WARN
 
     # ── LOG-005: system-defined alert rules (state-bearing value objects) ──
     $r.L005_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.system_defined_alerts' = @(
         @{ displayName = 'Suspicious login'; state = 'ACTIVE' },
-        @{ displayName = 'Government attack';  state = 'INACTIVE' }) }) }) 'Test-FortificationLOG005'  # ≥1 ACTIVE -> PASS
+        @{ displayName = 'Government attack';  state = 'INACTIVE' }) }) }) 'Test-LOG005'  # ≥1 ACTIVE -> PASS
     $r.L005_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.system_defined_alerts' = @(
-        @{ displayName = 'Suspicious login'; state = 'INACTIVE' }) }) }) 'Test-FortificationLOG005'   # none ACTIVE, Medium sev -> WARN
+        @{ displayName = 'Suspicious login'; state = 'INACTIVE' }) }) }) 'Test-LOG005'   # none ACTIVE, Medium sev -> WARN
 
     # ── LOG-005: none ACTIVE on a Critical-severity check -> FAIL ──
     $defCrit = @{ id = 'LOG-005'; name = 'x'; severity = 'Critical'; description = 'd' }
-    $r.L005_critfail = (& 'Test-FortificationLOG005' -AuditData (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.system_defined_alerts' = @(
+    $r.L005_critfail = (& 'Test-LOG005' -AuditData (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.system_defined_alerts' = @(
         @{ displayName = 'Suspicious login'; state = 'INACTIVE' }) }) }) -CheckDefinition $defCrit -OrgUnitPath '/').Status
 
     # ── Unavailable API -> SKIP ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.L004_skip = St $none 'Test-FortificationLOG004'
-    $r.L005_skip = St $none 'Test-FortificationLOG005'
+    $r.L004_skip = St $none 'Test-LOG004'
+    $r.L005_skip = St $none 'Test-LOG005'
 
     # ── Type absent (API available, no policy of this type) -> SKIP ──
     $other = @{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }
-    $r.L004_absent = St $other 'Test-FortificationLOG004'
-    $r.L005_absent = St $other 'Test-FortificationLOG005'
+    $r.L004_absent = St $other 'Test-LOG004'
+    $r.L005_absent = St $other 'Test-LOG005'
 
     $r
 }

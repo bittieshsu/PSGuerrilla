@@ -1,6 +1,6 @@
 {
   "checkId": "M365DEF-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Defender data not assessed",

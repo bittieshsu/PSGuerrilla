@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-016",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "long-lived",
   "expectedStatus": "WARN",
   "description": "Active relationship auto-extends 730 days (>365)",

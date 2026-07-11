@@ -23,7 +23,7 @@ function Get-EntraConditionalAccessData {
 
     # ── Conditional Access Policies ────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting Conditional Access policies'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting Conditional Access policies'
     }
     try {
         $data.Policies = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -36,7 +36,7 @@ function Get-EntraConditionalAccessData {
 
     # ── Named Locations ───────────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting named locations'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting named locations'
     }
     try {
         $data.NamedLocations = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -48,13 +48,13 @@ function Get-EntraConditionalAccessData {
     }
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message "Collected $($data.Policies.Count) CA policies, $($data.NamedLocations.Count) named locations"
+        Write-ProgressLine -Phase ENTRA -Message "Collected $($data.Policies.Count) CA policies, $($data.NamedLocations.Count) named locations"
     }
 
     # ── Live CA what-if attack-scenario simulation (only when a representative user is supplied) ──
     if ($WhatIfUserId) {
         if (-not $Quiet) {
-            Write-ProgressLine -Phase INFILTRATE -Message 'Running Conditional Access what-if attack scenarios'
+            Write-ProgressLine -Phase ENTRA -Message 'Running Conditional Access what-if attack scenarios'
         }
         $wf = [System.Collections.Generic.List[object]]::new()
         foreach ($s in (Get-CAAttackScenario)) {

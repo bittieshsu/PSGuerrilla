@@ -1,6 +1,6 @@
 {
   "checkId": "GTRADE-005",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No custom role carries super-admin-equivalent privileges",

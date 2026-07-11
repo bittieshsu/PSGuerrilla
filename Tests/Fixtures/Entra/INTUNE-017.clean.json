@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-017",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "A security baseline is assigned",

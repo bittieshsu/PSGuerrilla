@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Windows Hello for Business not enabled",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "MFA enforced for all users on all apps",

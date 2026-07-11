@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-037",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Mailbox auditing disabled",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADPATH-001",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A non-privileged principal has GenericAll over the domain root",

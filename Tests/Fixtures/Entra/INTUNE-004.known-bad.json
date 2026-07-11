@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-004",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "No device configuration profiles found",

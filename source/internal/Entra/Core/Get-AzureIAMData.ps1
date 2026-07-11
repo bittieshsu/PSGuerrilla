@@ -25,7 +25,7 @@ function Get-AzureIAMData {
 
     # ── Subscriptions ─────────────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Enumerating Azure subscriptions'
+        Write-ProgressLine -Phase ENTRA -Message 'Enumerating Azure subscriptions'
     }
     try {
         $data.Subscriptions = @(Invoke-AzureRMApi -AccessToken $AccessToken `
@@ -56,7 +56,7 @@ function Get-AzureIAMData {
         $subId = $sub.subscriptionId
         $subName = $sub.displayName
         if (-not $Quiet) {
-            Write-ProgressLine -Phase INFILTRATE -Message "Scanning subscription: $subName"
+            Write-ProgressLine -Phase ENTRA -Message "Scanning subscription: $subName"
         }
 
         # Role Assignments
@@ -138,7 +138,7 @@ function Get-AzureIAMData {
     }
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message "Azure: $($data.Subscriptions.Count) subscriptions, $($data.RoleAssignments.Count) role assignments"
+        Write-ProgressLine -Phase ENTRA -Message "Azure: $($data.Subscriptions.Count) subscriptions, $($data.RoleAssignments.Count) role assignments"
     }
 
     return $data

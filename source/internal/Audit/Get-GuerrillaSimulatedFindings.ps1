@@ -2,7 +2,7 @@
 # https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 
-# Test-mode support. Builds a full set of all-FAIL audit findings for a theater
+# Test-mode support. Builds a full set of all-FAIL audit findings for a platform
 # straight from the shipped check definitions, with no live connection or data
 # collection. Used by the -TestMode switch on the scan cmdlets so an operator can
 # preview a report (and verify branding / themes) without touching a real tenant.
@@ -60,11 +60,11 @@ function Get-GuerrillaSimulatedFindings {
     param(
         [Parameter(Mandatory)]
         [ValidateSet('ActiveDirectory', 'GoogleWorkspace', 'EntraM365')]
-        [string]$Theater
+        [string]$Platform
     )
 
-    # Resolve the check-definition base names that make up each theater's full set.
-    $defNames = switch ($Theater) {
+    # Resolve the check-definition base names that make up each platform's full set.
+    $defNames = switch ($Platform) {
         'GoogleWorkspace' {
             @('AuthenticationChecks', 'EmailSecurityChecks', 'DriveSecurityChecks', 'OAuthSecurityChecks',
               'AdminManagementChecks', 'CollaborationChecks', 'DeviceManagementChecks', 'LoggingAlertingChecks',

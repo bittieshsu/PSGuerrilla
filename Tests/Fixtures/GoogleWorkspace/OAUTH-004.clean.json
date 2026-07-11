@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Only low-risk-scope OAuth apps",

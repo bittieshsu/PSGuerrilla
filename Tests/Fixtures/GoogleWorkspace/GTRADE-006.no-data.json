@@ -1,6 +1,6 @@
 {
   "checkId": "GTRADE-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "OAuth token activity not collected",

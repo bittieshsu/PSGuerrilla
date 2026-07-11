@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-016",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "PasswordHashQuality collection failed",

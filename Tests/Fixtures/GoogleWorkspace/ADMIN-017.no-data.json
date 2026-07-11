@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-017",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "no api",

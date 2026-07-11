@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-016",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Data processing limited to storage region",

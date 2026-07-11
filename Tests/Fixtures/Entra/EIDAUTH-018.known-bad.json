@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-018",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Authenticator does not show app name in notifications",

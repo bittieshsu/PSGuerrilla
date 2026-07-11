@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No world-writable logon scripts",

@@ -102,15 +102,15 @@
     },
     "dashboard": {
       "title": "Security Dashboard",
-      "subtitle": "Unified view across all theaters for {0}",
-      "theaterOverview": "Theater Overview",
-      "fortification": "Fortification",
-      "reconnaissance": "Reconnaissance",
+      "subtitle": "Unified view across all platforms for {0}",
+      "platformOverview": "Platform Overview",
+      "activeDirectory": "Active Directory",
+      "cloud": "Cloud",
       "surveillance": "Surveillance",
       "watchtower": "Watchtower",
       "wiretap": "Wiretap",
       "allFindings": "All Findings",
-      "byTheater": "By Theater",
+      "byPlatform": "By Platform",
       "bySeverity": "By Severity",
       "scoreRing": "Security Score",
       "lastScan": "Last Scan",
@@ -147,9 +147,10 @@
     "generating": "Generating PDF from HTML report..."
   },
 
-  "theaters": {
-    "fortification": "Fortification (AD Hardening)",
-    "reconnaissance": "Reconnaissance (Cloud Audit)",
+  "modules": {
+    "ad": "AD Audit (Active Directory)",
+    "entra": "Entra Audit (Entra ID / M365)",
+    "gws": "GWS Audit (Google Workspace)",
     "surveillance": "Surveillance (Sign-in Monitoring)",
     "watchtower": "Watchtower (AD Change Tracking)",
     "wiretap": "Wiretap (M365 Audit Log)"

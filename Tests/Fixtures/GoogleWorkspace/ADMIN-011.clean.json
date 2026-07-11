@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-011",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Group creation restricted to admins",

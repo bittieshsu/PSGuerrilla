@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-008",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Few users passwordless-capable (<30%)",

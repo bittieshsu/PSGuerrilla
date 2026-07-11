@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Web session duration > 24 hours",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-008",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Domain shared contacts exposed in directory",

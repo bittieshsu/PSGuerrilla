@@ -21,14 +21,14 @@ function New-Fixture {
     param(
         [Parameter(Mandatory)][string]$Family,
         [Parameter(Mandatory)][string]$CheckId,
-        [Parameter(Mandatory)][string]$Theater,
+        [Parameter(Mandatory)][string]$Platform,
         [Parameter(Mandatory)][string]$Scenario,
         [Parameter(Mandatory)][string]$ExpectedStatus,
         [Parameter(Mandatory)][string]$Description,
         [Parameter(Mandatory)][hashtable]$AuditData
     )
     $obj = [ordered]@{
-        checkId = $CheckId; theater = $Theater; scenario = $Scenario
+        checkId = $CheckId; platform = $Platform; scenario = $Scenario
         expectedStatus = $ExpectedStatus; description = $Description; auditData = $AuditData
     }
     $path = Join-Path $root $Family "$CheckId.$Scenario.json"
@@ -36,7 +36,7 @@ function New-Fixture {
     Write-Host "  $Family/$CheckId.$Scenario -> $ExpectedStatus"
 }
 
-$RECON = 'Reconnaissance'; $INFIL = 'Infiltration'; $FORT = 'Fortification'
+$RECON = 'AD'; $INFIL = 'Entra'; $FORT = 'GWS'
 
 # ── AD privileged accounts ───────────────────────────────────────────────────
 New-Fixture AD ADPRIV-002 $RECON clean PASS 'No direct user members in Enterprise Admins' @{ Errors=@{}; PrivilegedAccounts=@{ PrivilegedGroups=@{ 'Enterprise Admins'=@() } } }

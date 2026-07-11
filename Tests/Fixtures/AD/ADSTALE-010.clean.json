@@ -1,6 +1,6 @@
 {
   "checkId": "ADSTALE-010",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No printer objects published",

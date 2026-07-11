@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-041",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Safe Links not enabled for email",

@@ -40,7 +40,7 @@ $root = $PSScriptRoot
 Import-Module (Join-Path $root 'Helpers' 'TestHelpers.psm1') -Force
 Import-Guerrilla
 
-$theaterByFamily = @{ AD = 'Reconnaissance'; Entra = 'Infiltration'; GoogleWorkspace = 'Fortification' }
+$platformByFamily = @{ AD = 'AD'; Entra = 'Entra'; Eidsca = 'Entra'; GoogleWorkspace = 'GWS' }
 
 $cases = Get-GuerrillaFixtureCases
 $sw = [System.Diagnostics.Stopwatch]::StartNew()
@@ -56,7 +56,7 @@ $results = foreach ($c in $cases) {
     [PSCustomObject]@{
         CheckId        = $c.CheckId
         Family         = $c.Family
-        Theater        = $theaterByFamily[$c.Family]
+        Platform       = $platformByFamily[$c.Family]
         Scenario       = $c.Scenario
         Severity       = $c.Definition.severity
         ExpectedStatus = $c.ExpectedStatus
@@ -129,7 +129,7 @@ if ($EmitSummary) {
         $perCheck[$g.Name] = [ordered]@{
             fixtureCount = $g.Count
             allPassed    = (@($g.Group | Where-Object { -not $_.Passed }).Count -eq 0)
-            theater      = $g.Group[0].Theater
+            platform     = $g.Group[0].Platform
             severity     = "$($g.Group[0].Severity)"
             # branchCoverage: 'declared' means the check enumerated its verdict paths and
             # every one is fixture-proven (asserted above). 'observed' means we only know
@@ -145,7 +145,7 @@ if ($EmitSummary) {
     }
 
     $artifact = [ordered]@{
-        schemaVersion      = 1
+        schemaVersion      = 2
         suite              = 'golden-fixtures'
         generatedAt        = (Get-Date).ToUniversalTime().ToString('o')
         moduleVersion      = "$((Import-PowerShellDataFile (Join-Path $root '..' 'source' 'Guerrilla.psd1')).ModuleVersion)"

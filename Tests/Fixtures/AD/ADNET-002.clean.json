@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "LDAP channel binding required (2)",

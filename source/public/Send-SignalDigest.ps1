@@ -83,7 +83,7 @@ function Send-SignalDigest {
     $highTotal = 0
     $mediumTotal = 0
     $lowTotal = 0
-    $theatersActive = [System.Collections.Generic.HashSet[string]]::new()
+    $platformsActive = [System.Collections.Generic.HashSet[string]]::new()
 
     foreach ($file in $stateFiles) {
         try {
@@ -93,7 +93,7 @@ function Send-SignalDigest {
             if ($stateTime -lt $cutoff) { continue }
 
             $totalScans++
-            if ($state.theater) { $theatersActive.Add($state.theater) | Out-Null }
+            if ($state.platform) { $platformsActive.Add($state.platform) | Out-Null }
 
             $criticalTotal += ($state.criticalCount ?? 0)
             $highTotal     += ($state.highCount ?? 0)
@@ -126,7 +126,7 @@ Guerrilla $Period Security Digest
 
 Period: Last $windowHours hours
 Scans completed: $totalScans
-Theaters active: $($theatersActive.Count) ($($theatersActive -join ', '))
+Platforms active: $($platformsActive.Count) ($($platformsActive -join ', '))
 
 Threat Summary:
   CRITICAL: $criticalTotal
@@ -142,7 +142,7 @@ Guerrilla v2.1.0
     $htmlBody = @"
 <html><body style="font-family:Consolas,monospace;background:#1a1a1a;color:#ffd7af;padding:20px;">
 <h2 style="color:#afaf5f;">Guerrilla $Period Digest</h2>
-<p>Period: Last $windowHours hours | Scans: $totalScans | Theaters: $($theatersActive -join ', ')</p>
+<p>Period: Last $windowHours hours | Scans: $totalScans | Platforms: $($platformsActive -join ', ')</p>
 <table style="border-collapse:collapse;margin:10px 0;">
 <tr><td style="color:#af0000;padding:4px 12px;">CRITICAL</td><td style="color:#fff;padding:4px 12px;">$criticalTotal</td></tr>
 <tr><td style="color:#d75f00;padding:4px 12px;">HIGH</td><td style="color:#fff;padding:4px 12px;">$highTotal</td></tr>

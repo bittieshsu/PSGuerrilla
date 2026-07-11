@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-019",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "GroupPolicyObjects failed",

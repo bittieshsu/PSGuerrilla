@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-009",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "App password policy requires manual verification",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRADE-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "TradecraftSignals failed",

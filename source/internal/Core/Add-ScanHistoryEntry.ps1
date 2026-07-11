@@ -2,7 +2,7 @@
 # https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 
-# Append a scan-history entry to a monitoring theater's prior history and return it as a
+# Append a scan-history entry to a monitoring platform's prior history and return it as a
 # proper array. Used by Invoke-Surveillance / Invoke-Wiretap.
 #
 # This exists because the previous inline idiom — `@($state.scanHistory) += @{...}` —
@@ -13,7 +13,7 @@
 function Add-ScanHistoryEntry {
     [CmdletBinding()]
     param(
-        # $state.scanHistory from a loaded theater state: may be an array of entries, a
+        # $state.scanHistory from a loaded platform state: may be an array of entries, a
         # single hashtable (if a 1-element array collapsed on serialization), or $null.
         $ExistingHistory,
 

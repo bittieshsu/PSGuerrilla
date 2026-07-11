@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All configuration profiles are assigned",

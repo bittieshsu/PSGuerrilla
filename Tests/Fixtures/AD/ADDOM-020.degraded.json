@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-020",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "degraded",
   "expectedStatus": "WARN",
   "description": "DSRM logon behavior 0 (cannot fully verify, no PASS path)",

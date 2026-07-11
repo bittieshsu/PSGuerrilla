@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "App approval workflow enabled",

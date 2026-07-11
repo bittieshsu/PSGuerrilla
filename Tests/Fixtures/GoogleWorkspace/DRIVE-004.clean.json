@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Shared Drive creation restricted",

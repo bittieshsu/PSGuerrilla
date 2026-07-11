@@ -1,6 +1,6 @@
 {
   "checkId": "ADKERB-003",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No AS-REP roastable accounts",

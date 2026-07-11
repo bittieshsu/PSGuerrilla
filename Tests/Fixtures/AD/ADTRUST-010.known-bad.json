@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Trust password older than 180 days",

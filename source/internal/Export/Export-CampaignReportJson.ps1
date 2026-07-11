@@ -27,7 +27,7 @@ function Export-CampaignReportJson {
         scanStart     = $Result.ScanStart.ToString('o')
         scanEnd       = $Result.ScanEnd.ToString('o')
         durationSec   = [Math]::Round($Result.Duration.TotalSeconds, 1)
-        theaters      = $Result.Theaters
+        platforms      = $Result.Platforms
         summary       = @{
             overallScore   = $Result.OverallScore
             scoreLabel     = $Result.ScoreLabel
@@ -37,11 +37,11 @@ function Export-CampaignReportJson {
             warnCount      = @($Result.Findings | Where-Object Status -eq 'WARN').Count
             skipCount      = @($Result.Findings | Where-Object Status -in @('SKIP', 'ERROR')).Count
         }
-        theaterScores = @{}
+        platformScores = @{}
         categoryScores = $Result.CategoryScores
         findings      = @($Result.Findings | ForEach-Object {
             @{
-                theater          = $_.Theater ?? ''
+                platform          = $_.Platform ?? ''
                 checkId          = $_.CheckId
                 checkName        = $_.CheckName
                 category         = $_.Category
@@ -69,9 +69,9 @@ function Export-CampaignReportJson {
         })
     }
 
-    # Build theater scores
-    foreach ($ts in $Result.TheaterScores.GetEnumerator()) {
-        $output.theaterScores[$ts.Key] = @{
+    # Build platform scores
+    foreach ($ts in $Result.PlatformScores.GetEnumerator()) {
+        $output.platformScores[$ts.Key] = @{
             score        = $ts.Value.Score
             scoreLabel   = $ts.Value.ScoreLabel
             findingCount = $ts.Value.FindingCount

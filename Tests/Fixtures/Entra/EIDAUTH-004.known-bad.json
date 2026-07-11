@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-004",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A user has only weak (SMS/phone) MFA",

@@ -3,8 +3,8 @@
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Invoke-Lookout REAL-state persistence (regression for the v2.12.0 ValidateSet bug where
-# theater 'workspace' was rejected by Get/Save-TheaterState, so the baseline never persisted
-# and every run re-baselined). Uses the REAL state helpers (only Invoke-Fortification is mocked)
+# platform 'workspace' was rejected by Get/Save-PlatformState, so the baseline never persisted
+# and every run re-baselined). Uses the REAL state helpers (only Invoke-GWSAudit is mocked)
 # with an isolated temp ConfigPath so state writes go to a throwaway dir. Mirrors the MON-4
 # "survives repeated runs" check. Run: pwsh -File Tests/verify-lookout-state.ps1
 
@@ -25,9 +25,9 @@ $stateFile = Join-Path $tmp 'workspace-state.json'
 try {
     $out = & $mod {
         param($cfg, $stateFile)
-        # Mock ONLY Fortification — use the REAL Get/Save-TheaterState so the ValidateSet is exercised.
+        # Mock ONLY GWS — use the REAL Get/Save-PlatformState so the ValidateSet is exercised.
         $script:ff = @()
-        function Invoke-Fortification {
+        function Invoke-GWSAudit {
             param($ServiceAccountKeyPath, $AdminEmail, $TargetOU, $IncludeChildOUs, $OutputDirectory,
                   $NoReports, $NoDelta, $Quiet, $ConfigPath, $ConfigFile, $VaultName, $ReportStyle, $TestMode, $Quick)
             $sc = if (@($script:ff).Count -gt 0) { (Get-AuditPostureScore -Findings $script:ff).OverallScore } else { 0 }
@@ -39,9 +39,9 @@ try {
 
         # Direct ValidateSet exercise — these threw before the fix.
         $r.SaveOk = $true
-        try { Save-TheaterState -Theater 'workspace' -State @{ schemaVersion = 1; theater = 'workspace'; findings = @(); scanHistory = @() } -ConfigPath $cfg } catch { $r.SaveOk = $false; $r.SaveErr = "$_" }
+        try { Save-PlatformState -Platform 'workspace' -State @{ schemaVersion = 1; platform = 'workspace'; findings = @(); scanHistory = @() } -ConfigPath $cfg } catch { $r.SaveOk = $false; $r.SaveErr = "$_" }
         $r.GetOk = $true
-        try { Get-TheaterState -Theater 'workspace' -ConfigPath $cfg | Out-Null } catch { $r.GetOk = $false }
+        try { Get-PlatformState -Platform 'workspace' -ConfigPath $cfg | Out-Null } catch { $r.GetOk = $false }
 
         # Reset for the two-run scenario.
         Remove-Item $stateFile -ErrorAction SilentlyContinue
@@ -58,8 +58,8 @@ try {
         $r
     } $cfg $stateFile
 
-    Add-R 'Save-TheaterState accepts ''workspace''' ($out.SaveOk) ($out.SaveErr)
-    Add-R 'Get-TheaterState accepts ''workspace''' ($out.GetOk) ''
+    Add-R 'Save-PlatformState accepts ''workspace''' ($out.SaveOk) ($out.SaveErr)
+    Add-R 'Get-PlatformState accepts ''workspace''' ($out.GetOk) ''
     Add-R 'Run1 establishes baseline'              ($out.Run1Baseline -eq $true) ''
     Add-R 'Baseline persisted to workspace-state.json' ($out.StatePersisted) ''
     Add-R 'Run2 LOADS baseline (not re-baselined)' ($out.Run2Baseline -eq $false) ("got=$($out.Run2Baseline)")

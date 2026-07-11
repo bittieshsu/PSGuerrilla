@@ -40,22 +40,22 @@ $out = & $mod {
     # ── EMAIL-018: Content compliance rules present? ──
     # PASS: at least one configured content-compliance rule.
     $r.E018_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.content_compliance' = @{ contentComplianceRules = @(
-        [PSCustomObject]@{ name = 'rule1' }, [PSCustomObject]@{ name = 'rule2' }) } }) }) 'Test-FortificationEMAIL018'
+        [PSCustomObject]@{ name = 'rule1' }, [PSCustomObject]@{ name = 'rule2' }) } }) }) 'Test-EMAIL018'
     # WARN: policy present but zero rules configured.
-    $r.E018_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.content_compliance' = @{ contentComplianceRules = @() } }) }) 'Test-FortificationEMAIL018'
+    $r.E018_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.content_compliance' = @{ contentComplianceRules = @() } }) }) 'Test-EMAIL018'
 
     # ── EMAIL-019: Active Gmail DLP rule present? ──
     # PASS: an ACTIVE rule whose action has a gmailAction.
-    $r.E019_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @{ state = 'ACTIVE'; action = [PSCustomObject]@{ gmailAction = [PSCustomObject]@{ type = 'BLOCK' } } } }) }) 'Test-FortificationEMAIL019'
+    $r.E019_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @{ state = 'ACTIVE'; action = [PSCustomObject]@{ gmailAction = [PSCustomObject]@{ type = 'BLOCK' } } } }) }) 'Test-EMAIL019'
     # WARN: no DLP rules with a Gmail action (here an ACTIVE drive-only rule -> not Gmail-scoped).
-    $r.E019_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @{ state = 'ACTIVE'; action = [PSCustomObject]@{ driveAction = [PSCustomObject]@{ type = 'WARN' } } } }) }) 'Test-FortificationEMAIL019'
+    $r.E019_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @{ state = 'ACTIVE'; action = [PSCustomObject]@{ driveAction = [PSCustomObject]@{ type = 'WARN' } } } }) }) 'Test-EMAIL019'
     # INACTIVE Gmail rule -> WARN (anchored state; 'INACTIVE' must not count as active).
-    $r.E019_inactive = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @{ state = 'INACTIVE'; action = [PSCustomObject]@{ gmailAction = [PSCustomObject]@{ type = 'BLOCK' } } } }) }) 'Test-FortificationEMAIL019'
+    $r.E019_inactive = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @{ state = 'INACTIVE'; action = [PSCustomObject]@{ gmailAction = [PSCustomObject]@{ type = 'BLOCK' } } } }) }) 'Test-EMAIL019'
 
     # ── Unavailable API -> SKIP ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.E018_skip = St $none 'Test-FortificationEMAIL018'
-    $r.E019_skip = St $none 'Test-FortificationEMAIL019'
+    $r.E018_skip = St $none 'Test-EMAIL018'
+    $r.E019_skip = St $none 'Test-EMAIL019'
 
     $r
 }

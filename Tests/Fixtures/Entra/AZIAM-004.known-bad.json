@@ -1,6 +1,6 @@
 {
   "checkId": "AZIAM-004",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Key Vault lacks RBAC, soft-delete and purge protection",

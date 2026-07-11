@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "DMARC valid with an enforcing policy (reject)",

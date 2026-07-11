@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-009",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Six Drive-scope OAuth apps (6-10)",

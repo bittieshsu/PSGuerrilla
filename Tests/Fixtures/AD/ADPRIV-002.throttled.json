@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "PrivilegedMembers collection failed",

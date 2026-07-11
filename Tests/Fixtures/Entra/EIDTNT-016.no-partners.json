@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-016",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-partners",
   "expectedStatus": "PASS",
   "description": "No delegated admin relationships to review",

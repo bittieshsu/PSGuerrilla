@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-022",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Lockout disabled (threshold 0)",

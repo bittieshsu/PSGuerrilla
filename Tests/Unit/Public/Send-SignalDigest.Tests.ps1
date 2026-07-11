@@ -115,7 +115,7 @@ Describe 'Send-SignalDigest' {
 
             # Create state files
             @{
-                theater       = 'Surveillance'
+                platform       = 'Surveillance'
                 timestamp     = [datetime]::UtcNow.AddHours(-2).ToString('o')
                 criticalCount = 1
                 highCount     = 2
@@ -124,7 +124,7 @@ Describe 'Send-SignalDigest' {
             } | ConvertTo-Json | Set-Content -Path (Join-Path $dataDir 'surveillance.state.json')
 
             @{
-                theater       = 'Watchtower'
+                platform       = 'Watchtower'
                 timestamp     = [datetime]::UtcNow.AddHours(-1).ToString('o')
                 criticalCount = 0
                 highCount     = 1
@@ -203,7 +203,7 @@ Describe 'Send-SignalDigest' {
 
             # Current state has 8
             @{
-                theater = 'Surveillance'
+                platform = 'Surveillance'
                 timestamp = [datetime]::UtcNow.AddHours(-1).ToString('o')
                 criticalCount = 2; highCount = 3; mediumCount = 2; lowCount = 1
             } | ConvertTo-Json | Set-Content -Path (Join-Path $dataDir 'test.state.json')

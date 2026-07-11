@@ -49,19 +49,19 @@ $out = & $mod {
     $r.Unavailable = ($null -eq (Resolve-GooglePolicyValue -Policies $null -Type 'groups_for_business.service_status' -Field 'serviceState'))
 
     # ── ADMIN-012: Groups for Business service status ──
-    $r.A012_pass    = St (@{ CloudIdentityPolicies = (New-Pol @{ 'groups_for_business.service_status' = @{ serviceState = 'DISABLED' } }) }) 'Test-FortificationADMIN012'  # disabled -> PASS
-    $r.A012_warn    = St (@{ CloudIdentityPolicies = (New-Pol @{ 'groups_for_business.service_status' = @{ serviceState = 'ENABLED' } }) }) 'Test-FortificationADMIN012'   # enabled -> WARN (granular not in API)
-    $r.A012_weak    = St (@{ CloudIdentityPolicies = (New-Pol @{ 'groups_for_business.service_status' = @(@{ serviceState = 'DISABLED' }, @{ serviceState = 'ENABLED' }) }) }) 'Test-FortificationADMIN012'  # weakest (one enabled) -> WARN
-    $r.A012_unknown = St (@{ CloudIdentityPolicies = (New-Pol @{ 'groups_for_business.service_status' = @{ serviceState = 'SOMETHING_NEW' } }) }) 'Test-FortificationADMIN012'  # unknown enum -> WARN, never PASS
-    $r.A012_absent  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }) 'Test-FortificationADMIN012'  # type absent -> SKIP
-    $r.A012_skip    = St (@{ CloudIdentityPolicies = $null }) 'Test-FortificationADMIN012'  # API unavailable -> SKIP
+    $r.A012_pass    = St (@{ CloudIdentityPolicies = (New-Pol @{ 'groups_for_business.service_status' = @{ serviceState = 'DISABLED' } }) }) 'Test-ADMIN012'  # disabled -> PASS
+    $r.A012_warn    = St (@{ CloudIdentityPolicies = (New-Pol @{ 'groups_for_business.service_status' = @{ serviceState = 'ENABLED' } }) }) 'Test-ADMIN012'   # enabled -> WARN (granular not in API)
+    $r.A012_weak    = St (@{ CloudIdentityPolicies = (New-Pol @{ 'groups_for_business.service_status' = @(@{ serviceState = 'DISABLED' }, @{ serviceState = 'ENABLED' }) }) }) 'Test-ADMIN012'  # weakest (one enabled) -> WARN
+    $r.A012_unknown = St (@{ CloudIdentityPolicies = (New-Pol @{ 'groups_for_business.service_status' = @{ serviceState = 'SOMETHING_NEW' } }) }) 'Test-ADMIN012'  # unknown enum -> WARN, never PASS
+    $r.A012_absent  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }) 'Test-ADMIN012'  # type absent -> SKIP
+    $r.A012_skip    = St (@{ CloudIdentityPolicies = $null }) 'Test-ADMIN012'  # API unavailable -> SKIP
 
     # ── Placeholders intentionally LEFT manual (no policy type in this category's bindings) ──
     # These take no AuditData and must stay WARN manual-verify so the check count is unchanged.
     $empty = @{}
-    $r.A008 = St $empty 'Test-FortificationADMIN008'
-    $r.A009 = St $empty 'Test-FortificationADMIN009'
-    $r.A011 = St $empty 'Test-FortificationADMIN011'
+    $r.A008 = St $empty 'Test-ADMIN008'
+    $r.A009 = St $empty 'Test-ADMIN009'
+    $r.A011 = St $empty 'Test-ADMIN011'
 
     $r
 }

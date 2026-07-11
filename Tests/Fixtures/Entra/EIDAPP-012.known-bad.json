@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-012",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Unrestricted legacy user app-consent enabled",

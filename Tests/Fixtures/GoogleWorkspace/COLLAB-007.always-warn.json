@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-007",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Chat app installation settings require manual review",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-015",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "terminated-only",
   "expectedStatus": "PASS",
   "description": "A privileged relationship exists but is terminated, not active",

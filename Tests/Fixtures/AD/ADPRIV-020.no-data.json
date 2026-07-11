@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-020",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "AdminSDHolder ACL data not available (object-only PASS/FAIL not JSON-representable)",

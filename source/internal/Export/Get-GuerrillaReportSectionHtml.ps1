@@ -101,7 +101,7 @@ function Get-GuerrillaAttackChainData {
 
 # Attack Paths to Tier-0 section, rendered from the ADPATH-001/002 findings' chain detail.
 # -OmitIfAbsent returns '' when there are no attack-path findings at all (e.g. a GWS-only report or
-# a multi-theater report with no AD theater); otherwise it emits a coverage note when none are found.
+# a multi-platform report with no AD platform); otherwise it emits a coverage note when none are found.
 function Get-GuerrillaAttackPathSectionHtml {
     [CmdletBinding()]
     param(
@@ -267,7 +267,7 @@ function Get-GuerrillaCartographyHtml {
 
 # Indicators of Exposure — a Purple-Knight-style ranked view of the estate's actual exposures, derived
 # from the FAIL/WARN findings: each is a named, severity-scored indicator with its blast radius (affected
-# count). Theme-var styled; returns '' when there are no open exposures. Theater-agnostic.
+# count). Theme-var styled; returns '' when there are no open exposures. Platform-agnostic.
 function Get-GuerrillaIndicatorsOfExposureHtml {
     [CmdletBinding()]
     param(

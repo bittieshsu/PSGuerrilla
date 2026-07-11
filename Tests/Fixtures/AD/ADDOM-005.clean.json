@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All DCs run supported OS",

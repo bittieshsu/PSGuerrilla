@@ -49,7 +49,7 @@ $res = & $mod {
     $a = Get-ADAttackPath -AuditData $AuditData
     $defs = Get-AuditCategoryDefinitions -Category 'ADAttackPathChecks'
     $check = $defs.checks | Where-Object id -eq 'ADPATH-001'
-    $finding = Test-ReconADPATH001 -AuditData $AuditData -CheckDefinition $check
+    $finding = Test-ADPATH001 -AuditData $AuditData -CheckDefinition $check
     [PSCustomObject]@{ Paths = $a.Paths; Finding = $finding }
 } $audit
 

@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRADE-001",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "SYSVOL readable, no cpassword hits",

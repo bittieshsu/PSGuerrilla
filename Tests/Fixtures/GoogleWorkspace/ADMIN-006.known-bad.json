@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "High stale-login rate (>20%)",

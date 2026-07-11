@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-024",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No WMI filters defined",

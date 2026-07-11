@@ -1,6 +1,6 @@
 {
   "checkId": "EIDSCA-CP03",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "EIDSCA-CP03 not collected",

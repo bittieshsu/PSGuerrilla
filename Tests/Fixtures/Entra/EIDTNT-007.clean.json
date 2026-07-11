@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-007",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "security defaults are enabled",

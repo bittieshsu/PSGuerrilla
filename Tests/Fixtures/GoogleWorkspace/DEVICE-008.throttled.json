@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-008",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Chrome policy not assessed",

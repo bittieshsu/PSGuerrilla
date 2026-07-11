@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-015",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All domains have valid SPF",

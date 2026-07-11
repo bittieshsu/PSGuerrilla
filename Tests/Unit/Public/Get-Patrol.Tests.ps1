@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-#  PSGUERRILLA — Security Reconnaissance & Continuous Monitoring
+#  GUERRILLA — Security Assessment & Continuous Monitoring
 # ═══════════════════════════════════════════════════════════════════════════════
 #  Written by Jim Tyler, Microsoft MVP
 #  Author of "PowerShell for Systems Engineers"
@@ -42,7 +42,7 @@ Describe 'Get-Patrol' {
                 [PSCustomObject]@{
                     TaskName    = 'Guerrilla-Patrol'
                     State       = 'Ready'
-                    Description = 'Guerrilla automated reconnaissance patrol'
+                    Description = 'Guerrilla automated audit patrol'
                     Actions     = @([PSCustomObject]@{ Execute = 'pwsh.exe'; Arguments = '-Command ...' })
                     Triggers    = @($trigger)
                 }

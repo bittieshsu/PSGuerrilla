@@ -43,7 +43,7 @@ carries only what the run observed.
   "runId": "<opaque id, e.g. the timestamp>",
   "scope": {
     // Non-sensitive identifiers only. A tenant hash, not a tenant name.
-    "theaters": ["Reconnaissance", "Infiltration", "Fortification"],
+    "platforms": ["AD", "Entra", "GWS"],
     "targetHash": "<sha256 of the tenant/domain identifier>"
   },
   "results": [
@@ -51,7 +51,7 @@ carries only what the run observed.
       "checkId": "EIDCA-003",
       "verdict": "FAIL",            // PASS | FAIL | WARN | "Not Assessed"
       "severity": "High",
-      "theater": "Infiltration"
+      "platform": "Entra"
     }
     // ... one row per check that ran
   ],
@@ -86,7 +86,7 @@ a long-failing control cannot generate noise.
     {
       "checkId": "EIDCA-003",
       "severity": "High",
-      "theater": "Infiltration",
+      "platform": "Entra",
       "from": "PASS",
       "to": "FAIL",
       "kind": "newly-failing"

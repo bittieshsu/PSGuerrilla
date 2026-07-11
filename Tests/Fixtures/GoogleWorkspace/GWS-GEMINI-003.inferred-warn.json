@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-GEMINI-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "inferred-warn",
   "expectedStatus": "WARN",
   "description": "Conversation history inferred DISABLED",

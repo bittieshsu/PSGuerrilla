@@ -1,6 +1,6 @@
 {
   "checkId": "GTRADE-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "delegation grants exist and hold only read-only scopes",

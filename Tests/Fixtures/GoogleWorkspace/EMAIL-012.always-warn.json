@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-012",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Spam/phishing filters require manual verification",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "B2B collaboration blocked by default (settings under .default, the real Graph shape)",

@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "ASR rules policy deployed",

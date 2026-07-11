@@ -1,6 +1,6 @@
 {
   "checkId": "EIDGOV-004",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "external-open",
   "expectedStatus": "FAIL",
   "description": "External without approval",

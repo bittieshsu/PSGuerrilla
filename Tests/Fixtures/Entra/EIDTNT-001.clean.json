@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Tenant organization config present",

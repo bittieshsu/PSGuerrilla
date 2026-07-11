@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-016",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No privileged accounts with weak/known passwords",

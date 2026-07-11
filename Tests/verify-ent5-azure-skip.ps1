@@ -21,7 +21,7 @@ function Run-AZIAM004($iam) {
         param($IamData)
         $defs = Get-AuditCategoryDefinitions -Category 'AzureIAMChecks'
         $check = $defs.checks | Where-Object id -eq 'AZIAM-004'
-        Test-InfiltrationAZIAM004 -AuditData @{ AzureIAM = $IamData } -CheckDefinition $check
+        Test-AZIAM004 -AuditData @{ AzureIAM = $IamData } -CheckDefinition $check
     } $iam
 }
 

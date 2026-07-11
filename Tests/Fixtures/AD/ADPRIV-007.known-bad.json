@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Print Operators group has a member",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRADE-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Key Admins / Enterprise Key Admins empty",

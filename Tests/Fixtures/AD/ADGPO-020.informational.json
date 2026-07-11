@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-020",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "informational",
   "expectedStatus": "WARN",
   "description": "PowerShell-policy GPO presence (informational)",

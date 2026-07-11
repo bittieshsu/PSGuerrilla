@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-009",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Chrome OS device inventory (informational)",

@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "20% 2SV enrollment (<80%)",

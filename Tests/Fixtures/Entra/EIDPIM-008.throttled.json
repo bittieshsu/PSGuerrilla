@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-008",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Privileged user details not assessed",

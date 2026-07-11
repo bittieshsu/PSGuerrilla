@@ -1,6 +1,6 @@
 {
   "checkId": "ADTIER-006",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "PrivilegedMembers failed",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADLOG-003",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "PowerShell Module Logging enabled (1)",

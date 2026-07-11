@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-012",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Two+ break-glass Global Admins by naming pattern",

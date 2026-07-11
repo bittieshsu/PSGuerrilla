@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-011",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Logon scripts not assessed",

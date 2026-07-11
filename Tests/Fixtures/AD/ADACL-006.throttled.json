@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-006",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "ObjectACLs failed",

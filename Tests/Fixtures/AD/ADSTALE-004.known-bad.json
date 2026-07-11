@@ -1,6 +1,6 @@
 {
   "checkId": "ADSTALE-004",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "An enabled account has an expired password",

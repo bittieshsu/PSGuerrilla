@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "FIDO2 security key registrations inventoried",

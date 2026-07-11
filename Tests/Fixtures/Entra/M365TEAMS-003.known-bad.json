@@ -1,6 +1,6 @@
 {
   "checkId": "M365TEAMS-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Everyone auto-admitted to meetings",

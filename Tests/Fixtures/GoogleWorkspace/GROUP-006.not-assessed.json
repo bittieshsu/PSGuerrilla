@@ -1,6 +1,6 @@
 {
   "checkId": "GROUP-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "not-assessed",
   "expectedStatus": "SKIP",
   "description": "api fail",

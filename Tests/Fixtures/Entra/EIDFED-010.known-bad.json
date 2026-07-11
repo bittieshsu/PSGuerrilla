@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A federated domain present (verify AD FS extranet lockout)",

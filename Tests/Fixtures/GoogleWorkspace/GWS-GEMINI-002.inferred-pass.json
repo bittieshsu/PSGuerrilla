@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-GEMINI-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "inferred-pass",
   "expectedStatus": "PASS",
   "description": "Alpha features inferred OFF from audit log",

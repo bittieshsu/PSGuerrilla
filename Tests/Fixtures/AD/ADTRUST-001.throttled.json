@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-001",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Trust data not collected",

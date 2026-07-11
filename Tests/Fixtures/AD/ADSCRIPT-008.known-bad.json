@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Logon script references external resources",

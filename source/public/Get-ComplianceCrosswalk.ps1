@@ -24,7 +24,7 @@ function Get-ComplianceCrosswalk {
         Get-ComplianceCrosswalk -FailOnly
         Returns only failing checks mapped to compliance frameworks.
     .EXAMPLE
-        $findings = Invoke-Reconnaissance -PassThru; Get-ComplianceCrosswalk -Findings $findings -Framework COPPA
+        $findings = Invoke-ADAudit -PassThru; Get-ComplianceCrosswalk -Findings $findings -Framework COPPA
         Maps specific findings to COPPA requirements.
     #>
     [CmdletBinding()]

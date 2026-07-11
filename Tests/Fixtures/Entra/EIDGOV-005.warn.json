@@ -1,6 +1,6 @@
 {
   "checkId": "EIDGOV-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "warn",
   "expectedStatus": "WARN",
   "description": "An externally-visible catalog",

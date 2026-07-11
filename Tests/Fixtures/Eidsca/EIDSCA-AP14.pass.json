@@ -1,6 +1,6 @@
 {
   "checkId": "EIDSCA-AP14",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "pass",
   "expectedStatus": "PASS",
   "description": "EIDSCA-AP14 compliant",

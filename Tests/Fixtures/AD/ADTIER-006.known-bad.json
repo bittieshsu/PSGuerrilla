@@ -1,6 +1,6 @@
 {
   "checkId": "ADTIER-006",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A Tier-0 admin is not in a dedicated admin OU",

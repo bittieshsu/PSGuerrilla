@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Service principals unavailable",

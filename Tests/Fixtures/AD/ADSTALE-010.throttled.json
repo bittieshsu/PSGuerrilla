@@ -1,6 +1,6 @@
 {
   "checkId": "ADSTALE-010",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Stale objects not collected",

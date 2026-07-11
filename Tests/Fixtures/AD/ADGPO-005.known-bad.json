@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-005",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A \"- Copy\" duplicate of a base GPO exists",

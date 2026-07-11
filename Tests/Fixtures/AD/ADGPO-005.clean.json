@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-005",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No duplicate-named GPOs",

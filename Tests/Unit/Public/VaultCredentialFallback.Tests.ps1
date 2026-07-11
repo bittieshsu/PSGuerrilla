@@ -8,7 +8,7 @@ BeforeAll {
 
 Describe 'Vault credential fallback' {
 
-    Context 'Invoke-Fortification (Google Workspace)' {
+    Context 'Invoke-GWSAudit (Google Workspace)' {
         It 'resolves the service account + admin email from the vault default keys' {
             InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret {
@@ -18,7 +18,7 @@ Describe 'Vault credential fallback' {
                         default                        { $null }
                     }
                 }
-                Mock Get-FortificationScopes { @('scope1') }
+                Mock Get-GWSScopes { @('scope1') }
                 Mock Write-OperationHeader {}
                 Mock Write-ProgressLine {}
                 # First real call after credential validation — throwing here proves
@@ -26,7 +26,7 @@ Describe 'Vault credential fallback' {
                 Mock Get-GoogleAccessToken { throw 'SENTINEL_AUTH_REACHED' }
 
                 $missing = Join-Path ([IO.Path]::GetTempPath()) "psg-noexist-$([guid]::NewGuid()).json"
-                { Invoke-Fortification -Quiet -ConfigPath $missing } | Should -Throw '*SENTINEL_AUTH_REACHED*'
+                { Invoke-GWSAudit -Quiet -ConfigPath $missing } | Should -Throw '*SENTINEL_AUTH_REACHED*'
                 Should -Invoke Get-SafehouseSecret -ParameterFilter { $VaultKey -eq 'GUERRILLA_GWS_SA' }
             }
         }
@@ -37,26 +37,26 @@ Describe 'Vault credential fallback' {
                 Mock Write-OperationHeader {}
                 Mock Write-ProgressLine {}
                 $missing = Join-Path ([IO.Path]::GetTempPath()) "psg-noexist-$([guid]::NewGuid()).json"
-                { Invoke-Fortification -Quiet -ConfigPath $missing } | Should -Throw '*ServiceAccountKeyPath is required*'
+                { Invoke-GWSAudit -Quiet -ConfigPath $missing } | Should -Throw '*ServiceAccountKeyPath is required*'
             }
         }
 
         It 'does not consult the vault when ServiceAccountKeyPath is passed explicitly' {
             InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret { $null }
-                Mock Get-FortificationScopes { @('scope1') }
+                Mock Get-GWSScopes { @('scope1') }
                 Mock Write-OperationHeader {}
                 Mock Write-ProgressLine {}
                 Mock Get-GoogleAccessToken { throw 'SENTINEL_AUTH_REACHED' }
                 $missing = Join-Path ([IO.Path]::GetTempPath()) "psg-noexist-$([guid]::NewGuid()).json"
-                { Invoke-Fortification -ServiceAccountKeyPath 'C:\k.json' -AdminEmail 'a@b.com' -Quiet -ConfigPath $missing } |
+                { Invoke-GWSAudit -ServiceAccountKeyPath 'C:\k.json' -AdminEmail 'a@b.com' -Quiet -ConfigPath $missing } |
                     Should -Throw '*SENTINEL_AUTH_REACHED*'
                 Should -Invoke Get-SafehouseSecret -Times 0
             }
         }
     }
 
-    Context 'Invoke-Infiltration (Entra / Azure / M365)' {
+    Context 'Invoke-EntraAudit (Entra / Azure / M365)' {
         It 'resolves tenant/client/secret from the vault default keys' {
             InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret {
@@ -72,7 +72,7 @@ Describe 'Vault credential fallback' {
                 Mock Get-GraphAccessToken { throw 'SENTINEL_GRAPH_REACHED' }
 
                 $missing = Join-Path ([IO.Path]::GetTempPath()) "psg-noexist-$([guid]::NewGuid()).json"
-                { Invoke-Infiltration -Quiet -ConfigPath $missing } | Should -Throw '*SENTINEL_GRAPH_REACHED*'
+                { Invoke-EntraAudit -Quiet -ConfigPath $missing } | Should -Throw '*SENTINEL_GRAPH_REACHED*'
                 Should -Invoke Get-SafehouseSecret -ParameterFilter { $VaultKey -eq 'GUERRILLA_GRAPH_TENANT' }
             }
         }
@@ -83,13 +83,13 @@ Describe 'Vault credential fallback' {
                 Mock Write-OperationHeader {}
                 Mock Write-ProgressLine {}
                 $missing = Join-Path ([IO.Path]::GetTempPath()) "psg-noexist-$([guid]::NewGuid()).json"
-                { Invoke-Infiltration -Quiet -ConfigPath $missing } | Should -Throw '*TenantId is required*'
+                { Invoke-EntraAudit -Quiet -ConfigPath $missing } | Should -Throw '*TenantId is required*'
             }
         }
     }
 
-    Context 'Invoke-Campaign (all theaters)' {
-        It 'feeds vault-resolved creds into the Workspace and Cloud theaters' {
+    Context 'Invoke-Campaign (all platforms)' {
+        It 'feeds vault-resolved creds into the Workspace and Cloud platforms' {
             InModuleScope Guerrilla {
                 Mock Get-SafehouseSecret {
                     switch ($VaultKey) {
@@ -102,10 +102,10 @@ Describe 'Vault credential fallback' {
                     }
                 }
                 $finding = [pscustomobject]@{ CheckId = 'T-1'; Severity = 'Low'; Status = 'PASS'; Category = 'Test' }
-                Mock Invoke-Fortification { [pscustomobject]@{ Findings = @($finding); OverallScore = 50 } }
-                Mock Invoke-Infiltration { [pscustomobject]@{ Findings = @($finding); OverallScore = 50 } }
+                Mock Invoke-GWSAudit { [pscustomobject]@{ Findings = @($finding); OverallScore = 50 } }
+                Mock Invoke-EntraAudit { [pscustomobject]@{ Findings = @($finding); OverallScore = 50 } }
                 Mock Get-AuditPostureScore { [pscustomobject]@{ OverallScore = 50; CategoryScores = @{} } }
-                Mock Get-FortificationScoreLabel { 'CONTESTED GROUND' }
+                Mock Get-AuditScoreLabel { 'CONTESTED GROUND' }
                 Mock Write-OperationHeader {}
                 Mock Write-ProgressLine {}
                 Mock Write-CampaignReport {}
@@ -114,12 +114,12 @@ Describe 'Vault credential fallback' {
                 Mock Export-CampaignReportJson {}
 
                 $missing = Join-Path ([IO.Path]::GetTempPath()) "psg-noexist-$([guid]::NewGuid()).json"
-                Invoke-Campaign -Theaters Workspace, Cloud -Quiet -ConfigPath $missing | Out-Null
+                Invoke-Campaign -Platforms Workspace, Cloud -Quiet -ConfigPath $missing | Out-Null
 
-                Should -Invoke Invoke-Fortification -Times 1 -ParameterFilter {
+                Should -Invoke Invoke-GWSAudit -Times 1 -ParameterFilter {
                     $ServiceAccountKeyPath -and $AdminEmail -eq 'admin@test.com'
                 }
-                Should -Invoke Invoke-Infiltration -Times 1 -ParameterFilter {
+                Should -Invoke Invoke-EntraAudit -Times 1 -ParameterFilter {
                     $TenantId -eq 'tenant-guid' -and $ClientId -eq 'client-guid'
                 }
             }

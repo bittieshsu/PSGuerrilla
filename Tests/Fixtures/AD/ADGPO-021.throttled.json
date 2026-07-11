@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-021",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "GroupPolicyObjects failed",

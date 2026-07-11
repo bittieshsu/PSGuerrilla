@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-015",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Support access restricted to U.S. Google staff",

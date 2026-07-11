@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Authenticated Users hold WriteOwner on a template",

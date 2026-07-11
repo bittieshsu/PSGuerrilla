@@ -39,24 +39,24 @@ $out = & $mod {
     $none = @{ CloudIdentityPolicies = $null }
 
     # ── AUTH-014: 2SV enrollment allowed (true=GOOD; weakest-OU-wins) ──
-    $r.A014_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_enrollment' = @{ allowEnrollment = $true } }) }) 'Test-FortificationAUTH014'
-    $r.A014_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_enrollment' = @(@{ allowEnrollment = $true }, @{ allowEnrollment = $false }) }) }) 'Test-FortificationAUTH014'
-    $r.A014_skip = St $none 'Test-FortificationAUTH014'
+    $r.A014_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_enrollment' = @{ allowEnrollment = $true } }) }) 'Test-AUTH014'
+    $r.A014_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_enrollment' = @(@{ allowEnrollment = $true }, @{ allowEnrollment = $false }) }) }) 'Test-AUTH014'
+    $r.A014_skip = St $none 'Test-AUTH014'
 
     # ── AUTH-015: 2SV enrollment grace period (longest OU; <=168h PASS) ──
-    $r.A015_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_grace_period' = @{ enrollmentGracePeriod = '604800s' } }) }) 'Test-FortificationAUTH015'   # 7d -> PASS
-    $r.A015_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_grace_period' = @{ enrollmentGracePeriod = '1209600s' } }) }) 'Test-FortificationAUTH015'  # 14d -> WARN
-    $r.A015_skip = St $none 'Test-FortificationAUTH015'
+    $r.A015_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_grace_period' = @{ enrollmentGracePeriod = '604800s' } }) }) 'Test-AUTH015'   # 7d -> PASS
+    $r.A015_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_grace_period' = @{ enrollmentGracePeriod = '1209600s' } }) }) 'Test-AUTH015'  # 14d -> WARN
+    $r.A015_skip = St $none 'Test-AUTH015'
 
     # ── AUTH-016: advanced protection self-enrollment (true=GOOD; weakest-OU-wins) ──
-    $r.A016_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.advanced_protection_program' = @{ enableAdvancedProtectionSelfEnrollment = $true } }) }) 'Test-FortificationAUTH016'
-    $r.A016_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.advanced_protection_program' = @{ enableAdvancedProtectionSelfEnrollment = $false } }) }) 'Test-FortificationAUTH016'
-    $r.A016_skip = St $none 'Test-FortificationAUTH016'
+    $r.A016_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.advanced_protection_program' = @{ enableAdvancedProtectionSelfEnrollment = $true } }) }) 'Test-AUTH016'
+    $r.A016_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.advanced_protection_program' = @{ enableAdvancedProtectionSelfEnrollment = $false } }) }) 'Test-AUTH016'
+    $r.A016_skip = St $none 'Test-AUTH016'
 
     # ── AUTH-017: super admin self-recovery (true=BAD; weakest-OU-wins) ──
-    $r.A017_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.super_admin_account_recovery' = @{ enableAccountRecovery = $false } }) }) 'Test-FortificationAUTH017'
-    $r.A017_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.super_admin_account_recovery' = @(@{ enableAccountRecovery = $false }, @{ enableAccountRecovery = $true }) }) }) 'Test-FortificationAUTH017'
-    $r.A017_skip = St $none 'Test-FortificationAUTH017'
+    $r.A017_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.super_admin_account_recovery' = @{ enableAccountRecovery = $false } }) }) 'Test-AUTH017'
+    $r.A017_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.super_admin_account_recovery' = @(@{ enableAccountRecovery = $false }, @{ enableAccountRecovery = $true }) }) }) 'Test-AUTH017'
+    $r.A017_skip = St $none 'Test-AUTH017'
 
     $r
 }

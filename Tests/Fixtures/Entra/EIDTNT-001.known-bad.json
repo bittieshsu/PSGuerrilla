@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Organization data unavailable",

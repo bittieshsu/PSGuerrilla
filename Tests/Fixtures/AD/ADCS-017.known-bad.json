@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-017",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "V1 no-EKU template enrollable by Everyone",

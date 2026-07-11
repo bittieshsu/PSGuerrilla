@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-007",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "No Chrome policies configured",

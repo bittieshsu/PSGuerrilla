@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRADE-009",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Cert Publishers group not resolved",

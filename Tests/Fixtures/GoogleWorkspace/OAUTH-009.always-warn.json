@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-009",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Service-account key inventory requires Cloud Console",

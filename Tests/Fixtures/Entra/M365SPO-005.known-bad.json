@@ -1,6 +1,6 @@
 {
   "checkId": "M365SPO-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "DLP policies exist but none scope SharePoint/OneDrive",

@@ -38,9 +38,9 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: theater
+    id: platform
     attributes:
-      label: Which theater?
+      label: Which platform?
       options: ["Active Directory", "Entra / Azure / Microsoft 365 / Intune", "Google Workspace", "Not sure"]
     validations:
       required: false

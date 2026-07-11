@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-031",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Non-compliant: enableImprovedSuspiciousContentDetection=False",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "An Azure AD trust is present (review)",

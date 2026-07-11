@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No non-default OU delegations",

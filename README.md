@@ -2,7 +2,7 @@
 
 **By [Jim Tyler](https://github.com/jimrtyler), Microsoft MVP**
 
-Guerrilla is an agentless, read-only security assessment platform for PowerShell 7. It audits three theaters from one tool: on-premises Active Directory, the Entra ID / Azure / Microsoft 365 / Intune identity plane, and Google Workspace. It runs 618 checks, every verdict is backed by a golden-fixture test, and it never installs an agent or writes to the systems it assesses.
+Guerrilla is an agentless, read-only security assessment platform for PowerShell 7. It audits three platforms from one tool: on-premises Active Directory, the Entra ID / Azure / Microsoft 365 / Intune identity plane, and Google Workspace. It runs 626 checks, every verdict is backed by a golden-fixture test, and it never installs an agent or writes to the systems it assesses.
 
 [![GitHub](https://img.shields.io/badge/GitHub-jimrtyler-181717?logo=github)](https://github.com/jimrtyler) [![LinkedIn](https://img.shields.io/badge/LinkedIn-jamestyler-0A66C2?logo=linkedin)](https://linkedin.com/in/jamestyler) [![YouTube](https://img.shields.io/badge/YouTube-PowerShellEngineer-FF0000?logo=youtube)](https://youtube.com/@powershellengineer)
 
@@ -19,15 +19,15 @@ Full reference, the browsable check catalog, and the fixture framework live at *
 
 ## What Guerrilla is
 
-Guerrilla assesses identity security posture across three theaters in a single tool. It is agentless and read-only: it authenticates with the access you already grant it, reads configuration and directory state, and reports. It does not remediate, install software, or change the tenant.
+Guerrilla assesses identity security posture across three platforms in a single tool. It is agentless and read-only: it authenticates with the access you already grant it, reads configuration and directory state, and reports. It does not remediate, install software, or change the tenant.
 
-| Theater | Scope | Checks |
+| Platform | Scope | Checks |
 |---------|-------|--------|
-| **Reconnaissance** | On-premises Active Directory: privileged groups, delegation and ACLs, Kerberos, certificate services (ESC1 through ESC16), trusts, group policy, NTLM-relay preconditions, Tier-0 hygiene, logging posture, and adversary tradecraft indicators | 211 |
-| **Infiltration** | Entra ID, the Azure identity plane, Microsoft 365, and Intune: the full 44-control EIDSCA baseline, conditional access, PIM, application and OAuth governance, Exchange Online, SharePoint, Teams, Defender, hybrid identity, and endpoint compliance | 257 |
-| **Fortification** | Google Workspace: Gmail, Drive, Chat, Meet, Calendar, Sites, Classroom, Groups, and admin controls, aligned to the CISA SCuBA secure configuration baselines | 150 |
+| **Active Directory** | On-premises Active Directory: privileged groups, delegation and ACLs, Kerberos, certificate services (ESC1 through ESC16), trusts, group policy, NTLM-relay preconditions, Tier-0 hygiene, logging posture, and adversary tradecraft indicators | 211 |
+| **Entra ID / M365** | Entra ID, the Azure identity plane, Microsoft 365, and Intune: the full 44-control EIDSCA baseline, conditional access, PIM, application and OAuth governance, Exchange Online, SharePoint, Teams, Defender, hybrid identity, and endpoint compliance | 257 |
+| **Google Workspace** | Google Workspace: Gmail, Drive, Chat, Meet, Calendar, Sites, Classroom, Groups, and admin controls, aligned to the CISA SCuBA secure configuration baselines | 158 |
 
-**Total: 618 checks.** Each check maps to the standards it implements, where applicable, across NIST 800-53, MITRE ATT&CK, CIS Benchmarks, EIDSCA, and the CISA SCuBA baselines. Each carries a CISA Zero Trust Maturity Model pillar and weight, and each produces a `PASS`, `FAIL`, `WARN`, or an honest `Not Assessed`.
+**Total: 626 checks.** Each check maps to the standards it implements, where applicable, across NIST 800-53, MITRE ATT&CK, CIS Benchmarks, EIDSCA, and the CISA SCuBA baselines. Each carries a CISA Zero Trust Maturity Model pillar and weight, and each produces a `PASS`, `FAIL`, `WARN`, or an honest `Not Assessed`.
 
 > A check that cannot collect its data (missing module, scope, license, or dataset) reports **Not Assessed**. Guerrilla never scores an uncollected control as a pass. Absence of evidence is not compliance.
 
@@ -41,7 +41,7 @@ Every fixtured check is held to three assertions:
 - Known-bad input yields **FAIL** (or `WARN` where the control warns).
 - Uncollectable input yields **Not Assessed**.
 
-The suite currently stands at **1,730 golden fixtures across 618 checks, with 0 failures.** CI runs the fixtures, the collector query-contract tests, and the Zero Trust schema test before any release. A red suite blocks publish. The fixture framework, and a walkthrough of how to write one, is documented at [guerrilla.army/tests](https://guerrilla.army/tests).
+The suite currently stands at **1,754 golden fixtures across 626 checks, with 0 failures.** CI runs the fixtures, the collector query-contract tests, and the Zero Trust schema test before any release. A red suite blocks publish. The fixture framework, and a walkthrough of how to write one, is documented at [guerrilla.army/tests](https://guerrilla.army/tests).
 
 ## Requirements
 
@@ -49,9 +49,9 @@ The suite currently stands at **1,730 golden fixtures across 618 checks, with 0 
 - **Operating system**: Windows (recommended, for DPAPI credential encryption), Linux, or macOS
 - [PwshSpectreConsole](https://github.com/ShaunLawrie/PwshSpectreConsole) (optional, for rich terminal output; Guerrilla falls back gracefully without it)
 
-### Per-theater access
+### Per-platform access
 
-| Theater | What you need |
+| Platform | What you need |
 |---------|---------------|
 | **Active Directory** | Domain-joined machine or RSAT tools with domain read credentials |
 | **Entra ID / Azure / M365** | App registration with read-only Microsoft Graph permissions |
@@ -114,14 +114,14 @@ Set-Safehouse
 2. **Vault creation** creates an encrypted vault named `Guerrilla` with no-password configuration applied up front.
    - **Windows**: DPAPI, encrypted with your Windows login, no extra password needed.
    - **Linux / macOS**: an encrypted file.
-3. **Credential prompts** walk you through only the theaters you choose:
+3. **Credential prompts** walk you through only the platforms you choose:
    - **Google Workspace**: paste your service account JSON key plus admin email.
    - **Entra ID / M365**: Tenant ID, Client ID, Client Secret (with GUID validation).
    - **Active Directory**: uses your current Kerberos session by default, so no credential is stored and no prompt is shown.
    - **Alerting providers**: webhook URLs and API keys for any alert channels you configure.
 4. **Confirmation** displays a summary of stored credentials and your next command.
 
-When you run `Set-Safehouse` without arguments, the first question is which theaters to set up. Pick only the ones you have. An Entra-only shop is never marched through Google Workspace prompts, and AD never asks for a stored credential.
+When you run `Set-Safehouse` without arguments, the first question is which platforms to set up. Pick only the ones you have. An Entra-only shop is never marched through Google Workspace prompts, and AD never asks for a stored credential.
 
 ```
   Which environments do you want to set up credentials for?
@@ -140,18 +140,18 @@ Before your first scan, test that every credential works:
 Set-Safehouse -Test
 ```
 
-This makes live read-only API calls to each theater and reports back with actionable guidance if anything fails (wrong scopes, expired secrets, missing permissions).
+This makes live read-only API calls to each platform and reports back with actionable guidance if anything fails (wrong scopes, expired secrets, missing permissions).
 
 ### Step 5: Run your first scan
 
 ```powershell
-# Full campaign across all three theaters
+# Full campaign across all three platforms
 Invoke-Campaign
 
-# Or run individual theaters
-Invoke-Reconnaissance                   # Active Directory audit (211 checks)
-Invoke-Infiltration                     # Entra / Azure / Intune / M365 audit (257 checks)
-Invoke-Fortification                    # Google Workspace audit (150 checks)
+# Or run individual platforms
+Invoke-ADAudit      # Active Directory audit (211 checks)
+Invoke-EntraAudit   # Entra / Azure / Intune / M365 audit (257 checks)
+Invoke-GWSAudit     # Google Workspace audit (158 checks)
 ```
 
 Results are saved to `$env:APPDATA/Guerrilla/` (Windows) or the equivalent per-user data directory on Linux and macOS, for report generation and trend tracking.
@@ -179,7 +179,7 @@ Export-ReportPdf -HtmlPath './Guerrilla-Technical-Report.html'
 
 ```powershell
 # Register a scheduled task that scans every 60 minutes and sends alerts
-Register-Patrol -Theaters Workspace, Entra, AD -IntervalMinutes 60 -SendAlerts
+Register-Patrol -Platforms Workspace, Entra, AD -IntervalMinutes 60 -SendAlerts
 
 # View patrol status
 Get-Patrol
@@ -235,7 +235,7 @@ Set-Safehouse -ExportMetadata
 
 ---
 
-## Preparing your theaters
+## Preparing your platforms
 
 ### Active Directory
 
@@ -289,13 +289,13 @@ Guerrilla uses your current Kerberos session by default, so no stored credential
 
 | Function | Alias | Description |
 |----------|-------|-------------|
-| `Invoke-Reconnaissance` | `Invoke-ADRecon` | Active Directory security audit (211 checks) |
-| `Invoke-Infiltration` | `Invoke-CloudRecon` | Entra ID, Azure, Intune, and M365 audit (257 checks) |
-| `Invoke-Fortification` | (none) | Google Workspace security configuration audit (150 checks) |
+| `Invoke-ADAudit` | `Invoke-ADRecon` | Active Directory security audit (211 checks) |
+| `Invoke-EntraAudit` | `Invoke-CloudRecon` | Entra ID, Azure, Intune, and M365 audit (257 checks) |
+| `Invoke-GWSAudit` | (none) | Google Workspace security configuration audit (158 checks) |
 | `Invoke-Recon` | `Invoke-WorkspaceRecon` | Google Workspace compromise assessment with 23 behavioral detection signals |
-| `Invoke-Campaign` | (none) | Unified audit across all three theaters in a single run |
+| `Invoke-Campaign` | (none) | Unified audit across all three platforms in a single run |
 
-> `Invoke-Recon` (Workspace user behavior) and `Invoke-Reconnaissance` (AD configuration audit) look nearly identical but cover different theaters. The theater-named aliases exist to make the intent clear at the call site.
+> `Invoke-Recon` (Workspace user behavior) and `Invoke-ADAudit` (AD configuration audit) look nearly identical but cover different platforms. The platform-named aliases exist to make the intent clear at the call site.
 
 ### Continuous monitoring
 
@@ -353,7 +353,7 @@ Dispatch alerts through 10 providers. Each has a dedicated function, or use `Sen
 | `Export-TechnicalReport` | Full findings with current vs recommended values and remediation |
 | `Export-RemediationPlaybook` | Step-by-step guide organized by phase and priority |
 | `Export-RemediationScripts` | Generate runnable PowerShell fix scripts from findings |
-| `Export-Dashboard` | Unified HTML dashboard across all theaters |
+| `Export-Dashboard` | Unified HTML dashboard across all platforms |
 | `Export-ReportPdf` | Convert HTML reports to PDF via Edge or Chrome headless |
 | `Export-BloodHoundData` | Export AD attack-path data for BloodHound ingestion |
 
@@ -375,7 +375,7 @@ The Guerrilla Score is a weighted composite of four components:
 |-----------|--------|------------------|
 | Posture | 40% | Audit findings weighted by severity |
 | Threats | 30% | Active threat detections from monitoring |
-| Coverage | 15% | Percentage of theaters actively scanned |
+| Coverage | 15% | Percentage of platforms actively scanned |
 | Trend | 15% | Score change from the previous scan |
 
 | Score | Tier | Meaning |
@@ -389,9 +389,9 @@ The Guerrilla Score is a weighted composite of four components:
 
 ---
 
-## AD reconnaissance categories
+## AD audit categories
 
-`Invoke-Reconnaissance -Categories <name(s)>` selects which AD categories run. The default is `All`.
+`Invoke-ADAudit -Categories <name(s)>` selects which AD categories run. The default is `All`.
 
 | Category | What it audits |
 |---|---|
@@ -414,12 +414,24 @@ The Guerrilla Score is a weighted composite of four components:
 
 ## Aliases and migration
 
-### Theater-named aliases
+### Renamed commands
 
-| Alias | Resolves to | Theater |
+The audits were renamed in v2.47.0 so platforms are named what they are. The old
+names still work as deprecated wrappers that warn once per session; they will be
+removed in the next major version.
+
+| Old name (deprecated) | Use instead |
+|-----------------------|-------------|
+| `Invoke-Reconnaissance` | `Invoke-ADAudit` |
+| `Invoke-Infiltration` | `Invoke-EntraAudit` |
+| `Invoke-Fortification` | `Invoke-GWSAudit` |
+
+### Platform-named aliases
+
+| Alias | Resolves to | Platform |
 |-------|-------------|---------|
-| `Invoke-ADRecon` | `Invoke-Reconnaissance` | Active Directory configuration audit |
-| `Invoke-CloudRecon` | `Invoke-Infiltration` | Entra ID / Azure / Intune / M365 audit |
+| `Invoke-ADRecon` | `Invoke-ADAudit` | Active Directory configuration audit |
+| `Invoke-CloudRecon` | `Invoke-EntraAudit` | Entra ID / Azure / Intune / M365 audit |
 | `Invoke-WorkspaceRecon` | `Invoke-Recon` | Google Workspace user-behavior assessment |
 
 ### Migrating from an earlier install

@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-016",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "DKIM disabled for all domains",

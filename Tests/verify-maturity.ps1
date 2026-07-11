@@ -53,9 +53,9 @@ $m = Get-GuerrillaMaturity -Findings @((F 's' 'SKIP' 'Critical'), (F 'e' 'ERROR'
 Add-R 'SKIP/ERROR never cap -> Level 5' ($m.OverallLevel -eq 5) ("L=$($m.OverallLevel)")
 
 # 8. Pipeline input works
-$m = @((F 'H' 'FAIL' 'High'), (F 'P' 'PASS')) | Get-GuerrillaMaturity -Theater AD
+$m = @((F 'H' 'FAIL' 'High'), (F 'P' 'PASS')) | Get-GuerrillaMaturity -Platform AD
 Add-R 'Pipeline input -> Level 2'       ($m.OverallLevel -eq 2) ("L=$($m.OverallLevel)")
-Add-R 'Theater carried through'         ($m.Theater -eq 'AD') ("got=$($m.Theater)")
+Add-R 'Platform carried through'         ($m.Platform -eq 'AD') ("got=$($m.Platform)")
 
 # 9. Summary counts
 $m = Get-GuerrillaMaturity -Findings @((F 'c' 'FAIL' 'Critical'), (F 'h' 'FAIL' 'High'), (F 'w' 'WARN'), (F 'p' 'PASS'))

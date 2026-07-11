@@ -4,7 +4,7 @@
 function Resolve-GooglePolicyValue {
     <#
     .SYNOPSIS
-        Reads a Cloud Identity policy setting for a Fortification check, returning per-OU
+        Reads a Cloud Identity policy setting for a GWS check, returning per-OU
         field values in a shape that is immune to how Get-GooglePolicySetting hands them back.
     .DESCRIPTION
         The GWS-1 placeholder->real-check conversions all need the same three-way answer:

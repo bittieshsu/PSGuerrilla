@@ -11,7 +11,7 @@ function Write-CampaignReport {
         [string]$ScoreLabel,
 
         [Parameter(Mandatory)]
-        [hashtable]$TheaterScores,
+        [hashtable]$PlatformScores,
 
         [Parameter(Mandatory)]
         [hashtable]$CategoryScores,
@@ -40,29 +40,29 @@ function Write-CampaignReport {
     Write-GuerrillaText "  [ $ScoreLabel ]" -Color $scoreColor
     Write-Host ''
 
-    # Theater breakdown as table
-    $theaterRows = @()
-    $theaterColors = @()
-    foreach ($theater in ($TheaterScores.GetEnumerator() | Sort-Object Key)) {
-        $ts = $theater.Value
+    # Platform breakdown as table
+    $platformRows = @()
+    $platformColors = @()
+    foreach ($platform in ($PlatformScores.GetEnumerator() | Sort-Object Key)) {
+        $ts = $platform.Value
         $tColor = if ($ts.Score -ge 90) { 'Sage' }
                   elseif ($ts.Score -ge 75) { 'Olive' }
                   elseif ($ts.Score -ge 60) { 'Gold' }
                   elseif ($ts.Score -ge 40) { 'Amber' }
                   else { 'DeepOrange' }
 
-        $theaterRows += , @($theater.Key, [string]$ts.Score, [string]$ts.PassCount, [string]$ts.FailCount, [string]$ts.WarnCount, [string]$ts.SkipCount)
-        $theaterColors += $tColor
+        $platformRows += , @($platform.Key, [string]$ts.Score, [string]$ts.PassCount, [string]$ts.FailCount, [string]$ts.WarnCount, [string]$ts.SkipCount)
+        $platformColors += $tColor
     }
 
     Write-SpectreTable -Columns @(
-        @{ Name = 'Theater'; Color = 'Olive' }
+        @{ Name = 'Platform'; Color = 'Olive' }
         @{ Name = 'Score'; Color = 'Parchment'; Alignment = 'Right' }
         @{ Name = 'Pass'; Color = 'Sage'; Alignment = 'Right' }
         @{ Name = 'Fail'; Color = 'DeepOrange'; Alignment = 'Right' }
         @{ Name = 'Warn'; Color = 'Gold'; Alignment = 'Right' }
         @{ Name = 'Skip'; Color = 'Dim'; Alignment = 'Right' }
-    ) -Rows $theaterRows -RowColors $theaterColors
+    ) -Rows $platformRows -RowColors $platformColors
     Write-Host ''
 
     # Summary stats
@@ -97,10 +97,10 @@ function Write-CampaignReport {
         Write-Host ''
     }
 
-    # Category scores grouped by theater — use tree view
+    # Category scores grouped by platform — use tree view
     $treeChildren = @()
-    foreach ($theater in ($TheaterScores.GetEnumerator() | Sort-Object Key)) {
-        $ts = $theater.Value
+    foreach ($platform in ($PlatformScores.GetEnumerator() | Sort-Object Key)) {
+        $ts = $platform.Value
         if (-not $ts.CategoryScores) { continue }
 
         $catChildren = @()
@@ -117,19 +117,19 @@ function Write-CampaignReport {
         }
 
         $treeChildren += @{
-            Label = "$($theater.Key) ($($ts.Score)/100)"
+            Label = "$($platform.Key) ($($ts.Score)/100)"
             Color = 'Olive'
             Children = $catChildren
         }
     }
 
     if ($treeChildren.Count -gt 0) {
-        Write-SpectreTree -RootLabel 'Category Scores by Theater' -RootColor 'Parchment' `
+        Write-SpectreTree -RootLabel 'Category Scores by Platform' -RootColor 'Parchment' `
             -Children $treeChildren -GuideColor 'Dim'
         Write-Host ''
     }
 
-    # Priority findings across all theaters
+    # Priority findings across all platforms
     $critical = @($Findings | Where-Object {
         $_.Status -eq 'FAIL' -and $_.Severity -in @('Critical', 'High')
     } | Select-Object -First 15)
@@ -139,19 +139,19 @@ function Write-CampaignReport {
         $findingColors = @()
         foreach ($f in $critical) {
             $sevColor = if ($f.Severity -eq 'Critical') { 'DeepOrange' } else { 'Amber' }
-            $theaterTag = switch ($f.Theater) {
+            $platformTag = switch ($f.Platform) {
                 'Google Workspace' { 'GWS' }
                 'Active Directory' { 'AD' }
                 'Microsoft Cloud'  { 'CLD' }
                 default            { '???' }
             }
-            $findingRows += , @($f.Severity.ToUpper(), $theaterTag, $f.CheckId, $f.CheckName)
+            $findingRows += , @($f.Severity.ToUpper(), $platformTag, $f.CheckId, $f.CheckName)
             $findingColors += $sevColor
         }
         Write-SpectreTable -Title 'Priority findings' `
             -Columns @(
                 @{ Name = 'Severity'; Color = 'DeepOrange' }
-                @{ Name = 'Theater'; Color = 'Dim' }
+                @{ Name = 'Platform'; Color = 'Dim' }
                 @{ Name = 'Check ID'; Color = 'Dim' }
                 @{ Name = 'Finding'; Color = 'Olive' }
             ) -Rows $findingRows -RowColors $findingColors

@@ -19,7 +19,7 @@ function Get-EntraApplicationData {
 
     # ── App Registrations ─────────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting app registrations'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting app registrations'
     }
     try {
         $data.AppRegistrations = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -34,7 +34,7 @@ function Get-EntraApplicationData {
 
     # ── Service Principals ────────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting service principals'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting service principals'
     }
     try {
         $data.ServicePrincipals = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -49,7 +49,7 @@ function Get-EntraApplicationData {
 
     # ── OAuth2 Permission Grants (Consent) ────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting OAuth2 consent grants'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting OAuth2 consent grants'
     }
     try {
         $data.ConsentGrants = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -60,7 +60,7 @@ function Get-EntraApplicationData {
     }
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message "Collected $($data.AppRegistrations.Count) apps, $($data.ServicePrincipals.Count) SPs, $($data.ConsentGrants.Count) consent grants"
+        Write-ProgressLine -Phase ENTRA -Message "Collected $($data.AppRegistrations.Count) apps, $($data.ServicePrincipals.Count) SPs, $($data.ConsentGrants.Count) consent grants"
     }
 
     return $data

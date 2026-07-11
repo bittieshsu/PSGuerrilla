@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-021",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "not-implemented",
   "expectedStatus": "SKIP",
   "description": "Remote-actions audit requires Intune audit log data (not collected)",

@@ -3,7 +3,7 @@
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
 # Shared report sections (Security Maturity, Attack Paths to Tier-0) and their inclusion in all three
-# HTML reports: AD reconnaissance (+ BloodHound callout), the GWS fortification report (maturity), and
+# HTML reports: the AD report (+ BloodHound callout), the GWS report (maturity), and
 # the unified Campaign report (maturity + attack paths). Run: pwsh -File Tests/verify-report-sections.ps1
 
 $ErrorActionPreference = 'Stop'
@@ -88,7 +88,7 @@ Add-R 'helper: cartography includes ADPATH-001 node' ($h.Carto -match 'AdminSDHo
 Add-R 'helper: cartography has nodes+arrow'     (($h.Carto -match '<rect ') -and ($h.Carto -match 'marker-end')) ''
 Add-R 'helper: cartography empty on GWS'        ([string]::IsNullOrEmpty($h.CartoGWS)) ''
 
-# ── 2. AD reconnaissance report: all three sections ──
+# ── 2. AD report: all three sections ──
 $catScores = @{
     PrivilegedAccounts = @{ Score = 40; Pass = 1; Fail = 1; Warn = 0; Skip = 0 }
     Kerberos           = @{ Score = 90; Pass = 1; Fail = 0; Warn = 0; Skip = 0 }
@@ -98,7 +98,7 @@ $tmp = Join-Path ([System.IO.Path]::GetTempPath()) ("psg-recon-" + [guid]::NewGu
 try {
     & $mod {
         param($f, $cs, $fp, $bh)
-        Export-ReconnaissanceReportHtml -Findings $f -OverallScore 43 -ScoreLabel 'Poor' `
+        Export-ADReportHtml -Findings $f -OverallScore 43 -ScoreLabel 'Poor' `
             -CategoryScores $cs -DomainName 'corp.local' -FilePath $fp -BloodHoundPath $bh
     } $adFindings $catScores $tmp '/tmp/corp-bloodhound.json'
     $html = Get-Content $tmp -Raw
@@ -113,7 +113,7 @@ try {
     Add-R 'recon: BloodHound callout + path'    (($html -match '<h2>BloodHound Export</h2>') -and ($html -match 'corp-bloodhound.json')) ''
 } finally { Remove-Item $tmp -ErrorAction SilentlyContinue }
 
-# ── 3. GWS fortification report: maturity present, no attack-path section ──
+# ── 3. GWS report: maturity present, no attack-path section ──
 $gwsCat = @{
     Authentication        = @{ Score = 50; Pass = 1; Fail = 1; Warn = 0; Skip = 0 }
     'Adversary Tradecraft' = @{ Score = 70; Pass = 0; Fail = 0; Warn = 1; Skip = 0 }
@@ -122,7 +122,7 @@ $tmp2 = Join-Path ([System.IO.Path]::GetTempPath()) ("psg-gws-" + [guid]::NewGui
 try {
     & $mod {
         param($f, $cs, $fp)
-        Export-FortificationReportHtml -Findings $f -OverallScore 55 -ScoreLabel 'Fair' `
+        Export-GWSReportHtml -Findings $f -OverallScore 55 -ScoreLabel 'Fair' `
             -CategoryScores $cs -TenantDomain 'example.com' -FilePath $fp
     } $gwsFindings $gwsCat $tmp2
     $html2 = Get-Content $tmp2 -Raw
@@ -132,12 +132,12 @@ try {
     Add-R 'gws: Tradecraft finding surfaced'    ($html2 -match 'GTRADE-001') ''
 } finally { Remove-Item $tmp2 -ErrorAction SilentlyContinue }
 
-# ── 4. Campaign (big) report: maturity + attack paths across theaters ──
+# ── 4. Campaign (big) report: maturity + attack paths across platforms ──
 $result = [PSCustomObject]@{
     Findings = @($adFindings + $gwsFindings)
     OverallScore = 49; ScoreLabel = 'Poor'
-    Theaters = @('Active Directory', 'Google Workspace')
-    TheaterScores = @{
+    Platforms = @('Active Directory', 'Google Workspace')
+    PlatformScores = @{
         'Active Directory' = @{ Score=43; ScoreLabel='Poor'; PassCount=2; FailCount=2; WarnCount=0; SkipCount=0; FindingCount=4
             CategoryScores = @{ AttackPath=@{Score=0;Pass=0;Fail=1;Warn=0;Skip=0}; PrivilegedAccounts=@{Score=40;Pass=1;Fail=1;Warn=0;Skip=0}; Kerberos=@{Score=90;Pass=1;Fail=0;Warn=0;Skip=0} } }
         'Google Workspace' = @{ Score=55; ScoreLabel='Fair'; PassCount=1; FailCount=1; WarnCount=1; SkipCount=0; FindingCount=3
@@ -157,7 +157,7 @@ try {
     Add-R 'campaign: Cartography (SVG) present'  (($html3 -match '<h2>Attack-Path Cartography</h2>') -and ($html3 -match '<svg ')) ''
     Add-R 'campaign: Attack Paths present'       ($html3 -match '<h2>Attack Paths to Tier-0</h2>') ''
     Add-R 'campaign: full chain rendered'        ($html3 -match 'MemberOf.*Domain Admins') ''
-    Add-R 'campaign: both theaters present'      (($html3 -match 'Active Directory') -and ($html3 -match 'Google Workspace')) ''
+    Add-R 'campaign: both platforms present'      (($html3 -match 'Active Directory') -and ($html3 -match 'Google Workspace')) ''
 } finally { Remove-Item $tmp3 -ErrorAction SilentlyContinue }
 
 # ── 5. Technical report (README-linked sample type): maturity + attack paths via shared helpers ──

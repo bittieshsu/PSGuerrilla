@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-008",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Pass-through authentication enabled (review agents)",

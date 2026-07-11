@@ -1,6 +1,6 @@
 {
   "checkId": "EIDSCA-AG02",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "EIDSCA-AG02 not collected",

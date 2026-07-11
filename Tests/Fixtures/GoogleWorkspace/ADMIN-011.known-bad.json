@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-011",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Group creation open to anyone",

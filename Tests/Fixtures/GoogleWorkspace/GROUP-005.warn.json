@@ -1,6 +1,6 @@
 {
   "checkId": "GROUP-005",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "warn",
   "expectedStatus": "WARN",
   "description": "domain-wide",

@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-007",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Intune device configurations not assessed",

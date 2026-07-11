@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-005",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "TLS enforcement requires manual verification",

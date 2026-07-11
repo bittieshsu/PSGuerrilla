@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-020",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "SMTP AUTH disabled org-wide",

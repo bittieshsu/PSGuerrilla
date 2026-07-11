@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-022",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "informational",
   "expectedStatus": "WARN",
   "description": "AppLocker/WDAC GPO presence (informational)",

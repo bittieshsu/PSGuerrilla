@@ -37,44 +37,44 @@ $out = & $mod {
     $r = @{}
 
     # ── EMAIL-013: enhanced pre-delivery message scanning ──
-    $r.A013_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_pre_delivery_message_scanning' = @{ enableImprovedSuspiciousContentDetection = $true } }) }) 'Test-FortificationEMAIL013'
-    $r.A013_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_pre_delivery_message_scanning' = @{ enableImprovedSuspiciousContentDetection = $false } }) }) 'Test-FortificationEMAIL013'
-    $r.A013_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_pre_delivery_message_scanning' = @(@{ enableImprovedSuspiciousContentDetection = $true }, @{ enableImprovedSuspiciousContentDetection = $false }) }) }) 'Test-FortificationEMAIL013'  # weakest OU off -> FAIL
+    $r.A013_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_pre_delivery_message_scanning' = @{ enableImprovedSuspiciousContentDetection = $true } }) }) 'Test-EMAIL013'
+    $r.A013_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_pre_delivery_message_scanning' = @{ enableImprovedSuspiciousContentDetection = $false } }) }) 'Test-EMAIL013'
+    $r.A013_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_pre_delivery_message_scanning' = @(@{ enableImprovedSuspiciousContentDetection = $true }, @{ enableImprovedSuspiciousContentDetection = $false }) }) }) 'Test-EMAIL013'  # weakest OU off -> FAIL
 
     # ── EMAIL-015: attachment safety (auto-apply future settings) ──
-    $r.A015_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.email_attachment_safety' = @{ applyFutureRecommendedSettingsAutomatically = $true } }) }) 'Test-FortificationEMAIL015'
-    $r.A015_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.email_attachment_safety' = @{ applyFutureRecommendedSettingsAutomatically = $false } }) }) 'Test-FortificationEMAIL015'
+    $r.A015_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.email_attachment_safety' = @{ applyFutureRecommendedSettingsAutomatically = $true } }) }) 'Test-EMAIL015'
+    $r.A015_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.email_attachment_safety' = @{ applyFutureRecommendedSettingsAutomatically = $false } }) }) 'Test-EMAIL015'
 
     # ── EMAIL-016: links and external images (both fields must be true) ──
-    $r.A016_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.links_and_external_images' = @{ enableShortenerScanning = $true; enableExternalImageScanning = $true } }) }) 'Test-FortificationEMAIL016'
-    $r.A016_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.links_and_external_images' = @{ enableShortenerScanning = $true; enableExternalImageScanning = $false } }) }) 'Test-FortificationEMAIL016'  # one field off -> FAIL
+    $r.A016_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.links_and_external_images' = @{ enableShortenerScanning = $true; enableExternalImageScanning = $true } }) }) 'Test-EMAIL016'
+    $r.A016_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.links_and_external_images' = @{ enableShortenerScanning = $true; enableExternalImageScanning = $false } }) }) 'Test-EMAIL016'  # one field off -> FAIL
 
     # ── EMAIL-017: spoofing and authentication (three fields must be true) ──
-    $r.A017_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.spoofing_and_authentication' = @{ detectDomainNameSpoofing = $true; detectEmployeeNameSpoofing = $true; detectUnauthenticatedEmails = $true } }) }) 'Test-FortificationEMAIL017'
-    $r.A017_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.spoofing_and_authentication' = @{ detectDomainNameSpoofing = $true; detectEmployeeNameSpoofing = $false; detectUnauthenticatedEmails = $true } }) }) 'Test-FortificationEMAIL017'  # one field off -> FAIL
+    $r.A017_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.spoofing_and_authentication' = @{ detectDomainNameSpoofing = $true; detectEmployeeNameSpoofing = $true; detectUnauthenticatedEmails = $true } }) }) 'Test-EMAIL017'
+    $r.A017_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.spoofing_and_authentication' = @{ detectDomainNameSpoofing = $true; detectEmployeeNameSpoofing = $false; detectUnauthenticatedEmails = $true } }) }) 'Test-EMAIL017'  # one field off -> FAIL
 
     # ── EMAIL-020: confidential mode (WARN when enabled, PASS when off) ──
-    $r.A020_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.confidential_mode' = @{ enableConfidentialMode = $true } }) }) 'Test-FortificationEMAIL020'
-    $r.A020_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.confidential_mode' = @{ enableConfidentialMode = $false } }) }) 'Test-FortificationEMAIL020'
+    $r.A020_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.confidential_mode' = @{ enableConfidentialMode = $true } }) }) 'Test-EMAIL020'
+    $r.A020_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.confidential_mode' = @{ enableConfidentialMode = $false } }) }) 'Test-EMAIL020'
 
     # ── EMAIL-021: S/MIME user cert upload (WARN when allowed, PASS when restricted) ──
-    $r.A021_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_smime_encryption' = @{ allowUserToUploadCertificates = $true } }) }) 'Test-FortificationEMAIL021'
-    $r.A021_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_smime_encryption' = @{ allowUserToUploadCertificates = $false } }) }) 'Test-FortificationEMAIL021'
+    $r.A021_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_smime_encryption' = @{ allowUserToUploadCertificates = $true } }) }) 'Test-EMAIL021'
+    $r.A021_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'gmail.enhanced_smime_encryption' = @{ allowUserToUploadCertificates = $false } }) }) 'Test-EMAIL021'
 
     # ── Unavailable API -> SKIP (every converted check) ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.Skip013 = St $none 'Test-FortificationEMAIL013'
-    $r.Skip015 = St $none 'Test-FortificationEMAIL015'
-    $r.Skip016 = St $none 'Test-FortificationEMAIL016'
-    $r.Skip017 = St $none 'Test-FortificationEMAIL017'
-    $r.Skip020 = St $none 'Test-FortificationEMAIL020'
-    $r.Skip021 = St $none 'Test-FortificationEMAIL021'
+    $r.Skip013 = St $none 'Test-EMAIL013'
+    $r.Skip015 = St $none 'Test-EMAIL015'
+    $r.Skip016 = St $none 'Test-EMAIL016'
+    $r.Skip017 = St $none 'Test-EMAIL017'
+    $r.Skip020 = St $none 'Test-EMAIL020'
+    $r.Skip021 = St $none 'Test-EMAIL021'
 
     # ── Available API but type absent -> SKIP (sampled) ──
     $other = @{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }
-    $r.Absent013 = St $other 'Test-FortificationEMAIL013'
-    $r.Absent016 = St $other 'Test-FortificationEMAIL016'
-    $r.Absent017 = St $other 'Test-FortificationEMAIL017'
+    $r.Absent013 = St $other 'Test-EMAIL013'
+    $r.Absent016 = St $other 'Test-EMAIL016'
+    $r.Absent017 = St $other 'Test-EMAIL017'
 
     $r
 }

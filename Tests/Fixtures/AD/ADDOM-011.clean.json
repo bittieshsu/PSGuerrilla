@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-011",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All sites have site links",

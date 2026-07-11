@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-017",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "CA-based vs per-user MFA conflict check (informational)",

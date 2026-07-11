@@ -1,6 +1,6 @@
 {
   "checkId": "GROUP-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No public mail",

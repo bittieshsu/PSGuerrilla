@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Federation collection failed (cert-expiry FAIL needs a real X.509)",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "IPv6 only partially restricted (no FAIL path)",

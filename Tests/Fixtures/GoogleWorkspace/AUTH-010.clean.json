@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-010",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No super admin has self-service recovery configured",

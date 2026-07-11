@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-009",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "OAuth token activity not assessed",

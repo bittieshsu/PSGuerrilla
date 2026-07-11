@@ -23,7 +23,7 @@ function Get-EntraPIMData {
 
     # ── Directory Role Definitions ────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting directory role definitions'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting directory role definitions'
     }
     try {
         $data.RoleDefinitions = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -35,7 +35,7 @@ function Get-EntraPIMData {
 
     # ── Active Role Assignments ───────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting active role assignments'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting active role assignments'
     }
     try {
         $data.RoleAssignments = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -48,7 +48,7 @@ function Get-EntraPIMData {
 
     # ── Eligible Role Assignments (PIM) ───────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting PIM eligible role assignments'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting PIM eligible role assignments'
     }
     try {
         # Query the eligibility *schedules* (definitions), not scheduleInstances:
@@ -74,7 +74,7 @@ function Get-EntraPIMData {
 
     # ── Global Administrator members ──────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Enumerating Global Administrators'
+        Write-ProgressLine -Phase ENTRA -Message 'Enumerating Global Administrators'
     }
     $globalAdminTemplateId = '62e90394-69f5-4237-9190-012177145e10'
     try {
@@ -133,7 +133,7 @@ function Get-EntraPIMData {
 
     # Fetch user details for privileged principals (batch)
     if ($privilegedPrincipalIds.Count -gt 0 -and -not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message "Collecting details for $($privilegedPrincipalIds.Count) privileged principals"
+        Write-ProgressLine -Phase ENTRA -Message "Collecting details for $($privilegedPrincipalIds.Count) privileged principals"
     }
 
     $privilegedUsers = [System.Collections.Generic.List[PSCustomObject]]::new()
@@ -155,7 +155,7 @@ function Get-EntraPIMData {
     $data.PrivilegedUsers = @($privilegedUsers)
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message "Found $($data.GlobalAdmins.Count) Global Admins, $($data.RoleAssignments.Count) role assignments"
+        Write-ProgressLine -Phase ENTRA -Message "Found $($data.GlobalAdmins.Count) Global Admins, $($data.RoleAssignments.Count) role assignments"
     }
 
     return $data

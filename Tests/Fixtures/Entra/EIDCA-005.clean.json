@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No CA exclusion groups to review",

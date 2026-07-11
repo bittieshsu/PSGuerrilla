@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-050",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "DLP rule data absent",

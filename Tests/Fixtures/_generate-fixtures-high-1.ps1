@@ -7,12 +7,12 @@
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 function New-Fixture {
-    param([string]$Family,[string]$CheckId,[string]$Theater,[string]$Scenario,[string]$ExpectedStatus,[string]$Description,[hashtable]$AuditData)
-    $obj=[ordered]@{ checkId=$CheckId; theater=$Theater; scenario=$Scenario; expectedStatus=$ExpectedStatus; description=$Description; auditData=$AuditData }
+    param([string]$Family,[string]$CheckId,[string]$Platform,[string]$Scenario,[string]$ExpectedStatus,[string]$Description,[hashtable]$AuditData)
+    $obj=[ordered]@{ checkId=$CheckId; platform=$Platform; scenario=$Scenario; expectedStatus=$ExpectedStatus; description=$Description; auditData=$AuditData }
     $obj | ConvertTo-Json -Depth 12 | Set-Content -Path (Join-Path $root $Family "$CheckId.$Scenario.json") -Encoding utf8
     Write-Host "  $Family/$CheckId.$Scenario -> $ExpectedStatus"
 }
-$R='Reconnaissance'
+$R='AD'
 $badSid='S-1-5-21-1111111111-2222222222-3333333333-1601'
 $skipPriv=@{ Errors=@{ PrivilegedMembers='referral returned from server' }; PrivilegedAccounts=$null }
 $skipAcl =@{ Errors=@{ ObjectACLs='LDAP ACL read failed' }; ACLs=$null }

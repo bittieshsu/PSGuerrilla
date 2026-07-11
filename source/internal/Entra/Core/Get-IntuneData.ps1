@@ -28,7 +28,7 @@ function Get-IntuneData {
 
     # ── Device Compliance Policies ────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting Intune compliance policies'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting Intune compliance policies'
     }
     try {
         $data.CompliancePolicies = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -48,7 +48,7 @@ function Get-IntuneData {
 
     # ── Device Configuration Profiles ─────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting device configuration profiles'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting device configuration profiles'
     }
     try {
         # $expand=assignments is required — without it every profile has a null
@@ -63,7 +63,7 @@ function Get-IntuneData {
 
     # ── Managed Devices (summary — limit for large tenants) ──────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting managed device summary'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting managed device summary'
     }
     try {
         $data.ManagedDevices = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -106,7 +106,7 @@ function Get-IntuneData {
 
     # ── PowerShell Scripts ────────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting PowerShell script deployments'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting PowerShell script deployments'
     }
     try {
         $data.DeviceManagementScripts = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -158,7 +158,7 @@ function Get-IntuneData {
 
     # ── Multi-Admin Approval Policies ──────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting multi-admin approval policies'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting multi-admin approval policies'
     }
     try {
         $data.OperationApprovalPolicies = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -169,7 +169,7 @@ function Get-IntuneData {
     }
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message "Intune: $($data.CompliancePolicies.Count) compliance policies, $($data.DeviceConfigurations.Count) config profiles, $($data.ManagedDevices.Count) devices"
+        Write-ProgressLine -Phase ENTRA -Message "Intune: $($data.CompliancePolicies.Count) compliance policies, $($data.DeviceConfigurations.Count) config profiles, $($data.ManagedDevices.Count) devices"
     }
 
     return $data

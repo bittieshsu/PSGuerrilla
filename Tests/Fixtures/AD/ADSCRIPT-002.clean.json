@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "SYSVOL write restricted to admins",

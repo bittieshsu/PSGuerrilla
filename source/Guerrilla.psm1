@@ -137,9 +137,9 @@ foreach ($entry in $script:KnownAttackerIps.ips) {
 # Config path
 $script:ConfigPath = Join-Path (Get-GuerrillaDataRoot) 'config.json'
 
-# Dot-source internal engine helpers and the theater checks (recursive over the
+# Dot-source internal engine helpers and the platform checks (recursive over the
 # source tree). internal/ holds the collectors and engine; checks/ holds the
-# per-theater Invoke-*Checks files. Both are loaded before public so the exported
+# per-platform Invoke-*Checks files. Both are loaded before public so the exported
 # cmdlets can call them.
 foreach ($dir in 'internal', 'checks') {
     foreach ($file in Get-ChildItem -Path (Join-Path $ModuleRoot $dir) -Filter '*.ps1' -Recurse -ErrorAction SilentlyContinue) {
@@ -235,12 +235,12 @@ $aliasMap = @{
     'Unregister-ReconScheduledTask' = 'Unregister-Patrol'
     'Get-ReconScheduledTask'       = 'Get-Patrol'
 
-    # Theater-disambiguating aliases — Invoke-Recon and Invoke-Reconnaissance
-    # are easily confused (different theaters). These names make the intent
+    # Platform-disambiguating aliases — Invoke-Recon and Invoke-ADAudit
+    # are easily confused (different platforms). These names make the intent
     # obvious at the call site.
     'Invoke-WorkspaceRecon'        = 'Invoke-Recon'           # Google Workspace user-behavior recon
-    'Invoke-ADRecon'               = 'Invoke-Reconnaissance'  # Active Directory configuration audit
-    'Invoke-CloudRecon'            = 'Invoke-Infiltration'    # Entra ID / Azure / Intune / M365 audit
+    'Invoke-ADRecon'               = 'Invoke-ADAudit'  # Active Directory configuration audit
+    'Invoke-CloudRecon'            = 'Invoke-EntraAudit'    # Entra ID / Azure / Intune / M365 audit
 }
 
 foreach ($old in $aliasMap.Keys) {

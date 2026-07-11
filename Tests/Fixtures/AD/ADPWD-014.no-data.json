@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-014",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "DSInternals unavailable — common-password analysis not performed",

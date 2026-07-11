@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Federated IdP MFA behavior configured",

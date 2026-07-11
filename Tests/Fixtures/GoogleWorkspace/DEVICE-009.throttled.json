@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-009",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Chrome device data not assessed",

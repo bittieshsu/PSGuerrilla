@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-015",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "same org",

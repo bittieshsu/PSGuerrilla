@@ -4,10 +4,10 @@
 function Export-Dashboard {
     <#
     .SYNOPSIS
-        Generates a unified HTML dashboard across all theaters.
+        Generates a unified HTML dashboard across all platforms.
     .DESCRIPTION
         Produces a single-file HTML dashboard with the Guerrilla Score ring at top,
-        theater-specific cards with mini-scores, and a consolidated findings table.
+        platform-specific cards with mini-scores, and a consolidated findings table.
     .PARAMETER Findings
         Array of audit finding objects. If not provided, reads from latest state.
     .PARAMETER ScanResults

@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "SYSVOL writable by Authenticated Users",

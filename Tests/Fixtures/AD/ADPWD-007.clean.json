@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Password history >= 24",

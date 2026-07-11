@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-004",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Users have strong MFA methods",

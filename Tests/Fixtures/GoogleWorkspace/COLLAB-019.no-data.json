@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-019",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "no api",

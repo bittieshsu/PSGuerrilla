@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "LLMNR enabled (1)",

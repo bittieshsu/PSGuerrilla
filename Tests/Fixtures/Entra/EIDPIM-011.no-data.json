@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-011",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "No assignment schedules to assess",

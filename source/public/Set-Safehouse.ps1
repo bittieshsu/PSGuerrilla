@@ -942,7 +942,7 @@ function Invoke-CredentialMigration {
 
         # Also persist the delegated-admin email to the vault so vault-only scans
         # (GUI / scheduled patrols with no -ConfigFile) can resolve it. Without this,
-        # config-file setup followed by a vault-only Invoke-Fortification fails with
+        # config-file setup followed by a vault-only Invoke-GWSAudit fails with
         # "AdminEmail is required." The interactive path stores this key too (above).
         if ($Config.google.adminEmail) {
             Set-GuerrillaCredential -VaultKey 'GUERRILLA_GWS_SA_ADMIN_EMAIL' -Value $Config.google.adminEmail -VaultName $VaultName

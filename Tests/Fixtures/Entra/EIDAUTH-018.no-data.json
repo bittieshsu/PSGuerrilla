@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-018",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Auth method configs not available",

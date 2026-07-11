@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-021",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "logging-present",
   "expectedStatus": "WARN",
   "description": "PowerShell-logging GPO present (verify)",

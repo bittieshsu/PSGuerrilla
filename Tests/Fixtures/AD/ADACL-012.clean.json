@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-012",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Domain root ACEs are all held by default admins",

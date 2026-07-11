@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-013",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No script files in GPO SYSVOL folders",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "no dangerous GenericAll ACEs present",

@@ -1,6 +1,6 @@
 {
   "checkId": "AIAGENT-004",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "unscoped",
   "expectedStatus": "WARN",
   "description": "Authenticated agent open to all",

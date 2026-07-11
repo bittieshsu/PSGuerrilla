@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-010",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A user has a send-as alias (review delegate)",

@@ -39,7 +39,7 @@ function Export-WiretapReportJson {
             generator  = 'Guerrilla'
             reportType = 'M365 Wiretap Continuous Monitoring'
             version    = '1.0.0'
-            theater    = 'M365'
+            platform    = 'M365'
         }
         summary = @{
             threatLevel   = $Result.ThreatLevel

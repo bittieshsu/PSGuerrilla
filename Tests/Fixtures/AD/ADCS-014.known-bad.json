@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-014",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "An OID is linked to a security group (ESC13)",

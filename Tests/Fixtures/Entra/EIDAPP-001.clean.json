@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "App registrations / service principals present",

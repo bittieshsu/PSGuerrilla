@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-009",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "empty-chrome",
   "expectedStatus": "PASS",
   "description": "Chrome devices collected but zero registered => PASS (was false-WARN via -not @() trap)",

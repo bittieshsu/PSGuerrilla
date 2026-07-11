@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Minimum password length 12",

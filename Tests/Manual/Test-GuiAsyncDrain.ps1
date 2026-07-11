@@ -19,10 +19,10 @@ $script:done = '<unset>'
 # fragments with ANSI codes that should reassemble into one clean log line.
 # CRITICALLY it also resolves a real Guerrilla public cmdlet — this is what
 # proves the module is actually imported in the worker runspace (the gap that let
-# the "term 'Invoke-Reconnaissance' is not recognized" bug ship).
+# the "term 'Invoke-ADAudit' is not recognized" bug ship).
 $action = {
-    if (-not (Get-Command Invoke-Reconnaissance -ErrorAction SilentlyContinue)) {
-        throw "Guerrilla module not imported in worker runspace — Invoke-Reconnaissance not found"
+    if (-not (Get-Command Invoke-ADAudit -ErrorAction SilentlyContinue)) {
+        throw "Guerrilla module not imported in worker runspace — Invoke-ADAudit not found"
     }
     $e = [char]27
     Write-Host "  $e[38;5;240m[1750 UTC] $e[0m" -NoNewline

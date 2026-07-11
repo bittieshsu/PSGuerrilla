@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Two+ break-glass accounts excluded from most CA policies",

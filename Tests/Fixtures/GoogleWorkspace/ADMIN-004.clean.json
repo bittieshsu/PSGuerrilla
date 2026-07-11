@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No suspended account holds admin privileges",

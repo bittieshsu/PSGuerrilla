@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-004",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Multiple domain controllers (redundancy)",

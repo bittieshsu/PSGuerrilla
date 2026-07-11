@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A WMI filter is configured (review)",

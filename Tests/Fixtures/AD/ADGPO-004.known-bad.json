@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-004",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A GPO has disabled sections but contains settings",

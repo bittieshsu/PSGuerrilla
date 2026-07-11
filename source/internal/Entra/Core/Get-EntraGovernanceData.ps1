@@ -35,7 +35,7 @@ function Get-EntraGovernanceData {
     }
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting Entra ID Governance (entitlement management)'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting Entra ID Governance (entitlement management)'
     }
 
     try {
@@ -60,7 +60,7 @@ function Get-EntraGovernanceData {
     }
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE `
+        Write-ProgressLine -Phase ENTRA `
             -Message "Governance: $($data.AccessPackages.Count) access packages, $($data.AssignmentPolicies.Count) assignment policies"
     }
 

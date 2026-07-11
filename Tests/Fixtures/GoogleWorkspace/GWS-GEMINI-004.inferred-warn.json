@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-GEMINI-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "inferred-warn",
   "expectedStatus": "WARN",
   "description": "Retention inferred 6 months (<18)",

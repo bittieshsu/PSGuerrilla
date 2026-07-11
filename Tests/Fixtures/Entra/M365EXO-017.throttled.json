@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-017",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Exchange collection failed",

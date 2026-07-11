@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No privileged account flagged non-expiring password",

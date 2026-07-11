@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-018",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All privileged accounts have logged in",

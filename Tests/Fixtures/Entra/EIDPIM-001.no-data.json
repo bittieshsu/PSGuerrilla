@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Global Administrator list unavailable; must be Not Assessed, never PASS",

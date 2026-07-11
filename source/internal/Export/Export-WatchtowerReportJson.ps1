@@ -28,7 +28,7 @@ function Export-WatchtowerReportJson {
             reportType  = 'WatchtowerReport'
             scanId      = $ScanId
             timestamp   = $Timestamp.ToString('o')
-            theater     = 'ActiveDirectory'
+            platform     = 'ActiveDirectory'
             domainName  = $DomainName
             generator   = 'Guerrilla.Watchtower'
         }

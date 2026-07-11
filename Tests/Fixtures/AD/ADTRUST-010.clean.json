@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Trust password rotated within 180 days",

@@ -12,7 +12,7 @@ function Get-GuerrillaCIGate {
         Only FAIL findings gate (plus WARN when -WarningsAsFailures); SKIP / "Not Assessed" never gate.
 
     .PARAMETER Findings
-        Audit findings, e.g. (Invoke-Infiltration -PassThru).Findings.
+        Audit findings, e.g. (Invoke-EntraAudit -PassThru).Findings.
 
     .PARAMETER FailOn
         Minimum severity that fails the build: Critical, High, Medium, Low (severity-or-higher),

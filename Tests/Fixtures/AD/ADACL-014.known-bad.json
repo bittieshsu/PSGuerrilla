@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-014",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A GPO is editable by a non-default principal",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-007",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "OrgUnit structure available",

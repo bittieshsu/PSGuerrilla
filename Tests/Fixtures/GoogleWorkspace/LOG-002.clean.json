@@ -1,6 +1,6 @@
 {
   "checkId": "LOG-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Five or more alert rules configured",

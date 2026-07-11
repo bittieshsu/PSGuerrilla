@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "10 of 10 users MFA-registered (100%) meets the >=99% threshold",

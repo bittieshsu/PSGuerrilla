@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-020",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Device categories inventoried",

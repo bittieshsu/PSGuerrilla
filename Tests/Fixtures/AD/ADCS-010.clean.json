@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "no dangerous ACLs on CA enrollment-service objects",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-006",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All GPO links reference valid GPOs",

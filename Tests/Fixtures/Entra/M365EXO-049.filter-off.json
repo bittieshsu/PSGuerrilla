@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-049",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "filter-off",
   "expectedStatus": "FAIL",
   "description": "Common Attachment Filter disabled",

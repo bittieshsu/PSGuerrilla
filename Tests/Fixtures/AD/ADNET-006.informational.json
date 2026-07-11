@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-006",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "informational",
   "expectedStatus": "WARN",
   "description": "NetBIOS over TCP/IP not verifiable via GPO (manual)",

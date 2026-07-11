@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-008",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Chrome extension management policy configured",

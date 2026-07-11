@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-013",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Two active super admins (2-4 range)",

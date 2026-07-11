@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-011",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Self-service password reset not enabled",

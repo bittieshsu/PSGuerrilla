@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Password hash sync enabled",

@@ -2,6 +2,13 @@
 
 > **Project rename.** This module was published as `PSGuerrilla` through version 2.46.1 and is now `Guerrilla`, effective **v2.46.3** (2026-07-08). The repository and the PowerShell Gallery package are both `Guerrilla`; the old `PSGuerrilla` package remains on the Gallery frozen at its last version. Existing installs migrate automatically (per-user data and safehouse credentials carry forward transparently, see v2.46.3 below). Changelog entries for versions published as `PSGuerrilla` are left exactly as they were at the time; history is not rewritten.
 
+## [2.47.0] - 2026-07-11
+
+### Changed
+- **The platform audits are named what they are.** `Invoke-ADAudit` (Active Directory), `Invoke-EntraAudit` (Entra ID / Azure / Intune / M365), and `Invoke-GWSAudit` (Google Workspace) replace the codenames `Invoke-Reconnaissance`, `Invoke-Infiltration`, and `Invoke-Fortification`; the old names remain as deprecated wrappers that forward all arguments, warn once per session, and will be removed in the next major version. The codenames named attacker phases rather than platforms, the mapping had to be memorized, and the confusion was real: two internal surfaces (the localization strings and the unified dashboard's coverage buckets) carried the mapping inverted. The abstract concept "theater" is likewise renamed to "platform" throughout: `-Theaters`/`-Theater` parameters are now `-Platforms`/`-Platform` (old parameter names still bind via aliases), the GitHub Action `platform` input takes `AD | Entra | GWS | Campaign` (legacy codename values accepted and mapped with a deprecation notice), and report headings print Active Directory, Entra ID / M365, and Google Workspace.
+- **Gate artifact schema v2.** `test-summary.json` now carries `platform` (`AD | Entra | GWS`) per check instead of `theater`; EIDSCA fixtures, previously unlabelled, are labelled `Entra`. The Zero Trust schema gate rejects any `theater`-like field in a check definition (with a built-in poison self-test), so drift back to the retired concept is a red build.
+- **Upgrade continuity.** Delta state and previous-scan exports written under the old names (`reconnaissance-state.json`, `fortification-state.json`, `infiltration-<tenant>-*.json`) are still read via legacy fallbacks, so the first post-upgrade run keeps its baseline instead of re-baselining. New state is written under `ad-audit-state.json`, `gws-audit-state.json`, and `entra-<tenant>-*.json`.
+
 ## [2.46.5] - 2026-07-11
 
 ### Added

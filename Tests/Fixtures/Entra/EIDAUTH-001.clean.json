@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Authentication methods policy present",

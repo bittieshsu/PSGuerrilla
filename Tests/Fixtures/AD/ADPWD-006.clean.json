@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-006",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Account lockout threshold 5 (1-10)",

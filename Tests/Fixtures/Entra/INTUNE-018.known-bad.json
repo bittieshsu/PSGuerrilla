@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-018",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A SYSTEM-context unsigned script is deployed",

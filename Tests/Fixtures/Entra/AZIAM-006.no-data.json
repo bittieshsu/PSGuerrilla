@@ -1,6 +1,6 @@
 {
   "checkId": "AZIAM-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Azure IAM data unavailable",

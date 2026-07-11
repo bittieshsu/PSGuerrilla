@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "External chat disabled",

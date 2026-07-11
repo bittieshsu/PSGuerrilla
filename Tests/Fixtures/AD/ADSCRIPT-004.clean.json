@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-004",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No logon scripts with hardcoded credentials",

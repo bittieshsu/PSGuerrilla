@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-014",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Group Policy not assessed",

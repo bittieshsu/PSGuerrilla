@@ -352,12 +352,6 @@ function Get-GuerrillaFixtureCases {
         }
     }
 
-    $theaterPrefix = @{
-        AD              = 'Test-Recon'
-        Entra           = 'Test-Infiltration'
-        GoogleWorkspace = 'Test-Fortification'
-    }
-
     $cases = [System.Collections.Generic.List[hashtable]]::new()
     foreach ($file in Get-ChildItem -Path $fixtureRoot -Filter *.json -Recurse) {
         $raw    = Get-Content -Path $file.FullName -Raw
@@ -380,7 +374,7 @@ function Get-GuerrillaFixtureCases {
         $fn = if ($fx.checkId -like 'EIDSCA-*') {
             'Invoke-EntraEidscaChecks'
         } else {
-            "$($theaterPrefix[$family])$($fx.checkId -replace '-','')"
+            "Test-$($fx.checkId -replace '-','')"
         }
 
         $cases.Add(@{

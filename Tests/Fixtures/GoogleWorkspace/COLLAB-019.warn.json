@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-019",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "warn",
   "expectedStatus": "WARN",
   "description": "recording on",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADSTALE-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No inactive computer accounts",

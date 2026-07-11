@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-SITES-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Sites service disabled",

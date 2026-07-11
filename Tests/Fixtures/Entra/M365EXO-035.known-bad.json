@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-035",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Connection filter has IP allow-list entries",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-017",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "informational",
   "expectedStatus": "PASS",
   "description": "SYSVOL readable, no GPP group-membership configurations — secure/clean state now reaches PASS (previously always WARN)",

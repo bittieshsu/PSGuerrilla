@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-003",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Logon script data not collected",

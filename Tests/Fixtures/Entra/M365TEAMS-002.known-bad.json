@@ -1,6 +1,6 @@
 {
   "checkId": "M365TEAMS-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Guest access with third-party storage enabled",

@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-013",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "User inventory not assessed",

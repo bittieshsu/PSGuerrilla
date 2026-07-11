@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-GEMINI-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Cloud Identity policy API unavailable",

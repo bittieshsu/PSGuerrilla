@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-012",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Cloud-only vs synced user counts available",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADSTALE-011",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A stale DNS record exists",

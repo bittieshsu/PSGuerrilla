@@ -19,7 +19,7 @@ $root = $PSScriptRoot
 $family = 'Eidsca'
 function New-Fixture {
     param([string]$CheckId, [string]$Scenario, [string]$ExpectedStatus, [string]$Description, [hashtable]$AuditData)
-    $obj = [ordered]@{ checkId = $CheckId; theater = 'Infiltration'; scenario = $Scenario; expectedStatus = $ExpectedStatus; description = $Description; objectShape = $false; auditData = $AuditData }
+    $obj = [ordered]@{ checkId = $CheckId; platform = 'Entra'; scenario = $Scenario; expectedStatus = $ExpectedStatus; description = $Description; objectShape = $false; auditData = $AuditData }
     $obj | ConvertTo-Json -Depth 20 | Set-Content -Path (Join-Path $root $family "$CheckId.$Scenario.json") -Encoding utf8
     Write-Host "  $family/$CheckId.$Scenario -> $ExpectedStatus"
 }

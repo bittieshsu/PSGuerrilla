@@ -1,6 +1,6 @@
 {
   "checkId": "ADKERB-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Kerberoastable account supports AES",

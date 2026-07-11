@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-015",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "scoped",
   "expectedStatus": "WARN",
   "description": "Active GDAP relationship with only non-privileged roles",

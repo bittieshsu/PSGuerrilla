@@ -1,6 +1,6 @@
 {
   "checkId": "M365TEAMS-008",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No third-party cloud storage providers enabled",

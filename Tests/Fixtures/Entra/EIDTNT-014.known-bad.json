@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-014",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Managed domain enforces finite password expiry",

@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-011",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Device inventory present",

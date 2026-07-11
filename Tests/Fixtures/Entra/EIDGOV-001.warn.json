@@ -1,6 +1,6 @@
 {
   "checkId": "EIDGOV-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "warn",
   "expectedStatus": "WARN",
   "description": "A policy grants without approval",

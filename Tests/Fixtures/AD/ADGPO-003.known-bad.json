@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-003",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "An unlinked GPO exists",

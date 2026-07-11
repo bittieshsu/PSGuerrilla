@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-017",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "warn",
   "expectedStatus": "WARN",
   "description": "interop on",

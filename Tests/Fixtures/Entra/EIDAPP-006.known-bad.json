@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A high-privilege consent grant exists",

@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "an EDR configuration profile is deployed",

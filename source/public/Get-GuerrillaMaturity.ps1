@@ -28,13 +28,13 @@ function Get-GuerrillaMaturity {
         all findings; per-category levels are computed the same way.
 
     .PARAMETER Findings
-        Audit findings (e.g. (Invoke-Reconnaissance).Findings). Accepts pipeline input.
+        Audit findings (e.g. (Invoke-ADAudit).Findings). Accepts pipeline input.
 
-    .PARAMETER Theater
+    .PARAMETER Platform
         Optional label carried onto the result (e.g. 'ActiveDirectory').
 
     .EXAMPLE
-        (Invoke-Reconnaissance).Findings | Get-GuerrillaMaturity -Theater ActiveDirectory
+        (Invoke-ADAudit).Findings | Get-GuerrillaMaturity -Platform ActiveDirectory
 
     .EXAMPLE
         $m = Get-GuerrillaMaturity -Findings $result.Findings
@@ -47,7 +47,8 @@ function Get-GuerrillaMaturity {
         [AllowNull()]
         [object[]]$Findings,
 
-        [string]$Theater = ''
+        [Alias('Theater')]
+        [string]$Platform = ''
     )
 
     begin { $all = [System.Collections.Generic.List[object]]::new() }
@@ -111,7 +112,7 @@ function Get-GuerrillaMaturity {
 
         [PSCustomObject]@{
             PSTypeName        = 'Guerrilla.Maturity'
-            Theater           = $Theater
+            Platform           = $Platform
             OverallLevel      = $overallLevel
             OverallLabel      = $levelLabels[$overallLevel]
             NextLevel         = if ($overallLevel -ge 1 -and $overallLevel -lt 5) { $overallLevel + 1 } else { $null }

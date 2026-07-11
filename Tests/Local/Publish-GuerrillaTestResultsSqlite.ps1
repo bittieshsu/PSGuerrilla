@@ -18,7 +18,7 @@
     passed, failed, duration_ms, module_version).
 
 .PARAMETER Results
-    Per-check result objects (CheckId, Family, Theater, Scenario, Severity,
+    Per-check result objects (CheckId, Family, Platform, Scenario, Severity,
     ExpectedStatus, ActualStatus, Passed, FixtureFile, Description).
 
 .PARAMETER DbPath
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS guerrilla_test_runs (
 );
 CREATE TABLE IF NOT EXISTS guerrilla_test_results (
   id INTEGER PRIMARY KEY, run_id TEXT NOT NULL, created_at TEXT NOT NULL,
-  check_id TEXT NOT NULL, family TEXT NOT NULL, theater TEXT, scenario TEXT NOT NULL,
+  check_id TEXT NOT NULL, family TEXT NOT NULL, platform TEXT, scenario TEXT NOT NULL,
   severity TEXT, expected_status TEXT NOT NULL, actual_status TEXT NOT NULL,
   passed INTEGER NOT NULL, fixture_file TEXT, description TEXT
 );
@@ -86,7 +86,7 @@ $sb = [System.Text.StringBuilder]::new()
 
 # Bulk-insert result rows in chunks with explicit incrementing ids.
 $id = $maxId
-$cols = 'INSERT INTO guerrilla_test_results (id,run_id,created_at,check_id,family,theater,scenario,severity,expected_status,actual_status,passed,fixture_file,description) VALUES'
+$cols = 'INSERT INTO guerrilla_test_results (id,run_id,created_at,check_id,family,platform,scenario,severity,expected_status,actual_status,passed,fixture_file,description) VALUES'
 $chunk = [System.Collections.Generic.List[string]]::new()
 $flush = {
     if ($chunk.Count) { [void]$sb.AppendLine("$cols`n" + ($chunk -join ",`n") + ';'); $chunk.Clear() }
@@ -95,7 +95,7 @@ foreach ($r in $Results) {
     $id++
     $chunk.Add('(' + (@(
         [string]$id, (Convert-SqlText $runId), (Convert-SqlText $now),
-        (Convert-SqlText $r.CheckId), (Convert-SqlText $r.Family), (Convert-SqlText $r.Theater),
+        (Convert-SqlText $r.CheckId), (Convert-SqlText $r.Family), (Convert-SqlText $r.Platform),
         (Convert-SqlText $r.Scenario), (Convert-SqlText $r.Severity), (Convert-SqlText $r.ExpectedStatus),
         (Convert-SqlText $r.ActualStatus), (Convert-SqlBool $r.Passed), (Convert-SqlText $r.FixtureFile),
         (Convert-SqlText $r.Description)

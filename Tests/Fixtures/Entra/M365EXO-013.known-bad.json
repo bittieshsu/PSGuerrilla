@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-013",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A remote domain allows auto-forward",

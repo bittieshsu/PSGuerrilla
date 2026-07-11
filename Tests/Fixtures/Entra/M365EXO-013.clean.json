@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-013",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No remote domain allows auto-forward",

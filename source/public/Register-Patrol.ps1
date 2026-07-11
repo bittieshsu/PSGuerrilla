@@ -15,9 +15,10 @@ function Register-Patrol {
         [ValidateSet('Fast', 'Full')]
         [string]$ScanMode = 'Fast',
         [ValidateSet('Workspace', 'Entra', 'AD', 'M365')]
-        [string[]]$Theaters = @('Workspace'),
+        [Alias('Theaters')]
+        [string[]]$Platforms = @('Workspace'),
         [switch]$SendAlerts,
-        [string]$Description = 'Guerrilla automated reconnaissance patrol',
+        [string]$Description = 'Guerrilla automated audit patrol',
         [switch]$Force
     )
 
@@ -31,13 +32,13 @@ function Register-Patrol {
             return
         }
 
-        # Determine theaters from enabled environments
-        if (-not $PSBoundParameters.ContainsKey('Theaters')) {
-            $Theaters = @()
-            if ($missionCfg.EnabledEnvironments.ContainsKey('googleWorkspace')) { $Theaters += 'Workspace' }
-            if ($missionCfg.EnabledEnvironments.ContainsKey('entraAzure')) { $Theaters += 'Entra' }
-            if ($missionCfg.EnabledEnvironments.ContainsKey('activeDirectory')) { $Theaters += 'AD' }
-            if ($missionCfg.EnabledEnvironments.ContainsKey('m365')) { $Theaters += 'M365' }
+        # Determine platforms from enabled environments
+        if (-not $PSBoundParameters.ContainsKey('Platforms')) {
+            $Platforms = @()
+            if ($missionCfg.EnabledEnvironments.ContainsKey('googleWorkspace')) { $Platforms += 'Workspace' }
+            if ($missionCfg.EnabledEnvironments.ContainsKey('entraAzure')) { $Platforms += 'Entra' }
+            if ($missionCfg.EnabledEnvironments.ContainsKey('activeDirectory')) { $Platforms += 'AD' }
+            if ($missionCfg.EnabledEnvironments.ContainsKey('m365')) { $Platforms += 'M365' }
         }
 
         # Apply monitoring interval from mission config
@@ -65,12 +66,12 @@ function Register-Patrol {
     $cfgPathQ = $cfgPath -replace "'", "''"
     $cfgFileArg = if ($ConfigFile) { " -ConfigFile '$((Resolve-Path $ConfigFile).Path -replace "'", "''")'" } else { '' }
 
-    # Build the PowerShell command for all enabled theaters
+    # Build the PowerShell command for all enabled platforms
     $commands = @()
 
     $signalArgs = "-ConfigPath '$cfgPathQ'$cfgFileArg -Force"
 
-    if ('Workspace' -in $Theaters) {
+    if ('Workspace' -in $Platforms) {
         $commands += "`$r = Invoke-Recon -ConfigPath '$cfgPathQ'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
         if ($SendAlerts) {
             $commands += "if (`$r.NewThreats.Count -gt 0) { `$r | Send-Signal $signalArgs }"
@@ -82,21 +83,21 @@ function Register-Patrol {
         }
     }
 
-    if ('Entra' -in $Theaters) {
+    if ('Entra' -in $Platforms) {
         $commands += "`$s = Invoke-Surveillance -ConfigPath '$cfgPathQ'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
         if ($SendAlerts) {
             $commands += "if (`$s.NewThreats.Count -gt 0) { `$s | Send-Signal $signalArgs }"
         }
     }
 
-    if ('AD' -in $Theaters) {
+    if ('AD' -in $Platforms) {
         $commands += "`$w = Invoke-Watchtower -ConfigPath '$cfgPathQ'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
         if ($SendAlerts) {
             $commands += "if (`$w.NewThreats.Count -gt 0) { `$w | Send-Signal $signalArgs }"
         }
     }
 
-    if ('M365' -in $Theaters) {
+    if ('M365' -in $Platforms) {
         $commands += "`$t = Invoke-Wiretap -ConfigPath '$cfgPathQ'$cfgFileArg -ScanMode '$ScanMode' -Quiet"
         if ($SendAlerts) {
             $commands += "if (`$t.NewThreats.Count -gt 0) { `$t | Send-Signal $signalArgs }"
@@ -202,7 +203,7 @@ function Register-Patrol {
         TaskName    = $TaskName
         Schedule    = $schedule
         ScanMode    = $ScanMode
-        Theaters    = $Theaters
+        Platforms    = $Platforms
         SendAlerts  = $SendAlerts.IsPresent
         ConfigPath  = $cfgPath
         RunAs       = $RunAs

@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All sites have subnets assigned",

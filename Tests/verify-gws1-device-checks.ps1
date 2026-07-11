@@ -14,7 +14,7 @@
 # left untouched. No conversions were made, so the check count is unchanged.
 #
 # This test therefore: (1) imports the module, (2) asserts the assigned file parses,
-# (3) asserts every Test-FortificationDEVICE0NN function still loads, and
+# (3) asserts every Test-DEVICE0NN function still loads, and
 # (4) sanity-checks that the device category still returns the same number of checks.
 # Run: pwsh -File Tests/verify-gws1-device-checks.ps1
 
@@ -41,7 +41,7 @@ $out = & $mod {
     # (3) Every device check function still loads.
     $missing = @()
     foreach ($n in 1..11) {
-        $fn = "Test-FortificationDEVICE{0:D3}" -f $n
+        $fn = "Test-DEVICE{0:D3}" -f $n
         if (-not (Get-Command $fn -ErrorAction SilentlyContinue)) { $missing += $fn }
     }
     $r.MissingFns = $missing

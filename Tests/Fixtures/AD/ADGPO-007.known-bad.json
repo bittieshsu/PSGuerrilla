@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A non-admin can edit a GPO",

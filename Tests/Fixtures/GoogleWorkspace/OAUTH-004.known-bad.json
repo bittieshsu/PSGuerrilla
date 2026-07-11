@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Four high-privilege admin-scope OAuth apps",

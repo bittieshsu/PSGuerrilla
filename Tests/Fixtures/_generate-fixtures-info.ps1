@@ -4,7 +4,7 @@
     Re-run: pwsh Tests/Fixtures/_generate-fixtures-info.ps1
 
     AD/Recon (9): ADCS-001/019, ADDOM-006, ADGPO-001, ADKERB-011, ADSCRIPT-003, ADPWD-020, ADTRUST-001/011.
-    Entra/Azure/Intune/Infiltration (22): AZIAM-008, EIDAPP-001/016/017, EIDAUTH-001/003/006,
+    Entra/Azure/Intune/Entra (22): AZIAM-008, EIDAPP-001/016/017, EIDAUTH-001/003/006,
       EIDCA-001/015/016, EIDFED-001/012, EIDPIM-002/011, EIDTNT-001/008/009/010, INTUNE-001/004/014/020.
 
     Mostly inventory checks: PASS/WARN/SKIP. Reachable FAIL only on EIDCA-015 and INTUNE-001.
@@ -16,12 +16,12 @@
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 function New-Fixture {
-    param([string]$Family, [string]$CheckId, [string]$Theater, [string]$Scenario, [string]$ExpectedStatus, [string]$Description, [hashtable]$AuditData)
-    $obj = [ordered]@{ checkId = $CheckId; theater = $Theater; scenario = $Scenario; expectedStatus = $ExpectedStatus; description = $Description; objectShape = $false; auditData = $AuditData }
+    param([string]$Family, [string]$CheckId, [string]$Platform, [string]$Scenario, [string]$ExpectedStatus, [string]$Description, [hashtable]$AuditData)
+    $obj = [ordered]@{ checkId = $CheckId; platform = $Platform; scenario = $Scenario; expectedStatus = $ExpectedStatus; description = $Description; objectShape = $false; auditData = $AuditData }
     $obj | ConvertTo-Json -Depth 18 | Set-Content -Path (Join-Path $root $Family "$CheckId.$Scenario.json") -Encoding utf8
     Write-Host "  $Family/$CheckId.$Scenario -> $ExpectedStatus"
 }
-$R = 'Recon'; $I = 'Infiltration'
+$R = 'AD'; $I = 'Entra'
 $AD = 'AD'; $EN = 'Entra'
 $skInt = @{ Errors = @{ Intune = 'Graph 429' }; Intune = @{ Errors = @{} } }
 
@@ -64,7 +64,7 @@ New-Fixture $AD ADTRUST-001 $R throttled SKIP 'Trust data not collected' @{ Erro
 New-Fixture $AD ADTRUST-011 $R clean PASS 'Trust topology mapped' @{ Errors = @{}; Trusts = @(@{ TrustPartner = 'partner.corp.com'; TrustDirection = 'Bidirectional'; TrustType = 'External'; ForestTransitive = $false; WithinForest = $false; IsAzureAD = $false; IsTransitive = $false; SIDFilteringEnabled = $true; SelectiveAuthentication = $false; WhenCreated = '2020-01-15T10:00:00Z'; WhenChanged = '2020-01-15T10:00:00Z' }); Domain = @{ DomainName = 'contoso.com' }; Connection = @{ DomainDN = 'DC=contoso,DC=com' } }
 New-Fixture $AD ADTRUST-011 $R throttled SKIP 'Trust data not collected' @{ Errors = @{ TrustRelationships = 'AD enumeration failed' } }
 
-# ───────────────────── Entra / Azure / Intune / Infiltration ─────────────────────
+# ───────────────────── Entra / Azure / Intune / Entra ─────────────────────
 # AZIAM-008 management group structure — PASS groups present / WARN none / SKIP
 New-Fixture $EN AZIAM-008 $I clean PASS 'Management group structure present' @{ Errors = @{}; AzureIAM = @{ Errors = @{}; Subscriptions = @(@{ id = 's1' }); ManagementGroups = @(@{ id = 'mg1'; name = 'root'; properties = @{ displayName = 'Tenant Root Group'; tenantId = 't1' } }) } }
 New-Fixture $EN AZIAM-008 $I known-bad WARN 'No management groups configured' @{ Errors = @{}; AzureIAM = @{ Errors = @{}; Subscriptions = @(@{ id = 's1' }); ManagementGroups = @() } }

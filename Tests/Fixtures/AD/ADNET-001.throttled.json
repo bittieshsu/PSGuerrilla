@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-001",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "NetworkConfig collection failed",

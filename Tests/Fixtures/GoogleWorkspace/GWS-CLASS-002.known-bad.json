@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-CLASS-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Users may join any Workspace class",

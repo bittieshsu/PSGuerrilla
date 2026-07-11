@@ -11,12 +11,12 @@
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 function New-Fixture {
-    param([string]$Family, [string]$CheckId, [string]$Theater, [string]$Scenario, [string]$ExpectedStatus, [string]$Description, [hashtable]$AuditData)
-    $obj = [ordered]@{ checkId = $CheckId; theater = $Theater; scenario = $Scenario; expectedStatus = $ExpectedStatus; description = $Description; objectShape = $false; auditData = $AuditData }
+    param([string]$Family, [string]$CheckId, [string]$Platform, [string]$Scenario, [string]$ExpectedStatus, [string]$Description, [hashtable]$AuditData)
+    $obj = [ordered]@{ checkId = $CheckId; platform = $Platform; scenario = $Scenario; expectedStatus = $ExpectedStatus; description = $Description; objectShape = $false; auditData = $AuditData }
     $obj | ConvertTo-Json -Depth 18 | Set-Content -Path (Join-Path $root $Family "$CheckId.$Scenario.json") -Encoding utf8
     Write-Host "  $Family/$CheckId.$Scenario -> $ExpectedStatus"
 }
-$I = 'Infiltration'; $EN = 'Entra'
+$I = 'Entra'; $EN = 'Entra'
 
 # A clean privileged user (member, enabled, cloud-only, signed in recently)
 function User($id, $upn, $extra) {

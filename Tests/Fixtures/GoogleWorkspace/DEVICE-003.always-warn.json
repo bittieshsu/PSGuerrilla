@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Setting not exposed via Admin SDK — manual verification",

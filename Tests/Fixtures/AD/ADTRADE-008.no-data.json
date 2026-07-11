@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRADE-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Key Admins groups not resolved",

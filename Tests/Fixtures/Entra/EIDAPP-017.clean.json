@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-017",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Service principal sign-in activity present",

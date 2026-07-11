@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-009",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "AD Recycle Bin enabled",

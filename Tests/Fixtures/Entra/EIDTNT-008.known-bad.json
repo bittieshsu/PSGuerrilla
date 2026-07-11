@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-008",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "No subscribed SKUs found",

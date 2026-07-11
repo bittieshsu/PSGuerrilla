@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-004",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A first-party Microsoft SP has a password credential",

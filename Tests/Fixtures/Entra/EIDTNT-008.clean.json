@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-008",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Subscribed SKUs inventoried",

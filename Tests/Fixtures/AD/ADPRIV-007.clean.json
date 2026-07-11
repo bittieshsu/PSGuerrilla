@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Print Operators group empty",

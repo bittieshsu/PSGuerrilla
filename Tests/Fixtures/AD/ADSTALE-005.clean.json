@@ -1,6 +1,6 @@
 {
   "checkId": "ADSTALE-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No obsolete-OS computers",

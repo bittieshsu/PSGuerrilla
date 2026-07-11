@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Server Operators has a member",

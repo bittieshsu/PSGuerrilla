@@ -20,10 +20,10 @@
 #Requires -Version 7.0
 <#
 .SYNOPSIS
-    Verifies that Export-FortificationReportHtml produces a valid, well-structured HTML report.
+    Verifies that Export-GWSReportHtml produces a valid, well-structured HTML report.
 .DESCRIPTION
     Imports the Guerrilla module, creates mock data (findings, category scores, delta),
-    calls Export-FortificationReportHtml, then validates the output file.
+    calls Export-GWSReportHtml, then validates the output file.
 #>
 
 $ErrorActionPreference = 'Stop'
@@ -278,10 +278,10 @@ $results = & (Get-Module Guerrilla) {
     # ── Output path ───────────────────────────────────────────────────────────
     $outDir = Join-Path ([System.IO.Path]::GetTempPath()) 'Guerrilla-HtmlTest'
     if (-not (Test-Path $outDir)) { New-Item -Path $outDir -ItemType Directory -Force | Out-Null }
-    $filePath = Join-Path $outDir 'fortification-report-test.html'
+    $filePath = Join-Path $outDir 'gws-report-test.html'
 
     # ── Call the function ─────────────────────────────────────────────────────
-    Export-FortificationReportHtml `
+    Export-GWSReportHtml `
         -Findings       $findings `
         -OverallScore   67 `
         -ScoreLabel     'Moderate' `

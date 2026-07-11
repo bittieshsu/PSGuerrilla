@@ -1,6 +1,6 @@
 {
   "checkId": "AZIAM-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No custom RBAC roles with wildcard actions",

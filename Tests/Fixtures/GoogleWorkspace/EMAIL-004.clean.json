@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "MTA-STS valid for all domains",

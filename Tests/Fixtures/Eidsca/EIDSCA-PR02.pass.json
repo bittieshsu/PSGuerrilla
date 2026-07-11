@@ -1,6 +1,6 @@
 {
   "checkId": "EIDSCA-PR02",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "pass",
   "expectedStatus": "PASS",
   "description": "EIDSCA-PR02 compliant",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-012",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "compat-mode",
   "expectedStatus": "WARN",
   "description": "StrongCertificateBindingEnforcement in compatibility mode (no reachable PASS path)",

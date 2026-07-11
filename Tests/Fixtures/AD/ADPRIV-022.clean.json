@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-022",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "krbtgt password age 90 days is within the safe threshold (<=180)",

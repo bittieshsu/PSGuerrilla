@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "An unverified domain exists",

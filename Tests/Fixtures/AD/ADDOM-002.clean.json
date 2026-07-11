@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Domain functional level current (>=7)",

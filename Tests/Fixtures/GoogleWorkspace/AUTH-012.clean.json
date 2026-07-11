@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-012",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All super admins enrolled in 2SV",

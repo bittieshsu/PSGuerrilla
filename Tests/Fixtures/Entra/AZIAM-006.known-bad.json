@@ -1,6 +1,6 @@
 {
   "checkId": "AZIAM-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Four any-source any-port inbound Allow rules",

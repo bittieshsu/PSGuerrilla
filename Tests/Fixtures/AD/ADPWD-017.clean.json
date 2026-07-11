@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-017",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "LAPS deployed with managed expiration",

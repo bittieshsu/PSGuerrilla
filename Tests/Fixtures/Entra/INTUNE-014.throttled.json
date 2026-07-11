@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-014",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Intune Autopilot profiles not assessed",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDSCA-AP10",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "fail",
   "expectedStatus": "FAIL",
   "description": "EIDSCA-AP10 non-compliant",

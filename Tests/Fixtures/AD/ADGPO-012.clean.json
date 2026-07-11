@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-012",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No cpassword values in SYSVOL GPOs",

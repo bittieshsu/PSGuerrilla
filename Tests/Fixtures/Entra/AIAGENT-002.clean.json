@@ -1,6 +1,6 @@
 {
   "checkId": "AIAGENT-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All authenticated+enforced",

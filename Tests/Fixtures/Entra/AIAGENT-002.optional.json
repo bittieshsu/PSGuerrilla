@@ -1,6 +1,6 @@
 {
   "checkId": "AIAGENT-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "optional",
   "expectedStatus": "WARN",
   "description": "Auth optional (As Needed)",

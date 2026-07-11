@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-016",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Advanced Protection self-enrollment disabled",

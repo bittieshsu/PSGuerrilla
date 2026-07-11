@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-023",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Approval policies cover all destructive operations (wipe/retire/delete)",

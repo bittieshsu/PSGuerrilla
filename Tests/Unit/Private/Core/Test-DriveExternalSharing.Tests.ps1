@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════════════
-#  PSGUERRILLA — Security Reconnaissance & Continuous Monitoring
+#  GUERRILLA — Security Assessment & Continuous Monitoring
 # ═══════════════════════════════════════════════════════════════════════════════
 #  Written by Jim Tyler, Microsoft MVP
 #  Author of "PowerShell for Systems Engineers"

@@ -1,6 +1,6 @@
 {
   "checkId": "ADSTALE-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "An orphaned FSP with an unresolvable SID exists",

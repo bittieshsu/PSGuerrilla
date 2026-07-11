@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-001",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Password policy not assessed (clean PASS needs TimeSpan MaxPasswordAge)",

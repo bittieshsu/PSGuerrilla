@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-014",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "External recipient warning requires manual verification",

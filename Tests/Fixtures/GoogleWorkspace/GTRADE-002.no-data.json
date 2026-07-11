@@ -1,6 +1,6 @@
 {
   "checkId": "GTRADE-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Group settings not collected",

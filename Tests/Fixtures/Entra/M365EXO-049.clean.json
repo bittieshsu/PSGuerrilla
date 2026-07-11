@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-049",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All policies block exe/cmd/vbe",

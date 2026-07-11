@@ -1,6 +1,6 @@
 {
   "checkId": "ADLOG-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "NetworkConfig failed",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-014",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Custom banned password list empty",

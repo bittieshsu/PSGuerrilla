@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-019",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Certificate templates inventoried",

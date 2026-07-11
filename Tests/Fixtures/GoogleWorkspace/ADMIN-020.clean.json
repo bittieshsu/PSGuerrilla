@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-020",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Compliant: accessLevel=BLOCK_ALL_SCOPES",

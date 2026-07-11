@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-025",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "No DLP policies configured",

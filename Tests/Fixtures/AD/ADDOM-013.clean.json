@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-013",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "LDAP signing required via GPO (>=2)",

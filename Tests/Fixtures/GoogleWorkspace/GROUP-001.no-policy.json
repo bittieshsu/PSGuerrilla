@@ -1,6 +1,6 @@
 {
   "checkId": "GROUP-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-policy",
   "expectedStatus": "SKIP",
   "description": "Type not returned",

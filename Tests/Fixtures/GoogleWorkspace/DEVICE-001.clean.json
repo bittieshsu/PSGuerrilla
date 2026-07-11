@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All registered mobile devices are managed (>=95%)",

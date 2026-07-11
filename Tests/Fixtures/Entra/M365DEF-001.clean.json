@@ -1,6 +1,6 @@
 {
   "checkId": "M365DEF-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "A preset Defender protection policy is enabled",

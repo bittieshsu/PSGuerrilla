@@ -1,6 +1,6 @@
 {
   "checkId": "ADTIER-006",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Tier-0 admins live under a dedicated admin OU",

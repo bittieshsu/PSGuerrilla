@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRADE-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "gMSA present, none broadly retrievable",

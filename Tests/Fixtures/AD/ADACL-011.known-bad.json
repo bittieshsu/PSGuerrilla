@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-011",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Domain root owned by a non-default principal",

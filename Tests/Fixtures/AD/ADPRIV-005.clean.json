@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Server Operators empty",

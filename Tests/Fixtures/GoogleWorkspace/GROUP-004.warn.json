@@ -1,6 +1,6 @@
 {
   "checkId": "GROUP-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "warn",
   "expectedStatus": "WARN",
   "description": "Users can create",

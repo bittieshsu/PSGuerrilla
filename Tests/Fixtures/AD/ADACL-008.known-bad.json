@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A broad principal holds GenericAll on an OU",

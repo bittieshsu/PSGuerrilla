@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "A CA policy requires device compliance",

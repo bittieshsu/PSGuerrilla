@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All privileged users have MFA registered",

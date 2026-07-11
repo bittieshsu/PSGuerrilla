@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-013",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Privileged accounts do not follow admin naming convention",

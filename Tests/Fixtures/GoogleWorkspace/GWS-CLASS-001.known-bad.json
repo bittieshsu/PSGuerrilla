@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-CLASS-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Class membership open beyond the domain",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "An account has a blank password",

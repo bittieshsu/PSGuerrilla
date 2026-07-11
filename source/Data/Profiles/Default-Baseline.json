@@ -78,5 +78,5 @@
     "lookbackDays": 30
   },
 
-  "theaters": ["Fortification", "Reconnaissance", "Surveillance", "Watchtower"]
+  "modules": ["GWS", "AD", "Surveillance", "Watchtower"]
 }

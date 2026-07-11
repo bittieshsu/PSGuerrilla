@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Unconfigured third-party app access allowed for all",

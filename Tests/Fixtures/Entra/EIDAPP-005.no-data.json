@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Application/service-principal inventory unavailable; must be Not Assessed, never PASS",

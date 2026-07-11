@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Password complexity enabled",

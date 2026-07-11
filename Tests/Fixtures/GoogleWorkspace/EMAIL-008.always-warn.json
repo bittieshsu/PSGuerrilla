@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-008",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Email routing rules require manual review",

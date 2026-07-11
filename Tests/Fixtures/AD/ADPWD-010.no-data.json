@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "DSInternals not available; NT-hash analysis not performed",

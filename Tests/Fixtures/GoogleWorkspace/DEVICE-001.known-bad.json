@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Most mobile devices unmanaged (<75%)",

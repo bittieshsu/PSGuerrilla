@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Guests have member-equivalent access",

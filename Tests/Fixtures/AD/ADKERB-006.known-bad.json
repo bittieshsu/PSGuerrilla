@@ -1,6 +1,6 @@
 {
   "checkId": "ADKERB-006",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Constrained delegation present (review)",

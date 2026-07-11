@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-018",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Non-compliant: enableAccountRecovery=True",

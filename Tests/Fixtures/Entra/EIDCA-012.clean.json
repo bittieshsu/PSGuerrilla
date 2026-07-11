@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-012",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Sign-in risk policy covers high+medium",

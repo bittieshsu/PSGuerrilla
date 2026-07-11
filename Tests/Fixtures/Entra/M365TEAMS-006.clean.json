@@ -1,6 +1,6 @@
 {
   "checkId": "M365TEAMS-006",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Chat permission role restricted",

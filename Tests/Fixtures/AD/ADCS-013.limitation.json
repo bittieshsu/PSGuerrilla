@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-013",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "limitation",
   "expectedStatus": "WARN",
   "description": "IF_ENFORCEENCRYPTICERTREQUEST not assessable via LDAP",

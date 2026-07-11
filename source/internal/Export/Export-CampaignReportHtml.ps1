@@ -21,8 +21,8 @@ function Export-CampaignReportHtml {
     $findings      = $Result.Findings
     $overallScore  = $Result.OverallScore
     $scoreLabel    = $Result.ScoreLabel
-    $theaterScores = $Result.TheaterScores
-    $theaters      = $Result.Theaters
+    $platformScores = $Result.PlatformScores
+    $platforms      = $Result.Platforms
     $scanStart     = $Result.ScanStart
     $duration      = $Result.Duration
     $scanId        = $Result.ScanId
@@ -76,8 +76,8 @@ function Export-CampaignReportHtml {
 
     $scoreColor = & $getScoreColor $overallScore
 
-    # --- Theater display name mapping ---
-    $theaterDisplayNames = @{
+    # --- Platform display name mapping ---
+    $platformDisplayNames = @{
         'Workspace' = 'Google Workspace'
         'AD'        = 'Active Directory'
         'Cloud'     = 'Microsoft Cloud'
@@ -148,28 +148,28 @@ $themeStyle
   .stat-card .value { font-size: 1.8em; font-weight: 700; }
   .stat-card .label { color: var(--dim); font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; }
 
-  /* Theater cards */
-  .theater-grid {
+  /* Platform cards */
+  .platform-grid {
     display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;
   }
-  .theater-card {
+  .platform-card {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 4px; padding: 20px; flex: 1 1 280px; min-width: 260px;
   }
-  .theater-card .theater-header {
+  .platform-card .platform-header {
     display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
   }
-  .theater-card .theater-name {
+  .platform-card .platform-name {
     font-size: 1em; font-weight: 700; color: var(--parchment); text-transform: uppercase; letter-spacing: 1px;
   }
-  .theater-card .theater-score { font-size: 1.8em; font-weight: 700; }
-  .theater-card .theater-label { font-size: 0.8em; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
-  .theater-card .theater-bar-bg {
+  .platform-card .platform-score { font-size: 1.8em; font-weight: 700; }
+  .platform-card .platform-label { font-size: 0.8em; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
+  .platform-card .platform-bar-bg {
     height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 8px 0;
   }
-  .theater-card .theater-bar-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
-  .theater-card .theater-counts { font-size: 0.8em; color: var(--dim); display: flex; gap: 10px; flex-wrap: wrap; }
-  .theater-card .theater-counts span { white-space: nowrap; }
+  .platform-card .platform-bar-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+  .platform-card .platform-counts { font-size: 0.8em; color: var(--dim); display: flex; gap: 10px; flex-wrap: wrap; }
+  .platform-card .platform-counts span { white-space: nowrap; }
 
   /* Category cards */
   .category-grid {
@@ -210,7 +210,7 @@ $themeStyle
   .badge-high { background: var(--high); color: #1a1f16; }
   .badge-medium { background: var(--medium); color: #1a1f16; }
   .badge-low { background: var(--low); color: #1a1f16; }
-  .badge-theater {
+  .badge-platform {
     display: inline-block; padding: 2px 8px; border-radius: 2px;
     font-size: 0.72em; font-weight: 700; letter-spacing: 1px;
     text-transform: uppercase; font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
@@ -233,22 +233,22 @@ $themeStyle
 
   .priority-table tr td:first-child { font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace; font-size: 0.85em; }
 
-  /* Collapsible theater sections */
-  details.theater-detail {
+  /* Collapsible platform sections */
+  details.platform-detail {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 4px; margin-bottom: 12px;
   }
-  details.theater-detail summary {
+  details.platform-detail summary {
     padding: 12px 16px; cursor: pointer; list-style: none;
     display: flex; align-items: center; gap: 12px;
     font-weight: 700; color: var(--parchment); text-transform: uppercase; letter-spacing: 1px;
   }
-  details.theater-detail summary::-webkit-details-marker { display: none; }
-  details.theater-detail summary::before {
+  details.platform-detail summary::-webkit-details-marker { display: none; }
+  details.platform-detail summary::before {
     content: '\25b6'; font-size: 0.7em; color: var(--dim); transition: transform 0.2s;
   }
-  details.theater-detail[open] summary::before { transform: rotate(90deg); }
-  details.theater-detail .detail-body { padding: 0 16px 16px; }
+  details.platform-detail[open] summary::before { transform: rotate(90deg); }
+  details.platform-detail .detail-body { padding: 0 16px 16px; }
 
   /* Collapsible category details */
   details.cat-detail {
@@ -337,10 +337,10 @@ $themeStyle
   /* Print styles */
   @media print {
     body { background: #fff; color: #000; }
-    .score-panel, .stat-card, .cat-card, .cat-detail, .theater-card, .theater-detail,
+    .score-panel, .stat-card, .cat-card, .cat-detail, .platform-card, .platform-detail,
     .filter-bar { border-color: #ccc; background: #f9f9f9; }
     .filter-bar { display: none; }
-    details.cat-detail, details.theater-detail { break-inside: avoid; }
+    details.cat-detail, details.platform-detail { break-inside: avoid; }
     .finding-detail-row { display: table-row !important; }
     a { color: #336; }
   }
@@ -352,8 +352,8 @@ $themeStyle
     # =================================================================
     # HEADER
     # =================================================================
-    $theaterList = ($theaters | ForEach-Object {
-        $displayName = $theaterDisplayNames[$_]
+    $platformList = ($platforms | ForEach-Object {
+        $displayName = $platformDisplayNames[$_]
         if (-not $displayName) { $displayName = $_ }
         & $esc $displayName
     }) -join ', '
@@ -364,7 +364,7 @@ $($brand.Header)
 <h1>&#x2694; Campaign Report</h1>
 <div class="subtitle">
   Unified Security Posture Assessment &mdash; Generated $timestampStr &mdash;
-  $totalChecks checks across $($theaters.Count) theaters ($theaterList)<br>
+  $totalChecks checks across $($platforms.Count) platforms ($platformList)<br>
   Scan ID: $(& $esc $scanId) &mdash; Duration: $durationStr &mdash;
   Guerrilla v$moduleVersion
 </div>
@@ -389,7 +389,7 @@ $($brand.Header)
   </div>
   <div class="score-detail">
     <div class="label" style="color:$scoreColor">$(& $esc $displayLabel)</div>
-    <div class="desc">Campaign Score (0&ndash;100). Weighted assessment of $totalChecks checks across $($theaters.Count) theaters.</div>
+    <div class="desc">Campaign Score (0&ndash;100). Weighted assessment of $totalChecks checks across $($platforms.Count) platforms.</div>
     <div class="score-stats">
       <span class="ss-item"><span class="ss-val" style="color:var(--pass)">$passCount</span> Passed</span>
       <span class="ss-item"><span class="ss-val" style="color:var(--fail)">$failCount</span> Failed</span>
@@ -419,7 +419,7 @@ $($brand.Header)
 
     # =================================================================
     # SECURITY MATURITY + ATTACK PATHS (shared sections)
-    # Maturity spans all theaters; attack paths only render if an AD theater was scanned.
+    # Maturity spans all platforms; attack paths only render if an AD platform was scanned.
     # =================================================================
     [void]$html.Append((Get-GuerrillaMaturitySectionHtml -Findings $findings -Esc $esc))
     [void]$html.Append((Get-GuerrillaIndicatorsOfExposureHtml -Findings $findings -Esc $esc))
@@ -427,14 +427,14 @@ $($brand.Header)
     [void]$html.Append((Get-GuerrillaAttackPathSectionHtml -Findings $findings -Esc $esc -OmitIfAbsent))
 
     # =================================================================
-    # THEATER SUMMARY CARDS
+    # PLATFORM SUMMARY CARDS
     # =================================================================
-    [void]$html.Append('<h2>Theater Summary</h2>')
-    [void]$html.Append('<div class="theater-grid">')
+    [void]$html.Append('<h2>Platform Summary</h2>')
+    [void]$html.Append('<div class="platform-grid">')
 
-    foreach ($theaterKey in ($theaterScores.GetEnumerator() | Sort-Object { $_.Value.Score })) {
-        $tName  = $theaterKey.Key
-        $tData  = $theaterKey.Value
+    foreach ($platformKey in ($platformScores.GetEnumerator() | Sort-Object { $_.Value.Score })) {
+        $tName  = $platformKey.Key
+        $tData  = $platformKey.Value
         $tScore = $tData.Score
         $tColor = & $getScoreColor $tScore
         $tLabel = Resolve-GuerrillaReportScoreLabel -Score $tScore -Style $Style -Fallback ([string]$tData.ScoreLabel)
@@ -446,16 +446,16 @@ $($brand.Header)
         $tFindingCount = if ($null -ne $tData.FindingCount) { $tData.FindingCount } else { 0 }
 
         [void]$html.Append(@"
-<div class="theater-card">
-  <div class="theater-header">
+<div class="platform-card">
+  <div class="platform-header">
     <div>
-      <span class="theater-name">$(& $esc $tName)</span>
-      <div class="theater-label">$(& $esc $tLabel) &mdash; $tFindingCount checks</div>
+      <span class="platform-name">$(& $esc $tName)</span>
+      <div class="platform-label">$(& $esc $tLabel) &mdash; $tFindingCount checks</div>
     </div>
-    <span class="theater-score" style="color:$tColor">$tScore</span>
+    <span class="platform-score" style="color:$tColor">$tScore</span>
   </div>
-  <div class="theater-bar-bg"><div class="theater-bar-fill" style="width:${tScore}%;background:$tColor"></div></div>
-  <div class="theater-counts">
+  <div class="platform-bar-bg"><div class="platform-bar-fill" style="width:${tScore}%;background:$tColor"></div></div>
+  <div class="platform-counts">
     <span style="color:var(--pass)">Pass: $tPassCount</span>
     <span style="color:var(--fail)">Fail: $tFailCount</span>
     <span style="color:var(--warn)">Warn: $tWarnCount</span>
@@ -467,13 +467,13 @@ $($brand.Header)
     [void]$html.Append('</div>')
 
     # =================================================================
-    # CATEGORY SCORE GRID (grouped by theater)
+    # CATEGORY SCORE GRID (grouped by platform)
     # =================================================================
-    [void]$html.Append('<h2>Category Scores by Theater</h2>')
+    [void]$html.Append('<h2>Category Scores by Platform</h2>')
 
-    foreach ($theaterKey in ($theaterScores.GetEnumerator() | Sort-Object Key)) {
-        $tName = $theaterKey.Key
-        $tData = $theaterKey.Value
+    foreach ($platformKey in ($platformScores.GetEnumerator() | Sort-Object Key)) {
+        $tName = $platformKey.Key
+        $tData = $platformKey.Value
         $tCategoryScores = $tData.CategoryScores
 
         if (-not $tCategoryScores -or $tCategoryScores.Count -eq 0) { continue }
@@ -484,7 +484,7 @@ $($brand.Header)
         }
         $openAttr = if ($tHasFailures) { ' open' } else { '' }
 
-        [void]$html.Append("<details class=`"theater-detail`"$openAttr>")
+        [void]$html.Append("<details class=`"platform-detail`"$openAttr>")
         [void]$html.Append("<summary>$(& $esc $tName) <span style=`"color:var(--dim);font-weight:400;font-size:0.85em;text-transform:none`">($($tCategoryScores.Count) categories)</span></summary>")
         [void]$html.Append('<div class="detail-body">')
         [void]$html.Append('<div class="category-grid">')
@@ -523,13 +523,13 @@ $($brand.Header)
     # --- Filter bar ---
     [void]$html.Append('<div class="filter-bar" id="filterBar">')
 
-    # Theater filter group
-    [void]$html.Append('<div class="filter-group"><span class="filter-label">Theater:</span>')
-    [void]$html.Append('<button class="filter-btn active" data-filter-type="theater" data-filter-value="all" onclick="toggleFilter(this)">All</button>')
-    foreach ($theaterKey in ($theaterScores.GetEnumerator() | Sort-Object Key)) {
-        $tName = $theaterKey.Key
+    # Platform filter group
+    [void]$html.Append('<div class="filter-group"><span class="filter-label">Platform:</span>')
+    [void]$html.Append('<button class="filter-btn active" data-filter-type="platform" data-filter-value="all" onclick="toggleFilter(this)">All</button>')
+    foreach ($platformKey in ($platformScores.GetEnumerator() | Sort-Object Key)) {
+        $tName = $platformKey.Key
         $tSlug = ($tName -replace '[^a-zA-Z0-9]', '-').ToLower()
-        [void]$html.Append("<button class=`"filter-btn`" data-filter-type=`"theater`" data-filter-value=`"$(& $esc $tSlug)`" onclick=`"toggleFilter(this)`">$(& $esc $tName)</button>")
+        [void]$html.Append("<button class=`"filter-btn`" data-filter-type=`"platform`" data-filter-value=`"$(& $esc $tSlug)`" onclick=`"toggleFilter(this)`">$(& $esc $tName)</button>")
     }
     [void]$html.Append('</div>')
 
@@ -557,7 +557,7 @@ $($brand.Header)
 <table id="findingsTable">
   <thead>
   <tr>
-    <th>Theater</th><th>Check ID</th><th>Check Name</th><th>Category</th>
+    <th>Platform</th><th>Check ID</th><th>Check Name</th><th>Category</th>
     <th>Severity</th><th>Status</th><th>Current Value</th>
   </tr>
   </thead>
@@ -574,11 +574,11 @@ $($brand.Header)
     foreach ($f in $sortedFindings) {
         $statusClass = $f.Status.ToLower()
         $sevClass    = $f.Severity.ToLower()
-        $theater     = if ($f.Theater) { $f.Theater } else { 'Unknown' }
-        $theaterSlug = ($theater -replace '[^a-zA-Z0-9]', '-').ToLower()
+        $platform     = if ($f.Platform) { $f.Platform } else { 'Unknown' }
+        $platformSlug = ($platform -replace '[^a-zA-Z0-9]', '-').ToLower()
 
-        # Determine theater badge class
-        $theaterBadgeClass = switch -Wildcard ($theater) {
+        # Determine platform badge class
+        $platformBadgeClass = switch -Wildcard ($platform) {
             '*Workspace*' { 'badge-workspace'; break }
             '*Active*'    { 'badge-ad'; break }
             '*Cloud*'     { 'badge-cloud'; break }
@@ -587,8 +587,8 @@ $($brand.Header)
         }
 
         [void]$html.Append(@"
-  <tr class="clickable-row finding-row" data-theater="$theaterSlug" data-status="$($f.Status)" data-severity="$($f.Severity)" data-idx="$findingIdx" onclick="toggleFindingDetail($findingIdx)">
-    <td><span class="badge badge-theater $theaterBadgeClass">$(& $esc $theater)</span></td>
+  <tr class="clickable-row finding-row" data-platform="$platformSlug" data-status="$($f.Status)" data-severity="$($f.Severity)" data-idx="$findingIdx" onclick="toggleFindingDetail($findingIdx)">
+    <td><span class="badge badge-platform $platformBadgeClass">$(& $esc $platform)</span></td>
     <td><code>$(& $esc $f.CheckId)</code></td>
     <td>$(& $esc $f.CheckName)</td>
     <td>$(& $esc $f.Category)</td>
@@ -711,14 +711,14 @@ $($brand.Header)
         [void]$html.Append(@'
 <table class="compliance-table">
   <tr>
-    <th>Theater</th><th>Check ID</th><th>Check Name</th><th>Severity</th>
+    <th>Platform</th><th>Check ID</th><th>Check Name</th><th>Severity</th>
     <th>NIST SP 800-53</th><th>MITRE ATT&amp;CK</th><th>CIS Benchmark</th>
   </tr>
 '@)
         foreach ($f in $complianceFindings) {
             $sevClass = $f.Severity.ToLower()
-            $theater  = if ($f.Theater) { $f.Theater } else { 'Unknown' }
-            $theaterBadgeClass = switch -Wildcard ($theater) {
+            $platform  = if ($f.Platform) { $f.Platform } else { 'Unknown' }
+            $platformBadgeClass = switch -Wildcard ($platform) {
                 '*Workspace*' { 'badge-workspace'; break }
                 '*Active*'    { 'badge-ad'; break }
                 '*Cloud*'     { 'badge-cloud'; break }
@@ -740,7 +740,7 @@ $($brand.Header)
 
             [void]$html.Append(@"
   <tr>
-    <td><span class="badge badge-theater $theaterBadgeClass">$(& $esc $theater)</span></td>
+    <td><span class="badge badge-platform $platformBadgeClass">$(& $esc $platform)</span></td>
     <td><code>$(& $esc $f.CheckId)</code></td>
     <td>$(& $esc $f.CheckName)</td>
     <td><span class="badge badge-$sevClass">$($f.Severity)</span></td>
@@ -762,7 +762,7 @@ $($brand.Header)
   'use strict';
 
   var activeFilters = {
-    theater: 'all',
+    platform: 'all',
     status: 'all',
     severity: 'all'
   };
@@ -802,16 +802,16 @@ $($brand.Header)
 
     for (var i = 0; i < rows.length; i++) {
       var row = rows[i];
-      var theater = row.getAttribute('data-theater');
+      var platform = row.getAttribute('data-platform');
       var status = row.getAttribute('data-status');
       var severity = row.getAttribute('data-severity');
       var idx = row.getAttribute('data-idx');
 
-      var showTheater = (activeFilters.theater === 'all' || theater === activeFilters.theater);
+      var showPlatform = (activeFilters.platform === 'all' || platform === activeFilters.platform);
       var showStatus = (activeFilters.status === 'all' || status === activeFilters.status);
       var showSeverity = (activeFilters.severity === 'all' || severity === activeFilters.severity);
 
-      if (showTheater && showStatus && showSeverity) {
+      if (showPlatform && showStatus && showSeverity) {
         row.style.display = '';
         visibleCount++;
       } else {
@@ -844,7 +844,7 @@ $($brand.Header)
   &#x2694; Guerrilla Campaign Report &nbsp;|&nbsp;
   $timestampStr &nbsp;|&nbsp;
   Generated by Guerrilla v$moduleVersion &nbsp;|&nbsp;
-  $totalChecks checks across $($theaters.Count) theaters &nbsp;|&nbsp; Score: $overallScore/100 ($(& $esc $displayLabel))
+  $totalChecks checks across $($platforms.Count) platforms &nbsp;|&nbsp; Score: $overallScore/100 ($(& $esc $displayLabel))
   <br>By Jim Tyler, Microsoft MVP &nbsp;|&nbsp; <a href="https://github.com/jimrtyler" style="color:var(--dim)">GitHub</a> &nbsp;|&nbsp; <a href="https://linkedin.com/in/jamestyler" style="color:var(--dim)">LinkedIn</a> &nbsp;|&nbsp; <a href="https://youtube.com/@jimrtyler" style="color:var(--dim)">YouTube</a>
 </div>
 </body>

@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-016",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A privileged account uses a weak/known password",

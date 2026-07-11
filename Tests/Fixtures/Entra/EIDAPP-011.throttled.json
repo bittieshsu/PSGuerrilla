@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-011",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Applications collection failed",

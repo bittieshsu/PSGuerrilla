@@ -22,7 +22,7 @@ function Get-EntraAuthMethodsData {
 
     # ── Authentication Methods Policy ─────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting authentication methods policy'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting authentication methods policy'
     }
     try {
         $data.AuthMethodsPolicy = Invoke-GraphApi -AccessToken $AccessToken `
@@ -40,7 +40,7 @@ function Get-EntraAuthMethodsData {
 
     # ── User Registration Details (MFA status) ────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting MFA registration details'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting MFA registration details'
     }
     try {
         $data.UserRegistrationDetails = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -52,7 +52,7 @@ function Get-EntraAuthMethodsData {
 
     # ── Authorization Policy (SSPR, user settings) ────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting authorization policy'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting authorization policy'
     }
     try {
         $data.AuthorizationPolicy = Invoke-GraphApi -AccessToken $AccessToken `
@@ -75,7 +75,7 @@ function Get-EntraAuthMethodsData {
     if (-not $Quiet) {
         $mfaCount = @($data.UserRegistrationDetails | Where-Object { $_.isMfaRegistered }).Count
         $totalUsers = $data.UserRegistrationDetails.Count
-        Write-ProgressLine -Phase INFILTRATE -Message "MFA registered: $mfaCount / $totalUsers users"
+        Write-ProgressLine -Phase ENTRA -Message "MFA registered: $mfaCount / $totalUsers users"
     }
 
     return $data

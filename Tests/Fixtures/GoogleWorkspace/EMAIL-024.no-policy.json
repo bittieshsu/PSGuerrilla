@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-024",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-policy",
   "expectedStatus": "SKIP",
   "description": "Sandbox policy not returned (edition-gated/field unconfirmed)",

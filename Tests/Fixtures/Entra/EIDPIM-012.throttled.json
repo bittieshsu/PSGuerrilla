@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-012",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "PIM collection failed",

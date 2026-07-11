@@ -52,35 +52,35 @@ $out = & $mod {
     $r.DurBad = ($null -eq (ConvertFrom-GoogleDurationSeconds 'banana'))
 
     # ── AUTH-003: 2SV method strength ──
-    $r.A003_all  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_enforcement_factor' = @{ allowedSignInFactorSet = 'ALL' } }) }) 'Test-FortificationAUTH003'
-    $r.A003_key  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_enforcement_factor' = @{ allowedSignInFactorSet = 'SECURITY_KEY' } }) }) 'Test-FortificationAUTH003'
+    $r.A003_all  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_enforcement_factor' = @{ allowedSignInFactorSet = 'ALL' } }) }) 'Test-AUTH003'
+    $r.A003_key  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.two_step_verification_enforcement_factor' = @{ allowedSignInFactorSet = 'SECURITY_KEY' } }) }) 'Test-AUTH003'
 
     # ── AUTH-004: password min length (weakest of multiple OUs) ──
-    $r.A004_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 14 } }) }) 'Test-FortificationAUTH004'
-    $r.A004_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 8 } }) }) 'Test-FortificationAUTH004'
-    $r.A004_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @(@{ minimumLength = 14 }, @{ minimumLength = 6 }) }) }) 'Test-FortificationAUTH004'  # weakest=6 -> FAIL
+    $r.A004_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 14 } }) }) 'Test-AUTH004'
+    $r.A004_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 8 } }) }) 'Test-AUTH004'
+    $r.A004_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @(@{ minimumLength = 14 }, @{ minimumLength = 6 }) }) }) 'Test-AUTH004'  # weakest=6 -> FAIL
 
     # ── AUTH-005: password reuse ──
-    $r.A005_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ allowReuse = $true } }) }) 'Test-FortificationAUTH005'
-    $r.A005_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ allowReuse = $false } }) }) 'Test-FortificationAUTH005'
+    $r.A005_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ allowReuse = $true } }) }) 'Test-AUTH005'
+    $r.A005_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ allowReuse = $false } }) }) 'Test-AUTH005'
 
     # ── AUTH-006: session duration ──
-    $r.A006_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.session_controls' = @{ webSessionDuration = '1209600s' } }) }) 'Test-FortificationAUTH006'  # 14d
-    $r.A006_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.session_controls' = @{ webSessionDuration = '28800s' } }) }) 'Test-FortificationAUTH006'      # 8h
+    $r.A006_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.session_controls' = @{ webSessionDuration = '1209600s' } }) }) 'Test-AUTH006'  # 14d
+    $r.A006_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.session_controls' = @{ webSessionDuration = '28800s' } }) }) 'Test-AUTH006'      # 8h
 
     # ── AUTH-008: less secure apps ──
-    $r.A008_fail    = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.less_secure_apps' = @{ allowLessSecureApps = $true } }) }) 'Test-FortificationAUTH008'
-    $r.A008_absent  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }) 'Test-FortificationAUTH008'  # type absent -> PASS (deprecated)
+    $r.A008_fail    = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.less_secure_apps' = @{ allowLessSecureApps = $true } }) }) 'Test-AUTH008'
+    $r.A008_absent  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }) 'Test-AUTH008'  # type absent -> PASS (deprecated)
 
     # ── AUTH-011: login challenges ──
-    $r.A011_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.login_challenges' = @{ enableEmployeeIdChallenge = $false } }) }) 'Test-FortificationAUTH011'
-    $r.A011_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.login_challenges' = @{ enableEmployeeIdChallenge = $true } }) }) 'Test-FortificationAUTH011'
+    $r.A011_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.login_challenges' = @{ enableEmployeeIdChallenge = $false } }) }) 'Test-AUTH011'
+    $r.A011_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.login_challenges' = @{ enableEmployeeIdChallenge = $true } }) }) 'Test-AUTH011'
 
     # ── Unavailable API -> SKIP (sampled across the converted checks) ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.Skip003 = St $none 'Test-FortificationAUTH003'
-    $r.Skip004 = St $none 'Test-FortificationAUTH004'
-    $r.Skip006 = St $none 'Test-FortificationAUTH006'
+    $r.Skip003 = St $none 'Test-AUTH003'
+    $r.Skip004 = St $none 'Test-AUTH004'
+    $r.Skip006 = St $none 'Test-AUTH006'
 
     $r
 }

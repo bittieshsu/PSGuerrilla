@@ -1,6 +1,6 @@
 {
   "checkId": "AZIAM-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A few direct resource-level role assignments (1-10)",

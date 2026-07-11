@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A suspended account still holds admin privileges",

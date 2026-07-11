@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "DomainControllers collection failed",

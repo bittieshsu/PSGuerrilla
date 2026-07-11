@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-023",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "krbtgt account is enabled",

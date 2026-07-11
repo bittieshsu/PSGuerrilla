@@ -3,7 +3,7 @@
 # Each fixture under Tests/Fixtures/<Family>/ is a synthetic, hand-crafted
 # collector payload ($AuditData) plus the verdict it should produce. No real
 # tenant data is used. The fixture is pumped through the REAL check function
-# (Test-Recon* / Test-Infiltration* / Test-Fortification*) and we assert the
+# (Test-<CheckId>) and we assert the
 # returned Status. This encodes the invariant:
 #
 #     clean data => PASS        known-bad data => FAIL/WARN

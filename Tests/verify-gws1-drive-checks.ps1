@@ -42,32 +42,32 @@ $out = & $mod {
     $r = @{}
 
     # ── DRIVE-001: external sharing mode (enum, weakest-OU-wins) ──
-    $r.D001_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.external_sharing' = @{ externalSharingMode = 'ALLOWED' } }) }) 'Test-FortificationDRIVE001'
-    $r.D001_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.external_sharing' = @{ externalSharingMode = 'DISALLOWED' } }) }) 'Test-FortificationDRIVE001'
-    $r.D001_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.external_sharing' = @{ externalSharingMode = 'SOMETHING_NEW' } }) }) 'Test-FortificationDRIVE001'
+    $r.D001_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.external_sharing' = @{ externalSharingMode = 'ALLOWED' } }) }) 'Test-DRIVE001'
+    $r.D001_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.external_sharing' = @{ externalSharingMode = 'DISALLOWED' } }) }) 'Test-DRIVE001'
+    $r.D001_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.external_sharing' = @{ externalSharingMode = 'SOMETHING_NEW' } }) }) 'Test-DRIVE001'
     # weakest-OU-wins: one OU ALLOWED among restrictive ones -> FAIL
-    $r.D001_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.external_sharing' = @(@{ externalSharingMode = 'DISALLOWED' }, @{ externalSharingMode = 'ALLOWED' }) }) }) 'Test-FortificationDRIVE001'
+    $r.D001_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.external_sharing' = @(@{ externalSharingMode = 'DISALLOWED' }, @{ externalSharingMode = 'ALLOWED' }) }) }) 'Test-DRIVE001'
 
     # ── DRIVE-004: shared drive creation (bool, weakest-OU-wins) ──
-    $r.D004_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.shared_drive_creation' = @{ allowSharedDriveCreation = $true } }) }) 'Test-FortificationDRIVE004'
-    $r.D004_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.shared_drive_creation' = @{ allowSharedDriveCreation = $false } }) }) 'Test-FortificationDRIVE004'
+    $r.D004_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.shared_drive_creation' = @{ allowSharedDriveCreation = $true } }) }) 'Test-DRIVE004'
+    $r.D004_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.shared_drive_creation' = @{ allowSharedDriveCreation = $false } }) }) 'Test-DRIVE004'
 
     # ── DRIVE-008: drive for desktop (bool + restrictToAuthorizedDevices) ──
-    $r.D008_pass_off = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.drive_for_desktop' = @{ allowDriveForDesktop = $false } }) }) 'Test-FortificationDRIVE008'
-    $r.D008_warn     = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.drive_for_desktop' = @{ allowDriveForDesktop = $true; restrictToAuthorizedDevices = $false } }) }) 'Test-FortificationDRIVE008'
-    $r.D008_pass_res = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.drive_for_desktop' = @{ allowDriveForDesktop = $true; restrictToAuthorizedDevices = $true } }) }) 'Test-FortificationDRIVE008'
+    $r.D008_pass_off = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.drive_for_desktop' = @{ allowDriveForDesktop = $false } }) }) 'Test-DRIVE008'
+    $r.D008_warn     = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.drive_for_desktop' = @{ allowDriveForDesktop = $true; restrictToAuthorizedDevices = $false } }) }) 'Test-DRIVE008'
+    $r.D008_pass_res = St (@{ CloudIdentityPolicies = (New-Pol @{ 'drive_and_docs.drive_for_desktop' = @{ allowDriveForDesktop = $true; restrictToAuthorizedDevices = $true } }) }) 'Test-DRIVE008'
 
     # ── Unavailable API -> SKIP (across the converted checks) ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.Skip001 = St $none 'Test-FortificationDRIVE001'
-    $r.Skip004 = St $none 'Test-FortificationDRIVE004'
-    $r.Skip008 = St $none 'Test-FortificationDRIVE008'
+    $r.Skip001 = St $none 'Test-DRIVE001'
+    $r.Skip004 = St $none 'Test-DRIVE004'
+    $r.Skip008 = St $none 'Test-DRIVE008'
 
     # ── Available but type absent -> SKIP ──
     $other = @{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }
-    $r.Absent001 = St $other 'Test-FortificationDRIVE001'
-    $r.Absent004 = St $other 'Test-FortificationDRIVE004'
-    $r.Absent008 = St $other 'Test-FortificationDRIVE008'
+    $r.Absent001 = St $other 'Test-DRIVE001'
+    $r.Absent004 = St $other 'Test-DRIVE004'
+    $r.Absent008 = St $other 'Test-DRIVE008'
 
     $r
 }

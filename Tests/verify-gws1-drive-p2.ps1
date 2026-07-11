@@ -47,29 +47,29 @@ $out = & $mod {
     # ── PASS: at least one ACTIVE Drive-scoped DLP rule ──
     $r.D010_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @(
         (DlpRule 'ACTIVE' @('driveAction'))
-    ) }) }) 'Test-FortificationDRIVE010'
+    ) }) }) 'Test-DRIVE010'
     # PASS even when mixed with non-Drive / inactive rules, so long as one active Drive rule exists.
     $r.D010_passMixed = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @(
         (DlpRule 'ACTIVE' @('gmailAction')),
         (DlpRule 'INACTIVE' @('driveAction')),
         (DlpRule 'ACTIVE' @('driveAction', 'alertCenterAction'))
-    ) }) }) 'Test-FortificationDRIVE010'
+    ) }) }) 'Test-DRIVE010'
 
     # ── WARN: no Drive-scoped rule at all ──
     # An ACTIVE rule with only a gmailAction must NOT count as a Drive DLP rule.
     $r.D010_warnGmail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @(
         (DlpRule 'ACTIVE' @('gmailAction'))
-    ) }) }) 'Test-FortificationDRIVE010'
+    ) }) }) 'Test-DRIVE010'
 
     # ── WARN: INACTIVE driveAction (correct action, wrong state) must be WARN, not PASS ──
     $r.D010_warnInactive = St (@{ CloudIdentityPolicies = (New-Pol @{ 'rule.dlp' = @(
         (DlpRule 'INACTIVE' @('driveAction'))
-    ) }) }) 'Test-FortificationDRIVE010'
+    ) }) }) 'Test-DRIVE010'
 
     # ── SKIP: API unavailable ──
-    $r.D010_skip = St (@{ CloudIdentityPolicies = $null }) 'Test-FortificationDRIVE010'
+    $r.D010_skip = St (@{ CloudIdentityPolicies = $null }) 'Test-DRIVE010'
     # ── SKIP: API available but no rule.dlp policy returned ──
-    $r.D010_skipAbsent = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }) 'Test-FortificationDRIVE010'
+    $r.D010_skipAbsent = St (@{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }) 'Test-DRIVE010'
 
     $r
 }

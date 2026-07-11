@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-GEMINI-005",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "inferred-fail",
   "expectedStatus": "FAIL",
   "description": "Conversation sharing inferred ON",

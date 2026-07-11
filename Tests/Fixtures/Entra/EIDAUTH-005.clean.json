@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All users MFA-registered (0% gap)",

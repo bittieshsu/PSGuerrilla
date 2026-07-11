@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-001",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A dangerous ACE exists on the domain root",

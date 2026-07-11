@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-019",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "An active Gmail DLP rule is configured",

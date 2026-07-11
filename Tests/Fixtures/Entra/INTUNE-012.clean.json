@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-012",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "App protection policy has conditional launch settings",

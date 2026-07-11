@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No stale service principals",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "3 Global Administrators is within the recommended range (2-4)",

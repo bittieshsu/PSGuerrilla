@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "An app registration holds a credential (review)",

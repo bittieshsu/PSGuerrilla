@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-011",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A user has IMAP enabled",

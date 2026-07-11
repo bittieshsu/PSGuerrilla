@@ -1,6 +1,6 @@
 {
   "checkId": "ADSTALE-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Stale object data unavailable",

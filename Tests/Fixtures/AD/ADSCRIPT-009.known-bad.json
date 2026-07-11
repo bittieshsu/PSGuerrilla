@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-009",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A NETLOGON file has an unusual extension",

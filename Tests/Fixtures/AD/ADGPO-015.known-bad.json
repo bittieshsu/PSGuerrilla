@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-015",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "GPO deploys scheduled tasks (review)",

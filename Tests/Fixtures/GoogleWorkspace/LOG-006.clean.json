@@ -1,6 +1,6 @@
 {
   "checkId": "LOG-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No domain-wide delegation grants with Reports access",

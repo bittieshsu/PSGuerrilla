@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-030",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Non-compliant: enableAutoForwarding=True",

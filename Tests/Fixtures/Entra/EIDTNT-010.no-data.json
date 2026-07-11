@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Tenant config not assessed",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-003",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No transitive trusts",

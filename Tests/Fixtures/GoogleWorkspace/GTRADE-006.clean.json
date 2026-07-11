@@ -1,6 +1,6 @@
 {
   "checkId": "GTRADE-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No over-scoped OAuth grants",

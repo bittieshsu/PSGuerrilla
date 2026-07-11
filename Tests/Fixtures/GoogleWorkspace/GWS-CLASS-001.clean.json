@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-CLASS-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Class membership restricted to the domain",

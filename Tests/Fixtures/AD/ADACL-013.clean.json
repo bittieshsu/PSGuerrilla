@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-013",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No gPLink-modify rights on critical OUs",

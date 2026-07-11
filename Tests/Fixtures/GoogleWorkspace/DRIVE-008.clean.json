@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-008",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Drive for Desktop disabled",

@@ -1,6 +1,6 @@
 {
   "checkId": "M365AUDIT-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "unified audit log ingestion is enabled",

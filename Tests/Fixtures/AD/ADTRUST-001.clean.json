@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-001",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Trust relationships inventoried",

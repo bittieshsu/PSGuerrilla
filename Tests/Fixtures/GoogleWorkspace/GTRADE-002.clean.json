@@ -1,6 +1,6 @@
 {
   "checkId": "GTRADE-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No group is viewable by anyone on the internet",

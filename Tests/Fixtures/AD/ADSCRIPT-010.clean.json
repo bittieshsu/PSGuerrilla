@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No UNC paths to non-DC servers in scripts",

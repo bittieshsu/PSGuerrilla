@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-003",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Schema version current (>=88)",

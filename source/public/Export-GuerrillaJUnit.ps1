@@ -8,13 +8,13 @@ function Export-GuerrillaJUnit {
         render natively as pass/fail — so Guerrilla results show up in CI/CD pipelines.
 
     .DESCRIPTION
-        Turns any theater's findings (AD / Entra / M365 / Google Workspace) into a JUnit test report:
+        Turns any platform's findings (AD / Entra / M365 / Google Workspace) into a JUnit test report:
         one <testsuite> per category, one <testcase> per check. FAIL -> <failure>; SKIP/ERROR -> <skipped>
         (Not Assessed); WARN -> passing with output, or <failure type="warning"> when -WarningsAsFailures.
         Returns the counts so a pipeline can gate on them (exit non-zero on Failures).
 
     .PARAMETER Findings
-        Audit findings, e.g. (Invoke-Infiltration -PassThru).Findings.
+        Audit findings, e.g. (Invoke-EntraAudit -PassThru).Findings.
 
     .PARAMETER OutputPath
         Destination .xml. Default ./Guerrilla-results.xml.
@@ -26,7 +26,7 @@ function Export-GuerrillaJUnit {
         Treat WARN findings as failures (so CI gates on them too).
 
     .EXAMPLE
-        $r = Invoke-Infiltration -PassThru
+        $r = Invoke-EntraAudit -PassThru
         Export-GuerrillaJUnit -Findings $r.Findings -OutputPath ./results.xml
         if ((Export-GuerrillaJUnit -Findings $r.Findings).Failures) { exit 1 }   # gate the pipeline
     #>

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-012",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Long-term log retention requires manual verification",

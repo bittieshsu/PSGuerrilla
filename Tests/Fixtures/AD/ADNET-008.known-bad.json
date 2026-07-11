@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "WPAD service not disabled via policy",

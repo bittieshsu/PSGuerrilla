@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-010",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "An active Drive DLP rule is configured",

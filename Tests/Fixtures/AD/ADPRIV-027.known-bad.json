@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-027",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A non-Tier-0 principal holds the DC logon right",

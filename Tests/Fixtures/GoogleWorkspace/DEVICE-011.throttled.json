@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-011",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Device data not collected",

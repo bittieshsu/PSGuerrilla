@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-021",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Privileged members not assessed",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-001",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "GPOs inventoried",

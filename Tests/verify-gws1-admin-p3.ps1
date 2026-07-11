@@ -39,24 +39,24 @@ $out = & $mod {
     $r = @{}
 
     # ── ADMIN-008: Directory Sharing Settings -> domainSharedContacts (WARN if visible) ──
-    $r.A008_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @{ domainSharedContacts = $true } }) }) 'Test-FortificationADMIN008'   # visible -> WARN
-    $r.A008_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @{ domainSharedContacts = $false } }) }) 'Test-FortificationADMIN008'  # restricted -> PASS
-    $r.A008_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @(@{ domainSharedContacts = $false }, @{ domainSharedContacts = $true }) }) }) 'Test-FortificationADMIN008'  # weakest OU visible -> WARN
+    $r.A008_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @{ domainSharedContacts = $true } }) }) 'Test-ADMIN008'   # visible -> WARN
+    $r.A008_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @{ domainSharedContacts = $false } }) }) 'Test-ADMIN008'  # restricted -> PASS
+    $r.A008_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @(@{ domainSharedContacts = $false }, @{ domainSharedContacts = $true }) }) }) 'Test-ADMIN008'  # weakest OU visible -> WARN
 
     # ── ADMIN-009: User Profile Visibility -> googleGroups (WARN if visible) ──
-    $r.A009_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @{ googleGroups = $true } }) }) 'Test-FortificationADMIN009'   # visible -> WARN
-    $r.A009_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @{ googleGroups = $false } }) }) 'Test-FortificationADMIN009'  # restricted -> PASS
-    $r.A009_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @(@{ googleGroups = $false }, @{ googleGroups = $true }) }) }) 'Test-FortificationADMIN009'  # weakest OU visible -> WARN
+    $r.A009_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @{ googleGroups = $true } }) }) 'Test-ADMIN009'   # visible -> WARN
+    $r.A009_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @{ googleGroups = $false } }) }) 'Test-ADMIN009'  # restricted -> PASS
+    $r.A009_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ $T = @(@{ googleGroups = $false }, @{ googleGroups = $true }) }) }) 'Test-ADMIN009'  # weakest OU visible -> WARN
 
     # ── Unavailable API -> SKIP ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.A008_skip = St $none 'Test-FortificationADMIN008'
-    $r.A009_skip = St $none 'Test-FortificationADMIN009'
+    $r.A008_skip = St $none 'Test-ADMIN008'
+    $r.A009_skip = St $none 'Test-ADMIN009'
 
     # ── Type/field absent -> SKIP (never invent PASS/FAIL from a missing value) ──
     $other = @{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }
-    $r.A008_absent = St $other 'Test-FortificationADMIN008'
-    $r.A009_absent = St $other 'Test-FortificationADMIN009'
+    $r.A008_absent = St $other 'Test-ADMIN008'
+    $r.A009_absent = St $other 'Test-ADMIN009'
 
     # ── ADMIN check count must remain 13 ──
     $r.AdminCount = (Get-AuditCategoryDefinitions -Category 'AdminManagementChecks').checks.Count

@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-017",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Non-compliant: defaultFileAccess=ANYONE_WITH_LINK",

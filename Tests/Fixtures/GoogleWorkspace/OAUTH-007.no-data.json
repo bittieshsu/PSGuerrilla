@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-007",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Cloud Identity policy API unavailable",

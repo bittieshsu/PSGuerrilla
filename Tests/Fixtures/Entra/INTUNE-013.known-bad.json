@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-013",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "No enrollment configurations found",

@@ -46,7 +46,7 @@ $env:PSGUERRILLA_QUIET = $null
 $samplesDir = $PSScriptRoot
 
 # Non-default themes are written to suffixed showcase files (e.g.
-# Fortification-AllFail-Professional.html) and carry demo white-label branding so
+# GWS-AllFail-Professional.html) and carry demo white-label branding so
 # the professional look and the firm header are both visible. The default
 # 'Guerrilla' run keeps the canonical committed filenames and no branding.
 $styleSuffix = if ($Style -eq 'Guerrilla') { '' } else { "-$Style" }
@@ -244,9 +244,9 @@ function Get-ScoreLabel {
 $mod = Get-Module Guerrilla
 
 # ============================================================================
-# REPORT 1: Fortification (Google Workspace)
+# REPORT 1: GWS (Google Workspace)
 # ============================================================================
-Write-Host 'Generating Fortification report (Google Workspace)...' -ForegroundColor Cyan
+Write-Host 'Generating GWS report (Google Workspace)...' -ForegroundColor Cyan
 
 $gwsFiles = @(
     'AuthenticationChecks.json'
@@ -262,11 +262,11 @@ $gwsFiles = @(
 $gwsFindings = New-AllFailFindings -CheckFiles $gwsFiles
 $gwsScore = Get-PostureScore -Findings $gwsFindings
 $gwsLabel = Get-ScoreLabel -Score $gwsScore.OverallScore
-$gwsPath = Join-Path $samplesDir "Fortification-AllFail$styleSuffix.html"
+$gwsPath = Join-Path $samplesDir "GWS-AllFail$styleSuffix.html"
 
 & $mod {
     param($Findings, $OverallScore, $ScoreLabel, $CategoryScores, $TenantDomain, $FilePath, $Style, $Branding)
-    Export-FortificationReportHtml `
+    Export-GWSReportHtml `
         -Findings $Findings `
         -OverallScore $OverallScore `
         -ScoreLabel $ScoreLabel `
@@ -280,11 +280,11 @@ $gwsPath = Join-Path $samplesDir "Fortification-AllFail$styleSuffix.html"
 Write-Host "  -> $gwsPath ($($gwsFindings.Count) checks, score: $($gwsScore.OverallScore))" -ForegroundColor Green
 
 # ============================================================================
-# REPORT 2: Reconnaissance (Active Directory)
+# REPORT 2: AD (Active Directory)
 # ============================================================================
-Write-Host 'Generating Reconnaissance report (Active Directory)...' -ForegroundColor Cyan
+Write-Host 'Generating AD report (Active Directory)...' -ForegroundColor Cyan
 
-# Discover every Active Directory reconnaissance check file automatically so newly
+# Discover every Active Directory check file automatically so newly
 # added categories (e.g. Logging, Network, Tradecraft, TierZero) can never silently
 # drop out of the sample report — the old hardcoded list omitted 4 files and
 # undercounted AD by 28 checks (reported 175 instead of the real 203).
@@ -320,10 +320,10 @@ foreach ($f in $adFindings) {
 
 $adScore = Get-PostureScore -Findings $adFindings
 $adLabel = Get-ScoreLabel -Score $adScore.OverallScore
-$adPath = Join-Path $samplesDir "Reconnaissance-AllFail$styleSuffix.html"
+$adPath = Join-Path $samplesDir "AD-AllFail$styleSuffix.html"
 
 # Sample BloodHound OpenGraph export so the report's BloodHound callout references a real artifact.
-$bhSamplePath = Join-Path $samplesDir 'Reconnaissance-BloodHound.json'
+$bhSamplePath = Join-Path $samplesDir 'AD-BloodHound.json'
 $sampleBhAudit = @{
     ACLs = @{ DangerousACEs = @(
         [PSCustomObject]@{ IdentityReference = 'SAMPLE\HelpDesk'; IdentitySID = 'S-1-5-21-99-1-1-1147'; ActiveDirectoryRights = 'GenericAll'; ObjectClass = 'group'; ObjectName = 'Workstation-Admins'; ObjectSID = 'S-1-5-21-99-1-1-1200' }
@@ -337,7 +337,7 @@ $sampleBhAudit = @{
 
 & $mod {
     param($Findings, $OverallScore, $ScoreLabel, $CategoryScores, $DomainName, $FilePath, $Style, $Branding, $BloodHoundPath)
-    Export-ReconnaissanceReportHtml `
+    Export-ADReportHtml `
         -Findings $Findings `
         -OverallScore $OverallScore `
         -ScoreLabel $ScoreLabel `
@@ -352,9 +352,9 @@ $sampleBhAudit = @{
 Write-Host "  -> $adPath ($($adFindings.Count) checks, score: $($adScore.OverallScore))" -ForegroundColor Green
 
 # ============================================================================
-# REPORT 3: Infiltration (Entra ID / Azure / Intune / M365)
+# REPORT 3: Entra (Entra ID / Azure / Intune / M365)
 # ============================================================================
-Write-Host 'Generating Infiltration report (Entra ID / M365)...' -ForegroundColor Cyan
+Write-Host 'Generating Entra report (Entra ID / M365)...' -ForegroundColor Cyan
 
 $entraFiles = @(
     'EntraAuthChecks.json'
@@ -376,10 +376,10 @@ $entraFiles = @(
 
 $entraFindings = New-AllFailFindings -CheckFiles $entraFiles
 $entraScore = Get-PostureScore -Findings $entraFindings
-$entraPath = Join-Path $samplesDir "Infiltration-AllFail$styleSuffix.html"
+$entraPath = Join-Path $samplesDir "Entra-AllFail$styleSuffix.html"
 
-$infiltrationResult = [PSCustomObject]@{
-    PSTypeName = 'Guerrilla.InfiltrationResult'
+$entraResult = [PSCustomObject]@{
+    PSTypeName = 'Guerrilla.EntraAuditResult'
     TenantId   = '00000000-0000-0000-0000-000000000000'
     ScanStart  = [datetime]::UtcNow
     Findings   = $entraFindings
@@ -388,17 +388,17 @@ $infiltrationResult = [PSCustomObject]@{
 
 & $mod {
     param($Result, $OutputPath, $Style, $Branding)
-    Export-InfiltrationReportHtml -Result $Result -OutputPath $OutputPath -Style $Style -Branding $Branding
-} $infiltrationResult $entraPath $Style $demoBranding
+    Export-EntraReportHtml -Result $Result -OutputPath $OutputPath -Style $Style -Branding $Branding
+} $entraResult $entraPath $Style $demoBranding
 
 Write-Host "  -> $entraPath ($($entraFindings.Count) checks, score: $($entraScore.OverallScore))" -ForegroundColor Green
 
 # ============================================================================
-# REPORT 4: Campaign (unified — all theaters in one report)
+# REPORT 4: Campaign (unified — all platforms in one report)
 # ============================================================================
-Write-Host 'Generating Campaign report (all theaters)...' -ForegroundColor Cyan
+Write-Host 'Generating Campaign report (all platforms)...' -ForegroundColor Cyan
 
-function New-TheaterEntry {
+function New-PlatformEntry {
     param([hashtable]$Score, [PSCustomObject[]]$Findings)
     @{
         Score          = $Score.OverallScore
@@ -421,11 +421,11 @@ $campaignResult = [PSCustomObject]@{
     Findings      = $campaignFindings
     OverallScore  = $campaignScore.OverallScore
     ScoreLabel    = (Get-ScoreLabel -Score $campaignScore.OverallScore)
-    Theaters      = @('Google Workspace', 'Active Directory', 'Entra ID / M365')
-    TheaterScores = @{
-        'Google Workspace'  = (New-TheaterEntry -Score $gwsScore   -Findings $gwsFindings)
-        'Active Directory'  = (New-TheaterEntry -Score $adScore    -Findings $adFindings)
-        'Entra ID / M365'   = (New-TheaterEntry -Score $entraScore -Findings $entraFindings)
+    Platforms      = @('Google Workspace', 'Active Directory', 'Entra ID / M365')
+    PlatformScores = @{
+        'Google Workspace'  = (New-PlatformEntry -Score $gwsScore   -Findings $gwsFindings)
+        'Active Directory'  = (New-PlatformEntry -Score $adScore    -Findings $adFindings)
+        'Entra ID / M365'   = (New-PlatformEntry -Score $entraScore -Findings $entraFindings)
     }
     ScanStart     = [datetime]::UtcNow
     Duration      = [timespan]::FromMinutes(5)

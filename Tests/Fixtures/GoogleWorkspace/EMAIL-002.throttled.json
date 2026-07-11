@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "DNS record collection failed",

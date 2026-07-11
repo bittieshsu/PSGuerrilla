@@ -1,6 +1,6 @@
 {
   "checkId": "ADKERB-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "RBCD present (review)",

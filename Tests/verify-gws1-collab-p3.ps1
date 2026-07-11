@@ -38,21 +38,21 @@ $out = & $mod {
     $r = @{}
 
     # ── COLLAB-011: Meet External Participant Labeling (enableExternalLabel; true=secure) ──
-    $r.C011_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_external_participants' = @{ enableExternalLabel = $true } }) }) 'Test-FortificationCOLLAB011'
-    $r.C011_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_external_participants' = @{ enableExternalLabel = $false } }) }) 'Test-FortificationCOLLAB011'
+    $r.C011_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_external_participants' = @{ enableExternalLabel = $true } }) }) 'Test-COLLAB011'
+    $r.C011_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_external_participants' = @{ enableExternalLabel = $false } }) }) 'Test-COLLAB011'
     # multi-OU weakest-wins: one OU off -> WARN
-    $r.C011_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_external_participants' = @(@{ enableExternalLabel = $true }, @{ enableExternalLabel = $false }) }) }) 'Test-FortificationCOLLAB011'
+    $r.C011_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_external_participants' = @(@{ enableExternalLabel = $true }, @{ enableExternalLabel = $false }) }) }) 'Test-COLLAB011'
 
     # ── COLLAB-012: Meet Host Management (enableHostManagement; true=secure) ──
-    $r.C012_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_host_management' = @{ enableHostManagement = $true } }) }) 'Test-FortificationCOLLAB012'
-    $r.C012_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_host_management' = @{ enableHostManagement = $false } }) }) 'Test-FortificationCOLLAB012'
+    $r.C012_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_host_management' = @{ enableHostManagement = $true } }) }) 'Test-COLLAB012'
+    $r.C012_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_host_management' = @{ enableHostManagement = $false } }) }) 'Test-COLLAB012'
     # multi-OU weakest-wins: one OU off -> WARN
-    $r.C012_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_host_management' = @(@{ enableHostManagement = $true }, @{ enableHostManagement = $false }) }) }) 'Test-FortificationCOLLAB012'
+    $r.C012_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'meet.safety_host_management' = @(@{ enableHostManagement = $true }, @{ enableHostManagement = $false }) }) }) 'Test-COLLAB012'
 
     # ── Unavailable API -> SKIP ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.Skip011 = St $none 'Test-FortificationCOLLAB011'
-    $r.Skip012 = St $none 'Test-FortificationCOLLAB012'
+    $r.Skip011 = St $none 'Test-COLLAB011'
+    $r.Skip012 = St $none 'Test-COLLAB012'
 
     $r
 }

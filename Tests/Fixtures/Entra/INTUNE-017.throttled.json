@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-017",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Intune security baselines not assessed",

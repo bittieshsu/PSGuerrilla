@@ -1,6 +1,6 @@
 {
   "checkId": "ADTIER-003",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A vCenter account is in Domain Admins",

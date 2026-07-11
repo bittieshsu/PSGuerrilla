@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Domain info not assessed",

@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-010",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Few apps hold sensitive scopes (<=5)",

@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Shared-drive external sharing off",

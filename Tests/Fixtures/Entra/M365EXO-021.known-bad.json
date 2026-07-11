@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-021",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A sharing policy shares contacts with all domains (*)",

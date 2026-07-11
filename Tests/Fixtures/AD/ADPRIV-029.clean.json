@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-029",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Protected Users group is populated",

@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-011",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "POP and IMAP disabled for all users",

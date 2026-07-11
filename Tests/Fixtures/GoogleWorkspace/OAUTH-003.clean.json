@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No third-party apps hold high-risk scopes",

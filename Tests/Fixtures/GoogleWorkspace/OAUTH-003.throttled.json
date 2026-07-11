@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "OAuthApps collection failed",

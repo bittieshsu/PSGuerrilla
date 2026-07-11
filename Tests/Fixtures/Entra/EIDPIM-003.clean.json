@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No permanent privileged role assignments",

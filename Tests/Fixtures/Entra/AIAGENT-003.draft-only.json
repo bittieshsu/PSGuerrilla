@@ -1,6 +1,6 @@
 {
   "checkId": "AIAGENT-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "draft-only",
   "expectedStatus": "PASS",
   "description": "No published agents",

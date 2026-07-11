@@ -26,7 +26,7 @@ function Get-EntraTenantData {
 
     # ── Organization Settings ─────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting organization settings'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting organization settings'
     }
     try {
         $orgResponse = Invoke-GraphApi -AccessToken $AccessToken -Uri '/organization'
@@ -45,7 +45,7 @@ function Get-EntraTenantData {
 
     # ── Security Defaults ─────────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Checking security defaults'
+        Write-ProgressLine -Phase ENTRA -Message 'Checking security defaults'
     }
     try {
         $data.SecurityDefaults = Invoke-GraphApi -AccessToken $AccessToken `
@@ -85,7 +85,7 @@ function Get-EntraTenantData {
 
     # ── Subscribed SKUs (Licenses) ────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting license inventory'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting license inventory'
     }
     try {
         $data.SubscribedSkus = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -127,7 +127,7 @@ function Get-EntraTenantData {
     # the checks as "no relationships" ONLY when the call succeeded — a failed
     # call is Not Assessed via Errors['DelegatedAdminRelationships'], never a pass.
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting partner delegated admin (GDAP) relationships'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting partner delegated admin (GDAP) relationships'
     }
     try {
         $data.DelegatedAdminRelationships = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -138,7 +138,7 @@ function Get-EntraTenantData {
 
     if (-not $Quiet) {
         $tenantName = $data.Organization.displayName ?? 'Unknown'
-        Write-ProgressLine -Phase INFILTRATE -Message "Tenant: $tenantName, $($data.SubscribedSkus.Count) licenses, $($data.AdminUnits.Count) admin units"
+        Write-ProgressLine -Phase ENTRA -Message "Tenant: $tenantName, $($data.SubscribedSkus.Count) licenses, $($data.AdminUnits.Count) admin units"
     }
 
     return $data

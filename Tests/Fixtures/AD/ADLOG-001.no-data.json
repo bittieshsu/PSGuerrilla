@@ -1,6 +1,6 @@
 {
   "checkId": "ADLOG-001",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Connection metadata absent (PASS/FAIL need SYSVOL filesystem access)",

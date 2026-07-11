@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Authentication methods policy not available",

@@ -13,7 +13,7 @@ function Export-CampaignReportCsv {
 
     $rows = foreach ($f in $Result.Findings) {
         [PSCustomObject]@{
-            Theater            = $f.Theater ?? ''
+            Platform            = $f.Platform ?? ''
             CheckId            = $f.CheckId
             CheckName          = $f.CheckName
             Category           = $f.Category

@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-011",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Target audience settings require manual verification",

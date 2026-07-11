@@ -68,13 +68,13 @@ Describe 'Get-NotAssessedFinding' {
 Describe 'AD trust checks honour collection failure' {
     It 'SKIPs (Not Assessed) instead of PASS when trust enumeration failed' {
         $audit = @{ Trusts = @(); Errors = @{ TrustRelationships = 'LDAP enumeration failed' } }
-        $f = Test-ReconADTRUST001 -AuditData $audit -CheckDefinition $script:Def
+        $f = Test-ADTRUST001 -AuditData $audit -CheckDefinition $script:Def
         $f.Status | Should -Be 'SKIP'
     }
 
     It 'still PASSes when collection succeeded and there are genuinely zero trusts' {
         $audit = @{ Trusts = @(); Errors = @{} }
-        $f = Test-ReconADTRUST001 -AuditData $audit -CheckDefinition $script:Def
+        $f = Test-ADTRUST001 -AuditData $audit -CheckDefinition $script:Def
         $f.Status | Should -Be 'PASS'
     }
 }

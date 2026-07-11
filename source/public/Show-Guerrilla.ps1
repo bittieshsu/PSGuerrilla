@@ -11,7 +11,7 @@ function Show-Guerrilla {
         Show-Guerrilla wraps the most common operational paths in a single tabbed
         Windows GUI:
 
-          * Operations — run any theater's scan with category selection, live log,
+          * Operations — run any platform's scan with category selection, live log,
             and automatic report open on completion.
           * Safehouse  — list, remove, rotate, and test stored credentials. Export
             metadata for documentation.
@@ -28,7 +28,7 @@ function Show-Guerrilla {
             confidentiality). The Guerrilla / Jim Tyler footer attribution is kept.
 
         The GUI is a wrapper around the existing public cmdlets — every action it
-        takes is the equivalent of running Set-Safehouse / Invoke-Reconnaissance /
+        takes is the equivalent of running Set-Safehouse / Invoke-ADAudit /
         Register-Patrol / etc. from a prompt. The CLI continues to work and stays
         the source of truth for anything the GUI doesn't yet cover.
 
@@ -77,7 +77,7 @@ function Show-Guerrilla {
     # Windows-only guard. WPF doesn't exist on macOS/Linux — point users at the CLI.
     $onWindows = if (Test-Path variable:IsWindows) { $IsWindows } else { $true }
     if (-not $onWindows) {
-        throw 'Show-Guerrilla requires Windows (WPF). On macOS/Linux, use the CLI cmdlets: Set-Safehouse, Invoke-Reconnaissance, Invoke-Fortification, Invoke-Infiltration, Invoke-Campaign, Register-Patrol.'
+        throw 'Show-Guerrilla requires Windows (WPF). On macOS/Linux, use the CLI cmdlets: Set-Safehouse, Invoke-ADAudit, Invoke-GWSAudit, Invoke-EntraAudit, Invoke-Campaign, Register-Patrol.'
     }
 
     # WPF needs a single-threaded apartment; without this guard ShowDialog fails

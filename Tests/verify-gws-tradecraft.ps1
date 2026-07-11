@@ -32,40 +32,40 @@ $out = & $mod {
     $r = @{}
 
     # ── GTRADE-001: DWD takeover (empty/unenumerable must NEVER PASS — false-PASS regression) ──
-    $r.G001_nokey = St @{} 'Test-FortificationGTRADE001'                              # no key -> WARN
-    $r.G001_empty = St @{ DomainWideDelegation = @() } 'Test-FortificationGTRADE001'  # empty -> WARN (not PASS)
-    $r.G001_narrow = St @{ DomainWideDelegation = @(@{ clientId = '1'; scopes = @('https://www.googleapis.com/auth/admin.directory.user.readonly') }) } 'Test-FortificationGTRADE001'
-    $r.G001_mail = St @{ DomainWideDelegation = @(@{ clientId = '2'; scopes = @('https://mail.google.com/') }) } 'Test-FortificationGTRADE001'
-    $r.G001_drive = St @{ DomainWideDelegation = @(@{ clientId = '3'; scopes = @('https://www.googleapis.com/auth/drive') }) } 'Test-FortificationGTRADE001'
-    $r.G001_drivero = St @{ DomainWideDelegation = @(@{ clientId = '4'; scopes = @('https://www.googleapis.com/auth/drive.readonly') }) } 'Test-FortificationGTRADE001'
+    $r.G001_nokey = St @{} 'Test-GTRADE001'                              # no key -> WARN
+    $r.G001_empty = St @{ DomainWideDelegation = @() } 'Test-GTRADE001'  # empty -> WARN (not PASS)
+    $r.G001_narrow = St @{ DomainWideDelegation = @(@{ clientId = '1'; scopes = @('https://www.googleapis.com/auth/admin.directory.user.readonly') }) } 'Test-GTRADE001'
+    $r.G001_mail = St @{ DomainWideDelegation = @(@{ clientId = '2'; scopes = @('https://mail.google.com/') }) } 'Test-GTRADE001'
+    $r.G001_drive = St @{ DomainWideDelegation = @(@{ clientId = '3'; scopes = @('https://www.googleapis.com/auth/drive') }) } 'Test-GTRADE001'
+    $r.G001_drivero = St @{ DomainWideDelegation = @(@{ clientId = '4'; scopes = @('https://www.googleapis.com/auth/drive.readonly') }) } 'Test-GTRADE001'
 
     # ── GTRADE-002 / 003: groups ──
-    $r.G002_skip = St @{ GroupSettings = @{} } 'Test-FortificationGTRADE002'
-    $r.G002_fail = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ANYONE_CAN_VIEW'; join = 'INVITED_CAN_JOIN'; ext = 'false' } }) } 'Test-FortificationGTRADE002'
-    $r.G002_pass = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ALL_MEMBERS_CAN_VIEW'; join = 'INVITED_CAN_JOIN'; ext = 'false' } }) } 'Test-FortificationGTRADE002'
-    $r.G003_warnjoin = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ALL_MEMBERS_CAN_VIEW'; join = 'ANYONE_CAN_JOIN'; ext = 'false' } }) } 'Test-FortificationGTRADE003'
-    $r.G003_warnext = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ALL_MEMBERS_CAN_VIEW'; join = 'INVITED_CAN_JOIN'; ext = 'true' } }) } 'Test-FortificationGTRADE003'
-    $r.G003_pass = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ALL_MEMBERS_CAN_VIEW'; join = 'INVITED_CAN_JOIN'; ext = 'false' } }) } 'Test-FortificationGTRADE003'
+    $r.G002_skip = St @{ GroupSettings = @{} } 'Test-GTRADE002'
+    $r.G002_fail = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ANYONE_CAN_VIEW'; join = 'INVITED_CAN_JOIN'; ext = 'false' } }) } 'Test-GTRADE002'
+    $r.G002_pass = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ALL_MEMBERS_CAN_VIEW'; join = 'INVITED_CAN_JOIN'; ext = 'false' } }) } 'Test-GTRADE002'
+    $r.G003_warnjoin = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ALL_MEMBERS_CAN_VIEW'; join = 'ANYONE_CAN_JOIN'; ext = 'false' } }) } 'Test-GTRADE003'
+    $r.G003_warnext = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ALL_MEMBERS_CAN_VIEW'; join = 'INVITED_CAN_JOIN'; ext = 'true' } }) } 'Test-GTRADE003'
+    $r.G003_pass = St @{ GroupSettings = (GS @{ 'a@x.org' = @{ view = 'ALL_MEMBERS_CAN_VIEW'; join = 'INVITED_CAN_JOIN'; ext = 'false' } }) } 'Test-GTRADE003'
 
     # ── GTRADE-004: super-admin sprawl ──
     function Admins($n) { 1..$n | ForEach-Object { [PSCustomObject]@{ isAdmin = $true; suspended = $false; primaryEmail = "a$_@x.org" } } }
-    $r.G004_skip = St @{ Users = @() } 'Test-FortificationGTRADE004'
-    $r.G004_pass = St @{ Users = @(Admins 3) } 'Test-FortificationGTRADE004'
-    $r.G004_warn = St @{ Users = @(Admins 7) } 'Test-FortificationGTRADE004'
-    $r.G004_fail = St @{ Users = @(Admins 12) } 'Test-FortificationGTRADE004'
+    $r.G004_skip = St @{ Users = @() } 'Test-GTRADE004'
+    $r.G004_pass = St @{ Users = @(Admins 3) } 'Test-GTRADE004'
+    $r.G004_warn = St @{ Users = @(Admins 7) } 'Test-GTRADE004'
+    $r.G004_fail = St @{ Users = @(Admins 12) } 'Test-GTRADE004'
 
     # ── GTRADE-005: super-admin-equivalent custom roles ──
-    $r.G005_skip = St @{ Roles = @() } 'Test-FortificationGTRADE005'
+    $r.G005_skip = St @{ Roles = @() } 'Test-GTRADE005'
     # Real Google privilege vocabulary: _ALL / write verbs -> WARN; pure _RETRIEVE -> PASS (the over-match fix).
-    $r.G005_warn     = St @{ Roles = @(@{ roleName = 'R1'; isSystemRole = $false; isSuperAdminRole = $false; rolePrivileges = @(@{ privilegeName = 'USERS_ALL' }) }) } 'Test-FortificationGTRADE005'
-    $r.G005_write    = St @{ Roles = @(@{ roleName = 'R2'; isSystemRole = $false; isSuperAdminRole = $false; rolePrivileges = @(@{ privilegeName = 'USERS_CREATE' }, @{ privilegeName = 'GROUPS_RETRIEVE' }) }) } 'Test-FortificationGTRADE005'
-    $r.G005_readonly = St @{ Roles = @(@{ roleName = 'R3'; isSystemRole = $false; isSuperAdminRole = $false; rolePrivileges = @(@{ privilegeName = 'USERS_RETRIEVE' }, @{ privilegeName = 'GROUPS_RETRIEVE' }, @{ privilegeName = 'ORGANIZATION_UNITS_RETRIEVE' }) }) } 'Test-FortificationGTRADE005'
-    $r.G005_sys      = St @{ Roles = @(@{ roleName = '_SEED_ADMIN_ROLE'; isSystemRole = $true; rolePrivileges = @(@{ privilegeName = 'USERS_ALL' }) }) } 'Test-FortificationGTRADE005'  # system role ignored -> PASS
+    $r.G005_warn     = St @{ Roles = @(@{ roleName = 'R1'; isSystemRole = $false; isSuperAdminRole = $false; rolePrivileges = @(@{ privilegeName = 'USERS_ALL' }) }) } 'Test-GTRADE005'
+    $r.G005_write    = St @{ Roles = @(@{ roleName = 'R2'; isSystemRole = $false; isSuperAdminRole = $false; rolePrivileges = @(@{ privilegeName = 'USERS_CREATE' }, @{ privilegeName = 'GROUPS_RETRIEVE' }) }) } 'Test-GTRADE005'
+    $r.G005_readonly = St @{ Roles = @(@{ roleName = 'R3'; isSystemRole = $false; isSuperAdminRole = $false; rolePrivileges = @(@{ privilegeName = 'USERS_RETRIEVE' }, @{ privilegeName = 'GROUPS_RETRIEVE' }, @{ privilegeName = 'ORGANIZATION_UNITS_RETRIEVE' }) }) } 'Test-GTRADE005'
+    $r.G005_sys      = St @{ Roles = @(@{ roleName = '_SEED_ADMIN_ROLE'; isSystemRole = $true; rolePrivileges = @(@{ privilegeName = 'USERS_ALL' }) }) } 'Test-GTRADE005'  # system role ignored -> PASS
 
     # ── GTRADE-006: persistent/over-scoped OAuth ──
-    $r.G006_skip = St @{ OAuthApps = @() } 'Test-FortificationGTRADE006'
-    $r.G006_fail = St @{ OAuthApps = @((OAuthEv 'EvilApp' 'https://mail.google.com/')) } 'Test-FortificationGTRADE006'
-    $r.G006_pass = St @{ OAuthApps = @((OAuthEv 'NiceApp' 'https://www.googleapis.com/auth/drive.readonly')) } 'Test-FortificationGTRADE006'
+    $r.G006_skip = St @{ OAuthApps = @() } 'Test-GTRADE006'
+    $r.G006_fail = St @{ OAuthApps = @((OAuthEv 'EvilApp' 'https://mail.google.com/')) } 'Test-GTRADE006'
+    $r.G006_pass = St @{ OAuthApps = @((OAuthEv 'NiceApp' 'https://www.googleapis.com/auth/drive.readonly')) } 'Test-GTRADE006'
 
     $r
 }

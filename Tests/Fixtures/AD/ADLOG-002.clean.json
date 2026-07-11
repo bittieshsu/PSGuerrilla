@@ -1,6 +1,6 @@
 {
   "checkId": "ADLOG-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "PowerShell Script Block Logging enabled (1)",

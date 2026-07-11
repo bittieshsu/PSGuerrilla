@@ -39,24 +39,24 @@ $out = & $mod {
     $r = @{}
 
     # ── ADMIN-010: external membership (ownersCanAllowExternalMembers bool) ──
-    $r.A010_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ ownersCanAllowExternalMembers = $false } }) }) 'Test-FortificationADMIN010'
-    $r.A010_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ ownersCanAllowExternalMembers = $true } }) }) 'Test-FortificationADMIN010'
+    $r.A010_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ ownersCanAllowExternalMembers = $false } }) }) 'Test-ADMIN010'
+    $r.A010_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ ownersCanAllowExternalMembers = $true } }) }) 'Test-ADMIN010'
     # Multi-OU weakest-wins: one OU disallows, one allows -> FAIL.
-    $r.A010_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @(@{ ownersCanAllowExternalMembers = $false }, @{ ownersCanAllowExternalMembers = $true }) }) }) 'Test-FortificationADMIN010'
+    $r.A010_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @(@{ ownersCanAllowExternalMembers = $false }, @{ ownersCanAllowExternalMembers = $true }) }) }) 'Test-ADMIN010'
 
     # ── ADMIN-011: group creation access level (createGroupsAccessLevel enum) ──
-    $r.A011_pass    = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ createGroupsAccessLevel = 'ADMIN_ONLY' } }) }) 'Test-FortificationADMIN011'
-    $r.A011_fail    = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ createGroupsAccessLevel = 'ANYONE_CAN_CREATE' } }) }) 'Test-FortificationADMIN011'
-    $r.A011_unknown = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ createGroupsAccessLevel = 'SOME_FUTURE_VALUE' } }) }) 'Test-FortificationADMIN011'
+    $r.A011_pass    = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ createGroupsAccessLevel = 'ADMIN_ONLY' } }) }) 'Test-ADMIN011'
+    $r.A011_fail    = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ createGroupsAccessLevel = 'ANYONE_CAN_CREATE' } }) }) 'Test-ADMIN011'
+    $r.A011_unknown = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ createGroupsAccessLevel = 'SOME_FUTURE_VALUE' } }) }) 'Test-ADMIN011'
     # Multi-OU weakest-wins: one admin-restricted OU, one open OU -> FAIL (most open decides).
-    $r.A011_weak    = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @(@{ createGroupsAccessLevel = 'ADMIN_ONLY' }, @{ createGroupsAccessLevel = 'USERS_IN_DOMAIN' }) }) }) 'Test-FortificationADMIN011'
+    $r.A011_weak    = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @(@{ createGroupsAccessLevel = 'ADMIN_ONLY' }, @{ createGroupsAccessLevel = 'USERS_IN_DOMAIN' }) }) }) 'Test-ADMIN011'
     # Case-insensitive open spelling.
-    $r.A011_ci      = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ createGroupsAccessLevel = 'anyone' } }) }) 'Test-FortificationADMIN011'
+    $r.A011_ci      = St (@{ CloudIdentityPolicies = (New-Pol @{ $gs = @{ createGroupsAccessLevel = 'anyone' } }) }) 'Test-ADMIN011'
 
     # ── Unavailable API -> SKIP ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.Skip010 = St $none 'Test-FortificationADMIN010'
-    $r.Skip011 = St $none 'Test-FortificationADMIN011'
+    $r.Skip010 = St $none 'Test-ADMIN010'
+    $r.Skip011 = St $none 'Test-ADMIN011'
 
     $r
 }

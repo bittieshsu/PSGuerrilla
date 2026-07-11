@@ -1,6 +1,6 @@
 {
   "checkId": "M365PP-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "M365 services not assessed",

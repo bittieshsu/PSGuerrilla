@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-012",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A zone allows nonsecure dynamic updates",

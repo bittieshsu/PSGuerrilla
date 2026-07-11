@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "WPAD (WinHttpAutoProxySvc) disabled (StartType 4)",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-001",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "DC requires LDAP signing (LDAPServerIntegrity=2)",

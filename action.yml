@@ -8,7 +8,7 @@
 #     with: { client-id: ..., tenant-id: ..., allow-no-subscriptions: true }
 #   - uses: jimrtyler/Guerrilla@main
 #     with:
-#       theater: Infiltration       # Infiltration (Entra/M365) | Reconnaissance (AD) | Fortification (GWS) | Campaign (all)
+#       platform: Entra             # AD | Entra | GWS | Campaign (all)
 #       fail-on: High               # Critical | High | Medium | Low | Any | None
 #   - uses: mikepenz/action-junit-report@v4
 #     if: always()
@@ -22,12 +22,12 @@ branding:
   color: 'green'
 
 inputs:
-  theater:
-    description: 'Which audit to run: Infiltration | Reconnaissance | Fortification | Campaign'
+  platform:
+    description: 'Which audit to run: AD | Entra | GWS | Campaign (legacy values Reconnaissance, Infiltration, and Fortification are accepted and mapped)'
     required: false
-    default: 'Infiltration'
+    default: 'Entra'
   categories:
-    description: 'Comma-separated categories, or All (Infiltration/Reconnaissance only)'
+    description: 'Comma-separated categories, or All (AD/Entra only)'
     required: false
     default: 'All'
   output:
@@ -61,7 +61,7 @@ runs:
     - id: audit
       shell: pwsh
       env:
-        PSG_THEATER: ${{ inputs.theater }}
+        PSG_PLATFORM: ${{ inputs.platform }}
         PSG_CATEGORIES: ${{ inputs.categories }}
         PSG_OUTPUT: ${{ inputs.output }}
         PSG_FAILON: ${{ inputs.fail-on }}
@@ -74,9 +74,17 @@ runs:
         Install-Module @installArgs
         Import-Module Guerrilla
 
-        $fn = "Invoke-$($env:PSG_THEATER)"
+        # Canonical platform names; the retired codenames keep working for existing workflows.
+        $legacy = @{ Reconnaissance = 'AD'; Infiltration = 'Entra'; Fortification = 'GWS' }
+        $platform = $env:PSG_PLATFORM
+        if ($legacy.ContainsKey($platform)) {
+            Write-Host "::notice::platform value '$platform' is deprecated; use '$($legacy[$platform])'."
+            $platform = $legacy[$platform]
+        }
+        $fn = @{ AD = 'Invoke-ADAudit'; Entra = 'Invoke-EntraAudit'; GWS = 'Invoke-GWSAudit'; Campaign = 'Invoke-Campaign' }[$platform]
+        if (-not $fn) { throw "Unknown platform '$($env:PSG_PLATFORM)'. Use AD, Entra, GWS, or Campaign." }
         $params = @{ PassThru = $true; Quiet = $true }
-        if ($env:PSG_THEATER -in 'Infiltration', 'Reconnaissance' -and $env:PSG_CATEGORIES) {
+        if ($platform -in 'AD', 'Entra' -and $env:PSG_CATEGORIES) {
             $params.Categories = @($env:PSG_CATEGORIES -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ })
         }
         $result = & $fn @params
@@ -86,7 +94,7 @@ runs:
         $j = Export-GuerrillaJUnit -Findings $findings -OutputPath $env:PSG_OUTPUT -WarningsAsFailures:$waf
         "results=$($j.Path)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
         "failures=$($j.Failures)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-        Write-Host "Guerrilla [$($env:PSG_THEATER)]: $($j.Passed) passed, $($j.Failures) failed, $($j.Skipped) not assessed"
+        Write-Host "Guerrilla [$platform]: $($j.Passed) passed, $($j.Failures) failed, $($j.Skipped) not assessed"
 
         $gate = Get-GuerrillaCIGate -Findings $findings -FailOn $env:PSG_FAILON -WarningsAsFailures:$waf
         if ($gate.ShouldFail) {

@@ -1,6 +1,6 @@
 {
   "checkId": "INTUNE-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "No ASR policy deployed",

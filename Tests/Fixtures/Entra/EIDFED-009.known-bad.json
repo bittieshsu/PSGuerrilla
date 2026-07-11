@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Federated domain missing MFA behavior (1-2 issues)",

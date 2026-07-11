@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "3 user members in Enterprise Admins exceeds threshold (>2)",

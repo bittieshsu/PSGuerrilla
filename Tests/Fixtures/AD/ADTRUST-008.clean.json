@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRUST-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No foreign/external domain trusts",

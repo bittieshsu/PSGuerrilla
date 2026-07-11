@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-025",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "present",
   "expectedStatus": "WARN",
   "description": "DLP policies exist but rule-level data not collected (no PASS path)",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDGOV-002",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "not-assessed",
   "expectedStatus": "SKIP",
   "description": "collection failed",

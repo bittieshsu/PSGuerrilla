@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-CLASS-005",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Only teachers can unenroll students",

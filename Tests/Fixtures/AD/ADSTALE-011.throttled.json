@@ -1,6 +1,6 @@
 {
   "checkId": "ADSTALE-011",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Stale object data not assessed",

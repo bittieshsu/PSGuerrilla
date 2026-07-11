@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No low-priv ownership ACEs on templates",

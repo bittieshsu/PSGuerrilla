@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-007",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Inbound gateway requires manual verification",

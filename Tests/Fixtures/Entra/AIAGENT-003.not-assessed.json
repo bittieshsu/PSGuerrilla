@@ -1,6 +1,6 @@
 {
   "checkId": "AIAGENT-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "not-assessed",
   "expectedStatus": "SKIP",
   "description": "Dataverse not collected",

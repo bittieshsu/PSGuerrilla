@@ -40,40 +40,40 @@ $out = & $mod {
     $r = @{}
 
     # ── OAUTH-001: unconfigured third-party apps (api_controls.unconfigured_third_party_apps / accessLevel) ──
-    $r.O001_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.unconfigured_third_party_apps' = @{ accessLevel = 'BLOCKED' } }) }) 'Test-FortificationOAUTH001'
-    $r.O001_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.unconfigured_third_party_apps' = @{ accessLevel = 'ALLOW_ALL' } }) }) 'Test-FortificationOAUTH001'
-    $r.O001_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.unconfigured_third_party_apps' = @{ accessLevel = 'SOMETHING_NEW' } }) }) 'Test-FortificationOAUTH001'
+    $r.O001_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.unconfigured_third_party_apps' = @{ accessLevel = 'BLOCKED' } }) }) 'Test-OAUTH001'
+    $r.O001_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.unconfigured_third_party_apps' = @{ accessLevel = 'ALLOW_ALL' } }) }) 'Test-OAUTH001'
+    $r.O001_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.unconfigured_third_party_apps' = @{ accessLevel = 'SOMETHING_NEW' } }) }) 'Test-OAUTH001'
     # Weakest-OU-wins: one OU blocked, one OU allow-all -> FAIL.
-    $r.O001_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.unconfigured_third_party_apps' = @(@{ accessLevel = 'BLOCKED' }, @{ accessLevel = 'ALLOW_ALL' }) }) }) 'Test-FortificationOAUTH001'
+    $r.O001_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.unconfigured_third_party_apps' = @(@{ accessLevel = 'BLOCKED' }, @{ accessLevel = 'ALLOW_ALL' }) }) }) 'Test-OAUTH001'
 
     # ── OAUTH-006: app-access request workflow (api_controls.app_approval_requests / allowedForAll) ──
     # CONFIRMED (live + Google docs): ENABLED/true = request-and-approve workflow on (governance
     # positive, access still admin-gated) -> PASS. DISABLED/unknown -> WARN.
-    $r.O006_pass  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = 'ENABLED' } }) }) 'Test-FortificationOAUTH006'
-    $r.O006_passT = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = $true } }) }) 'Test-FortificationOAUTH006'
-    $r.O006_warn  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = 'MAYBE' } }) }) 'Test-FortificationOAUTH006'
+    $r.O006_pass  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = 'ENABLED' } }) }) 'Test-OAUTH006'
+    $r.O006_passT = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = $true } }) }) 'Test-OAUTH006'
+    $r.O006_warn  = St (@{ CloudIdentityPolicies = (New-Pol @{ 'api_controls.app_approval_requests' = @{ allowedForAll = 'MAYBE' } }) }) 'Test-OAUTH006'
 
     # ── OAUTH-007: marketplace install restrictions (workspace_marketplace.apps_access_options / accessLevel) ──
-    $r.O007_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'workspace_marketplace.apps_access_options' = @{ accessLevel = 'ALLOW_LISTED_APPS' } }) }) 'Test-FortificationOAUTH007'
-    $r.O007_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'workspace_marketplace.apps_access_options' = @{ accessLevel = 'ALLOW_ALL' } }) }) 'Test-FortificationOAUTH007'
-    $r.O007_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'workspace_marketplace.apps_access_options' = @{ accessLevel = 'FUTURE_ENUM' } }) }) 'Test-FortificationOAUTH007'
+    $r.O007_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'workspace_marketplace.apps_access_options' = @{ accessLevel = 'ALLOW_LISTED_APPS' } }) }) 'Test-OAUTH007'
+    $r.O007_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'workspace_marketplace.apps_access_options' = @{ accessLevel = 'ALLOW_ALL' } }) }) 'Test-OAUTH007'
+    $r.O007_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'workspace_marketplace.apps_access_options' = @{ accessLevel = 'FUTURE_ENUM' } }) }) 'Test-OAUTH007'
 
     # ── Type returned by API but absent for this tenant -> SKIP (not PASS/FAIL) ──
     $other = @{ CloudIdentityPolicies = (New-Pol @{ 'security.password' = @{ minimumLength = 12 } }) }
-    $r.O001_absent = St $other 'Test-FortificationOAUTH001'
-    $r.O006_absent = St $other 'Test-FortificationOAUTH006'
-    $r.O007_absent = St $other 'Test-FortificationOAUTH007'
+    $r.O001_absent = St $other 'Test-OAUTH001'
+    $r.O006_absent = St $other 'Test-OAUTH006'
+    $r.O007_absent = St $other 'Test-OAUTH007'
 
     # ── Unavailable API -> SKIP ──
     $none = @{ CloudIdentityPolicies = $null }
-    $r.Skip001 = St $none 'Test-FortificationOAUTH001'
-    $r.Skip006 = St $none 'Test-FortificationOAUTH006'
-    $r.Skip007 = St $none 'Test-FortificationOAUTH007'
+    $r.Skip001 = St $none 'Test-OAUTH001'
+    $r.Skip006 = St $none 'Test-OAUTH006'
+    $r.Skip007 = St $none 'Test-OAUTH007'
 
     # ── Untouched checks remain manual-verify (WARN) and real checks still work ──
     $empty = @{}
-    $r.O005_manual = St $empty 'Test-FortificationOAUTH005'   # unverified apps: still manual
-    $r.O009_manual = St $empty 'Test-FortificationOAUTH009'   # service account keys: still manual
+    $r.O005_manual = St $empty 'Test-OAUTH005'   # unverified apps: still manual
+    $r.O009_manual = St $empty 'Test-OAUTH009'   # service account keys: still manual
 
     $r
 }

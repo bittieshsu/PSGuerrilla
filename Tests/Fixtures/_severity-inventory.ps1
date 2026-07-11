@@ -16,12 +16,12 @@ foreach ($f in Get-ChildItem 'Data/AuditChecks' -Filter *.json) {
 }
 
 function Get-Prefix($id) {
-    if     ($id -match '^ADMIN')             { 'Test-Fortification' }   # Google Workspace admin mgmt
-    elseif ($id -match '^AZIAM')             { 'Test-Infiltration' }    # Azure IAM
+    if     ($id -match '^ADMIN')             { 'Test-GWS' }   # Google Workspace admin mgmt
+    elseif ($id -match '^AZIAM')             { 'Test-Entra' }    # Azure IAM
     elseif ($id -match '^EIDSCA')            { 'EIDSCA-RESOLVER' }      # data-driven; no per-check fn (deferred)
     elseif ($id -match '^AD')                { 'Test-Recon' }
-    elseif ($id -match '^(EID|M365|INTUNE)') { 'Test-Infiltration' }
-    else                                     { 'Test-Fortification' }
+    elseif ($id -match '^(EID|M365|INTUNE)') { 'Test-Entra' }
+    else                                     { 'Test-GWS' }
 }
 
 $haveFix = Get-ChildItem 'Tests/Fixtures' -Recurse -Filter *.json |

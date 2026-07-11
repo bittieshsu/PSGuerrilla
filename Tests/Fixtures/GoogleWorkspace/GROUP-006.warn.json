@@ -1,6 +1,6 @@
 {
   "checkId": "GROUP-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "warn",
   "expectedStatus": "WARN",
   "description": "new groups hidden",

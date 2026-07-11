@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-009",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Print Spooler disabled on DCs (StartType=4)",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Neither PHS nor PTA enabled",

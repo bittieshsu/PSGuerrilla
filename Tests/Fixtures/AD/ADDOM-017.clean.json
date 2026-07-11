@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-017",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "NTLMv2-only fully enforced (5)",

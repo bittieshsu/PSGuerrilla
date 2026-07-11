@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-028",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "no api",

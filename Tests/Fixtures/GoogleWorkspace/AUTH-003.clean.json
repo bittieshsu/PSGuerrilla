@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "2SV enforcement requires a phishing-resistant security key",

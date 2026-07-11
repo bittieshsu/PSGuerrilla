@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-012",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "DSInternals unavailable — HIBP comparison not performed",

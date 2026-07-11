@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "2SV enforcement permits all (weak) factors",

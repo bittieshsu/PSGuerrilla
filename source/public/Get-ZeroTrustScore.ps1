@@ -23,8 +23,8 @@ function Get-ZeroTrustScore {
 
     .PARAMETER Finding
         Guerrilla.AuditFinding objects (pipeline). Typically the .Findings of an
-        Invoke-Campaign / Invoke-Infiltration / Invoke-Reconnaissance / Invoke-Fortification
-        result, e.g.  (Invoke-Infiltration ...).Findings | Get-ZeroTrustScore
+        Invoke-Campaign / Invoke-EntraAudit / Invoke-ADAudit / Invoke-GWSAudit
+        result, e.g.  (Invoke-EntraAudit ...).Findings | Get-ZeroTrustScore
 
     .PARAMETER DirectionalThreshold
         Pillars with fewer than this many checks are marked Directional (default 25).
@@ -34,7 +34,7 @@ function Get-ZeroTrustScore {
         thresholds is Moderate.
 
     .EXAMPLE
-        (Invoke-Infiltration -TenantId $t).Findings | Get-ZeroTrustScore | Format-Table
+        (Invoke-EntraAudit -TenantId $t).Findings | Get-ZeroTrustScore | Format-Table
 
     .EXAMPLE
         $r.Findings | Get-ZeroTrustScore | Where-Object CoverageConfidence -ne 'Directional'

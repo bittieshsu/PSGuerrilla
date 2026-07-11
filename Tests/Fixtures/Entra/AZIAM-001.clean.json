@@ -1,6 +1,6 @@
 {
   "checkId": "AZIAM-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Role-assignment inventory available across subscriptions",

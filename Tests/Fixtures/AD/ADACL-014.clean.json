@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-014",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "GPOs editable only by default admins",

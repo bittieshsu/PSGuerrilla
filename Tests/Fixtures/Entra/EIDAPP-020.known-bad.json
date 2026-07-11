@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAPP-020",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Group-specific consent enabled",

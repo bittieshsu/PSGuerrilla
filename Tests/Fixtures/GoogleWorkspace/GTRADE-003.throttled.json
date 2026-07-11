@@ -1,6 +1,6 @@
 {
   "checkId": "GTRADE-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Group settings not collected",

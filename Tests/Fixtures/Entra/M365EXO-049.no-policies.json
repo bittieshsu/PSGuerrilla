@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-049",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-policies",
   "expectedStatus": "WARN",
   "description": "Empty policy list",

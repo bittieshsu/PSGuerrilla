@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-012",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Fewer than two break-glass Global Admins",

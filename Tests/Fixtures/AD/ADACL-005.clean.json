@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-005",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "WriteOwner held only by a default admin",

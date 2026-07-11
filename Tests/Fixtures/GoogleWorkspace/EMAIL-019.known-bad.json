@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-019",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "No active Gmail DLP rule (rule inactive)",

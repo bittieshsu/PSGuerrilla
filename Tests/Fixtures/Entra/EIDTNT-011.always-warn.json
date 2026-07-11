@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-011",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Diagnostic settings require manual portal verification",

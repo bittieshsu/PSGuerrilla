@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-014",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "bad",
   "expectedStatus": "FAIL",
   "description": "insecure",

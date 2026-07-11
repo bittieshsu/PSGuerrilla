@@ -1,6 +1,6 @@
 {
   "checkId": "M365TEAMS-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "M365 services not assessed",

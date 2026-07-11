@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-014",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No privileged account with USE_DES_KEY_ONLY",

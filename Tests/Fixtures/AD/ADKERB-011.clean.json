@@ -1,6 +1,6 @@
 {
   "checkId": "ADKERB-011",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "SPNs and delegation inventoried",

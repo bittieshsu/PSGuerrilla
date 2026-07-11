@@ -1,6 +1,6 @@
 {
   "checkId": "M365TEAMS-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Recordings stored in OneDrive (or disabled)",

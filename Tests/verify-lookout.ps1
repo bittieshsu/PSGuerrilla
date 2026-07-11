@@ -4,7 +4,7 @@
 #
 # Invoke-Lookout (Google Workspace configuration-drift monitor): verifies baseline establishment,
 # drift detection (new failures), resolved detection, the no-findings guard, and that it drives
-# Invoke-Fortification read-only (NoReports + Quiet). Uses an in-memory fake state store so two
+# Invoke-GWSAudit read-only (NoReports + Quiet). Uses an in-memory fake state store so two
 # sequential runs simulate baseline -> drift. Run: pwsh -File Tests/verify-lookout.ps1
 
 $ErrorActionPreference = 'Stop'
@@ -17,20 +17,20 @@ $results = [System.Collections.Generic.List[object]]::new()
 function Add-R($n, $ok, $d) { $results.Add([PSCustomObject]@{ Name = $n; Pass = [bool]$ok; Detail = $d }) }
 
 $out = & $mod {
-    # In-memory fake theater-state store + mockable Fortification output.
+    # In-memory fake platform-state store + mockable GWS output.
     $script:fakeState = $null
     $script:fakeFindings = @()
     $script:fakeScore = 0
     $script:lastFort = $null
 
-    function Get-TheaterState  { param($Theater, $ConfigPath) $script:fakeState }
-    function Save-TheaterState { param($Theater, $State, $ConfigPath) $script:fakeState = $State }
-    function Invoke-Fortification {
+    function Get-PlatformState  { param($Platform, $ConfigPath) $script:fakeState }
+    function Save-PlatformState { param($Platform, $State, $ConfigPath) $script:fakeState = $State }
+    function Invoke-GWSAudit {
         param($ServiceAccountKeyPath, $AdminEmail, $TargetOU, $IncludeChildOUs, $OutputDirectory,
               $NoReports, $NoDelta, $Quiet, $ConfigPath, $ConfigFile, $VaultName, $ReportStyle, $TestMode, $Quick)
         $script:lastFort = @{ NoReports = [bool]$NoReports; Quiet = [bool]$Quiet; Quick = [bool]$Quick }
         # Score from the real engine so the stored baseline and the recomputed current score
-        # (which Compare-FortificationState derives from findings) are on the same scale.
+        # (which Compare-AuditState derives from findings) are on the same scale.
         $sc = if (@($script:fakeFindings).Count -gt 0) { (Get-AuditPostureScore -Findings $script:fakeFindings).OverallScore } else { 0 }
         [PSCustomObject]@{ PSTypeName = 'Guerrilla.AuditResult'; Findings = $script:fakeFindings; OverallScore = $sc }
     }
@@ -85,9 +85,9 @@ $out = & $mod {
 
 Add-R 'Run1 establishes baseline'              ($out.BaselineEstablished -eq $true) ""
 Add-R 'Baseline reports no threats'            ($out.BaselineThreats -eq 0) ("got=$($out.BaselineThreats)")
-Add-R 'Fortification driven read-only (NoReports)' ($out.FortNoReports) ""
-Add-R 'Fortification driven quiet'             ($out.FortQuiet) ""
-Add-R 'Fast mode uses Fortification -Quick'    ($out.FastUsesQuick) ""
+Add-R 'GWS driven read-only (NoReports)' ($out.FortNoReports) ""
+Add-R 'GWS driven quiet'             ($out.FortQuiet) ""
+Add-R 'Fast mode uses GWS -Quick'    ($out.FastUsesQuick) ""
 Add-R 'Run2 is a diff (not baseline)'          ($out.DriftBaseline -eq $false) ""
 Add-R 'Drift: exactly 1 new failure'           ($out.NewFailCount -eq 1) ("got=$($out.NewFailCount)")
 Add-R 'Drift: new failure is A (B not re-flagged)' ($out.NewFailIsA) ""

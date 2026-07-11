@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-015",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Grace period 24h (<= 7 days)",

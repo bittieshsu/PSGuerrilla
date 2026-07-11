@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "empty",
   "expectedStatus": "WARN",
   "description": "Exchange connected but zero Safe Attachment policies present — warns (was wrongly SKIPped by the -not @() guard)",

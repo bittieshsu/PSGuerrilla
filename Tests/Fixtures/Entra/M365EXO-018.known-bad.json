@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-018",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "DMARC p=none (no reject)",

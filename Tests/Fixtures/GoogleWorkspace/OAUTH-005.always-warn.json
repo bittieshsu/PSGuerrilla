@@ -1,6 +1,6 @@
 {
   "checkId": "OAUTH-005",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Unverified-app policy requires manual verification",

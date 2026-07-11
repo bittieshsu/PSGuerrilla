@@ -184,7 +184,7 @@ function Invoke-Surveillance {
 
     # Final fallback: the safehouse vault under the default keys Set-Safehouse stores
     # interactively — so a vault-only setup (no mission-config file) runs without extra
-    # parameters, matching Invoke-Infiltration / Invoke-Fortification behaviour.
+    # parameters, matching Invoke-EntraAudit / Invoke-GWSAudit behaviour.
     if (-not $tenantId) { $tenantId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_TENANT'   -VaultName $vaultName }
     if (-not $clientId) { $clientId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_CLIENTID' -VaultName $vaultName }
     if (-not $certThumb -and -not $ClientSecret) {
@@ -201,8 +201,8 @@ function Invoke-Surveillance {
         Write-OperationHeader -Operation 'SURVEILLANCE SWEEP' -Mode $mode -Target $tenantId -DaysBack $days
     }
 
-    # --- 3. Load theater state ---
-    $state = Get-TheaterState -Theater 'entra' -ConfigPath $cfgPath
+    # --- 3. Load platform state ---
+    $state = Get-PlatformState -Platform 'entra' -ConfigPath $cfgPath
     $startTime = $null
 
     if ($Force -or -not $state) {
@@ -262,7 +262,7 @@ function Invoke-Surveillance {
         Write-ProgressLine -Phase SURVEILLANCE -Message 'Collecting sign-in events'
     }
     # Each collector is isolated so one forbidden/unavailable Graph endpoint degrades to a
-    # skip instead of aborting the whole sweep (mirrors Invoke-Infiltration's resilience).
+    # skip instead of aborting the whole sweep (mirrors Invoke-EntraAudit's resilience).
     $signInEvents = @()
     try {
         $signInEvents = @(Get-EntraSignInEvents -AccessToken $graphToken -StartTime $startTime -Quiet:$Quiet)
@@ -582,7 +582,7 @@ function Invoke-Surveillance {
         alertedUsers  = $newAlertedUsers
         scanHistory   = $scanHistory
     }
-    Save-TheaterState -Theater 'entra' -State $newState -ConfigPath $cfgPath
+    Save-PlatformState -Platform 'entra' -State $newState -ConfigPath $cfgPath
 
     # --- 14. Complete ---
     $scanEnd = [datetime]::UtcNow
@@ -597,7 +597,7 @@ function Invoke-Surveillance {
         PSTypeName            = 'Guerrilla.SurveillanceResult'
         ScanId                = $scanId
         Timestamp             = $scanStart
-        Theater               = 'EntraID'
+        Platform               = 'EntraID'
         TenantId              = $tenantId
         DaysAnalyzed          = $days
         ScanMode              = $mode

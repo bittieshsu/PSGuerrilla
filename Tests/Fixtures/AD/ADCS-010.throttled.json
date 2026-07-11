@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-010",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "CertificateServices collection failed; must be Not Assessed, never PASS",

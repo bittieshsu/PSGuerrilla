@@ -27,7 +27,7 @@ function Get-M365ServiceData {
     # ── Exchange Online ───────────────────────────────────────────────────
     if ($hasEXO) {
         if (-not $Quiet) {
-            Write-ProgressLine -Phase INFILTRATE -Message 'Collecting Exchange Online configuration (EXO module)'
+            Write-ProgressLine -Phase ENTRA -Message 'Collecting Exchange Online configuration (EXO module)'
         }
         try {
             # Verify EXO connection
@@ -122,7 +122,7 @@ function Get-M365ServiceData {
 
     # ── SharePoint / OneDrive ─────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting SharePoint/OneDrive settings via Graph'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting SharePoint/OneDrive settings via Graph'
     }
     try {
         # SharePoint admin settings via Graph (limited)
@@ -135,7 +135,7 @@ function Get-M365ServiceData {
 
     # ── Teams ─────────────────────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting Teams configuration via Graph'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting Teams configuration via Graph'
     }
     try {
         $data.Teams.AppCatalogs = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -193,7 +193,7 @@ function Get-M365ServiceData {
     $hasPP = $ModuleAvailability -and $ModuleAvailability.PowerAppsAdmin
     if ($hasPP) {
         if (-not $Quiet) {
-            Write-ProgressLine -Phase INFILTRATE -Message 'Collecting Power Platform configuration'
+            Write-ProgressLine -Phase ENTRA -Message 'Collecting Power Platform configuration'
         }
         try {
             $ppConnected = Get-Command Get-AdminPowerAppEnvironment -ErrorAction SilentlyContinue
@@ -214,7 +214,7 @@ function Get-M365ServiceData {
         if ($data.Exchange.Count -gt 1) { $collected += 'Exchange' }
         if ($data.SharePoint.Count -gt 0) { $collected += 'SharePoint' }
         if ($data.Teams.Count -gt 0) { $collected += 'Teams' }
-        Write-ProgressLine -Phase INFILTRATE -Message "M365 data collected: $($collected -join ', ')"
+        Write-ProgressLine -Phase ENTRA -Message "M365 data collected: $($collected -join ', ')"
     }
 
     return $data

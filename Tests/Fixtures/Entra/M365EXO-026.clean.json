@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-026",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Malware file filter enabled",

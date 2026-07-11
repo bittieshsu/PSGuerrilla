@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-016",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Link shortener scanning disabled",

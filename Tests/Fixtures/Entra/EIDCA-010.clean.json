@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Location-based CA policy present",

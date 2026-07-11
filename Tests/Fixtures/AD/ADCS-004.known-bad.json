@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-004",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Enrollment-agent template enrollable by Everyone (ESC3)",

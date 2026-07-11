@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No WMI filters configured",

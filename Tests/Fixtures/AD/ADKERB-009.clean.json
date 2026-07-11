@@ -1,6 +1,6 @@
 {
   "checkId": "ADKERB-009",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "DCs and accounts use AES",

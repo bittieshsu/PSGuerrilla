@@ -20,7 +20,7 @@ function Get-EntraFederationData {
 
     # ── Domains ───────────────────────────────────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting domain configurations'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting domain configurations'
     }
     try {
         $data.Domains = @(Invoke-GraphApi -AccessToken $AccessToken `
@@ -52,7 +52,7 @@ function Get-EntraFederationData {
 
     # ── On-Premises Synchronization Settings ──────────────────────────────
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message 'Collecting synchronization settings'
+        Write-ProgressLine -Phase ENTRA -Message 'Collecting synchronization settings'
     }
     try {
         $data.OnPremisesSyncSettings = Invoke-GraphApi -AccessToken $AccessToken `
@@ -97,7 +97,7 @@ function Get-EntraFederationData {
     }
 
     if (-not $Quiet) {
-        Write-ProgressLine -Phase INFILTRATE -Message "Found $($data.Domains.Count) domains ($($federatedDomains.Count) federated)"
+        Write-ProgressLine -Phase ENTRA -Message "Found $($data.Domains.Count) domains ($($federatedDomains.Count) federated)"
     }
 
     return $data

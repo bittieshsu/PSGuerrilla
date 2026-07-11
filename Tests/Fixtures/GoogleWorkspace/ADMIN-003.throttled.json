@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Role data not assessed",

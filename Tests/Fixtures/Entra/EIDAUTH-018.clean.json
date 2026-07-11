@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-018",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Authenticator shows app + location in notifications",

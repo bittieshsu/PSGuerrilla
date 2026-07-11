@@ -1,6 +1,6 @@
 {
   "checkId": "AIAGENT-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "broad",
   "expectedStatus": "FAIL",
   "description": "An agent allows Any access",

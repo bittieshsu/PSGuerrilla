@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-013",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A super admin inactive >90 days",

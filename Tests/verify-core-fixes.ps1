@@ -34,7 +34,7 @@ $r = & (Get-Module Guerrilla) {
         $mon4 = @{ Run1 = 0; Run2 = 0; Collapsed = 0; Threw = $true; Err = "$_" }
     }
 
-    # ADPATH: attack-path engine (Get-ADAttackPath + Test-ReconADPATH001)
+    # ADPATH: attack-path engine (Get-ADAttackPath + Test-ADPATH001)
     $adpathDef = @{ id = 'ADPATH-001'; name = 'Escalation Paths'; severity = 'Critical'; _categoryName = 'Attack Paths' }
     $aclMock = @{ DangerousACEs = @(
             @{ IdentityReference = 'CORP\HelpDesk'; IdentitySID = 'S-1-5-21-1-2-3-1111'; ActiveDirectoryRights = 'WriteDacl'; ObjectName = 'Domain Root'; ObjectType = $null; IsInherited = $false }
@@ -52,9 +52,9 @@ $r = & (Get-Module Guerrilla) {
         NonPriv  = @($adpathAll | Where-Object { -not $_.SourceIsPrivileged }).Count
         Critical = @($adpathAll | Where-Object { $_.Severity -eq 'Critical' }).Count
         Nesting  = @($adpathAll | Where-Object { $_.PathType -eq 'Group nesting' }).Count
-        Fail     = (Test-ReconADPATH001 -AuditData $adWithPaths -CheckDefinition $adpathDef).Status
-        Pass     = (Test-ReconADPATH001 -AuditData @{ ACLs = @{ DangerousACEs = @() }; PrivilegedAccounts = $cleanPriv } -CheckDefinition $adpathDef).Status
-        Skip     = (Test-ReconADPATH001 -AuditData @{} -CheckDefinition $adpathDef).Status
+        Fail     = (Test-ADPATH001 -AuditData $adWithPaths -CheckDefinition $adpathDef).Status
+        Pass     = (Test-ADPATH001 -AuditData @{ ACLs = @{ DangerousACEs = @() }; PrivilegedAccounts = $cleanPriv } -CheckDefinition $adpathDef).Status
+        Skip     = (Test-ADPATH001 -AuditData @{} -CheckDefinition $adpathDef).Status
     }
 
     @{

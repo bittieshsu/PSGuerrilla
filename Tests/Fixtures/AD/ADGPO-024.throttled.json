@@ -1,6 +1,6 @@
 {
   "checkId": "ADGPO-024",
-  "theater": "Recon",
+  "platform": "Recon",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "GPOs not collected",

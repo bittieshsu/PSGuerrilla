@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-030",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Anti-malware policy present (quarantine default)",

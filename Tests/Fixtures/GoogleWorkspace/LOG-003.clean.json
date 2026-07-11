@@ -1,6 +1,6 @@
 {
   "checkId": "LOG-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Alert rules cover all audit domains",

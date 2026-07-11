@@ -1,6 +1,6 @@
 {
   "checkId": "EIDSCA-ST09",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "fail",
   "expectedStatus": "FAIL",
   "description": "EIDSCA-ST09 non-compliant",

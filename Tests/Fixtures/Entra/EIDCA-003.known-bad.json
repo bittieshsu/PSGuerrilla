@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Three CA policies stuck in report-only",

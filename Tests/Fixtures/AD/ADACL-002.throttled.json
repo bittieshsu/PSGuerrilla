@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "ObjectACLs collection failed; must be Not Assessed, never PASS",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-010",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No federated domains (extranet lockout N/A)",

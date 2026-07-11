@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-005",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Chat history on by default",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "ConditionalAccess collection failed",

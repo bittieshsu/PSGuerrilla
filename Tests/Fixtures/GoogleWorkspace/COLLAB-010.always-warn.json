@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-010",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Calendar appointment-slot external visibility requires manual review",

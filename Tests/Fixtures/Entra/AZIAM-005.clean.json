@@ -1,6 +1,6 @@
 {
   "checkId": "AZIAM-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Storage accounts enforce HTTPS, no public blob, TLS1.2",

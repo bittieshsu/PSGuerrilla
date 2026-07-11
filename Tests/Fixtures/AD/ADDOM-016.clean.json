@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-016",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "NTLMv2-only enforced via GPO (>=3)",

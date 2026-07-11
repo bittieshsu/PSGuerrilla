@@ -28,7 +28,7 @@ function Export-BloodHoundData {
         the exported edge set; this exporter consumes it unchanged.
 
     .PARAMETER AuditData
-        The collected reconnaissance data (hashtable with ACLs.DangerousACEs and
+        The collected AD audit data (hashtable with ACLs.DangerousACEs and
         PrivilegedAccounts.PrivilegedGroups).
 
     .PARAMETER OutputPath

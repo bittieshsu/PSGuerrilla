@@ -1,6 +1,6 @@
 {
   "checkId": "ADTRADE-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All config-partition servers match known DCs",

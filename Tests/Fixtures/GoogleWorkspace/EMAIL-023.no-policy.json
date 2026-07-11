@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-023",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "no-policy",
   "expectedStatus": "SKIP",
   "description": "Policy type not returned",

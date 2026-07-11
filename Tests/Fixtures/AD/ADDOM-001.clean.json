@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-001",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Forest functional level current (>=7)",

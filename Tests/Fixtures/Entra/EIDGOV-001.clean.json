@@ -1,6 +1,6 @@
 {
   "checkId": "EIDGOV-001",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All policies require approval",

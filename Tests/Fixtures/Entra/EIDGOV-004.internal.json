@@ -1,6 +1,6 @@
 {
   "checkId": "EIDGOV-004",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "internal",
   "expectedStatus": "PASS",
   "description": "All internal scope",

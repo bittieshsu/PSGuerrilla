@@ -7,7 +7,7 @@ function Invoke-Watchtower {
         Continuous Active Directory baseline-change monitoring.
 
     .DESCRIPTION
-        Invoke-Watchtower is the AD theater of Guerrilla's continuous-monitoring
+        Invoke-Watchtower is the AD platform of Guerrilla's continuous-monitoring
         suite (alongside Invoke-Surveillance for Entra sign-in risk and Invoke-Wiretap
         for M365 audit logs). It snapshots security-relevant AD state — privileged
         group membership, AdminSDHolder, GPO/ACL changes, trusts, krbtgt, delegation,
@@ -43,7 +43,7 @@ function Invoke-Watchtower {
         # Subsequent run; reports Tier-0 changes since the last baseline.
 
     .NOTES
-        Baseline state is stored under the per-user Guerrilla data root (theater 'ad').
+        Baseline state is stored under the per-user Guerrilla data root (platform 'ad').
     #>
     [CmdletBinding()]
     param(
@@ -137,14 +137,14 @@ function Invoke-Watchtower {
         Write-OperationHeader -Operation 'WATCHTOWER SWEEP' -Mode $ScanMode -Target $targetDisplay -DaysBack $DaysBack
     }
 
-    # ── 3. Load theater state ──────────────────────────────────────────
-    $theaterState = Get-TheaterState -Theater 'ad' -ConfigPath $cfgPath
+    # ── 3. Load platform state ──────────────────────────────────────────
+    $platformState = Get-PlatformState -Platform 'ad' -ConfigPath $cfgPath
 
-    $isFirstRun = $null -eq $theaterState
+    $isFirstRun = $null -eq $platformState
     if ($isFirstRun) {
-        $theaterState = @{
+        $platformState = @{
             schemaVersion  = 1
-            theater        = 'ad'
+            platform        = 'ad'
             baseline       = $null
             alertedChanges = @{}
             scanHistory    = @()
@@ -154,8 +154,8 @@ function Invoke-Watchtower {
         }
     } else {
         if (-not $Quiet) {
-            $lastScan = if ($theaterState.scanHistory -and $theaterState.scanHistory.Count -gt 0) {
-                $theaterState.scanHistory[-1].timestamp
+            $lastScan = if ($platformState.scanHistory -and $platformState.scanHistory.Count -gt 0) {
+                $platformState.scanHistory[-1].timestamp
             } else { 'unknown' }
             Write-ProgressLine -Phase SCANNING -Message 'Previous baseline loaded' -Detail "last scan: $lastScan"
         }
@@ -194,9 +194,9 @@ function Invoke-Watchtower {
 
     # ── 7. First run or Force: save baseline and return ────────────────
     if ($isFirstRun -or $Force) {
-        $theaterState.baseline = $currentBaseline
-        $theaterState.alertedChanges = @{}
-        $theaterState.scanHistory = @($theaterState.scanHistory) + @(@{
+        $platformState.baseline = $currentBaseline
+        $platformState.alertedChanges = @{}
+        $platformState.scanHistory = @($platformState.scanHistory) + @(@{
             scanId    = $scanId
             timestamp = $timestamp.ToString('o')
             mode      = $ScanMode
@@ -205,7 +205,7 @@ function Invoke-Watchtower {
             changes   = 0
         })
 
-        Save-TheaterState -Theater 'ad' -State $theaterState -ConfigPath $cfgPath
+        Save-PlatformState -Platform 'ad' -State $platformState -ConfigPath $cfgPath
 
         if (-not $Quiet) {
             $reason = if ($Force) { 'Force flag set' } else { 'First run' }
@@ -221,7 +221,7 @@ function Invoke-Watchtower {
             PSTypeName           = 'Guerrilla.WatchtowerResult'
             ScanId               = $scanId
             Timestamp            = $timestamp
-            Theater              = 'ActiveDirectory'
+            Platform              = 'ActiveDirectory'
             DomainName           = $domainName
             ScanMode             = $ScanMode
             BaselineEstablished  = $true
@@ -241,7 +241,7 @@ function Invoke-Watchtower {
         Write-ProgressLine -Phase ANALYZING -Message 'Comparing current state against baseline'
     }
 
-    $changes = Compare-ADBaseline -PreviousBaseline $theaterState.baseline -CurrentData $currentData
+    $changes = Compare-ADBaseline -PreviousBaseline $platformState.baseline -CurrentData $currentData
 
     # ── 9. Build detection config from ad config ───────────────────────
     $detectionConfig = @{}
@@ -261,8 +261,8 @@ function Invoke-Watchtower {
     $changeProfile = New-ADChangeProfile @profileParams
 
     # ── 11. Determine new vs already-alerted changes ───────────────────
-    $previousAlerted = if ($theaterState.ContainsKey('alertedChanges') -and $theaterState.alertedChanges) {
-        $theaterState.alertedChanges
+    $previousAlerted = if ($platformState.ContainsKey('alertedChanges') -and $platformState.alertedChanges) {
+        $platformState.alertedChanges
     } else { @{} }
 
     $newThreats = [System.Collections.Generic.List[PSCustomObject]]::new()
@@ -311,9 +311,9 @@ function Invoke-Watchtower {
     $lowCount      = @($allFlagged | Where-Object { $_.Severity -eq 'LOW' }).Count
 
     # ── 13. Save state ─────────────────────────────────────────────────
-    $theaterState.baseline = $currentBaseline
-    $theaterState.alertedChanges = $updatedAlerted
-    $theaterState.scanHistory = @($theaterState.scanHistory) + @(@{
+    $platformState.baseline = $currentBaseline
+    $platformState.alertedChanges = $updatedAlerted
+    $platformState.scanHistory = @($platformState.scanHistory) + @(@{
         scanId    = $scanId
         timestamp = $timestamp.ToString('o')
         mode      = $ScanMode
@@ -326,7 +326,7 @@ function Invoke-Watchtower {
         low       = $lowCount
     })
 
-    Save-TheaterState -Theater 'ad' -State $theaterState -ConfigPath $cfgPath
+    Save-PlatformState -Platform 'ad' -State $platformState -ConfigPath $cfgPath
 
     # ── 14. Console report ─────────────────────────────────────────────
     $reportPaths = @{}
@@ -390,7 +390,7 @@ function Invoke-Watchtower {
         PSTypeName           = 'Guerrilla.WatchtowerResult'
         ScanId               = $scanId
         Timestamp            = $timestamp
-        Theater              = 'ActiveDirectory'
+        Platform              = 'ActiveDirectory'
         DomainName           = $domainName
         ScanMode             = $ScanMode
         BaselineEstablished  = $false

@@ -1,6 +1,6 @@
 {
   "checkId": "GROUP-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Owners cannot add external",

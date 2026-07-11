@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-013",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Super admins logged in recently",

@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "All active users 2SV-enrolled (>=95%)",

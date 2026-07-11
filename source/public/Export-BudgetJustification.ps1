@@ -23,7 +23,7 @@ function Export-BudgetJustification {
         Export-BudgetJustification -OrganizationName 'Springfield USD'
         Generates a budget justification report for the district.
     .EXAMPLE
-        $findings = Invoke-Fortification -PassThru; Export-BudgetJustification -Findings $findings -OutputPath ./budget.html
+        $findings = Invoke-GWSAudit -PassThru; Export-BudgetJustification -Findings $findings -OutputPath ./budget.html
         Generates report from specific findings.
     #>
     [CmdletBinding()]

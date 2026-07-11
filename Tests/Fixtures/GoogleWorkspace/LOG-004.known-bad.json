@@ -1,6 +1,6 @@
 {
   "checkId": "LOG-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Cloud data sharing enabled",

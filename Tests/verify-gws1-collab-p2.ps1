@@ -40,34 +40,34 @@ $out = & $mod {
 
     # ── COLLAB-004: Chat external communication (policy primary) ──
     # PASS: external chat disabled.
-    $r.C004_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.external_chat_restriction' = @{ allowExternalChat = $false; externalChatRestriction = 'NO_RESTRICTION' } }) }) 'Test-FortificationCOLLAB004'
+    $r.C004_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.external_chat_restriction' = @{ allowExternalChat = $false; externalChatRestriction = 'NO_RESTRICTION' } }) }) 'Test-COLLAB004'
     # FAIL: external chat allowed AND no restriction.
-    $r.C004_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.external_chat_restriction' = @{ allowExternalChat = $true; externalChatRestriction = 'NO_RESTRICTION' } }) }) 'Test-FortificationCOLLAB004'
+    $r.C004_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.external_chat_restriction' = @{ allowExternalChat = $true; externalChatRestriction = 'NO_RESTRICTION' } }) }) 'Test-COLLAB004'
     # WARN: external chat allowed but restricted (trusted-domains / unrecognized restriction).
-    $r.C004_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.external_chat_restriction' = @{ allowExternalChat = $true; externalChatRestriction = 'TRUSTED_DOMAINS' } }) }) 'Test-FortificationCOLLAB004'
+    $r.C004_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.external_chat_restriction' = @{ allowExternalChat = $true; externalChatRestriction = 'TRUSTED_DOMAINS' } }) }) 'Test-COLLAB004'
     # weakest-OU-wins: one OU open -> FAIL even though another OU is disabled.
-    $r.C004_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.external_chat_restriction' = @(@{ allowExternalChat = $false; externalChatRestriction = 'ALL' }, @{ allowExternalChat = $true; externalChatRestriction = 'UNRESTRICTED' }) }) }) 'Test-FortificationCOLLAB004'
+    $r.C004_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'chat.external_chat_restriction' = @(@{ allowExternalChat = $false; externalChatRestriction = 'ALL' }, @{ allowExternalChat = $true; externalChatRestriction = 'UNRESTRICTED' }) }) }) 'Test-COLLAB004'
     # Policy unavailable -> OrgUnitPolicies fallback (FAIL when external chat enabled).
-    $r.C004_fb_fail = St (@{ CloudIdentityPolicies = $null; OrgUnitPolicies = @{ '/' = [PSCustomObject]@{ chatExternalEnabled = $true } } }) 'Test-FortificationCOLLAB004'
+    $r.C004_fb_fail = St (@{ CloudIdentityPolicies = $null; OrgUnitPolicies = @{ '/' = [PSCustomObject]@{ chatExternalEnabled = $true } } }) 'Test-COLLAB004'
     # Policy unavailable AND no OrgUnitPolicies -> reaches fallback's manual-verify (WARN), no throw.
-    $r.C004_skip = St (@{ CloudIdentityPolicies = $null; OrgUnitPolicies = @{} }) 'Test-FortificationCOLLAB004'
+    $r.C004_skip = St (@{ CloudIdentityPolicies = $null; OrgUnitPolicies = @{} }) 'Test-COLLAB004'
 
     # ── COLLAB-008: Calendar external sharing (policy primary) ──
     # PASS: limited sharing.
-    $r.C008_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'FREE_BUSY_ONLY' } }) }) 'Test-FortificationCOLLAB008'
+    $r.C008_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'FREE_BUSY_ONLY' } }) }) 'Test-COLLAB008'
     # FAIL: permissive (shares all info).
-    $r.C008_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'READ_WRITE_ACCESS' } }) }) 'Test-FortificationCOLLAB008'
+    $r.C008_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'READ_WRITE_ACCESS' } }) }) 'Test-COLLAB008'
     # WARN: unrecognized enum.
-    $r.C008_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'SOME_FUTURE_VALUE' } }) }) 'Test-FortificationCOLLAB008'
+    $r.C008_warn = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'SOME_FUTURE_VALUE' } }) }) 'Test-COLLAB008'
     # weakest-OU-wins: one permissive OU -> FAIL.
-    $r.C008_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @(@{ maxAllowedExternalSharing = 'NONE' }, @{ maxAllowedExternalSharing = 'SHARE_ALL_INFO' }) }) }) 'Test-FortificationCOLLAB008'
+    $r.C008_weak = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @(@{ maxAllowedExternalSharing = 'NONE' }, @{ maxAllowedExternalSharing = 'SHARE_ALL_INFO' }) }) }) 'Test-COLLAB008'
     # CONFIRMED live enums: EXTERNAL_ALL_INFO_* -> FAIL; EXTERNAL_FREE_BUSY_ONLY -> PASS.
-    $r.C008_real_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'EXTERNAL_ALL_INFO_READ_ONLY' } }) }) 'Test-FortificationCOLLAB008'
-    $r.C008_real_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'EXTERNAL_FREE_BUSY_ONLY' } }) }) 'Test-FortificationCOLLAB008'
+    $r.C008_real_fail = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'EXTERNAL_ALL_INFO_READ_ONLY' } }) }) 'Test-COLLAB008'
+    $r.C008_real_pass = St (@{ CloudIdentityPolicies = (New-Pol @{ 'calendar.primary_calendar_max_allowed_external_sharing' = @{ maxAllowedExternalSharing = 'EXTERNAL_FREE_BUSY_ONLY' } }) }) 'Test-COLLAB008'
     # Policy unavailable -> OrgUnitPolicies fallback (FAIL on READ_WRITE).
-    $r.C008_fb_fail = St (@{ CloudIdentityPolicies = $null; OrgUnitPolicies = @{ '/' = [PSCustomObject]@{ calendarExternalSharing = 'READ_WRITE' } } }) 'Test-FortificationCOLLAB008'
+    $r.C008_fb_fail = St (@{ CloudIdentityPolicies = $null; OrgUnitPolicies = @{ '/' = [PSCustomObject]@{ calendarExternalSharing = 'READ_WRITE' } } }) 'Test-COLLAB008'
     # Policy unavailable AND no OrgUnitPolicies -> reaches fallback's manual-verify (WARN), no throw.
-    $r.C008_skip = St (@{ CloudIdentityPolicies = $null; OrgUnitPolicies = @{} }) 'Test-FortificationCOLLAB008'
+    $r.C008_skip = St (@{ CloudIdentityPolicies = $null; OrgUnitPolicies = @{} }) 'Test-COLLAB008'
 
     $r
 }

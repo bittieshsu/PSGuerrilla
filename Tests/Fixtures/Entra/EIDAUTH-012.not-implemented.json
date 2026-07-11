@@ -1,6 +1,6 @@
 {
   "checkId": "EIDAUTH-012",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "not-implemented",
   "expectedStatus": "SKIP",
   "description": "SSPR method config needs additional data collection",

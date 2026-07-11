@@ -1,6 +1,6 @@
 {
   "checkId": "LOG-001",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Enterprise edition (extended log retention)",

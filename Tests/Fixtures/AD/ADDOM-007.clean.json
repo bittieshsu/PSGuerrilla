@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Replication healthy (single DC)",

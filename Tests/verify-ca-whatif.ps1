@@ -72,18 +72,18 @@ $eidca = & $mod {
         @{ Key='legacy-auth'; Name='Legacy'; Severity='High'; Result='Block'; Verdict='PASS' }
         @{ Key='no-mfa'; Name='No MFA'; Severity='High'; Result='MfaRequired'; Verdict='PASS' }
     ) } }
-    $r.AllPass = (Test-InfiltrationEIDCA015 -AuditData $allPass -CheckDefinition $cd).Status
+    $r.AllPass = (Test-EIDCA015 -AuditData $allPass -CheckDefinition $cd).Status
     # One scenario unprotected -> FAIL
     $oneFail = @{ ConditionalAccess = @{ Policies=@(); WhatIf = @(
         @{ Key='legacy-auth'; Name='Legacy'; Severity='High'; Result='Grant'; Verdict='FAIL' }
         @{ Key='no-mfa'; Name='No MFA'; Severity='High'; Result='MfaRequired'; Verdict='PASS' }
     ) } }
-    $f = Test-InfiltrationEIDCA015 -AuditData $oneFail -CheckDefinition $cd
+    $f = Test-EIDCA015 -AuditData $oneFail -CheckDefinition $cd
     $r.OneFailStatus = $f.Status
     $r.OneFailLive = ($f.Details.Mode -eq 'LiveWhatIf')
     $r.OneFailNamesLegacy = ($f.CurrentValue -match 'Legacy')
     # No what-if + no policies -> SKIP (Not Assessed), never PASS
-    $r.NoData = (Test-InfiltrationEIDCA015 -AuditData @{ ConditionalAccess = @{ Policies=@(); WhatIf=@() } } -CheckDefinition $cd).Status
+    $r.NoData = (Test-EIDCA015 -AuditData @{ ConditionalAccess = @{ Policies=@(); WhatIf=@() } } -CheckDefinition $cd).Status
     $r
 } (New-CDef 'EIDCA-015')
 

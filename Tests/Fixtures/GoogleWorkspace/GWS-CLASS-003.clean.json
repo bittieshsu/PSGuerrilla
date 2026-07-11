@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-CLASS-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Classroom API data access disabled",

@@ -1,6 +1,6 @@
 {
   "checkId": "ADCS-011",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "limitation",
   "expectedStatus": "WARN",
   "description": "HTTP enrollment endpoints require IIS inspection, not LDAP (cannot assess)",

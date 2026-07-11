@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-002",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Default link sharing UNRESTRICTED",

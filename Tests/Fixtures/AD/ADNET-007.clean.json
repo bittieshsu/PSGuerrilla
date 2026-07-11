@@ -1,6 +1,6 @@
 {
   "checkId": "ADNET-007",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "IPv6 fully disabled (0xFF)",

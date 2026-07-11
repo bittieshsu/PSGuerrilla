@@ -1,6 +1,6 @@
 {
   "checkId": "GTRADE-004",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Four or fewer super admins",

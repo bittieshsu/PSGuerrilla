@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-004",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "No guest accounts hold privileged roles",

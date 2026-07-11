@@ -1,6 +1,6 @@
 {
   "checkId": "ADKERB-002",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Kerberoastable account is RC4-only",

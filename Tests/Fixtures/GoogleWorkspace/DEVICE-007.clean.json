@@ -1,6 +1,6 @@
 {
   "checkId": "DEVICE-007",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Chrome policies configured",

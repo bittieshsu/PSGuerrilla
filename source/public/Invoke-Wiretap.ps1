@@ -180,7 +180,7 @@ function Invoke-Wiretap {
 
     # Final fallback: the safehouse vault under the default keys Set-Safehouse stores
     # interactively — so a vault-only setup (no mission-config file) runs without extra
-    # parameters, matching Invoke-Infiltration / Invoke-Fortification behaviour.
+    # parameters, matching Invoke-EntraAudit / Invoke-GWSAudit behaviour.
     if (-not $tenantId) { $tenantId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_TENANT'   -VaultName $vaultName }
     if (-not $clientId) { $clientId = Get-SafehouseSecret -VaultKey 'GUERRILLA_GRAPH_CLIENTID' -VaultName $vaultName }
     if (-not $certThumb -and -not $ClientSecret) {
@@ -197,8 +197,8 @@ function Invoke-Wiretap {
         Write-OperationHeader -Operation 'WIRETAP SWEEP' -Mode $mode -Target $tenantId -DaysBack $days
     }
 
-    # --- Load theater state ---
-    $state = Get-TheaterState -Theater 'm365' -ConfigPath $cfgPath
+    # --- Load platform state ---
+    $state = Get-PlatformState -Platform 'm365' -ConfigPath $cfgPath
     $startTime = $null
 
     if ($Force -or -not $state) {
@@ -495,7 +495,7 @@ function Invoke-Wiretap {
         alertedEvents  = $newAlertedEvents
         scanHistory    = $scanHistory
     }
-    Save-TheaterState -Theater 'm365' -State $newState -ConfigPath $cfgPath
+    Save-PlatformState -Platform 'm365' -State $newState -ConfigPath $cfgPath
 
     # --- Complete ---
     $scanEnd = [datetime]::UtcNow
@@ -510,7 +510,7 @@ function Invoke-Wiretap {
         PSTypeName          = 'Guerrilla.WiretapResult'
         ScanId              = $scanId
         Timestamp           = $scanStart
-        Theater             = 'M365'
+        Platform             = 'M365'
         TenantId            = $tenantId
         DaysAnalyzed        = $days
         ScanMode            = $mode

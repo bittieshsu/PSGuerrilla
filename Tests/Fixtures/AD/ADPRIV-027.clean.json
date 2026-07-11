@@ -1,6 +1,6 @@
 {
   "checkId": "ADPRIV-027",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Only Tier-0 principals hold the DC logon right",

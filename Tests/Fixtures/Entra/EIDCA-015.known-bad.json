@@ -1,6 +1,6 @@
 {
   "checkId": "EIDCA-015",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "What-If: protection gap found",

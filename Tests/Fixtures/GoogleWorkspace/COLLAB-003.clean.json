@@ -1,6 +1,6 @@
 {
   "checkId": "COLLAB-003",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Meet requires signed-in users",

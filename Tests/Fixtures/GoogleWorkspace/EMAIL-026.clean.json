@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-026",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "pop/imap off",

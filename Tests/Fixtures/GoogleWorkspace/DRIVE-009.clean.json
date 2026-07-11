@@ -1,6 +1,6 @@
 {
   "checkId": "DRIVE-009",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Few Drive-scope OAuth apps (<=5)",

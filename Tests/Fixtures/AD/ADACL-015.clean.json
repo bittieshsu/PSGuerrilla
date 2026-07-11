@@ -1,6 +1,6 @@
 {
   "checkId": "ADACL-015",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "no dangerous delegated ACEs after safe-admin filtering",

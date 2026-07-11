@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-046",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Unified audit log ingestion disabled",

@@ -1,6 +1,6 @@
 {
   "checkId": "AIAGENT-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "dormant",
   "expectedStatus": "WARN",
   "description": "Published but modified 2020",

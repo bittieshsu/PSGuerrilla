@@ -1,6 +1,6 @@
 {
   "checkId": "ADDOM-018",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Anonymous access restricted",

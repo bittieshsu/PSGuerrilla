@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-009",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "Three privileged accounts have never signed in",

@@ -1,6 +1,6 @@
 {
   "checkId": "EIDTNT-005",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "B2B collaboration allowed for all users inbound+outbound (2 issues), settings under .default (real Graph shape)",

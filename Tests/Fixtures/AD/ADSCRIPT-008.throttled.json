@@ -1,6 +1,6 @@
 {
   "checkId": "ADSCRIPT-008",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "LogonScripts failed",

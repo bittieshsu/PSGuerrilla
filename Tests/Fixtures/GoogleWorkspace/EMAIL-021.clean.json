@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-021",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "User certificate upload disallowed",

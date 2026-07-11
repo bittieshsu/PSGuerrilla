@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-010",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "FAIL",
   "description": "A super admin has a recovery email set",

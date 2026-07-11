@@ -1,6 +1,6 @@
 {
   "checkId": "EIDPIM-003",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "A permanent Global Admin assignment should be eligible",

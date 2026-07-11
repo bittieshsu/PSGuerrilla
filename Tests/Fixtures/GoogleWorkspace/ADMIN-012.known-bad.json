@@ -1,6 +1,6 @@
 {
   "checkId": "ADMIN-012",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "known-bad",
   "expectedStatus": "WARN",
   "description": "Groups for Business enabled",

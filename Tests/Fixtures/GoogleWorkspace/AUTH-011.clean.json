@@ -1,6 +1,6 @@
 {
   "checkId": "AUTH-011",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Login challenges (employee ID) enabled",

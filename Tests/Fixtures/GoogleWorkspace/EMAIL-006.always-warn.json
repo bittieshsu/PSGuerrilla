@@ -1,6 +1,6 @@
 {
   "checkId": "EMAIL-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "always-warn",
   "expectedStatus": "WARN",
   "description": "Allow/block list entries require manual review",

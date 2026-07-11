@@ -1,6 +1,6 @@
 {
   "checkId": "ADPWD-004",
-  "theater": "Reconnaissance",
+  "platform": "AD",
   "scenario": "throttled",
   "expectedStatus": "SKIP",
   "description": "Password policy not assessed",

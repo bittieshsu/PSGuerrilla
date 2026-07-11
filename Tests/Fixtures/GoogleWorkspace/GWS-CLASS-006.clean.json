@@ -1,6 +1,6 @@
 {
   "checkId": "GWS-CLASS-006",
-  "theater": "Fortification",
+  "platform": "GWS",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Only verified teachers can create classes",

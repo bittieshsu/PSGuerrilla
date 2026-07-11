@@ -7,7 +7,7 @@ function Get-GuerrillaScore {
         Returns the composite Guerrilla Security Score (0-100) with breakdown.
     .DESCRIPTION
         Computes a single 0-100 security score from audit findings, threat scan results,
-        theater coverage, and trend data. Uses the active baseline profile (Default or K12)
+        platform coverage, and trend data. Uses the active baseline profile (Default or K12)
         for component weights and thresholds.
 
         Score tiers:
@@ -15,10 +15,10 @@ function Get-GuerrillaScore {
           EXPOSED FLANK (40-59)  |  UNDER SIEGE (20-39)  |  OVERRUN (0-19)
 
     .PARAMETER AuditFindings
-        Array of audit finding objects from Fortification/Reconnaissance theaters.
+        Array of audit finding objects from the AD, Entra, and GWS audits.
         If not provided, reads the latest state file.
     .PARAMETER ScanResults
-        Array of scan result objects from Surveillance/Watchtower theaters.
+        Array of scan result objects from Surveillance/Watchtower platforms.
         If not provided, reads the latest state files.
     .PARAMETER ProfileName
         Baseline profile to use: Default or K12. If not specified, uses the profile
@@ -32,7 +32,7 @@ function Get-GuerrillaScore {
         Get-GuerrillaScore -ProfileName K12
         Returns the score using K-12 education baseline weights.
     .EXAMPLE
-        $findings = Invoke-Fortification -PassThru; Get-GuerrillaScore -AuditFindings $findings
+        $findings = Invoke-GWSAudit -PassThru; Get-GuerrillaScore -AuditFindings $findings
         Computes score from specific audit findings.
     #>
     [CmdletBinding()]

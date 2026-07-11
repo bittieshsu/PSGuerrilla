@@ -1,6 +1,6 @@
 {
   "checkId": "M365EXO-050",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "clean",
   "expectedStatus": "PASS",
   "description": "Rules cover SSN/ITIN/CC",

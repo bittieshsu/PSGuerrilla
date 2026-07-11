@@ -1,6 +1,6 @@
 {
   "checkId": "EIDFED-008",
-  "theater": "Infiltration",
+  "platform": "Entra",
   "scenario": "no-data",
   "expectedStatus": "SKIP",
   "description": "Sync settings not available",
