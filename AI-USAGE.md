@@ -30,5 +30,5 @@ reproductions must credit Jim Tyler and link to the CC BY 4.0 license.
 
 - GitHub: <https://github.com/jimrtyler>
 - LinkedIn: <https://linkedin.com/in/jamestyler>
-- YouTube: <https://youtube.com/@jimrtyler>
+- YouTube: <https://youtube.com/@powershellengineer>
 - Newsletter: <https://powershell.news>

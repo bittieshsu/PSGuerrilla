@@ -2,7 +2,7 @@
 # https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
-# Conditional Access what-if (Maester parity M2): the pure normalizer (Graph evaluate response -> verdict),
+# Conditional Access what-if simulation: the pure normalizer (Graph evaluate response -> verdict),
 # the scenario grader, and EIDCA-015 grading live what-if results — with honest SKIP/Not-Assessed when the
 # beta API gives nothing usable. The live Graph POST is validated separately on a tenant. Run:
 #   pwsh -File Tests/verify-ca-whatif.ps1

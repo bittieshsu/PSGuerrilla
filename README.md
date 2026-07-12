@@ -41,7 +41,7 @@ Every fixtured check is held to three assertions:
 - Known-bad input yields **FAIL** (or `WARN` where the control warns).
 - Uncollectable input yields **Not Assessed**.
 
-The suite currently stands at **1,754 golden fixtures across 626 checks, with 0 failures.** CI runs the fixtures, the collector query-contract tests, and the Zero Trust schema test before any release. A red suite blocks publish. The fixture framework, and a walkthrough of how to write one, is documented at [guerrilla.army/tests](https://guerrilla.army/tests).
+The suite currently stands at **1,766 golden fixtures across 626 checks, with 0 failures.** CI runs the fixtures, the collector query-contract tests, and the Zero Trust schema test before any release. A red suite blocks publish. The fixture framework, and a walkthrough of how to write one, is documented at [guerrilla.army/docs/validation](https://guerrilla.army/docs/validation).
 
 ## Requirements
 
@@ -378,12 +378,16 @@ removed in the next major version.
 | `Invoke-Infiltration` | `Invoke-EntraAudit` |
 | `Invoke-Fortification` | `Invoke-GWSAudit` |
 
-### Platform-named aliases
+### Deprecated aliases
 
-| Alias | Resolves to | Platform |
-|-------|-------------|---------|
-| `Invoke-ADRecon` | `Invoke-ADAudit` | Active Directory configuration audit |
-| `Invoke-CloudRecon` | `Invoke-EntraAudit` | Entra ID / Azure / Intune / M365 audit |
+These aliases carry retired names and are kept only for backward compatibility.
+They are slated for removal in the next major version; use the canonical
+commands instead.
+
+| Deprecated alias | Use instead |
+|------------------|-------------|
+| `Invoke-ADRecon` | `Invoke-ADAudit` |
+| `Invoke-CloudRecon` | `Invoke-EntraAudit` |
 
 ### Migrating from an earlier install
 
@@ -443,7 +447,7 @@ Import-Module ./Guerrilla.psd1
 
 ## Contributing
 
-Guerrilla is an open, community-facing project, and its contributors are often practitioners who will never open a pull request. Reporting a wrong verdict, proposing a check with the incident that motivated it, and contributing fixture data from an unusual real tenant shape are all first-class contributions, and every rung is credited in release notes. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the ladder, and [guerrilla.army/tests](https://guerrilla.army/tests) for how to write a fixture.
+Guerrilla is an open, community-facing project, and its contributors are often practitioners who will never open a pull request. Reporting a wrong verdict, proposing a check with the incident that motivated it, and contributing fixture data from an unusual real tenant shape are all first-class contributions, and every rung is credited in release notes. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the ladder, and [guerrilla.army/docs/validation](https://guerrilla.army/docs/validation) for how to write a fixture.
 
 Every contributed check ships with fixtures. That requirement is what lets a maintainer accept a check from someone they have never met: the fixture proves the verdict logic is correct.
 

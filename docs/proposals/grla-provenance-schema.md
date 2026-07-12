@@ -1,6 +1,6 @@
 # Proposal: GRLA- prefix and provenance schema (Task 6)
 
-Status: EXECUTED in v2.46.4 (2026-07-09). This is the reviewed design, kept for the record. The four fields were added to all 618 check definitions and to the check DB, seven checks were classified `original`, and `Tests/Unit/ProvenanceSchema.Tests.ps1` gates the schema. Build-ahead remains empty (no build-ahead checks yet). The original proposal text follows as approved.
+Status: EXECUTED in v2.46.4 (2026-07-09). This is the reviewed design, kept for the record. The four fields were added to every check definition (618 at the time of execution; the catalog has grown since) and to the check DB, seven checks were classified `original`, and `Tests/Unit/ProvenanceSchema.Tests.ps1` gates the schema. Build-ahead remains empty (no build-ahead checks yet). The original proposal text follows as approved.
 
 ## 1. Goal
 
@@ -14,7 +14,7 @@ Introduce a first-class notion of a Guerrilla-original check and the provenance 
 | `official_id` | string | yes | The framework control ID once a baseline catches up (crosswalk target). |
 
 `provenance` values:
-- `baseline`: implements a control that a published baseline already defines (the check maps to NIST / MITRE / CIS / EIDSCA / SCuBA). This is the default for the current 618.
+- `baseline`: implements a control that a published baseline already defines (the check maps to NIST / MITRE / CIS / EIDSCA / SCuBA). This is the default for the entire catalog as it stood at the time of writing (618 checks).
 - `original`: an attack path no baseline models yet (OAuth delegation takeover, super-admin sprawl, partner/GDAP delegated access). Carries no `official_id` because none exists.
 - `build-ahead`: derived from a published baseline roadmap (an issue tracker, a release checklist) before the control ships. Carries `source_url` + `source_read_date` now, and gains `official_id` later when the control lands.
 
@@ -24,7 +24,7 @@ Guerrilla-original checks (`provenance` = `original` or `build-ahead`) get the I
 
 Important: renaming an EXISTING check's ID is a breaking change (fixtures, crosswalks, report history, the golden-fixture filenames, and any customer risk-acceptance records key off the ID). So:
 - New Guerrilla-original checks are BORN as `GRLA-...`.
-- Existing checks that are conceptually original but already shipped under a family prefix are NOT renamed. Instead they are tagged `provenance = original` in place, and (optionally) carry an alias. We do not rewrite 618 IDs.
+- Existing checks that are conceptually original but already shipped under a family prefix are NOT renamed. Instead they are tagged `provenance = original` in place, and (optionally) carry an alias. We do not rewrite existing IDs.
 
 ## 3. Where the fields live
 
@@ -42,7 +42,7 @@ Two stores, kept in sync, DB is authoritative for the site:
 
 A `provenance` schema test (like the existing Zero Trust schema test) enforces: value in the enum; `original` has null `official_id`; `build-ahead` has a non-null `source_url` and `source_read_date`; `baseline` may map to frameworks. Red test blocks publish.
 
-## 4. Migration plan for the existing 618 (reviewable, staged)
+## 4. Migration plan for the existing catalog (618 checks at the time of writing; reviewable, staged)
 
 Nothing is rewritten blindly. The migration is a backfill, run once, reviewable as a diff:
 
@@ -51,7 +51,7 @@ Nothing is rewritten blindly. The migration is a backfill, run once, reviewable 
 3. Leave `source_url` / `source_read_date` / `official_id` null for baseline and original checks.
 4. `build-ahead`: none today. New build-ahead checks are added going forward with all four fields populated at creation.
 
-The order matters: step 1 is a bulk default (safe), step 2 is a tiny reviewed reclassification (safe, by ID), and no ID is renamed. The 618-row change is therefore one default backfill plus a handful of by-ID updates, not a mass rewrite.
+The order matters: step 1 is a bulk default (safe), step 2 is a tiny reviewed reclassification (safe, by ID), and no ID is renamed. The full-catalog change is therefore one default backfill plus a handful of by-ID updates, not a mass rewrite.
 
 ## 5. How a build-ahead check gains its official_id later
 

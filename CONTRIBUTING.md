@@ -74,7 +74,7 @@ them. A check without fixtures cannot be reviewed, so it cannot be merged.
 
 The shape of a check contribution:
 
-1. **Define the check** in the right `Data/AuditChecks/*.json` file:
+1. **Define the check** in the right `source/Data/AuditChecks/*.json` file:
 
    ```json
    {
@@ -174,15 +174,21 @@ For rung-4 contributors, the details behind the shapes above.
 ### Where things live
 
 ```
-Public/                 Exported cmdlets (Invoke-ADAudit, Invoke-EntraAudit, ...)
-Private/
-  AD/                   Active Directory collection and checks
-  Entra/                Entra ID / Azure / Intune / M365 collectors and checks
-  Google/  Graph/       API integration (Google Workspace, Microsoft Graph, Azure RM)
-  Audit/                Shared audit framework (New-AuditFinding, scoring)
-  Console/              Themed console output (Write-GuerrillaText, etc.)
-  Export/               Report generation (HTML, CSV, JSON)
-Data/AuditChecks/       JSON check definitions (the source of truth for metadata)
+source/
+  public/               Exported cmdlets (Invoke-ADAudit, Invoke-EntraAudit, ...)
+  internal/
+    AD/                 Active Directory collection
+    Entra/              Entra ID / Azure / Intune / M365 collectors
+    Google/  Graph/     API integration (Google Workspace, Microsoft Graph, Azure RM)
+    Audit/              Shared audit framework (New-AuditFinding, scoring)
+    Console/            Themed console output (Write-GuerrillaText, etc.)
+    Core/               Shared core helpers
+    Export/             Report generation (HTML, CSV, JSON)
+    Gui/                The WPF GUI
+    Vault/              Safehouse credential storage
+  checks/
+    AD/  Entra/  GWS/   Check functions, grouped by platform
+  Data/AuditChecks/     JSON check definitions (the source of truth for metadata)
 Tests/
   Fixtures/             Golden fixtures, one file per check per scenario
   Unit/                 Pester 5 unit tests (ZeroTrustSchema, collector contracts)
@@ -194,12 +200,12 @@ Tests/
 - Public cmdlets use the platform vocabulary (`Invoke-ADAudit`,
   `Invoke-EntraAudit`, `Invoke-GWSAudit`, `Invoke-Campaign`,
   `Set-Safehouse`).
-- Check functions are named `Test-<Platform><CheckId>` and are dispatched
-  automatically; no registration step.
+- Check functions are named `Test-<CheckId>` (e.g. `Test-ADACL001`,
+  `Test-EIDCA021`) and are dispatched automatically; no registration step.
 - Findings are built with `New-AuditFinding`; do not construct result objects by
   hand.
 - Public functions do not call raw `Write-Host`; use the themed helpers in
-  `Private/Console/` and honor `-Quiet`.
+  `source/internal/Console/` and honor `-Quiet`.
 
 ### The gate
 

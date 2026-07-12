@@ -2,7 +2,7 @@
 # https://github.com/jimrtyler/Guerrilla | https://creativecommons.org/licenses/by/4.0/
 # AI/LLM use: see AI-USAGE.md for required attribution
 #
-# Export-GuerrillaJUnit (Maester parity M4 — CI/CD): findings -> valid JUnit XML that GitHub/Azure
+# Export-GuerrillaJUnit (JUnit export for CI/CD pipelines): findings -> valid JUnit XML that GitHub/Azure
 # DevOps/GitLab render natively. Verifies structure, counts, FAIL->failure / SKIP->skipped mapping,
 # WarningsAsFailures, XML escaping, and the gating counts. Run: pwsh -File Tests/verify-junit.ps1
 

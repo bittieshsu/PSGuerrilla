@@ -1,6 +1,6 @@
 # ┌───────────────────────────────────────────────────────────────────────────┐
-# │  Guerrilla — Tactical Security Assessment Framework                    │
-# │  Jim Tyler, Microsoft MVP                                                │
+# │  Guerrilla — Agentless, Read-Only Security Assessment Platform            │
+# │  Jim Tyler, Microsoft MVP                                                 │
 # └───────────────────────────────────────────────────────────────────────────┘
 #
 #  AUTHOR       Jim Tyler

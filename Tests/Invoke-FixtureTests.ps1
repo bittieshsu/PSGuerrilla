@@ -179,7 +179,7 @@ if ($EmitSummary) {
         exportedCommands   = $exportedFunctions + $exportedAliases
         gitSha             = "$(git rev-parse --short HEAD 2>$null)"
         gitBranch          = "$(git rev-parse --abbrev-ref HEAD 2>$null)"
-        checkDefinitions   = $defIds.Count          # the universe (618)
+        checkDefinitions   = $defIds.Count          # the universe (all catalog checks)
         checksTested       = @($results | Select-Object -Unique CheckId).Count
         fixtureFilesOnDisk = $fixtureFilesOnDisk
         fixtureCount       = $results.Count          # executed
