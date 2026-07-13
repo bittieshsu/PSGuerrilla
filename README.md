@@ -31,6 +31,12 @@ Guerrilla assesses identity security posture across three platforms in a single 
 
 > A check that cannot collect its data (missing module, scope, license, or dataset) reports **Not Assessed**. Guerrilla never scores an uncollected control as a pass. Absence of evidence is not compliance.
 
+## Why it's called Guerrilla
+
+Guerrilla warfare is the doctrine of the outmatched: you don't win by matching a bigger force's resources, you win with asymmetric, low-cost, know-your-terrain tactics. That is exactly who this tool is for. A school district or a small business with a decaying Active Directory faces the same ESC certificate attacks, the same DCSync, the same OAuth abuse that a Fortune 500 faces, with no security team and no six-figure tool budget. The enterprise has vendors competing for its money; the under-resourced shop mostly gets ignored.
+
+Guerrilla is asymmetric defense for the organizations enterprise security tooling prices out: free, open source, agentless, runnable by one admin from one PowerShell prompt, on terrain they already know. If you have a dedicated security team and a tooling budget, Guerrilla will still work for you, but it wasn't built for you. It was built for the outmatched defender, and the name says so.
+
 ## Every verdict is tested
 
 The property that distinguishes Guerrilla is that its verdict logic is proven, not asserted. Every check that can be fixtured is validated by a golden fixture: a synthetic tenant state driven through the real check function, asserting the verdict the check must return.
