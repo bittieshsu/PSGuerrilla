@@ -344,6 +344,11 @@ function Show-AddCredentialDialog {
     foreach ($k in $L.Keys) {
         $win.Resources[('L_' + ($k -replace '\.', '_'))] = [string]$L[$k]
     }
+    # Mirror the dialog for right-to-left languages, matching the main window.
+    try {
+        $langMeta = Get-GuerrillaGuiLanguages | Where-Object Code -eq $Language | Select-Object -First 1
+        $win.FlowDirection = if ($langMeta -and $langMeta.Direction -eq 'rtl') { 'RightToLeft' } else { 'LeftToRight' }
+    } catch { }
 
     # Match the main window's current theme by overwriting the brush resources.
     try {

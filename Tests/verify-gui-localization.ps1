@@ -46,6 +46,9 @@ foreach ($f in (Get-ChildItem -Path $localeDir -Filter 'gui.*.json' | Where-Obje
     try { $doc = Get-Content $f.FullName -Raw | ConvertFrom-Json -AsHashtable } catch { }
     Add-R "$code catalog parses" ($null -ne $doc) $f.Name
     Add-R "$code declares _language $code" ($doc -and $doc._language.code -eq $code -and $doc._language.name) ''
+    if ($doc -and $doc._language.Contains('direction')) {
+        Add-R "$code direction is ltr or rtl" ($doc._language.direction -in @('ltr', 'rtl')) "got=$($doc._language.direction)"
+    }
     if ($doc) { $translations[$code] = $doc }
 }
 Add-R 'at least one translation shipped' ($translations.Count -ge 1) "got=$($translations.Count)"
@@ -140,6 +143,15 @@ $expectCodes = @('en') + @($translations.Keys)
 $missingLangs = @($expectCodes | Where-Object { $_ -notin @($loader.Langs.Code) })
 Add-R 'loader discovers every catalog' ($missingLangs.Count -eq 0) "got=$($loader.Langs.Code -join ',')"
 Add-R 'loader: English listed first' ($loader.Langs[0].Code -eq 'en') ''
+# The loader must surface each catalog's declared direction (the GUI mirrors
+# layout from this field); undeclared means ltr.
+$dirWrong = [System.Collections.Generic.List[string]]::new()
+foreach ($code in $translations.Keys) {
+    $declared = if ("$($translations[$code]._language.direction)" -eq 'rtl') { 'rtl' } else { 'ltr' }
+    $reported = ($loader.Langs | Where-Object Code -eq $code | Select-Object -First 1).Direction
+    if ($reported -ne $declared) { $dirWrong.Add("$code declared=$declared reported=$reported") }
+}
+Add-R 'loader: reports each catalog direction' ($dirWrong.Count -eq 0) (($dirWrong | Select-Object -First 3) -join '; ')
 Add-R 'loader: es table covers en keys (fallback merge)' ($loader.Es.Count -eq $loader.En.Count) "en=$($loader.En.Count) es=$($loader.Es.Count)"
 Add-R 'loader: unknown config falls back sanely' ($loader.Fall -in @($loader.Langs.Code)) "got=$($loader.Fall)"
 Add-R 'loader: configured language wins' ($loader.Cfg -eq 'es') "got=$($loader.Cfg)"

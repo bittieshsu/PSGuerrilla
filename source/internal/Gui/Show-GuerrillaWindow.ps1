@@ -1186,6 +1186,14 @@ function Show-GuerrillaWindow {
         $session.L = $table
         $session.Language = $Code
         $script:GuerrillaGuiLanguage = $Code
+        # Mirror the layout for right-to-left languages (the catalog declares
+        # its direction); raw command output and source text stay left-to-right
+        # because cmdlet output is English regardless of UI language.
+        $langMeta = Get-GuerrillaGuiLanguages | Where-Object Code -eq $Code | Select-Object -First 1
+        $flow = if ($langMeta -and $langMeta.Direction -eq 'rtl') { 'RightToLeft' } else { 'LeftToRight' }
+        $session.Window.FlowDirection = $flow
+        $session.Controls['ops_LogPane'].FlowDirection = 'LeftToRight'
+        $session.Controls['src_Code'].FlowDirection = 'LeftToRight'
         # DataGrid columns are not in the visual tree, so DynamicResource cannot
         # reach them; retitle the headers directly.
         $shCols = $session.Controls['sh_Grid'].Columns

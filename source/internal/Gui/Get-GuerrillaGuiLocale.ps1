@@ -25,10 +25,11 @@ function Get-GuerrillaGuiLanguages {
     .SYNOPSIS
         Discovers the available GUI languages from the catalog files.
     .DESCRIPTION
-        Returns one object per gui.<code>.json with Code and native Name (from
-        the file's _language block), English first, the rest alphabetical by
-        code. A catalog without a valid _language block is skipped rather than
-        crashing the GUI.
+        Returns one object per gui.<code>.json with Code, native Name, and text
+        Direction ('ltr' unless the catalog's _language block declares 'rtl';
+        the GUI mirrors its layout for rtl languages). English first, the rest
+        alphabetical by code. A catalog without a valid _language block is
+        skipped rather than crashing the GUI.
     #>
     [CmdletBinding()]
     param()
@@ -40,7 +41,8 @@ function Get-GuerrillaGuiLanguages {
             $doc = Get-Content $f.FullName -Raw | ConvertFrom-Json -AsHashtable
             $meta = $doc['_language']
             if ($meta -and $meta.code -and $meta.name) {
-                $langs.Add([PSCustomObject]@{ Code = [string]$meta.code; Name = [string]$meta.name })
+                $dir = if ("$($meta.direction)" -eq 'rtl') { 'rtl' } else { 'ltr' }
+                $langs.Add([PSCustomObject]@{ Code = [string]$meta.code; Name = [string]$meta.name; Direction = $dir })
             }
         } catch { }
     }
