@@ -51,30 +51,35 @@ function Test-AddCredentialFields {
     .SYNOPSIS
         Validates collected dialog values; returns an array of human-readable error
         strings (empty array = valid). Pure — unit-testable.
+    .PARAMETER Strings
+        Localized string table (dot-key -> text) from Get-GuerrillaGuiStringTable.
+        Defaults to English so callers without a GUI session still get messages.
     #>
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)][string]$Environment,
-        [Parameter(Mandatory)][hashtable]$Fields
+        [Parameter(Mandatory)][hashtable]$Fields,
+        [hashtable]$Strings
     )
 
     $errs = [System.Collections.Generic.List[string]]::new()
     $guid = '^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$'
+    $L = if ($Strings) { $Strings } else { Get-GuerrillaGuiStringTable }
     switch ($Environment) {
         'microsoftGraph' {
-            if ("$($Fields.TenantId)" -notmatch $guid) { $errs.Add('Tenant ID must be a GUID.') }
-            if ("$($Fields.ClientId)" -notmatch $guid) { $errs.Add('Client ID must be a GUID.') }
-            if (-not "$($Fields.ClientSecret)") { $errs.Add('Client Secret is required.') }
+            if ("$($Fields.TenantId)" -notmatch $guid) { $errs.Add($L['credential.errTenantGuid']) }
+            if ("$($Fields.ClientId)" -notmatch $guid) { $errs.Add($L['credential.errClientGuid']) }
+            if (-not "$($Fields.ClientSecret)") { $errs.Add($L['credential.errSecretRequired']) }
             if ($Fields.Expiration -and "$($Fields.Expiration)" -notmatch '^\d{4}-\d{2}-\d{2}$') {
-                $errs.Add('Secret expiry must be YYYY-MM-DD (or left blank).')
+                $errs.Add($L['credential.errExpiryFormat'])
             }
         }
         'googleWorkspace' {
-            if (-not "$($Fields.ServiceAccountJson)") { $errs.Add('Service account JSON is required.') }
-            elseif (-not $Fields.SaClientEmail)       { $errs.Add('Service account JSON is not valid (no client_email).') }
-            if ("$($Fields.AdminEmail)" -notmatch '^[^@\s]+@[^@\s]+\.[^@\s]+$') { $errs.Add('A valid admin email is required.') }
+            if (-not "$($Fields.ServiceAccountJson)") { $errs.Add($L['credential.errSaJsonRequired']) }
+            elseif (-not $Fields.SaClientEmail)       { $errs.Add($L['credential.errSaJsonInvalid']) }
+            if ("$($Fields.AdminEmail)" -notmatch '^[^@\s]+@[^@\s]+\.[^@\s]+$') { $errs.Add($L['credential.errAdminEmail']) }
         }
-        default { $errs.Add("Unknown environment '$Environment'.") }
+        default { $errs.Add(($L['credential.errUnknownEnvironment'] -f $Environment)) }
     }
     return @($errs)
 }
@@ -90,18 +95,22 @@ function Show-AddCredentialDialog {
     .PARAMETER Theme
         'Light' or 'Dark'. Applies the matching Get-GuerrillaGuiTheme palette so the
         modal matches whatever theme the main window is currently showing.
+    .PARAMETER Language
+        Catalog code (e.g. 'en', 'es'). Defaults to the language the main window
+        last applied, else the resolved startup language.
     #>
     [CmdletBinding()]
     param(
         $Owner,
         [ValidateSet('Light', 'Dark')]
-        [string]$Theme = 'Light'
+        [string]$Theme = 'Light',
+        [string]$Language
     )
 
     $xaml = @'
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Add credential" Width="560" Height="560"
+        Title="{DynamicResource L_credential_windowTitle}" Width="560" Height="560"
         WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="False"
         WindowStartupLocation="CenterOwner"
         Background="{DynamicResource BgBrush}"
@@ -267,44 +276,44 @@ function Show-AddCredentialDialog {
       </Grid.RowDefinitions>
 
       <Grid Grid.Row="0">
-        <TextBlock Text="Add a credential to the Safehouse" FontSize="15" FontWeight="SemiBold"
+        <TextBlock Text="{DynamicResource L_credential_heading}" FontSize="15" FontWeight="SemiBold"
                    Foreground="{DynamicResource HeadingBrush}" VerticalAlignment="Center" Margin="0"/>
       </Grid>
 
       <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,8,0,4">
-        <RadioButton x:Name="rb_Entra" Content="Microsoft Entra / Graph" GroupName="Env" IsChecked="True"
+        <RadioButton x:Name="rb_Entra" Content="{DynamicResource L_credential_entra}" GroupName="Env" IsChecked="True"
                      Style="{StaticResource SegPill}"/>
-        <RadioButton x:Name="rb_Gws" Content="Google Workspace" GroupName="Env"
+        <RadioButton x:Name="rb_Gws" Content="{DynamicResource L_platform_gws}" GroupName="Env"
                      Style="{StaticResource SegPill}"/>
       </StackPanel>
 
       <Grid Grid.Row="3" VerticalAlignment="Top">
         <!-- Entra panel -->
         <StackPanel x:Name="panel_Entra" Visibility="Visible">
-          <TextBlock Text="Tenant ID (GUID)"/>
+          <TextBlock Text="{DynamicResource L_credential_tenantId}"/>
           <TextBox x:Name="tb_Tenant"/>
-          <TextBlock Text="Application (Client) ID (GUID)"/>
+          <TextBlock Text="{DynamicResource L_credential_clientId}"/>
           <TextBox x:Name="tb_ClientId"/>
-          <TextBlock Text="Client Secret"/>
+          <TextBlock Text="{DynamicResource L_credential_clientSecret}"/>
           <PasswordBox x:Name="pb_Secret"/>
-          <TextBlock Text="Secret expiry (YYYY-MM-DD, optional)"/>
+          <TextBlock Text="{DynamicResource L_credential_secretExpiry}"/>
           <TextBox x:Name="tb_Expiry"/>
         </StackPanel>
         <!-- Google Workspace panel -->
         <StackPanel x:Name="panel_Gws" Visibility="Collapsed">
-          <TextBlock Text="Service account JSON key file"/>
+          <TextBlock Text="{DynamicResource L_credential_saKeyFile}"/>
           <Grid>
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="*"/>
               <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="tb_SaPath" Grid.Column="0"/>
-            <Button x:Name="btn_Browse" Grid.Column="1" Content="Browse" Style="{StaticResource PillGhost}"
+            <Button x:Name="btn_Browse" Grid.Column="1" Content="{DynamicResource L_common_browse}" Style="{StaticResource PillGhost}"
                     Margin="8,0,0,0"/>
           </Grid>
-          <TextBlock Text="Delegated-admin email (a Super Admin)"/>
+          <TextBlock Text="{DynamicResource L_credential_adminEmail}"/>
           <TextBox x:Name="tb_AdminEmail"/>
-          <TextBlock Text="The service account needs domain-wide delegation configured in the Google Admin Console."
+          <TextBlock Text="{DynamicResource L_credential_delegationNote}"
                      TextWrapping="Wrap" Margin="0,12,0,0"/>
         </StackPanel>
       </Grid>
@@ -313,8 +322,8 @@ function Show-AddCredentialDialog {
                  Margin="0,10,0,0" FontSize="12"/>
 
       <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,14,0,0">
-        <Button x:Name="btn_Cancel" Content="Cancel" Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
-        <Button x:Name="btn_Save" Content="Save credential" Style="{StaticResource Pill}"/>
+        <Button x:Name="btn_Cancel" Content="{DynamicResource L_common_cancel}" Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
+        <Button x:Name="btn_Save" Content="{DynamicResource L_credential_saveCredential}" Style="{StaticResource Pill}"/>
       </StackPanel>
     </Grid>
   </Border>
@@ -324,6 +333,17 @@ function Show-AddCredentialDialog {
     $reader = New-Object System.Xml.XmlNodeReader ([xml]$xaml)
     $win = [System.Windows.Markup.XamlReader]::Load($reader)
     if ($Owner) { $win.Owner = $Owner }
+
+    # Fill this window's L_* string resources so every {DynamicResource L_*}
+    # resolves in the language the main window is showing.
+    if (-not $Language) {
+        $Language = if ($script:GuerrillaGuiLanguage) { [string]$script:GuerrillaGuiLanguage }
+                    else { Resolve-GuerrillaGuiLanguage }
+    }
+    $L = Get-GuerrillaGuiStringTable -Language $Language
+    foreach ($k in $L.Keys) {
+        $win.Resources[('L_' + ($k -replace '\.', '_'))] = [string]$L[$k]
+    }
 
     # Match the main window's current theme by overwriting the brush resources.
     try {
@@ -350,7 +370,7 @@ function Show-AddCredentialDialog {
 
     $ctl.btn_Browse.Add_Click({
         $dlg = New-Object Microsoft.Win32.OpenFileDialog
-        $dlg.Filter = 'Service account JSON (*.json)|*.json|All files (*.*)|*.*'
+        $dlg.Filter = $L['credential.filterSaJson']
         if ($dlg.ShowDialog()) { $ctl.tb_SaPath.Text = $dlg.FileName }
     }.GetNewClosure())
 
@@ -384,7 +404,7 @@ function Show-AddCredentialDialog {
             $fields.AdminEmail = $ctl.tb_AdminEmail.Text.Trim()
         }
 
-        $errs = Test-AddCredentialFields -Environment $env -Fields $fields
+        $errs = Test-AddCredentialFields -Environment $env -Fields $fields -Strings $L
         if ($errs.Count -gt 0) {
             $ctl.tb_Error.Text = ($errs -join '  ')
             return

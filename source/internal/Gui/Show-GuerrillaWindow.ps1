@@ -42,7 +42,7 @@ function Show-GuerrillaWindow {
     $xaml = @'
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Guerrilla"
+        Title="{DynamicResource L_app_windowTitle}"
         Height="760" Width="1180"
         MinHeight="600" MinWidth="940"
         WindowStyle="None" ResizeMode="CanResize" AllowsTransparency="False"
@@ -601,15 +601,20 @@ function Show-GuerrillaWindow {
           <TextBlock Grid.Column="0" Text="Guerrilla" FontSize="17" FontWeight="SemiBold"
                      Foreground="{DynamicResource HeadingBrush}" VerticalAlignment="Center" Margin="22,0,0,0"/>
           <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="26,0,0,0">
-            <Button x:Name="nav_Operations" Content="Run"       Style="{StaticResource NavLink}"/>
-            <Button x:Name="nav_Reports"    Content="Reports"   Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
-            <Button x:Name="nav_Safehouse"  Content="Safehouse" Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
-            <Button x:Name="nav_Settings"   Content="Settings"  Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
-            <Button x:Name="nav_Source"     Content="Inspector" Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
-            <Button x:Name="nav_Branding"   Content="Branding"  Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
+            <Button x:Name="nav_Operations" Content="{DynamicResource L_nav_run}"       Style="{StaticResource NavLink}"/>
+            <Button x:Name="nav_Reports"    Content="{DynamicResource L_nav_reports}"   Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
+            <Button x:Name="nav_Safehouse"  Content="{DynamicResource L_nav_safehouse}" Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
+            <Button x:Name="nav_Settings"   Content="{DynamicResource L_nav_settings}"  Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
+            <Button x:Name="nav_Source"     Content="{DynamicResource L_nav_inspector}" Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
+            <Button x:Name="nav_Branding"   Content="{DynamicResource L_nav_branding}"  Style="{StaticResource NavLink}" Margin="2,0,0,0"/>
           </StackPanel>
-          <Button Grid.Column="3" x:Name="hdr_ThemeToggle" Style="{StaticResource WinBtn}"
-                  FontFamily="Segoe UI Symbol" FontSize="14" Margin="0,0,6,0"/>
+          <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,6,0">
+            <ComboBox x:Name="hdr_Lang" Width="110" Height="28" FontSize="12" Margin="0,0,8,0"
+                      AutomationProperties.Name="{DynamicResource L_header_language}"
+                      WindowChrome.IsHitTestVisibleInChrome="True"/>
+            <Button x:Name="hdr_ThemeToggle" Style="{StaticResource WinBtn}"
+                    FontFamily="Segoe UI Symbol" FontSize="14"/>
+          </StackPanel>
           <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
             <Button x:Name="hdr_Min"   Style="{StaticResource WinBtn}"/>
             <Button x:Name="hdr_Max"   Style="{StaticResource WinBtn}"/>
@@ -629,7 +634,7 @@ function Show-GuerrillaWindow {
           </Grid.ColumnDefinitions>
           <TextBlock Grid.Column="0" x:Name="foot_Info" Foreground="{DynamicResource MutedBrush}" FontSize="11"/>
           <StackPanel Grid.Column="2" Orientation="Horizontal">
-            <TextBlock Text="Free and open source" Foreground="{DynamicResource MutedBrush}" FontSize="11" Margin="0,0,12,0"/>
+            <TextBlock Text="{DynamicResource L_footer_freeOpenSource}" Foreground="{DynamicResource MutedBrush}" FontSize="11" Margin="0,0,12,0"/>
             <TextBlock x:Name="foot_Site" Text="guerrilla.army" Foreground="{DynamicResource LinkBrush}"
                        FontSize="11" Cursor="Hand"/>
           </StackPanel>
@@ -645,11 +650,11 @@ function Show-GuerrillaWindow {
           <!-- Home: hero + one card per platform -->
           <ScrollViewer x:Name="ops_Home" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <StackPanel MaxWidth="1000" Margin="0,14,0,28">
-              <TextBlock Text="Audit your environment." FontSize="30" FontWeight="Bold"
+              <TextBlock Text="{DynamicResource L_run_heroTitle}" FontSize="30" FontWeight="Bold"
                          Foreground="{DynamicResource HeadingBrush}"/>
               <TextBlock Margin="0,10,0,0" FontSize="14" TextWrapping="Wrap"
                          Foreground="{DynamicResource MutedBrush}"
-                         Text="One click per platform. Every check is read-only, every verdict carries evidence, and the HTML report opens when the run completes."/>
+                         Text="{DynamicResource L_run_heroSubtitle}"/>
 
               <Grid Margin="0,28,0,0">
                 <Grid.ColumnDefinitions>
@@ -665,12 +670,12 @@ function Show-GuerrillaWindow {
                       <RowDefinition Height="*"/>
                       <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Active Directory" FontSize="15" FontWeight="SemiBold"
+                    <TextBlock Grid.Row="0" Text="{DynamicResource L_platform_ad}" FontSize="15" FontWeight="SemiBold"
                                Foreground="{DynamicResource HeadingBrush}"/>
                     <TextBlock Grid.Row="1" Margin="0,6,0,16" FontSize="12" TextWrapping="Wrap"
                                Foreground="{DynamicResource MutedBrush}"
-                               Text="Domain and forest posture, Kerberos, delegation, Tier Zero, GPOs and more. Runs as your current domain user; no stored credential needed."/>
-                    <Button Grid.Row="2" x:Name="run_AD" Content="Run audit" Style="{StaticResource Pill}"
+                               Text="{DynamicResource L_run_adDescription}"/>
+                    <Button Grid.Row="2" x:Name="run_AD" Content="{DynamicResource L_run_runAudit}" Style="{StaticResource Pill}"
                             HorizontalAlignment="Left"/>
                   </Grid>
                 </Border>
@@ -682,12 +687,12 @@ function Show-GuerrillaWindow {
                       <RowDefinition Height="*"/>
                       <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Entra / Azure / M365" FontSize="15" FontWeight="SemiBold"
+                    <TextBlock Grid.Row="0" Text="{DynamicResource L_platform_cloud}" FontSize="15" FontWeight="SemiBold"
                                Foreground="{DynamicResource HeadingBrush}"/>
                     <TextBlock Grid.Row="1" Margin="0,6,0,16" FontSize="12" TextWrapping="Wrap"
                                Foreground="{DynamicResource MutedBrush}"
-                               Text="Conditional Access, authentication methods, PIM, applications, Exchange and tenant posture. Uses the app credential stored in your Safehouse."/>
-                    <Button Grid.Row="2" x:Name="run_Cloud" Content="Run audit" Style="{StaticResource Pill}"
+                               Text="{DynamicResource L_run_cloudDescription}"/>
+                    <Button Grid.Row="2" x:Name="run_Cloud" Content="{DynamicResource L_run_runAudit}" Style="{StaticResource Pill}"
                             HorizontalAlignment="Left"/>
                   </Grid>
                 </Border>
@@ -699,12 +704,12 @@ function Show-GuerrillaWindow {
                       <RowDefinition Height="*"/>
                       <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Google Workspace" FontSize="15" FontWeight="SemiBold"
+                    <TextBlock Grid.Row="0" Text="{DynamicResource L_platform_gws}" FontSize="15" FontWeight="SemiBold"
                                Foreground="{DynamicResource HeadingBrush}"/>
                     <TextBlock Grid.Row="1" Margin="0,6,0,16" FontSize="12" TextWrapping="Wrap"
                                Foreground="{DynamicResource MutedBrush}"
-                               Text="Authentication, Drive, OAuth, admin management and K12 student posture. Uses the service account stored in your Safehouse."/>
-                    <Button Grid.Row="2" x:Name="run_GWS" Content="Run audit" Style="{StaticResource Pill}"
+                               Text="{DynamicResource L_run_gwsDescription}"/>
+                    <Button Grid.Row="2" x:Name="run_GWS" Content="{DynamicResource L_run_runAudit}" Style="{StaticResource Pill}"
                             HorizontalAlignment="Left"/>
                   </Grid>
                 </Border>
@@ -717,19 +722,19 @@ function Show-GuerrillaWindow {
                     <ColumnDefinition Width="Auto"/>
                   </Grid.ColumnDefinitions>
                   <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                    <TextBlock Text="Campaign" FontSize="15" FontWeight="SemiBold"
+                    <TextBlock Text="{DynamicResource L_run_campaignTitle}" FontSize="15" FontWeight="SemiBold"
                                Foreground="{DynamicResource HeadingBrush}"/>
                     <TextBlock Margin="0,6,0,0" FontSize="12" TextWrapping="Wrap"
                                Foreground="{DynamicResource MutedBrush}"
-                               Text="Every platform in sequence, one combined report, and a delta against your previous run."/>
+                               Text="{DynamicResource L_run_campaignDescription}"/>
                   </StackPanel>
-                  <Button Grid.Column="1" x:Name="run_Campaign" Content="Run everything"
+                  <Button Grid.Column="1" x:Name="run_Campaign" Content="{DynamicResource L_run_runEverything}"
                           Style="{StaticResource Pill}" VerticalAlignment="Center" Margin="20,0,0,0"/>
                 </Grid>
               </Border>
 
               <!-- Options drawer -->
-              <ToggleButton x:Name="opt_Toggle" Content="Options" Style="{StaticResource DrawerToggle}"
+              <ToggleButton x:Name="opt_Toggle" Content="{DynamicResource L_options_title}" Style="{StaticResource DrawerToggle}"
                             Margin="4,22,0,0" HorizontalAlignment="Left"/>
               <Border x:Name="opt_Panel" Style="{StaticResource Card}" Margin="0,12,0,0" Padding="24"
                       Visibility="Collapsed">
@@ -742,41 +747,41 @@ function Show-GuerrillaWindow {
                       <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                      <TextBlock Text="Scan depth" Foreground="{DynamicResource MutedBrush}" FontSize="12"
+                      <TextBlock Text="{DynamicResource L_options_scanDepth}" Foreground="{DynamicResource MutedBrush}" FontSize="12"
                                  VerticalAlignment="Center" Margin="0,0,12,0"/>
-                      <RadioButton x:Name="ops_ModeFast" Content="Fast" GroupName="Mode" IsChecked="True"
+                      <RadioButton x:Name="ops_ModeFast" Content="{DynamicResource L_options_fast}" GroupName="Mode" IsChecked="True"
                                    Style="{StaticResource SegPill}"/>
-                      <RadioButton x:Name="ops_ModeFull" Content="Full" GroupName="Mode"
+                      <RadioButton x:Name="ops_ModeFull" Content="{DynamicResource L_options_full}" GroupName="Mode"
                                    Style="{StaticResource SegPill}"/>
                     </StackPanel>
-                    <TextBlock Grid.Column="2" Text="Report style" Foreground="{DynamicResource MutedBrush}"
+                    <TextBlock Grid.Column="2" Text="{DynamicResource L_options_reportStyle}" Foreground="{DynamicResource MutedBrush}"
                                FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0"/>
                     <ComboBox Grid.Column="3" x:Name="ops_ReportStyle" Width="150">
-                      <ComboBoxItem Content="Auto" IsSelected="True"/>
-                      <ComboBoxItem Content="Light"/>
-                      <ComboBoxItem Content="Dark"/>
+                      <ComboBoxItem Tag="Auto" Content="{DynamicResource L_options_styleAuto}" IsSelected="True"/>
+                      <ComboBoxItem Tag="Light" Content="{DynamicResource L_options_styleLight}"/>
+                      <ComboBoxItem Tag="Dark" Content="{DynamicResource L_options_styleDark}"/>
                     </ComboBox>
                   </Grid>
 
                   <WrapPanel Margin="0,16,0,0">
-                    <CheckBox x:Name="ops_NoReports" Content="No reports"/>
-                    <CheckBox x:Name="ops_NoDelta"   Content="No delta"/>
-                    <CheckBox x:Name="ops_TestMode"  Content="Test mode"
-                              ToolTip="Simulate a scan with no live connection. Produces an all-fail report so you can preview themes and branding."/>
+                    <CheckBox x:Name="ops_NoReports" Content="{DynamicResource L_options_noReports}"/>
+                    <CheckBox x:Name="ops_NoDelta"   Content="{DynamicResource L_options_noDelta}"/>
+                    <CheckBox x:Name="ops_TestMode"  Content="{DynamicResource L_options_testMode}"
+                              ToolTip="{DynamicResource L_options_testModeTip}"/>
                   </WrapPanel>
 
                   <Border Height="1" Background="{DynamicResource LineBrush}" Margin="0,18,0,18"/>
 
-                  <TextBlock Text="Categories" FontWeight="SemiBold" Foreground="{DynamicResource HeadingBrush}"/>
-                  <TextBlock Text="Applied to whichever platform you run. Campaign always runs each platform's default set."
+                  <TextBlock Text="{DynamicResource L_options_categories}" FontWeight="SemiBold" Foreground="{DynamicResource HeadingBrush}"/>
+                  <TextBlock Text="{DynamicResource L_options_categoriesHint}"
                              Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="0,4,0,10"/>
-                  <TextBlock Text="Active Directory" Foreground="{DynamicResource MutedBrush}" FontSize="12"
+                  <TextBlock Text="{DynamicResource L_platform_ad}" Foreground="{DynamicResource MutedBrush}" FontSize="12"
                              FontWeight="SemiBold" Margin="0,4,0,2"/>
                   <WrapPanel x:Name="opt_CatsAD"/>
-                  <TextBlock Text="Entra / Azure / M365" Foreground="{DynamicResource MutedBrush}" FontSize="12"
+                  <TextBlock Text="{DynamicResource L_platform_cloud}" Foreground="{DynamicResource MutedBrush}" FontSize="12"
                              FontWeight="SemiBold" Margin="0,12,0,2"/>
                   <WrapPanel x:Name="opt_CatsCloud"/>
-                  <TextBlock Text="Google Workspace" Foreground="{DynamicResource MutedBrush}" FontSize="12"
+                  <TextBlock Text="{DynamicResource L_platform_gws}" Foreground="{DynamicResource MutedBrush}" FontSize="12"
                              FontWeight="SemiBold" Margin="0,12,0,2"/>
                   <WrapPanel x:Name="opt_CatsGWS"/>
 
@@ -792,16 +797,16 @@ function Show-GuerrillaWindow {
                       <RowDefinition Height="Auto"/>
                       <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Student OUs" Foreground="{DynamicResource MutedBrush}"
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource L_options_studentOus}" Foreground="{DynamicResource MutedBrush}"
                                FontSize="12" VerticalAlignment="Center"/>
                     <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" x:Name="ops_StudentOU"
-                             AutomationProperties.Name="Student organizational units"
-                             AutomationProperties.HelpText="Comma-separated OU paths that contain student accounts, e.g. /Students. K12 checks that assess student posture require this; without it they report Not Assessed."
-                             ToolTip="Comma-separated OU path(s) containing student accounts, e.g. /Students or OU=Students,DC=district,DC=org. Required by the OU-scoped K12 checks; leave empty to skip them (they report Not Assessed)."/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Output" Foreground="{DynamicResource MutedBrush}"
+                             AutomationProperties.Name="{DynamicResource L_options_studentOusName}"
+                             AutomationProperties.HelpText="{DynamicResource L_options_studentOusHelp}"
+                             ToolTip="{DynamicResource L_options_studentOusTip}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource L_options_output}" Foreground="{DynamicResource MutedBrush}"
                                FontSize="12" VerticalAlignment="Center" Margin="0,10,0,0"/>
                     <TextBox Grid.Row="1" Grid.Column="1" x:Name="ops_OutputDir" Margin="0,10,0,0"/>
-                    <Button Grid.Row="1" Grid.Column="2" x:Name="ops_BrowseOutput" Content="Browse"
+                    <Button Grid.Row="1" Grid.Column="2" x:Name="ops_BrowseOutput" Content="{DynamicResource L_common_browse}"
                             Style="{StaticResource PillGhost}" Margin="8,10,0,0"/>
                   </Grid>
                 </StackPanel>
@@ -827,7 +832,7 @@ function Show-GuerrillaWindow {
                            Foreground="{DynamicResource HeadingBrush}"/>
                 <TextBlock x:Name="run_Status" Foreground="{DynamicResource MutedBrush}" Margin="0,6,0,0"/>
               </StackPanel>
-              <Button Grid.Column="1" x:Name="ops_CancelButton" Content="Cancel"
+              <Button Grid.Column="1" x:Name="ops_CancelButton" Content="{DynamicResource L_common_cancel}"
                       Style="{StaticResource PillGhost}" VerticalAlignment="Top"/>
             </Grid>
             <Border Grid.Row="1" x:Name="ops_Progress" Height="4" CornerRadius="2"
@@ -855,9 +860,9 @@ function Show-GuerrillaWindow {
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" x:Name="ops_ResultText" VerticalAlignment="Center" TextWrapping="Wrap"
                            Foreground="{DynamicResource TextBrush}"/>
-                <Button Grid.Column="1" x:Name="ops_OpenReport" Content="Open report"
+                <Button Grid.Column="1" x:Name="ops_OpenReport" Content="{DynamicResource L_run_openReport}"
                         Style="{StaticResource Pill}" Margin="16,0,0,0" VerticalAlignment="Center"/>
-                <Button Grid.Column="2" x:Name="ops_RunAgain" Content="New audit"
+                <Button Grid.Column="2" x:Name="ops_RunAgain" Content="{DynamicResource L_run_newAudit}"
                         Style="{StaticResource PillGhost}" Margin="8,0,0,0" VerticalAlignment="Center"/>
               </Grid>
             </Border>
@@ -872,9 +877,9 @@ function Show-GuerrillaWindow {
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Text="Safehouse" FontSize="24" FontWeight="Bold"
+          <TextBlock Grid.Row="0" Text="{DynamicResource L_safehouse_title}" FontSize="24" FontWeight="Bold"
                      Foreground="{DynamicResource HeadingBrush}" Margin="0,10,0,0"/>
-          <TextBlock Grid.Row="1" Text="Stored credentials, expiration status, and rotation history."
+          <TextBlock Grid.Row="1" Text="{DynamicResource L_safehouse_subtitle}"
                      Foreground="{DynamicResource MutedBrush}" Margin="0,6,0,16"/>
           <Border Grid.Row="2" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" CornerRadius="12"
                   Padding="6" ClipToBounds="True">
@@ -890,12 +895,12 @@ function Show-GuerrillaWindow {
             </DataGrid>
           </Border>
           <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,14,0,0">
-            <Button x:Name="sh_Add"     Content="Add credential"  Style="{StaticResource Pill}"      Margin="0,0,8,0"/>
-            <Button x:Name="sh_Rotate"  Content="Rotate selected" Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
-            <Button x:Name="sh_Remove"  Content="Remove selected" Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
-            <Button x:Name="sh_Test"    Content="Test all"        Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
-            <Button x:Name="sh_Export"  Content="Export metadata" Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
-            <Button x:Name="sh_Refresh" Content="Refresh"         Style="{StaticResource PillGhost}"/>
+            <Button x:Name="sh_Add"     Content="{DynamicResource L_safehouse_addCredential}"  Style="{StaticResource Pill}"      Margin="0,0,8,0"/>
+            <Button x:Name="sh_Rotate"  Content="{DynamicResource L_safehouse_rotateSelected}" Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
+            <Button x:Name="sh_Remove"  Content="{DynamicResource L_safehouse_removeSelected}" Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
+            <Button x:Name="sh_Test"    Content="{DynamicResource L_safehouse_testAll}"        Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
+            <Button x:Name="sh_Export"  Content="{DynamicResource L_safehouse_exportMetadata}" Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
+            <Button x:Name="sh_Refresh" Content="{DynamicResource L_common_refresh}"           Style="{StaticResource PillGhost}"/>
           </StackPanel>
         </Grid>
 
@@ -907,7 +912,7 @@ function Show-GuerrillaWindow {
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Text="Reports" FontSize="24" FontWeight="Bold"
+          <TextBlock Grid.Row="0" Text="{DynamicResource L_reports_title}" FontSize="24" FontWeight="Bold"
                      Foreground="{DynamicResource HeadingBrush}" Margin="0,10,0,0"/>
           <TextBlock Grid.Row="1" x:Name="rp_DirHint" Foreground="{DynamicResource MutedBrush}" Margin="0,6,0,16"/>
           <Border Grid.Row="2" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" CornerRadius="12"
@@ -922,10 +927,10 @@ function Show-GuerrillaWindow {
             </DataGrid>
           </Border>
           <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,14,0,0">
-            <Button x:Name="rp_Open"    Content="Open in browser" Style="{StaticResource Pill}"      Margin="0,0,8,0"/>
-            <Button x:Name="rp_Pdf"     Content="Convert to PDF"  Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
-            <Button x:Name="rp_Delete"  Content="Delete"          Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
-            <Button x:Name="rp_Refresh" Content="Refresh"         Style="{StaticResource PillGhost}"/>
+            <Button x:Name="rp_Open"    Content="{DynamicResource L_reports_openInBrowser}" Style="{StaticResource Pill}"      Margin="0,0,8,0"/>
+            <Button x:Name="rp_Pdf"     Content="{DynamicResource L_reports_convertToPdf}"  Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
+            <Button x:Name="rp_Delete"  Content="{DynamicResource L_common_delete}"         Style="{StaticResource PillGhost}" Margin="0,0,8,0"/>
+            <Button x:Name="rp_Refresh" Content="{DynamicResource L_common_refresh}"        Style="{StaticResource PillGhost}"/>
           </StackPanel>
         </Grid>
 
@@ -937,9 +942,9 @@ function Show-GuerrillaWindow {
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Text="Settings" FontSize="24" FontWeight="Bold"
+          <TextBlock Grid.Row="0" Text="{DynamicResource L_settings_title}" FontSize="24" FontWeight="Bold"
                      Foreground="{DynamicResource HeadingBrush}" Margin="0,10,0,0"/>
-          <TextBlock Grid.Row="1" Text="Runtime configuration applied to all subsequent scans."
+          <TextBlock Grid.Row="1" Text="{DynamicResource L_settings_subtitle}"
                      Foreground="{DynamicResource MutedBrush}" Margin="0,6,0,16"/>
           <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <Border Style="{StaticResource Card}" Padding="24" VerticalAlignment="Top">
@@ -954,13 +959,13 @@ function Show-GuerrillaWindow {
                   <RowDefinition Height="Auto"/>
                   <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Profile" Foreground="{DynamicResource MutedBrush}"
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource L_settings_profile}" Foreground="{DynamicResource MutedBrush}"
                            VerticalAlignment="Center" Margin="0,8"/>
                 <ComboBox Grid.Row="0" Grid.Column="1" x:Name="st_Profile" Margin="0,8" HorizontalAlignment="Left" Width="220">
-                  <ComboBoxItem Content="Default" IsSelected="True"/>
-                  <ComboBoxItem Content="K12"/>
+                  <ComboBoxItem Tag="Default" Content="{DynamicResource L_settings_profileDefault}" IsSelected="True"/>
+                  <ComboBoxItem Tag="K12" Content="{DynamicResource L_settings_profileK12}"/>
                 </ComboBox>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Output directory" Foreground="{DynamicResource MutedBrush}"
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource L_settings_outputDirectory}" Foreground="{DynamicResource MutedBrush}"
                            VerticalAlignment="Center" Margin="0,8"/>
                 <Grid Grid.Row="1" Grid.Column="1" Margin="0,8">
                   <Grid.ColumnDefinitions>
@@ -968,10 +973,10 @@ function Show-GuerrillaWindow {
                     <ColumnDefinition Width="Auto"/>
                   </Grid.ColumnDefinitions>
                   <TextBox Grid.Column="0" x:Name="st_OutputDir"/>
-                  <Button Grid.Column="1" x:Name="st_BrowseOutput" Content="Browse"
+                  <Button Grid.Column="1" x:Name="st_BrowseOutput" Content="{DynamicResource L_common_browse}"
                           Style="{StaticResource PillGhost}" Margin="8,0,0,0"/>
                 </Grid>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Config file path" Foreground="{DynamicResource MutedBrush}"
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource L_settings_configFilePath}" Foreground="{DynamicResource MutedBrush}"
                            VerticalAlignment="Center" Margin="0,8"/>
                 <TextBox Grid.Row="2" Grid.Column="1" x:Name="st_ConfigPath" Margin="0,8" IsReadOnly="True"
                          Foreground="{DynamicResource MutedBrush}"/>
@@ -981,8 +986,8 @@ function Show-GuerrillaWindow {
             </Border>
           </ScrollViewer>
           <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,14,0,0">
-            <Button x:Name="st_Apply"  Content="Apply"  Style="{StaticResource Pill}"      Margin="0,0,8,0"/>
-            <Button x:Name="st_Revert" Content="Revert" Style="{StaticResource PillGhost}"/>
+            <Button x:Name="st_Apply"  Content="{DynamicResource L_common_apply}"  Style="{StaticResource Pill}"      Margin="0,0,8,0"/>
+            <Button x:Name="st_Revert" Content="{DynamicResource L_common_revert}" Style="{StaticResource PillGhost}"/>
           </StackPanel>
         </Grid>
 
@@ -994,10 +999,10 @@ function Show-GuerrillaWindow {
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
           </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Text="Inspector" FontSize="24" FontWeight="Bold"
+          <TextBlock Grid.Row="0" Text="{DynamicResource L_inspector_title}" FontSize="24" FontWeight="Bold"
                      Foreground="{DynamicResource HeadingBrush}" Margin="0,10,0,0"/>
           <TextBlock Grid.Row="1" Foreground="{DynamicResource MutedBrush}" Margin="0,6,0,16" TextWrapping="Wrap"
-                     Text="Read the actual source of every scan, check, and helper in this module. Filter by area or search by name, then select a function to view its code."/>
+                     Text="{DynamicResource L_inspector_subtitle}"/>
           <Grid Grid.Row="2" Margin="0,0,0,12">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="240"/>
@@ -1029,8 +1034,8 @@ function Show-GuerrillaWindow {
                   <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" x:Name="src_Meta" Foreground="{DynamicResource MutedBrush}"
-                           VerticalAlignment="Center" TextWrapping="Wrap" Text="Select a function to view its source."/>
-                <Button Grid.Column="1" x:Name="src_Copy" Content="Copy" Style="{StaticResource PillGhost}"
+                           VerticalAlignment="Center" TextWrapping="Wrap" Text="{DynamicResource L_inspector_selectPrompt}"/>
+                <Button Grid.Column="1" x:Name="src_Copy" Content="{DynamicResource L_common_copy}" Style="{StaticResource PillGhost}"
                         Margin="8,0,0,0"/>
               </Grid>
               <Border Grid.Row="1" Background="{DynamicResource CodeBgBrush}" CornerRadius="8" Padding="6">
@@ -1052,10 +1057,10 @@ function Show-GuerrillaWindow {
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
-          <TextBlock Grid.Row="0" Text="Report branding" FontSize="24" FontWeight="Bold"
+          <TextBlock Grid.Row="0" Text="{DynamicResource L_branding_title}" FontSize="24" FontWeight="Bold"
                      Foreground="{DynamicResource HeadingBrush}" Margin="0,10,0,0"/>
           <TextBlock Grid.Row="1" Foreground="{DynamicResource MutedBrush}" Margin="0,6,0,16" TextWrapping="Wrap"
-                     Text="White-label the header of generated reports with your firm's details. The &quot;Generated with Guerrilla by Jim Tyler, Microsoft MVP&quot; attribution always remains in the footer. Saved to your config and applied on the next scan."/>
+                     Text="{DynamicResource L_branding_subtitle}"/>
           <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
             <Border Style="{StaticResource Card}" Padding="24" VerticalAlignment="Top">
               <Grid>
@@ -1072,10 +1077,10 @@ function Show-GuerrillaWindow {
                   <RowDefinition Height="Auto"/>
                   <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Firm / company name"
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource L_branding_firmName}"
                            Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center" Margin="0,8"/>
                 <TextBox Grid.Row="0" Grid.Column="1" x:Name="br_FirmName" Margin="0,8"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Logo (file path or URL)"
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource L_branding_logoPath}"
                            Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center" Margin="0,8"/>
                 <Grid Grid.Row="1" Grid.Column="1" Margin="0,8">
                   <Grid.ColumnDefinitions>
@@ -1083,19 +1088,19 @@ function Show-GuerrillaWindow {
                     <ColumnDefinition Width="Auto"/>
                   </Grid.ColumnDefinitions>
                   <TextBox Grid.Column="0" x:Name="br_LogoPath"/>
-                  <Button Grid.Column="1" x:Name="br_BrowseLogo" Content="Browse"
+                  <Button Grid.Column="1" x:Name="br_BrowseLogo" Content="{DynamicResource L_common_browse}"
                           Style="{StaticResource PillGhost}" Margin="8,0,0,0"/>
                 </Grid>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Consultant name"
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource L_branding_consultantName}"
                            Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center" Margin="0,8"/>
                 <TextBox Grid.Row="2" Grid.Column="1" x:Name="br_ConsultantName" Margin="0,8"/>
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="Consultant email"
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource L_branding_consultantEmail}"
                            Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center" Margin="0,8"/>
                 <TextBox Grid.Row="3" Grid.Column="1" x:Name="br_ConsultantEmail" Margin="0,8"/>
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="Client / org assessed"
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="{DynamicResource L_branding_clientName}"
                            Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center" Margin="0,8"/>
                 <TextBox Grid.Row="4" Grid.Column="1" x:Name="br_ClientName" Margin="0,8"/>
-                <TextBlock Grid.Row="5" Grid.Column="0" Text="Confidentiality banner"
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="{DynamicResource L_branding_confidentiality}"
                            Foreground="{DynamicResource MutedBrush}" VerticalAlignment="Center" Margin="0,8"/>
                 <TextBox Grid.Row="5" Grid.Column="1" x:Name="br_Confidentiality" Margin="0,8"/>
                 <TextBlock Grid.Row="6" Grid.Column="1" x:Name="br_StatusLine"
@@ -1104,8 +1109,8 @@ function Show-GuerrillaWindow {
             </Border>
           </ScrollViewer>
           <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,14,0,0">
-            <Button x:Name="br_Save"   Content="Save"   Style="{StaticResource Pill}"      Margin="0,0,8,0"/>
-            <Button x:Name="br_Revert" Content="Revert" Style="{StaticResource PillGhost}"/>
+            <Button x:Name="br_Save"   Content="{DynamicResource L_common_save}"   Style="{StaticResource Pill}"      Margin="0,0,8,0"/>
+            <Button x:Name="br_Revert" Content="{DynamicResource L_common_revert}" Style="{StaticResource PillGhost}"/>
           </StackPanel>
         </Grid>
 
@@ -1142,9 +1147,10 @@ function Show-GuerrillaWindow {
         LastReportPath  = $null
         FunctionIndex   = $null
         Theme           = 'Light'
+        Language        = 'en'
+        L               = @{}
+        VersionText     = $null
     }
-
-    $mdot = [string][char]0x00B7   # middle-dot separator used in status strings
 
     # ── Theme engine ──────────────────────────────────────────────────────
     # Swap every <Token>Brush resource; DynamicResource references restyle live.
@@ -1161,19 +1167,70 @@ function Show-GuerrillaWindow {
         $toggle = $session.Controls['hdr_ThemeToggle']
         if ($Mode -eq 'Dark') {
             $toggle.Content = [string][char]0x2600      # sun: switch back to light
-            $toggle.ToolTip = 'Switch to light theme'
+            $toggle.ToolTip = $session.L['header.switchToLight']
         } else {
             $toggle.Content = [string][char]0x263E      # moon: switch to dark
-            $toggle.ToolTip = 'Switch to dark theme'
+            $toggle.ToolTip = $session.L['header.switchToDark']
         }
     }
 
-    # Initial theme: explicit config choice wins; otherwise follow the OS app theme.
+    # ── Language engine ───────────────────────────────────────────────────
+    # Fill L_<key> string resources so every {DynamicResource L_*} retitles live,
+    # then re-apply the code-set strings that are already visible.
+    $applyLanguage = {
+        param([string]$Code, [bool]$Persist)
+        $table = Get-GuerrillaGuiStringTable -Language $Code
+        foreach ($k in $table.Keys) {
+            $session.Window.Resources[('L_' + ($k -replace '\.', '_'))] = [string]$table[$k]
+        }
+        $session.L = $table
+        $session.Language = $Code
+        $script:GuerrillaGuiLanguage = $Code
+        # DataGrid columns are not in the visual tree, so DynamicResource cannot
+        # reach them; retitle the headers directly.
+        $shCols = $session.Controls['sh_Grid'].Columns
+        $shCols[0].Header = $session.L['safehouse.colEnvironment']
+        $shCols[1].Header = $session.L['safehouse.colDescription']
+        $shCols[2].Header = $session.L['safehouse.colIdentity']
+        $shCols[3].Header = $session.L['safehouse.colStored']
+        $shCols[4].Header = $session.L['safehouse.colExpires']
+        $shCols[5].Header = $session.L['safehouse.colStatus']
+        $rpCols = $session.Controls['rp_Grid'].Columns
+        $rpCols[0].Header = $session.L['reports.colName']
+        $rpCols[1].Header = $session.L['reports.colPlatform']
+        $rpCols[2].Header = $session.L['reports.colSize']
+        $rpCols[3].Header = $session.L['reports.colModified']
+        # Re-apply the code-set strings currently on screen.
+        & $applyTheme $session.Theme
+        $session.Controls['rp_DirHint'].Text = $session.L['reports.dirHint'] -f $session.ReportsDir
+        if ($session.VersionText) {
+            $session.Controls['foot_Info'].Text = $table['footer.info'] -f $session.VersionText, $session.VaultName
+        }
+        if ($Persist) {
+            try {
+                $cfg = @{}
+                if ($session.ConfigPath -and (Test-Path $session.ConfigPath)) {
+                    $cfg = Get-Content $session.ConfigPath -Raw | ConvertFrom-Json -AsHashtable
+                    if (-not $cfg) { $cfg = @{} }
+                }
+                if (-not $cfg.gui) { $cfg.gui = @{} }
+                $cfg.gui.language = $Code
+                $dir = Split-Path $session.ConfigPath -Parent
+                if ($dir -and -not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
+                $cfg | ConvertTo-Json -Depth 8 | Set-Content -Path $session.ConfigPath -Encoding UTF8
+            } catch { }
+        }
+    }
+
+    # Initial theme + language: explicit config choice wins; theme otherwise
+    # follows the OS app theme, language the OS UI culture.
     $initialTheme = $null
+    $cfgLanguage  = $null
     try {
         if ($session.ConfigPath -and (Test-Path $session.ConfigPath)) {
             $cfg = Get-Content $session.ConfigPath -Raw | ConvertFrom-Json -AsHashtable
             if ($cfg.gui -and $cfg.gui.theme -in @('Light', 'Dark')) { $initialTheme = $cfg.gui.theme }
+            if ($cfg.gui -and $cfg.gui.language) { $cfgLanguage = [string]$cfg.gui.language }
         }
     } catch { }
     if (-not $initialTheme) {
@@ -1183,7 +1240,19 @@ function Show-GuerrillaWindow {
             $initialTheme = if ($appsLight -eq 0) { 'Dark' } else { 'Light' }
         } catch { $initialTheme = 'Light' }
     }
+    & $applyLanguage (Resolve-GuerrillaGuiLanguage -Configured $cfgLanguage) $false
     & $applyTheme $initialTheme
+
+    # Header language selector: discovered from the catalogs, never hardcoded.
+    $langCombo = $session.Controls['hdr_Lang']
+    $langCombo.DisplayMemberPath = 'Name'
+    $langCombo.SelectedValuePath = 'Code'
+    $langCombo.ItemsSource       = @(Get-GuerrillaGuiLanguages)
+    $langCombo.SelectedValue     = $session.Language
+    $langCombo.Add_SelectionChanged({
+        $code = [string]$session.Controls['hdr_Lang'].SelectedValue
+        if ($code -and $code -ne $session.Language) { & $applyLanguage $code $true }
+    })
 
     $session.Controls['hdr_ThemeToggle'].Add_Click({
         $next = if ($session.Theme -eq 'Dark') { 'Light' } else { 'Dark' }
@@ -1337,23 +1406,25 @@ function Show-GuerrillaWindow {
         $panel = $session.Controls[$PanelName]
         $panel.Children.Clear()
 
-        # "All" toggle first, styled as the group lead.
+        # "All" toggle first, styled as the group lead. Tag carries the canonical
+        # value so localized Content is display-only.
         $allCb = New-Object System.Windows.Controls.CheckBox
-        $allCb.Content    = 'All'
+        $allCb.Tag        = '*'
+        $allCb.SetResourceReference([System.Windows.Controls.ContentControl]::ContentProperty, 'L_options_all')
         $allCb.IsChecked  = ($DefaultUnchecked.Count -eq 0)
         $allCb.FontWeight = 'SemiBold'
         $allCb.SetResourceReference([System.Windows.Controls.Control]::ForegroundProperty, 'LinkBrush')
         [void]$panel.Children.Add($allCb)
         $allCb.Add_Checked({
             foreach ($child in $panel.Children) {
-                if ($child -is [System.Windows.Controls.CheckBox] -and $child.Content -ne 'All') {
+                if ($child -is [System.Windows.Controls.CheckBox] -and "$($child.Tag)" -ne '*') {
                     $child.IsChecked = $true
                 }
             }
         }.GetNewClosure())
         $allCb.Add_Unchecked({
             foreach ($child in $panel.Children) {
-                if ($child -is [System.Windows.Controls.CheckBox] -and $child.Content -ne 'All') {
+                if ($child -is [System.Windows.Controls.CheckBox] -and "$($child.Tag)" -ne '*') {
                     $child.IsChecked = $false
                 }
             }
@@ -1362,6 +1433,7 @@ function Show-GuerrillaWindow {
         foreach ($cat in $Categories) {
             $cb = New-Object System.Windows.Controls.CheckBox
             $cb.Content   = $cat
+            $cb.Tag       = $cat
             $cb.IsChecked = ($cat -notin $DefaultUnchecked)
             [void]$panel.Children.Add($cb)
         }
@@ -1379,8 +1451,8 @@ function Show-GuerrillaWindow {
         if (-not $panelName) { return @() }   # Campaign runs the default set
         foreach ($child in $session.Controls[$panelName].Children) {
             if ($child -is [System.Windows.Controls.CheckBox] -and
-                $child.Content -ne 'All' -and $child.IsChecked) {
-                $cats += [string]$child.Content
+                "$($child.Tag)" -ne '*' -and $child.IsChecked) {
+                $cats += [string]$child.Tag
             }
         }
         return @($cats)
@@ -1389,18 +1461,18 @@ function Show-GuerrillaWindow {
     $session.Controls['ops_BrowseOutput'].Add_Click({
         $dlg = New-Object System.Windows.Forms.FolderBrowserDialog
         $dlg.SelectedPath = $session.Controls['ops_OutputDir'].Text
-        $dlg.Description  = 'Select output directory for the scan report'
+        $dlg.Description  = $session.L['dialog.selectOutputDir']
         if ($dlg.ShowDialog() -eq 'OK') {
             $session.Controls['ops_OutputDir'].Text = $dlg.SelectedPath
         }
     })
 
     # ── The run itself: one button per platform ───────────────────────────
-    $platformTitles = @{
-        AD       = 'Active Directory'
-        Cloud    = 'Entra / Azure / M365'
-        GWS      = 'Google Workspace'
-        Campaign = 'Campaign: all platforms'
+    $platformTitleKeys = @{
+        AD       = 'platform.ad'
+        Cloud    = 'platform.cloud'
+        GWS      = 'platform.gws'
+        Campaign = 'platform.campaign'
     }
     $platformCmdlets = @{
         AD       = 'Invoke-ADAudit'
@@ -1417,7 +1489,7 @@ function Show-GuerrillaWindow {
         $mode         = if ($session.Controls['ops_ModeFull'].IsChecked) { 'Full' } else { 'Fast' }
         $noReports    = [bool]$session.Controls['ops_NoReports'].IsChecked
         $noDelta      = [bool]$session.Controls['ops_NoDelta'].IsChecked
-        $reportStyle  = "$($session.Controls['ops_ReportStyle'].SelectedItem.Content)"
+        $reportStyle  = "$($session.Controls['ops_ReportStyle'].SelectedItem.Tag)"
         $testMode     = [bool]$session.Controls['ops_TestMode'].IsChecked
         $selectedCats = & $getSelectedCategories $Platform
         $studentOus   = @("$($session.Controls['ops_StudentOU'].Text)" -split '[,;]' |
@@ -1427,14 +1499,14 @@ function Show-GuerrillaWindow {
         $session.Controls['ops_Home'].Visibility = 'Collapsed'
         $session.Controls['ops_Run'].Visibility  = 'Visible'
         & $fadeIn $session.Controls['ops_Run']
-        $session.Controls['run_Title'].Text  = $platformTitles[$Platform]
-        $session.Controls['run_Status'].Text = "Running $cmdletName (mode: $mode) $mdot the report opens when the run completes"
+        $session.Controls['run_Title'].Text  = $session.L[$platformTitleKeys[$Platform]]
+        $session.Controls['run_Status'].Text = $session.L['status.running'] -f $cmdletName, $mode
         $session.Controls['ops_ResultBanner'].Visibility = 'Collapsed'
         $session.Controls['ops_CancelButton'].Visibility = 'Visible'
         $session.Controls['ops_LogPane'].Clear()
         & $startShimmer
 
-        & $appendLog "Starting $cmdletName ($($selectedCats.Count) categories, mode=$mode)..."
+        & $appendLog ($session.L['status.starting'] -f $cmdletName, $selectedCats.Count, $mode)
 
         # Pass params explicitly into the scriptblock rather than relying on
         # closure capture — closures don't survive the runspace transfer reliably.
@@ -1488,15 +1560,15 @@ function Show-GuerrillaWindow {
                 if ($newest) { $reportPath = $newest.FullName }
             }
             $session.LastReportPath = $reportPath
-            & $appendLog 'Scan complete.'
-            $session.Controls['run_Status'].Text = 'Complete.'
+            & $appendLog $session.L['status.scanComplete']
+            $session.Controls['run_Status'].Text = $session.L['status.complete']
             $banner = $session.Controls['ops_ResultBanner']
             $banner.SetResourceReference([System.Windows.Controls.Border]::BorderBrushProperty, 'OkBrush')
             if ($reportPath) {
-                $session.Controls['ops_ResultText'].Text = "Report ready: $reportPath"
+                $session.Controls['ops_ResultText'].Text = $session.L['status.reportReady'] -f $reportPath
                 $session.Controls['ops_OpenReport'].Visibility = 'Visible'
             } else {
-                $session.Controls['ops_ResultText'].Text = 'Scan complete (no report path returned; check the output directory).'
+                $session.Controls['ops_ResultText'].Text = $session.L['status.completeNoReport']
                 $session.Controls['ops_OpenReport'].Visibility = 'Collapsed'
             }
             $banner.Visibility = 'Visible'
@@ -1505,11 +1577,11 @@ function Show-GuerrillaWindow {
 
         $onError = {
             param($err)
-            & $appendLog "ERROR: $err"
-            $session.Controls['run_Status'].Text = 'Failed.'
+            & $appendLog ($session.L['status.error'] -f $err)
+            $session.Controls['run_Status'].Text = $session.L['status.failed']
             $banner = $session.Controls['ops_ResultBanner']
             $banner.SetResourceReference([System.Windows.Controls.Border]::BorderBrushProperty, 'BadBrush')
-            $session.Controls['ops_ResultText'].Text = "Scan failed: $err"
+            $session.Controls['ops_ResultText'].Text = $session.L['status.scanFailed'] -f $err
             $session.Controls['ops_OpenReport'].Visibility = 'Collapsed'
             $banner.Visibility = 'Visible'
             & $resetOperationsUI
@@ -1534,11 +1606,11 @@ function Show-GuerrillaWindow {
     $session.Controls['ops_CancelButton'].Add_Click({
         if ($session.CurrentAsync) {
             Stop-GuerrillaGuiAsync -State $session.CurrentAsync
-            & $appendLog 'Cancelled by user.'
-            $session.Controls['run_Status'].Text = 'Cancelled.'
+            & $appendLog $session.L['status.cancelledByUser']
+            $session.Controls['run_Status'].Text = $session.L['status.cancelled']
             $banner = $session.Controls['ops_ResultBanner']
             $banner.SetResourceReference([System.Windows.Controls.Border]::BorderBrushProperty, 'WarnBrush')
-            $session.Controls['ops_ResultText'].Text = 'Run cancelled before completion.'
+            $session.Controls['ops_ResultText'].Text = $session.L['status.runCancelled']
             $session.Controls['ops_OpenReport'].Visibility = 'Collapsed'
             $banner.Visibility = 'Visible'
             & $resetOperationsUI
@@ -1578,7 +1650,7 @@ function Show-GuerrillaWindow {
             }
             $session.Controls['sh_Grid'].ItemsSource = $rows
         } catch {
-            [System.Windows.MessageBox]::Show("Could not read vault: $_`r`n`r`nThe vault may not be initialized yet. Click 'Add credential' to set it up.", 'Vault unavailable', 'OK', 'Information') | Out-Null
+            [System.Windows.MessageBox]::Show(($session.L['safehouse.vaultUnavailableText'] -f $_), $session.L['safehouse.vaultUnavailableTitle'], 'OK', 'Information') | Out-Null
         }
     }
 
@@ -1586,7 +1658,7 @@ function Show-GuerrillaWindow {
 
     $session.Controls['sh_Add'].Add_Click({
         try {
-            $entries = Show-AddCredentialDialog -Owner $session.Window -Theme $session.Theme
+            $entries = Show-AddCredentialDialog -Owner $session.Window -Theme $session.Theme -Language $session.Language
             if (-not $entries) { return }   # cancelled
             # Make sure the vault exists before writing.
             if (-not (Get-SecretVault -Name $session.VaultName -ErrorAction SilentlyContinue)) {
@@ -1594,25 +1666,25 @@ function Show-GuerrillaWindow {
             }
             $n = Save-SafehouseCredentialSet -Entries $entries -VaultName $session.VaultName
             & $refreshSafehouseGrid
-            [System.Windows.MessageBox]::Show("Stored $n credential value(s). Use 'Test all' to verify connectivity.", 'Credential saved', 'OK', 'Information') | Out-Null
+            [System.Windows.MessageBox]::Show(($session.L['safehouse.savedText'] -f $n), $session.L['safehouse.savedTitle'], 'OK', 'Information') | Out-Null
         } catch {
-            [System.Windows.MessageBox]::Show("Could not save credential: $_", 'Error', 'OK', 'Error') | Out-Null
+            [System.Windows.MessageBox]::Show(($session.L['safehouse.saveFailedText'] -f $_), $session.L['common.error'], 'OK', 'Error') | Out-Null
         }
     })
 
     $session.Controls['sh_Remove'].Add_Click({
         $row = $session.Controls['sh_Grid'].SelectedItem
         if (-not $row) {
-            [System.Windows.MessageBox]::Show('Select a credential row first, then click Remove selected.', 'No selection', 'OK', 'Information') | Out-Null
+            [System.Windows.MessageBox]::Show($session.L['safehouse.selectRowRemove'], $session.L['safehouse.noSelectionTitle'], 'OK', 'Information') | Out-Null
             return
         }
-        $ans = [System.Windows.MessageBox]::Show("Remove credential '$($row.VaultKey)'?", 'Confirm', 'YesNo', 'Warning')
+        $ans = [System.Windows.MessageBox]::Show(($session.L['safehouse.confirmRemove'] -f $row.VaultKey), $session.L['common.confirm'], 'YesNo', 'Warning')
         if ($ans -eq 'Yes') {
             try {
                 Set-Safehouse -Remove $row.Environment -VaultName $session.VaultName -ErrorAction Stop
                 & $refreshSafehouseGrid
             } catch {
-                [System.Windows.MessageBox]::Show("Remove failed: $_", 'Error', 'OK', 'Error') | Out-Null
+                [System.Windows.MessageBox]::Show(($session.L['safehouse.removeFailed'] -f $_), $session.L['common.error'], 'OK', 'Error') | Out-Null
             }
         }
     })
@@ -1620,30 +1692,31 @@ function Show-GuerrillaWindow {
     $session.Controls['sh_Rotate'].Add_Click({
         $row = $session.Controls['sh_Grid'].SelectedItem
         if (-not $row) {
-            [System.Windows.MessageBox]::Show('Select a credential row first, then click Rotate selected.', 'No selection', 'OK', 'Information') | Out-Null
+            [System.Windows.MessageBox]::Show($session.L['safehouse.selectRowRotate'], $session.L['safehouse.noSelectionTitle'], 'OK', 'Information') | Out-Null
             return
         }
-        [System.Windows.MessageBox]::Show("To rotate, run from a PowerShell prompt:`r`n`r`n    Set-Safehouse -Rotate $($row.Environment)", 'Rotate credential', 'OK', 'Information') | Out-Null
+        [System.Windows.MessageBox]::Show(($session.L['safehouse.rotateHint'] -f $row.Environment), $session.L['safehouse.rotateTitle'], 'OK', 'Information') | Out-Null
     })
 
     $session.Controls['sh_Test'].Add_Click({
         $btn = $session.Controls['sh_Test']
+        $session = $session
         $btn.IsEnabled = $false
-        $btn.Content = 'Testing...'
+        $btn.Content = $session.L['safehouse.testing']
 
         $testComplete = {
             param($result)
             $btn.IsEnabled = $true
-            $btn.Content = 'Test all'
+            $btn.Content = $session.L['safehouse.testAll']
             $rows = @($result)
             if ($rows.Count -eq 0) {
-                [System.Windows.MessageBox]::Show('No credentials were found to test. Add credentials first.', 'Test all', 'OK', 'Information') | Out-Null
+                [System.Windows.MessageBox]::Show($session.L['safehouse.noCredentials'], $session.L['safehouse.testAll'], 'OK', 'Information') | Out-Null
                 return
             }
             $passStates = @('CONNECTED', 'VALID', 'STORED', 'KERBEROS')
             $pass = @($rows | Where-Object { $passStates -contains $_.Status }).Count
             $sb = [System.Text.StringBuilder]::new()
-            [void]$sb.AppendLine("$pass of $($rows.Count) checks passed.")
+            [void]$sb.AppendLine(($session.L['safehouse.testPassed'] -f $pass, $rows.Count))
             $lastEnv = ''
             foreach ($r in $rows) {
                 if ($r.Environment -ne $lastEnv) {
@@ -1656,14 +1729,14 @@ function Show-GuerrillaWindow {
                 [void]$sb.AppendLine("  $icon$($r.Name): $($r.Status) ($($r.ElapsedMs)ms)$detail")
             }
             $icon = if ($pass -eq $rows.Count) { 'Information' } else { 'Warning' }
-            [System.Windows.MessageBox]::Show($sb.ToString(), 'Safehouse connectivity test', 'OK', $icon) | Out-Null
+            [System.Windows.MessageBox]::Show($sb.ToString(), $session.L['safehouse.testResultTitle'], 'OK', $icon) | Out-Null
         }.GetNewClosure()
 
         $testError = {
             param($err)
             $btn.IsEnabled = $true
-            $btn.Content = 'Test all'
-            [System.Windows.MessageBox]::Show("Connectivity test failed: $err", 'Test all', 'OK', 'Error') | Out-Null
+            $btn.Content = $session.L['safehouse.testAll']
+            [System.Windows.MessageBox]::Show(($session.L['safehouse.testFailed'] -f $err), $session.L['safehouse.testAll'], 'OK', 'Error') | Out-Null
         }.GetNewClosure()
 
         Invoke-GuerrillaGuiAsync `
@@ -1677,21 +1750,19 @@ function Show-GuerrillaWindow {
 
     $session.Controls['sh_Export'].Add_Click({
         $dlg = New-Object Microsoft.Win32.SaveFileDialog
-        $dlg.Filter   = 'JSON files (*.json)|*.json'
+        $dlg.Filter   = $session.L['dialog.filterJson']
         $dlg.FileName = 'safehouse-metadata.json'
         if ($dlg.ShowDialog()) {
             try {
                 Set-Safehouse -ExportMetadata -Path $dlg.FileName -VaultName $session.VaultName -ErrorAction Stop
-                [System.Windows.MessageBox]::Show("Exported to $($dlg.FileName)", 'Done', 'OK', 'Information') | Out-Null
+                [System.Windows.MessageBox]::Show(($session.L['safehouse.exportedTo'] -f $dlg.FileName), $session.L['common.done'], 'OK', 'Information') | Out-Null
             } catch {
-                [System.Windows.MessageBox]::Show("Export failed: $_", 'Error', 'OK', 'Error') | Out-Null
+                [System.Windows.MessageBox]::Show(($session.L['safehouse.exportFailed'] -f $_), $session.L['common.error'], 'OK', 'Error') | Out-Null
             }
         }
     })
 
     # ── Reports page handlers ─────────────────────────────────────────────
-    $session.Controls['rp_DirHint'].Text = "From $($session.ReportsDir). Newest first."
-
     $refreshReportsGrid = {
         if (-not (Test-Path $session.ReportsDir)) {
             $session.Controls['rp_Grid'].ItemsSource = @()
@@ -1701,15 +1772,15 @@ function Show-GuerrillaWindow {
                  Sort-Object LastWriteTime -Descending
         $rows = foreach ($f in $files) {
             $platform = switch -Regex ($f.Name) {
-                '^[Rr]econnaissance'   { 'Active Directory' }
-                '^[Ff]ortification'    { 'Workspace' }
-                '^[Ii]nfiltration'     { 'Cloud' }
-                '^[Cc]ampaign'         { 'All Platforms' }
-                'Executive'            { 'Summary' }
-                'Technical'            { 'Technical' }
-                'Playbook|Remediation' { 'Remediation' }
-                'Dashboard'            { 'Dashboard' }
-                default                { 'Other' }
+                '^[Rr]econnaissance'   { $session.L['reports.kindActiveDirectory'] }
+                '^[Ff]ortification'    { $session.L['reports.kindWorkspace'] }
+                '^[Ii]nfiltration'     { $session.L['reports.kindCloud'] }
+                '^[Cc]ampaign'         { $session.L['reports.kindAllPlatforms'] }
+                'Executive'            { $session.L['reports.kindSummary'] }
+                'Technical'            { $session.L['reports.kindTechnical'] }
+                'Playbook|Remediation' { $session.L['reports.kindRemediation'] }
+                'Dashboard'            { $session.L['reports.kindDashboard'] }
+                default                { $session.L['reports.kindOther'] }
             }
             [PSCustomObject]@{
                 Name     = $f.Name
@@ -1734,17 +1805,17 @@ function Show-GuerrillaWindow {
         if (-not $row) { return }
         try {
             Export-ReportPdf -InputPath $row.FullPath -ErrorAction Stop
-            [System.Windows.MessageBox]::Show('PDF generated next to the HTML report.', 'Done', 'OK', 'Information') | Out-Null
+            [System.Windows.MessageBox]::Show($session.L['reports.pdfDone'], $session.L['common.done'], 'OK', 'Information') | Out-Null
             & $refreshReportsGrid
         } catch {
-            [System.Windows.MessageBox]::Show("PDF conversion failed: $_", 'Error', 'OK', 'Error') | Out-Null
+            [System.Windows.MessageBox]::Show(($session.L['reports.pdfFailed'] -f $_), $session.L['common.error'], 'OK', 'Error') | Out-Null
         }
     })
 
     $session.Controls['rp_Delete'].Add_Click({
         $row = $session.Controls['rp_Grid'].SelectedItem
         if (-not $row) { return }
-        $ans = [System.Windows.MessageBox]::Show("Delete '$($row.Name)'?", 'Confirm', 'YesNo', 'Warning')
+        $ans = [System.Windows.MessageBox]::Show(($session.L['reports.confirmDelete'] -f $row.Name), $session.L['common.confirm'], 'YesNo', 'Warning')
         if ($ans -eq 'Yes') {
             Remove-Item -LiteralPath $row.FullPath -Force -ErrorAction SilentlyContinue
             & $refreshReportsGrid
@@ -1759,7 +1830,7 @@ function Show-GuerrillaWindow {
                 $cfg = Get-Content -Path $session.ConfigPath -Raw | ConvertFrom-Json -AsHashtable
                 if ($cfg.profile) {
                     foreach ($item in $session.Controls['st_Profile'].Items) {
-                        if ("$($item.Content)" -eq $cfg.profile) { $item.IsSelected = $true; break }
+                        if ("$($item.Tag)" -eq $cfg.profile) { $item.IsSelected = $true; break }
                     }
                 }
                 if ($cfg.output -and $cfg.output.directory) {
@@ -1782,17 +1853,17 @@ function Show-GuerrillaWindow {
         try {
             $params = @{
                 ConfigPath = $session.ConfigPath
-                Profile    = "$($session.Controls['st_Profile'].SelectedItem.Content)"
+                Profile    = "$($session.Controls['st_Profile'].SelectedItem.Tag)"
             }
             if ($session.Controls['st_OutputDir'].Text) {
                 $params.OutputDirectory = $session.Controls['st_OutputDir'].Text
             }
             Set-Safehouse @params -ErrorAction Stop | Out-Null
             $session.Controls['st_StatusLine'].SetResourceReference([System.Windows.Controls.TextBlock]::ForegroundProperty, 'OkBrush')
-            $session.Controls['st_StatusLine'].Text = "Saved at $([datetime]::Now.ToString('HH:mm:ss'))."
+            $session.Controls['st_StatusLine'].Text = $session.L['settings.savedAt'] -f ([datetime]::Now.ToString('HH:mm:ss'))
         } catch {
             $session.Controls['st_StatusLine'].SetResourceReference([System.Windows.Controls.TextBlock]::ForegroundProperty, 'BadBrush')
-            $session.Controls['st_StatusLine'].Text = "Save failed: $_"
+            $session.Controls['st_StatusLine'].Text = $session.L['common.saveFailed'] -f $_
         }
     })
 
@@ -1846,11 +1917,13 @@ function Show-GuerrillaWindow {
         $combo = $session.Controls['src_AreaFilter']
         if ($combo.Items.Count -eq 0) {
             $allItem = New-Object System.Windows.Controls.ComboBoxItem
-            $allItem.Content = 'All areas'
+            $allItem.Tag = '*'
+            $allItem.SetResourceReference([System.Windows.Controls.ContentControl]::ContentProperty, 'L_inspector_allAreas')
             [void]$combo.Items.Add($allItem)
             foreach ($area in (@($session.FunctionIndex.Area) | Sort-Object -Unique)) {
                 $ci = New-Object System.Windows.Controls.ComboBoxItem
                 $ci.Content = $area
+                $ci.Tag     = $area
                 [void]$combo.Items.Add($ci)
             }
             $combo.SelectedIndex = 0
@@ -1861,11 +1934,11 @@ function Show-GuerrillaWindow {
     $refreshSourceList = {
         & $ensureFunctionIndex
         $area = if ($session.Controls['src_AreaFilter'].SelectedItem) {
-            [string]$session.Controls['src_AreaFilter'].SelectedItem.Content
-        } else { 'All areas' }
+            [string]$session.Controls['src_AreaFilter'].SelectedItem.Tag
+        } else { '*' }
         $term = [string]$session.Controls['src_Search'].Text
         $items = @($session.FunctionIndex)
-        if ($area -and $area -ne 'All areas') { $items = @($items | Where-Object { $_.Area -eq $area }) }
+        if ($area -and $area -ne '*') { $items = @($items | Where-Object { $_.Area -eq $area }) }
         if ($term) { $items = @($items | Where-Object { $_.Name -like "*$term*" }) }
 
         $list = $session.Controls['src_List']
@@ -1876,7 +1949,7 @@ function Show-GuerrillaWindow {
             $li.Tag     = $it
             [void]$list.Items.Add($li)
         }
-        $session.Controls['src_Count'].Text = "$($items.Count) function(s)"
+        $session.Controls['src_Count'].Text = $session.L['inspector.functionCount'] -f $items.Count
     }
 
     $session.Controls['src_List'].Add_SelectionChanged({
@@ -1884,7 +1957,7 @@ function Show-GuerrillaWindow {
         if (-not $sel) { return }
         $info = $sel.Tag
         $session.Controls['src_Code'].Text = $info.Source
-        $session.Controls['src_Meta'].Text = "$($info.Name)   $mdot   $($info.RelFile) : line $($info.StartLine)   $mdot   $($info.Area)"
+        $session.Controls['src_Meta'].Text = $session.L['inspector.meta'] -f $info.Name, $info.RelFile, $info.StartLine, $info.Area
     })
     $session.Controls['src_Search'].Add_TextChanged({ & $refreshSourceList })
     $session.Controls['src_AreaFilter'].Add_SelectionChanged({ & $refreshSourceList })
@@ -1914,7 +1987,7 @@ function Show-GuerrillaWindow {
 
     $session.Controls['br_BrowseLogo'].Add_Click({
         $dlg = New-Object System.Windows.Forms.OpenFileDialog
-        $dlg.Filter = 'Images|*.png;*.jpg;*.jpeg;*.gif;*.svg|All files|*.*'
+        $dlg.Filter = $session.L['dialog.filterImages']
         if ($dlg.ShowDialog() -eq 'OK') { $session.Controls['br_LogoPath'].Text = $dlg.FileName }
     })
 
@@ -1937,10 +2010,10 @@ function Show-GuerrillaWindow {
             if ($dir -and -not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
             $cfg | ConvertTo-Json -Depth 8 | Set-Content -Path $session.ConfigPath -Encoding UTF8
             $session.Controls['br_StatusLine'].SetResourceReference([System.Windows.Controls.TextBlock]::ForegroundProperty, 'OkBrush')
-            $session.Controls['br_StatusLine'].Text = "Saved at $([datetime]::Now.ToString('HH:mm:ss')). Applied on your next scan."
+            $session.Controls['br_StatusLine'].Text = $session.L['branding.savedAt'] -f ([datetime]::Now.ToString('HH:mm:ss'))
         } catch {
             $session.Controls['br_StatusLine'].SetResourceReference([System.Windows.Controls.TextBlock]::ForegroundProperty, 'BadBrush')
-            $session.Controls['br_StatusLine'].Text = "Save failed: $_"
+            $session.Controls['br_StatusLine'].Text = $session.L['common.saveFailed'] -f $_
         }
     })
     $session.Controls['br_Revert'].Add_Click({ & $loadBranding })
@@ -1956,8 +2029,8 @@ function Show-GuerrillaWindow {
     $session.Controls['ops_OutputDir'].Text = $session.ReportsDir
     # Read the version from the manifest so the footer can't drift like it did at v2.3.0.
     $guiVersion = try { (Import-PowerShellDataFile $session.ModulePath).ModuleVersion } catch { $null }
-    $verText = if ($guiVersion) { "Guerrilla v$guiVersion" } else { 'Guerrilla' }
-    $session.Controls['foot_Info'].Text = "$verText  $mdot  Vault: $($session.VaultName)  $mdot  Read-only"
+    $session.VersionText = if ($guiVersion) { "Guerrilla v$guiVersion" } else { 'Guerrilla' }
+    $session.Controls['foot_Info'].Text = $session.L['footer.info'] -f $session.VersionText, $session.VaultName
     & $setActiveTab $StartOn
 
     # Single-instance guard. Two windows share config.json + platform *-state.json files,
@@ -1989,8 +2062,8 @@ function Show-GuerrillaWindow {
         # outright traps the user. Let them open anyway; only the genuine two-live-windows case
         # risks state clobbering, and they're told.
         $resp = [System.Windows.MessageBox]::Show(
-            "Guerrilla appears to already be open in another window. Two windows share the same config/state files (last save wins).`n`nOpen a new window anyway?`n  Yes = open it now    No = switch to the existing window (Alt+Tab)",
-            'Already running', 'YesNo', 'Warning')
+            $session.L['app.alreadyRunningText'],
+            $session.L['app.alreadyRunningTitle'], 'YesNo', 'Warning')
         if ($resp -ne 'Yes') { return }
         # Proceeding without the lock — the other process owns it, so we must not release it on close.
         $script:GuerrillaGuiMutex = $null
