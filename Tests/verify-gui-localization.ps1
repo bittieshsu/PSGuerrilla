@@ -31,13 +31,24 @@ $guiFiles = @(
 )
 
 # ── 1. Catalogs parse and declare their language ──
-$en = $es = $null
+$en = $null
 try { $en = Get-Content (Join-Path $localeDir 'gui.en.json') -Raw | ConvertFrom-Json -AsHashtable } catch { }
-try { $es = Get-Content (Join-Path $localeDir 'gui.es.json') -Raw | ConvertFrom-Json -AsHashtable } catch { }
 Add-R 'en catalog parses' ($null -ne $en) ''
-Add-R 'es catalog parses' ($null -ne $es) ''
 Add-R 'en declares _language en/English' ($en -and $en._language.code -eq 'en' -and $en._language.name) ''
-Add-R 'es declares _language es' ($es -and $es._language.code -eq 'es' -and $es._language.name) ''
+
+# Every shipped translation is held to the same bar: discover all non-English
+# catalogs rather than naming languages, so a new gui.<code>.json is gated the
+# day it lands.
+$translations = @{}
+foreach ($f in (Get-ChildItem -Path $localeDir -Filter 'gui.*.json' | Where-Object Name -ne 'gui.en.json' | Sort-Object Name)) {
+    $code = ($f.Name -replace '^gui\.', '') -replace '\.json$', ''
+    $doc = $null
+    try { $doc = Get-Content $f.FullName -Raw | ConvertFrom-Json -AsHashtable } catch { }
+    Add-R "$code catalog parses" ($null -ne $doc) $f.Name
+    Add-R "$code declares _language $code" ($doc -and $doc._language.code -eq $code -and $doc._language.name) ''
+    if ($doc) { $translations[$code] = $doc }
+}
+Add-R 'at least one translation shipped' ($translations.Count -ge 1) "got=$($translations.Count)"
 
 # Flatten helpers (mirror of the loader's semantics, independent implementation).
 function Get-FlatKeys([hashtable]$Node, [string]$Prefix = '') {
@@ -54,7 +65,6 @@ function Get-FlatKeys([hashtable]$Node, [string]$Prefix = '') {
 }
 
 $enFlat = @(Get-FlatKeys $en)
-$esFlat = @(Get-FlatKeys $es)
 $enKeys = @($enFlat.Key)
 Add-R 'en catalog is non-trivial (50+ keys)' ($enKeys.Count -ge 50) "got=$($enKeys.Count)"
 
@@ -90,15 +100,31 @@ if ($unused.Count -gt 0) {
     Write-Host "  [note] $($unused.Count) en key(s) not referenced by the GUI: $(($unused | Select-Object -First 8) -join ', ')" -ForegroundColor DarkYellow
 }
 
-# ── 4. Spanish completeness + provenance shape ──
-$esKeys = @($esFlat.Key)
-$missingEs = @($enKeys | Where-Object { $_ -notin $esKeys })
-Add-R 'es carries every en key (shipped language is complete)' ($missingEs.Count -eq 0) (($missingEs | Select-Object -First 8) -join ', ')
-$badShape = @($esFlat | Where-Object {
-    -not ($_.Value -is [System.Collections.IDictionary] -and $_.Value.Contains('value') -and
-          "$($_.Value['status'])" -in @('machine-draft', 'human-reviewed') -and "$($_.Value['value'])".Trim())
-})
-Add-R 'every es entry is { value, status } with known provenance' ($badShape.Count -eq 0) (($badShape.Key | Select-Object -First 5) -join ', ')
+# ── 4. Every translation: completeness + provenance shape + placeholder parity ──
+foreach ($code in ($translations.Keys | Sort-Object)) {
+    $locFlat = @(Get-FlatKeys $translations[$code])
+    $locKeys = @($locFlat.Key)
+    $missing = @($enKeys | Where-Object { $_ -notin $locKeys })
+    Add-R "$code carries every en key (shipped language is complete)" ($missing.Count -eq 0) (($missing | Select-Object -First 8) -join ', ')
+    $extra = @($locKeys | Where-Object { $_ -notin $enKeys })
+    Add-R "$code has no keys en lacks (no orphan strings)" ($extra.Count -eq 0) (($extra | Select-Object -First 5) -join ', ')
+    $badShape = @($locFlat | Where-Object {
+        -not ($_.Value -is [System.Collections.IDictionary] -and $_.Value.Contains('value') -and
+              "$($_.Value['status'])" -in @('machine-draft', 'human-reviewed') -and "$($_.Value['value'])".Trim())
+    })
+    Add-R "every $code entry is { value, status } with known provenance" ($badShape.Count -eq 0) (($badShape.Key | Select-Object -First 5) -join ', ')
+    # A translated format string must keep exactly the source's {n} placeholders;
+    # a dropped or invented placeholder is a runtime format error in that language.
+    $enByKey = @{}; foreach ($e in $enFlat) { $enByKey[$e.Key] = "$($e.Value)" }
+    $phMismatch = [System.Collections.Generic.List[string]]::new()
+    foreach ($e in $locFlat) {
+        if (-not $enByKey.ContainsKey($e.Key)) { continue }
+        $want = @([regex]::Matches($enByKey[$e.Key], '\{\d+\}') | ForEach-Object Value | Sort-Object -Unique)
+        $have = @([regex]::Matches("$($e.Value['value'])", '\{\d+\}') | ForEach-Object Value | Sort-Object -Unique)
+        if (($want -join ',') -ne ($have -join ',')) { $phMismatch.Add($e.Key) }
+    }
+    Add-R "$code format placeholders match en" ($phMismatch.Count -eq 0) (($phMismatch | Select-Object -First 5) -join ', ')
+}
 
 # ── 5. Loader behavior through the module ──
 $loader = & $mod {
@@ -110,10 +136,12 @@ $loader = & $mod {
         Cfg   = Resolve-GuerrillaGuiLanguage -Configured 'es'
     }
 }
-Add-R 'loader discovers en + es' (@($loader.Langs.Code) -contains 'en' -and @($loader.Langs.Code) -contains 'es') "got=$($loader.Langs.Code -join ',')"
+$expectCodes = @('en') + @($translations.Keys)
+$missingLangs = @($expectCodes | Where-Object { $_ -notin @($loader.Langs.Code) })
+Add-R 'loader discovers every catalog' ($missingLangs.Count -eq 0) "got=$($loader.Langs.Code -join ',')"
 Add-R 'loader: English listed first' ($loader.Langs[0].Code -eq 'en') ''
 Add-R 'loader: es table covers en keys (fallback merge)' ($loader.Es.Count -eq $loader.En.Count) "en=$($loader.En.Count) es=$($loader.Es.Count)"
-Add-R 'loader: unknown config falls back sanely' ($loader.Fall -in @('en', 'es')) "got=$($loader.Fall)"
+Add-R 'loader: unknown config falls back sanely' ($loader.Fall -in @($loader.Langs.Code)) "got=$($loader.Fall)"
 Add-R 'loader: configured language wins' ($loader.Cfg -eq 'es') "got=$($loader.Cfg)"
 
 # ── 6. Poison self-test: the scanner must be able to fail ──

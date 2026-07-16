@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+### Added
+- **Five more GUI languages: Portuguese, German, Danish, Dutch, and Hindi.** Each is a complete 171-key catalog (`gui.pt/de/da/nl/hi.json`) with per-key `machine-draft` provenance, discovered by the header language selector at runtime, exactly as the architecture intended: no code changed, five files landed. The localization gate now generalizes to every shipped catalog instead of naming languages, and gained a placeholder-parity check: a translation that drops or invents a `{0}` format placeholder is a runtime format error in that language, so it is a red build. Brand and platform names (Guerrilla, Safehouse, PowerShell, Active Directory, Entra, Google Workspace) stay untranslated across all languages, and literal machine-parsed strings (date formats, dialog filters, the rotate command line) are preserved verbatim.
+
 ## [2.51.0] - 2026-07-15
 
 ### Added
