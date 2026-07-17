@@ -1,0 +1,453 @@
+{
+  "_family": "CollaborationChecks.json",
+  "COLLAB-001": {
+    "name": {
+      "value": "Impostazioni di registrazione di Meet",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le impostazioni di registrazione delle riunioni devono essere controllate per impedire l'acquisizione non autorizzata di discussioni sensibili",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Registrazione limitata agli organizzatori della riunione o disabilitata per le OU sensibili",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Google Meet > Impostazioni video di Meet > Registrazione > Configura le autorizzazioni di registrazione",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-002": {
+    "name": {
+      "value": "Impostazioni dei partecipanti esterni di Meet",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'accesso dei partecipanti esterni alle riunioni deve essere controllato per impedire presenze non autorizzate e la divulgazione di informazioni",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "I partecipanti esterni devono richiedere l'approvazione o bussare per partecipare",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Google Meet > Impostazioni video di Meet > Partecipanti > Richiedi l'approvazione per i partecipanti esterni",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-003": {
+    "name": {
+      "value": "Impostazioni di partecipazione anonima a Meet",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Gli utenti anonimi (privi di account Google) non dovrebbero poter partecipare alle riunioni senza l'esplicita approvazione dell'organizzatore",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Partecipazione anonima disabilitata o subordinata all'approvazione dell'organizzatore",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Google Meet > Impostazioni video di Meet > Partecipanti > Disabilita la partecipazione anonima o richiedi di bussare",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-004": {
+    "name": {
+      "value": "Comunicazione esterna in Chat",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La comunicazione esterna in chat deve essere limitata per prevenire la fuga di dati tramite messaggi diretti con utenti esterni",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Chat esterna limitata o disabilitata per la maggior parte degli utenti",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Google Chat > Impostazioni di Chat > Chat esterna > Limita la chat esterna a OU specifiche",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-005": {
+    "name": {
+      "value": "Impostazioni della cronologia di Chat",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La cronologia di Chat dovrebbe essere abilitata e conservata a fini di conformità e audit. Disabilitare la cronologia può nascondere comunicazioni malevole",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Cronologia di Chat abilitata e conservata secondo i criteri di conservazione",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Google Chat > Impostazioni di Chat > Cronologia > Abilita la cronologia e configura la conservazione",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-006": {
+    "name": {
+      "value": "Accesso esterno agli spazi di Chat",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Gli spazi di Chat (stanze) che consentono membri esterni possono esporre comunicazioni interne e file condivisi a soggetti non autorizzati",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Accesso esterno agli spazi di Chat limitato o disabilitato",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Google Chat > Impostazioni di Chat > Spazi > Limita l'accesso esterno agli spazi",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-007": {
+    "name": {
+      "value": "Impostazioni di installazione delle app di Chat",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'installazione delle app (bot) di Chat deve essere controllata per impedire che integrazioni non autorizzate accedano ai dati delle conversazioni",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Installazione delle app di Chat limitata alle app approvate dall'amministratore",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Google Chat > Impostazioni di Chat > App > Limita l'installazione delle app a quelle approvate",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-008": {
+    "name": {
+      "value": "Condivisione esterna di Calendar",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La condivisione di Calendar con utenti esterni dovrebbe essere limitata alle informazioni di disponibilità (libero/occupato) per evitare l'esposizione dei dettagli delle riunioni e dei partecipanti",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Condivisione esterna del calendario limitata alle sole informazioni di disponibilità (libero/occupato)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Calendar > Impostazioni di condivisione > Opzioni di condivisione esterna > Imposta su 'Solo informazioni di disponibilità (libero/occupato)'",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-009": {
+    "name": {
+      "value": "Inviti esterni di Calendar",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Gli utenti dovrebbero essere avvisati o limitati quando inviano inviti del calendario a destinatari esterni, per prevenire la divulgazione accidentale di informazioni",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Avvisi per gli inviti esterni abilitati",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Calendar > Impostazioni di condivisione > Abilita gli avvisi per gli inviti esterni",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-010": {
+    "name": {
+      "value": "Visibilità esterna degli slot per appuntamenti di Calendar",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La visibilità degli slot per appuntamenti di Calendar deve essere controllata per limitare l'esposizione esterna della disponibilità e dei dettagli di pianificazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Visibilità esterna degli slot per appuntamenti limitata",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Calendar > Impostazioni di condivisione > Esamina le impostazioni di visibilità degli slot per appuntamenti",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-011": {
+    "name": {
+      "value": "Etichettatura dei partecipanti esterni di Meet",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "I partecipanti esterni alle riunioni dovrebbero essere etichettati in modo visibile, affinché organizzatori e partecipanti possano identificare facilmente le persone esterne ed evitare di divulgare informazioni sensibili",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Etichettatura dei partecipanti esterni abilitata",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "App > Google Workspace > Google Meet > Impostazioni di sicurezza di Meet > Partecipanti esterni > Abilita l'etichettatura dei partecipanti esterni",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-012": {
+    "name": {
+      "value": "Gestione dell'organizzatore in Meet",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La gestione dell'organizzatore dovrebbe essere abilitata affinché gli organizzatori delle riunioni mantengano i controlli di moderazione, come disattivare l'audio, rimuovere e bloccare, per prevenire l'hijacking e le interruzioni delle riunioni",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Gestione dell'organizzatore abilitata",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "App > Google Workspace > Google Meet > Impostazioni di sicurezza di Meet > Gestione dell'organizzatore > Abilita i controlli di gestione dell'organizzatore",
+      "status": "machine-draft"
+    }
+  },
+  "GROUP-001": {
+    "name": {
+      "value": "Accesso esterno a Google Gruppi limitato (GWS.GROUPS.1.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GROUPS.1.1 richiede che la condivisione in Gruppi per le aziende sia limitata affinché i gruppi non siano accessibili a persone esterne all'organizzazione. Quando la funzionalità di collaborazione per la condivisione dei gruppi non è impostata solo sugli utenti del dominio, i contenuti del gruppo, che in una scuola possono includere dati di studenti e personale, diventano raggiungibili da soggetti esterni. Questa verifica legge il criterio groups_for_business.groups_sharing tramite la Cloud Identity Policy API e segnala ogni unità organizzativa la cui funzionalità di collaborazione non è DOMAIN_USERS_ONLY.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Funzionalità di collaborazione per la condivisione dei gruppi impostata su DOMAIN_USERS_ONLY per tutte le unità organizzative",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione Google, in App > Google Workspace > Gruppi per le aziende > Impostazioni di condivisione, imposta l'accesso ai gruppi in modo che sia limitato agli utenti dell'organizzazione (non 'Chiunque su internet'), affinché i soggetti esterni non possano accedere ai contenuti dei gruppi.",
+      "status": "machine-draft"
+    }
+  },
+  "GROUP-002": {
+    "name": {
+      "value": "I proprietari dei gruppi non possono aggiungere membri esterni (GWS.GROUPS.1.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GROUPS.1.2 richiede che ai proprietari dei gruppi non sia consentito aggiungere membri esterni all'organizzazione. I membri esterni ottengono l'accesso a tutto ciò che è condiviso con il gruppo. Questa verifica segnala le unità organizzative in cui i proprietari possono consentire membri esterni (ownersCanAllowExternalMembers è abilitato).",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "I proprietari dei gruppi non possono consentire membri esterni (ownersCanAllowExternalMembers disabilitato)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni di condivisione di Gruppi per le aziende, disabilita l'opzione che consente ai proprietari dei gruppi di aggiungere membri esterni all'organizzazione, affinché l'appartenenza esterna richieda un intervento amministrativo.",
+      "status": "machine-draft"
+    }
+  },
+  "GROUP-003": {
+    "name": {
+      "value": "I gruppi non possono ricevere email dall'esterno dell'organizzazione (GWS.GROUPS.1.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GROUPS.1.3 richiede che ai proprietari dei gruppi non sia consentito accettare email in arrivo dall'esterno dell'organizzazione. Consentire posta pubblica in ingresso verso i gruppi è un vettore di phishing e spam in entrata. Questa verifica segnala le unità organizzative in cui i proprietari possono consentire posta in arrivo dal pubblico (ownersCanAllowIncomingMailFromPublic è abilitato).",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "I proprietari dei gruppi non possono consentire posta in arrivo dal pubblico (ownersCanAllowIncomingMailFromPublic disabilitato)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni di condivisione di Gruppi per le aziende, disabilita l'opzione che consente ai proprietari dei gruppi di accettare email in arrivo dall'esterno dell'organizzazione, limitando la posta dei gruppi ai mittenti interni salvo configurazione esplicita.",
+      "status": "machine-draft"
+    }
+  },
+  "GROUP-004": {
+    "name": {
+      "value": "Creazione di gruppi limitata agli amministratori (GWS.GROUPS.2.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GROUPS.2.1 consiglia di limitare agli amministratori la possibilità di creare gruppi in Gruppi per le aziende. Quando qualsiasi utente può creare gruppi, la proliferazione dei gruppi supera la capacità di governance e le impostazioni predefinite di condivisione esterna possono essere applicate senza revisione. Questa verifica segnala le unità organizzative in cui il livello di accesso per la creazione dei gruppi non è ADMIN_ONLY.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Livello di accesso per la creazione dei gruppi impostato su ADMIN_ONLY",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni di Gruppi per le aziende, imposta 'chi può creare gruppi' solo sugli amministratori, affinché i nuovi gruppi vengano creati in modo deliberato ed ereditino impostazioni di condivisione già esaminate.",
+      "status": "machine-draft"
+    }
+  },
+  "GROUP-005": {
+    "name": {
+      "value": "Visibilità predefinita delle conversazioni del gruppo limitata ai membri (GWS.GROUPS.3.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GROUPS.3.1 richiede che l'autorizzazione predefinita per la visualizzazione delle conversazioni del gruppo sia limitata ai membri del gruppo anziché all'intero dominio o al pubblico. Una visibilità delle conversazioni troppo aperta espone gli archivi delle discussioni, che possono contenere informazioni sensibili su studenti e personale. Questa verifica legge viewTopicsDefaultAccessLevel dal criterio groups_for_business.groups_sharing e avvisa quando l'impostazione predefinita è più ampia dei membri del gruppo.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Accesso predefinito alla visualizzazione delle conversazioni impostato su GROUP_MEMBERS",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni di Gruppi per le aziende, imposta l'autorizzazione predefinita 'chi può visualizzare le conversazioni' sui membri del gruppo.",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-013": {
+    "name": {
+      "value": "Condivisione esterna di file in Chat disabilitata (GWS.CHAT.2.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.CHAT.2.1 richiede che la condivisione esterna di file in Google Chat sia disabilitata (impostata su nessun file). Consentire la condivisione di file con utenti esterni tramite Chat è un percorso diretto di esfiltrazione di dati. Questa verifica legge chat.chat_file_sharing e segnala come non conforme ogni unità organizzativa in cui la condivisione esterna di file non è impostata su NO_FILES.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Condivisione esterna di file in Chat impostata su NO_FILES",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione, in App > Google Workspace > Google Chat > Condivisione esterna di file, imposta la condivisione esterna di file su 'Nessun file' affinché i file non possano essere condivisi con persone esterne all'organizzazione tramite Chat.",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-014": {
+    "name": {
+      "value": "Cronologia degli spazi di Chat attiva (GWS.CHAT.3.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.CHAT.3.1 richiede che la cronologia degli spazi di Chat sia sempre attiva affinché le conversazioni vengano conservate ai fini di supervisione, indagine ed eDiscovery. Questa verifica legge chat.space_history e avvisa in caso di unità organizzative in cui la cronologia degli spazi non è impostata su HISTORY_ALWAYS_ON.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Cronologia degli spazi di Chat impostata su HISTORY_ALWAYS_ON",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni di Google Chat, imposta la cronologia degli spazi su sempre attiva affinché le conversazioni siano conservate e disponibili per la supervisione e l'eDiscovery.",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-015": {
+    "name": {
+      "value": "Partecipazione alle riunioni limitata all'organizzazione (GWS.MEET.2.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.MEET.2.1 richiede che l'accesso alle riunioni sia limitato affinché solo gli utenti dell'organizzazione (o le organizzazioni Workspace attendibili) possano partecipare. Lasciare le riunioni aperte a chiunque consente a soggetti esterni e non autenticati di entrare in sessioni che possono coinvolgere studenti. Questa verifica legge meet.safety_access e segnala come non conforme ogni unità organizzativa in cui meetingsAllowedToJoin è più ampio di SAME_ORGANIZATION_ONLY / ANY_WORKSPACE_ORGANIZATION.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "meetingsAllowedToJoin impostato su SAME_ORGANIZATION_ONLY (o ANY_WORKSPACE_ORGANIZATION)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni di sicurezza di Google Meet, limita chi può partecipare alle riunioni agli utenti della tua organizzazione, affinché per impostazione predefinita i partecipanti esterni o non autenticati non possano partecipare.",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-016": {
+    "name": {
+      "value": "Trascrizione automatica di Meet disattivata per impostazione predefinita (GWS.MEET.5.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.MEET.5.2 consiglia che la trascrizione automatica in Google Meet sia disattivata per impostazione predefinita. La trascrizione automatica delle riunioni acquisisce e memorizza il contenuto delle conversazioni, sensibile in presenza di studenti, senza una decisione deliberata. Questa verifica legge meet.automatic_transcription e avvisa in caso di unità organizzative in cui è abilitata per impostazione predefinita.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Trascrizione automatica disabilitata per impostazione predefinita",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni di Google Meet, disabilita la trascrizione automatica per impostazione predefinita affinché il contenuto delle riunioni venga acquisito solo quando un organizzatore la abilita deliberatamente.",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-017": {
+    "name": {
+      "value": "Interoperabilità esterna di Calendar gestita (GWS.CALENDAR.3.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.CALENDAR.3.1 richiede che Calendar Interop (la condivisione delle informazioni di disponibilità e dei dati del calendario con un sistema esterno come Microsoft Exchange) sia disattivata a meno che non sia gestita deliberatamente. Interop collega i dati del calendario a una piattaforma esterna. Questa verifica legge calendar.interoperability e avvisa in caso di unità organizzative in cui enableInteroperability è attivo.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Interoperabilità di Calendar disabilitata a meno che non sia gestita deliberatamente",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione, in App > Google Workspace > Calendar > Gestione di Calendar Interop, disabilita l'interoperabilità a meno che non sia richiesta da un'integrazione già esaminata.",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-018": {
+    "name": {
+      "value": "Pagamenti per gli appuntamenti di Calendar disabilitati (GWS.CALENDAR.4.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.CALENDAR.4.1 consiglia di disabilitare le pianificazioni di appuntamenti a pagamento. Questa verifica legge calendar.appointment_schedules e avvisa in caso di unità organizzative in cui enablePayments è attivo.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Pianificazioni di appuntamenti a pagamento disabilitate",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni delle pianificazioni di appuntamenti di Google Calendar, disabilita i pagamenti a meno che l'organizzazione non utilizzi deliberatamente gli appuntamenti a pagamento.",
+      "status": "machine-draft"
+    }
+  },
+  "COLLAB-019": {
+    "name": {
+      "value": "Registrazione automatica di Meet disattivata per impostazione predefinita (GWS.MEET.5.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.MEET.5.1 consiglia che la registrazione automatica in Google Meet sia disattivata per impostazione predefinita. La registrazione automatica acquisisce e memorizza il video e l'audio delle riunioni, sensibili in presenza di studenti, senza una decisione deliberata. Questa verifica legge meet.automatic_recording e avvisa in caso di unità organizzative in cui è abilitata per impostazione predefinita.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Registrazione automatica disabilitata per impostazione predefinita",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni di Google Meet, disabilita la registrazione automatica per impostazione predefinita affinché le riunioni vengano registrate solo quando un organizzatore avvia deliberatamente una registrazione.",
+      "status": "machine-draft"
+    }
+  },
+  "GROUP-006": {
+    "name": {
+      "value": "I gruppi sono visibili nella directory (GWS.GROUPS.4.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GROUPS.4.1 richiede che i gruppi non possano essere nascosti dalla directory: i gruppi nascosti compromettono la trasparenza e la supervisione su chi è raggiungibile e su quali accessi esistono. Questa verifica legge il criterio groups_for_business.groups_sharing e avvisa in caso di unità organizzative in cui i proprietari possono nascondere i gruppi (ownersCanHideGroups) o i nuovi gruppi sono nascosti per impostazione predefinita (newGroupsAreHidden).",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "I proprietari non possono nascondere i gruppi e i nuovi gruppi non sono nascosti per impostazione predefinita",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nelle impostazioni di Gruppi per le aziende, impedisci ai proprietari dei gruppi di nascondere i gruppi dalla directory e assicurati che i nuovi gruppi non siano nascosti per impostazione predefinita, preservando la trasparenza della directory.",
+      "status": "machine-draft"
+    }
+  }
+}

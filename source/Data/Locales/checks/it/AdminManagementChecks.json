@@ -1,0 +1,399 @@
+{
+  "_family": "AdminManagementChecks.json",
+  "ADMIN-001": {
+    "name": {
+      "value": "Inventario degli account super amministratore",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Tutti gli account super amministratore devono essere inventariati ed esaminati. I super amministratori dispongono di accesso illimitato a tutte le impostazioni e i dati dell'organizzazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Tutti gli account super amministratore documentati e giustificati con una chiara esigenza aziendale",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Directory > Utenti > Filtra per ruolo amministratore > Esamina tutti gli account super amministratore e rimuovi le assegnazioni non necessarie",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-002": {
+    "name": {
+      "value": "Audit delle assegnazioni dei ruoli amministratore",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le assegnazioni dei ruoli amministrativi devono seguire il principio del privilegio minimo. È preferibile usare ruoli personalizzati anziché ampi ruoli predefiniti",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Tutte le assegnazioni dei ruoli amministratore esaminate, con ruoli personalizzati a privilegio minimo usati ove possibile",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Account > Ruoli amministratore > Esamina ogni assegnazione di ruolo > Sostituisci i ruoli ampi con ruoli personalizzati a perimetro limitato",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-003": {
+    "name": {
+      "value": "Revisione delle autorizzazioni amministrative delegate",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "I ruoli amministratore personalizzati devono essere esaminati per garantire che le autorizzazioni delegate abbiano un perimetro adeguato e non concedano un accesso eccessivo",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ruoli amministratore personalizzati limitati alle autorizzazioni minime necessarie",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Account > Ruoli amministratore > Esamina ogni ruolo personalizzato > Verifica che le autorizzazioni abbiano un perimetro adeguato",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-004": {
+    "name": {
+      "value": "Account amministratore inattivi o sospesi",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Gli utenti sospesi o inattivi non devono mantenere assegnazioni di ruoli amministratore. Questi account possono essere presi di mira da attacchi di riattivazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Nessun utente sospeso o inattivo con assegnazioni di ruoli amministratore",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Directory > Utenti > Filtra gli utenti sospesi > Rimuovi i ruoli amministratore da tutti gli account sospesi",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-005": {
+    "name": {
+      "value": "Inventario degli account utente",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'inventario degli account utente deve essere mantenuto con un conteggio chiaro degli account attivi, sospesi e archiviati ai fini della governance",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Inventario utenti completo con tutti gli account nello stato appropriato: attivo, sospeso o archiviato",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Directory > Utenti > Esamina l'elenco degli utenti > Sospendi o archivia gli account non più necessari",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-006": {
+    "name": {
+      "value": "Account utente inattivi",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Gli account utente senza accessi da 90 o più giorni potrebbero essere orfani e devono essere valutati per la sospensione o l'eliminazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Nessun account utente inattivo da più di 90 giorni senza una giustificazione documentata",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Directory > Utenti > Ordina per ultimo accesso > Esamina e sospendi gli account inattivi da oltre 90 giorni",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-007": {
+    "name": {
+      "value": "Revisione della struttura delle OU",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La struttura delle unità organizzative deve essere esaminata per garantire che i criteri possano essere applicati efficacemente al perimetro appropriato",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Struttura delle OU documentata con una chiara mappatura dei criteri",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Directory > Unità organizzative > Esamina la gerarchia delle OU e assicurati che sia allineata alle esigenze di applicazione dei criteri",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-008": {
+    "name": {
+      "value": "Impostazioni di condivisione della directory",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La condivisione della directory controlla chi può visualizzare i contatti e i profili dell'organizzazione. La condivisione esterna della directory deve essere limitata",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Condivisione della directory limitata ai soli utenti interni",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Directory > Impostazioni della directory > Impostazioni di condivisione > Limita la condivisione dei contatti agli utenti del dominio",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-009": {
+    "name": {
+      "value": "Visibilità del profilo utente",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La visibilità delle informazioni del profilo utente deve essere controllata per limitare le possibilità di ricognizione da parte di attori esterni",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Visibilità del profilo utente limitata agli utenti interni",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Directory > Impostazioni della directory > Condivisione dei profili > Limita la visibilità dei profili",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-010": {
+    "name": {
+      "value": "Impostazioni dei gruppi e appartenenza esterna",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "I gruppi Google che consentono membri esterni possono esporre comunicazioni e dati interni a soggetti non autorizzati",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Appartenenza esterna ai gruppi disabilitata o limitata a gruppi specifici con giustificazione documentata",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Gruppi per le aziende > Impostazioni di condivisione > Limita l'appartenenza esterna",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-011": {
+    "name": {
+      "value": "Restrizioni sulla creazione di gruppi",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La creazione di gruppi deve essere limitata per evitare la proliferazione di gruppi non gestiti che potrebbero esporre i dati dell'organizzazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Creazione di gruppi limitata agli amministratori o a specifici ruoli delegati",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Gruppi per le aziende > Impostazioni di condivisione > Limita chi può creare gruppi",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-012": {
+    "name": {
+      "value": "Impostazioni di Gruppi per le aziende",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le impostazioni di Gruppi per le aziende controllano le funzionalità dei gruppi, tra cui la pubblicazione esterna, la visibilità dei membri e la condivisione dei contenuti",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Gruppi per le aziende configurato con accesso e pubblicazione esterni limitati",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Gruppi per le aziende > Impostazioni di condivisione > Esamina tutte le impostazioni",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-013": {
+    "name": {
+      "value": "Numero di super amministratori",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Il numero di account super amministratore dovrebbe essere compreso tra 2 e 4. Un numero troppo basso crea un singolo punto di guasto; un numero troppo elevato amplia la superficie di attacco",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Da 2 a 4 account super amministratore",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Directory > Utenti > Filtra per ruolo super amministratore > Porta il numero a un valore compreso tra 2 e 4 rimuovendo i super amministratori non necessari o aggiungendo un account di riserva",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-014": {
+    "name": {
+      "value": "Assured Controls: approvazioni di accesso abilitate",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le approvazioni di accesso devono essere abilitate affinché il personale di supporto Google debba richiedere e ottenere l'approvazione dell'organizzazione prima di accedere ai dati coperti, riducendo il rischio di accesso non autorizzato da parte del provider.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Approvazioni di accesso abilitate (il personale Google richiede l'approvazione del cliente prima di accedere ai dati)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dati > Conformità > Gestione degli accessi / Approvazioni di accesso > Abilita l'obbligo per il personale di supporto Google di richiedere l'approvazione prima di accedere ai dati dell'organizzazione. Richiede Assured Controls.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-015": {
+    "name": {
+      "value": "Assured Controls: accesso del supporto limitato al personale negli Stati Uniti",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'accesso del supporto deve essere limitato al personale Google che si trova negli Stati Uniti per preservare la sovranità dei dati ed evitare che i dati coperti vengano gestiti da personale al di fuori degli Stati Uniti.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ambito di accesso del supporto limitato al personale Google negli Stati Uniti",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dati > Conformità > Gestione degli accessi > Imposta l'ambito di supporto consentito esclusivamente sul personale Google negli Stati Uniti. Richiede Assured Controls.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-016": {
+    "name": {
+      "value": "Assured Controls: elaborazione dei dati multi-area disabilitata",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'elaborazione dei dati su più aree geografiche deve essere disabilitata per tutti i prodotti Google Workspace, affinché i dati coperti vengano elaborati solo all'interno dell'area di archiviazione designata, preservando la sovranità dei dati.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Elaborazione dei dati limitata all'area di archiviazione (elaborazione multi-area disabilitata)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dati > Conformità > Aree geografiche dei dati > Abilita 'Limita l'elaborazione dei dati all'area di archiviazione scelta' per Calendar, Drive e Docs, Gmail, Chat, Meet e Gemini. Richiede Assured Controls / Data Regions.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-017": {
+    "name": {
+      "value": "App interne non attendibili automaticamente (GWS.COMMONCONTROLS.10.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.10.3: considerare automaticamente attendibili le app OAuth interne (di proprietà del dominio) concede loro l'accesso senza revisione, un percorso di accesso ai dati interno o laterale. Legge api_controls.internal_apps; segnala i casi in cui trustInternalApps è attivo.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Le app interne non sono considerate automaticamente attendibili",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione > Sicurezza > Controlli API, disabilita l'attendibilità automatica delle app interne affinché siano sottoposte alla stessa revisione delle app di terze parti.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-018": {
+    "name": {
+      "value": "Area geografica dei dati inattivi configurata (GWS.COMMONCONTROLS.15.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.15.1: impostare un'area geografica per i dati inattivi determina dove vengono archiviati i dati dell'organizzazione (residenza/conformità). Legge data_regions.data_at_rest_region; segnala i casi in cui non è impostata alcuna preferenza di area.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Un'area geografica specifica per i dati inattivi è configurata in base ai criteri dell'organizzazione",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione > Dati > Aree geografiche dei dati, imposta l'area per i dati inattivi richiesta dai criteri di residenza della tua organizzazione anziché lasciarla non impostata.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-019": {
+    "name": {
+      "value": "Elaborazione dei dati limitata all'area di archiviazione (GWS.COMMONCONTROLS.15.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.15.2 richiede che i dati vengano elaborati nella stessa area selezionata per i dati inattivi, affinché l'elaborazione non sposti i dati coperti al di fuori della giurisdizione scelta. Questa verifica legge il criterio Cloud Identity data_regions.data_processing_region e segnala ogni unità organizzativa in cui l'elaborazione non è limitata all'area di archiviazione.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Elaborazione dei dati limitata all'area di archiviazione (limitToStorageRegion = true) in tutte le unità organizzative.",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione Google, in Account > Aree geografiche dei dati, abilita 'Elabora i dati solo nell'area selezionata' affinché l'elaborazione rimanga all'interno dell'area scelta per i dati inattivi.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-020": {
+    "name": {
+      "value": "Accesso alle app di terze parti non configurate bloccato (GWS.COMMONCONTROLS.10.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.10.4 richiede che agli utenti NON sia consentito accedere alle app di terze parti non configurate, poiché un'app non esplicitamente esaminata può richiedere ampi ambiti OAuth e diventare un percorso di esfiltrazione di dati o di compromissione degli account. Questa verifica legge il criterio Cloud Identity api_controls.unconfigured_third_party_apps e segnala ogni unità organizzativa il cui livello di accesso non è BLOCK_ALL_SCOPES (il valore che blocca ogni accesso alle app non configurate).",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Livello di accesso per le app di terze parti non configurate impostato su BLOCK_ALL_SCOPES in tutte le unità organizzative.",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione Google, in Sicurezza > Controlli API > Controllo dell'accesso alle app, imposta le app di terze parti non configurate su 'Bloccate', affinché gli utenti non possano concedere alcun accesso ad app non esplicitamente configurate ed esaminate.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-021": {
+    "name": {
+      "value": "Servizi Google aggiuntivi senza controllo individuale limitati (GWS.COMMONCONTROLS.16.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.16.1 consiglia di disattivare per tutti i servizi Google che non dispongono di un proprio controllo amministrativo individuale. Google modella questa impostazione con semantica invertita: il servizio enterprise_service_restrictions deve essere ENABLED affinché tali servizi aggiuntivi siano limitati (bloccati). Questa verifica legge il criterio Cloud Identity enterprise_service_restrictions.service_status e segnala ogni unità organizzativa in cui serviceState non è ENABLED, ovvero gli utenti possono ancora raggiungere i servizi aggiuntivi non configurati.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "serviceState di enterprise_service_restrictions impostato su ENABLED (servizi aggiuntivi limitati) in tutte le unità organizzative.",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione Google, in App > Servizi Google aggiuntivi, imposta l'accesso ai servizi privi di un controllo individuale su Disattivato per tutti. Ciò abilita la restrizione dei servizi enterprise, impedendo agli utenti di accedere a tali servizi aggiuntivi.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-022": {
+    "name": {
+      "value": "Applicazioni Early Access disabilitate (GWS.COMMONCONTROLS.16.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.16.2 consiglia di disabilitare l'accesso degli utenti alle applicazioni Early Access, funzionalità in fase pre-rilascio che non hanno completato la revisione completa di Google e possono comportare rischi non valutati. Questa verifica legge il criterio Cloud Identity early_access_apps.service_status e segnala ogni unità organizzativa in cui serviceState è ENABLED.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "serviceState di early_access_apps diverso da ENABLED (applicazioni Early Access disabilitate) in tutte le unità organizzative.",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione Google, in App > Servizi Google aggiuntivi > Early Access Apps, disattiva il servizio per tutti affinché gli utenti non possano abilitare le applicazioni Early Access in fase pre-rilascio.",
+      "status": "machine-draft"
+    }
+  }
+}

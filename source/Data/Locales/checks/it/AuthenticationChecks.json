@@ -1,0 +1,327 @@
+{
+  "_family": "AuthenticationChecks.json",
+  "AUTH-001": {
+    "name": {
+      "value": "Applicazione della 2SV",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La verifica in due passaggi (2SV/MFA) deve essere applicata a tutti gli utenti per prevenire la compromissione degli account tramite credenziali rubate",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Applicata a tutte le unità organizzative",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Autenticazione > Verifica in due passaggi > Imposta Applicazione su 'Attiva'",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-002": {
+    "name": {
+      "value": "Tasso di registrazione alla 2SV",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Tutti gli utenti attivi devono avere la 2SV registrata. Tassi di registrazione bassi lasciano gli account vulnerabili agli attacchi basati sulle credenziali",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Registrazione pari o superiore al 95% tra gli utenti attivi",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Report > Report utente > Sicurezza > Esamina gli utenti senza 2SV. Imposta la scadenza di registrazione tramite Sicurezza > Verifica in due passaggi",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-003": {
+    "name": {
+      "value": "Robustezza del metodo 2SV",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le chiavi di sicurezza dovrebbero essere il metodo 2SV principale. La 2SV basata su SMS e chiamate vocali è vulnerabile agli attacchi di SIM swapping e di intercettazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Chiavi di sicurezza applicate come metodo principale",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Autenticazione > Verifica in due passaggi > Imposta i metodi consentiti su 'Solo chiave di sicurezza'",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-004": {
+    "name": {
+      "value": "Lunghezza minima della password",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La lunghezza minima della password dovrebbe essere di almeno 12 caratteri per resistere agli attacchi di forza bruta e a dizionario",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Minimo 12 caratteri",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Autenticazione > Gestione delle password > Imposta la lunghezza minima a 12 o più caratteri",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-005": {
+    "name": {
+      "value": "Restrizione sul riutilizzo delle password",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Gli utenti non dovrebbero poter riutilizzare le password recenti, per prevenire gli attacchi basati sul riciclo delle credenziali",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Riutilizzo delle password non consentito",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Autenticazione > Gestione delle password > Abilita 'Applica i criteri per le password al successivo accesso' e limita il riutilizzo",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-006": {
+    "name": {
+      "value": "Durata della sessione",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La durata delle sessioni web dovrebbe essere limitata per ridurre la finestra utile all'hijacking delle sessioni e agli accessi non autorizzati da dispositivi condivisi",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Durata della sessione pari o inferiore a 12 ore",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Controllo delle sessioni Google > Imposta la durata delle sessioni web",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-007": {
+    "name": {
+      "value": "Configurazione SSO",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Se l'SSO è configurato, dovrebbe usare protocolli sicuri e provider di identità attendibili",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "SSO SAML configurato correttamente con un IdP attendibile",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Autenticazione > SSO con IdP di terze parti > Verifica la configurazione",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-008": {
+    "name": {
+      "value": "Accesso delle app meno sicure",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le app meno sicure (app che non supportano l'autenticazione moderna) dovrebbero essere bloccate per prevenire l'esposizione delle credenziali",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Disabilitato per tutti gli utenti",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Autenticazione > App meno sicure > Imposta su 'Disabilita l'accesso alle app meno sicure'",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-009": {
+    "name": {
+      "value": "Criteri per le password per le app",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le password specifiche per le app aggirano la 2SV e devono essere controllate. Se consentite, dovrebbero richiedere prima la registrazione alla 2SV",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Password per le app limitate o disabilitate",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Autenticazione > Verifica in due passaggi > Esamina le impostazioni delle password per le app",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-010": {
+    "name": {
+      "value": "Configurazione delle opzioni di recupero",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Il recupero self-service degli utenti deve essere configurato in modo appropriato. I super amministratori non dovrebbero disporre di opzioni di recupero personali, per prevenire il social engineering",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Super amministratori: nessun recupero personale. Utenti normali: opzioni di recupero consentite con possibilità di intervento dell'amministratore",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Autenticazione > Recupero dell'account > Disabilita il recupero personale per l'OU dei super amministratori",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-011": {
+    "name": {
+      "value": "Impostazioni delle verifiche di accesso",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le verifiche di accesso dovrebbero essere abilitate per fornire un controllo aggiuntivo quando vengono rilevati tentativi di accesso sospetti",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Verifiche di accesso abilitate con ID dipendente o altro tipo di verifica",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Sicurezza > Autenticazione > Verifiche di accesso > Abilita",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-012": {
+    "name": {
+      "value": "Registrazione alla 2SV dei super amministratori",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Tutti gli account super amministratore devono avere la 2SV registrata. I super amministratori dispongono di accesso illimitato a tutte le impostazioni e i dati",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "100% dei super amministratori registrati alla 2SV",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Report > Report utente > Sicurezza > Filtra per stato amministratore > Assicurati che tutti i super amministratori abbiano la 2SV registrata",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-013": {
+    "name": {
+      "value": "Account super amministratore inattivi",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Gli account super amministratore che non hanno effettuato accessi di recente potrebbero essere orfani e a rischio di compromissione. Tutti gli account super amministratore devono essere gestiti attivamente",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Nessun account super amministratore inattivo da più di 90 giorni",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Directory > Utenti > Filtra per ruolo amministratore > Esamina e rimuovi o sospendi gli account super amministratore inattivi",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-014": {
+    "name": {
+      "value": "Registrazione alla 2SV consentita",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Agli utenti deve essere consentito registrarsi alla verifica in due passaggi. Disabilitare la registrazione alla 2SV impedisce l'adozione dell'MFA e lascia gli account protetti dalle sole password",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Registrazione alla 2SV consentita in tutte le unità organizzative",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Sicurezza > Autenticazione > Verifica in due passaggi > Imposta 'Consenti agli utenti di attivare la verifica in due passaggi' su Attiva per tutte le unità organizzative",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-015": {
+    "name": {
+      "value": "Periodo di tolleranza per la registrazione alla 2SV",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Il periodo di tolleranza prima che i nuovi utenti debbano registrarsi alla 2SV dovrebbe essere breve. Un periodo di tolleranza lungo lascia gli account privi di protezione MFA per una finestra prolungata dopo la creazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Periodo di tolleranza pari o inferiore a 7 giorni (168 ore)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Sicurezza > Autenticazione > Verifica in due passaggi > Imposta il periodo di tolleranza per la registrazione dei nuovi utenti su 7 giorni o meno",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-016": {
+    "name": {
+      "value": "Registrazione autonoma alla Protezione avanzata",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Consentire la registrazione autonoma al programma di protezione avanzata permette agli utenti ad alto rischio di adottare le più solide protezioni disponibili per l'account senza l'intervento dell'amministratore",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Registrazione autonoma alla Protezione avanzata consentita in tutte le unità organizzative",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Sicurezza > Autenticazione > Programma di protezione avanzata > Consenti agli utenti di registrarsi autonomamente alla Protezione avanzata",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-017": {
+    "name": {
+      "value": "Recupero autonomo dell'account super amministratore",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Il recupero self-service dell'account per i super amministratori rappresenta un percorso di compromissione tramite social engineering e dovrebbe essere disattivato. I super amministratori dovrebbero essere recuperati solo da un altro amministratore",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Recupero autonomo dei super amministratori disabilitato in tutte le unità organizzative",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Sicurezza > Autenticazione > Recupero dell'account > Disattiva 'Consenti ai super amministratori di recuperare il proprio account' per tutte le unità organizzative",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-018": {
+    "name": {
+      "value": "Recupero autonomo dell'account disabilitato per utenti e amministratori non super (GWS.COMMONCONTROLS.8.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.8.2 richiede che il recupero autonomo dell'account sia disabilitato per gli utenti e per gli account amministratore non super. Il recupero self-service è un vettore di compromissione degli account: un aggressore che controlla un canale di recupero può impossessarsi dell'account senza passare dall'help desk. Questa verifica legge il criterio Cloud Identity security.user_account_recovery e segnala ogni unità organizzativa in cui il recupero autonomo è abilitato.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Recupero autonomo dell'account disabilitato (enableAccountRecovery = false) per gli utenti e gli amministratori non super in tutte le unità organizzative.",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nella Console di amministrazione Google, in Sicurezza > Recupero dell'account, disabilita il recupero autonomo per gli utenti (e gli amministratori non super), affinché il recupero dell'account avvenga tramite un amministratore o un processo di help desk anziché tramite un canale controllato dall'utente.",
+      "status": "machine-draft"
+    }
+  }
+}

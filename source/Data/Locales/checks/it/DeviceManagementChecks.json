@@ -1,0 +1,201 @@
+{
+  "_family": "DeviceManagementChecks.json",
+  "DEVICE-001": {
+    "name": {
+      "value": "Audit dei criteri MDM",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "I dispositivi mobili che accedono ai dati dell'organizzazione dovrebbero essere gestiti tramite criteri MDM per applicare i controlli di sicurezza",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Tutti i dispositivi mobili sotto gestione MDM con criteri di sicurezza applicati",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Dispositivi mobili > Esamina lo stato di gestione dei dispositivi > Abilita l'MDM avanzato per i dispositivi non gestiti",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-002": {
+    "name": {
+      "value": "Requisiti di approvazione dei dispositivi",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "I dispositivi mobili dovrebbero richiedere l'approvazione dell'amministratore prima di accedere ai dati dell'organizzazione, per impedire l'accesso da dispositivi non autorizzati",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Approvazione del dispositivo richiesta prima dell'accesso ai dati dell'organizzazione",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Dispositivi mobili ed endpoint > Impostazioni > Generali > Richiedi l'approvazione dell'amministratore per l'accesso dei dispositivi",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-003": {
+    "name": {
+      "value": "Applicazione del blocco schermo",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Il blocco schermo dovrebbe essere applicato a tutti i dispositivi mobili per impedire l'accesso fisico non autorizzato ai dati dell'organizzazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Blocco schermo applicato con requisiti minimi di PIN/password",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Dispositivi mobili ed endpoint > Impostazioni > Impostazioni universali > Blocco schermo > Applica il blocco schermo con una complessità minima",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-004": {
+    "name": {
+      "value": "Requisiti di crittografia dei dispositivi",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La crittografia dei dispositivi dovrebbe essere obbligatoria su tutti i dispositivi mobili per proteggere i dati inattivi in caso di furto o smarrimento fisico",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Crittografia obbligatoria su tutti i dispositivi gestiti",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Dispositivi mobili ed endpoint > Impostazioni > Impostazioni universali > Crittografia > Richiedi la crittografia dei dispositivi",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-005": {
+    "name": {
+      "value": "Blocco dei dispositivi compromessi",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "I dispositivi compromessi dovrebbero essere automaticamente bloccati dall'accesso ai dati dell'organizzazione per prevenire l'esposizione dei dati",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Rilevamento e blocco dei dispositivi compromessi abilitati",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Dispositivi mobili ed endpoint > Impostazioni > Impostazioni universali > Dispositivi compromessi > Blocca l'accesso ai dati dai dispositivi compromessi",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-006": {
+    "name": {
+      "value": "Criterio per i dispositivi con jailbreak o root",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "I dispositivi con jailbreak (iOS) o root (Android) aggirano i controlli di sicurezza a livello di sistema operativo e dovrebbero essere bloccati dall'accesso ai dati dell'organizzazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Dispositivi con jailbreak o root bloccati dall'accesso ai dati dell'organizzazione",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Dispositivi mobili ed endpoint > Impostazioni > Impostazioni universali > Dispositivi compromessi > Blocca i dispositivi con jailbreak o root",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-007": {
+    "name": {
+      "value": "Gestione del browser Chrome",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "I browser Chrome utilizzati per accedere ai dati dell'organizzazione dovrebbero essere registrati in Chrome Browser Cloud Management per l'applicazione dei criteri",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Browser Chrome registrati in Cloud Management con criteri applicati",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Chrome > Impostazioni > Esamina e configura i criteri del browser Chrome per i browser gestiti",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-008": {
+    "name": {
+      "value": "Elenco consentiti/bloccati delle estensioni di Chrome",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le estensioni di Chrome dovrebbero essere gestite tramite un elenco di elementi consentiti o bloccati per impedire che estensioni malevole accedano ai dati dell'organizzazione",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Installazione delle estensioni limitata a quelle approvate dall'amministratore tramite elenco consentiti",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Chrome > App ed estensioni > Configura l'elenco consentiti e bloccati delle estensioni",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-009": {
+    "name": {
+      "value": "Criteri per i dispositivi Chrome OS",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Sui dispositivi Chrome OS dovrebbero essere applicati criteri appropriati, tra cui aggiornamento automatico, restrizioni di accesso e impostazioni di sicurezza",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Dispositivi Chrome OS gestiti con criteri applicati per aggiornamenti, accesso e sicurezza",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Chrome > Impostazioni > Impostazioni dei dispositivi > Configura l'aggiornamento automatico, le restrizioni di accesso e i criteri di sicurezza",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-010": {
+    "name": {
+      "value": "Impostazioni di verifica degli endpoint",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La verifica degli endpoint fornisce segnali di attendibilità dei dispositivi per i criteri di accesso sensibili al contesto e dovrebbe essere abilitata",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Verifica degli endpoint abilitata per l'accesso sensibile al contesto",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Dispositivi mobili ed endpoint > Impostazioni > Generali > Abilita la verifica degli endpoint per i criteri di accesso sensibili al contesto",
+      "status": "machine-draft"
+    }
+  },
+  "DEVICE-011": {
+    "name": {
+      "value": "Inventario dei dispositivi di proprietà aziendale",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "I dispositivi di proprietà aziendale dovrebbero essere inventariati per mantenere la visibilità sugli asset dell'organizzazione che accedono ai dati aziendali",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Inventario completo di tutti i dispositivi di proprietà aziendale mantenuto",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Dispositivi > Dispositivi mobili > Esamina l'inventario dei dispositivi > Assicurati che tutti i dispositivi di proprietà aziendale siano registrati e censiti",
+      "status": "machine-draft"
+    }
+  }
+}
