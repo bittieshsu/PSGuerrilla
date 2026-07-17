@@ -369,7 +369,7 @@
       "status": "machine-draft"
     },
     "firstRun": {
-      "value": "Esta es la primera ejecución registrada en este alcance. El historial de\\nejecuciones comienza con el motor de comparación unificado de esta versión,\\npor lo que no se leen archivos delta anteriores; la comparación comienza con\\nsu próxima evaluación, cuando esta ejecución se convierte en la base.",
+      "value": "Esta es la primera ejecución registrada en este alcance. El historial de\nejecuciones comienza con el motor de comparación unificado de esta versión,\npor lo que no se leen archivos delta anteriores; la comparación comienza con\nsu próxima evaluación, cuando esta ejecución se convierte en la base.",
       "status": "machine-draft"
     },
     "previousRun": {
@@ -509,7 +509,7 @@
       "status": "machine-draft"
     },
     "sevSummary": {
-      "value": "Crítico: <strong>{0}</strong> &middot; Alto: <strong>{1}</strong> &middot;\\n     Medio: <strong>{2}</strong> &middot; Bajo: <strong>{3}</strong>",
+      "value": "Crítico: <strong>{0}</strong> &middot; Alto: <strong>{1}</strong> &middot;\n     Medio: <strong>{2}</strong> &middot; Bajo: <strong>{3}</strong>",
       "status": "machine-draft"
     },
     "bloodhoundHeading": {
