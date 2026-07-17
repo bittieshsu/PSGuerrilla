@@ -1,0 +1,147 @@
+{
+  "_family": "ADGroupPolicyChecks.json",
+  "ADGPO-001": {
+    "name": { "value": "Inventario dei GPO con stato dei collegamenti", "status": "machine-draft" },
+    "description": { "value": "Un inventario completo di tutti gli oggetti Criteri di gruppo con il relativo stato dei collegamenti, ambito e stato di imposizione costituisce la base per l'analisi della sicurezza dei GPO. Comprendere quali GPO sono collegati, imposti o disabilitati è essenziale per valutare la postura di sicurezza effettiva fornita tramite Criteri di gruppo", "status": "machine-draft" },
+    "recommendedValue": { "value": "Inventario GPO completo documentato con stato dei collegamenti, ambito e proprietario per ciascun GPO", "status": "machine-draft" },
+    "remediationSteps": { "value": "Genera un inventario GPO completo usando Get-GPO -All e Get-GPOReport. Documenta per ogni GPO la finalità, il proprietario, le posizioni dei collegamenti e lo stato di imposizione. Stabilisci una convenzione di denominazione per i GPO e assicurati che tutti i GPO vi si conformino. Implementa un processo di gestione delle modifiche ai GPO.", "status": "machine-draft" }
+  },
+  "ADGPO-002": {
+    "name": { "value": "GPO vuoti", "status": "machine-draft" },
+    "description": { "value": "I GPO che non contengono alcuna impostazione configurata (entrambe le sezioni Configurazione computer e Configurazione utente sono vuote) aggiungono complessità inutile all'elaborazione dei Criteri di gruppo e possono indicare tentativi di configurazione abbandonati o artefatti di test mai ripuliti", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nessun GPO vuoto nel dominio; tutti i GPO contengono almeno un'impostazione configurata", "status": "machine-draft" },
+    "remediationSteps": { "value": "Individua i GPO senza impostazioni configurate usando Get-GPOReport in formato XML e controllando la presenza di elementi ExtensionData vuoti. Verifica che i GPO vuoti non siano segnaposto per un uso futuro. Elimina i GPO effettivamente vuoti dopo aver confermato che non sono referenziati da alcuna automazione o documentazione.", "status": "machine-draft" }
+  },
+  "ADGPO-003": {
+    "name": { "value": "GPO non collegati", "status": "machine-draft" },
+    "description": { "value": "I GPO che non sono collegati ad alcun sito, dominio o OU non vengono applicati e rappresentano configurazione inutilizzata. I GPO non collegati possono contenere impostazioni sensibili, credenziali in GPP o script che potrebbero essere sfruttati se un aggressore in seguito li collegasse a un'OU di destinazione", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nessun GPO non collegato, salvo quelli documentati come modelli o backup con controlli di accesso appropriati", "status": "machine-draft" },
+    "remediationSteps": { "value": "Individua i GPO non collegati confrontando tutti i GUID dei GPO con gli attributi gPLink su tutte le OU, i siti e la radice del dominio. Esamina ogni GPO non collegato per determinare se debba essere collegato, archiviato o eliminato. Rimuovi il contenuto sensibile dai GPO non collegati conservati come modelli.", "status": "machine-draft" }
+  },
+  "ADGPO-004": {
+    "name": { "value": "GPO disabilitati con contenuto", "status": "machine-draft" },
+    "description": { "value": "I GPO in cui la sezione Configurazione utente o Configurazione computer è disabilitata ma contiene comunque impostazioni configurate possono indicare una dismissione incompleta o una disabilitazione involontaria. Se riabilitate da un aggressore con autorizzazioni di modifica dei GPO, le impostazioni dormienti entrerebbero in vigore", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nessun GPO con sezioni disabilitate che contengono impostazioni configurate; le sezioni disabilitate dovrebbero essere vuote", "status": "machine-draft" },
+    "remediationSteps": { "value": "Esamina tutti i GPO in cui GpoStatus è UserSettingsDisabled o ComputerSettingsDisabled. Verifica che la sezione disabilitata non contenga impostazioni attive. Riabilita la sezione se le impostazioni sono necessarie, oppure rimuovi le impostazioni dalla sezione disabilitata. Documenta il motivo di eventuali sezioni disabilitate intenzionalmente.", "status": "machine-draft" }
+  },
+  "ADGPO-005": {
+    "name": { "value": "GPO duplicati", "status": "machine-draft" },
+    "description": { "value": "Più GPO con impostazioni sostanzialmente simili o identiche creano oneri di gestione, aumentano il rischio di deriva della configurazione e complicano la risoluzione dei problemi. I GPO duplicati possono inoltre produrre impostazioni in conflitto che generano comportamenti imprevedibili", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nessun GPO duplicato; ogni GPO ha una finalità univoca e impostazioni non sovrapposte", "status": "machine-draft" },
+    "remediationSteps": { "value": "Esporta tutti i report GPO in formato XML e confronta le impostazioni tra i GPO per individuare i duplicati. Consolida i GPO duplicati in un unico GPO dove possibile. Aggiorna i collegamenti delle OU per fare riferimento al GPO consolidato. Testa il GPO consolidato in un'OU di staging prima di rimuovere i duplicati.", "status": "machine-draft" }
+  },
+  "ADGPO-006": {
+    "name": { "value": "GPO con collegamenti interrotti", "status": "machine-draft" },
+    "description": { "value": "I collegamenti GPO che fanno riferimento a GPO inesistenti o a GPO i cui dati SYSVOL sono mancanti indicano problemi di replica, eliminazione impropria o corruzione. I collegamenti interrotti possono causare errori di elaborazione dei Criteri di gruppo e possono mascherare l'assenza delle configurazioni di sicurezza previste", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nessun collegamento GPO interrotto; tutti i riferimenti gPLink si risolvono in GPO validi con dati SYSVOL intatti", "status": "machine-draft" },
+    "remediationSteps": { "value": "Analizza gli attributi gPLink su tutte le OU, i siti e la radice del dominio per estrarre i GUID dei GPO referenziati. Verifica che ogni GUID esista nei contenitori GPC (AD) e GPT (SYSVOL). Rimuovi i collegamenti interrotti usando Set-GPLink o modificando direttamente l'attributo gPLink. Indaga sulla causa principale di eventuali dati GPO mancanti.", "status": "machine-draft" }
+  },
+  "ADGPO-007": {
+    "name": { "value": "Incoerenze delle autorizzazioni dei GPO", "status": "machine-draft" },
+    "description": { "value": "Ogni GPO dispone sia di autorizzazioni AD (sull'oggetto GPC) sia di autorizzazioni NTFS (sulla cartella GPT in SYSVOL). Le incoerenze tra questi set di autorizzazioni possono impedire l'applicazione del GPO, consentire modifiche non autorizzate o creare lacune di sicurezza in cui il contenuto SYSVOL è più permissivo dell'oggetto AD", "status": "machine-draft" },
+    "recommendedValue": { "value": "Autorizzazioni coerenti tra gli oggetti GPC in AD e le cartelle GPT in SYSVOL per tutti i GPO; gli Utenti autenticati dispongono dell'accesso in lettura", "status": "machine-draft" },
+    "remediationSteps": { "value": "Confronta il descrittore di sicurezza su ogni oggetto GPC in AD con l'ACL NTFS sulla cartella GPT corrispondente in SYSVOL. Assicurati che entrambi concedano l'accesso in lettura agli Utenti autenticati (necessario per l'applicazione del GPO). Risolvi eventuali incoerenze allineando le autorizzazioni SYSVOL con l'oggetto AD. Esegui dcdiag /test:sysvolcheck per individuare i problemi.", "status": "machine-draft" }
+  },
+  "ADGPO-008": {
+    "name": { "value": "GPO non applicati a causa di filtri WMI", "status": "machine-draft" },
+    "description": { "value": "I filtri WMI possono impedire l'applicazione dei GPO ai sistemi di destinazione in base a query WQL. Filtri WMI troppo ampi o configurati in modo errato possono inavvertitamente bloccare l'applicazione di GPO critici per la sicurezza ai sistemi che li richiedono, creando lacune nella configurazione di sicurezza prevista", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tutti i GPO critici per la sicurezza applicati alle destinazioni previste; filtri WMI convalidati rispetto alle condizioni effettive dell'ambiente", "status": "machine-draft" },
+    "remediationSteps": { "value": "Esamina i filtri WMI collegati ai GPO critici per la sicurezza usando Get-GPO ed esaminando le assegnazioni dei filtri WMI. Testa le query dei filtri WMI su sistemi di destinazione rappresentativi per verificare che vengano valutate correttamente. Usa Risultati Criteri di gruppo (gpresult) su sistemi campione per confermare che i GPO vengano applicati. Sostituisci o correggi i filtri WMI che bloccano l'applicazione prevista.", "status": "machine-draft" }
+  },
+  "ADGPO-009": {
+    "name": { "value": "GPO senza autorizzazione di applicazione", "status": "machine-draft" },
+    "description": { "value": "Se l'autorizzazione Applica criteri di gruppo (Lettura + Applica) non è concessa alle entità di sicurezza appropriate, il GPO non verrà elaborato da quei sistemi anche quando collegato all'OU corretta. Questo si verifica comunemente quando gli Utenti autenticati vengono rimossi dal filtro di sicurezza del GPO senza aggiungere gruppi specifici", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tutti i GPO hanno l'autorizzazione Applica criteri di gruppo concessa ai gruppi di sicurezza appropriati; nessun GPO privo di destinazioni di applicazione", "status": "machine-draft" },
+    "remediationSteps": { "value": "Controlla ogni GPO per le autorizzazioni Applica criteri di gruppo usando Get-GPPermission. Assicurati che almeno un gruppo di sicurezza con membri disponga dell'autorizzazione Applica. Per i GPO che dovrebbero applicarsi solo a gruppi specifici, verifica che i gruppi di destinazione contengano i membri previsti. Aggiungi gli Utenti autenticati con autorizzazione di sola lettura (senza Applica) se si usa il filtro di sicurezza.", "status": "machine-draft" }
+  },
+  "ADGPO-010": {
+    "name": { "value": "Mancata corrispondenza della versione GPO tra SYSVOL e AD", "status": "machine-draft" },
+    "description": { "value": "Ogni GPO mantiene numeri di versione sia nell'oggetto GPC in AD (attributo versionNumber) sia nella cartella GPT in SYSVOL (gpt.ini). Una mancata corrispondenza tra queste versioni indica un errore di replica, una corruzione di SYSVOL o aggiornamenti GPO incompleti. Le mancate corrispondenze di versione possono far applicare ai client criteri obsoleti o incompleti", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tutte le versioni dei GPO corrispondono tra gli oggetti GPC in AD e i file gpt.ini GPT in SYSVOL su tutti i controller di dominio", "status": "machine-draft" },
+    "remediationSteps": { "value": "Confronta l'attributo versionNumber in AD con il valore Version nel file gpt.ini in SYSVOL per ogni GPO su tutti i controller di dominio. Indaga e risolvi eventuali problemi di replica DFSR o FRS che causano le mancate corrispondenze. Forza la replica usando repadmin /syncall e DFSRDIAG. Per le mancate corrispondenze persistenti, usa il processo di ripristino autorevole per SYSVOL.", "status": "machine-draft" }
+  },
+  "ADGPO-011": {
+    "name": { "value": "Analisi della sicurezza delle impostazioni GPO", "status": "machine-draft" },
+    "description": { "value": "Le impostazioni dei GPO possono indebolire la postura di sicurezza se disabilitano protezioni, allentano i requisiti di autenticazione o configurano impostazioni predefinite non sicure. Questo controllo analizza le principali impostazioni rilevanti per la sicurezza di tutti i GPO, incluse i criteri delle password, il blocco degli account, le assegnazioni dei diritti utente, le opzioni di sicurezza e i criteri di audit", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tutte le impostazioni dei GPO allineate alla baseline di sicurezza dell'organizzazione; nessun GPO che indebolisca le configurazioni di sicurezza predefinite", "status": "machine-draft" },
+    "remediationSteps": { "value": "Esporta tutti i report GPO e analizza le impostazioni rilevanti per la sicurezza, incluse i criteri delle password, il blocco degli account, le assegnazioni dei diritti utente, i gruppi con restrizioni, le opzioni di sicurezza e le regole di Windows Firewall. Confronta le impostazioni con i benchmark CIS o le baseline dell'organizzazione. Correggi i GPO che configurano impostazioni più deboli della baseline.", "status": "machine-draft" }
+  },
+  "ADGPO-012": {
+    "name": { "value": "Rilevamento di password cPassword/GPP", "status": "machine-draft" },
+    "description": { "value": "Le password archiviate nelle Preferenze Criteri di gruppo (cPassword) sono cifrate con una chiave AES pubblicamente nota pubblicata da Microsoft (MS14-025). Qualsiasi utente di dominio può leggere i file XML in SYSVOL contenenti queste password e decifrarle banalmente. Questa è una delle vulnerabilità di Active Directory più comuni e facilmente sfruttabili", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nessun valore cPassword presente in alcun file XML GPP in SYSVOL", "status": "machine-draft" },
+    "remediationSteps": { "value": "Cerca in tutte le cartelle GPO di SYSVOL i file XML contenenti attributi cpassword in Groups.xml, Services.xml, Scheduledtasks.xml, DataSources.xml, Printers.xml e Drives.xml. Rimuovi tutti gli elementi GPP che contengono password archiviate. Usa invece LAPS, gMSA o altre soluzioni moderne di gestione delle credenziali. Applica la patch MS14-025 per impedire la creazione di nuovi cPassword.", "status": "machine-draft" }
+  },
+  "ADGPO-013": {
+    "name": { "value": "Analisi degli script nei GPO", "status": "machine-draft" },
+    "description": { "value": "Gli script GPO di avvio, arresto, accesso e disconnessione vengono eseguiti con i privilegi del sistema o dell'utente e sono archiviati nella condivisione SYSVOL accessibile. Script dannosi inseriti nei GPO possono ottenere l'esecuzione di codice diffusa in tutto il dominio. Gli script dovrebbero essere esaminati per problemi di sicurezza, incluse credenziali hardcoded, comandi non sicuri e riferimenti a percorsi non sicuri", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tutti gli script GPO esaminati, firmati dove possibile e privi di credenziali hardcoded o operazioni non sicure", "status": "machine-draft" },
+    "remediationSteps": { "value": "Enumera tutti gli script configurati nei GPO (Avvio, Arresto, Accesso, Disconnessione) dalla sezione Script dei report GPO. Esamina il contenuto degli script per credenziali hardcoded, uso di LOLBin, riferimenti a risorse esterne e operazioni non sicure. Implementa la firma degli script dove supportata. Assicurati che le autorizzazioni dei file di script limitino la modifica ai soli amministratori autorizzati.", "status": "machine-draft" }
+  },
+  "ADGPO-014": {
+    "name": { "value": "Pacchetti MSI nei GPO", "status": "machine-draft" },
+    "description": { "value": "Le impostazioni GPO di installazione software distribuiscono pacchetti MSI ai computer di destinazione. Pacchetti MSI compromessi o non autorizzati nei GPO possono distribuire malware in tutto il dominio. La posizione di origine dei pacchetti MSI e i controlli di accesso su tali posizioni devono essere verificati", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tutti i pacchetti MSI distribuiti tramite GPO provenienti da posizioni sicure e ad accesso controllato con integrità verificata", "status": "machine-draft" },
+    "remediationSteps": { "value": "Individua tutte le impostazioni di installazione software nei GPO. Verifica che i percorsi di origine MSI puntino a condivisioni protette con autorizzazioni NTFS e di condivisione appropriate. Conferma che i pacchetti MSI provengano da fornitori attendibili e non siano stati manomessi. Valuta l'uso di WDAC o AppLocker per limitare l'installazione MSI ai soli pacchetti approvati.", "status": "machine-draft" }
+  },
+  "ADGPO-015": {
+    "name": { "value": "Attività pianificate nei GPO", "status": "machine-draft" },
+    "description": { "value": "Le Preferenze Criteri di gruppo possono creare attività pianificate che vengono eseguite con credenziali specificate o come SYSTEM sui computer di destinazione. Attività pianificate dannose distribuite tramite GPO forniscono un'esecuzione di codice persistente in tutto l'ambiente. Questa è una tecnica di post-sfruttamento comune per mantenere la persistenza a livello di dominio", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tutte le attività pianificate distribuite tramite GPO documentate, con account a privilegio minimo e che eseguono solo operazioni autorizzate", "status": "machine-draft" },
+    "remediationSteps": { "value": "Esamina tutti gli elementi Attività pianificata nelle Preferenze GPO di tutti i GPO. Verifica che ogni attività esegua un comando legittimo e autorizzato con i privilegi minimi necessari. Rimuovi eventuali attività che archiviano credenziali (usa invece un contesto gMSA o SYSTEM). Assicurati che gli eseguibili delle attività siano archiviati in posizioni protette. Documenta la finalità aziendale di ogni attività pianificata distribuita tramite GPO.", "status": "machine-draft" }
+  },
+  "ADGPO-016": {
+    "name": { "value": "Revisione della sicurezza delle impostazioni del Registro di sistema", "status": "machine-draft" },
+    "description": { "value": "I GPO possono distribuire impostazioni del Registro di sistema che influiscono sulle configurazioni di sicurezza, incluse la disabilitazione di funzionalità di sicurezza, l'indebolimento dei protocolli di autenticazione o l'abilitazione di servizi non sicuri. Le impostazioni basate sul Registro di sistema nei GPO dovrebbero essere esaminate per assicurarsi che non indeboliscano la postura di sicurezza dei sistemi di destinazione", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nessuna impostazione del Registro di sistema nei GPO che indebolisca le impostazioni predefinite di sicurezza; tutte le modifiche al Registro di sistema documentate e giustificate", "status": "machine-draft" },
+    "remediationSteps": { "value": "Esporta le impostazioni del Registro di sistema dei GPO dai Modelli amministrativi e dalle Preferenze del Registro di sistema. Esamina le impostazioni che influiscono su chiavi del Registro di sistema rilevanti per la sicurezza, incluse HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa, HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies e le chiavi correlate all'autenticazione. Rimuovi o correggi le impostazioni che indeboliscono la postura di sicurezza.", "status": "machine-draft" }
+  },
+  "ADGPO-017": {
+    "name": { "value": "Analisi dei gruppi con restrizioni", "status": "machine-draft" },
+    "description": { "value": "Le impostazioni GPO Gruppi con restrizioni impongono l'appartenenza ai gruppi sui sistemi di destinazione, comunemente usate per gestire l'appartenenza al gruppo Administrators locale. Gruppi con restrizioni configurati in modo errato possono inavvertitamente concedere l'accesso come amministratore locale a utenti non autorizzati o non riuscire a rimuovere membri non autorizzati dai gruppi locali con privilegi", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gruppi con restrizioni configurati per imporre un'appartenenza di amministratore locale a privilegio minimo; solo gruppi autorizzati nel gruppo Administrators locale", "status": "machine-draft" },
+    "remediationSteps": { "value": "Esamina le impostazioni Gruppi con restrizioni in tutti i GPO. Verifica che il gruppo Administrators locale sia gestito in modo da includere solo i gruppi di amministrazione autorizzati. Assicurati che i Gruppi con restrizioni non aggiungano Domain Users o altri gruppi ampi ai gruppi locali con privilegi. Valuta l'uso delle Preferenze Criteri di gruppo per un controllo più granulare (aggiunta/rimozione di membri senza sostituire l'intera appartenenza).", "status": "machine-draft" }
+  },
+  "ADGPO-018": {
+    "name": { "value": "Configurazione dei criteri di audit tramite GPO", "status": "machine-draft" },
+    "description": { "value": "I criteri di audit di Windows configurati tramite Criteri di gruppo determinano quali eventi di sicurezza vengono registrati sui sistemi aggiunti al dominio. Una configurazione di audit insufficiente crea punti ciechi che consentono agli aggressori di operare senza essere rilevati. Le categorie di audit principali includono gli eventi di accesso, la gestione degli account, l'accesso ai servizi directory e l'accesso agli oggetti", "status": "machine-draft" },
+    "recommendedValue": { "value": "Criteri di audit avanzati configurati tramite GPO con audit di successo e di errore per tutte le categorie critiche, allineati ai requisiti di rilevamento dell'organizzazione", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configura Configurazione dei criteri di audit avanzati (non i Criteri di audit legacy) tramite GPO. Abilita come minimo: Accesso account (Successo/Errore), Gestione account (Successo/Errore), Accesso servizi directory (Successo/Errore), Accesso/Disconnessione (Successo/Errore), Accesso oggetti (Successo/Errore per le risorse sensibili), Modifica criteri (Successo), Uso privilegi (Successo/Errore) e Sistema (Successo/Errore). Distribuisci a tutti i sistemi aggiunti al dominio.", "status": "machine-draft" }
+  },
+  "ADGPO-019": {
+    "name": { "value": "Configurazione di Windows Firewall tramite GPO", "status": "machine-draft" },
+    "description": { "value": "Le impostazioni di Windows Defender Firewall con sicurezza avanzata distribuite tramite GPO controllano l'accesso di rete sui sistemi aggiunti al dominio. I GPO che disabilitano il firewall, consentono regole in ingresso troppo permissive o non riescono a configurare il firewall lasciano i sistemi vulnerabili allo spostamento laterale e agli attacchi basati sulla rete", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Firewall abilitato per tutti i profili (Dominio, Privato, Pubblico) con regole in ingresso di tipo nega per impostazione predefinita configurate tramite GPO", "status": "machine-draft" },
+    "remediationSteps": { "value": "Esamina le impostazioni GPO di Windows Firewall in tutti i GPO applicabili. Assicurati che il firewall sia abilitato per i profili Dominio, Privato e Pubblico. Verifica che le regole in ingresso seguano un approccio di tipo nega per impostazione predefinita con regole di autorizzazione specifiche solo per i servizi necessari. Rimuovi eventuali impostazioni GPO che disabilitano Windows Firewall. Testa le regole del firewall in un'OU di staging prima della distribuzione a livello di dominio.", "status": "machine-draft" }
+  },
+  "ADGPO-020": {
+    "name": { "value": "Criteri di esecuzione di PowerShell tramite GPO", "status": "machine-draft" },
+    "description": { "value": "I criteri di esecuzione di PowerShell controllano quali script possono essere eseguiti su un sistema. Sebbene i criteri di esecuzione non costituiscano un limite di sicurezza, impostarli su Unrestricted o Bypass tramite GPO rimuove un livello di difesa e rende più facile agli aggressori eseguire script dannosi senza richieste all'utente", "status": "machine-draft" },
+    "recommendedValue": { "value": "Criteri di esecuzione di PowerShell impostati su AllSigned o RemoteSigned tramite GPO; non impostati su Unrestricted o Bypass", "status": "machine-draft" },
+    "remediationSteps": { "value": "Esamina le impostazioni GPO in Configurazione computer > Modelli amministrativi > Componenti di Windows > Windows PowerShell > Attiva esecuzione script. Imposta i criteri di esecuzione su AllSigned per gli ambienti ad alta sicurezza o su RemoteSigned per gli ambienti standard. Implementa la firma del codice per gli script PowerShell autorizzati. Evita di impostare Bypass o Unrestricted tramite GPO.", "status": "machine-draft" }
+  },
+  "ADGPO-021": {
+    "name": { "value": "Configurazione della registrazione di PowerShell", "status": "machine-draft" },
+    "description": { "value": "La registrazione dei moduli, la registrazione dei blocchi di script e la trascrizione di PowerShell forniscono una visibilità critica sugli attacchi basati su PowerShell, usati nella maggior parte delle compromissioni moderne di Active Directory. Senza queste capacità di registrazione, i difensori non possono rilevare o indagare la ricognizione, il furto di credenziali o lo spostamento laterale basati su PowerShell", "status": "machine-draft" },
+    "recommendedValue": { "value": "Registrazione dei moduli, registrazione dei blocchi di script e trascrizione abilitate tramite GPO su tutti i sistemi", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configura le impostazioni GPO in Configurazione computer > Modelli amministrativi > Componenti di Windows > Windows PowerShell. Abilita la registrazione dei moduli con '*' per registrare tutti i moduli. Abilita la registrazione dei blocchi di script con 'Registra eventi di avvio/arresto di invocazione dei blocchi di script'. Abilita la trascrizione di PowerShell con una directory di output sicura. Distribuisci a tutti i sistemi aggiunti al dominio e verifica la raccolta dei log.", "status": "machine-draft" }
+  },
+  "ADGPO-022": {
+    "name": { "value": "Valutazione dei criteri AppLocker/WDAC", "status": "machine-draft" },
+    "description": { "value": "I criteri di controllo delle applicazioni come AppLocker e Windows Defender Application Control limitano quali eseguibili, script e DLL possono essere eseguiti sui sistemi gestiti. Senza il controllo delle applicazioni, gli aggressori possono eseguire strumenti e malware arbitrari sui sistemi compromessi per facilitare lo spostamento laterale e la persistenza", "status": "machine-draft" },
+    "recommendedValue": { "value": "Criteri AppLocker o WDAC distribuiti tramite GPO in modalità di imposizione su tutte le workstation e i server con una baseline documentata", "status": "machine-draft" },
+    "remediationSteps": { "value": "Distribuisci i criteri AppLocker o WDAC tramite GPO iniziando in modalità di audit. Analizza i log di audit per costruire una baseline delle applicazioni approvate. Crea regole di lista consentita basate su editore, percorso o hash. Passa dalla modalità di audit alla modalità di imposizione dopo aver convalidato la baseline. Monitora gli eventi di esecuzione bloccata e aggiorna le regole secondo necessità.", "status": "machine-draft" }
+  },
+  "ADGPO-023": {
+    "name": { "value": "Configurazione GPO di LAPS", "status": "machine-draft" },
+    "description": { "value": "Local Administrator Password Solution (LAPS) fornisce il rinnovo automatico delle password di amministratore locale sui sistemi aggiunti al dominio, prevenendo lo spostamento laterale tramite credenziali di amministratore locale condivise. LAPS deve essere distribuito tramite GPO per essere efficace e le sue impostazioni di configurazione determinano la complessità delle password, la frequenza di rinnovo e quale account viene gestito", "status": "machine-draft" },
+    "recommendedValue": { "value": "LAPS abilitato tramite GPO su tutti i sistemi aggiunti al dominio con password di 24 caratteri ed età massima di 30 giorni", "status": "machine-draft" },
+    "remediationSteps": { "value": "Installa la CSE di LAPS su tutti i sistemi gestiti tramite l'installazione software GPO o SCCM. Configura le impostazioni GPO di LAPS: abilita la gestione delle password di amministratore locale, imposta la complessità della password su lettere maiuscole + lettere minuscole + numeri + caratteri speciali, imposta la lunghezza della password su 24 o più caratteri e imposta l'età della password su 30 giorni o meno. Verifica che LAPS funzioni controllando gli attributi ms-Mcs-AdmPwdExpirationTime.", "status": "machine-draft" }
+  },
+  "ADGPO-024": {
+    "name": { "value": "Revisione dei filtri WMI dei GPO", "status": "machine-draft" },
+    "description": { "value": "I filtri WMI controllano l'applicazione dei GPO in base a query WQL valutate sui sistemi di destinazione. Filtri WMI dannosi o configurati in modo errato possono impedire selettivamente l'applicazione dei GPO di sicurezza a sistemi specifici, creando lacune di sicurezza mirate. I filtri WMI dovrebbero essere esaminati per correttezza, impatto sulle prestazioni e potenziale abuso", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tutti i filtri WMI documentati, testati e con risultati attesi; nessun filtro WMI che blocchi i GPO critici per la sicurezza", "status": "machine-draft" },
+    "remediationSteps": { "value": "Inventaria tutti i filtri WMI usando Get-ADObject -Filter 'objectClass -eq \"msWMI-Som\"'. Esamina la query WQL in ogni filtro per correttezza e testala su sistemi di destinazione rappresentativi. Verifica che i filtri WMI non blocchino l'applicazione dei GPO critici per la sicurezza. Rimuovi i filtri WMI inutilizzati. Documenta la finalità e il comportamento atteso di ogni filtro WMI attivo.", "status": "machine-draft" }
+  }
+}
