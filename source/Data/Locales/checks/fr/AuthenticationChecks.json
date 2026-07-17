@@ -1,0 +1,111 @@
+{
+  "_family": "AuthenticationChecks.json",
+  "AUTH-001": {
+    "name": { "value": "Application de la validation en deux étapes (2SV)", "status": "machine-draft" },
+    "description": { "value": "La validation en deux étapes (2SV/MFA) doit être imposée à tous les utilisateurs afin d'empêcher la prise de contrôle des comptes au moyen d'identifiants volés", "status": "machine-draft" },
+    "recommendedValue": { "value": "Imposée à toutes les unités organisationnelles", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Authentification > Validation en deux étapes > Définissez l'application sur « Activée »", "status": "machine-draft" }
+  },
+  "AUTH-002": {
+    "name": { "value": "Taux d'inscription à la 2SV", "status": "machine-draft" },
+    "description": { "value": "Tous les utilisateurs actifs doivent être inscrits à la 2SV. De faibles taux d'inscription laissent les comptes vulnérables aux attaques fondées sur les identifiants", "status": "machine-draft" },
+    "recommendedValue": { "value": "Taux d'inscription de 95 % ou plus parmi les utilisateurs actifs", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Rapports > Rapports sur les utilisateurs > Sécurité > Examinez les utilisateurs sans 2SV. Définissez une date limite d'inscription via Sécurité > Validation en deux étapes", "status": "machine-draft" }
+  },
+  "AUTH-003": {
+    "name": { "value": "Robustesse de la méthode de 2SV", "status": "machine-draft" },
+    "description": { "value": "Les clés de sécurité doivent être la méthode principale de 2SV. La 2SV par SMS et par appel vocal est vulnérable aux attaques par échange de carte SIM (SIM swapping) et par interception", "status": "machine-draft" },
+    "recommendedValue": { "value": "Clés de sécurité imposées comme méthode principale", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Authentification > Validation en deux étapes > Définissez les méthodes autorisées sur « Clé de sécurité uniquement »", "status": "machine-draft" }
+  },
+  "AUTH-004": {
+    "name": { "value": "Longueur minimale du mot de passe", "status": "machine-draft" },
+    "description": { "value": "La longueur minimale du mot de passe doit être d'au moins 12 caractères pour résister aux attaques par force brute et par dictionnaire", "status": "machine-draft" },
+    "recommendedValue": { "value": "12 caractères minimum", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Authentification > Gestion des mots de passe > Définissez la longueur minimale sur 12 caractères ou plus", "status": "machine-draft" }
+  },
+  "AUTH-005": {
+    "name": { "value": "Restriction de réutilisation des mots de passe", "status": "machine-draft" },
+    "description": { "value": "Les utilisateurs ne doivent pas pouvoir réutiliser leurs mots de passe récents, ce qui empêche les attaques par rotation d'identifiants", "status": "machine-draft" },
+    "recommendedValue": { "value": "Réutilisation des mots de passe non autorisée", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Authentification > Gestion des mots de passe > Activez « Appliquer la stratégie de mot de passe à la prochaine connexion » et restreignez la réutilisation", "status": "machine-draft" }
+  },
+  "AUTH-006": {
+    "name": { "value": "Durée de session", "status": "machine-draft" },
+    "description": { "value": "La durée des sessions web doit être limitée afin de réduire la fenêtre de détournement de session et d'accès non autorisé depuis des appareils partagés", "status": "machine-draft" },
+    "recommendedValue": { "value": "Durée de session de 12 heures ou moins", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Contrôle des sessions Google > Définissez la durée des sessions web", "status": "machine-draft" }
+  },
+  "AUTH-007": {
+    "name": { "value": "Configuration de l'authentification unique (SSO)", "status": "machine-draft" },
+    "description": { "value": "Si l'authentification unique (SSO) est configurée, elle doit utiliser des protocoles sécurisés et des fournisseurs d'identité de confiance", "status": "machine-draft" },
+    "recommendedValue": { "value": "SSO SAML correctement configurée avec un IdP de confiance", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Authentification > SSO avec un IdP tiers > Vérifiez la configuration", "status": "machine-draft" }
+  },
+  "AUTH-008": {
+    "name": { "value": "Accès des applications moins sécurisées", "status": "machine-draft" },
+    "description": { "value": "Les applications moins sécurisées (celles qui ne prennent pas en charge l'authentification moderne) doivent être bloquées afin d'éviter l'exposition des identifiants", "status": "machine-draft" },
+    "recommendedValue": { "value": "Désactivées pour tous les utilisateurs", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Authentification > Applications moins sécurisées > Sélectionnez « Désactiver l'accès aux applications moins sécurisées »", "status": "machine-draft" }
+  },
+  "AUTH-009": {
+    "name": { "value": "Stratégie relative aux mots de passe d'application", "status": "machine-draft" },
+    "description": { "value": "Les mots de passe spécifiques à une application contournent la 2SV et doivent être contrôlés. S'ils sont autorisés, ils doivent d'abord exiger une inscription à la 2SV", "status": "machine-draft" },
+    "recommendedValue": { "value": "Mots de passe d'application restreints ou désactivés", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Authentification > Validation en deux étapes > Examinez les paramètres des mots de passe d'application", "status": "machine-draft" }
+  },
+  "AUTH-010": {
+    "name": { "value": "Configuration des options de récupération", "status": "machine-draft" },
+    "description": { "value": "La récupération en libre-service des utilisateurs doit être configurée de manière appropriée. Les super administrateurs ne doivent pas disposer d'options de récupération personnelles afin d'éviter l'ingénierie sociale", "status": "machine-draft" },
+    "recommendedValue": { "value": "Super administrateurs : aucune récupération personnelle. Utilisateurs standards : options de récupération autorisées avec possibilité de contournement par l'administrateur", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Authentification > Récupération de compte > Désactivez la récupération personnelle pour l'unité organisationnelle des super administrateurs", "status": "machine-draft" }
+  },
+  "AUTH-011": {
+    "name": { "value": "Paramètres des questions de connexion", "status": "machine-draft" },
+    "description": { "value": "Les questions de connexion doivent être activées afin de fournir une vérification supplémentaire lorsque des tentatives de connexion suspectes sont détectées", "status": "machine-draft" },
+    "recommendedValue": { "value": "Questions de connexion activées avec identifiant d'employé ou autre vérification", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Authentification > Questions de connexion > Activez", "status": "machine-draft" }
+  },
+  "AUTH-012": {
+    "name": { "value": "Inscription des super administrateurs à la 2SV", "status": "machine-draft" },
+    "description": { "value": "Tous les comptes super administrateur doivent être inscrits à la 2SV. Les super administrateurs disposent d'un accès illimité à l'ensemble des paramètres et des données", "status": "machine-draft" },
+    "recommendedValue": { "value": "100 % des super administrateurs inscrits à la 2SV", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Rapports > Rapports sur les utilisateurs > Sécurité > Filtrer par statut d'administrateur > Assurez-vous que tous les super administrateurs sont inscrits à la 2SV", "status": "machine-draft" }
+  },
+  "AUTH-013": {
+    "name": { "value": "Comptes super administrateur inactifs", "status": "machine-draft" },
+    "description": { "value": "Les comptes super administrateur qui ne se sont pas connectés récemment peuvent être orphelins et exposés à un risque de compromission. Tous les comptes super administrateur doivent être gérés activement", "status": "machine-draft" },
+    "recommendedValue": { "value": "Aucun compte super administrateur inactif depuis plus de 90 jours", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Annuaire > Utilisateurs > Filtrer par rôle d'administrateur > Examinez et supprimez ou suspendez les comptes super administrateur inactifs", "status": "machine-draft" }
+  },
+  "AUTH-014": {
+    "name": { "value": "Inscription à la 2SV autorisée", "status": "machine-draft" },
+    "description": { "value": "Les utilisateurs doivent être autorisés à s'inscrire à la validation en deux étapes. Désactiver l'inscription à la 2SV bloque l'adoption de la MFA et laisse les comptes protégés uniquement par des mots de passe", "status": "machine-draft" },
+    "recommendedValue": { "value": "Inscription à la 2SV autorisée dans toutes les unités organisationnelles", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sécurité > Authentification > Validation en deux étapes > Définissez « Autoriser les utilisateurs à activer la validation en deux étapes » sur Activé pour toutes les unités organisationnelles", "status": "machine-draft" }
+  },
+  "AUTH-015": {
+    "name": { "value": "Période de grâce pour l'inscription à la 2SV", "status": "machine-draft" },
+    "description": { "value": "La période de grâce avant que les utilisateurs nouvellement ajoutés doivent s'inscrire à la 2SV doit être courte. Une longue période de grâce laisse les comptes non protégés par la MFA pendant une fenêtre prolongée après leur création", "status": "machine-draft" },
+    "recommendedValue": { "value": "Période de grâce de 7 jours (168 heures) ou moins", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sécurité > Authentification > Validation en deux étapes > Définissez la période de grâce d'inscription des nouveaux utilisateurs sur 7 jours ou moins", "status": "machine-draft" }
+  },
+  "AUTH-016": {
+    "name": { "value": "Auto-inscription au programme Protection Avancée", "status": "machine-draft" },
+    "description": { "value": "Autoriser l'auto-inscription au programme Protection Avancée permet aux utilisateurs à haut risque d'adopter les protections de compte les plus robustes disponibles sans intervention d'un administrateur", "status": "machine-draft" },
+    "recommendedValue": { "value": "Auto-inscription à la Protection Avancée autorisée dans toutes les unités organisationnelles", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sécurité > Authentification > Programme Protection Avancée > Autorisez les utilisateurs à s'auto-inscrire à la Protection Avancée", "status": "machine-draft" }
+  },
+  "AUTH-017": {
+    "name": { "value": "Auto-récupération des comptes super administrateur", "status": "machine-draft" },
+    "description": { "value": "La récupération de compte en libre-service pour les super administrateurs constitue une voie de prise de contrôle de compte par ingénierie sociale et doit être désactivée. Les super administrateurs ne doivent être récupérés que par un autre administrateur", "status": "machine-draft" },
+    "recommendedValue": { "value": "Auto-récupération des super administrateurs désactivée dans toutes les unités organisationnelles", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sécurité > Authentification > Récupération de compte > Désactivez « Autoriser les super administrateurs à récupérer leur compte » pour toutes les unités organisationnelles", "status": "machine-draft" }
+  },
+  "AUTH-018": {
+    "name": { "value": "Auto-récupération de compte désactivée pour les utilisateurs et les administrateurs non super (GWS.COMMONCONTROLS.8.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.8.2 exige que l'auto-récupération de compte soit désactivée pour les utilisateurs et les comptes d'administrateur non super. La récupération en libre-service est un vecteur de prise de contrôle de compte : un attaquant qui contrôle un canal de récupération peut s'emparer du compte sans passer par l'assistance. Ce contrôle lit la stratégie Cloud Identity security.user_account_recovery et signale toute unité organisationnelle où l'auto-récupération est activée.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Auto-récupération de compte désactivée (enableAccountRecovery = false) pour les utilisateurs et les administrateurs non super dans toutes les unités organisationnelles.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Dans la console d'administration Google, sous Sécurité > Récupération de compte, désactivez l'auto-récupération pour les utilisateurs (et les administrateurs non super), afin que la récupération de compte soit gérée via un administrateur ou un processus d'assistance plutôt que par un canal contrôlé par l'utilisateur.", "status": "machine-draft" }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "_family": "DriveSecurityChecks.json",
+  "DRIVE-001": {
+    "name": { "value": "Paramètres par défaut du partage externe", "status": "machine-draft" },
+    "description": { "value": "Le partage en dehors de l'organisation doit être restreint ou désactivé par défaut afin d'éviter l'exposition accidentelle de données à des parties externes", "status": "machine-draft" },
+    "recommendedValue": { "value": "Partage externe limité aux domaines figurant sur la liste d'autorisation ou désactivé", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage > Définissez le partage en dehors de l'organisation sur « Désactivé » ou « Domaines de la liste d'autorisation »", "status": "machine-draft" }
+  },
+  "DRIVE-002": {
+    "name": { "value": "Paramètres par défaut du partage par lien", "status": "machine-draft" },
+    "description": { "value": "Le partage par lien par défaut doit être défini sur « Limité » (personnes spécifiques) plutôt que sur un accès large, afin d'éviter toute exposition involontaire de données", "status": "machine-draft" },
+    "recommendedValue": { "value": "Partage par lien par défaut défini sur « Limité » (personnes spécifiques uniquement)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage > Définissez le partage par lien par défaut sur « Limité »", "status": "machine-draft" }
+  },
+  "DRIVE-003": {
+    "name": { "value": "Audit du partage « Tous les utilisateurs disposant du lien »", "status": "machine-draft" },
+    "description": { "value": "Les fichiers partagés avec « Tous les utilisateurs disposant du lien » sont accessibles à quiconque sur Internet et représentent un risque important d'exposition des données", "status": "machine-draft" },
+    "recommendedValue": { "value": "Partage « Tous les utilisateurs disposant du lien » désactivé ou strictement contrôlé", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage > Désactivez l'option « Tous les utilisateurs disposant du lien » ou limitez-la à « Utilisateurs du domaine disposant du lien »", "status": "machine-draft" }
+  },
+  "DRIVE-004": {
+    "name": { "value": "Restrictions de création de Drive partagés", "status": "machine-draft" },
+    "description": { "value": "La création de Drive partagés doit être restreinte afin d'éviter une prolifération incontrôlée et de garantir une gouvernance appropriée des dépôts de données partagés", "status": "machine-draft" },
+    "recommendedValue": { "value": "Création de Drive partagés limitée à des groupes spécifiques ou aux administrateurs", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage > Création de Drive partagés > Restreignez les personnes autorisées à créer des Drive partagés", "status": "machine-draft" }
+  },
+  "DRIVE-005": {
+    "name": { "value": "Gestion des membres des Drive partagés", "status": "machine-draft" },
+    "description": { "value": "La gestion des membres des Drive partagés doit être contrôlée afin d'empêcher l'ajout d'utilisateurs non autorisés ou l'élévation des autorisations", "status": "machine-draft" },
+    "recommendedValue": { "value": "Seuls les gestionnaires peuvent ajouter des membres et modifier les niveaux d'accès", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage > Paramètres des Drive partagés > Configurez les autorisations de gestion des membres", "status": "machine-draft" }
+  },
+  "DRIVE-006": {
+    "name": { "value": "Partage externe des Drive partagés", "status": "machine-draft" },
+    "description": { "value": "Le partage externe sur les Drive partagés doit être restreint afin d'empêcher que des données sensibles de l'organisation soient partagées en dehors du domaine", "status": "machine-draft" },
+    "recommendedValue": { "value": "Partage externe sur les Drive partagés désactivé ou limité aux domaines de la liste d'autorisation", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage > Partage des Drive partagés > Restreignez le partage externe", "status": "machine-draft" }
+  },
+  "DRIVE-007": {
+    "name": { "value": "Paramètres de transfert de propriété des fichiers", "status": "machine-draft" },
+    "description": { "value": "Le transfert de propriété des fichiers doit être contrôlé afin d'empêcher toute migration de données non autorisée et de maintenir des chaînes de gouvernance des données appropriées", "status": "machine-draft" },
+    "recommendedValue": { "value": "Transfert de propriété des fichiers limité aux administrateurs ou à un processus contrôlé", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de transfert de propriété > Configurez les restrictions", "status": "machine-draft" }
+  },
+  "DRIVE-008": {
+    "name": { "value": "Drive pour ordinateur autorisé/bloqué", "status": "machine-draft" },
+    "description": { "value": "Drive pour ordinateur synchronise les fichiers en local et doit être contrôlé afin d'empêcher le stockage de données sur des points de terminaison non gérés", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive pour ordinateur limité aux appareils gérés ou désactivé", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Fonctionnalités et applications > Drive pour ordinateur > Configurez l'accès", "status": "machine-draft" }
+  },
+  "DRIVE-009": {
+    "name": { "value": "Accès des applications tierces à Drive", "status": "machine-draft" },
+    "description": { "value": "Les applications tierces ayant accès aux données Drive doivent être examinées et restreintes afin d'empêcher toute exfiltration de données non autorisée", "status": "machine-draft" },
+    "recommendedValue": { "value": "Accès des applications tierces aux données Drive restreint et examiné", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Contrôles des API > Accès des applications tierces > Examinez et restreignez les applications disposant d'un accès à Drive", "status": "machine-draft" }
+  },
+  "DRIVE-010": {
+    "name": { "value": "Audit des règles DLP de Drive", "status": "machine-draft" },
+    "description": { "value": "Des règles de prévention contre la perte de données (DLP) doivent être configurées afin de détecter et d'empêcher le partage de données sensibles via Google Drive", "status": "machine-draft" },
+    "recommendedValue": { "value": "Règles DLP configurées pour les types de données sensibles (données personnelles, financières, de santé)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Sécurité > Protection des données > Gérer les règles > Créez des règles pour les types de données sensibles dans Drive", "status": "machine-draft" }
+  },
+  "DRIVE-011": {
+    "name": { "value": "Paramètres des audiences cibles", "status": "machine-draft" },
+    "description": { "value": "Les paramètres des audiences cibles déterminent qui peut être suggéré lors du partage de fichiers et doivent être configurés afin de limiter les partages accidentels", "status": "machine-draft" },
+    "recommendedValue": { "value": "Audiences cibles configurées pour limiter de manière appropriée les suggestions de partage", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Annuaire > Audiences cibles > Examinez et configurez les groupes d'audiences cibles", "status": "machine-draft" }
+  },
+  "DRIVE-012": {
+    "name": { "value": "Paramètres des modules complémentaires Drive", "status": "machine-draft" },
+    "description": { "value": "Les modules complémentaires Drive peuvent accéder au contenu des fichiers et doivent être contrôlés afin d'empêcher l'exposition des données via des extensions non fiables", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installation des modules complémentaires Drive limitée aux modules approuvés par l'administrateur", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Fonctionnalités et applications > Modules complémentaires > Configurez les restrictions d'installation", "status": "machine-draft" }
+  },
+  "DRIVE-013": {
+    "name": { "value": "Paramètres de l'accès hors connexion", "status": "machine-draft" },
+    "description": { "value": "L'accès hors connexion permet de mettre en cache localement les fichiers Drive sur les appareils et doit être contrôlé afin d'empêcher l'exposition des données sur des appareils partagés ou non gérés", "status": "machine-draft" },
+    "recommendedValue": { "value": "Accès hors connexion désactivé ou limité aux appareils gérés", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Fonctionnalités et applications > Hors connexion > Désactivez ou restreignez l'accès hors connexion", "status": "machine-draft" }
+  },
+  "DRIVE-014": {
+    "name": { "value": "Accès à l'API Drive SDK désactivé (GWS.DRIVEDOCS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.4.1 : le Drive SDK permet aux applications tierces de lire et d'écrire du contenu Drive via l'API, un canal direct d'exfiltration de données lorsqu'il est largement activé. Lit drive_and_docs.drive_sdk ; met en échec lorsque enableDriveSdkApiAccess est activé.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Accès à l'API Drive SDK désactivé", "status": "machine-draft" },
+    "remediationSteps": { "value": "Dans Console d'administration > Applications > Google Workspace > Drive et Docs > Fonctionnalités et applications, désactivez le Drive SDK sauf si des intégrations spécifiques examinées l'exigent.", "status": "machine-draft" }
+  },
+  "DRIVE-015": {
+    "name": { "value": "Avertissement de fichier externe Drive activé (GWS.DRIVEDOCS.1.9)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.9 : avertir les utilisateurs lorsqu'ils partagent des fichiers en externe est un contrôle de prévention des pertes de données à faible friction. Lit drive_and_docs.external_file_warning ; avertit lorsque highlightingEnabled est désactivé.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Avertissement de partage de fichiers externes activé", "status": "machine-draft" },
+    "remediationSteps": { "value": "Dans les paramètres de partage de Drive, activez les avertissements lorsque les utilisateurs partagent des fichiers avec des personnes extérieures à l'organisation.", "status": "machine-draft" }
+  },
+  "DRIVE-016": {
+    "name": { "value": "Mise à jour de sécurité des fichiers Drive appliquée (GWS.DRIVEDOCS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.3.1 : la mise à jour de sécurité des fichiers renforce le partage par lien sur les fichiers concernés ; permettre aux utilisateurs de la supprimer rouvre l'accès. Lit drive_and_docs.file_security_update ; avertit lorsque les utilisateurs sont autorisés à supprimer/gérer la mise à jour de sécurité.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Mise à jour de sécurité appliquée et non supprimable par les utilisateurs", "status": "machine-draft" },
+    "remediationSteps": { "value": "Dans les paramètres de Drive, appliquez la mise à jour de sécurité des fichiers et n'autorisez pas les utilisateurs à la supprimer des fichiers dont ils sont propriétaires.", "status": "machine-draft" }
+  },
+  "DRIVE-017": {
+    "name": { "value": "Accès par défaut des fichiers défini sur privé pour le propriétaire (GWS.DRIVEDOCS.1.8)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.8 exige que « Privé pour le propriétaire » soit le niveau d'accès par défaut des éléments Drive nouvellement créés, afin que les fichiers ne soient pas partagés plus largement que prévu au moment de leur création. Ce contrôle lit la stratégie Cloud Identity drive_and_docs.general_access_default et signale toute unité organisationnelle où l'accès par défaut des fichiers n'est pas PRIVATE_TO_OWNER.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Niveau d'accès par défaut des nouveaux fichiers défini sur PRIVATE_TO_OWNER (defaultFileAccess) dans toutes les unités organisationnelles.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Dans la console d'administration Google, sous Applications > Google Workspace > Drive et Docs > Paramètres de partage > Accès général par défaut, définissez la valeur par défaut sur « Privé pour le propriétaire » afin que les fichiers nouvellement créés soient d'abord privés et ne soient partagés que par une action délibérée.", "status": "machine-draft" }
+  }
+}

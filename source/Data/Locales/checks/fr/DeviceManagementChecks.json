@@ -1,0 +1,69 @@
+{
+  "_family": "DeviceManagementChecks.json",
+  "DEVICE-001": {
+    "name": { "value": "Audit des stratégies MDM", "status": "machine-draft" },
+    "description": { "value": "Les appareils mobiles accédant aux données de l'organisation doivent être gérés au moyen de stratégies MDM afin d'imposer des contrôles de sécurité", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tous les appareils mobiles sous gestion MDM avec des stratégies de sécurité imposées", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Appareils mobiles > Examinez l'état de la gestion des appareils > Activez la gestion MDM avancée pour les appareils non gérés", "status": "machine-draft" }
+  },
+  "DEVICE-002": {
+    "name": { "value": "Exigences d'approbation des appareils", "status": "machine-draft" },
+    "description": { "value": "Les appareils mobiles doivent nécessiter l'approbation d'un administrateur avant d'accéder aux données de l'organisation, afin d'empêcher tout accès d'appareil non autorisé", "status": "machine-draft" },
+    "recommendedValue": { "value": "Approbation de l'appareil requise avant l'accès aux données de l'organisation", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Appareils mobiles et points de terminaison > Paramètres > Général > Exigez l'approbation d'un administrateur pour l'accès des appareils", "status": "machine-draft" }
+  },
+  "DEVICE-003": {
+    "name": { "value": "Application du verrouillage de l'écran", "status": "machine-draft" },
+    "description": { "value": "Le verrouillage de l'écran doit être imposé sur tous les appareils mobiles afin d'empêcher tout accès physique non autorisé aux données de l'organisation", "status": "machine-draft" },
+    "recommendedValue": { "value": "Verrouillage de l'écran imposé avec des exigences minimales de code PIN/mot de passe", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Appareils mobiles et points de terminaison > Paramètres > Paramètres universels > Verrouillage de l'écran > Imposez le verrouillage de l'écran avec une complexité minimale", "status": "machine-draft" }
+  },
+  "DEVICE-004": {
+    "name": { "value": "Exigences de chiffrement des appareils", "status": "machine-draft" },
+    "description": { "value": "Le chiffrement des appareils doit être exigé sur tous les appareils mobiles afin de protéger les données au repos contre le vol ou la perte physique", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chiffrement exigé sur tous les appareils gérés", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Appareils mobiles et points de terminaison > Paramètres > Paramètres universels > Chiffrement > Exigez le chiffrement des appareils", "status": "machine-draft" }
+  },
+  "DEVICE-005": {
+    "name": { "value": "Blocage des appareils compromis", "status": "machine-draft" },
+    "description": { "value": "Les appareils compromis doivent être automatiquement empêchés d'accéder aux données de l'organisation afin d'éviter l'exposition des données", "status": "machine-draft" },
+    "recommendedValue": { "value": "Détection et blocage des appareils compromis activés", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Appareils mobiles et points de terminaison > Paramètres > Paramètres universels > Appareils compromis > Empêchez les appareils compromis d'accéder aux données", "status": "machine-draft" }
+  },
+  "DEVICE-006": {
+    "name": { "value": "Stratégie relative aux appareils débridés/rootés", "status": "machine-draft" },
+    "description": { "value": "Les appareils débridés (iOS) ou rootés (Android) contournent les contrôles de sécurité au niveau du système d'exploitation et doivent être empêchés d'accéder aux données de l'organisation", "status": "machine-draft" },
+    "recommendedValue": { "value": "Appareils débridés/rootés empêchés d'accéder aux données de l'organisation", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Appareils mobiles et points de terminaison > Paramètres > Paramètres universels > Appareils compromis > Bloquez les appareils débridés/rootés", "status": "machine-draft" }
+  },
+  "DEVICE-007": {
+    "name": { "value": "Gestion du navigateur Chrome", "status": "machine-draft" },
+    "description": { "value": "Les navigateurs Chrome utilisés pour accéder aux données de l'organisation doivent être inscrits dans Chrome Browser Cloud Management afin d'appliquer les stratégies", "status": "machine-draft" },
+    "recommendedValue": { "value": "Navigateurs Chrome inscrits dans Cloud Management avec des stratégies appliquées", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Chrome > Paramètres > Examinez et configurez les stratégies du navigateur Chrome pour les navigateurs gérés", "status": "machine-draft" }
+  },
+  "DEVICE-008": {
+    "name": { "value": "Liste d'autorisation/liste de blocage des extensions Chrome", "status": "machine-draft" },
+    "description": { "value": "Les extensions Chrome doivent être gérées au moyen d'une liste d'autorisation ou d'une liste de blocage afin d'empêcher les extensions malveillantes d'accéder aux données de l'organisation", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installation des extensions limitée aux extensions approuvées par l'administrateur via une liste d'autorisation", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Chrome > Applications et extensions > Configurez la liste d'autorisation et la liste de blocage des extensions", "status": "machine-draft" }
+  },
+  "DEVICE-009": {
+    "name": { "value": "Stratégies des appareils Chrome OS", "status": "machine-draft" },
+    "description": { "value": "Les appareils Chrome OS doivent se voir appliquer des stratégies appropriées, notamment la mise à jour automatique, les restrictions de connexion et les paramètres de sécurité", "status": "machine-draft" },
+    "recommendedValue": { "value": "Appareils Chrome OS gérés avec des stratégies appliquées pour les mises à jour, la connexion et la sécurité", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Chrome > Paramètres > Paramètres des appareils > Configurez la mise à jour automatique, les restrictions de connexion et les stratégies de sécurité", "status": "machine-draft" }
+  },
+  "DEVICE-010": {
+    "name": { "value": "Paramètres de la validation des points de terminaison", "status": "machine-draft" },
+    "description": { "value": "La validation des points de terminaison fournit des signaux de confiance des appareils pour les stratégies d'accès contextuel et doit être activée", "status": "machine-draft" },
+    "recommendedValue": { "value": "Validation des points de terminaison activée pour l'accès contextuel", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Appareils mobiles et points de terminaison > Paramètres > Général > Activez la validation des points de terminaison pour les stratégies d'accès contextuel", "status": "machine-draft" }
+  },
+  "DEVICE-011": {
+    "name": { "value": "Inventaire des appareils appartenant à l'entreprise", "status": "machine-draft" },
+    "description": { "value": "Les appareils appartenant à l'entreprise doivent être inventoriés afin de conserver une visibilité sur les actifs de l'organisation qui accèdent aux données de l'entreprise", "status": "machine-draft" },
+    "recommendedValue": { "value": "Inventaire complet de tous les appareils appartenant à l'entreprise tenu à jour", "status": "machine-draft" },
+    "remediationSteps": { "value": "Console d'administration > Appareils > Appareils mobiles > Examinez l'inventaire des appareils > Assurez-vous que tous les appareils appartenant à l'entreprise sont enregistrés et recensés", "status": "machine-draft" }
+  }
+}
