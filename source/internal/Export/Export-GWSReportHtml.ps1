@@ -78,7 +78,7 @@ function Export-GWSReportHtml {
         -Subtitle $subtitle `
         -HtmlTitle "$(& $tr 'gws.htmlTitle')$(if ($TenantDomain) { " - $TenantDomain" }) - $timestampStr" `
         -TopbarMeta (& $tr 'gws.topbar') `
-        -Style $Style -Branding $Branding -ExtraCss $extraCss))
+        -Style $Style -Language $Language -Branding $Branding -ExtraCss $extraCss))
 
     # ═══ SCORE PANEL ═══
     $circumference = 2 * [Math]::PI * 50

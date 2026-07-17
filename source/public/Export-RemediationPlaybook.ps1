@@ -110,7 +110,7 @@ h2.pb-phase { background: var(--g-surface); border-left: 3px solid var(--g-borde
         -Subtitle $subtitle `
         -HtmlTitle "$(& $tr 'playbook.htmlTitle') - $OrganizationName - $timestamp UTC" `
         -TopbarMeta (& $tr 'playbook.topbar') `
-        -Style $Style -ExtraCss $extraCss))
+        -Style $Style -Language $Language -ExtraCss $extraCss))
 
     $itemNum = 0
     foreach ($phase in $phases) {

@@ -159,7 +159,7 @@ $blockerHtml
         -Subtitle $subtitle `
         -HtmlTitle "$(& $tr 'exec.htmlTitle') - $OrganizationName - $timestamp UTC" `
         -TopbarMeta (& $tr 'exec.topbar') `
-        -Style $Style))
+        -Style $Style -Language $Language))
 
     $circumference = 2 * [Math]::PI * 50
     $dashOffset = if ($scoreIsNumeric) { $circumference * (1 - ($scoreNum / 100)) } else { $circumference }

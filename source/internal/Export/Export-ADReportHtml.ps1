@@ -65,7 +65,7 @@ function Export-ADReportHtml {
         -Subtitle $subtitle `
         -HtmlTitle "$(& $tr 'ad.htmlTitle')$(if ($DomainName) { " - $DomainName" }) - $timestampStr" `
         -TopbarMeta (& $tr 'ad.topbar') `
-        -Style $Style -Branding $Branding))
+        -Style $Style -Language $Language -Branding $Branding))
 
     # ═══ SCORE PANEL ═══
     $circumference = 2 * [Math]::PI * 50

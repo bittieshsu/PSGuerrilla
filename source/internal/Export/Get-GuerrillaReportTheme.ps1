@@ -406,7 +406,8 @@ function Get-GuerrillaReportShellStart {
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
         [string]$Style = 'Auto',
         [hashtable]$Branding,
-        [string]$ExtraCss = ''
+        [string]$ExtraCss = '',
+        [string]$Language = 'en'
     )
 
     $esc = { param([string]$s) [System.Web.HttpUtility]::HtmlEncode($s) }
@@ -415,6 +416,16 @@ function Get-GuerrillaReportShellStart {
     $themeAttr = if ($resolved -eq 'Auto') { '' } else { " data-theme=`"$($resolved.ToLower())`"" }
     if (-not $HtmlTitle) { $HtmlTitle = $Title }
 
+    # The document's lang/dir must reflect the REPORT language, not always en,
+    # so assistive tech announces it correctly and RTL report languages mirror.
+    $lang = if ($Language) { $Language } else { 'en' }
+    $dirAttr = ''
+    try {
+        $meta = Get-GuerrillaReportLanguages | Where-Object Code -eq $lang | Select-Object -First 1
+        if ($meta -and $meta.Direction -eq 'rtl') { $dirAttr = ' dir="rtl"' }
+    } catch { }
+    $langAttr = " lang=`"$([System.Web.HttpUtility]::HtmlAttributeEncode($lang))`""
+
     $css = (Get-GuerrillaReportThemeStyleBlock -Style $Style) + $ExtraCss
     $brand = Get-GuerrillaReportBrandingHtml -Branding $Branding
 
@@ -422,7 +433,7 @@ function Get-GuerrillaReportShellStart {
 
     return @"
 <!DOCTYPE html>
-<html lang="en"$themeAttr>
+<html$langAttr$themeAttr$dirAttr>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

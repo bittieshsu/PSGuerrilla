@@ -115,7 +115,7 @@ function Export-TrendReportHtml {
         -Subtitle $subtitle `
         -HtmlTitle "$(& $tr 'trend.htmlTitle') - $OrganizationName" `
         -TopbarMeta (& $tr 'trend.topbar') `
-        -Style $Style))
+        -Style $Style -Language $Language))
 
     $deltaLabel = if ($delta -ge 0) { "+$delta" } else { "$delta" }
     [void]$html.Append(@"

@@ -101,7 +101,7 @@ function Export-TechnicalReport {
         -Subtitle $subtitle `
         -HtmlTitle "$(& $tr 'technical.htmlTitle') - $OrganizationName" `
         -TopbarMeta (& $tr 'technical.topbar') `
-        -Style $Style -ExtraCss $extraCss))
+        -Style $Style -Language $Language -ExtraCss $extraCss))
 
     [void]$html.Append(@"
 <div class="stat-grid">

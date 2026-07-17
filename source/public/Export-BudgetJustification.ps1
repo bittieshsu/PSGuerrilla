@@ -199,7 +199,7 @@ function Export-BudgetJustification {
         -Subtitle $subtitle `
         -HtmlTitle "$(& $tr 'budget.htmlTitle') - $OrganizationName - $timestamp UTC" `
         -TopbarMeta (& $tr 'budget.topbar') `
-        -Style $Style -ExtraCss $extraCss
+        -Style $Style -Language $Language -ExtraCss $extraCss
 
     $html = @"
 $shellStart

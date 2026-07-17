@@ -56,7 +56,7 @@ function Export-EntraReportHtml {
         -Subtitle $subtitle `
         -HtmlTitle "$(& $tr 'entra.htmlTitle') - $($Result.TenantId) - $timestampStr" `
         -TopbarMeta (& $tr 'entra.topbar') `
-        -Style $Style -Branding $Branding))
+        -Style $Style -Language $Language -Branding $Branding))
 
     # ═══ SCORE PANEL ═══
     $circumference = 2 * [Math]::PI * 50

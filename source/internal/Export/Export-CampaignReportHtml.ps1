@@ -110,7 +110,7 @@ function Export-CampaignReportHtml {
         -Subtitle $subtitle `
         -HtmlTitle "$(& $tr 'campaign.htmlTitle') - $timestampStr" `
         -TopbarMeta (& $tr 'campaign.topbar') `
-        -Style $Style -Branding $Branding -ExtraCss $extraCss))
+        -Style $Style -Language $Language -Branding $Branding -ExtraCss $extraCss))
 
     # ═══ SCORE PANEL ═══
     $circumference = 2 * [Math]::PI * 50
