@@ -1,0 +1,75 @@
+{
+  "_family": "EntraAIAgentChecks.json",
+  "AIAGENT-001": {
+    "name": {
+      "value": "Les agents Copilot restreignent qui peut interagir (pas d'accès étendu)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Un agent Copilot Studio dont la stratégie de contrôle d'accès est « Any » ou « Any multitenant » peut être sollicité par n'importe quel utilisateur du locataire, ou par des utilisateurs de n'importe quel locataire, sans restriction. Pour un agent relié aux données et aux outils de l'organisation, il s'agit d'un chemin d'accès aux données non authentifié et d'injection d'invite. Ce contrôle signale les agents dont le contrôle d'accès est défini sur Any / Any multitenant. Lorsque les données d'agent ne sont pas collectées, le résultat est Non évalué ; un locataire sans agent réussit (rien à gouverner).",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucun agent publié n'utilise le contrôle d'accès « Any » ou « Any multitenant » ; l'accès est restreint à des utilisateurs authentifiés ou à des groupes de sécurité spécifiques",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Dans Copilot Studio, ouvrez les paramètres Sécurité > Authentification et accès de chaque agent signalé et remplacez le contrôle d'accès « Any » / « Any multitenant » par un accès authentifié restreint à votre organisation (et idéalement à des groupes de sécurité spécifiques). Republiez l'agent après avoir renforcé l'accès.",
+      "status": "machine-draft"
+    }
+  },
+  "AIAGENT-002": {
+    "name": {
+      "value": "Les agents Copilot exigent une authentification",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Un agent Copilot Studio dont le type d'authentification utilisateur est « None » accepte les interactions anonymes ; un agent qui ne s'authentifie qu'« As Needed » rend l'authentification facultative. Dans les deux cas, des utilisateurs non authentifiés peuvent atteindre un agent capable d'exposer des données de l'organisation ou d'invoquer des outils, ce qui ouvre la voie aux abus, à l'exfiltration de données et à l'injection d'invite. Ce contrôle échoue (FAIL) pour les agents sans authentification et avertit (WARN) pour les agents dont l'authentification n'est déclenchée qu'au besoin.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Chaque agent publié exige une authentification (le type d'authentification utilisateur n'est pas « None » et l'authentification est toujours appliquée, et non « As Needed »)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Dans Copilot Studio, configurez l'authentification de chaque agent pour exiger une connexion (authentification Microsoft Entra ID) plutôt que « No authentication », et assurez-vous que l'authentification est toujours appliquée plutôt que déclenchée seulement au besoin. Republiez après la modification.",
+      "status": "machine-draft"
+    }
+  },
+  "AIAGENT-003": {
+    "name": {
+      "value": "Les agents Copilot publiés sont maintenus (non dormants)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Un agent Copilot Studio publié qui n'a pas été modifié depuis longtemps continue d'exposer des fonctionnalités et des accès alors que personne ne maintient sa configuration, ses autorisations ou ses outils connectés. Les agents publiés dormants accumulent silencieusement du risque. Ce contrôle signale, en vue d'une revue ou d'un retrait, les agents publiés dont la dernière modification est antérieure au seuil de dormance (90 jours par défaut).",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Les agents publiés sont activement maintenus ; les agents publiés obsolètes sont examinés ou retirés",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Examinez chaque agent publié dormant. Retirez les agents qui ne sont plus nécessaires (dépubliez-les et supprimez-les) et, pour les agents encore utilisés, confirmez que leurs contrôles d'accès, leur authentification et leurs outils connectés restent appropriés, puis mettez-les à jour pour réinitialiser le compteur de maintenance.",
+      "status": "machine-draft"
+    }
+  },
+  "AIAGENT-004": {
+    "name": {
+      "value": "L'accès aux agents Copilot est limité à des groupes de sécurité",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Un agent Copilot Studio authentifié sans groupe de sécurité autorisé est accessible à tout utilisateur authentifié du locataire. Limiter un agent à des groupes de sécurité spécifiques restreint son audience aux personnes ayant un besoin métier, appliquant ainsi le moindre privilège à qui peut invoquer un agent et aux données qu'il expose. Ce contrôle signale les agents authentifiés pour lesquels aucun groupe de sécurité autorisé n'est configuré.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Les agents authentifiés qui exposent des données sensibles sont limités à des groupes de sécurité autorisés spécifiques plutôt qu'à l'ensemble des utilisateurs authentifiés",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Pour les agents qui exposent des données sensibles, configurez des groupes de sécurité autorisés dans les paramètres d'accès de l'agent afin que seuls les membres de ces groupes puissent interagir avec l'agent. Ne conservez un accès à l'échelle du locataire que pour les agents délibérément destinés à l'ensemble du personnel.",
+      "status": "machine-draft"
+    }
+  }
+}

@@ -1,0 +1,363 @@
+{
+  "_family": "EntraAppChecks.json",
+  "EIDAPP-001": {
+    "name": {
+      "value": "Inventaire des inscriptions d'applications",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Un inventaire complet de toutes les inscriptions d'applications fournit une visibilité fondamentale sur les applications intégrées à votre locataire Entra ID. Sans inventaire exhaustif, les organisations ne peuvent pas évaluer la surface d'attaque de leurs applications ni identifier les applications non autorisées, abandonnées ou relevant du shadow IT. Cette base de référence rend possibles tous les contrôles de sécurité des applications qui suivent et doit être tenue à jour comme un document vivant.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les inscriptions d'applications inventoriées avec des propriétaires, une finalité et une justification métier documentés",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Accédez à Entra ID > Applications > Inscriptions d'applications et exportez la liste complète des applications inscrites. Examinez chaque inscription pour confirmer qu'elle possède un propriétaire attribué, une finalité métier documentée et qu'elle est toujours activement requise. Supprimez ou désactivez toute inscription qui n'est plus nécessaire ou dont la propriété ne peut être identifiée.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-002": {
+    "name": {
+      "value": "Inscriptions d'applications avec des autorisations d'API à haut risque",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les inscriptions d'applications dotées d'autorisations d'API à haut risque telles que Mail.ReadWrite, Files.ReadWrite.All, RoleManagement.ReadWrite.Directory ou Application.ReadWrite.All peuvent être exploitées pour lire des données sensibles, modifier des objets d'annuaire ou élever des privilèges à l'échelle du locataire. Les attaquants qui compromettent une application dotée de ces autorisations obtiennent un accès étendu équivalent ou supérieur à celui d'un administrateur général. Toutes les autorisations à haut risque doivent être examinées et justifiées avec des contrôles compensatoires.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucune inscription d'application avec des autorisations d'API à haut risque, sauf si elle est documentée avec une justification métier et des contrôles compensatoires",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Examinez toutes les inscriptions d'applications dans Entra ID > Applications > Inscriptions d'applications et examinez l'onglet Autorisations d'API de chacune. Identifiez les applications dotées d'autorisations à privilèges élevés telles que Directory.ReadWrite.All, Mail.ReadWrite ou RoleManagement.ReadWrite.Directory. Supprimez les autorisations inutiles et remplacez les portées étendues par les autorisations les plus restrictives qui répondent encore aux exigences de l'application.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-003": {
+    "name": {
+      "value": "Inscriptions d'applications avec des informations d'identification ajoutées",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les inscriptions d'applications auxquelles des secrets client ou des certificats ont été ajoutés représentent des mécanismes de persistance potentiels pour les attaquants. Un secret ou un certificat compromis permet à un attaquant de s'authentifier en tant qu'application et d'exercer toutes les autorisations qui lui sont accordées, sans interaction de l'utilisateur. Les informations d'identification doivent être inventoriées, renouvelées selon un calendrier et supprimées lorsqu'elles ne sont plus nécessaires afin de limiter la fenêtre d'exposition.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les informations d'identification d'application inventoriées avec des calendriers de renouvellement définis et aucune information d'identification datant de plus de 12 mois",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Examinez toutes les inscriptions d'applications et examinez le panneau Certificats et secrets de chacune. Documentez toutes les informations d'identification actives, y compris leurs dates d'expiration et leurs horodatages de création. Supprimez immédiatement les informations d'identification expirées ou inutilisées et établissez une stratégie de renouvellement exigeant le renouvellement des informations d'identification au moins une fois par an, avec des alertes automatisées avant l'expiration.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-004": {
+    "name": {
+      "value": "Principaux de service Microsoft de première partie avec des informations d'identification ajoutées",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les attaquants ajoutent des informations d'identification aux principaux de service Microsoft de première partie afin d'établir un accès de porte dérobée persistant qui se fond dans les services Microsoft légitimes. Comme les principaux de service de première partie sont approuvés par défaut et détiennent souvent des autorisations étendues, l'ajout d'informations d'identification sur ces objets fournit une persistance furtive et à privilèges élevés, rarement auditée. Tout ajout d'informations d'identification à des principaux de service Microsoft de première partie doit être traité comme un indicateur critique de compromission.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucune information d'identification (secret ou certificat) ajoutée à un principal de service Microsoft de première partie",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Énumérez tous les principaux de service dont l'appOwnerOrganizationId correspond à l'ID de locataire Microsoft (f8cdef31-a31e-4b4a-93e4-5f571e91255a) et recherchez les informations d'identification par clé ou par mot de passe ajoutées. Supprimez immédiatement toute information d'identification trouvée sur des principaux de service Microsoft de première partie, car elle est presque certainement non autorisée. Examinez les journaux d'audit pour déterminer qui a ajouté les informations d'identification et à quel moment, en traitant cela comme un incident de sécurité potentiel.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-005": {
+    "name": {
+      "value": "Principaux de service à privilèges élevés avec des informations d'identification ajoutées",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les principaux de service qui combinent des autorisations d'API à privilèges élevés ou des attributions de rôle d'annuaire avec des informations d'identification client ajoutées représentent les objets d'application les plus à risque du locataire. Un attaquant qui obtient ces informations d'identification peut s'authentifier de manière non interactive avec des autorisations élevées, en contournant entièrement la MFA et les contrôles d'accès conditionnel. Cette combinaison de privilèges et d'accès aux informations d'identification est une technique de persistance et de déplacement latéral de premier plan dans les attaques basées sur le cloud.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucun principal de service combinant à la fois des autorisations à privilèges élevés et des informations d'identification ajoutées, sauf s'il est documenté avec des contrôles compensatoires obligatoires",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Recoupez les principaux de service détenant des autorisations d'API à privilèges élevés ou des attributions de rôle d'annuaire avec ceux disposant d'informations d'identification par clé ou par mot de passe ajoutées. Pour chaque correspondance, validez la nécessité métier et supprimez les autorisations excessives ou migrez vers l'authentification par identité managée qui élimine le besoin d'informations d'identification stockées. Mettez en place une authentification par certificat avec des certificats à courte durée de vie lorsque les identités managées ne sont pas envisageables.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-006": {
+    "name": {
+      "value": "Autorisations Microsoft Graph excessives",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les applications auxquelles sont accordées de larges autorisations d'application Microsoft Graph telles que Directory.ReadWrite.All, Sites.ReadWrite.All ou Mail.ReadWrite obtiennent un accès à l'échelle du locataire aux données et à la configuration sans contexte utilisateur. Des autorisations Graph excessives violent le principe du moindre privilège et fournissent aux attaquants qui compromettent l'application un accès étendu aux boîtes aux lettres, aux fichiers, aux objets d'annuaire et aux paramètres du locataire. Les autorisations doivent être limitées au strict minimum requis pour le fonctionnement de l'application.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les autorisations Microsoft Graph limitées au strict minimum requis, les autorisations d'application étant remplacées par des autorisations déléguées lorsque c'est possible",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Examinez les autorisations Microsoft Graph de toutes les inscriptions d'applications et repérez celles qui utilisent de larges portées .All ou des autorisations de niveau application là où des autorisations déléguées suffiraient. Remplacez les autorisations étendues par des alternatives granulaires telles que Mail.Read au lieu de Mail.ReadWrite.All ou User.Read.All au lieu de Directory.Read.All. Utilisez la référence des autorisations Microsoft Graph pour identifier l'autorisation de moindre privilège correspondant à chaque appel d'API effectué par l'application.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-007": {
+    "name": {
+      "value": "Inscriptions d'applications avec des attributions de rôle Azure IAM",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les inscriptions d'applications ou leurs principaux de service correspondants dotés d'attributions de rôle IAM au niveau des ressources Azure, telles que Contributor, Owner ou User Access Administrator, peuvent modifier l'infrastructure Azure, déployer des ressources ou élever des privilèges entre abonnements. Ces attributions de rôle étendent le rayon d'impact de l'application au-delà d'Entra ID jusqu'au plan des ressources Azure, permettant une compromission de l'infrastructure en cas de vol des informations d'identification de l'application.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucune inscription d'application avec des attributions de rôle Azure IAM supérieures à Reader, sauf si elle est documentée avec une justification métier et une portée de moindre privilège",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Examinez les attributions de rôle Azure IAM aux niveaux du groupe d'administration, de l'abonnement et du groupe de ressources afin d'identifier celles attribuées à des principaux de service d'application. Supprimez les attributions Owner et User Access Administrator et remplacez les rôles Contributor étendus par des rôles personnalisés limités à des types de ressources et à des actions spécifiques. Limitez les attributions IAM à la portée la plus étroite possible, en privilégiant le niveau du groupe de ressources plutôt que le niveau de l'abonnement.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-008": {
+    "name": {
+      "value": "Surveillance de l'expiration des informations d'identification",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les informations d'identification d'application (secrets client et certificats) qui approchent de leur expiration ou qui ont déjà expiré peuvent provoquer des interruptions de service si elles ne sont pas renouvelées à temps, ou créer des risques de sécurité si les stratégies d'expiration sont fixées trop loin dans le futur. Les informations d'identification à longue période de validité prolongent la fenêtre pendant laquelle une information d'identification compromise peut être exploitée. Une surveillance et des alertes proactives sur l'expiration des informations d'identification garantissent un renouvellement rapide et réduisent l'exposition.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les informations d'identification d'application ont une validité maximale de 12 mois, avec des alertes automatisées 30 et 60 jours avant l'expiration",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Énumérez toutes les informations d'identification d'application et leurs dates d'expiration à l'aide de l'API Microsoft Graph. Identifiez les informations d'identification expirant dans les 30 jours et celles dont la période de validité dépasse 12 mois. Mettez en place un processus de surveillance automatisé qui alerte les propriétaires d'applications et les équipes de sécurité lorsque les informations d'identification approchent de leur expiration, et imposez une stratégie de durée de vie maximale des informations d'identification au moyen de procédures de gouvernance.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-009": {
+    "name": {
+      "value": "Inscriptions d'applications obsolètes",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les inscriptions d'applications sans activité de connexion récente peuvent être abandonnées, orphelines ou devenues inutiles, tout en conservant l'ensemble des autorisations et informations d'identification accordées. Les applications obsolètes élargissent la surface d'attaque, car elles sont peu susceptibles d'être surveillées ou maintenues par leurs propriétaires d'origine, ce qui en fait des cibles attrayantes pour les attaquants cherchant à exploiter des informations d'identification ou des autorisations oubliées. Un nettoyage régulier des applications inutilisées réduit l'exposition globale au risque du locataire.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucune inscription d'application sans activité de connexion au cours des 90 derniers jours, sauf si elle est documentée avec une exception valide",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Examinez les journaux de connexion des applications dans Entra ID pour identifier les applications sans activité d'authentification au cours des 90 derniers jours. Contactez les propriétaires d'applications répertoriés pour confirmer si l'application est toujours requise. Désactivez ou supprimez les inscriptions d'applications obsolètes après avoir confirmé qu'elles ne sont plus nécessaires, et supprimez toutes les informations d'identification et autorisations associées.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-010": {
+    "name": {
+      "value": "Analyse des applications multilocataires",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les inscriptions d'applications multilocataires sont configurées pour accepter les connexions depuis n'importe quel locataire Entra ID, permettant aux utilisateurs d'organisations externes de s'authentifier. Bien que nécessaire pour les scénarios SaaS et partenaires, une configuration multilocataire sur des applications internes crée un risque inutile en permettant à des identités externes d'obtenir des jetons. Chaque application multilocataire doit être validée pour confirmer que la configuration est intentionnelle et que des contrôles d'autorisation appropriés sont en place.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucune inscription d'application multilocataire, sauf si elle est requise par un besoin métier avec une justification documentée et des contrôles d'autorisation appropriés",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Examinez toutes les inscriptions d'applications et identifiez celles dont signInAudience est défini sur AzureADMultipleOrgs ou AzureADandPersonalMicrosoftAccount. Pour chaque application multilocataire, validez que l'accès multilocataire est requis et documentez la justification métier. Convertissez les applications qui ne nécessitent pas d'accès multilocataire vers une configuration à locataire unique et mettez en place une validation des jetons pour restreindre les locataires externes pouvant accéder aux applications multilocataires.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-011": {
+    "name": {
+      "value": "Analyse des octrois de consentement",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les octrois de consentement OAuth autorisent les applications à accéder aux données de l'organisation pour le compte des utilisateurs (délégué) ou en tant qu'application elle-même (niveau application). Les octrois par consentement administrateur fournissent un accès à l'échelle du locataire pour tous les utilisateurs, tandis que les octrois par consentement utilisateur sont limités à des utilisateurs individuels. Des octrois de consentement malveillants ou excessifs constituent une technique de premier plan dans les attaques d'hameçonnage par consentement OAuth, visant à obtenir un accès persistant aux boîtes aux lettres, aux fichiers et aux données d'annuaire sans nécessiter d'informations d'identification.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Tous les octrois par consentement administrateur examinés et justifiés. Aucun octroi par consentement utilisateur pour des autorisations à haut risque. Revues régulières des octrois de consentement établies",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Énumérez tous les octrois d'autorisation OAuth2 du locataire à l'aide de Microsoft Graph et classez-les en consentement administrateur ou consentement utilisateur. Examinez les octrois par consentement administrateur à la recherche d'autorisations trop étendues et révoquez ceux qui ne sont plus justifiés. Examinez les octrois par consentement utilisateur pour les applications suspectes, en particulier celles demandant Mail.Read, Files.ReadWrite ou d'autres portées sensibles, et révoquez les octrois non autorisés.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-012": {
+    "name": {
+      "value": "Stratégie des paramètres de consentement utilisateur",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La stratégie des paramètres de consentement utilisateur contrôle si les utilisateurs peuvent accorder aux applications l'accès aux données de l'organisation sans l'approbation d'un administrateur. Des paramètres de consentement permissifs permettent aux utilisateurs d'autoriser des applications de manière autonome, ce que les attaquants exploitent au moyen de campagnes d'hameçonnage par octroi de consentement illicite pour obtenir un accès persistant. Restreindre le consentement utilisateur aux éditeurs vérifiés ou le désactiver entièrement force tout consentement à passer par un flux d'approbation administrateur.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Consentement utilisateur désactivé ou restreint aux applications d'éditeurs vérifiés avec uniquement des autorisations à faible risque",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Accédez à Entra ID > Applications d'entreprise > Consentement et autorisations > Paramètres de consentement utilisateur. Réglez le consentement utilisateur sur « Ne pas autoriser le consentement de l'utilisateur » ou « Autoriser le consentement de l'utilisateur pour les applications d'éditeurs vérifiés, pour les autorisations sélectionnées uniquement » en ne sélectionnant que des autorisations à faible risque. Activez le flux de consentement administrateur pour offrir un processus structuré permettant aux utilisateurs de demander l'accès aux applications nécessitant l'approbation d'un administrateur.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-013": {
+    "name": {
+      "value": "Configuration du flux de consentement administrateur",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le flux de consentement administrateur offre un processus structuré permettant aux utilisateurs de demander l'approbation d'un administrateur avant que les applications puissent accéder aux données de l'organisation. Sans flux de consentement administrateur, les utilisateurs dont le consentement est restreint n'ont aucun mécanisme formel pour demander l'accès aux applications, ce qui conduit à des contournements de shadow IT ou à des goulots d'étranglement au support technique. Un flux correctement configuré garantit que les demandes d'applications légitimes sont examinées et approuvées par des administrateurs désignés.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Flux de consentement administrateur activé avec des réviseurs désignés et un SLA défini pour l'achèvement de l'examen",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Accédez à Entra ID > Applications d'entreprise > Consentement et autorisations > Paramètres de consentement administrateur. Activez le flux de consentement administrateur et désignez des réviseurs appropriés au sein de vos équipes de sécurité ou d'administration informatique. Configurez les paramètres de notification pour alerter les réviseurs des demandes en attente et établissez un accord de niveau de service pour le délai d'examen afin d'éviter les goulots d'étranglement du flux.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-014": {
+    "name": {
+      "value": "Détenteurs du rôle ApplicationImpersonation",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le rôle ApplicationImpersonation dans Exchange Online accorde la capacité d'usurper l'identité de n'importe quelle boîte aux lettres de l'organisation, permettant un accès complet en lecture et en écriture à tous les e-mails sans que le propriétaire de la boîte aux lettres en ait connaissance. Ce rôle est fréquemment détourné dans les attaques de compromission de messagerie professionnelle et d'exfiltration de données, car un seul compte compromis doté de ce rôle peut accéder à l'ensemble de la messagerie de l'organisation. Les attributions doivent être extrêmement limitées, à durée déterminée et surveillées en continu.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucune attribution permanente du rôle ApplicationImpersonation. Toute attribution requise doit être limitée à des boîtes aux lettres spécifiques et à durée déterminée",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Examinez les attributions de rôle Exchange Online pour identifier tous les principaux détenant le rôle ApplicationImpersonation à l'aide de Get-ManagementRoleAssignment dans Exchange Online PowerShell. Supprimez immédiatement toutes les attributions inutiles et remplacez les octrois d'usurpation étendus par des attributions limitées à des boîtes aux lettres spécifiques lorsque cela est requis. Mettez en place des alertes de surveillance pour toute nouvelle attribution du rôle ApplicationImpersonation et menez des revues mensuelles des attributions existantes.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-015": {
+    "name": {
+      "value": "Revue des octrois d'autorisation OAuth2",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les octrois d'autorisation OAuth2 définissent les autorisations spécifiques que les applications sont autorisées à exercer, soit en tant qu'autorisations déléguées agissant pour le compte d'un utilisateur, soit en tant qu'autorisations d'application agissant de manière autonome. Des octrois d'autorisation accumulés sur de nombreuses applications peuvent créer un réseau d'accès complexe, difficile à auditer, et pouvant inclure des autorisations trop étendues ou inutiles. Une revue régulière garantit que les octrois restent alignés sur les besoins métier actuels.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Tous les octrois d'autorisation OAuth2 examinés chaque trimestre, les octrois obsolètes ou excessifs étant révoqués",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Exportez tous les octrois d'autorisation OAuth2 à l'aide de Microsoft Graph et classez-les par type d'autorisation (déléguée ou application), ressource et portée. Identifiez les octrois pour des applications qui ne sont plus actives ou les autorisations qui dépassent ce qui est requis pour les fonctionnalités actuelles de l'application. Révoquez les octrois inutiles via le centre d'administration Entra ou l'API Microsoft Graph et établissez un cycle de revue trimestriel pour tous les octrois actifs.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-016": {
+    "name": {
+      "value": "Inventaire et autorisations des identités managées",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les identités managées fournissent aux ressources Azure des informations d'identification gérées automatiquement pour s'authentifier auprès des services prenant en charge l'authentification Entra ID. Bien que les identités managées éliminent le besoin d'informations d'identification stockées, elles peuvent tout de même être sur-autorisées ou attribuées à des ressources qui n'en ont plus besoin. Un inventaire exhaustif des identités managées et de leurs attributions d'autorisations garantit un accès de moindre privilège et permet d'identifier les identités orphelines associées à des ressources supprimées.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les identités managées inventoriées avec des associations de ressources documentées et des attributions d'autorisations de moindre privilège",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Énumérez toutes les identités managées affectées par le système et affectées par l'utilisateur sur l'ensemble des abonnements Azure à l'aide d'Azure Resource Graph ou du portail Azure. Examinez les attributions de rôle et les autorisations d'API accordées à chaque identité managée et vérifiez qu'elles respectent les principes du moindre privilège. Supprimez les attributions de rôle des identités managées associées à des ressources supprimées ou déclassées et documentez la finalité et les exigences d'autorisation de chaque identité managée active.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-017": {
+    "name": {
+      "value": "Activité de connexion des principaux de service",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La surveillance de l'activité de connexion des principaux de service offre une visibilité sur les applications qui s'authentifient activement et depuis quelles adresses IP. Des schémas de connexion inhabituels, tels qu'une authentification depuis des emplacements géographiques inattendus, des volumes de requêtes anormaux ou des connexions provenant d'applications censées être dormantes, peuvent indiquer une compromission des informations d'identification ou une utilisation non autorisée. Ces données d'activité de référence sont essentielles pour détecter les anomalies et enquêter sur les incidents.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Journaux de connexion des principaux de service examinés régulièrement, avec des profils d'activité de référence établis pour les applications critiques",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Examinez les journaux de connexion des principaux de service dans Entra ID > Surveillance > Journaux de connexion > Connexions des principaux de service. Établissez des profils d'activité de référence pour les applications critiques, incluant la fréquence d'authentification normale, les plages d'adresses IP source et les ressources cibles. Configurez des alertes pour les schémas de connexion anormaux des principaux de service, tels qu'une authentification depuis de nouvelles adresses IP, une activité inhabituelle selon l'heure de la journée ou des connexions provenant d'applications dormantes.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-018": {
+    "name": {
+      "value": "Suivi des modifications des inscriptions d'applications et des principaux de service",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les modifications apportées aux inscriptions d'applications et aux principaux de service, telles que l'ajout de nouvelles informations d'identification, la modification d'autorisations ou des changements de configuration, doivent être suivies et examinées. Les attaquants modifient fréquemment des applications existantes pour ajouter des informations d'identification de porte dérobée, élever des autorisations ou changer les URI de redirection dans le cadre de techniques de persistance et d'élévation de privilèges. Sans suivi des modifications, ces changements peuvent passer inaperçus indéfiniment.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les modifications des inscriptions d'applications et des principaux de service journalisées, surveillées et examinées, avec des alertes pour les modifications à haut risque",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Configurez la surveillance des journaux d'audit pour capturer toutes les modifications des inscriptions d'applications et des principaux de service, y compris les ajouts d'informations d'identification, les changements d'autorisations et les modifications de configuration. Créez des règles d'alerte dans Microsoft Sentinel ou Azure Monitor pour les modifications à haut risque telles que l'ajout de nouvelles informations d'identification à des applications existantes, les changements d'octroi d'autorisations d'application et les modifications d'URL de réponse. Établissez un processus de revue pour toutes les modifications d'applications avec des réviseurs de sécurité désignés.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-019": {
+    "name": {
+      "value": "URL de réponse orphelines",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les URL de réponse pointant vers des domaines expirés, sans propriétaire ou non revendiqués rendent possible le vol de jetons en permettant aux attaquants d'enregistrer le domaine abandonné et d'intercepter les codes d'autorisation et les jetons OAuth redirigés par Entra ID. Cette vulnérabilité, appelée prise de contrôle de sous-domaine ou attaque DNS orpheline (dangling DNS), donne aux attaquants la capacité d'obtenir des jetons d'accès valides pour les autorisations de l'application sans aucune compromission d'informations d'identification. Toutes les URL de réponse doivent être validées afin de garantir qu'elles se résolvent vers une infrastructure contrôlée par l'organisation.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les URL de réponse se résolvent vers des domaines actifs et détenus par l'organisation, sans aucune référence de domaine orpheline ou expirée",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Extrayez toutes les URL de réponse des inscriptions d'applications et résolvez chaque domaine pour vérifier la propriété et l'enregistrement DNS actif. Identifiez toute URL de réponse pointant vers des domaines expirés, disponibles à l'enregistrement ou non contrôlés par l'organisation. Supprimez ou mettez à jour immédiatement les URL de réponse orphelines et mettez en place un processus de revue périodique pour détecter les nouvelles références orphelines au fur et à mesure que des domaines expirent ou que l'infrastructure évolue.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAPP-020": {
+    "name": {
+      "value": "Consentement des propriétaires de groupe aux applications bloqué",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Lorsque le consentement spécifique aux groupes (propriétaire de groupe) est activé, les propriétaires de groupes Microsoft 365 et de Teams peuvent autoriser des applications à accéder aux données détenues par leur groupe sans examen d'un administrateur. Les attaquants exploitent cela au moyen d'un hameçonnage par octroi de consentement illicite visant les propriétaires de groupes et d'équipes afin d'obtenir un accès persistant et délimité aux données de l'organisation. SCuBA exige que les propriétaires de groupe ne soient pas autorisés à consentir aux applications, forçant tout consentement de ce type à passer par le flux d'approbation administrateur. Dans Entra ID, cela est régi par le paramètre EnableGroupSpecificConsent des paramètres d'annuaire (groupe) ; il doit être défini sur false. Notez que Microsoft a déprécié le bouton bascule du centre d'administration pour ce contrôle, mais le paramètre d'annuaire sous-jacent demeure le signal faisant autorité.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "EnableGroupSpecificConsent défini sur false dans les paramètres d'annuaire (groupe) : les propriétaires de groupe ne peuvent pas consentir aux applications",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Assurez-vous que les propriétaires de groupe ne peuvent pas consentir aux applications, satisfaisant ainsi le contrôle SCuBA MS.AAD.5.4. Définissez le paramètre d'annuaire (groupe) 'EnableGroupSpecificConsent' sur false (modèle de paramètres Group.Unified). Acheminez tout consentement d'application pour les données détenues par un groupe via le flux de consentement administrateur afin qu'un réviseur approuve l'accès. Lorsque l'ancien bouton bascule du centre d'administration n'est plus présent, confirmez directement la valeur du paramètre d'annuaire via la configuration des paramètres de groupe.",
+      "status": "machine-draft"
+    }
+  }
+}
