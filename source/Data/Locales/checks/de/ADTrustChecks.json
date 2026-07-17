@@ -1,0 +1,69 @@
+{
+  "_family": "ADTrustChecks.json",
+  "ADTRUST-001": {
+    "name": { "value": "Aufzählung der Vertrauensstellungen", "status": "machine-draft" },
+    "description": { "value": "Alle Vertrauensstellungen sollten inventarisiert werden, um ein vollständiges Bild der Authentifizierungsgrenze zu erhalten. Nicht dokumentierte Vertrauensstellungen vergrößern die Angriffsfläche, indem sie Benutzern aus externen Domänen den Zugriff auf Ressourcen ermöglichen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle Vertrauensstellungen mit geschäftlicher Begründung, Richtung, Typ und Eigentümer dokumentiert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Führen Sie Get-ADTrust -Filter * aus, um alle Vertrauensstellungen aufzuzählen. Dokumentieren Sie jede Vertrauensstellung mit ihrer Richtung, ihrem Typ (Gesamtstruktur, extern, Verknüpfung, Realm), ihrer Transitivität und ihrer geschäftlichen Begründung. Überprüfen und entfernen Sie alle Vertrauensstellungen, die keinen geschäftlichen Zweck mehr erfüllen.", "status": "machine-draft" }
+  },
+  "ADTRUST-002": {
+    "name": { "value": "Analyse der Vertrauensrichtung", "status": "machine-draft" },
+    "description": { "value": "Eingehende Vertrauensstellungen erlauben Benutzern externer Domänen die Authentifizierung in Ihrer Domäne. Jede eingehende oder bidirektionale Vertrauensstellung sollte überprüft werden, um sicherzustellen, dass die vertraute Domäne angemessene Sicherheitskontrollen aufrechterhält. Eine kompromittierte vertraute Domäne kann genutzt werden, um Ihre Umgebung anzugreifen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle Vertrauensrichtungen begründet und dokumentiert. Bidirektionale Vertrauensstellungen nach Möglichkeit in einseitige umgewandelt, um die Angriffsfläche zu verringern", "status": "machine-draft" },
+    "remediationSteps": { "value": "Überprüfen Sie jede Vertrauensrichtung mit Get-ADTrust -Filter *. Bewerten Sie bei bidirektionalen Vertrauensstellungen, ob beide Richtungen erforderlich sind. Wandeln Sie sie in einseitige Vertrauensstellungen um, wenn der geschäftliche Bedarf nur eine Richtung erfordert. Dokumentieren Sie die Begründung für alle eingehenden Vertrauenspfade.", "status": "machine-draft" }
+  },
+  "ADTRUST-003": {
+    "name": { "value": "Analyse der Vertrauenstransitivität", "status": "machine-draft" },
+    "description": { "value": "Transitive Vertrauensstellungen erweitern die Authentifizierungspfade über direkte Vertrauenspartner hinaus und können durch Ketten vertrauter Domänen unbeabsichtigte Zugriffspfade schaffen. Jede transitive Vertrauensstellung sollte hinsichtlich der von ihr erzeugten erweiterten Angriffsfläche bewertet werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle transitiven Vertrauensstellungen mit vollständiger Analyse des Transitivitätspfads dokumentiert. Externe Vertrauensstellungen werden Gesamtstruktur-Vertrauensstellungen vorgezogen, wenn keine Transitivität erforderlich ist", "status": "machine-draft" },
+    "remediationSteps": { "value": "Kartieren Sie alle transitiven Vertrauenspfade, um indirekte Authentifizierungsrouten zu identifizieren. Bedenken Sie bei Gesamtstruktur-Vertrauensstellungen, dass alle untergeordneten Domänen transitiv vertraut sind. Erwägen Sie die Verwendung externer (nicht transitiver) Vertrauensstellungen, wenn nur der Zugriff auf bestimmte Domänen benötigt wird.", "status": "machine-draft" }
+  },
+  "ADTRUST-004": {
+    "name": { "value": "Status der SID-Filterung", "status": "machine-draft" },
+    "description": { "value": "Die SID-Filterung entfernt SIDs aus fremden Domänen aus den Authentifizierungstokens und verhindert so Angriffe durch SID-History-Injektion. Ohne SID-Filterung kann ein Angreifer, der eine vertraute Domäne kompromittiert, Tickets erstellen, die privilegierte SIDs (etwa Enterprise Admins) aus Ihrer Domäne enthalten, und so die vollständige Kompromittierung erreichen", "status": "machine-draft" },
+    "recommendedValue": { "value": "SID-Filterung (Quarantäne) auf allen externen und Gesamtstruktur-Vertrauensstellungen aktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Überprüfen Sie den Status der SID-Filterung mit „netdom trust /domain:trusted.domain /Quarantine“. Aktivieren Sie die SID-Filterung mit „netdom trust /domain:trusted.domain /Quarantine:Yes“. Hinweis: Die SID-Filterung ist bei externen Vertrauensstellungen standardmäßig aktiviert, muss aber bei Gesamtstruktur-Vertrauensstellungen überprüft werden, wo sie möglicherweise absichtlich deaktiviert wurde.", "status": "machine-draft" }
+  },
+  "ADTRUST-005": {
+    "name": { "value": "Erkennung von SID-History-Missbrauch", "status": "machine-draft" },
+    "description": { "value": "SID-History ist für Domänenmigrationen vorgesehen, kann aber missbraucht werden, um privilegierte SIDs über Vertrauensgrenzen hinweg in Benutzertokens einzuschleusen. Angreifer, die eine vertraute Domäne kompromittieren, können der SID-History jedes von ihnen kontrollierten Kontos Enterprise-Admin- oder Domain-Admin-SIDs hinzufügen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Keine Konten mit SID-History-Werten, die auf privilegierte Gruppen verweisen. SID-History nach Abschluss aller Migrationen bereinigt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Suchen Sie mit Get-ADUser -Filter {SIDHistory -like '*'} -Properties SIDHistory nach Konten mit SID-History. Identifizieren Sie SID-History-Einträge, die auf privilegierte Gruppen verweisen (Domain Admins, Enterprise Admins usw.). Bereinigen Sie die SID-History nach der Migration mit Remove-ADUser und dem Parameter SIDHistory. Aktivieren Sie die SID-Filterung auf Vertrauensstellungen.", "status": "machine-draft" }
+  },
+  "ADTRUST-006": {
+    "name": { "value": "Status der selektiven Authentifizierung", "status": "machine-draft" },
+    "description": { "value": "Die selektive Authentifizierung schränkt ein, welche Benutzer aus einer vertrauten Domäne sich bei Ressourcen in Ihrer Domäne authentifizieren dürfen, indem sie explizite Berechtigungen für jede Ressource verlangt. Ohne sie können alle authentifizierten Benutzer der vertrauten Domäne auf jede Ressource zugreifen, für die sie Berechtigungen besitzen, was die Angriffsfläche erheblich vergrößert", "status": "machine-draft" },
+    "recommendedValue": { "value": "Selektive Authentifizierung auf allen Gesamtstruktur-Vertrauensstellungen aktiviert. Berechtigung „Authentifizierung zulässig“ nur auf erforderlichen Ressourcen gewährt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Aktivieren Sie die selektive Authentifizierung auf Gesamtstruktur-Vertrauensstellungen über Active Directory-Domänen und -Vertrauensstellungen > Eigenschaften der Vertrauensstellung > Registerkarte Authentifizierung > „Selektive Authentifizierung“ auswählen. Gewähren Sie anschließend die Berechtigung „Authentifizierung zulässig“ auf den konkreten Computerobjekten, auf die externe Benutzer zugreifen müssen.", "status": "machine-draft" }
+  },
+  "ADTRUST-007": {
+    "name": { "value": "Sicherheit hybrider Azure-AD-Vertrauensstellungen", "status": "machine-draft" },
+    "description": { "value": "Hybride Identitätskonfigurationen, die lokales AD mit Azure AD verbinden, schaffen zusätzliche Angriffspfade. Azure AD Connect, Pass-Through-Authentifizierungsagenten und Verbunddienste können angegriffen werden, um zwischen Cloud- und lokalen Umgebungen zu wechseln", "status": "machine-draft" },
+    "recommendedValue": { "value": "Azure AD Connect läuft in der neuesten Version auf einem gehärteten, dedizierten Server. PHS wird gegenüber PTA/Verbund bevorzugt. Nahtloses SSO deaktiviert, falls nicht erforderlich. Reine Cloud-Break-Glass-Konten konfiguriert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Überprüfen Sie die Azure-AD-Connect-Konfiguration und stellen Sie sicher, dass sie auf einem gehärteten Tier-0-Server läuft. Bewerten Sie den Wechsel von Verbund oder PTA zur Kennworthashsynchronisierung (PHS), um die Angriffsfläche zu verringern. Falls Sie nahtloses SSO verwenden, stellen Sie sicher, dass das Kennwort des Computerkontos AZUREADSSOACC gewechselt wird. Überprüfen Sie, dass reine Cloud-Konten für den Notfallzugriff vorhanden sind.", "status": "machine-draft" }
+  },
+  "ADTRUST-008": {
+    "name": { "value": "Aufzählung fremder Domänenvertrauensstellungen", "status": "machine-draft" },
+    "description": { "value": "Vertrauensstellungen mit Domänen außerhalb der Organisation erweitern die Sicherheitsgrenze auf Entitäten mit möglicherweise abweichenden Sicherheitsstandards. Fremde Domänenvertrauensstellungen sollten zusätzlich geprüft werden, da die vertrauende Organisation die Sicherheitslage der externen Domäne nicht kontrollieren kann", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle fremden Domänenvertrauensstellungen mit externer Sicherheitsbewertung, vertraglichen Sicherheitsanforderungen und jährlicher Überprüfung dokumentiert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Identifizieren Sie mit Get-ADTrust -Filter * Vertrauensstellungen mit Domänen außerhalb der Organisation. Überprüfen Sie für jede externe Vertrauensstellung, dass eine Sicherheitsvereinbarung besteht, die SID-Filterung aktiviert ist, die selektive Authentifizierung konfiguriert ist und die Vertrauensstellung jährlich überprüft wird.", "status": "machine-draft" }
+  },
+  "ADTRUST-009": {
+    "name": { "value": "Erkennung verwaister Vertrauensstellungen", "status": "machine-draft" },
+    "description": { "value": "Verwaiste Vertrauensstellungen verweisen auf Domänen, die nicht mehr existieren oder nicht mehr erreichbar sind. Diese veralteten Vertrauensobjekte können Anmeldeinformationen behalten und bei Sicherheitsaudits für Verwirrung sorgen. Sie sollten entfernt werden, um unnötige Angriffsfläche zu verringern und eine saubere Vertrauenstopologie zu erhalten", "status": "machine-draft" },
+    "recommendedValue": { "value": "Keine verwaisten oder nicht auflösbaren Vertrauensstellungen vorhanden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Zählen Sie alle Vertrauensstellungen auf und versuchen Sie, jede zu validieren, indem Sie den Namen der vertrauten Domäne auflösen und die Vertrauensstellung mit „netdom trust /verify“ testen. Entfernen Sie verwaiste Vertrauensstellungen, bei denen die Partnerdomäne nicht mehr existiert oder nicht erreichbar ist, mit „netdom trust /Remove“ oder über Active Directory-Domänen und -Vertrauensstellungen.", "status": "machine-draft" }
+  },
+  "ADTRUST-010": {
+    "name": { "value": "Alter und Rotation von Vertrauensschlüsseln", "status": "machine-draft" },
+    "description": { "value": "Vertrauenskennwörter (domänenübergreifende Schlüssel) sollten regelmäßig gewechselt werden. Veraltete Vertrauensschlüssel vergrößern das Zeitfenster für Angriffe auf Basis von Anmeldeinformationen. Standardmäßig werden Vertrauenskennwörter alle 30 Tage gewechselt, dies sollte jedoch überprüft werden, da fehlgeschlagene Rotationen unbemerkt bleiben können", "status": "machine-draft" },
+    "recommendedValue": { "value": "Vertrauenskennwörter innerhalb der letzten 30 Tage gewechselt. Automatische Rotation der Vertrauenskennwörter nicht deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Prüfen Sie das Datum des letzten Wechsels des Vertrauenskennworts, indem Sie das Attribut trustAuthOutgoing untersuchen oder „netdom trust /domain:trusted.domain /verify“ ausführen. Falls das Vertrauenskennwort veraltet ist, setzen Sie es mit „netdom trust /domain:trusted.domain /Reset“ zurück. Überprüfen Sie, dass keine GPO- oder Registrierungseinstellung die automatische Rotation der Vertrauenskennwörter deaktiviert hat.", "status": "machine-draft" }
+  },
+  "ADTRUST-011": {
+    "name": { "value": "Visualisierung der Vertrauenshierarchie", "status": "machine-draft" },
+    "description": { "value": "Eine vollständige Karte der Vertrauenstopologie sollte gepflegt werden, die alle Vertrauensstellungen, Richtungen, Typen und Transitivitätspfade zeigt. Diese Visualisierung ist unerlässlich, um die gesamte Authentifizierungsgrenze zu verstehen und unerwartete Zugriffspfade zu identifizieren", "status": "machine-draft" },
+    "recommendedValue": { "value": "Aktuelles Diagramm der Vertrauenstopologie gepflegt und vierteljährlich überprüft", "status": "machine-draft" },
+    "remediationSteps": { "value": "Erstellen Sie eine Karte der Vertrauenstopologie mit automatisierten Werkzeugen oder dokumentieren Sie manuell alle Vertrauensstellungen einschließlich Richtung, Typ, Transitivität, Status der SID-Filterung und Status der selektiven Authentifizierung. Aktualisieren Sie das Diagramm, sobald Vertrauensstellungen hinzugefügt, geändert oder entfernt werden. Nehmen Sie die Karte in die Sicherheitsdokumentation auf und überprüfen Sie sie vierteljährlich.", "status": "machine-draft" }
+  }
+}
