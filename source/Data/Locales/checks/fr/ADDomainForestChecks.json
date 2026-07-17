@@ -1,0 +1,123 @@
+{
+  "_family": "ADDomainForestChecks.json",
+  "ADDOM-001": {
+    "name": { "value": "Niveau fonctionnel de la forêt", "status": "machine-draft" },
+    "description": { "value": "Le niveau fonctionnel de la forêt Active Directory doit être au minimum Windows Server 2016 afin d'activer les fonctionnalités de sécurité modernes telles que la gestion des accès privilégiés et les protections Kerberos améliorées. L'exécution de niveaux fonctionnels plus anciens expose l'environnement à des attaques qui tirent parti des faiblesses des protocoles hérités", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2016 ou version ultérieure", "status": "machine-draft" },
+    "remediationSteps": { "value": "Élevez le niveau fonctionnel de la forêt via Domaines et approbations Active Directory > clic droit sur la racine de la forêt > Élever le niveau fonctionnel de la forêt. Assurez-vous que tous les contrôleurs de domaine exécutent une version de système d'exploitation prise en charge avant d'élever le niveau", "status": "machine-draft" }
+  },
+  "ADDOM-002": {
+    "name": { "value": "Niveau fonctionnel du domaine", "status": "machine-draft" },
+    "description": { "value": "Le niveau fonctionnel du domaine Active Directory doit être au minimum Windows Server 2016. Des niveaux fonctionnels inférieurs empêchent l'utilisation de fonctionnalités de sécurité essentielles, notamment les fonctionnalités du groupe Protected Users, les stratégies d'authentification et le renforcement Kerberos moderne (armoring)", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2016 ou version ultérieure", "status": "machine-draft" },
+    "remediationSteps": { "value": "Élevez le niveau fonctionnel du domaine via Domaines et approbations Active Directory > clic droit sur le domaine > Élever le niveau fonctionnel du domaine. Vérifiez d'abord que tous les contrôleurs de domaine du domaine exécutent une version de système d'exploitation compatible", "status": "machine-draft" }
+  },
+  "ADDOM-003": {
+    "name": { "value": "Identification de la version du schéma", "status": "machine-draft" },
+    "description": { "value": "La version du schéma AD doit être documentée et correspondre à la dernière version prise en charge. Un schéma obsolète peut manquer d'attributs requis par les fonctionnalités de sécurité et les applications modernes", "status": "machine-draft" },
+    "recommendedValue": { "value": "Version du schéma correspondant à Windows Server 2022 (version 88) ou ultérieure", "status": "machine-draft" },
+    "remediationSteps": { "value": "Exécutez adprep /forestprep et adprep /domainprep à partir du support d'installation Windows Server le plus récent pour mettre à jour le schéma. Vérifiez l'attribut objectVersion sur CN=Schema,CN=Configuration,DC=domain", "status": "machine-draft" }
+  },
+  "ADDOM-004": {
+    "name": { "value": "Inventaire des contrôleurs de domaine", "status": "machine-draft" },
+    "description": { "value": "Tous les contrôleurs de domaine doivent être inventoriés avec leur version de système d'exploitation, leur niveau de correctifs et leur emplacement. Des contrôleurs de domaine non suivis représentent un risque de sécurité important, car ils peuvent manquer de correctifs ou être compromis sans être détectés", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tous les contrôleurs de domaine documentés avec la version actuelle du système d'exploitation, l'appartenance au site et l'état des correctifs", "status": "machine-draft" },
+    "remediationSteps": { "value": "Interrogez tous les objets ordinateur des contrôleurs de domaine dans l'OU Domain Controllers. Vérifiez que chaque contrôleur de domaine est recensé, exécute un système d'exploitation pris en charge et reçoit des correctifs réguliers. Supprimez ou rétrogradez immédiatement tout contrôleur de domaine non autorisé", "status": "machine-draft" }
+  },
+  "ADDOM-005": {
+    "name": { "value": "Système d'exploitation obsolète sur les contrôleurs de domaine", "status": "machine-draft" },
+    "description": { "value": "Les contrôleurs de domaine exécutant des systèmes d'exploitation en fin de vie (Windows Server 2012 R2 ou antérieur) ne reçoivent pas de mises à jour de sécurité et sont vulnérables à des exploits connus. Ils représentent un risque critique pour l'infrastructure, car la compromission d'un contrôleur de domaine confère le contrôle total du domaine", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tous les contrôleurs de domaine exécutant Windows Server 2019 ou version ultérieure avec les correctifs à jour", "status": "machine-draft" },
+    "remediationSteps": { "value": "Planifiez la migration des contrôleurs de domaine exécutant des versions de système d'exploitation obsolètes. Créez de nouveaux contrôleurs de domaine sur Windows Server 2022, transférez les rôles FSMO si nécessaire, répliquez, puis rétrogradez et mettez hors service les anciens contrôleurs de domaine. Priorisez cette correction, car les contrôleurs de domaine hérités sont activement ciblés", "status": "machine-draft" }
+  },
+  "ADDOM-006": {
+    "name": { "value": "Identification des titulaires de rôles FSMO", "status": "machine-draft" },
+    "description": { "value": "Les cinq rôles FSMO (Schema Master, Domain Naming Master, RID Master, PDC Emulator, Infrastructure Master) doivent être documentés et placés sur des contrôleurs de domaine appropriés. Connaître l'emplacement des rôles est essentiel pour la reprise après sinistre et la connaissance opérationnelle", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tous les rôles FSMO documentés, placés sur des contrôleurs de domaine fiables et inclus dans la planification de reprise après sinistre", "status": "machine-draft" },
+    "remediationSteps": { "value": "Exécutez « netdom query fsmo » ou interrogez le schéma AD et les partitions de domaine pour identifier les titulaires de rôles. Documentez les rôles et vérifiez qu'ils se trouvent sur des contrôleurs de domaine à haute disponibilité. Transférez les rôles si les titulaires actuels sont inappropriés", "status": "machine-draft" }
+  },
+  "ADDOM-007": {
+    "name": { "value": "Intégrité de la réplication AD", "status": "machine-draft" },
+    "description": { "value": "Les échecs de réplication Active Directory peuvent entraîner une application incohérente des stratégies de sécurité, le maintien de la validité d'informations d'identification obsolètes et des scénarios de type split-brain. Des échecs de réplication persistants peuvent également indiquer un contrôleur de domaine compromis ou malveillant", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tous les contrôleurs de domaine se répliquant correctement sans erreur au cours des dernières 24 heures", "status": "machine-draft" },
+    "remediationSteps": { "value": "Exécutez « repadmin /replsummary » et « repadmin /showrepl » pour identifier les échecs. Investiguez et résolvez les problèmes DNS, les problèmes de connectivité réseau ou les conditions de restauration USN (USN rollback). Surveillez l'état de la réplication dans le cadre des opérations de routine", "status": "machine-draft" }
+  },
+  "ADDOM-008": {
+    "name": { "value": "Configuration de la durée de vie des objets tombstone", "status": "machine-draft" },
+    "description": { "value": "La durée de vie des objets tombstone définit la durée de conservation des objets supprimés avant leur suppression définitive et détermine la durée maximale hors ligne d'un contrôleur de domaine avant qu'il ne doive être reconstruit. Une valeur trop faible peut provoquer des objets persistants (lingering objects) ; la valeur par défaut de 60 jours doit être portée à 180 jours pour les environnements modernes", "status": "machine-draft" },
+    "recommendedValue": { "value": "180 jours", "status": "machine-draft" },
+    "remediationSteps": { "value": "Modifiez l'attribut tombstoneLifetime sur CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=domain. Définissez-le sur 180 à l'aide d'ADSIEdit ou de PowerShell. Assurez-vous que la Corbeille AD est activée avant la modification", "status": "machine-draft" }
+  },
+  "ADDOM-009": {
+    "name": { "value": "État de la Corbeille AD", "status": "machine-draft" },
+    "description": { "value": "La Corbeille Active Directory permet de récupérer des objets supprimés avec tous leurs attributs intacts. Sans elle, la restauration d'objets supprimés accidentellement ou de manière malveillante nécessite une restauration autoritaire à partir d'une sauvegarde, ce qui entraîne une indisponibilité importante", "status": "machine-draft" },
+    "recommendedValue": { "value": "Activée", "status": "machine-draft" },
+    "remediationSteps": { "value": "Activez la Corbeille AD via le Centre d'administration Active Directory > clic droit sur le domaine > Activer la Corbeille, ou exécutez Enable-ADOptionalFeature 'Recycle Bin Feature' dans PowerShell. Remarque : cette action est irréversible", "status": "machine-draft" }
+  },
+  "ADDOM-010": {
+    "name": { "value": "Configuration des sites et des sous-réseaux", "status": "machine-draft" },
+    "description": { "value": "Tous les sous-réseaux IP utilisés doivent être affectés à des sites AD. L'absence de mappage sous-réseau/site amène les clients à s'authentifier auprès de contrôleurs de domaine sous-optimaux, ce qui peut envoyer des informations d'identification en clair sur des liaisons WAN et dégrader la posture de sécurité", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tous les sous-réseaux IP mappés aux sites AD appropriés, sans sous-réseaux orphelins", "status": "machine-draft" },
+    "remediationSteps": { "value": "Examinez le conteneur Sites et services Active Directory > Sous-réseaux. Recoupez avec la documentation réseau pour identifier les sous-réseaux non mappés. Créez des objets sous-réseau pour tous les réseaux de production et associez-les au site correct", "status": "machine-draft" }
+  },
+  "ADDOM-011": {
+    "name": { "value": "Configuration des liens de site", "status": "machine-draft" },
+    "description": { "value": "Les liens de site AD doivent être configurés avec un coût, un intervalle de réplication et une planification appropriés afin d'assurer une réplication en temps voulu tout en respectant les contraintes réseau. Des liens de site mal configurés peuvent retarder la propagation des stratégies de sécurité", "status": "machine-draft" },
+    "recommendedValue": { "value": "Liens de site configurés avec des coûts appropriés et des intervalles de réplication de 15 à 60 minutes selon la capacité de la liaison", "status": "machine-draft" },
+    "remediationSteps": { "value": "Examinez Sites et services Active Directory > Transports intersites > IP. Vérifiez que chaque lien de site possède des valeurs de coût appropriées, un intervalle de réplication (la valeur par défaut de 180 minutes est souvent trop longue) et une planification adéquats. Ajustez en fonction de la topologie réseau", "status": "machine-draft" }
+  },
+  "ADDOM-012": {
+    "name": { "value": "Sécurité des zones DNS", "status": "machine-draft" },
+    "description": { "value": "Les zones DNS intégrées à AD doivent utiliser uniquement les mises à jour dynamiques sécurisées. Autoriser les mises à jour non sécurisées permet aux attaquants d'empoisonner les enregistrements DNS, de rediriger le trafic d'authentification et de mener des attaques de l'intercepteur contre les systèmes joints au domaine", "status": "machine-draft" },
+    "recommendedValue": { "value": "Mises à jour dynamiques sécurisées uniquement sur toutes les zones DNS intégrées à AD", "status": "machine-draft" },
+    "remediationSteps": { "value": "Ouvrez le Gestionnaire DNS > clic droit sur chaque zone intégrée à AD > Propriétés > onglet Général > remplacez Mises à jour dynamiques par « Sécurisé uniquement ». Examinez toutes les zones de recherche directe et inversée. Vérifiez la signature DNSSEC le cas échéant", "status": "machine-draft" }
+  },
+  "ADDOM-013": {
+    "name": { "value": "Exigences de signature LDAP", "status": "machine-draft" },
+    "description": { "value": "La signature LDAP doit être exigée sur tous les contrôleurs de domaine afin d'empêcher les attaques de l'intercepteur sur le trafic LDAP. Sans signature, les attaquants peuvent intercepter et modifier les requêtes et réponses LDAP, ce qui peut permettre d'élever des privilèges ou d'exfiltrer des données", "status": "machine-draft" },
+    "recommendedValue": { "value": "Exigence de signature du serveur LDAP définie sur « Exiger la signature » sur tous les contrôleurs de domaine", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configurez via la stratégie de groupe : Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Stratégies locales > Options de sécurité > « Contrôleur de domaine : exigences de signature du serveur LDAP » = « Exiger la signature ». Appliquez à l'OU Domain Controllers", "status": "machine-draft" }
+  },
+  "ADDOM-014": {
+    "name": { "value": "Liaison de canal LDAP", "status": "machine-draft" },
+    "description": { "value": "Les jetons de liaison de canal LDAP empêchent les attaques de relais en liant cryptographiquement la session LDAP au canal TLS. Sans liaison de canal, les attaquants peuvent relayer l'authentification LDAP pour obtenir un accès non autorisé", "status": "machine-draft" },
+    "recommendedValue": { "value": "Liaison de canal LDAP définie sur « Toujours » sur tous les contrôleurs de domaine", "status": "machine-draft" },
+    "remediationSteps": { "value": "Définissez la valeur de registre LdapEnforceChannelBinding sur 2 (Toujours) dans HKLM\\System\\CurrentControlSet\\Services\\NTDS\\Parameters sur tous les contrôleurs de domaine. Testez d'abord avec la valeur 1 (Lorsque pris en charge) pour identifier les clients incompatibles", "status": "machine-draft" }
+  },
+  "ADDOM-015": {
+    "name": { "value": "Exigences de signature SMB", "status": "machine-draft" },
+    "description": { "value": "La signature SMB doit être exigée sur tous les contrôleurs de domaine afin d'empêcher les attaques de l'intercepteur et de relais sur le trafic SMB. Les attaques de relais SMB peuvent être utilisées pour obtenir un accès de niveau SYSTEM sur les contrôleurs de domaine, conduisant à la compromission totale du domaine", "status": "machine-draft" },
+    "recommendedValue": { "value": "Signature SMB exigée sur tous les contrôleurs de domaine et serveurs membres", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configurez via la stratégie de groupe : Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Stratégies locales > Options de sécurité > « Serveur réseau Microsoft : signer numériquement les communications (toujours) » = Activé. Appliquez à l'OU Domain Controllers et à toutes les OU de serveurs", "status": "machine-draft" }
+  },
+  "ADDOM-016": {
+    "name": { "value": "Détection de l'utilisation de NTLMv1", "status": "machine-draft" },
+    "description": { "value": "NTLMv1 est un protocole d'authentification gravement affaibli qui peut être cassé en quelques secondes avec du matériel moderne. Toute utilisation de NTLMv1 dans l'environnement doit être identifiée et éliminée, car elle expose les informations d'identification à des attaques hors connexion triviales", "status": "machine-draft" },
+    "recommendedValue": { "value": "Aucun événement d'authentification NTLMv1 détecté ; niveau d'authentification LAN Manager configuré pour refuser NTLMv1", "status": "machine-draft" },
+    "remediationSteps": { "value": "Activez l'audit NTLM via la stratégie de groupe : Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Stratégies locales > Options de sécurité > paramètres « Sécurité réseau : restreindre NTLM ». Examinez les journaux d'événements à la recherche de l'utilisation de NTLMv1 et corrigez les applications, puis définissez « Sécurité réseau : niveau d'authentification LAN Manager » sur « Envoyer uniquement des réponses NTLMv2. Refuser LM et NTLM »", "status": "machine-draft" }
+  },
+  "ADDOM-017": {
+    "name": { "value": "Imposition de NTLMv2", "status": "machine-draft" },
+    "description": { "value": "Le niveau d'authentification LAN Manager doit être configuré pour envoyer uniquement des réponses NTLMv2 et refuser LM et NTLMv1. Bien que NTLMv2 reste moins sûr que Kerberos, il est nettement plus robuste que NTLMv1 et doit constituer la norme NTLM minimale", "status": "machine-draft" },
+    "recommendedValue": { "value": "Niveau d'authentification LAN Manager défini sur « Envoyer uniquement des réponses NTLMv2. Refuser LM et NTLM » (niveau 5)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configurez via la stratégie de groupe : Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Stratégies locales > Options de sécurité > « Sécurité réseau : niveau d'authentification LAN Manager » = « Envoyer uniquement des réponses NTLMv2. Refuser LM et NTLM ». Testez soigneusement avant l'imposition", "status": "machine-draft" }
+  },
+  "ADDOM-018": {
+    "name": { "value": "Énumération par session nulle", "status": "machine-draft" },
+    "description": { "value": "L'accès anonyme (session nulle) à Active Directory permet à des attaquants non authentifiés d'énumérer les utilisateurs, les groupes, les partages et les informations du domaine. Ces données de reconnaissance servent à planifier des attaques sur les informations d'identification et des déplacements latéraux", "status": "machine-draft" },
+    "recommendedValue": { "value": "Énumération par session nulle désactivée ; RestrictAnonymous et RestrictAnonymousSAM configurés pour empêcher l'accès anonyme", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configurez via la stratégie de groupe : Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Stratégies locales > Options de sécurité > Définissez « Accès réseau : restreindre l'accès anonyme aux canaux nommés et aux partages » = Activé, « Accès réseau : ne pas autoriser l'énumération anonyme des comptes SAM » = Activé, « Accès réseau : ne pas autoriser l'énumération anonyme des comptes SAM et des partages » = Activé", "status": "machine-draft" }
+  },
+  "ADDOM-019": {
+    "name": { "value": "Spouleur d'impression sur les contrôleurs de domaine", "status": "machine-draft" },
+    "description": { "value": "Le service Spouleur d'impression sur les contrôleurs de domaine rend possibles les attaques PrintNightmare (CVE-2021-34527) et SpoolSample/PrinterBug. Un attaquant peut forcer un contrôleur de domaine à s'authentifier auprès d'un serveur contrôlé par l'attaquant, ce qui permet le relais d'informations d'identification et l'abus de la délégation non contrainte", "status": "machine-draft" },
+    "recommendedValue": { "value": "Service Spouleur d'impression désactivé sur tous les contrôleurs de domaine", "status": "machine-draft" },
+    "remediationSteps": { "value": "Désactivez le service Spouleur d'impression sur tous les contrôleurs de domaine via la stratégie de groupe : Configuration ordinateur > Stratégies > Paramètres Windows > Paramètres de sécurité > Services système > Spouleur d'impression > Mode de démarrage = Désactivé. Appliquez à l'OU Domain Controllers. Vérifiez qu'aucune fonctionnalité d'impression ne dépend des contrôleurs de domaine", "status": "machine-draft" }
+  },
+  "ADDOM-020": {
+    "name": { "value": "Configuration du mot de passe DSRM", "status": "machine-draft" },
+    "description": { "value": "Le mot de passe du mode de restauration des services d'annuaire (DSRM) fournit un accès administrateur local à un contrôleur de domaine lorsqu'il démarre en mode de récupération. Un attaquant disposant d'un accès physique ou distant qui connaît le mot de passe DSRM peut extraire l'intégralité de la base de données AD. Le mot de passe DSRM doit être unique par contrôleur de domaine et renouvelé régulièrement", "status": "machine-draft" },
+    "recommendedValue": { "value": "Mot de passe DSRM unique par contrôleur de domaine, renouvelé chaque année et stocké de manière sécurisée. DsrmAdminLogonBehavior défini sur 0 pour empêcher l'ouverture de session DSRM via le réseau", "status": "machine-draft" },
+    "remediationSteps": { "value": "Réinitialisez les mots de passe DSRM à l'aide de « ntdsutil > set dsrm password » sur chaque contrôleur de domaine. Définissez la valeur de registre DsrmAdminLogonBehavior sur 0 dans HKLM\\System\\CurrentControlSet\\Control\\Lsa pour empêcher l'utilisation du compte DSRM pour l'ouverture de session réseau. Documentez et stockez les mots de passe de manière sécurisée", "status": "machine-draft" }
+  }
+}
