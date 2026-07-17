@@ -1,0 +1,1477 @@
+{
+  "_language": {
+    "code": "he",
+    "name": "עברית",
+    "direction": "rtl"
+  },
+  "common": {
+    "domain": {
+      "value": "דומיין",
+      "status": "machine-draft"
+    },
+    "tenant": {
+      "value": "דייר",
+      "status": "machine-draft"
+    },
+    "generated": {
+      "value": "נוצר",
+      "status": "machine-draft"
+    },
+    "reportGenerated": {
+      "value": "הדוח נוצר",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "{0} בדיקות הוערכו &middot; {1} עברו, {2} נכשלו, {3} אזהרות, {4} דולגו",
+      "status": "machine-draft"
+    },
+    "summaryCounts": {
+      "value": "{0} בדיקות &middot; ע:{1} כ:{2} א:{3}",
+      "status": "machine-draft"
+    },
+    "totalChecks": {
+      "value": "סך הבדיקות",
+      "status": "machine-draft"
+    },
+    "passed": {
+      "value": "עברו",
+      "status": "machine-draft"
+    },
+    "failed": {
+      "value": "נכשלו",
+      "status": "machine-draft"
+    },
+    "warnings": {
+      "value": "אזהרות",
+      "status": "machine-draft"
+    },
+    "skipped": {
+      "value": "דולגו",
+      "status": "machine-draft"
+    },
+    "pass": {
+      "value": "עבר",
+      "status": "machine-draft"
+    },
+    "fail": {
+      "value": "נכשל",
+      "status": "machine-draft"
+    },
+    "warn": {
+      "value": "אזהרה",
+      "status": "machine-draft"
+    },
+    "skip": {
+      "value": "דילוג",
+      "status": "machine-draft"
+    },
+    "passLabel": {
+      "value": "עבר:",
+      "status": "machine-draft"
+    },
+    "failLabel": {
+      "value": "נכשל:",
+      "status": "machine-draft"
+    },
+    "warnLabel": {
+      "value": "אזהרה:",
+      "status": "machine-draft"
+    },
+    "skipLabel": {
+      "value": "דילוג:",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "קריטי",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "גבוה",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "בינוני",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "נמוך",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "תקציר מנהלים",
+      "status": "machine-draft"
+    },
+    "categoryBreakdown": {
+      "value": "פילוח לפי קטגוריה",
+      "status": "machine-draft"
+    },
+    "categoryScores": {
+      "value": "ציוני קטגוריות",
+      "status": "machine-draft"
+    },
+    "detailedByCategory": {
+      "value": "ממצאים מפורטים לפי קטגוריה",
+      "status": "machine-draft"
+    },
+    "complianceMapping": {
+      "value": "מיפוי תאימות",
+      "status": "machine-draft"
+    },
+    "complianceCrossReference": {
+      "value": "הצלבת תאימות",
+      "status": "machine-draft"
+    },
+    "allFindings": {
+      "value": "כל הממצאים",
+      "status": "machine-draft"
+    },
+    "thId": {
+      "value": "מזהה",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "חומרה",
+      "status": "machine-draft"
+    },
+    "thStatus": {
+      "value": "סטטוס",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "קטגוריה",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "בדיקה",
+      "status": "machine-draft"
+    },
+    "thCheckName": {
+      "value": "שם הבדיקה",
+      "status": "machine-draft"
+    },
+    "thCheckId": {
+      "value": "מזהה הבדיקה",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "ממצא",
+      "status": "machine-draft"
+    },
+    "thRemediation": {
+      "value": "תיקון",
+      "status": "machine-draft"
+    },
+    "thCurrentValue": {
+      "value": "ערך נוכחי",
+      "status": "machine-draft"
+    },
+    "thRecommended": {
+      "value": "מומלץ",
+      "status": "machine-draft"
+    },
+    "thRecommendedValue": {
+      "value": "ערך מומלץ",
+      "status": "machine-draft"
+    },
+    "thRemediationSteps": {
+      "value": "שלבי תיקון",
+      "status": "machine-draft"
+    },
+    "thName": {
+      "value": "שם",
+      "status": "machine-draft"
+    },
+    "thDescription": {
+      "value": "תיאור",
+      "status": "machine-draft"
+    },
+    "thPlatform": {
+      "value": "פלטפורמה",
+      "status": "machine-draft"
+    },
+    "thTimestamp": {
+      "value": "חותמת זמן",
+      "status": "machine-draft"
+    },
+    "thScore": {
+      "value": "ציון",
+      "status": "machine-draft"
+    },
+    "thLabel": {
+      "value": "תווית",
+      "status": "machine-draft"
+    },
+    "thDelta": {
+      "value": "דלתא",
+      "status": "machine-draft"
+    },
+    "thProfile": {
+      "value": "פרופיל",
+      "status": "machine-draft"
+    },
+    "thMitre": {
+      "value": "MITRE ATT&CK",
+      "status": "machine-draft"
+    },
+    "thNist": {
+      "value": "NIST SP 800-53",
+      "status": "machine-draft"
+    },
+    "thCisAd": {
+      "value": "CIS AD",
+      "status": "machine-draft"
+    },
+    "thCisBenchmark": {
+      "value": "CIS Benchmark",
+      "status": "machine-draft"
+    },
+    "thAnssi": {
+      "value": "ANSSI",
+      "status": "machine-draft"
+    },
+    "accepted": {
+      "value": "התקבל",
+      "status": "machine-draft"
+    }
+  },
+  "sections": {
+    "affectedItems": {
+      "value": "פריטים מושפעים",
+      "status": "machine-draft"
+    }
+  },
+  "maturity": {
+    "heading": {
+      "value": "בגרות אבטחה",
+      "status": "machine-draft"
+    },
+    "overall": {
+      "value": "בגרות כוללת: רמה {0} מתוך 5 &middot; {1}",
+      "status": "machine-draft"
+    },
+    "anchorNote": {
+      "value": "הבקרה הנמוכה ביותר שאינה מיושמת קובעת את הדירוג (סולם בסגנון CMMI: 1 ראשוני עד 5 ממוטב), כך שחשיפה קריטית אחת מגבילה את הציון עד לפתרונה.",
+      "status": "machine-draft"
+    },
+    "toReach": {
+      "value": "כדי להגיע ל<strong>רמה {0}</strong>, טפלו ב:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "קטגוריה",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "רמה",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "בגרות",
+      "status": "machine-draft"
+    },
+    "levelCell": {
+      "value": "רמה {0}",
+      "status": "machine-draft"
+    },
+    "na": {
+      "value": "לא רלוונטי",
+      "status": "machine-draft"
+    }
+  },
+  "ioe": {
+    "heading": {
+      "value": "אינדיקטורים לחשיפה",
+      "status": "machine-draft"
+    },
+    "note": {
+      "value": "{0} חשיפות פתוחות, מדורגות לפי חומרה ורדיוס הפגיעה.",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "קריטי",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "גבוה",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "בינוני",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "נמוך",
+      "status": "machine-draft"
+    },
+    "affected": {
+      "value": "{0} מושפעים",
+      "status": "machine-draft"
+    },
+    "warning": {
+      "value": "אזהרה",
+      "status": "machine-draft"
+    },
+    "more": {
+      "value": "+ {0} חשיפות נוספות בממצאים המפורטים שלהלן.",
+      "status": "machine-draft"
+    }
+  },
+  "attackpath": {
+    "heading": {
+      "value": "נתיבי תקיפה אל Tier-0",
+      "status": "machine-draft"
+    },
+    "noneRan": {
+      "value": "לא נמצאו נתיבי הסלמה אל Tier-0 בהיקף ה-ACL שנאסף. שרשראות עמוקות בעלות הרשאה נמוכה מחייבות איסוף ACL של כלל הדומיין &middot; הריצו מחדש עם <code>-FullDomainAcl</code> להרחבת הכיסוי.",
+      "status": "machine-draft"
+    },
+    "noneNotRun": {
+      "value": "ניתוח נתיבי התקיפה לא הורץ. הפעילו את הקטגוריות <code>ACLDelegation</code> + <code>PrivilegedAccounts</code> (או <code>All</code>), והוסיפו <code>-FullDomainAcl</code> עבור שרשראות טרנזיטיביות עמוקות.",
+      "status": "machine-draft"
+    },
+    "summary": {
+      "value": "{0} נתיבי הסלמה המגיעים אל Tier-0 &middot; {1} ממשתמשים לא-מורשים (מוצגים ראשונים, הסיכון הגבוה ביותר). כל חץ מייצג בקרה או קשר חברות שתוקף יכול לחצות.",
+      "status": "machine-draft"
+    },
+    "hop": {
+      "value": "קפיצה",
+      "status": "machine-draft"
+    },
+    "hops": {
+      "value": "קפיצות",
+      "status": "machine-draft"
+    },
+    "nonPrivSource": {
+      "value": "מקור לא מורשה",
+      "status": "machine-draft"
+    },
+    "privSource": {
+      "value": "מקור מורשה מלכתחילה",
+      "status": "machine-draft"
+    }
+  },
+  "cartography": {
+    "heading": {
+      "value": "מיפוי נתיבי תקיפה",
+      "status": "machine-draft"
+    },
+    "legend": {
+      "value": "מפה חזותית של נתיבי הסלמה אל Tier-0. <span style='color:var(--g-sev-critical)'>&#9873; אדום</span> = התחלה לא מורשית, <span style='color:var(--g-sev-high)'>כתום</span> = מורשה מלכתחילה, <span style='color:var(--g-accent)'>&#9733; כחול</span> = יעד Tier-0. עקבו אחר החצים משמאל לימין.",
+      "status": "machine-draft"
+    },
+    "showingFirst": {
+      "value": " מציג את {0} הנתיבים הראשונים.",
+      "status": "machine-draft"
+    }
+  },
+  "comparison": {
+    "heading": {
+      "value": "מה השתנה מאז ההרצה האחרונה",
+      "status": "machine-draft"
+    },
+    "firstRun": {
+      "value": "זו ההרצה הראשונה שנרשמה בהיקף זה. היסטוריית ההרצות מתחילה עם מנוע ההשוואה\nהמאוחד של גרסה זו, ולכן קובצי דלתא קודמים אינם נקראים;\nההשוואה תחל בהערכה הבאה שלכם, כאשר הרצה זו תהפוך\nלקו הבסיס.",
+      "status": "machine-draft"
+    },
+    "previousRun": {
+      "value": "הרצה קודמת: {0}, גרסת מודול {1}",
+      "status": "machine-draft"
+    },
+    "versionSkew": {
+      "value": " (הרצה זו: {0}; קטלוגי הבדיקות שונים, ולכן רשומות חדשות ומיושנות שלהלן צפויות)",
+      "status": "machine-draft"
+    },
+    "scoreLabel": {
+      "value": "ציון (כעת {0}, היה {1})",
+      "status": "machine-draft"
+    },
+    "notAssessedLabel": {
+      "value": "מספר הפריטים שלא הוערכו",
+      "status": "machine-draft"
+    },
+    "pillarsMoved": {
+      "value": "עמודי Zero Trust שהשתנו:",
+      "status": "machine-draft"
+    },
+    "newlyFailing": {
+      "value": "נכשלים חדשים",
+      "status": "machine-draft"
+    },
+    "lostVisibility": {
+      "value": "נראות שאבדה (הוערך קודם, לא מוערך כעת)",
+      "status": "machine-draft"
+    },
+    "stillNotAssessed": {
+      "value": "עדיין לא מוערך (חשוך בהרצה זו ובקודמת)",
+      "status": "machine-draft"
+    },
+    "newlyPassing": {
+      "value": "עוברים חדשים (תיקון אושר)",
+      "status": "machine-draft"
+    },
+    "regressed": {
+      "value": "נסוג לאזהרה",
+      "status": "machine-draft"
+    },
+    "improved": {
+      "value": "השתפר לאזהרה (עדיין לא עובר)",
+      "status": "machine-draft"
+    },
+    "restoredVisibility": {
+      "value": "נראות שוחזרה",
+      "status": "machine-draft"
+    },
+    "newChecks": {
+      "value": "בדיקות חדשות בהרצה זו (לא מעבר)",
+      "status": "machine-draft"
+    },
+    "retiredChecks": {
+      "value": "בדיקות שהוסרו (נכחו קודם, נעדרות כעת; לא מעבר)",
+      "status": "machine-draft"
+    },
+    "noChange": {
+      "value": "אף פסק דין לא השתנה מאז ההרצה הקודמת. {0} בדיקות ללא שינוי.{1}",
+      "status": "machine-draft"
+    },
+    "unchanged": {
+      "value": "{0} בדיקות ללא שינוי.{1}",
+      "status": "machine-draft"
+    }
+  },
+  "filter": {
+    "status": {
+      "value": "סטטוס",
+      "status": "machine-draft"
+    },
+    "severity": {
+      "value": "חומרה",
+      "status": "machine-draft"
+    },
+    "all": {
+      "value": "הכול",
+      "status": "machine-draft"
+    },
+    "searchPlaceholder": {
+      "value": "חיפוש ממצאים (מזהה, שם, ערך)...",
+      "status": "machine-draft"
+    },
+    "empty": {
+      "value": "אין ממצאים התואמים למסנן הנוכחי.",
+      "status": "machine-draft"
+    },
+    "platform": {
+      "value": "פלטפורמה",
+      "status": "machine-draft"
+    },
+    "showingAll": {
+      "value": "מציג את כל הממצאים",
+      "status": "machine-draft"
+    }
+  },
+  "ad": {
+    "title": {
+      "value": "דוח Active Directory",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "הערכת Active Directory",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "דוח Active Directory של Guerrilla",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "ציון מצב אבטחה של Active Directory (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "ביקורת Active Directory",
+      "status": "machine-draft"
+    },
+    "verdict90": {
+      "value": "סביבת Active Directory מפגינה מצב אבטחה חזק עם מעט ממצאים.",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "סביבת ה-AD במצב אבטחה טוב, עם מספר תחומים הדורשים תשומת לב.",
+      "status": "machine-draft"
+    },
+    "verdict60": {
+      "value": "סביבת ה-AD במצב אבטחה סביר. מספר ממצאים חשובים דורשים תיקון.",
+      "status": "machine-draft"
+    },
+    "verdict40": {
+      "value": "סביבת ה-AD במצב אבטחה ירוד. ממצאים קריטיים ובחומרה גבוהה רבים דורשים טיפול מיידי.",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "לסביבת ה-AD ליקויי אבטחה קריטיים. נדרש תיקון מיידי למניעת פריצה.",
+      "status": "machine-draft"
+    },
+    "sevSummary": {
+      "value": "קריטי: <strong>{0}</strong> &middot; גבוה: <strong>{1}</strong> &middot;\n     בינוני: <strong>{2}</strong> &middot; נמוך: <strong>{3}</strong>",
+      "status": "machine-draft"
+    },
+    "bloodhoundHeading": {
+      "value": "ייצוא BloodHound",
+      "status": "machine-draft"
+    },
+    "bloodhoundExport": {
+      "value": "ייצוא OpenGraph של גרף התקיפה שנאסף מ-AD נכתב אל <code>{0}</code>.",
+      "status": "machine-draft"
+    },
+    "bloodhoundImport": {
+      "value": "ייבאו ב-BloodHound CE: <strong>Administration &rarr; File Ingest</strong> &rarr; העלו את הקובץ, ולאחר מכן הריצו את שאילתות מציאת הנתיבים המובנות. הצמתים ממופתחים לפי SID (הם מונחים על גבי נתוני SharpHound המקוריים) והקשתות משתמשות בסוגים המקוריים של BloodHound.",
+      "status": "machine-draft"
+    },
+    "findingsByPriority": {
+      "value": "ממצאים לפי עדיפות",
+      "status": "machine-draft"
+    }
+  },
+  "entra": {
+    "title": {
+      "value": "דוח Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "הערכת Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "דוח Entra ID / M365 של Guerrilla",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "ציון מצב אבטחה של Entra ID / Azure / M365 (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "ביקורת Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "zeroTrust": {
+      "value": "מצב Zero Trust",
+      "status": "machine-draft"
+    },
+    "openInPortal": {
+      "value": "פתיחה בפורטל הניהול",
+      "status": "machine-draft"
+    }
+  },
+  "gws": {
+    "title": {
+      "value": "דוח Google Workspace",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "הערכת Google Workspace",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "דוח Google Workspace של Guerrilla",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "ציון מצב אבטחה של Google Workspace (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "ביקורת Google Workspace",
+      "status": "machine-draft"
+    },
+    "configChecksEvaluated": {
+      "value": "{0} בדיקות תצורה הוערכו",
+      "status": "machine-draft"
+    },
+    "verdictCrit": {
+      "value": "נדרשת פעולה מיידית. זוהו {0} כשלי תצורה בחומרה קריטית החושפים את הדייר לסיכון משמעותי.",
+      "status": "machine-draft"
+    },
+    "verdictHigh": {
+      "value": "מומלץ תיקון. זוהו {0} ממצאים בחומרה גבוהה שיש לטפל בהם במהירות.",
+      "status": "machine-draft"
+    },
+    "verdictMed": {
+      "value": "יש לנטר ולשפר. {0} ממצאים בחומרה בינונית מצדיקים בדיקה והקשחה.",
+      "status": "machine-draft"
+    },
+    "verdictLow": {
+      "value": "זוהו פערים קלים. קיימים {0} ממצאים בחומרה נמוכה. המצב הכולל תקין.",
+      "status": "machine-draft"
+    },
+    "verdictPass": {
+      "value": "כל הבדיקות עברו. תצורת הדייר עומדת בציפיות האבטחה הבסיסיות.",
+      "status": "machine-draft"
+    },
+    "assessmentLabel": {
+      "value": "הערכה:",
+      "status": "machine-draft"
+    },
+    "scopeLabel": {
+      "value": "היקף:",
+      "status": "machine-draft"
+    },
+    "resultsLabel": {
+      "value": "תוצאות:",
+      "status": "machine-draft"
+    },
+    "scope": {
+      "value": "{0} בדיקות תצורה על פני {1} קטגוריות.",
+      "status": "machine-draft"
+    },
+    "results": {
+      "value": "{0} עברו, {1} נכשלו, {2} אזהרות, {3} דולגו.",
+      "status": "machine-draft"
+    },
+    "criticalRequire": {
+      "value": "{0} ממצאים קריטיים דורשים תיקון מיידי.",
+      "status": "machine-draft"
+    },
+    "priorityCritHigh": {
+      "value": "ממצאים בעדיפות &middot; קריטי &amp; גבוה",
+      "status": "machine-draft"
+    },
+    "fixInConsole": {
+      "value": "תיקון במסוף הניהול",
+      "status": "machine-draft"
+    },
+    "whyUnsafe": {
+      "value": "מדוע זה לא בטוח",
+      "status": "machine-draft"
+    },
+    "whyUnsafeDefault": {
+      "value": "מדוע זה לא בטוח",
+      "status": "machine-draft"
+    },
+    "whyUnsafeArticle": {
+      "value": "מדוע זה לא בטוח: {0}",
+      "status": "machine-draft"
+    }
+  },
+  "campaign": {
+    "title": {
+      "value": "דוח קמפיין",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "הערכת קמפיין מאוחדת",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "דוח קמפיין של Guerrilla",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "ביקורת קמפיין מאוחדת",
+      "status": "machine-draft"
+    },
+    "subtitleLead": {
+      "value": "הערכת מצב אבטחה מאוחדת",
+      "status": "machine-draft"
+    },
+    "subtitleChecks": {
+      "value": "{0} בדיקות על פני {1} פלטפורמות ({2})",
+      "status": "machine-draft"
+    },
+    "scanId": {
+      "value": "מזהה סריקה",
+      "status": "machine-draft"
+    },
+    "duration": {
+      "value": "משך",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "ציון קמפיין (0-100) &middot; הערכה משוקללת של {0} בדיקות על פני {1} פלטפורמות",
+      "status": "machine-draft"
+    },
+    "platformSummary": {
+      "value": "סיכום פלטפורמות",
+      "status": "machine-draft"
+    },
+    "categoryScoresByPlatform": {
+      "value": "ציוני קטגוריות לפי פלטפורמה",
+      "status": "machine-draft"
+    },
+    "checksWord": {
+      "value": "בדיקות",
+      "status": "machine-draft"
+    },
+    "categoriesWord": {
+      "value": "קטגוריות",
+      "status": "machine-draft"
+    },
+    "unknown": {
+      "value": "לא ידוע",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "תיאור",
+      "status": "machine-draft"
+    },
+    "affectedEntities": {
+      "value": "ישויות מושפעות",
+      "status": "machine-draft"
+    },
+    "currentValueLabel": {
+      "value": "ערך נוכחי",
+      "status": "machine-draft"
+    },
+    "recommendedValueLabel": {
+      "value": "ערך מומלץ",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "שלבי תיקון",
+      "status": "machine-draft"
+    },
+    "remediationUrlLabel": {
+      "value": "כתובת URL לתיקון",
+      "status": "machine-draft"
+    },
+    "complianceMappingsLabel": {
+      "value": "מיפויי תאימות",
+      "status": "machine-draft"
+    },
+    "showingAllFindings": {
+      "value": "מציג את כל {0} הממצאים",
+      "status": "machine-draft"
+    },
+    "showingSome": {
+      "value": "מציג {0} מתוך {1} ממצאים",
+      "status": "machine-draft"
+    }
+  },
+  "technical": {
+    "title": {
+      "value": "דוח הערכת אבטחה טכני",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "דוח טכני",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "דוח אבטחה טכני",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "דוח טכני",
+      "status": "machine-draft"
+    },
+    "thTotal": {
+      "value": "סך הכול",
+      "status": "machine-draft"
+    },
+    "detailedFindings": {
+      "value": "ממצאים מפורטים ({0})",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "תיאור",
+      "status": "machine-draft"
+    },
+    "recommendedLabel": {
+      "value": "מומלץ",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "שלבי תיקון",
+      "status": "machine-draft"
+    },
+    "referenceLabel": {
+      "value": "הפניה",
+      "status": "machine-draft"
+    },
+    "riskAcceptanceLabel": {
+      "value": "קבלת סיכון",
+      "status": "machine-draft"
+    },
+    "acceptedBy": {
+      "value": "התקבל על ידי {0} &middot; {1}",
+      "status": "machine-draft"
+    },
+    "complianceLabel": {
+      "value": "תאימות",
+      "status": "machine-draft"
+    },
+    "noFindings": {
+      "value": "אין ממצאי ביקורת זמינים. הריצו תחילה סריקה.",
+      "status": "machine-draft"
+    }
+  },
+  "exec": {
+    "title": {
+      "value": "תקציר מנהלים לאבטחה",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "תקציר מנהלים",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "תקציר מנהלים של Guerrilla",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "תקציר מנהלים",
+      "status": "machine-draft"
+    },
+    "profileSuffix": {
+      "value": "פרופיל",
+      "status": "machine-draft"
+    },
+    "securityPosture": {
+      "value": "מצב אבטחה: {0}",
+      "status": "machine-draft"
+    },
+    "verdictNoScore": {
+      "value": "לא ניתן היה לחשב ציון מהממצאים הזמינים. הריצו סריקה כדי לקבוע קו בסיס.",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "לארגון שלכם בסיס אבטחה חזק. המשיכו לנטר וטפלו בפערים הנותרים.",
+      "status": "machine-draft"
+    },
+    "verdict50": {
+      "value": "מצב האבטחה שלכם ניתן לשיפור. מומלצת פעולה בעדיפות על הממצאים הקריטיים.",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "נדרשת תשומת לב מיידית. פערי אבטחה קריטיים חושפים את הארגון שלכם לסיכון מוגבר.",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "שיעור מעבר",
+      "status": "machine-draft"
+    },
+    "criticalIssues": {
+      "value": "בעיות קריטיות",
+      "status": "machine-draft"
+    },
+    "highIssues": {
+      "value": "בעיות גבוהות",
+      "status": "machine-draft"
+    },
+    "maturityStat": {
+      "value": "בגרות ({0})",
+      "status": "machine-draft"
+    },
+    "maturityHeading": {
+      "value": "בגרות אבטחה",
+      "status": "machine-draft"
+    },
+    "maturityOverall": {
+      "value": "בגרות כוללת: <strong style=\"color:{0}\">רמה {1} מתוך 5: {2}</strong>. הבקרה הנמוכה ביותר שאינה מיושמת קובעת את הדירוג, כך שחשיפה קריטית אחת מגבילה את הציון עד לפתרונה (סולם בסגנון CMMI: 1 ראשוני עד 5 ממוטב).",
+      "status": "machine-draft"
+    },
+    "maturityToReach": {
+      "value": "כדי להגיע ל<strong>רמה {0}</strong>, טפלו ב:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "קטגוריה",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "רמה",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "בגרות",
+      "status": "machine-draft"
+    },
+    "matLevelCell": {
+      "value": "רמה {0}",
+      "status": "machine-draft"
+    },
+    "keyFindings": {
+      "value": "ממצאים מרכזיים הדורשים תשומת לב",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "השפעת תאימות",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "מסגרות התאימות הבאות זיהו פערים:",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "{0} פערים",
+      "status": "machine-draft"
+    },
+    "quickWins": {
+      "value": "הישגים מהירים מומלצים (ללא עלות)",
+      "status": "machine-draft"
+    },
+    "quickWinsIntro": {
+      "value": "ניתן לבצע פעולות אלה ללא עלות באמצעות הכלים הקיימים:",
+      "status": "machine-draft"
+    },
+    "quickWinItem": {
+      "value": "({0}, ~{1} שעות מאמץ)",
+      "status": "machine-draft"
+    },
+    "nextSteps": {
+      "value": "השלבים הבאים",
+      "status": "machine-draft"
+    },
+    "nextStep1": {
+      "value": "טפלו בממצאים הקריטיים באופן מיידי &middot; הם מייצגים את הסיכון הגבוה ביותר לארגון שלכם.",
+      "status": "machine-draft"
+    },
+    "nextStep2": {
+      "value": "יישמו את ההישגים המהירים שלעיל כדי לשפר את ציון האבטחה שלכם במאמץ מינימלי.",
+      "status": "machine-draft"
+    },
+    "nextStep3": {
+      "value": "עיינו בדוח הטכני המפורט לקבלת הנחיות תיקון מלאות.",
+      "status": "machine-draft"
+    },
+    "nextStep4": {
+      "value": "תזמנו סריקת מעקב בעוד 30 יום כדי למדוד שיפור.",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "דוח זה מספק הערכת אבטחה נקודתית למטרות תכנון פנימי. יש לאמת ולתקן את הממצאים בהתאם לסובלנות הסיכון של הארגון.",
+      "status": "machine-draft"
+    }
+  },
+  "playbook": {
+    "title": {
+      "value": "מדריך תיקון",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "מדריך תיקון",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "מדריך תיקון של Guerrilla",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "מדריך תיקון",
+      "status": "machine-draft"
+    },
+    "subtitle": {
+      "value": "{0} פריטים ניתנים לפעולה &middot; עלות מרבית: {1}",
+      "status": "machine-draft"
+    },
+    "phase1": {
+      "value": "שלב 1: תיקונים קריטיים",
+      "status": "machine-draft"
+    },
+    "phase2": {
+      "value": "שלב 2: עדיפות גבוהה",
+      "status": "machine-draft"
+    },
+    "phase3": {
+      "value": "שלב 3: עדיפות בינונית",
+      "status": "machine-draft"
+    },
+    "phase4": {
+      "value": "שלב 4: עדיפות נמוכה",
+      "status": "machine-draft"
+    },
+    "phaseItems": {
+      "value": "{0} ({1} פריטים)",
+      "status": "machine-draft"
+    },
+    "idLabel": {
+      "value": "מזהה:",
+      "status": "machine-draft"
+    },
+    "costLabel": {
+      "value": "עלות:",
+      "status": "machine-draft"
+    },
+    "effortLabel": {
+      "value": "מאמץ:",
+      "status": "machine-draft"
+    },
+    "categoryLabel": {
+      "value": "קטגוריה:",
+      "status": "machine-draft"
+    },
+    "stepsLabel": {
+      "value": "שלבים:",
+      "status": "machine-draft"
+    },
+    "targetLabel": {
+      "value": "יעד:",
+      "status": "machine-draft"
+    },
+    "noteLabel": {
+      "value": "הערה:",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "בדקו כל שלב תיקון לפני היישום. בדקו תחילה שינויים בסביבה שאינה ייצור.",
+      "status": "machine-draft"
+    }
+  },
+  "budget": {
+    "title": {
+      "value": "הצדקת תקציב אבטחה",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "הצדקת תקציב",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "הצדקת תקציב של Guerrilla",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "הצדקת תקציב",
+      "status": "machine-draft"
+    },
+    "profileLabel": {
+      "value": "פרופיל",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "תקציר מנהלים",
+      "status": "machine-draft"
+    },
+    "guerrillaScore": {
+      "value": "ציון Guerrilla",
+      "status": "machine-draft"
+    },
+    "criticalFailures": {
+      "value": "כשלים קריטיים",
+      "status": "machine-draft"
+    },
+    "highFailures": {
+      "value": "כשלים גבוהים",
+      "status": "machine-draft"
+    },
+    "totalChecksBreakdown": {
+      "value": "סך הבדיקות ({0} עברו / {1} נכשלו / {2} אזהרות)",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "השפעת תאימות",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "מסגרות התאימות הבאות מציגות פערים על סמך ממצאי הביקורת הנוכחיים:",
+      "status": "machine-draft"
+    },
+    "thFramework": {
+      "value": "מסגרת",
+      "status": "machine-draft"
+    },
+    "thGapsFound": {
+      "value": "פערים שנמצאו",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "{0} פערים",
+      "status": "machine-draft"
+    },
+    "investmentPhases": {
+      "value": "שלבי השקעה מומלצים",
+      "status": "machine-draft"
+    },
+    "phase1Title": {
+      "value": "שלב 1: הישגים מהירים (ללא עלות)",
+      "status": "machine-draft"
+    },
+    "phase1Desc": {
+      "value": "שינויי תצורה באמצעות הכלים הקיימים &middot; ההחזר הגבוה ביותר על ההשקעה, שיפור אבטחה מיידי.",
+      "status": "machine-draft"
+    },
+    "phase2Title": {
+      "value": "שלב 2: שיפורים בעלות נמוכה",
+      "status": "machine-draft"
+    },
+    "phase2Desc": {
+      "value": "רכישות קטנות או תוספות רישוי בתקציב הקיים.",
+      "status": "machine-draft"
+    },
+    "phase3Title": {
+      "value": "שלב 3: השקעה בינונית",
+      "status": "machine-draft"
+    },
+    "phase3Desc": {
+      "value": "שדרוגי רישוי או מוצרים משלימים ליכולות אבטחה משופרות.",
+      "status": "machine-draft"
+    },
+    "phase4Title": {
+      "value": "שלב 4: השקעה אסטרטגית",
+      "status": "machine-draft"
+    },
+    "phase4Desc": {
+      "value": "רכישות משמעותיות או שינויי תשתית לשיפור מצב האבטחה לטווח ארוך.",
+      "status": "machine-draft"
+    },
+    "phase4Body": {
+      "value": "<strong>{0} פריטים</strong> זוהו כדורשים השקעה משמעותית. פנו ליועץ האבטחה שלכם לתיחום מפורט.",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "בדיקה",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "ממצא",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "חומרה",
+      "status": "machine-draft"
+    },
+    "thEffort": {
+      "value": "מאמץ",
+      "status": "machine-draft"
+    },
+    "thTime": {
+      "value": "זמן",
+      "status": "machine-draft"
+    },
+    "actions": {
+      "value": "{0} פעולות",
+      "status": "machine-draft"
+    },
+    "estimatedEffort": {
+      "value": "מאמץ כולל משוער: {0} שעות",
+      "status": "machine-draft"
+    },
+    "noFree": {
+      "value": "לא זוהו תיקונים חינמיים.",
+      "status": "machine-draft"
+    },
+    "noLow": {
+      "value": "לא זוהו תיקונים בעלות נמוכה.",
+      "status": "machine-draft"
+    },
+    "noMed": {
+      "value": "לא זוהו תיקונים בעלות בינונית.",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "דוח זה מיועד למטרות תכנון פנימי.",
+      "status": "machine-draft"
+    }
+  },
+  "dashboard": {
+    "title": {
+      "value": "לוח מחוונים לאבטחה",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "לוח מחוונים",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "לוח מחוונים לאבטחה",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "לוח מחוונים מאוחד",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "ציון Guerrilla (0-100)",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "{0} בדיקות הוערכו &middot; {1} עברו, {2} נכשלו, {3} אזהרות",
+      "status": "machine-draft"
+    },
+    "scoreComponents": {
+      "value": "רכיבי הציון",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "שיעור מעבר",
+      "status": "machine-draft"
+    },
+    "failures": {
+      "value": "כשלים",
+      "status": "machine-draft"
+    },
+    "platformOverview": {
+      "value": "סקירת פלטפורמות",
+      "status": "machine-draft"
+    },
+    "checks": {
+      "value": "בדיקות: {0}",
+      "status": "machine-draft"
+    },
+    "failuresLabel": {
+      "value": "כשלים: {0}",
+      "status": "machine-draft"
+    },
+    "notScanned": {
+      "value": "לא נסרק",
+      "status": "machine-draft"
+    },
+    "topFindings": {
+      "value": "ממצאים מובילים",
+      "status": "machine-draft"
+    },
+    "showingTop50": {
+      "value": "מציג את 50 הממצאים המובילים. עיינו בדוחות המפורטים לרשימה המלאה.",
+      "status": "machine-draft"
+    },
+    "posture": {
+      "value": "מצב",
+      "status": "machine-draft"
+    },
+    "threats": {
+      "value": "איומים",
+      "status": "machine-draft"
+    },
+    "coverage": {
+      "value": "כיסוי",
+      "status": "machine-draft"
+    },
+    "trend": {
+      "value": "מגמה",
+      "status": "machine-draft"
+    }
+  },
+  "trend": {
+    "title": {
+      "value": "דוח מגמת אבטחה",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "מגמת ציון",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "דוח מגמת אבטחה",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "מגמת ציון",
+      "status": "machine-draft"
+    },
+    "scansCount": {
+      "value": "{0} סריקות",
+      "status": "machine-draft"
+    },
+    "currentScore": {
+      "value": "ציון נוכחי",
+      "status": "machine-draft"
+    },
+    "averageScore": {
+      "value": "ציון ממוצע",
+      "status": "machine-draft"
+    },
+    "trendLabel": {
+      "value": "מגמה ({0})",
+      "status": "machine-draft"
+    },
+    "improving": {
+      "value": "משתפר",
+      "status": "machine-draft"
+    },
+    "declining": {
+      "value": "יורד",
+      "status": "machine-draft"
+    },
+    "stable": {
+      "value": "יציב",
+      "status": "machine-draft"
+    },
+    "highestLowest": {
+      "value": "הגבוה ביותר / הנמוך ביותר",
+      "status": "machine-draft"
+    },
+    "scoreHistory": {
+      "value": "היסטוריית ציונים",
+      "status": "machine-draft"
+    },
+    "scanLog": {
+      "value": "יומן סריקות",
+      "status": "machine-draft"
+    },
+    "defaultProfile": {
+      "value": "ברירת מחדל",
+      "status": "machine-draft"
+    }
+  },
+  "category": {
+    "adacldelegation": {
+      "value": "ACL והאצלת הרשאות ב-AD",
+      "status": "machine-draft"
+    },
+    "adadversarytradecraftindicators": {
+      "value": "אינדיקטורים לשיטות תקיפה של יריבים ב-AD",
+      "status": "machine-draft"
+    },
+    "adcertificateservices": {
+      "value": "שירותי אישורים של AD",
+      "status": "machine-draft"
+    },
+    "addomainforestconfiguration": {
+      "value": "תצורת דומיין ויער ב-AD",
+      "status": "machine-draft"
+    },
+    "adgrouppolicy": {
+      "value": "מדיניות קבוצתית ב-AD",
+      "status": "machine-draft"
+    },
+    "adkerberossecurity": {
+      "value": "אבטחת Kerberos ב-AD",
+      "status": "machine-draft"
+    },
+    "adloggingedrposture": {
+      "value": "רישום ומצב EDR ב-AD",
+      "status": "machine-draft"
+    },
+    "adlogonscriptsnetworkshares": {
+      "value": "סקריפטי כניסה ושיתופי רשת ב-AD",
+      "status": "machine-draft"
+    },
+    "adnetworkrelaypreconditions": {
+      "value": "תנאים מקדימים לרשת ולממסר ב-AD",
+      "status": "machine-draft"
+    },
+    "adpasswordlockoutpolicies": {
+      "value": "מדיניות סיסמאות ונעילה ב-AD",
+      "status": "machine-draft"
+    },
+    "adprivilegedaccountsecurity": {
+      "value": "אבטחת חשבונות מורשים ב-AD",
+      "status": "machine-draft"
+    },
+    "adstaleobsoleteobjects": {
+      "value": "אובייקטים מיושנים ומיותרים ב-AD",
+      "status": "machine-draft"
+    },
+    "adtrustrelationships": {
+      "value": "יחסי אמון ב-AD",
+      "status": "machine-draft"
+    },
+    "adminusermanagement": {
+      "value": "ניהול מנהלים ומשתמשים",
+      "status": "machine-draft"
+    },
+    "adversarytradecraft": {
+      "value": "שיטות תקיפה של יריבים",
+      "status": "machine-draft"
+    },
+    "attackpaths": {
+      "value": "נתיבי תקיפה",
+      "status": "machine-draft"
+    },
+    "authenticationaccesscontrols": {
+      "value": "אימות ובקרות גישה",
+      "status": "machine-draft"
+    },
+    "azureiamresourcesecurity": {
+      "value": "IAM של Azure ואבטחת משאבים",
+      "status": "machine-draft"
+    },
+    "collaborationcommunicationsecurity": {
+      "value": "אבטחת שיתוף פעולה ותקשורת",
+      "status": "machine-draft"
+    },
+    "copilotstudioaiagentgovernance": {
+      "value": "ממשל סוכני AI של Copilot Studio",
+      "status": "machine-draft"
+    },
+    "defenderforoffice365": {
+      "value": "Defender for Office 365",
+      "status": "machine-draft"
+    },
+    "deviceendpointmanagement": {
+      "value": "ניהול מכשירים ונקודות קצה",
+      "status": "machine-draft"
+    },
+    "drivesecuritydataprotection": {
+      "value": "אבטחת Drive והגנת נתונים",
+      "status": "machine-draft"
+    },
+    "eidscabaseline": {
+      "value": "קו בסיס EIDSCA",
+      "status": "machine-draft"
+    },
+    "emailsecurity": {
+      "value": "אבטחת דוא״ל",
+      "status": "machine-draft"
+    },
+    "entraidapplicationserviceprincipalsecurity": {
+      "value": "אבטחת יישומים ומנהלי שירות ב-Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidauthenticationmethodsmfa": {
+      "value": "שיטות אימות ו-MFA ב-Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidconditionalaccess": {
+      "value": "גישה מותנית ב-Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidfederationhybrididentity": {
+      "value": "פדרציה וזהות היברידית ב-Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidgovernance": {
+      "value": "ממשל Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidprivilegedidentitymanagement": {
+      "value": "ניהול זהויות מורשות ב-Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidtenantconfiguration": {
+      "value": "תצורת דייר ב-Entra ID",
+      "status": "machine-draft"
+    },
+    "exchangeonlinesecurity": {
+      "value": "אבטחת Exchange Online",
+      "status": "machine-draft"
+    },
+    "intuneendpointmanagement": {
+      "value": "Intune / ניהול נקודות קצה",
+      "status": "machine-draft"
+    },
+    "k12baseline": {
+      "value": "קו בסיס K12",
+      "status": "machine-draft"
+    },
+    "loggingalertingmonitoring": {
+      "value": "רישום, התראות וניטור",
+      "status": "machine-draft"
+    },
+    "microsoftteamssecurity": {
+      "value": "אבטחת Microsoft Teams",
+      "status": "machine-draft"
+    },
+    "oauthapisecurity": {
+      "value": "אבטחת OAuth ו-API",
+      "status": "machine-draft"
+    },
+    "powerplatformsecurity": {
+      "value": "אבטחת Power Platform",
+      "status": "machine-draft"
+    },
+    "sharepointonedrivesecurity": {
+      "value": "אבטחת SharePoint ו-OneDrive",
+      "status": "machine-draft"
+    },
+    "tier0hygienehybrididentitysurface": {
+      "value": "היגיינת Tier-0 ומשטח זהות היברידית",
+      "status": "machine-draft"
+    },
+    "unifiedauditlogging": {
+      "value": "ביקורת ורישום מאוחדים",
+      "status": "machine-draft"
+    },
+    "workspaceservicesecuritysitesclassroomgemini": {
+      "value": "אבטחת שירותי Workspace (Sites / Classroom / Gemini)",
+      "status": "machine-draft"
+    }
+  }
+}
