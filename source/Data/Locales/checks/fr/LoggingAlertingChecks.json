@@ -1,0 +1,111 @@
+{
+  "_family": "LoggingAlertingChecks.json",
+  "LOG-001": {
+    "name": {
+      "value": "Paramètres de conservation des journaux d'audit",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les journaux d'audit doivent être conservés pendant une période adéquate afin de soutenir les investigations d'incidents et les exigences de conformité. La conservation par défaut varie selon l'édition de Workspace",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Conservation des journaux d'audit de 12 mois ou plus ; prolongée via un export BigQuery pour une conservation à long terme",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Rapports > Audit et enquête > Examinez la disponibilité des journaux. Configurez l'export BigQuery via Admin Console > Rapports > Export BigQuery pour une conservation à long terme",
+      "status": "machine-draft"
+    }
+  },
+  "LOG-002": {
+    "name": {
+      "value": "Inventaire des règles du centre d'alerte",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les règles du centre d'alerte doivent être configurées pour détecter et notifier les événements pertinents pour la sécurité, notamment les connexions suspectes, l'exfiltration de données et les violations de stratégie",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Règles d'alerte configurées pour les principaux événements de sécurité (connexion suspecte, exfiltration de données, modifications de privilèges)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Centre d'alerte > Examinez les règles existantes > Créez des règles pour les catégories d'événements de sécurité manquantes",
+      "status": "machine-draft"
+    }
+  },
+  "LOG-003": {
+    "name": {
+      "value": "Analyse de la couverture des règles d'activité",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les règles d'activité doivent fournir une couverture adéquate des domaines de sécurité, notamment les événements de connexion, Drive, Admin et de messagerie",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Règles d'activité couvrant la connexion, le partage Drive, les modifications d'administration, le transfert d'e-mails et les événements OAuth",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Centre d'alerte > Règles > Examinez la couverture des catégories d'événements > Ajoutez des règles pour les domaines de sécurité non couverts",
+      "status": "machine-draft"
+    }
+  },
+  "LOG-004": {
+    "name": {
+      "value": "Paramètres d'export de données",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Takeout (export de données) doit être contrôlé afin d'empêcher les utilisateurs d'exporter en masse les données de l'organisation en dehors du domaine",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Google Takeout désactivé ou restreint pour la plupart des utilisateurs",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Services Google supplémentaires > Google Takeout > Désactivez ou restreignez pour les OU applicables",
+      "status": "machine-draft"
+    }
+  },
+  "LOG-005": {
+    "name": {
+      "value": "Configuration des alertes par e-mail pour les administrateurs",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Des alertes par e-mail doivent être configurées pour les actions d'administration critiques, notamment les modifications de super administrateur, les modifications des paramètres de sécurité et les opérations en masse",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Alertes par e-mail activées pour les actions d'administration critiques et les événements de sécurité",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Centre d'alerte > Configurez les destinataires des notifications par e-mail pour les types d'alertes critiques",
+      "status": "machine-draft"
+    }
+  },
+  "LOG-006": {
+    "name": {
+      "value": "Accès à l'API Reports",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'accès à l'API Reports doit être examiné afin de garantir que seuls les comptes de service et les applications autorisés peuvent récupérer les données d'audit et d'utilisation",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Accès à l'API Reports restreint aux seuls comptes de service autorisés",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôles des API > Délégation à l'échelle du domaine > Examinez les délégations disposant des portées de l'API Reports > Supprimez les accès non autorisés",
+      "status": "machine-draft"
+    }
+  }
+}

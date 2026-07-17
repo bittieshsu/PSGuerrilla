@@ -1,0 +1,111 @@
+{
+  "_family": "GoogleTradecraftChecks.json",
+  "GTRADE-001": {
+    "name": {
+      "value": "Exposition à la prise de contrôle de l'organisation via la délégation à l'échelle du domaine",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La délégation à l'échelle du domaine lie l'usurpation d'identité à l'ID client OAuth d'un compte de service, et non à sa clé, de sorte que quiconque peut générer une clé sur un compte de service délégué détenant de larges portées obtient une usurpation d'identité à l'échelle de l'organisation sans être super administrateur (la technique DeleFriend). Les délégations portant des portées complètes Gmail/Drive/Directory/cloud-platform constituent la condition préalable à cette prise de contrôle.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucun compte de service ne dispose de portées d'usurpation d'identité à l'échelle de l'organisation (Gmail/Drive/Directory/cloud-platform complètes) ; uniquement des portées restreintes en lecture seule",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Sécurité > Contrôles des API > Délégation à l'échelle du domaine : supprimez ou restreignez toute délégation détenant les portées complètes mail.google.com, drive complète, admin.directory ou cloud-platform ; limitez-vous aux portées minimales en lecture seule requises. Dans GCP, refusez la création de clés sur les comptes de service délégués (iam.disableServiceAccountKeyCreation).",
+      "status": "machine-draft"
+    }
+  },
+  "GTRADE-002": {
+    "name": {
+      "value": "Groupes Google lisibles depuis Internet",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les groupes dont les sujets sont consultables par « tout le monde sur Internet » divulguent silencieusement l'intégralité de leur historique de messages, une catégorie qui a exposé le courrier interne de milliers d'organisations (données financières, informations d'identification, informations personnelles). Google ne fournit aucune alerte native pour cette exposition.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucun groupe consultable par tout le monde sur Internet (whoCanViewGroup différent de ANYONE_CAN_VIEW)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Applications > Google Workspace > Groups for Business > Paramètres de partage, et paramètres d'accès par groupe : définissez « Qui peut voir les conversations » sur les membres/l'organisation uniquement plutôt que sur « Tout le monde sur Internet ».",
+      "status": "machine-draft"
+    }
+  },
+  "GTRADE-003": {
+    "name": {
+      "value": "Groupes à adhésion ouverte / à membres externes",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les groupes que tout le monde (ou toute personne du domaine) peut rejoindre, ou qui autorisent des membres externes, élargissent la frontière de confiance et permettent un accès en libre-service ; si un tel groupe détient également un accès à des ressources ou à IAM, le rejoindre hérite de cet accès (un chemin d'élévation de privilèges que Google classe comme comportement intentionnel).",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Groupes restreints aux membres invités ; aucune adhésion ouverte à tous et aucun membre externe sauf si explicitement requis",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Applications > Google Workspace > Groups for Business : définissez « Qui peut rejoindre le groupe » par défaut sur « Utilisateurs invités uniquement » et désactivez « Autoriser les membres externes » sauf si un groupe l'exige explicitement ; examinez les groupes qui accordent un accès aux ressources/à IAM.",
+      "status": "machine-draft"
+    }
+  },
+  "GTRADE-004": {
+    "name": {
+      "value": "Prolifération des super administrateurs",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les super administrateurs contournent le SSO et la plupart des contrôles ; une population importante de super administrateurs étend la surface d'attaque de plus grande valeur de l'organisation. La bonne pratique de Google consiste à en maintenir le nombre réduit (moins de cinq), le travail quotidien étant effectué sous des rôles à moindre privilège.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Moins de 5 super administrateurs actifs",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Compte > Rôles d'administrateur > Super administrateur : réduisez le nombre de membres à l'ensemble minimal de comptes de secours (break-glass) ; déplacez les tâches courantes vers des rôles personnalisés/prédéfinis à moindre privilège ; imposez une 2SV résistante à l'hameçonnage à tous les super administrateurs restants.",
+      "status": "machine-draft"
+    }
+  },
+  "GTRADE-005": {
+    "name": {
+      "value": "Rôles personnalisés équivalents à super administrateur",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les rôles d'administrateur personnalisés portant des privilèges à haut pouvoir (gestion des utilisateurs, paramètres de sécurité, gestion des rôles, export de données/Takeout) peuvent approcher les capacités d'un super administrateur tout en échappant à un simple décompte de super administrateurs ; un vecteur discret de concentration des privilèges et de persistance.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucun rôle personnalisé ne porte des privilèges équivalents à super administrateur (gestion des utilisateurs/de la sécurité/des rôles ou export de données) en dehors d'un usage de secours (break-glass)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Compte > Rôles d'administrateur : examinez les rôles personnalisés détenant des privilèges de gestion des utilisateurs, de paramètres de sécurité, de gestion des rôles ou d'export de données/Takeout ; scindez-les en rôles à portée étroite et limitez les attributaires.",
+      "status": "machine-draft"
+    }
+  },
+  "GTRADE-006": {
+    "name": {
+      "value": "Délégations OAuth persistantes / à portée excessive",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les délégations OAuth tierces détenant des portées complètes Gmail/Drive/admin contournent la MFA et survivent à une réinitialisation de mot de passe (les sessions Apps Script, les mots de passe d'application et les sessions IMAP-OAuth ne sont pas révoquées par une réinitialisation) ; un canal de persistance durable. Google journalise les délégations mais ne fournit aucun classificateur de délégation malveillante par défaut.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucune application OAuth tierce ne détient de portées complètes mail/drive/admin ; les délégations persistantes examinées et explicitement révoquées",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Sécurité > Contrôles des API > Contrôle d'accès aux applications : examinez les applications disposant de portées complètes Gmail/Drive/Directory, limitez-les aux applications autorisées et révoquez explicitement les délégations inutiles (une réinitialisation de mot de passe seule ne révoque PAS l'accès OAuth, par mot de passe d'application ou Apps Script).",
+      "status": "machine-draft"
+    }
+  }
+}

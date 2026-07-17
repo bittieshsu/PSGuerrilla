@@ -1,0 +1,183 @@
+{
+  "_family": "OAuthSecurityChecks.json",
+  "OAUTH-001": {
+    "name": {
+      "value": "Liste d'autorisation/de blocage des applications OAuth",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'accès des applications OAuth doit être régi par une liste d'autorisation ou de blocage afin d'empêcher les applications non autorisées d'accéder aux données de l'organisation",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Liste d'autorisation des applications OAuth configurée avec uniquement les applications approuvées",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôles des API > Contrôle d'accès aux applications > Gérer l'accès des applications tierces > Configurez les applications approuvées/bloquées",
+      "status": "machine-draft"
+    }
+  },
+  "OAUTH-002": {
+    "name": {
+      "value": "Inventaire des applications OAuth installées",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Toutes les applications OAuth installées par les utilisateurs doivent être inventoriées et examinées afin d'identifier les applications non autorisées ou à risque accédant aux données de l'organisation",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les applications OAuth installées examinées et approuvées par l'équipe de sécurité",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôles des API > Contrôle d'accès aux applications > Examinez les applications installées et révoquez l'accès des applications non autorisées",
+      "status": "machine-draft"
+    }
+  },
+  "OAUTH-003": {
+    "name": {
+      "value": "Analyse des portées OAuth",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les applications OAuth disposant de portées à haut risque (Gmail, Drive, Admin) présentent un risque important d'exfiltration de données et doivent être examinées et restreintes",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucune application non autorisée disposant de portées à haut risque (gmail, drive, admin)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôles des API > Contrôle d'accès aux applications > Examinez les applications disposant de portées sensibles > Révoquez ou restreignez selon les besoins",
+      "status": "machine-draft"
+    }
+  },
+  "OAUTH-004": {
+    "name": {
+      "value": "Notation du risque des applications OAuth",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les applications OAuth doivent faire l'objet d'une notation de risque fondée sur les portées accordées et la confiance envers l'éditeur afin de prioriser l'examen de sécurité",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les applications à haut risque examinées et approuvées ; aucune application non examinée disposant de larges portées",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôles des API > Contrôle d'accès aux applications > Examinez les applications triées par étendue des portées > Traitez les applications à haut risque",
+      "status": "machine-draft"
+    }
+  },
+  "OAUTH-005": {
+    "name": {
+      "value": "Stratégie d'accès aux applications non vérifiées",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'accès aux applications tierces non vérifiées doit être restreint afin d'empêcher les utilisateurs d'accorder des autorisations à des applications potentiellement malveillantes",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Accès aux applications non vérifiées bloqué pour tous les utilisateurs",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôles des API > Contrôle d'accès aux applications > Paramètres > Bloquez les applications non vérifiées",
+      "status": "machine-draft"
+    }
+  },
+  "OAUTH-006": {
+    "name": {
+      "value": "Contrôle d'accès aux API",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'accès aux API doit être contrôlé avec un cadrage et des restrictions appropriés afin d'empêcher tout accès programmatique non autorisé aux données de l'organisation",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Accès aux API restreint aux applications et portées approuvées",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôles des API > Gérer les services Google > Restreignez l'accès aux API aux seules applications de confiance",
+      "status": "machine-draft"
+    }
+  },
+  "OAUTH-007": {
+    "name": {
+      "value": "Restrictions d'installation des applications Marketplace",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'installation des applications Google Workspace Marketplace doit être restreinte afin d'empêcher les utilisateurs d'installer des applications non autorisées",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Installation des applications Marketplace restreinte aux applications approuvées par l'administrateur ou aux applications autorisées uniquement",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Applications Google Workspace Marketplace > Paramètres > Restreignez l'installation des applications Marketplace",
+      "status": "machine-draft"
+    }
+  },
+  "OAUTH-008": {
+    "name": {
+      "value": "Audit des délégations à l'échelle du domaine",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La délégation à l'échelle du domaine permet aux comptes de service d'usurper l'identité de n'importe quel utilisateur et d'accéder à ses données. Les délégations non autorisées ou trop permissives représentent un risque de sécurité critique",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Délégations à l'échelle du domaine minimales avec des autorisations à portée limitée ; toutes les délégations examinées et approuvées",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôles des API > Délégation à l'échelle du domaine > Examinez toutes les délégations, supprimez celles qui sont inutiles et restreignez les portées au minimum requis",
+      "status": "machine-draft"
+    }
+  },
+  "OAUTH-009": {
+    "name": {
+      "value": "Énumération des clés de comptes de service",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les clés des comptes de service doivent être inventoriées et renouvelées régulièrement. Des clés divulguées ou obsolètes fournissent un accès non autorisé persistant",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les clés de comptes de service inventoriées, renouvelées dans les 90 jours, et les clés inutilisées supprimées",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Google Cloud Console > IAM et administration > Comptes de service > Examinez et renouvelez les clés > Supprimez les clés de comptes de service inutilisées",
+      "status": "machine-draft"
+    }
+  },
+  "OAUTH-010": {
+    "name": {
+      "value": "Applications connectées disposant de portées sensibles",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les applications ayant accès aux données Drive, Gmail ou Agenda doivent être inventoriées et validées afin d'empêcher l'exfiltration de données via les applications connectées",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les applications disposant de portées sensibles (Drive, Gmail, Agenda) examinées et approuvées",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôles des API > Contrôle d'accès aux applications > Filtrez par portée (Drive, Gmail, Agenda) > Examinez et restreignez les applications non autorisées",
+      "status": "machine-draft"
+    }
+  }
+}

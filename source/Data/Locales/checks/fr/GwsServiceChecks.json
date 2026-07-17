@@ -1,0 +1,219 @@
+{
+  "_family": "GwsServiceChecks.json",
+  "GWS-SITES-001": {
+    "name": {
+      "value": "Service Sites désactivé",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le service Google Sites doit être désactivé pour tous les utilisateurs afin de réduire la surface d'attaque, conformément au principe du moindre privilège. Sites peut être activé de manière sélective par unité organisationnelle ou par groupe lorsqu'un besoin documenté existe.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Service Sites DÉSACTIVÉ pour tout le monde (activez-le de manière sélective par OU/groupe uniquement en cas de besoin)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Google Workspace > Sites > État du service > Définissez sur DÉSACTIVÉ pour tout le monde. Activez de manière sélective par unité organisationnelle ou par groupe uniquement lorsqu'un besoin métier documenté existe.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-CLASS-001": {
+    "name": {
+      "value": "Adhésion à Classroom - Qui peut rejoindre les cours",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les personnes autorisées à rejoindre les cours de votre domaine doivent être limitées aux seuls utilisateurs de votre domaine, empêchant les comptes externes de rejoindre les cours internes.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "« Qui peut rejoindre les cours » défini sur « Utilisateurs de votre domaine uniquement »",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Services Google supplémentaires > Classroom > Paramètres de cours > À propos de l'adhésion aux cours > Qui peut rejoindre les cours de votre domaine > Définissez sur « Utilisateurs de votre domaine uniquement ».",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-CLASS-002": {
+    "name": {
+      "value": "Adhésion à Classroom - Quels cours les utilisateurs peuvent rejoindre",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les cours que les utilisateurs de votre domaine peuvent rejoindre doivent être limités aux seuls cours de votre domaine, empêchant les utilisateurs internes de rejoindre des cours externes susceptibles d'exfiltrer des données.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "« Quels cours les utilisateurs peuvent rejoindre » défini sur « Cours de votre domaine uniquement »",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Services Google supplémentaires > Classroom > Paramètres de cours > À propos de l'adhésion aux cours > Quels cours les utilisateurs de votre domaine peuvent rejoindre > Définissez sur « Cours de votre domaine uniquement ».",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-CLASS-003": {
+    "name": {
+      "value": "Accès aux données de l'API Classroom restreint",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les utilisateurs ne doivent pas pouvoir autoriser des applications tierces à accéder à leurs données Google Classroom, empêchant tout accès incontrôlé aux données par des intégrations externes.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Les utilisateurs ne peuvent pas autoriser d'applications à accéder aux données Classroom (accès aux données de l'API désactivé)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Services Google supplémentaires > Classroom > Accès aux données > Décochez « Les utilisateurs peuvent autoriser des applications à accéder à leurs données Google Classroom ».",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-CLASS-004": {
+    "name": {
+      "value": "Import de listes d'inscrits Classroom désactivé",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'import de listes d'inscrits via une intégration tierce doit être désactivé afin que les listes d'inscrits des cours ne soient pas synchronisées depuis des systèmes externes sans gouvernance explicite.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Import de listes d'inscrits DÉSACTIVÉ",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Services Google supplémentaires > Classroom > Import de listes d'inscrits > Sélectionnez DÉSACTIVÉ.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-CLASS-005": {
+    "name": {
+      "value": "Désinscription des élèves Classroom restreinte",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Seuls les enseignants doivent être autorisés à désinscrire des élèves des cours, empêchant les élèves de se retirer eux-mêmes ou d'en retirer d'autres et de perturber l'intégrité de l'adhésion aux cours.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Désinscription des élèves restreinte aux enseignants uniquement",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Services Google supplémentaires > Classroom > Désinscription des élèves > Sélectionnez « Enseignants uniquement ».",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-CLASS-006": {
+    "name": {
+      "value": "Création de cours Classroom restreinte aux enseignants vérifiés",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La création de cours doit être restreinte aux seuls enseignants vérifiés, empêchant les utilisateurs non autorisés de créer des cours et de rassembler des membres.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Création de cours restreinte aux seuls enseignants vérifiés",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Services Google supplémentaires > Classroom > Paramètres généraux > Autorisations des enseignants > Sélectionnez « Enseignants vérifiés uniquement ».",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-GEMINI-001": {
+    "name": {
+      "value": "Accès à l'application Gemini restreint aux utilisateurs sous licence",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'accès des utilisateurs à l'application Gemini doit être défini sur DÉSACTIVÉ pour toute personne sans licence, garantissant que l'accès à l'IA générative est régi par l'attribution de licences plutôt qu'ouvert à tous les utilisateurs.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Accès à l'application Gemini DÉSACTIVÉ pour les utilisateurs sans licence",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > IA générative > Application Gemini > Accès utilisateur > Décochez « Autoriser tous les utilisateurs à accéder à l'application Gemini, quelle que soit la licence ».",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-GEMINI-002": {
+    "name": {
+      "value": "Fonctionnalités Alpha de Gemini désactivées",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les fonctionnalités Alpha de Gemini doivent être désactivées. Les fonctionnalités en préversion peuvent ne pas avoir fait l'objet d'un examen de sécurité complet et peuvent exposer les données de l'organisation à un traitement non vérifié.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Accès aux fonctionnalités Alpha de Gemini for Workspace désactivé",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > IA générative > Gemini for Workspace > Fonctionnalités Alpha > Sélectionnez « Désactiver l'accès aux fonctionnalités Alpha de Gemini for Google Workspace ».",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-GEMINI-003": {
+    "name": {
+      "value": "Historique des conversations Gemini activé",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'historique des conversations Gemini doit être activé afin que les interactions avec l'IA soient conservées à des fins d'audit et de conformité. Un historique désactivé peut dissimuler le traitement des données.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Historique des conversations Gemini activé",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > IA générative > Application Gemini > Historique des conversations Gemini > Assurez-vous que l'historique des conversations est activé.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-GEMINI-004": {
+    "name": {
+      "value": "Conservation des conversations Gemini d'au moins 18 mois",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La conservation des conversations Gemini doit être définie sur un minimum de 18 mois afin de répondre aux exigences d'audit, de conservation légale et d'investigation des incidents.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Conservation des conversations définie sur au moins 18 mois",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > IA générative > Application Gemini > Historique des conversations Gemini > Définissez la période de conservation sur au moins 18 mois.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-GEMINI-005": {
+    "name": {
+      "value": "Partage des conversations Gemini désactivé",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Le partage des conversations Gemini via un lien doit être défini sur DÉSACTIVÉ afin d'empêcher le contenu des conversations avec l'IA, qui peut inclure des invites et des sorties sensibles, d'être partagé en dehors des destinataires prévus.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Partage des conversations via un lien défini sur DÉSACTIVÉ",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > IA générative > Application Gemini > Partage > Définissez « Autoriser le partage des conversations via un lien » sur DÉSACTIVÉ.",
+      "status": "machine-draft"
+    }
+  }
+}

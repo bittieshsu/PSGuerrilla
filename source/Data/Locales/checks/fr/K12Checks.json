@@ -1,0 +1,183 @@
+{
+  "_family": "K12Checks.json",
+  "GWS-K12-001": {
+    "name": {
+      "value": "Le partage des OU d'élèves n'est pas hérité du personnel",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les districts scolaires configurent couramment le partage externe Drive pour les besoins du personnel et laissent les OU d'élèves hériter de cette configuration. L'héritage est invisible dans l'administration quotidienne : l'OU d'élèves affiche une valeur, mais personne ne l'a choisie pour les élèves. La configuration du partage externe sur les OU d'élèves doit être une décision locale explicite, ou une valeur héritée entièrement désactivée.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "La configuration du partage externe Drive est appliquée localement sur chaque OU d'élèves, ou la valeur héritée est DISALLOWED",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Google Workspace > Drive et Docs > Paramètres de partage. Sélectionnez l'unité organisationnelle des élèves dans le panneau de gauche et définissez « Partage en dehors de votre organisation » explicitement pour cette OU (le paramètre affiche « Appliqué localement » lorsqu'il s'agit d'une décision locale, « Hérité » sinon).",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-002": {
+    "name": {
+      "value": "Partage externe Drive des élèves restreint",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Quelle que soit la posture du personnel, les OU d'élèves ne doivent pas autoriser un partage silencieux et sans restriction en dehors de l'organisation. Les postures d'élèves défendables vont de la désactivation totale aux domaines sur liste d'autorisation ; un partage activé avec une invite d'avertissement constitue le plancher acceptable le plus faible et doit être une décision délibérée du district pour la tranche d'âge.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Le partage externe Drive de l'OU d'élèves est DISALLOWED ou restreint aux domaines sur liste d'autorisation ; s'il est ALLOWED, l'avertissement de partage externe est activé et le choix est documenté",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Google Workspace > Drive et Docs > Paramètres de partage. Sélectionnez l'unité organisationnelle des élèves et définissez « Partage en dehors de votre organisation » sur Désactivé ou Domaines sur liste d'autorisation. Si le district autorise délibérément le partage externe pour une OU d'élèves, activez au minimum « Avertir lorsque des fichiers appartenant à des utilisateurs de votre organisation sont partagés à l'extérieur ».",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-003": {
+    "name": {
+      "value": "Les élèves ne peuvent pas autoriser d'applications tierces",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Un élève qui clique sur « Se connecter avec Google » sur un site web arbitraire peut accorder à ce site l'accès aux données de son compte scolaire, sauf si le district restreint l'accès aux API tierces pour les OU d'élèves. Les élèves ne doivent avoir aucun accès non configuré aux applications tierces, ou uniquement une liste d'autorisation gérée par le district. Il s'agit de l'un des paramètres uniques les plus déterminants d'un locataire scolaire.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Applications tierces non configurées bloquées (BLOCK_ALL_SCOPES) pour les OU d'élèves ; applications examinées par le district autorisées individuellement",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôle des accès et des données > Contrôles des API > Contrôle d'accès aux applications > Gérer l'accès des applications tierces. Sélectionnez l'unité organisationnelle des élèves, définissez les applications tierces non configurées sur « Bloquer tout accès aux API tierces » et autorisez les applications spécifiques que le district a examinées.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-004": {
+    "name": {
+      "value": "Examen de l'accès délégué aux fournisseurs",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les délégations à l'échelle du domaine accordent au compte de service d'un fournisseur un accès permanent aux données des utilisateurs de tout le locataire, y compris les données des élèves. Les plateformes SIS, les outils de gestion des listes d'inscrits et les fournisseurs EdTech accumulent ces délégations au fil des ans, et les délégations obsolètes sont rarement supprimées. Chaque délégation portant des portées sensibles doit correspondre à un contrat de fournisseur en cours et à l'ensemble de portées le plus étroit possible.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Chaque délégation à l'échelle du domaine correspond à un fournisseur actuel et ne porte que les portées dont ce fournisseur a besoin",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Contrôle des accès et des données > Contrôles des API > Délégation à l'échelle du domaine. Pour chaque ID client, confirmez quel fournisseur en est propriétaire et que le contrat est en cours ; supprimez les délégations des fournisseurs partis ; réduisez les ensembles de portées qui dépassent la fonction du fournisseur (les portées de messagerie, Drive, annuaire et contacts méritent une attention particulière).",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-005": {
+    "name": {
+      "value": "Moindre privilège des administrateurs délégués",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les districts confient régulièrement aux conseillers, secrétaires et responsables d'établissement des rôles d'administrateur délégués pour des tâches légitimes, en utilisant des rôles bien plus larges que la tâche. Un rôle délégué qui porte des privilèges de gestion des utilisateurs ou de sécurité sur l'ensemble du domaine atteint chaque compte d'élève ; cadrer le même rôle sur une unité organisationnelle le contient. Cette vérification fait remonter les attributions déléguées à l'échelle du domaine pour examen ; déterminer si chaque titulaire a besoin de cette portée relève du district.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Les rôles d'administrateur délégués portant des privilèges de gestion des utilisateurs ou de sécurité sont cadrés sur les unités organisationnelles que le titulaire prend en charge, et non sur l'ensemble du domaine",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Compte > Rôles d'administrateur. Pour chaque attribution de rôle personnalisé ou prédéfini signalée dans les preuves, soit restreignez l'attribution à l'unité organisationnelle concernée (modifiez la portée de l'attribution), soit remplacez le rôle par un rôle ne portant que les privilèges dont les fonctions du titulaire ont besoin.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-006": {
+    "name": {
+      "value": "Limites de communication des élèves",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Chat et Meet disposent chacun de paramètres indépendants régissant la possibilité pour les comptes de communiquer avec des personnes extérieures à l'organisation. Pour les OU d'élèves, ces paramètres constituent une limite de sécurité : ils déterminent si un compte extérieur au district peut initier un contact avec un élève au moyen des outils fournis par le district. Un ÉCHEC ici signifie qu'un paramètre autorise une catégorie de contact externe que le district n'a pas affirmativement décidé d'autoriser ; cela ne signifie pas qu'un tel contact a eu lieu. Les restrictions de courrier externe de Gmail résident dans des règles de routage que cette vérification ne peut pas lire et sont signalées pour un examen manuel.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Chat externe de l'OU d'élèves désactivé ou restreint aux domaines de confiance ; les élèves ne rejoignent que les réunions hébergées par le district",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Chat : Admin Console > Applications > Google Workspace > Google Chat > Paramètres du chat externe ; sélectionnez l'OU d'élèves et désactivez le chat externe ou restreignez-le aux domaines sur liste d'autorisation. Meet : Admin Console > Applications > Google Workspace > Google Meet > Paramètres de sécurité de Meet ; sélectionnez l'OU d'élèves et limitez les réunions que les utilisateurs peuvent rejoindre à votre organisation. Gmail : examinez les éventuelles restrictions de courrier externe des élèves sous Applications > Google Workspace > Gmail > Routage.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-007": {
+    "name": {
+      "value": "Intégrité de l'accès des tuteurs",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les récapitulatifs par e-mail pour les tuteurs existent afin que les parents voient l'activité de leur propre élève. La propriété d'intégrité évaluable par machine est de savoir qui peut enregistrer et retirer des tuteurs : les administrateurs de domaine uniquement constituent la surface étroite ; les enseignants vérifiés l'élargissent et nécessitent une procédure documentée de vérification d'identité. La manière dont le district vérifie l'identité d'un tuteur avant de l'inviter est un point de révision de la stratégie que cette vérification ne peut pas lire. Les constats décrivent la posture de configuration, et non des incidents.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Si l'accès des tuteurs est activé, la gestion des tuteurs est restreinte aux administrateurs de domaine, ou une procédure documentée de vérification côté enseignant existe",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Google Workspace > Classroom > Accès des tuteurs. Sélectionnez l'unité organisationnelle des élèves. Si les récapitulatifs pour les tuteurs sont utilisés, définissez « Qui peut gérer les tuteurs » sur les administrateurs de domaine uniquement, ou documentez la procédure de vérification que les enseignants doivent suivre avant d'inviter un tuteur.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-008": {
+    "name": {
+      "value": "Posture des Chromebooks gérés des élèves",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les Chromebooks des élèves constituent le plus grand parc du district et le plus soumis aux tests de limites. La posture qui maintient le parc géré : les appareils réinitialisés se réinscrivent automatiquement (les élèves ne peuvent pas échapper à la gestion en réinitialisant), les extensions s'installent depuis une liste d'autorisation du district plutôt que depuis une boutique ouverte avec une liste de blocage, et les extensions chargées de côté (sideloaded) provenant de l'extérieur du Web Store sont bloquées.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Réinscription forcée automatique après réinitialisation ; installations d'extensions uniquement sur liste d'autorisation ; extensions externes (chargées de côté) bloquées sur les OU d'élèves",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Appareils > Chrome > Paramètres. Sélectionnez l'unité organisationnelle des élèves. Sous Paramètres de l'appareil > Inscription et accès, définissez la réinscription forcée sur « Forcer l'appareil à se réinscrire automatiquement après réinitialisation ». Sous Utilisateurs et navigateurs > Applications et extensions, définissez la stratégie d'installation du Chrome Web Store pour bloquer toutes les applications avec une liste d'autorisation gérée par l'administrateur, et bloquez les extensions externes.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-009": {
+    "name": {
+      "value": "Traitement des comptes d'élèves partis",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "L'obtention du diplôme et le départ produisent des comptes que personne ne possède. Un compte actif appartenant à un élève parti est une identité non surveillée qui reçoit toujours du courrier et détient toujours des données. Cette vérification fait remonter les comptes des OU d'élèves qui sont actifs mais qui ne se sont pas connectés depuis un an ou plus, et rappelle au district que les comptes suspendus détiennent toujours des données Drive dont la propriété doit être résolue avant leur suppression.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Les élèves partis sont suspendus ou archivés à leur départ ; aucun compte d'élève ne reste actif avec un an sans connexion",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Annuaire > Utilisateurs. Filtrez sur l'unité organisationnelle des élèves et triez par Dernière connexion. Suspendez ou archivez les comptes appartenant à des élèves retirés ou diplômés. Avant de supprimer les comptes suspendus, transférez la propriété Drive (Admin Console > Annuaire > Utilisateurs > sélectionnez l'utilisateur > Supprimer > transférer le contenu) ou exportez via Takeout/Vault selon les exigences de votre stratégie de conservation.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-010": {
+    "name": {
+      "value": "Socle de sécurité des comptes d'élèves",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Un socle de sécurité honnête pour les élèves est établi par tranche d'âge : stratégie de mot de passe robuste et récupération contrôlée par le district partout ; validation en deux étapes imposée pour les OU servant des élèves assez âgés pour détenir un second facteur. La récupération autonome du compte contrôlée par l'élève est un chemin de prise de contrôle de compte à tout âge et échoue à cette vérification ; une absence d'application de la 2SV est signalée comme contexte pour la décision du district relative à la tranche d'âge, jamais comme un échec aveugle d'une OU d'école primaire.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Récupération autonome désactivée pour les OU d'élèves ; stratégie de mot de passe STRONG avec une longueur minimale de 12 caractères ou plus ; 2SV imposée là où la tranche d'âge le permet, avec des exceptions documentées ailleurs",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Sécurité > Authentification. Sélectionnez l'unité organisationnelle des élèves. Sous Récupération de compte, désactivez la récupération autonome du compte utilisateur pour les OU d'élèves (la récupération passe par le service d'assistance du district). Sous Gestion des mots de passe, imposez des mots de passe robustes avec une longueur minimale de 12 caractères ou plus. Sous Validation en deux étapes, imposez la 2SV pour les tranches d'âge pouvant détenir un second facteur et documentez l'exception pour les OU plus jeunes.",
+      "status": "machine-draft"
+    }
+  }
+}
