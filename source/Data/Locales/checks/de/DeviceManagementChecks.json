@@ -1,0 +1,69 @@
+{
+  "_family": "DeviceManagementChecks.json",
+  "DEVICE-001": {
+    "name": { "value": "Audit der MDM-Richtlinien", "status": "machine-draft" },
+    "description": { "value": "Mobilgeräte, die auf organisatorische Daten zugreifen, sollten über MDM-Richtlinien verwaltet werden, um Sicherheitskontrollen durchzusetzen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle Mobilgeräte unter MDM-Verwaltung mit erzwungenen Sicherheitsrichtlinien", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Mobilgeräte > Verwaltungsstatus der Geräte überprüfen > Erweiterte MDM-Verwaltung für nicht verwaltete Geräte aktivieren", "status": "machine-draft" }
+  },
+  "DEVICE-002": {
+    "name": { "value": "Anforderungen an die Gerätegenehmigung", "status": "machine-draft" },
+    "description": { "value": "Mobilgeräte sollten vor dem Zugriff auf organisatorische Daten eine Administratorgenehmigung erfordern, um unbefugten Gerätezugriff zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gerätegenehmigung vor dem Zugriff auf organisatorische Daten erforderlich", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Mobilgeräte und Endpunkte > Einstellungen > Allgemein > Administratorgenehmigung für den Gerätezugriff verlangen", "status": "machine-draft" }
+  },
+  "DEVICE-003": {
+    "name": { "value": "Erzwingung der Bildschirmsperre", "status": "machine-draft" },
+    "description": { "value": "Die Bildschirmsperre sollte auf allen Mobilgeräten erzwungen werden, um unbefugten physischen Zugriff auf organisatorische Daten zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Bildschirmsperre mit Mindestanforderungen an PIN/Kennwort erzwungen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Mobilgeräte und Endpunkte > Einstellungen > Universelle Einstellungen > Bildschirmsperre > Bildschirmsperre mit Mindestkomplexität erzwingen", "status": "machine-draft" }
+  },
+  "DEVICE-004": {
+    "name": { "value": "Anforderungen an die Geräteverschlüsselung", "status": "machine-draft" },
+    "description": { "value": "Die Geräteverschlüsselung sollte auf allen Mobilgeräten erforderlich sein, um ruhende Daten vor physischem Diebstahl oder Verlust zu schützen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Verschlüsselung auf allen verwalteten Geräten erforderlich", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Mobilgeräte und Endpunkte > Einstellungen > Universelle Einstellungen > Verschlüsselung > Geräteverschlüsselung verlangen", "status": "machine-draft" }
+  },
+  "DEVICE-005": {
+    "name": { "value": "Blockierung kompromittierter Geräte", "status": "machine-draft" },
+    "description": { "value": "Kompromittierte Geräte sollten automatisch am Zugriff auf organisatorische Daten gehindert werden, um eine Datenoffenlegung zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Erkennung und Blockierung kompromittierter Geräte aktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Mobilgeräte und Endpunkte > Einstellungen > Universelle Einstellungen > Kompromittierte Geräte > Kompromittierte Geräte am Datenzugriff hindern", "status": "machine-draft" }
+  },
+  "DEVICE-006": {
+    "name": { "value": "Richtlinie für Geräte mit Jailbreak/Root", "status": "machine-draft" },
+    "description": { "value": "Geräte mit Jailbreak (iOS) oder Root (Android) umgehen Sicherheitskontrollen auf Betriebssystemebene und sollten am Zugriff auf organisatorische Daten gehindert werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geräte mit Jailbreak/Root am Zugriff auf organisatorische Daten gehindert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Mobilgeräte und Endpunkte > Einstellungen > Universelle Einstellungen > Kompromittierte Geräte > Geräte mit Jailbreak/Root blockieren", "status": "machine-draft" }
+  },
+  "DEVICE-007": {
+    "name": { "value": "Chrome-Browserverwaltung", "status": "machine-draft" },
+    "description": { "value": "Chrome-Browser, die für den Zugriff auf organisatorische Daten verwendet werden, sollten zur Richtliniendurchsetzung in Chrome Browser Cloud Management registriert werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chrome-Browser in Cloud Management registriert mit erzwungenen Richtlinien", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Chrome > Einstellungen > Chrome-Browserrichtlinien für verwaltete Browser überprüfen und konfigurieren", "status": "machine-draft" }
+  },
+  "DEVICE-008": {
+    "name": { "value": "Zulassungs-/Sperrliste für Chrome-Erweiterungen", "status": "machine-draft" },
+    "description": { "value": "Chrome-Erweiterungen sollten über eine Zulassungs- oder Sperrliste verwaltet werden, um zu verhindern, dass bösartige Erweiterungen auf organisatorische Daten zugreifen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Erweiterungsinstallation über eine Zulassungsliste auf von Administratoren genehmigte Erweiterungen beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Chrome > Apps und Erweiterungen > Zulassungs- und Sperrliste für Erweiterungen konfigurieren", "status": "machine-draft" }
+  },
+  "DEVICE-009": {
+    "name": { "value": "Geräterichtlinien für Chrome OS", "status": "machine-draft" },
+    "description": { "value": "Für Chrome-OS-Geräte sollten geeignete Richtlinien erzwungen werden, darunter automatische Updates, Anmeldebeschränkungen und Sicherheitseinstellungen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chrome-OS-Geräte mit erzwungenen Richtlinien für Updates, Anmeldung und Sicherheit verwaltet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Chrome > Einstellungen > Geräteeinstellungen > Automatische Updates, Anmeldebeschränkungen und Sicherheitsrichtlinien konfigurieren", "status": "machine-draft" }
+  },
+  "DEVICE-010": {
+    "name": { "value": "Einstellungen für die Endpunktbestätigung", "status": "machine-draft" },
+    "description": { "value": "Die Endpunktbestätigung liefert Signale zur Gerätevertrauenswürdigkeit für kontextsensitive Zugriffsrichtlinien und sollte aktiviert werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Endpunktbestätigung für kontextsensitiven Zugriff aktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Mobilgeräte und Endpunkte > Einstellungen > Allgemein > Endpunktbestätigung für kontextsensitive Zugriffsrichtlinien aktivieren", "status": "machine-draft" }
+  },
+  "DEVICE-011": {
+    "name": { "value": "Inventar unternehmenseigener Geräte", "status": "machine-draft" },
+    "description": { "value": "Unternehmenseigene Geräte sollten inventarisiert werden, um den Überblick über organisatorische Ressourcen zu behalten, die auf Unternehmensdaten zugreifen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Vollständiges Inventar aller unternehmenseigenen Geräte geführt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Geräte > Mobilgeräte > Geräteinventar überprüfen > Sicherstellen, dass alle unternehmenseigenen Geräte registriert und erfasst sind", "status": "machine-draft" }
+  }
+}

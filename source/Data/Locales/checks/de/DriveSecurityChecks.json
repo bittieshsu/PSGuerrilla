@@ -1,0 +1,105 @@
+{
+  "_family": "DriveSecurityChecks.json",
+  "DRIVE-001": {
+    "name": { "value": "Standardwerte für die externe Freigabe", "status": "machine-draft" },
+    "description": { "value": "Die Freigabe außerhalb der Organisation sollte standardmäßig eingeschränkt oder deaktiviert werden, um eine versehentliche Datenoffenlegung gegenüber externen Parteien zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe Freigabe auf zugelassene Domänen beschränkt oder deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen > Freigabe außerhalb der Organisation auf „Aus“ oder „Zugelassene Domänen“ setzen", "status": "machine-draft" }
+  },
+  "DRIVE-002": {
+    "name": { "value": "Standardeinstellungen für die Linkfreigabe", "status": "machine-draft" },
+    "description": { "value": "Die standardmäßige Linkfreigabe sollte auf „Eingeschränkt“ (bestimmte Personen) statt auf breiten Zugriff gesetzt werden, um eine unbeabsichtigte Datenoffenlegung zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Standardmäßige Linkfreigabe auf „Eingeschränkt“ (nur bestimmte Personen) gesetzt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen > Standardmäßige Linkfreigabe auf „Eingeschränkt“ setzen", "status": "machine-draft" }
+  },
+  "DRIVE-003": {
+    "name": { "value": "Audit der Freigabe „Jeder mit dem Link“", "status": "machine-draft" },
+    "description": { "value": "Dateien, die mit „Jeder mit dem Link“ geteilt werden, sind für jeden im Internet zugänglich und stellen ein erhebliches Risiko der Datenoffenlegung dar", "status": "machine-draft" },
+    "recommendedValue": { "value": "Freigabe „Jeder mit dem Link“ deaktiviert oder streng kontrolliert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen > Option „Jeder mit dem Link“ deaktivieren oder auf „Domänennutzer mit dem Link“ beschränken", "status": "machine-draft" }
+  },
+  "DRIVE-004": {
+    "name": { "value": "Einschränkungen für die Erstellung geteilter Ablagen", "status": "machine-draft" },
+    "description": { "value": "Die Erstellung geteilter Ablagen sollte eingeschränkt werden, um eine unkontrollierte Ausbreitung zu verhindern und eine ordnungsgemäße Governance geteilter Datenspeicher sicherzustellen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Erstellung geteilter Ablagen auf bestimmte Gruppen oder Administratoren beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen > Erstellung geteilter Ablagen > Einschränken, wer geteilte Ablagen erstellen darf", "status": "machine-draft" }
+  },
+  "DRIVE-005": {
+    "name": { "value": "Mitgliederverwaltung geteilter Ablagen", "status": "machine-draft" },
+    "description": { "value": "Die Mitgliederverwaltung geteilter Ablagen sollte gesteuert werden, um zu verhindern, dass unbefugte Nutzer hinzugefügt oder Berechtigungen ausgeweitet werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nur Manager können Mitglieder hinzufügen und Zugriffsstufen ändern", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen > Einstellungen für geteilte Ablagen > Berechtigungen zur Mitgliederverwaltung konfigurieren", "status": "machine-draft" }
+  },
+  "DRIVE-006": {
+    "name": { "value": "Externe Freigabe geteilter Ablagen", "status": "machine-draft" },
+    "description": { "value": "Die externe Freigabe geteilter Ablagen sollte eingeschränkt werden, um zu verhindern, dass sensible organisatorische Daten außerhalb der Domäne geteilt werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe Freigabe geteilter Ablagen deaktiviert oder auf zugelassene Domänen beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen > Freigabe geteilter Ablagen > Externe Freigabe einschränken", "status": "machine-draft" }
+  },
+  "DRIVE-007": {
+    "name": { "value": "Einstellungen für die Übertragung der Dateieigentümerschaft", "status": "machine-draft" },
+    "description": { "value": "Die Übertragung der Dateieigentümerschaft sollte gesteuert werden, um eine unbefugte Datenmigration zu verhindern und ordnungsgemäße Ketten der Datengovernance aufrechtzuerhalten", "status": "machine-draft" },
+    "recommendedValue": { "value": "Übertragung der Dateieigentümerschaft auf Administratoren oder einen kontrollierten Prozess beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Einstellungen zur Eigentumsübertragung > Einschränkungen konfigurieren", "status": "machine-draft" }
+  },
+  "DRIVE-008": {
+    "name": { "value": "Drive for Desktop zugelassen/blockiert", "status": "machine-draft" },
+    "description": { "value": "Drive for Desktop synchronisiert Dateien lokal und sollte gesteuert werden, um zu verhindern, dass Daten auf nicht verwalteten Endpunkten gespeichert werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive for Desktop auf verwaltete Geräte beschränkt oder deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Funktionen und Anwendungen > Drive for Desktop > Zugriff konfigurieren", "status": "machine-draft" }
+  },
+  "DRIVE-009": {
+    "name": { "value": "Drive-Zugriff durch Apps von Drittanbietern", "status": "machine-draft" },
+    "description": { "value": "Anwendungen von Drittanbietern mit Zugriff auf Drive-Daten sollten überprüft und eingeschränkt werden, um eine unbefugte Datenexfiltration zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zugriff von Apps von Drittanbietern auf Drive-Daten eingeschränkt und überprüft", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > API-Steuerung > Zugriff durch Apps von Drittanbietern > Apps mit Drive-Zugriff überprüfen und einschränken", "status": "machine-draft" }
+  },
+  "DRIVE-010": {
+    "name": { "value": "Audit der Drive-DLP-Regeln", "status": "machine-draft" },
+    "description": { "value": "Regeln zur Verhinderung von Datenverlust (DLP) sollten konfiguriert werden, um die Freigabe sensibler Daten über Google Drive zu erkennen und zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "DLP-Regeln für sensible Datentypen konfiguriert (personenbezogene, finanzielle, gesundheitsbezogene Daten)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Datenschutz > Regeln verwalten > Regeln für sensible Datentypen in Drive erstellen", "status": "machine-draft" }
+  },
+  "DRIVE-011": {
+    "name": { "value": "Einstellungen für Zielgruppen", "status": "machine-draft" },
+    "description": { "value": "Die Einstellungen für Zielgruppen steuern, wer beim Teilen von Dateien vorgeschlagen werden kann, und sollten konfiguriert werden, um versehentliches Teilen zu begrenzen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zielgruppen so konfiguriert, dass Freigabevorschläge angemessen begrenzt werden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Zielgruppen > Zielgruppengruppen überprüfen und konfigurieren", "status": "machine-draft" }
+  },
+  "DRIVE-012": {
+    "name": { "value": "Einstellungen für Drive-Add-ons", "status": "machine-draft" },
+    "description": { "value": "Drive-Add-ons können auf Dateiinhalte zugreifen und sollten gesteuert werden, um eine Datenoffenlegung durch nicht vertrauenswürdige Erweiterungen zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installation von Drive-Add-ons auf von Administratoren genehmigte Add-ons beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Funktionen und Anwendungen > Add-ons > Installationsbeschränkungen konfigurieren", "status": "machine-draft" }
+  },
+  "DRIVE-013": {
+    "name": { "value": "Einstellungen für den Offlinezugriff", "status": "machine-draft" },
+    "description": { "value": "Der Offlinezugriff ermöglicht das lokale Zwischenspeichern von Drive-Dateien auf Geräten und sollte gesteuert werden, um eine Datenoffenlegung auf gemeinsam genutzten oder nicht verwalteten Geräten zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Offlinezugriff deaktiviert oder auf verwaltete Geräte beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Funktionen und Anwendungen > Offline > Offlinezugriff deaktivieren oder einschränken", "status": "machine-draft" }
+  },
+  "DRIVE-014": {
+    "name": { "value": "Drive-SDK-API-Zugriff deaktiviert (GWS.DRIVEDOCS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.4.1: Das Drive SDK ermöglicht Apps von Drittanbietern das Lesen und Schreiben von Drive-Inhalten über die API, ein direkter Kanal zur Datenexfiltration, wenn es breit aktiviert ist. Liest drive_and_docs.drive_sdk; stuft als nicht bestanden ein, wenn enableDriveSdkApiAccess aktiviert ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive-SDK-API-Zugriff deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in der Admin-Konsole > Apps > Google Workspace > Drive und Docs > Funktionen und Anwendungen das Drive SDK, sofern nicht bestimmte überprüfte Integrationen es erfordern.", "status": "machine-draft" }
+  },
+  "DRIVE-015": {
+    "name": { "value": "Drive-Warnung bei externen Dateien aktiviert (GWS.DRIVEDOCS.1.9)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.9: Nutzer zu warnen, wenn sie Dateien extern teilen, ist eine reibungsarme Maßnahme gegen Datenverlust. Liest drive_and_docs.external_file_warning; warnt, wenn highlightingEnabled deaktiviert ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Warnung bei der Freigabe externer Dateien aktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Aktivieren Sie in den Drive-Freigabeeinstellungen Warnungen, wenn Nutzer Dateien mit Personen außerhalb der Organisation teilen.", "status": "machine-draft" }
+  },
+  "DRIVE-016": {
+    "name": { "value": "Drive-Dateisicherheitsupdate erzwungen (GWS.DRIVEDOCS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.3.1: Das Dateisicherheitsupdate verschärft die Linkfreigabe betroffener Dateien; Nutzern das Entfernen zu erlauben, öffnet den Zugriff erneut. Liest drive_and_docs.file_security_update; warnt, wenn Nutzern erlaubt ist, das Sicherheitsupdate zu entfernen oder zu verwalten.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sicherheitsupdate angewendet und Nutzer können es nicht entfernen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Wenden Sie in den Drive-Einstellungen das Dateisicherheitsupdate an und erlauben Sie Nutzern nicht, es von Dateien zu entfernen, deren Eigentümer sie sind.", "status": "machine-draft" }
+  },
+  "DRIVE-017": {
+    "name": { "value": "Standarddateizugriff auf privat für Eigentümer gesetzt (GWS.DRIVEDOCS.1.8)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.8 verlangt, dass „Privat für Eigentümer“ die Standardzugriffsstufe für neu erstellte Drive-Elemente ist, damit Dateien zum Erstellungszeitpunkt nicht breiter als beabsichtigt geteilt werden. Diese Prüfung liest die Cloud-Identity-Richtlinie drive_and_docs.general_access_default und kennzeichnet jede Organisationseinheit, in der der Standarddateizugriff nicht PRIVATE_TO_OWNER ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Standardzugriffsstufe für neue Dateien in allen Organisationseinheiten auf PRIVATE_TO_OWNER (defaultFileAccess) gesetzt.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Setzen Sie in der Google Admin-Konsole unter Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen > Standard für allgemeinen Zugriff den Standard auf „Privat für Eigentümer“, damit neu erstellte Dateien privat beginnen und nur durch bewusstes Handeln geteilt werden.", "status": "machine-draft" }
+  }
+}

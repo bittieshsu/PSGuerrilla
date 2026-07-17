@@ -1,0 +1,135 @@
+{
+  "_family": "AdminManagementChecks.json",
+  "ADMIN-001": {
+    "name": { "value": "Inventar der Super-Admin-Konten", "status": "machine-draft" },
+    "description": { "value": "Alle Super-Admin-Konten sollten inventarisiert und überprüft werden. Super-Admins haben uneingeschränkten Zugriff auf alle organisatorischen Einstellungen und Daten", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle Super-Admin-Konten dokumentiert und mit einem klaren geschäftlichen Bedarf begründet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Nutzer > Nach Administratorrolle filtern > Alle Super-Admin-Konten überprüfen und unnötige Zuweisungen entfernen", "status": "machine-draft" }
+  },
+  "ADMIN-002": {
+    "name": { "value": "Audit der Administratorrollen-Zuweisungen", "status": "machine-draft" },
+    "description": { "value": "Zuweisungen von Administratorrollen sollten dem Prinzip der geringsten Rechte folgen. Anstelle umfassender integrierter Rollen sollten benutzerdefinierte Rollen verwendet werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle Administratorrollen-Zuweisungen überprüft und nach Möglichkeit benutzerdefinierte Rollen mit geringsten Rechten verwendet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Konto > Administratorrollen > Jede Rollenzuweisung überprüfen > Umfassende Rollen durch eng gefasste benutzerdefinierte Rollen ersetzen", "status": "machine-draft" }
+  },
+  "ADMIN-003": {
+    "name": { "value": "Überprüfung delegierter Administratorberechtigungen", "status": "machine-draft" },
+    "description": { "value": "Benutzerdefinierte Administratorrollen sollten überprüft werden, um sicherzustellen, dass delegierte Berechtigungen angemessen eingegrenzt sind und keinen übermäßigen Zugriff gewähren", "status": "machine-draft" },
+    "recommendedValue": { "value": "Benutzerdefinierte Administratorrollen auf die mindestens erforderlichen Berechtigungen eingegrenzt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Konto > Administratorrollen > Jede benutzerdefinierte Rolle überprüfen > Sicherstellen, dass die Berechtigungen angemessen eingegrenzt sind", "status": "machine-draft" }
+  },
+  "ADMIN-004": {
+    "name": { "value": "Inaktive/gesperrte Administratorkonten", "status": "machine-draft" },
+    "description": { "value": "Gesperrte oder inaktive Nutzer sollten keine Administratorrollen behalten. Diese Konten können Ziel von Reaktivierungsangriffen werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Keine gesperrten oder inaktiven Nutzer mit Administratorrollen-Zuweisungen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Nutzer > Gesperrte Nutzer filtern > Administratorrollen von allen gesperrten Konten entfernen", "status": "machine-draft" }
+  },
+  "ADMIN-005": {
+    "name": { "value": "Inventar der Nutzerkonten", "status": "machine-draft" },
+    "description": { "value": "Ein Inventar der Nutzerkonten sollte zu Governance-Zwecken mit klaren Zahlen zu aktiven, gesperrten und archivierten Konten geführt werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Vollständiges Nutzerinventar, in dem sich alle Konten im passenden Zustand aktiv/gesperrt/archiviert befinden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Nutzer > Nutzerliste überprüfen > Nicht mehr benötigte Konten sperren oder archivieren", "status": "machine-draft" }
+  },
+  "ADMIN-006": {
+    "name": { "value": "Veraltete Nutzerkonten", "status": "machine-draft" },
+    "description": { "value": "Nutzerkonten ohne Anmeldung seit 90 oder mehr Tagen sind möglicherweise verwaist und sollten auf Sperrung oder Löschung überprüft werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Keine Nutzerkonten, die ohne dokumentierte Begründung länger als 90 Tage inaktiv sind", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Nutzer > Nach letzter Anmeldung sortieren > Konten überprüfen und sperren, die seit über 90 Tagen inaktiv sind", "status": "machine-draft" }
+  },
+  "ADMIN-007": {
+    "name": { "value": "Überprüfung der OU-Struktur", "status": "machine-draft" },
+    "description": { "value": "Die Struktur der Organisationseinheiten sollte überprüft werden, um sicherzustellen, dass Richtlinien wirksam im passenden Geltungsbereich angewendet werden können", "status": "machine-draft" },
+    "recommendedValue": { "value": "OU-Struktur mit klarer Richtlinienzuordnung dokumentiert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Organisationseinheiten > OU-Hierarchie überprüfen und sicherstellen, dass sie den Anforderungen der Richtlinienanwendung entspricht", "status": "machine-draft" }
+  },
+  "ADMIN-008": {
+    "name": { "value": "Freigabeeinstellungen des Verzeichnisses", "status": "machine-draft" },
+    "description": { "value": "Die Verzeichnisfreigabe steuert, wer organisatorische Kontakte und Profile einsehen kann. Die externe Verzeichnisfreigabe sollte eingeschränkt werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Verzeichnisfreigabe ausschließlich auf interne Nutzer beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Verzeichniseinstellungen > Freigabeeinstellungen > Kontaktfreigabe auf Domänennutzer beschränken", "status": "machine-draft" }
+  },
+  "ADMIN-009": {
+    "name": { "value": "Sichtbarkeit von Nutzerprofilen", "status": "machine-draft" },
+    "description": { "value": "Die Sichtbarkeit von Nutzerprofilinformationen sollte gesteuert werden, um das Ausspähungspotenzial durch externe Akteure zu begrenzen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sichtbarkeit von Nutzerprofilen auf interne Nutzer beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Verzeichniseinstellungen > Profilfreigabe > Profilsichtbarkeit einschränken", "status": "machine-draft" }
+  },
+  "ADMIN-010": {
+    "name": { "value": "Gruppeneinstellungen und externe Mitgliedschaft", "status": "machine-draft" },
+    "description": { "value": "Google Groups, die externe Mitglieder zulassen, können interne Kommunikation und Daten gegenüber unbefugten Parteien offenlegen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe Gruppenmitgliedschaft deaktiviert oder mit dokumentierter Begründung auf bestimmte Gruppen beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Groups for Business > Freigabeeinstellungen > Externe Mitgliedschaft einschränken", "status": "machine-draft" }
+  },
+  "ADMIN-011": {
+    "name": { "value": "Einschränkungen der Gruppenerstellung", "status": "machine-draft" },
+    "description": { "value": "Die Gruppenerstellung sollte eingeschränkt werden, um eine Ausbreitung nicht verwalteter Gruppen zu verhindern, die organisatorische Daten offenlegen könnten", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gruppenerstellung auf Administratoren oder bestimmte delegierte Rollen beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Groups for Business > Freigabeeinstellungen > Einschränken, wer Gruppen erstellen darf", "status": "machine-draft" }
+  },
+  "ADMIN-012": {
+    "name": { "value": "Einstellungen für Groups for Business", "status": "machine-draft" },
+    "description": { "value": "Die Einstellungen von Groups for Business steuern Gruppenfunktionen, darunter externes Posten, Mitgliedersichtbarkeit und Inhaltsfreigabe", "status": "machine-draft" },
+    "recommendedValue": { "value": "Groups for Business mit eingeschränktem externem Zugriff und Posten konfiguriert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Groups for Business > Freigabeeinstellungen > Alle Einstellungen überprüfen", "status": "machine-draft" }
+  },
+  "ADMIN-013": {
+    "name": { "value": "Anzahl der Super-Admins", "status": "machine-draft" },
+    "description": { "value": "Die Anzahl der Super-Admin-Konten sollte zwischen 2 und 4 liegen. Zu wenige erzeugen einen einzelnen Ausfallpunkt; zu viele vergrößern die Angriffsfläche", "status": "machine-draft" },
+    "recommendedValue": { "value": "2 bis 4 Super-Admin-Konten", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Nutzer > Nach Super-Admin-Rolle filtern > Anzahl auf 2 bis 4 anpassen, indem unnötige Super-Admins entfernt oder ein Ersatzkonto hinzugefügt wird", "status": "machine-draft" }
+  },
+  "ADMIN-014": {
+    "name": { "value": "Assured Controls: Zugriffsgenehmigungen aktiviert", "status": "machine-draft" },
+    "description": { "value": "Zugriffsgenehmigungen sollten aktiviert sein, damit das Google-Supportpersonal vor dem Zugriff auf geschützte Daten eine organisatorische Genehmigung anfordern und erhalten muss, was das Risiko eines unbefugten Anbieterzugriffs verringert.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zugriffsgenehmigungen aktiviert (Google-Personal benötigt vor dem Datenzugriff die Genehmigung des Kunden)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Daten > Compliance > Access Management / Access Approvals > Aktivieren Sie die Anforderung, dass das Google-Supportpersonal vor dem Zugriff auf organisatorische Daten eine Genehmigung anfordert. Erfordert Assured Controls.", "status": "machine-draft" }
+  },
+  "ADMIN-015": {
+    "name": { "value": "Assured Controls: Supportzugriff auf US-Personal beschränkt", "status": "machine-draft" },
+    "description": { "value": "Der Supportzugriff sollte auf in den Vereinigten Staaten ansässiges Google-Personal beschränkt werden, um die Datensouveränität zu wahren und zu verhindern, dass geschützte Daten von Personal außerhalb der USA verarbeitet werden.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zielgruppe für den Supportzugriff auf US-amerikanisches Google-Personal beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Daten > Compliance > Access Management > Legen Sie die zulässige Support-Zielgruppe ausschließlich auf US-amerikanisches Google-Personal fest. Erfordert Assured Controls.", "status": "machine-draft" }
+  },
+  "ADMIN-016": {
+    "name": { "value": "Assured Controls: Datenverarbeitung über mehrere Regionen deaktiviert", "status": "machine-draft" },
+    "description": { "value": "Die Datenverarbeitung über mehrere Regionen sollte für alle Google-Workspace-Produkte deaktiviert werden, damit geschützte Daten nur innerhalb der ihnen zugewiesenen Speicherregion verarbeitet werden, wodurch die Datensouveränität gewahrt bleibt.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Datenverarbeitung auf die Speicherregion beschränkt (regionsübergreifende Verarbeitung deaktiviert)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Daten > Compliance > Datenregionen > Aktivieren Sie „Datenverarbeitung auf die gewählte Speicherregion beschränken“ für Kalender, Drive und Docs, Gmail, Chat, Meet und Gemini. Erfordert Assured Controls / Data Regions.", "status": "machine-draft" }
+  },
+  "ADMIN-017": {
+    "name": { "value": "Interne Apps werden nicht automatisch als vertrauenswürdig eingestuft (GWS.COMMONCONTROLS.10.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.3: Werden interne (domäneneigene) OAuth-Apps automatisch als vertrauenswürdig eingestuft, erhalten sie Zugriff ohne Überprüfung, ein Pfad für Insider- oder lateralen Datenzugriff. Liest api_controls.internal_apps; warnt, wenn trustInternalApps aktiviert ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Interne Apps werden nicht automatisch als vertrauenswürdig eingestuft", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in der Admin-Konsole > Sicherheit > API-Steuerung die automatische Vertrauensstellung interner Apps, damit sie derselben Überprüfung wie Apps von Drittanbietern unterzogen werden.", "status": "machine-draft" }
+  },
+  "ADMIN-018": {
+    "name": { "value": "Region für ruhende Daten konfiguriert (GWS.COMMONCONTROLS.15.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.1: Das Festlegen einer Region für ruhende Daten erzwingt, wo organisatorische Daten gespeichert werden (Datenresidenz/Compliance). Liest data_regions.data_at_rest_region; warnt, wenn keine Regionspräferenz festgelegt ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Eine bestimmte Region für ruhende Daten ist gemäß der organisatorischen Richtlinie konfiguriert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Legen Sie in der Admin-Konsole > Daten > Datenregionen die von der Residenzrichtlinie Ihrer Organisation geforderte Region für ruhende Daten fest, anstatt sie nicht zu konfigurieren.", "status": "machine-draft" }
+  },
+  "ADMIN-019": {
+    "name": { "value": "Datenverarbeitung auf die Speicherregion beschränkt (GWS.COMMONCONTROLS.15.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.2 verlangt, dass Daten in derselben Region verarbeitet werden, die für ruhende Daten ausgewählt wurde, damit die Verarbeitung geschützte Daten nicht außerhalb der gewählten Rechtsordnung verlagert. Diese Prüfung liest die Cloud-Identity-Richtlinie data_regions.data_processing_region und kennzeichnet jede Organisationseinheit, in der die Verarbeitung nicht auf die Speicherregion beschränkt ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Datenverarbeitung auf die Speicherregion beschränkt (limitToStorageRegion = true) in allen Organisationseinheiten.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Aktivieren Sie in der Google Admin-Konsole unter Konto > Datenregionen die Option „Daten nur in der ausgewählten Region verarbeiten“, damit die Verarbeitung innerhalb der für ruhende Daten gewählten Region bleibt.", "status": "machine-draft" }
+  },
+  "ADMIN-020": {
+    "name": { "value": "Zugriff auf nicht konfigurierte Apps von Drittanbietern blockiert (GWS.COMMONCONTROLS.10.4)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.4 verlangt, dass Nutzern der Zugriff auf nicht konfigurierte Apps von Drittanbietern NICHT gestattet sein DARF, da eine App, die nicht ausdrücklich überprüft wurde, umfassende OAuth-Bereiche anfordern und zu einem Pfad für Datenexfiltration oder Kontoübernahme werden kann. Diese Prüfung liest die Cloud-Identity-Richtlinie api_controls.unconfigured_third_party_apps und kennzeichnet jede Organisationseinheit, deren Zugriffsstufe nicht BLOCK_ALL_SCOPES ist (der Wert, der jeglichen Zugriff auf nicht konfigurierte Apps blockiert).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zugriffsstufe für nicht konfigurierte Apps von Drittanbietern in allen Organisationseinheiten auf BLOCK_ALL_SCOPES festgelegt.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Setzen Sie in der Google Admin-Konsole unter Sicherheit > API-Steuerung > App-Zugriffssteuerung nicht konfigurierte Apps von Drittanbietern auf „Blockiert“, damit Nutzer keinen Zugriff auf Apps gewähren können, die nicht ausdrücklich konfiguriert und überprüft wurden.", "status": "machine-draft" }
+  },
+  "ADMIN-021": {
+    "name": { "value": "Weitere Google-Dienste ohne individuelle Steuerung eingeschränkt (GWS.COMMONCONTROLS.16.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.1 empfiehlt, Google-Dienste, die keine eigene individuelle Administratorsteuerung besitzen, für alle zu deaktivieren. Google bildet dies mit umgekehrter Semantik ab: Der Dienst enterprise_service_restrictions muss ENABLED sein, damit diese weiteren Dienste eingeschränkt (blockiert) werden. Diese Prüfung liest die Cloud-Identity-Richtlinie enterprise_service_restrictions.service_status und kennzeichnet jede Organisationseinheit, in der serviceState nicht ENABLED ist, was bedeutet, dass Nutzer weiterhin auf nicht konfigurierte weitere Dienste zugreifen können.", "status": "machine-draft" },
+    "recommendedValue": { "value": "enterprise_service_restrictions serviceState in allen Organisationseinheiten auf ENABLED gesetzt (weitere Dienste eingeschränkt).", "status": "machine-draft" },
+    "remediationSteps": { "value": "Setzen Sie in der Google Admin-Konsole unter Apps > Weitere Google-Dienste die Zugriffseinstellung für Dienste ohne individuelle Steuerung für alle auf AUS. Dadurch wird die Einschränkung für Unternehmensdienste aktiviert, sodass Nutzer nicht auf diese weiteren Dienste zugreifen können.", "status": "machine-draft" }
+  },
+  "ADMIN-022": {
+    "name": { "value": "Early-Access-Anwendungen deaktiviert (GWS.COMMONCONTROLS.16.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.2 empfiehlt, den Nutzerzugriff auf Early-Access-Anwendungen zu deaktivieren, bei denen es sich um Vorabversionen von Funktionen handelt, die die vollständige Überprüfung durch Google nicht durchlaufen haben und ein nicht bewertetes Risiko bergen können. Diese Prüfung liest die Cloud-Identity-Richtlinie early_access_apps.service_status und kennzeichnet jede Organisationseinheit, in der serviceState ENABLED ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "early_access_apps serviceState nicht ENABLED (Early-Access-Anwendungen deaktiviert) in allen Organisationseinheiten.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in der Google Admin-Konsole unter Apps > Weitere Google-Dienste > Early Access Apps den Dienst für alle, damit Nutzer keine Vorabversionen von Early-Access-Anwendungen aktivieren können.", "status": "machine-draft" }
+  }
+}

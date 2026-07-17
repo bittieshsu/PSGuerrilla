@@ -1,0 +1,153 @@
+{
+  "_family": "CollaborationChecks.json",
+  "COLLAB-001": {
+    "name": { "value": "Einstellungen für Meet-Aufzeichnungen", "status": "machine-draft" },
+    "description": { "value": "Die Einstellungen für Besprechungsaufzeichnungen sollten gesteuert werden, um die unbefugte Aufzeichnung sensibler Gespräche zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Aufzeichnung auf Besprechungsorganisatoren beschränkt oder für sensible OUs deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Google Meet > Meet-Videoeinstellungen > Aufzeichnung > Aufzeichnungsberechtigungen konfigurieren", "status": "machine-draft" }
+  },
+  "COLLAB-002": {
+    "name": { "value": "Einstellungen für externe Meet-Teilnehmer", "status": "machine-draft" },
+    "description": { "value": "Der Zugang externer Teilnehmer zu Besprechungen sollte gesteuert werden, um unbefugte Teilnahme und Informationsoffenlegung zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe Teilnehmer benötigen zum Beitritt eine Genehmigung oder müssen anklopfen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Google Meet > Meet-Videoeinstellungen > Teilnehmer > Genehmigung für externe Teilnehmer verlangen", "status": "machine-draft" }
+  },
+  "COLLAB-003": {
+    "name": { "value": "Einstellungen für anonymen Meet-Beitritt", "status": "machine-draft" },
+    "description": { "value": "Anonyme Nutzer (ohne Google-Konten) sollten Besprechungen nicht ohne ausdrückliche Genehmigung des Moderators beitreten können", "status": "machine-draft" },
+    "recommendedValue": { "value": "Anonymer Beitritt deaktiviert oder erfordert die Genehmigung des Moderators", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Google Meet > Meet-Videoeinstellungen > Teilnehmer > Anonymen Beitritt deaktivieren oder Anklopfen verlangen", "status": "machine-draft" }
+  },
+  "COLLAB-004": {
+    "name": { "value": "Externe Chat-Kommunikation", "status": "machine-draft" },
+    "description": { "value": "Die externe Chat-Kommunikation sollte eingeschränkt werden, um Datenabfluss durch Direktnachrichten mit externen Nutzern zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externer Chat für die meisten Nutzer eingeschränkt oder deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Google Chat > Chat-Einstellungen > Externer Chat > Externen Chat auf bestimmte OUs beschränken", "status": "machine-draft" }
+  },
+  "COLLAB-005": {
+    "name": { "value": "Einstellungen für den Chat-Verlauf", "status": "machine-draft" },
+    "description": { "value": "Der Chat-Verlauf sollte zu Compliance- und Audit-Zwecken aktiviert und aufbewahrt werden. Das Deaktivieren des Verlaufs kann bösartige Kommunikation verbergen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chat-Verlauf aktiviert und gemäß der Aufbewahrungsrichtlinie aufbewahrt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Google Chat > Chat-Einstellungen > Verlauf > Verlauf aktivieren und Aufbewahrung konfigurieren", "status": "machine-draft" }
+  },
+  "COLLAB-006": {
+    "name": { "value": "Externer Zugriff auf Chat-Bereiche", "status": "machine-draft" },
+    "description": { "value": "Chat-Bereiche (Räume), die externe Mitglieder zulassen, können interne Kommunikation und geteilte Dateien gegenüber unbefugten Parteien offenlegen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externer Zugriff auf Chat-Bereiche eingeschränkt oder deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Google Chat > Chat-Einstellungen > Bereiche > Externen Zugriff auf Bereiche einschränken", "status": "machine-draft" }
+  },
+  "COLLAB-007": {
+    "name": { "value": "Einstellungen für die Installation von Chat-Apps", "status": "machine-draft" },
+    "description": { "value": "Die Installation von Chat-Apps (Bots) sollte gesteuert werden, um zu verhindern, dass unbefugte Integrationen auf Unterhaltungsdaten zugreifen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installation von Chat-Apps auf von Administratoren genehmigte Apps beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Google Chat > Chat-Einstellungen > Apps > App-Installation auf genehmigte Apps beschränken", "status": "machine-draft" }
+  },
+  "COLLAB-008": {
+    "name": { "value": "Externe Kalenderfreigabe", "status": "machine-draft" },
+    "description": { "value": "Die Kalenderfreigabe für externe Nutzer sollte auf Frei/Gebucht-Informationen beschränkt werden, um die Offenlegung von Besprechungsdetails und Teilnehmern zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe Kalenderfreigabe ausschließlich auf Frei/Gebucht-Informationen beschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Kalender > Freigabeeinstellungen > Optionen für externe Freigabe > Auf „Nur Frei/Gebucht-Informationen“ setzen", "status": "machine-draft" }
+  },
+  "COLLAB-009": {
+    "name": { "value": "Externe Kalendereinladungen", "status": "machine-draft" },
+    "description": { "value": "Nutzer sollten beim Versenden von Kalendereinladungen an externe Empfänger gewarnt oder eingeschränkt werden, um eine versehentliche Informationsoffenlegung zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Warnungen bei externen Einladungen aktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Kalender > Freigabeeinstellungen > Warnungen bei externen Einladungen aktivieren", "status": "machine-draft" }
+  },
+  "COLLAB-010": {
+    "name": { "value": "Externe Sichtbarkeit von Kalender-Terminfenstern", "status": "machine-draft" },
+    "description": { "value": "Die Sichtbarkeit von Kalender-Terminfenstern sollte gesteuert werden, um die externe Offenlegung von Verfügbarkeits- und Planungsdetails zu begrenzen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe Sichtbarkeit von Terminfenstern eingeschränkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Apps > Google Workspace > Kalender > Freigabeeinstellungen > Einstellungen zur Sichtbarkeit von Terminfenstern überprüfen", "status": "machine-draft" }
+  },
+  "COLLAB-011": {
+    "name": { "value": "Kennzeichnung externer Meet-Teilnehmer", "status": "machine-draft" },
+    "description": { "value": "Externe Teilnehmer in Besprechungen sollten sichtbar gekennzeichnet werden, damit Moderatoren und Teilnehmer Außenstehende leicht erkennen und die Offenlegung sensibler Informationen vermeiden können", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kennzeichnung externer Teilnehmer aktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Google Meet > Meet-Sicherheitseinstellungen > Externe Teilnehmer > Kennzeichnung externer Teilnehmer aktivieren", "status": "machine-draft" }
+  },
+  "COLLAB-012": {
+    "name": { "value": "Meet-Moderatorverwaltung", "status": "machine-draft" },
+    "description": { "value": "Die Moderatorverwaltung sollte aktiviert werden, damit Besprechungsmoderatoren Moderationssteuerungen wie Stummschalten, Entfernen und Sperren behalten, um die Übernahme und Störung von Besprechungen zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Moderatorverwaltung aktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Google Meet > Meet-Sicherheitseinstellungen > Moderatorverwaltung > Steuerungen der Moderatorverwaltung aktivieren", "status": "machine-draft" }
+  },
+  "GROUP-001": {
+    "name": { "value": "Externer Zugriff auf Google Groups eingeschränkt (GWS.GROUPS.1.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.1 verlangt, dass die Freigabe von Groups for Business eingeschränkt wird, damit Gruppen für Personen außerhalb der Organisation nicht zugänglich sind. Wenn die Kollaborationsfunktion der Gruppenfreigabe nicht auf ausschließlich Domänennutzer gesetzt ist, werden Gruppeninhalte, die in einer Schule Schüler- und Personaldaten umfassen können, für externe Parteien erreichbar. Diese Prüfung liest die Richtlinie groups_for_business.groups_sharing aus der Cloud Identity Policy API und kennzeichnet jede Organisationseinheit, deren Kollaborationsfunktion nicht DOMAIN_USERS_ONLY ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kollaborationsfunktion der Gruppenfreigabe für alle Organisationseinheiten auf DOMAIN_USERS_ONLY gesetzt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Legen Sie in der Google Admin-Konsole unter Apps > Google Workspace > Groups for Business > Freigabeeinstellungen fest, dass der Gruppenzugriff auf Nutzer in der Organisation beschränkt ist (nicht „Jeder im Internet“), damit externe Parteien nicht auf Gruppeninhalte zugreifen können.", "status": "machine-draft" }
+  },
+  "GROUP-002": {
+    "name": { "value": "Gruppeninhaber können keine externen Mitglieder hinzufügen (GWS.GROUPS.1.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.2 verlangt, dass Gruppeninhabern nicht gestattet ist, Mitglieder von außerhalb der Organisation hinzuzufügen. Externe Mitglieder erhalten Zugriff auf alles, was mit der Gruppe geteilt wird. Diese Prüfung kennzeichnet Organisationseinheiten, in denen Inhaber externe Mitglieder zulassen können (ownersCanAllowExternalMembers ist aktiviert).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gruppeninhaber können keine externen Mitglieder zulassen (ownersCanAllowExternalMembers deaktiviert)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in den Freigabeeinstellungen von Groups for Business die Option, die es Gruppeninhabern erlaubt, Mitglieder von außerhalb der Organisation hinzuzufügen, damit eine externe Mitgliedschaft administratives Handeln erfordert.", "status": "machine-draft" }
+  },
+  "GROUP-003": {
+    "name": { "value": "Gruppen können keine E-Mails von außerhalb der Organisation empfangen (GWS.GROUPS.1.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.3 verlangt, dass Gruppeninhabern nicht gestattet ist, eingehende E-Mails von außerhalb der Organisation zuzulassen. Öffentlich eingehende E-Mails an Gruppen zuzulassen, ist ein Vektor für eingehendes Phishing und Spam. Diese Prüfung kennzeichnet Organisationseinheiten, in denen Inhaber eingehende E-Mails aus der Öffentlichkeit zulassen können (ownersCanAllowIncomingMailFromPublic ist aktiviert).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gruppeninhaber können keine eingehenden E-Mails aus der Öffentlichkeit zulassen (ownersCanAllowIncomingMailFromPublic deaktiviert)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in den Freigabeeinstellungen von Groups for Business die Option, die es Gruppeninhabern erlaubt, eingehende E-Mails von außerhalb der Organisation anzunehmen, wodurch Gruppen-E-Mails auf interne Absender beschränkt werden, sofern nicht ausdrücklich anders konfiguriert.", "status": "machine-draft" }
+  },
+  "GROUP-004": {
+    "name": { "value": "Gruppenerstellung auf Administratoren beschränkt (GWS.GROUPS.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.2.1 empfiehlt, die Erstellung von Groups for Business auf Administratoren zu beschränken. Wenn jeder Nutzer Gruppen erstellen kann, überholt die Gruppenausbreitung die Governance, und Standardwerte für die externe Freigabe können ohne Überprüfung angewendet werden. Diese Prüfung kennzeichnet Organisationseinheiten, in denen die Zugriffsstufe zum Erstellen von Gruppen nicht ADMIN_ONLY ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zugriffsstufe für die Gruppenerstellung auf ADMIN_ONLY gesetzt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Setzen Sie in den Einstellungen von Groups for Business „Wer Gruppen erstellen kann“ auf ausschließlich Administratoren, damit neue Gruppen bewusst erstellt werden und überprüfte Freigabeeinstellungen erben.", "status": "machine-draft" }
+  },
+  "GROUP-005": {
+    "name": { "value": "Sichtbarkeit von Gruppenunterhaltungen standardmäßig auf Mitglieder (GWS.GROUPS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.3.1 verlangt, dass die Standardberechtigung zum Ansehen von Gruppenunterhaltungen auf Gruppenmitglieder statt auf die gesamte Domäne oder die Öffentlichkeit beschränkt wird. Eine zu offene Sichtbarkeit von Unterhaltungen legt Diskussionsarchive offen, die sensible Schüler- und Personalinformationen enthalten können. Diese Prüfung liest viewTopicsDefaultAccessLevel aus der Richtlinie groups_for_business.groups_sharing und warnt, wenn der Standardwert weiter gefasst ist als Gruppenmitglieder.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Standardzugriff zum Ansehen von Unterhaltungen auf GROUP_MEMBERS gesetzt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Setzen Sie in den Einstellungen von Groups for Business die Standardberechtigung „Wer Unterhaltungen ansehen kann“ auf Gruppenmitglieder.", "status": "machine-draft" }
+  },
+  "COLLAB-013": {
+    "name": { "value": "Externe Dateifreigabe im Chat deaktiviert (GWS.CHAT.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.2.1 verlangt, dass die externe Dateifreigabe in Google Chat deaktiviert wird (auf keine Dateien gesetzt). Das Zulassen der Dateifreigabe mit externen Nutzern über Chat ist ein direkter Pfad zur Datenexfiltration. Diese Prüfung liest chat.chat_file_sharing und stuft jede Organisationseinheit als nicht bestanden ein, in der die externe Dateifreigabe nicht auf NO_FILES gesetzt ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe Dateifreigabe im Chat auf NO_FILES gesetzt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Setzen Sie in der Admin-Konsole unter Apps > Google Workspace > Google Chat > Externe Dateifreigabe die externe Dateifreigabe auf „Keine Dateien“, damit über Chat keine Dateien an Personen außerhalb der Organisation geteilt werden können.", "status": "machine-draft" }
+  },
+  "COLLAB-014": {
+    "name": { "value": "Verlauf für Chat-Bereiche ist aktiviert (GWS.CHAT.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.3.1 verlangt, dass der Verlauf für Chat-Bereiche immer aktiviert ist, damit Unterhaltungen für Aufsicht, Untersuchung und eDiscovery aufbewahrt werden. Diese Prüfung liest chat.space_history und warnt bei jeder Organisationseinheit, in der der Bereichsverlauf nicht auf HISTORY_ALWAYS_ON gesetzt ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Verlauf für Chat-Bereiche auf HISTORY_ALWAYS_ON gesetzt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Setzen Sie in den Google-Chat-Einstellungen den Bereichsverlauf auf immer aktiviert, damit Unterhaltungen aufbewahrt und für Aufsicht und eDiscovery verfügbar sind.", "status": "machine-draft" }
+  },
+  "COLLAB-015": {
+    "name": { "value": "Besprechungsbeitritt auf die Organisation beschränkt (GWS.MEET.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.2.1 verlangt, dass der Zugang zu Besprechungen so eingeschränkt wird, dass nur Nutzer in der Organisation (oder vertrauenswürdige Workspace-Organisationen) beitreten können. Besprechungen für jeden offen zu lassen, lässt externe und nicht authentifizierte Parteien in Sitzungen, an denen Schüler beteiligt sein können. Diese Prüfung liest meet.safety_access und stuft jede Organisationseinheit als nicht bestanden ein, in der meetingsAllowedToJoin weiter gefasst ist als SAME_ORGANIZATION_ONLY / ANY_WORKSPACE_ORGANIZATION.", "status": "machine-draft" },
+    "recommendedValue": { "value": "meetingsAllowedToJoin auf SAME_ORGANIZATION_ONLY (oder ANY_WORKSPACE_ORGANIZATION) gesetzt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beschränken Sie in den Meet-Sicherheitseinstellungen, wer Besprechungen beitreten kann, auf Nutzer in Ihrer Organisation, damit externe oder nicht authentifizierte Teilnehmer standardmäßig nicht beitreten können.", "status": "machine-draft" }
+  },
+  "COLLAB-016": {
+    "name": { "value": "Automatische Transkription in Meet standardmäßig aus (GWS.MEET.5.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.2 empfiehlt, dass die automatische Transkription in Google Meet standardmäßig deaktiviert ist. Das automatische Transkribieren von Besprechungen erfasst und speichert Unterhaltungsinhalte, die sensibel sind, wenn Schüler anwesend sind, ohne eine bewusste Entscheidung. Diese Prüfung liest meet.automatic_transcription und warnt bei jeder Organisationseinheit, in der sie standardmäßig aktiviert ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Automatische Transkription standardmäßig deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in den Google-Meet-Einstellungen die automatische Transkription standardmäßig, damit Besprechungsinhalte nur erfasst werden, wenn ein Moderator sie bewusst aktiviert.", "status": "machine-draft" }
+  },
+  "COLLAB-017": {
+    "name": { "value": "Externe Kalender-Interoperabilität verwaltet (GWS.CALENDAR.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.3.1 verlangt, dass Calendar Interop (die Freigabe von Frei/Gebucht- und Kalenderdaten an ein externes System wie Microsoft Exchange) deaktiviert ist, sofern es nicht bewusst verwaltet wird. Interop verbindet Kalenderdaten mit einer externen Plattform. Diese Prüfung liest calendar.interoperability und warnt bei jeder Organisationseinheit, in der enableInteroperability aktiviert ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kalender-Interoperabilität deaktiviert, sofern nicht bewusst verwaltet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in der Admin-Konsole unter Apps > Google Workspace > Kalender > Verwaltung von Calendar Interop die Interoperabilität, sofern keine überprüfte Integration sie erfordert.", "status": "machine-draft" }
+  },
+  "COLLAB-018": {
+    "name": { "value": "Zahlungen für Kalendertermine deaktiviert (GWS.CALENDAR.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.4.1 empfiehlt, kostenpflichtige Terminpläne zu deaktivieren. Diese Prüfung liest calendar.appointment_schedules und warnt bei jeder Organisationseinheit, in der enablePayments aktiviert ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kostenpflichtige Terminpläne deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in den Terminplan-Einstellungen von Google Kalender die Zahlungen, sofern die Organisation nicht bewusst kostenpflichtige Termine nutzt.", "status": "machine-draft" }
+  },
+  "COLLAB-019": {
+    "name": { "value": "Automatische Aufzeichnung in Meet standardmäßig aus (GWS.MEET.5.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.1 empfiehlt, dass die automatische Aufzeichnung in Google Meet standardmäßig deaktiviert ist. Die automatische Aufzeichnung erfasst und speichert Video/Audio von Besprechungen, die sensibel sind, wenn Schüler anwesend sind, ohne eine bewusste Entscheidung. Diese Prüfung liest meet.automatic_recording und warnt bei jeder Organisationseinheit, in der sie standardmäßig aktiviert ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Automatische Aufzeichnung standardmäßig deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in den Google-Meet-Einstellungen die automatische Aufzeichnung standardmäßig, damit Besprechungen nur aufgezeichnet werden, wenn ein Moderator bewusst eine Aufzeichnung startet.", "status": "machine-draft" }
+  },
+  "GROUP-006": {
+    "name": { "value": "Gruppen sind im Verzeichnis sichtbar (GWS.GROUPS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.4.1 verlangt, dass Gruppen nicht aus dem Verzeichnis ausgeblendet werden können; ausgeblendete Gruppen untergraben die Transparenz und Aufsicht darüber, wer erreicht werden kann und welcher Zugriff besteht. Diese Prüfung liest die Richtlinie groups_for_business.groups_sharing und warnt bei jeder Organisationseinheit, in der Inhaber Gruppen ausblenden können (ownersCanHideGroups) oder neue Gruppen standardmäßig ausgeblendet sind (newGroupsAreHidden).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Inhaber können Gruppen nicht ausblenden und neue Gruppen sind standardmäßig nicht ausgeblendet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Verhindern Sie in den Einstellungen von Groups for Business, dass Gruppeninhaber Gruppen aus dem Verzeichnis ausblenden, und stellen Sie sicher, dass neue Gruppen standardmäßig nicht ausgeblendet sind, um die Verzeichnistransparenz zu wahren.", "status": "machine-draft" }
+  }
+}

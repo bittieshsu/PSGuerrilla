@@ -1,0 +1,111 @@
+{
+  "_family": "AuthenticationChecks.json",
+  "AUTH-001": {
+    "name": { "value": "Erzwingung der Bestätigung in zwei Schritten", "status": "machine-draft" },
+    "description": { "value": "Die Bestätigung in zwei Schritten (2SV/MFA) sollte für alle Nutzer erzwungen werden, um Kontoübernahmen durch gestohlene Anmeldeinformationen zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Für alle Organisationseinheiten erzwungen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Authentifizierung > Bestätigung in zwei Schritten > Erzwingung auf „An“ setzen", "status": "machine-draft" }
+  },
+  "AUTH-002": {
+    "name": { "value": "Registrierungsrate der Bestätigung in zwei Schritten", "status": "machine-draft" },
+    "description": { "value": "Alle aktiven Nutzer sollten für 2SV registriert sein. Niedrige Registrierungsraten machen Konten anfällig für Angriffe auf Anmeldeinformationen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Registrierung von 95 % oder mehr unter den aktiven Nutzern", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Berichte > Nutzerberichte > Sicherheit > Nutzer ohne 2SV überprüfen. Legen Sie die Registrierungsfrist über Sicherheit > Bestätigung in zwei Schritten fest", "status": "machine-draft" }
+  },
+  "AUTH-003": {
+    "name": { "value": "Stärke der 2SV-Methode", "status": "machine-draft" },
+    "description": { "value": "Sicherheitsschlüssel sollten die primäre 2SV-Methode sein. SMS- und sprachbasierte 2SV sind anfällig für SIM-Swapping- und Abfangangriffe", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sicherheitsschlüssel als primäre Methode erzwungen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Authentifizierung > Bestätigung in zwei Schritten > Zulässige Methoden auf „Nur Sicherheitsschlüssel“ setzen", "status": "machine-draft" }
+  },
+  "AUTH-004": {
+    "name": { "value": "Mindestlänge des Kennworts", "status": "machine-draft" },
+    "description": { "value": "Die Mindestlänge des Kennworts sollte mindestens 12 Zeichen betragen, um Brute-Force- und Wörterbuchangriffen standzuhalten", "status": "machine-draft" },
+    "recommendedValue": { "value": "Mindestens 12 Zeichen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Authentifizierung > Kennwortverwaltung > Mindestlänge auf 12 oder mehr setzen", "status": "machine-draft" }
+  },
+  "AUTH-005": {
+    "name": { "value": "Einschränkung der Kennwortwiederverwendung", "status": "machine-draft" },
+    "description": { "value": "Nutzer sollten aktuelle Kennwörter nicht wiederverwenden können, um das Durchtauschen von Anmeldeinformationen zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kennwortwiederverwendung nicht zulässig", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Authentifizierung > Kennwortverwaltung > „Kennwortrichtlinie bei der nächsten Anmeldung erzwingen“ aktivieren und die Wiederverwendung einschränken", "status": "machine-draft" }
+  },
+  "AUTH-006": {
+    "name": { "value": "Sitzungsdauer", "status": "machine-draft" },
+    "description": { "value": "Die Dauer von Websitzungen sollte begrenzt werden, um das Zeitfenster für Session-Hijacking und unbefugten Zugriff von gemeinsam genutzten Geräten zu verringern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sitzungsdauer von 12 Stunden oder weniger", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Google-Sitzungssteuerung > Dauer der Websitzung festlegen", "status": "machine-draft" }
+  },
+  "AUTH-007": {
+    "name": { "value": "SSO-Konfiguration", "status": "machine-draft" },
+    "description": { "value": "Wenn SSO konfiguriert ist, sollte es sichere Protokolle und vertrauenswürdige Identitätsanbieter verwenden", "status": "machine-draft" },
+    "recommendedValue": { "value": "SAML-SSO ordnungsgemäß mit vertrauenswürdigem IdP konfiguriert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Authentifizierung > SSO mit Drittanbieter-IdP > Konfiguration überprüfen", "status": "machine-draft" }
+  },
+  "AUTH-008": {
+    "name": { "value": "Zugriff durch weniger sichere Apps", "status": "machine-draft" },
+    "description": { "value": "Weniger sichere Apps (Apps, die keine moderne Authentifizierung unterstützen) sollten blockiert werden, um die Offenlegung von Anmeldeinformationen zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Für alle Nutzer deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Authentifizierung > Weniger sichere Apps > Auf „Zugriff für weniger sichere Apps deaktivieren“ setzen", "status": "machine-draft" }
+  },
+  "AUTH-009": {
+    "name": { "value": "Richtlinie für App-Passwörter", "status": "machine-draft" },
+    "description": { "value": "App-spezifische Passwörter umgehen 2SV und sollten gesteuert werden. Falls zugelassen, sollten sie zunächst eine 2SV-Registrierung erfordern", "status": "machine-draft" },
+    "recommendedValue": { "value": "App-Passwörter eingeschränkt oder deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Authentifizierung > Bestätigung in zwei Schritten > Einstellungen für App-Passwörter überprüfen", "status": "machine-draft" }
+  },
+  "AUTH-010": {
+    "name": { "value": "Konfiguration der Wiederherstellungsoptionen", "status": "machine-draft" },
+    "description": { "value": "Die Selfservice-Wiederherstellung durch Nutzer sollte angemessen konfiguriert werden. Super-Admins sollten keine persönlichen Wiederherstellungsoptionen haben, um Social Engineering zu verhindern", "status": "machine-draft" },
+    "recommendedValue": { "value": "Super-Admins: keine persönliche Wiederherstellung. Reguläre Nutzer: Wiederherstellungsoptionen mit Administrator-Übersteuerung zulässig", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Authentifizierung > Kontowiederherstellung > Persönliche Wiederherstellung für die Super-Admin-OU deaktivieren", "status": "machine-draft" }
+  },
+  "AUTH-011": {
+    "name": { "value": "Einstellungen für Anmeldebestätigungen", "status": "machine-draft" },
+    "description": { "value": "Anmeldebestätigungen sollten aktiviert werden, um bei erkannten verdächtigen Anmeldeversuchen eine zusätzliche Bestätigung bereitzustellen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Anmeldebestätigungen mit Mitarbeiter-ID oder anderer Bestätigung aktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Sicherheit > Authentifizierung > Anmeldebestätigungen > Aktivieren", "status": "machine-draft" }
+  },
+  "AUTH-012": {
+    "name": { "value": "2SV-Registrierung der Super-Admins", "status": "machine-draft" },
+    "description": { "value": "Für alle Super-Admin-Konten muss 2SV registriert sein. Super-Admins haben uneingeschränkten Zugriff auf alle Einstellungen und Daten", "status": "machine-draft" },
+    "recommendedValue": { "value": "100 % der Super-Admins für 2SV registriert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Berichte > Nutzerberichte > Sicherheit > Nach Administratorstatus filtern > Sicherstellen, dass alle Super-Admins für 2SV registriert sind", "status": "machine-draft" }
+  },
+  "AUTH-013": {
+    "name": { "value": "Veraltete Super-Admin-Konten", "status": "machine-draft" },
+    "description": { "value": "Super-Admin-Konten, die sich in letzter Zeit nicht angemeldet haben, sind möglicherweise verwaist und dem Risiko einer Kompromittierung ausgesetzt. Alle Super-Admin-Konten sollten aktiv verwaltet werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Keine Super-Admin-Konten, die länger als 90 Tage inaktiv sind", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin-Konsole > Verzeichnis > Nutzer > Nach Administratorrolle filtern > Inaktive Super-Admin-Konten überprüfen und entfernen oder sperren", "status": "machine-draft" }
+  },
+  "AUTH-014": {
+    "name": { "value": "2SV-Registrierung zulässig", "status": "machine-draft" },
+    "description": { "value": "Nutzern muss erlaubt sein, sich für die Bestätigung in zwei Schritten zu registrieren. Das Deaktivieren der 2SV-Registrierung blockiert die MFA-Einführung und lässt Konten allein durch Kennwörter geschützt", "status": "machine-draft" },
+    "recommendedValue": { "value": "2SV-Registrierung in allen Organisationseinheiten zulässig", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sicherheit > Authentifizierung > Bestätigung in zwei Schritten > „Nutzern erlauben, die Bestätigung in zwei Schritten zu aktivieren“ für alle Organisationseinheiten auf An setzen", "status": "machine-draft" }
+  },
+  "AUTH-015": {
+    "name": { "value": "Übergangsfrist für die 2SV-Registrierung", "status": "machine-draft" },
+    "description": { "value": "Die Übergangsfrist, bevor neu hinzugefügte Nutzer sich für 2SV registrieren müssen, sollte kurz sein. Eine lange Übergangsfrist lässt Konten nach ihrer Erstellung über einen längeren Zeitraum ohne MFA-Schutz", "status": "machine-draft" },
+    "recommendedValue": { "value": "Übergangsfrist von 7 Tagen (168 Stunden) oder weniger", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sicherheit > Authentifizierung > Bestätigung in zwei Schritten > Übergangsfrist für die Registrierung neuer Nutzer auf 7 Tage oder weniger setzen", "status": "machine-draft" }
+  },
+  "AUTH-016": {
+    "name": { "value": "Selbstregistrierung für den erweiterten Schutz", "status": "machine-draft" },
+    "description": { "value": "Das Zulassen der Selbstregistrierung im Programm für erweiterten Schutz ermöglicht es Nutzern mit hohem Risiko, die stärksten verfügbaren Kontoschutzmaßnahmen ohne Eingreifen eines Administrators zu übernehmen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Selbstregistrierung für den erweiterten Schutz in allen Organisationseinheiten zulässig", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sicherheit > Authentifizierung > Programm für erweiterten Schutz > Nutzern die Selbstregistrierung für den erweiterten Schutz erlauben", "status": "machine-draft" }
+  },
+  "AUTH-017": {
+    "name": { "value": "Selbstwiederherstellung von Super-Admin-Konten", "status": "machine-draft" },
+    "description": { "value": "Die Selfservice-Kontowiederherstellung für Super-Admins ist ein Pfad zur Kontoübernahme durch Social Engineering und sollte deaktiviert werden. Super-Admins sollten nur durch einen anderen Administrator wiederhergestellt werden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Selbstwiederherstellung von Super-Admins in allen Organisationseinheiten deaktiviert", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sicherheit > Authentifizierung > Kontowiederherstellung > „Super-Admins erlauben, ihr Konto wiederherzustellen“ für alle Organisationseinheiten deaktivieren", "status": "machine-draft" }
+  },
+  "AUTH-018": {
+    "name": { "value": "Konto-Selbstwiederherstellung für Nutzer und Nicht-Super-Admins deaktiviert (GWS.COMMONCONTROLS.8.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.8.2 verlangt, dass die Konto-Selbstwiederherstellung für Nutzer und Nicht-Super-Admin-Konten deaktiviert wird. Die Selfservice-Wiederherstellung ist ein Vektor für Kontoübernahmen: Ein Angreifer, der einen Wiederherstellungskanal kontrolliert, kann das Konto ohne den Helpdesk übernehmen. Diese Prüfung liest die Cloud-Identity-Richtlinie security.user_account_recovery und kennzeichnet jede Organisationseinheit, in der die Selbstwiederherstellung aktiviert ist.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Konto-Selbstwiederherstellung deaktiviert (enableAccountRecovery = false) für Nutzer und Nicht-Super-Admins in allen Organisationseinheiten.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivieren Sie in der Google Admin-Konsole unter Sicherheit > Kontowiederherstellung die Selbstwiederherstellung für Nutzer (und Nicht-Super-Admins), damit die Kontowiederherstellung über einen Administrator- oder Helpdesk-Prozess statt über einen vom Nutzer kontrollierten Kanal erfolgt.", "status": "machine-draft" }
+  }
+}
