@@ -1,0 +1,63 @@
+{
+  "_family": "OAuthSecurityChecks.json",
+  "OAUTH-001": {
+    "name": { "value": "Lista de permitidos/bloqueados de aplicaciones OAuth", "status": "machine-draft" },
+    "description": { "value": "El acceso de las aplicaciones OAuth debe regirse por una lista de permitidos o de bloqueados para impedir que aplicaciones no autorizadas accedan a los datos de la organización", "status": "machine-draft" },
+    "recommendedValue": { "value": "Lista de permitidos de aplicaciones OAuth configurada únicamente con aplicaciones aprobadas", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Seguridad > Controles de API > Control de acceso a aplicaciones > Administrar el acceso de aplicaciones de terceros > Configure las aplicaciones de confianza/bloqueadas", "status": "machine-draft" }
+  },
+  "OAUTH-002": {
+    "name": { "value": "Inventario de aplicaciones OAuth instaladas", "status": "machine-draft" },
+    "description": { "value": "Todas las aplicaciones OAuth instaladas por los usuarios deben inventariarse y revisarse para identificar aplicaciones no autorizadas o de riesgo que accedan a los datos de la organización", "status": "machine-draft" },
+    "recommendedValue": { "value": "Todas las aplicaciones OAuth instaladas revisadas y aprobadas por el equipo de seguridad", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Seguridad > Controles de API > Control de acceso a aplicaciones > Revise las aplicaciones instaladas y revoque el acceso de las aplicaciones no autorizadas", "status": "machine-draft" }
+  },
+  "OAUTH-003": {
+    "name": { "value": "Análisis de ámbitos OAuth", "status": "machine-draft" },
+    "description": { "value": "Las aplicaciones OAuth con ámbitos de alto riesgo (Gmail, Drive, Admin) suponen un riesgo significativo de exfiltración de datos y deben revisarse y restringirse", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ninguna aplicación no autorizada con ámbitos de alto riesgo (gmail, drive, admin)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Seguridad > Controles de API > Control de acceso a aplicaciones > Revise las aplicaciones con ámbitos sensibles > Revoque o restrinja según sea necesario", "status": "machine-draft" }
+  },
+  "OAUTH-004": {
+    "name": { "value": "Puntuación de riesgo de aplicaciones OAuth", "status": "machine-draft" },
+    "description": { "value": "Las aplicaciones OAuth deben puntuarse por riesgo en función de los ámbitos concedidos y de la confianza en el publicador para priorizar la revisión de seguridad", "status": "machine-draft" },
+    "recommendedValue": { "value": "Todas las aplicaciones de alto riesgo revisadas y aprobadas; ninguna aplicación sin revisar con ámbitos amplios", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Seguridad > Controles de API > Control de acceso a aplicaciones > Revise las aplicaciones ordenadas por amplitud de ámbito > Aborde las aplicaciones de alto riesgo", "status": "machine-draft" }
+  },
+  "OAUTH-005": {
+    "name": { "value": "Política de acceso a aplicaciones no verificadas", "status": "machine-draft" },
+    "description": { "value": "El acceso a aplicaciones de terceros no verificadas debe restringirse para impedir que los usuarios concedan permisos a aplicaciones potencialmente maliciosas", "status": "machine-draft" },
+    "recommendedValue": { "value": "Acceso a aplicaciones no verificadas bloqueado para todos los usuarios", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Seguridad > Controles de API > Control de acceso a aplicaciones > Configuración > Bloquee las aplicaciones no verificadas", "status": "machine-draft" }
+  },
+  "OAUTH-006": {
+    "name": { "value": "Control de acceso a la API", "status": "machine-draft" },
+    "description": { "value": "El acceso a la API debe controlarse con un ámbito y restricciones apropiados para impedir el acceso programático no autorizado a los datos de la organización", "status": "machine-draft" },
+    "recommendedValue": { "value": "Acceso a la API restringido a las aplicaciones y ámbitos aprobados", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Seguridad > Controles de API > Administrar servicios de Google > Restrinja el acceso a la API únicamente a las aplicaciones de confianza", "status": "machine-draft" }
+  },
+  "OAUTH-007": {
+    "name": { "value": "Restricciones de instalación de aplicaciones de Marketplace", "status": "machine-draft" },
+    "description": { "value": "La instalación de aplicaciones de Google Workspace Marketplace debe restringirse para impedir que los usuarios instalen aplicaciones no autorizadas", "status": "machine-draft" },
+    "recommendedValue": { "value": "Instalación de aplicaciones de Marketplace restringida únicamente a las aplicaciones aprobadas por el administrador o en la lista de permitidos", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Aplicaciones > Aplicaciones de Google Workspace Marketplace > Configuración > Restrinja la instalación de aplicaciones de Marketplace", "status": "machine-draft" }
+  },
+  "OAUTH-008": {
+    "name": { "value": "Auditoría de concesiones de delegación en todo el dominio", "status": "machine-draft" },
+    "description": { "value": "La delegación en todo el dominio permite que las cuentas de servicio suplanten a cualquier usuario y accedan a sus datos. Las concesiones no autorizadas o demasiado permisivas representan un riesgo de seguridad crítico", "status": "machine-draft" },
+    "recommendedValue": { "value": "Concesiones mínimas de delegación en todo el dominio con permisos acotados; todas las concesiones revisadas y aprobadas", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Seguridad > Controles de API > Delegación en todo el dominio > Revise todas las concesiones, elimine las innecesarias y restrinja los ámbitos al mínimo requerido", "status": "machine-draft" }
+  },
+  "OAUTH-009": {
+    "name": { "value": "Enumeración de claves de cuentas de servicio", "status": "machine-draft" },
+    "description": { "value": "Las claves de las cuentas de servicio deben inventariarse y rotarse periódicamente. Las claves filtradas o obsoletas proporcionan acceso no autorizado persistente", "status": "machine-draft" },
+    "recommendedValue": { "value": "Todas las claves de cuentas de servicio inventariadas, rotadas en un plazo de 90 días y las claves sin usar eliminadas", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Cloud Console > IAM y administración > Cuentas de servicio > Revise y rote las claves > Elimine las claves de cuentas de servicio sin usar", "status": "machine-draft" }
+  },
+  "OAUTH-010": {
+    "name": { "value": "Aplicaciones conectadas con ámbitos sensibles", "status": "machine-draft" },
+    "description": { "value": "Las aplicaciones con acceso a datos de Drive, Gmail o Calendar deben inventariarse y validarse para prevenir la exfiltración de datos a través de aplicaciones conectadas", "status": "machine-draft" },
+    "recommendedValue": { "value": "Todas las aplicaciones con ámbitos sensibles (Drive, Gmail, Calendar) revisadas y aprobadas", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Seguridad > Controles de API > Control de acceso a aplicaciones > Filtre por ámbito (Drive, Gmail, Calendar) > Revise y restrinja las aplicaciones no autorizadas", "status": "machine-draft" }
+  }
+}

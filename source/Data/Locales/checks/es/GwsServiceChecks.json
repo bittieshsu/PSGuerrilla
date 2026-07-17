@@ -1,0 +1,75 @@
+{
+  "_family": "GwsServiceChecks.json",
+  "GWS-SITES-001": {
+    "name": { "value": "Servicio de Sites deshabilitado", "status": "machine-draft" },
+    "description": { "value": "El servicio de Google Sites debe deshabilitarse para todos los usuarios a fin de reducir la superficie de ataque, en coherencia con el mínimo privilegio. Sites puede habilitarse de forma selectiva por unidad organizativa o grupo cuando exista una necesidad documentada.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Servicio de Sites DESACTIVADO para todos (habilitar de forma selectiva por OU/grupo solo cuando sea necesario)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Aplicaciones > Google Workspace > Sites > Estado del servicio > Establézcalo en DESACTIVADO para todos. Habilítelo de forma selectiva por unidad organizativa o grupo solo donde exista una necesidad de negocio documentada.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-001": {
+    "name": { "value": "Pertenencia a Classroom: quién puede unirse a las clases", "status": "machine-draft" },
+    "description": { "value": "Quién puede unirse a las clases de su dominio debe restringirse únicamente a los usuarios de su dominio, impidiendo que cuentas externas se unan a clases internas.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Quién puede unirse a las clases establecido en 'Solo usuarios de tu dominio'", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Aplicaciones > Servicios adicionales de Google > Classroom > Configuración de clases > Acerca de la pertenencia a las clases > Quién puede unirse a las clases de tu dominio > Establézcalo en 'Solo usuarios de tu dominio'.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-002": {
+    "name": { "value": "Pertenencia a Classroom: a qué clases pueden unirse los usuarios", "status": "machine-draft" },
+    "description": { "value": "A qué clases pueden unirse los usuarios de su dominio debe restringirse únicamente a las clases de su dominio, impidiendo que los usuarios internos se unan a clases externas que podrían exfiltrar datos.", "status": "machine-draft" },
+    "recommendedValue": { "value": "A qué clases pueden unirse los usuarios establecido en 'Solo clases de tu dominio'", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Aplicaciones > Servicios adicionales de Google > Classroom > Configuración de clases > Acerca de la pertenencia a las clases > A qué clases pueden unirse los usuarios de tu dominio > Establézcalo en 'Solo clases de tu dominio'.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-003": {
+    "name": { "value": "Acceso a datos de la API de Classroom restringido", "status": "machine-draft" },
+    "description": { "value": "Los usuarios no deben poder autorizar a aplicaciones de terceros a acceder a sus datos de Google Classroom, impidiendo el acceso no controlado a los datos por parte de integraciones externas.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Los usuarios no pueden autorizar a aplicaciones a acceder a los datos de Classroom (acceso a datos de la API deshabilitado)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Aplicaciones > Servicios adicionales de Google > Classroom > Acceso a datos > Desmarque 'Los usuarios pueden autorizar a aplicaciones a acceder a sus datos de Google Classroom'.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-004": {
+    "name": { "value": "Importación de listas de clase deshabilitada", "status": "machine-draft" },
+    "description": { "value": "La importación de listas de clase mediante integración de terceros debe desactivarse para que las listas de clase no se sincronicen desde sistemas externos sin una gobernanza explícita.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Importación de listas de clase DESACTIVADA", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Aplicaciones > Servicios adicionales de Google > Classroom > Importación de listas de clase > Seleccione DESACTIVADO.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-005": {
+    "name": { "value": "Retirada de estudiantes de Classroom restringida", "status": "machine-draft" },
+    "description": { "value": "Solo el personal docente debe poder retirar a los estudiantes de las clases, impidiendo que los estudiantes se retiren a sí mismos o a otros y alteren la integridad de la pertenencia a la clase.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Retirada de estudiantes restringida únicamente al personal docente", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Aplicaciones > Servicios adicionales de Google > Classroom > Retirada de estudiantes > Seleccione 'Solo profesores'.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-006": {
+    "name": { "value": "Creación de clases restringida a profesores verificados", "status": "machine-draft" },
+    "description": { "value": "La creación de clases debe restringirse únicamente a los profesores verificados, impidiendo que usuarios no autorizados creen clases y reúnan miembros.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Creación de clases restringida únicamente a profesores verificados", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > Aplicaciones > Servicios adicionales de Google > Classroom > Configuración general > Permisos del profesorado > Seleccione 'Solo profesores verificados'.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-001": {
+    "name": { "value": "Acceso a la aplicación Gemini restringido a usuarios con licencia", "status": "machine-draft" },
+    "description": { "value": "El acceso de los usuarios a la aplicación Gemini debe establecerse en DESACTIVADO para todo aquel que no tenga licencia, garantizando que el acceso a la IA generativa se rija por la asignación de licencias y no esté abierto a todos los usuarios.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Acceso a la aplicación Gemini DESACTIVADO para los usuarios sin licencia", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > IA generativa > Aplicación Gemini > Acceso de usuarios > Desmarque 'Permitir que todos los usuarios accedan a la aplicación Gemini, independientemente de la licencia'.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-002": {
+    "name": { "value": "Funciones Alpha de Gemini deshabilitadas", "status": "machine-draft" },
+    "description": { "value": "Las funciones Alpha de Gemini deben deshabilitarse. Las funciones previas al lanzamiento pueden no haber completado la revisión de seguridad y pueden exponer los datos de la organización a un procesamiento no verificado.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Acceso a las funciones Alpha de Gemini for Workspace desactivado", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > IA generativa > Gemini for Workspace > Funciones Alpha > Seleccione 'Desactivar el acceso a las funciones Alpha en Gemini for Google Workspace'.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-003": {
+    "name": { "value": "Historial de conversaciones de Gemini habilitado", "status": "machine-draft" },
+    "description": { "value": "El historial de conversaciones de Gemini debe habilitarse para que las interacciones con la IA se conserven con fines de auditoría y cumplimiento. Un historial deshabilitado puede ocultar el manejo de datos.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Historial de conversaciones de Gemini habilitado", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > IA generativa > Aplicación Gemini > Historial de conversaciones de Gemini > Asegúrese de que el historial de conversaciones esté activado.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-004": {
+    "name": { "value": "Retención de conversaciones de Gemini de al menos 18 meses", "status": "machine-draft" },
+    "description": { "value": "La retención de conversaciones de Gemini debe establecerse en un mínimo de 18 meses para respaldar los requisitos de auditoría, retención legal e investigación de incidentes.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Retención de conversaciones establecida en al menos 18 meses", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > IA generativa > Aplicación Gemini > Historial de conversaciones de Gemini > Establezca el periodo de retención en al menos 18 meses.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-005": {
+    "name": { "value": "Uso compartido de conversaciones de Gemini deshabilitado", "status": "machine-draft" },
+    "description": { "value": "El uso compartido de conversaciones de Gemini mediante enlace debe establecerse en DESACTIVADO para impedir que el contenido de las conversaciones con la IA, que puede incluir instrucciones y resultados sensibles, se comparta fuera de los destinatarios previstos.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Uso compartido de conversaciones mediante enlace establecido en DESACTIVADO", "status": "machine-draft" },
+    "remediationSteps": { "value": "Consola de administración > IA generativa > Aplicación Gemini > Uso compartido > Establezca 'Permitir compartir conversaciones mediante enlace' en DESACTIVADO.", "status": "machine-draft" }
+  }
+}
