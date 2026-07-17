@@ -25,8 +25,12 @@ function Get-GuerrillaMaturitySectionHtml {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)][AllowEmptyCollection()][AllowNull()][PSCustomObject[]]$Findings,
-        [Parameter(Mandatory)][scriptblock]$Esc
+        [Parameter(Mandatory)][scriptblock]$Esc,
+        [string]$Language = 'en'
     )
+
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
 
     $maturity = $null
     try { $maturity = Get-GuerrillaMaturity -Findings $Findings } catch { }
@@ -40,22 +44,23 @@ function Get-GuerrillaMaturitySectionHtml {
     foreach ($k in ($maturity.CategoryLevels.Keys | Sort-Object { [int]$maturity.CategoryLevels[$_].Level })) {
         $cl = $maturity.CategoryLevels[$k]
         $cc = Get-GuerrillaMaturityLevelColor ([int]$cl.Level)
-        $lvlCell = if ([int]$cl.Level -eq 0) { 'n/a' } else { "Level $([int]$cl.Level)" }
-        $catRows += "<tr><td>$(& $Esc ([string]$cl.Category))</td><td style='color:$cc;font-weight:600'>$lvlCell</td><td>$(& $Esc ([string]$cl.Label))</td></tr>"
+        $lvlCell = if ([int]$cl.Level -eq 0) { & $t 'maturity.na' } else { & $t 'maturity.levelCell' ([int]$cl.Level) }
+        $catName = & $Esc (Get-GuerrillaLocalizedCategoryName -Name ([string]$cl.Category) -Language $Language)
+        $catRows += "<tr><td>$catName</td><td style='color:$cc;font-weight:600'>$lvlCell</td><td>$(& $Esc ([string]$cl.Label))</td></tr>"
     }
     $blockerHtml = ''
     if ($maturity.NextLevel) {
         $bl = (@($maturity.NextLevelBlockers | Select-Object -First 8 | ForEach-Object { "<li>$(& $Esc ([string]$_))</li>" }) -join '')
-        if ($bl) { $blockerHtml = "<p>To reach <strong>Level $([int]$maturity.NextLevel)</strong>, address:</p><ul>$bl</ul>" }
+        if ($bl) { $blockerHtml = "<p>$(& $tr 'maturity.toReach' ([int]$maturity.NextLevel))</p><ul>$bl</ul>" }
     }
 
     return @"
-<h2>Security Maturity</h2>
+<h2>$(& $t 'maturity.heading')</h2>
 <div class="mat-sec" style="border-left-color:$c">
-  <h3 style="color:$c">Overall maturity: Level $lvl of 5 &middot; $label</h3>
-  <p>The lowest unmet control anchors the rating (CMMI-style scale: 1 Initial to 5 Optimized), so a single critical exposure caps the score until it is resolved.</p>
+  <h3 style="color:$c">$(& $tr 'maturity.overall' $lvl $label)</h3>
+  <p>$(& $t 'maturity.anchorNote')</p>
   $blockerHtml
-  <div class="table-wrap"><table><thead><tr><th>Category</th><th>Level</th><th>Maturity</th></tr></thead><tbody>$catRows</tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th>$(& $t 'maturity.thCategory')</th><th>$(& $t 'maturity.thLevel')</th><th>$(& $t 'maturity.thMaturity')</th></tr></thead><tbody>$catRows</tbody></table></div>
 </div>
 "@
 }
@@ -100,8 +105,12 @@ function Get-GuerrillaAttackPathSectionHtml {
     param(
         [Parameter(Mandatory)][AllowEmptyCollection()][AllowNull()][PSCustomObject[]]$Findings,
         [Parameter(Mandatory)][scriptblock]$Esc,
-        [switch]$OmitIfAbsent
+        [switch]$OmitIfAbsent,
+        [string]$Language = 'en'
     )
+
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
 
     $pathFindings = @($Findings | Where-Object { $_.CheckId -in @('ADPATH-001', 'ADPATH-002') })
     if ($pathFindings.Count -eq 0 -and $OmitIfAbsent) { return '' }
@@ -113,21 +122,21 @@ function Get-GuerrillaAttackPathSectionHtml {
     if ($chains.Count -eq 0) {
         $ran = @($pathFindings | Where-Object Status -in @('PASS', 'FAIL')).Count -gt 0
         $msg = if ($ran) {
-            'No escalation paths to Tier-0 were found in the collected ACL scope. Deep low-privilege chains require full-domain ACL collection &middot; re-run with <code>-FullDomainAcl</code> to widen coverage.'
+            & $tr 'attackpath.noneRan'
         } else {
-            'Attack-path analysis was not run. Enable the <code>ACLDelegation</code> + <code>PrivilegedAccounts</code> categories (or <code>All</code>), and add <code>-FullDomainAcl</code> for deep transitive chains.'
+            & $tr 'attackpath.noneNotRun'
         }
-        return "<h2>Attack Paths to Tier-0</h2><div class=`"notice notice-ok`"><p>$msg</p></div>"
+        return "<h2>$(& $t 'attackpath.heading')</h2><div class=`"notice notice-ok`"><p>$msg</p></div>"
     }
 
     $npCount = @($chains | Where-Object NonPriv).Count
     $sb = [System.Text.StringBuilder]::new()
-    [void]$sb.Append("<h2>Attack Paths to Tier-0</h2><p class=`"ap-note`">$($chains.Count) escalation path(s) reaching Tier-0 &middot; $npCount from NON-privileged principals (shown first, highest risk). Each arrow is a control or membership edge an attacker can traverse.</p><ul class=`"ap-list`">")
+    [void]$sb.Append("<h2>$(& $t 'attackpath.heading')</h2><p class=`"ap-note`">$(& $tr 'attackpath.summary' $chains.Count $npCount)</p><ul class=`"ap-list`">")
     foreach ($c in $chains) {
         $cls = if ($c.NonPriv) { 'ap-item' } else { 'ap-item priv' }
         $meta = @()
-        if ($c.Length) { $meta += "$([int]$c.Length) hop$(if ([int]$c.Length -ne 1) { 's' })" }
-        $meta += if ($c.NonPriv) { 'non-privileged source' } else { 'already-privileged source' }
+        if ($c.Length) { $meta += "$([int]$c.Length) $(if ([int]$c.Length -ne 1) { & $t 'attackpath.hops' } else { & $t 'attackpath.hop' })" }
+        $meta += if ($c.NonPriv) { & $t 'attackpath.nonPrivSource' } else { & $t 'attackpath.privSource' }
         [void]$sb.Append("<li class=`"$cls`"><div class=`"ap-path`">$(& $Esc $c.Path)</div><div class=`"ap-meta`">$(($meta) -join ' &middot; ')</div></li>")
     }
     [void]$sb.Append('</ul>')
@@ -143,8 +152,12 @@ function Get-GuerrillaCartographyHtml {
     param(
         [Parameter(Mandatory)][AllowEmptyCollection()][AllowNull()][PSCustomObject[]]$Findings,
         [Parameter(Mandatory)][scriptblock]$Esc,
-        [int]$MaxChains = 25
+        [int]$MaxChains = 25,
+        [string]$Language = 'en'
     )
+
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
 
     # Same gather as the attack-path list: reads Details.Paths (ADPATH-001) + Details.Chains
     # (ADPATH-002), filters $null, excludes by-design Expected paths.
@@ -215,8 +228,8 @@ function Get-GuerrillaCartographyHtml {
     $half = $nodeH / 2
 
     $sb = [System.Text.StringBuilder]::new()
-    [void]$sb.Append('<h2>Attack-Path Cartography</h2>')
-    [void]$sb.Append("<p class=`"ap-note`">Visual map of escalation routes to Tier-0. <span style='color:var(--g-sev-critical)'>&#9873; Red</span> = non-privileged start, <span style='color:var(--g-sev-high)'>orange</span> = already-privileged, <span style='color:var(--g-accent)'>&#9733; blue</span> = Tier-0 objective. Follow the arrows left to right.$(if ($truncated) { " Showing the first $MaxChains paths." })</p>")
+    [void]$sb.Append("<h2>$(& $t 'cartography.heading')</h2>")
+    [void]$sb.Append("<p class=`"ap-note`">$(& $tr 'cartography.legend')$(if ($truncated) { & $tr 'cartography.showingFirst' $MaxChains })</p>")
     [void]$sb.Append("<div class='ap-map'>")
     [void]$sb.Append("<svg viewBox='0 0 $svgW $svgH' width='$svgW' height='$svgH' style='max-width:100%;height:auto;font-family:var(--font-sans)' xmlns='http://www.w3.org/2000/svg'>")
     [void]$sb.Append("<defs><marker id='ggarrow' markerWidth='9' markerHeight='9' refX='7' refY='3' orient='auto'><path d='M0,0 L7,3 L0,6 Z' fill='var(--g-muted)'/></marker></defs>")
@@ -252,8 +265,12 @@ function Get-GuerrillaIndicatorsOfExposureHtml {
     param(
         [Parameter(Mandatory)][AllowEmptyCollection()][AllowNull()][PSCustomObject[]]$Findings,
         [Parameter(Mandatory)][scriptblock]$Esc,
-        [int]$Top = 12
+        [int]$Top = 12,
+        [string]$Language = 'en'
     )
+
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
 
     $open = @($Findings | Where-Object { $_.Status -in @('FAIL', 'WARN') })
     if ($open.Count -eq 0) { return '' }
@@ -296,25 +313,26 @@ function Get-GuerrillaIndicatorsOfExposureHtml {
 
     $sb = [System.Text.StringBuilder]::new()
     [void]$sb.Append(@"
-<h2>Indicators of Exposure</h2>
-<p class="ioe-note">$($open.Count) open exposure(s), ranked by severity and blast radius.</p>
+<h2>$(& $t 'ioe.heading')</h2>
+<p class="ioe-note">$(& $t 'ioe.note' $open.Count)</p>
 <div class="ioe-sum">
-  <span class="badge badge-sev-critical">Critical: $crit</span>
-  <span class="badge badge-sev-high">High: $high</span>
-  <span class="badge badge-sev-medium">Medium: $med</span>
-  <span class="badge badge-sev-low">Low: $low</span>
+  <span class="badge badge-sev-critical">$(& $t 'ioe.critical'): $crit</span>
+  <span class="badge badge-sev-high">$(& $t 'ioe.high'): $high</span>
+  <span class="badge badge-sev-medium">$(& $t 'ioe.medium'): $med</span>
+  <span class="badge badge-sev-low">$(& $t 'ioe.low'): $low</span>
 </div>
 <ul class="ioe-list">
 "@)
     foreach ($i in $shown) {
         $sevClass = 'sev-' + ("$($i.Severity)").ToLower()
         $sevColor = Get-GuerrillaSeverityColorVar -Severity $i.Severity
-        $aff = if ($i.Affected -gt 1) { " &middot; $($i.Affected) affected" } else { '' }
-        $warn = if ($i.Status -eq 'WARN') { ' &middot; warning' } else { '' }
-        [void]$sb.Append("<li class=`"ioe-item $sevClass`"><div class=`"ioe-sev`" style=`"color:$sevColor`">$(& $Esc $i.Severity)</div><div><div class=`"ioe-name`">$(& $Esc $i.Name)</div><div class=`"ioe-meta`">$(& $Esc $i.Category) &middot; $(& $Esc $i.CheckId)$aff$warn</div><div class=`"ioe-ev`">$(& $Esc (& $trunc $i.Evidence))</div></div></li>")
+        $aff = if ($i.Affected -gt 1) { " &middot; $(& $tr 'ioe.affected' $i.Affected)" } else { '' }
+        $warn = if ($i.Status -eq 'WARN') { " &middot; $(& $t 'ioe.warning')" } else { '' }
+        $catLabel = & $Esc (Get-GuerrillaLocalizedCategoryName -Name "$($i.Category)" -Language $Language)
+        [void]$sb.Append("<li class=`"ioe-item $sevClass`"><div class=`"ioe-sev`" style=`"color:$sevColor`">$(& $Esc $i.Severity)</div><div><div class=`"ioe-name`">$(& $Esc $i.Name)</div><div class=`"ioe-meta`">$catLabel &middot; $(& $Esc $i.CheckId)$aff$warn</div><div class=`"ioe-ev`">$(& $Esc (& $trunc $i.Evidence))</div></div></li>")
     }
     [void]$sb.Append('</ul>')
-    if ($more -gt 0) { [void]$sb.Append("<p class=`"ioe-note`">+ $more more exposure(s) in the detailed findings below.</p>") }
+    if ($more -gt 0) { [void]$sb.Append("<p class=`"ioe-note`">$(& $t 'ioe.more' $more)</p>") }
     return $sb.ToString()
 }
 
@@ -326,12 +344,13 @@ function Get-GuerrillaIndicatorsOfExposureHtml {
 # is nothing to render. Shared so the AD / Entra / GWS / Campaign reports all surface affected entities
 # the same way.
 function Get-GuerrillaReportAffectedHtml {
-    param([hashtable]$Details)
+    param([hashtable]$Details, [string]$Language = 'en')
     if (-not $Details -or $Details.Count -eq 0) { return '' }
 
+    $t = Get-GuerrillaReportStringResolver -Language $Language -Raw
     $pairs = [System.Collections.Generic.List[object]]::new()
     if ($Details.ContainsKey('AffectedItems')) {
-        $lbl = if ($Details.AffectedLabel) { [string]$Details.AffectedLabel } else { 'Affected items' }
+        $lbl = if ($Details.AffectedLabel) { [string]$Details.AffectedLabel } else { & $t 'sections.affectedItems' }
         $pairs.Add(@{ Label = $lbl; Items = @($Details.AffectedItems) })
     } else {
         foreach ($k in $Details.Keys) {
@@ -378,20 +397,23 @@ function Get-GuerrillaReportAffectedHtml {
 function Get-GuerrillaFindingsFilterHtml {
     [CmdletBinding()]
     param([string[]]$Statuses = @('FAIL', 'WARN', 'PASS', 'SKIP'),
-          [string[]]$Severities = @('Critical', 'High', 'Medium', 'Low'))
+          [string[]]$Severities = @('Critical', 'High', 'Medium', 'Low'),
+          [string]$Language = 'en')
 
-    $statusBtns = '<button class="gg-btn active" data-f="status" data-v="all">All</button>' +
+    $t = Get-GuerrillaReportStringResolver -Language $Language
+
+    $statusBtns = "<button class=`"gg-btn active`" data-f=`"status`" data-v=`"all`">$(& $t 'filter.all')</button>" +
         (($Statuses | ForEach-Object { "<button class=`"gg-btn`" data-f=`"status`" data-v=`"$_`">$_</button>" }) -join '')
-    $sevBtns = '<button class="gg-btn active" data-f="sev" data-v="all">All</button>' +
+    $sevBtns = "<button class=`"gg-btn active`" data-f=`"sev`" data-v=`"all`">$(& $t 'filter.all')</button>" +
         (($Severities | ForEach-Object { "<button class=`"gg-btn`" data-f=`"sev`" data-v=`"$_`">$_</button>" }) -join '')
 
     @"
 <div class="gg-filter" id="ggFilter">
-  <span class="gg-lbl">Status</span>$statusBtns
-  <span class="gg-lbl" style="margin-left:0.5rem">Severity</span>$sevBtns
-  <input type="text" id="ggSearch" class="gg-search" placeholder="Search findings (id, name, value)...">
+  <span class="gg-lbl">$(& $t 'filter.status')</span>$statusBtns
+  <span class="gg-lbl" style="margin-left:0.5rem">$(& $t 'filter.severity')</span>$sevBtns
+  <input type="text" id="ggSearch" class="gg-search" placeholder="$(& $t 'filter.searchPlaceholder')">
 </div>
-<div class="gg-empty" id="ggEmpty">No findings match the current filter.</div>
+<div class="gg-empty" id="ggEmpty">$(& $t 'filter.empty')</div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var bar = document.getElementById('ggFilter'); if (!bar) return;
@@ -438,30 +460,28 @@ function Get-GuerrillaComparisonSectionHtml {
     [CmdletBinding()]
     param(
         [AllowNull()]$RunDiff,
-        [Parameter(Mandatory)][scriptblock]$Esc
+        [Parameter(Mandatory)][scriptblock]$Esc,
+        [string]$Language = 'en'
     )
 
     if ($null -eq $RunDiff) { return '' }
 
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
+
     $html = [System.Text.StringBuilder]::new(8192)
-    [void]$html.Append('<div class="cmp-section"><h2>What Changed Since Last Run</h2>')
+    [void]$html.Append("<div class=`"cmp-section`"><h2>$(& $t 'comparison.heading')</h2>")
 
     if ($RunDiff.BaselineRun) {
-        [void]$html.Append(@"
-<p>This is the first recorded run at this scope. Run history begins with this
-version's unified comparison engine, so earlier delta files are not read;
-comparison begins with your next assessment, when this run becomes the
-baseline.</p>
-</div>
-"@)
+        [void]$html.Append("<p>$(& $tr 'comparison.firstRun')</p>`n</div>`n")
         return $html.ToString()
     }
 
     $prevDate = "$($RunDiff.Previous.GeneratedAt)"
     if ($prevDate.Length -ge 19) { $prevDate = $prevDate.Substring(0, 19).Replace('T', ' ') + ' UTC' }
-    [void]$html.Append("<p class='cmp-meta'>Previous run: $(& $Esc $prevDate), module version $(& $Esc "$($RunDiff.Previous.ModuleVersion)")")
+    [void]$html.Append("<p class='cmp-meta'>$(& $tr 'comparison.previousRun' (& $Esc $prevDate) (& $Esc "$($RunDiff.Previous.ModuleVersion)"))")
     if ($RunDiff.VersionSkew) {
-        [void]$html.Append(" (this run: $(& $Esc "$($RunDiff.Current.ModuleVersion)"); check catalogs differ, so NEW and RETIRED entries below are expected)")
+        [void]$html.Append((& $tr 'comparison.versionSkew' (& $Esc "$($RunDiff.Current.ModuleVersion)")))
     }
     [void]$html.Append('</p>')
 
@@ -487,8 +507,8 @@ baseline.</p>
         $scoreDeltaHtml = $scoreDeltaHtml -replace "class='cmp-up'", "class='cmp-caution'"
     }
     [void]$html.Append('<div class="cmp-deltas">')
-    [void]$html.Append("<div class='cmp-delta'><div class='val'>$scoreDeltaHtml</div><div class='lbl'>Score (now $($RunDiff.Current.OverallScore), was $($RunDiff.Previous.OverallScore))</div></div>")
-    [void]$html.Append("<div class='cmp-delta'><div class='val'>$(& $fmtDelta $RunDiff.NotAssessedDelta $true)</div><div class='lbl'>Not Assessed count</div></div>")
+    [void]$html.Append("<div class='cmp-delta'><div class='val'>$scoreDeltaHtml</div><div class='lbl'>$(& $tr 'comparison.scoreLabel' $RunDiff.Current.OverallScore $RunDiff.Previous.OverallScore)</div></div>")
+    [void]$html.Append("<div class='cmp-delta'><div class='val'>$(& $fmtDelta $RunDiff.NotAssessedDelta $true)</div><div class='lbl'>$(& $t 'comparison.notAssessedLabel')</div></div>")
     [void]$html.Append('</div>')
     if ($darkNow -gt 0) {
         [void]$html.Append("<div class='cmp-caveat'>Score excludes $darkNow check$(if ($darkNow -ne 1) { 's' }) not assessed this run " +
@@ -498,7 +518,7 @@ baseline.</p>
 
     $pillarRows = @($RunDiff.PillarDeltas | Where-Object { $null -ne $_.Delta -and $_.Delta -ne 0 })
     if ($pillarRows.Count -gt 0) {
-        [void]$html.Append('<div class="cmp-pillars"><strong>Zero Trust pillars that moved:</strong> ')
+        [void]$html.Append("<div class=`"cmp-pillars`"><strong>$(& $t 'comparison.pillarsMoved')</strong> ")
         $parts = foreach ($p in $pillarRows) {
             "$(& $Esc $p.Pillar) $(& $fmtDelta $p.Delta $false)"
         }
@@ -527,15 +547,15 @@ baseline.</p>
 
     # The three first-class transitions, newly-failing first; a check that went
     # dark is lost visibility with its own prominence, never "no change".
-    [void]$html.Append((& $renderClass 'Newly failing' $RunDiff.NewlyFailing 'var(--g-bad)' $true))
-    [void]$html.Append((& $renderClass 'Lost visibility (assessed before, Not Assessed now)' $RunDiff.LostVisibility 'var(--g-warn)' $true))
-    [void]$html.Append((& $renderClass 'Still not assessed (dark in this run and the previous one)' $RunDiff.StillNotAssessed 'var(--g-warn)' $false))
-    [void]$html.Append((& $renderClass 'Newly passing (remediation confirmed)' $RunDiff.NewlyPassing 'var(--g-ok)' $true))
-    [void]$html.Append((& $renderClass 'Regressed to warning' $RunDiff.Regressed 'var(--g-sev-medium)' $true))
-    [void]$html.Append((& $renderClass 'Improved to warning (not yet passing)' $RunDiff.Improved 'var(--g-sev-medium)' $true))
-    [void]$html.Append((& $renderClass 'Visibility restored' $RunDiff.RestoredVisibility 'var(--g-heading)' $true))
-    [void]$html.Append((& $renderClass 'New checks in this run (not a transition)' $RunDiff.NewChecks 'var(--g-heading)' $true))
-    [void]$html.Append((& $renderClass 'Retired checks (present before, absent now; not a transition)' $RunDiff.RetiredChecks 'var(--g-muted)' $true))
+    [void]$html.Append((& $renderClass (& $t 'comparison.newlyFailing') $RunDiff.NewlyFailing 'var(--g-bad)' $true))
+    [void]$html.Append((& $renderClass (& $t 'comparison.lostVisibility') $RunDiff.LostVisibility 'var(--g-warn)' $true))
+    [void]$html.Append((& $renderClass (& $t 'comparison.stillNotAssessed') $RunDiff.StillNotAssessed 'var(--g-warn)' $false))
+    [void]$html.Append((& $renderClass (& $t 'comparison.newlyPassing') $RunDiff.NewlyPassing 'var(--g-ok)' $true))
+    [void]$html.Append((& $renderClass (& $t 'comparison.regressed') $RunDiff.Regressed 'var(--g-sev-medium)' $true))
+    [void]$html.Append((& $renderClass (& $t 'comparison.improved') $RunDiff.Improved 'var(--g-sev-medium)' $true))
+    [void]$html.Append((& $renderClass (& $t 'comparison.restoredVisibility') $RunDiff.RestoredVisibility 'var(--g-heading)' $true))
+    [void]$html.Append((& $renderClass (& $t 'comparison.newChecks') $RunDiff.NewChecks 'var(--g-heading)' $true))
+    [void]$html.Append((& $renderClass (& $t 'comparison.retiredChecks') $RunDiff.RetiredChecks 'var(--g-muted)' $true))
 
     $changed = @($RunDiff.NewlyFailing).Count + @($RunDiff.LostVisibility).Count + @($RunDiff.NewlyPassing).Count +
         @($RunDiff.Regressed).Count + @($RunDiff.Improved).Count + @($RunDiff.RestoredVisibility).Count

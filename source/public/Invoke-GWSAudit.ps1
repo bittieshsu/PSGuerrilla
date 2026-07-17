@@ -119,6 +119,9 @@ function Invoke-GWSAudit {
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
         [string]$ReportStyle = 'Auto',
 
+        # Report language for HTML exports (report shell + translated check content).
+        [string]$ReportLanguage = '',
+
         [switch]$TestMode,
 
         # Skip the slow per-user Gmail-settings crawl (directory + DNS + OAuth still run;
@@ -395,6 +398,10 @@ function Invoke-GWSAudit {
                 if (-not $PSBoundParameters.ContainsKey('ReportStyle') -and $config -and $config.output -and ($config.output.reportStyle -in 'Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')) {
                     $ReportStyle = [string]$config.output.reportStyle
                 }
+                if (-not $PSBoundParameters.ContainsKey('ReportLanguage') -and $config -and $config.output -and $config.output.reportLanguage) {
+                    $ReportLanguage = [string]$config.output.reportLanguage
+                }
+                $reportLang = Resolve-GuerrillaReportLanguage -Configured $ReportLanguage
                 $reportBranding = Get-GuerrillaBranding -Config $config
                 $htmlPath = Join-Path $outDir "gws_report_$timestamp.html"
                 Export-GWSReportHtml `
@@ -406,6 +413,7 @@ function Invoke-GWSAudit {
                     -RunDiff $runDiff `
                     -FilePath $htmlPath `
                     -Style $ReportStyle `
+                    -Language $reportLang `
                     -Branding $reportBranding
                 if (-not $Quiet) { Write-ProgressLine -Phase REPORTING -Message 'HTML report' -Detail $htmlPath }
             }

@@ -25,10 +25,14 @@ function Export-TrendReportHtml {
         [string]$OrganizationName = 'Organization',
 
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
-        [string]$Style = 'Auto'
+        [string]$Style = 'Auto',
+
+        [string]$Language = 'en'
     )
 
     $esc = { param([string]$s) [System.Web.HttpUtility]::HtmlEncode($s) }
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
     # ConvertFrom-Json on PS 7.5+ rehydrates ISO 8601 strings into [DateTime],
     # which would interpolate as a culture-dependent string. Always normalize.
     $fmtTs = {
@@ -49,7 +53,7 @@ function Export-TrendReportHtml {
     $latestScore = if ($scores.Count -gt 0) { $scores[-1] } else { 0 }
     $firstScore = if ($scores.Count -gt 0) { $scores[0] } else { 0 }
     $delta = $latestScore - $firstScore
-    $trendDir = if ($delta -gt 2) { 'Improving' } elseif ($delta -lt -2) { 'Declining' } else { 'Stable' }
+    $trendDir = if ($delta -gt 2) { & $t 'trend.improving' } elseif ($delta -lt -2) { & $t 'trend.declining' } else { & $t 'trend.stable' }
     $trendArrow = if ($delta -gt 2) { '&#x25B2;' } elseif ($delta -lt -2) { '&#x25BC;' } else { '&#x25CF;' }
     $trendColor = if ($delta -gt 2) { 'var(--g-ok)' } elseif ($delta -lt -2) { 'var(--g-bad)' } else { 'var(--g-muted)' }
 
@@ -100,29 +104,29 @@ function Export-TrendReportHtml {
       <td style="color:$scoreColor;font-weight:600;">$($entry.Score)</td>
       <td>$(& $esc ($entry.Label ?? ''))</td>
       <td class="$deltaClass">$deltaDisplay</td>
-      <td>$(& $esc ($entry.ProfileUsed ?? 'Default'))</td>
+      <td>$(& $esc ($entry.ProfileUsed ?? (& $tr 'trend.defaultProfile')))</td>
     </tr>
 "@
     }
 
-    $subtitle = "$(& $esc $OrganizationName) &middot; $($History.Count) scan(s) &middot; Generated: $timestampStr"
+    $subtitle = "$(& $esc $OrganizationName) &middot; $(& $tr 'trend.scansCount' $History.Count) &middot; $(& $t 'common.generated'): $timestampStr"
     [void]$html.Append((Get-GuerrillaReportShellStart `
-        -Title 'Security Trend Report' `
+        -Title (& $tr 'trend.title') `
         -Subtitle $subtitle `
-        -HtmlTitle "Security Trend Report - $OrganizationName" `
-        -TopbarMeta 'Score Trend' `
+        -HtmlTitle "$(& $tr 'trend.htmlTitle') - $OrganizationName" `
+        -TopbarMeta (& $tr 'trend.topbar') `
         -Style $Style))
 
     $deltaLabel = if ($delta -ge 0) { "+$delta" } else { "$delta" }
     [void]$html.Append(@"
 <div class="stat-grid">
-  <div class="stat"><span class="value" style="color:$trendColor">$latestScore</span><span class="label">Current Score</span></div>
-  <div class="stat"><span class="value">$avgScore</span><span class="label">Average Score</span></div>
-  <div class="stat"><span class="value" style="color:$trendColor">$trendArrow $trendDir</span><span class="label">Trend ($deltaLabel)</span></div>
-  <div class="stat"><span class="value">$maxScore / $minScore</span><span class="label">Highest / Lowest</span></div>
+  <div class="stat"><span class="value" style="color:$trendColor">$latestScore</span><span class="label">$(& $t 'trend.currentScore')</span></div>
+  <div class="stat"><span class="value">$avgScore</span><span class="label">$(& $t 'trend.averageScore')</span></div>
+  <div class="stat"><span class="value" style="color:$trendColor">$trendArrow $trendDir</span><span class="label">$(& $tr 'trend.trendLabel' $deltaLabel)</span></div>
+  <div class="stat"><span class="value">$maxScore / $minScore</span><span class="label">$(& $t 'trend.highestLowest')</span></div>
 </div>
 
-<h2>Score History</h2>
+<h2>$(& $t 'trend.scoreHistory')</h2>
 <div class="ap-map">
 <svg viewBox="0 0 $svgWidth $svgHeight" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;min-width:600px;">
 $gridLines
@@ -131,10 +135,10 @@ $svgDots
 </svg>
 </div>
 
-<h2>Scan Log</h2>
+<h2>$(& $t 'trend.scanLog')</h2>
 <div class="table-wrap">
 <table>
-<thead><tr><th>Timestamp</th><th>Score</th><th>Label</th><th>Delta</th><th>Profile</th></tr></thead>
+<thead><tr><th>$(& $t 'common.thTimestamp')</th><th>$(& $t 'common.thScore')</th><th>$(& $t 'common.thLabel')</th><th>$(& $t 'common.thDelta')</th><th>$(& $t 'common.thProfile')</th></tr></thead>
 <tbody>
 $tableRows
 </tbody>
@@ -143,7 +147,7 @@ $tableRows
 "@)
 
     [void]$html.Append((Get-GuerrillaReportShellEnd `
-        -FooterNote 'Score Trend' `
+        -FooterNote (& $tr 'trend.footer') `
         -TimestampText $timestampStr))
 
     $html.ToString() | Set-Content -Path $OutputPath -Encoding UTF8

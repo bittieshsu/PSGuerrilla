@@ -99,6 +99,9 @@ function Invoke-EntraAudit {
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
         [string]$ReportStyle = 'Auto',
 
+        # Report language for HTML exports (report shell + translated check content).
+        [string]$ReportLanguage = '',
+
         [switch]$TestMode
     )
 
@@ -432,9 +435,14 @@ function Invoke-EntraAudit {
             if (-not $PSBoundParameters.ContainsKey('ReportStyle') -and $config -and $config.output -and ($config.output.reportStyle -in 'Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')) {
                 $ReportStyle = [string]$config.output.reportStyle
             }
+            if (-not $PSBoundParameters.ContainsKey('ReportLanguage') -and $config -and $config.output -and $config.output.reportLanguage) {
+                $ReportLanguage = [string]$config.output.reportLanguage
+            }
+            $reportLang = Resolve-GuerrillaReportLanguage -Configured $ReportLanguage
             Export-EntraReportHtml -Result $result -OutputPath $htmlPath `
                 -RunDiff $runDiff `
                 -Style $ReportStyle `
+                -Language $reportLang `
                 -Branding (Get-GuerrillaBranding -Config $config)
             $result.HtmlReportPath = $htmlPath
         } catch {

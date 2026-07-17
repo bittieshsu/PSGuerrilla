@@ -13,12 +13,17 @@ function Export-CampaignReportHtml {
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
         [string]$Style = 'Auto',
 
-        [hashtable]$Branding
+        [hashtable]$Branding,
+
+        [string]$Language = 'en'
     )
 
     $esc = { param([string]$s) [System.Web.HttpUtility]::HtmlEncode($s) }
 
-    $findings      = $Result.Findings
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
+
+    $findings      = Get-GuerrillaLocalizedFindings -Findings $Result.Findings -Language $Language
     $overallScore  = $Result.OverallScore
     $scoreLabel    = $Result.ScoreLabel
     $platformScores = $Result.PlatformScores
@@ -96,15 +101,15 @@ function Export-CampaignReportHtml {
         & $esc $displayName
     }) -join ', '
 
-    $subtitle = "Unified security posture assessment &middot; Generated: $timestampStr &middot; " +
-        "$totalChecks checks across $($platforms.Count) platforms ($platformList)<br>" +
-        "Scan ID: $(& $esc $scanId) &middot; Duration: $durationStr"
+    $subtitle = "$(& $t 'campaign.subtitleLead') &middot; $(& $t 'common.generated'): $timestampStr &middot; " +
+        "$(& $tr 'campaign.subtitleChecks' $totalChecks $platforms.Count $platformList)<br>" +
+        "$(& $t 'campaign.scanId'): $(& $esc $scanId) &middot; $(& $t 'campaign.duration'): $durationStr"
 
     [void]$html.Append((Get-GuerrillaReportShellStart `
-        -Title 'Campaign Report' `
+        -Title (& $tr 'campaign.title') `
         -Subtitle $subtitle `
-        -HtmlTitle "Guerrilla Campaign Report - $timestampStr" `
-        -TopbarMeta 'Unified Campaign Assessment' `
+        -HtmlTitle "$(& $tr 'campaign.htmlTitle') - $timestampStr" `
+        -TopbarMeta (& $tr 'campaign.topbar') `
         -Style $Style -Branding $Branding -ExtraCss $extraCss))
 
     # ═══ SCORE PANEL ═══
@@ -124,27 +129,27 @@ function Export-CampaignReportHtml {
   </div>
   <div class="score-detail">
     <div class="label" style="color:$scoreColor">$(& $esc $displayLabel)</div>
-    <div class="desc">Campaign score (0-100) &middot; weighted assessment of $totalChecks checks across $($platforms.Count) platforms</div>
+    <div class="desc">$(& $tr 'campaign.scoreDesc' $totalChecks $platforms.Count)</div>
     <div class="desc"><span class="verdict-pass">$passCount passed</span> &middot; <span class="verdict-fail">$failCount failed</span> &middot; <span class="verdict-warn">$warnCount warnings</span> &middot; <span class="verdict-na">$skipCount skipped</span></div>
   </div>
 </div>
 "@)
 
     # ═══ WHAT CHANGED SINCE LAST RUN — shared section, before findings ═══
-    [void]$html.Append((Get-GuerrillaComparisonSectionHtml -RunDiff $Result.RunComparison -Esc $esc))
+    [void]$html.Append((Get-GuerrillaComparisonSectionHtml -RunDiff $Result.RunComparison -Esc $esc -Language $Language))
 
     # ═══ STAT CARDS ═══
     [void]$html.Append('<div class="stat-grid">')
     $statCards = @(
-        @{ Value = $totalChecks; Label = 'Total Checks'; Color = 'var(--g-heading)' }
-        @{ Value = $passCount;   Label = 'Passed';       Color = 'var(--g-ok)' }
-        @{ Value = $failCount;   Label = 'Failed';       Color = 'var(--g-bad)' }
-        @{ Value = $warnCount;   Label = 'Warnings';     Color = 'var(--g-warn)' }
-        @{ Value = $skipCount;   Label = 'Skipped';      Color = 'var(--g-muted)' }
-        @{ Value = $critCount;   Label = 'Critical';     Color = 'var(--g-sev-critical)' }
-        @{ Value = $highCount;   Label = 'High';         Color = 'var(--g-sev-high)' }
-        @{ Value = $medCount;    Label = 'Medium';       Color = 'var(--g-sev-medium)' }
-        @{ Value = $lowCount;    Label = 'Low';          Color = 'var(--g-sev-low)' }
+        @{ Value = $totalChecks; Label = (& $t 'common.totalChecks'); Color = 'var(--g-heading)' }
+        @{ Value = $passCount;   Label = (& $t 'common.passed');      Color = 'var(--g-ok)' }
+        @{ Value = $failCount;   Label = (& $t 'common.failed');      Color = 'var(--g-bad)' }
+        @{ Value = $warnCount;   Label = (& $t 'common.warnings');    Color = 'var(--g-warn)' }
+        @{ Value = $skipCount;   Label = (& $t 'common.skipped');     Color = 'var(--g-muted)' }
+        @{ Value = $critCount;   Label = (& $t 'common.critical');    Color = 'var(--g-sev-critical)' }
+        @{ Value = $highCount;   Label = (& $t 'common.high');        Color = 'var(--g-sev-high)' }
+        @{ Value = $medCount;    Label = (& $t 'common.medium');      Color = 'var(--g-sev-medium)' }
+        @{ Value = $lowCount;    Label = (& $t 'common.low');         Color = 'var(--g-sev-low)' }
     )
     foreach ($card in $statCards) {
         [void]$html.Append(@"
@@ -158,13 +163,13 @@ function Export-CampaignReportHtml {
 
     # ═══ SECURITY MATURITY + ATTACK PATHS (shared sections) ═══
     # Maturity spans all platforms; attack paths only render if an AD platform was scanned.
-    [void]$html.Append((Get-GuerrillaMaturitySectionHtml -Findings $findings -Esc $esc))
-    [void]$html.Append((Get-GuerrillaIndicatorsOfExposureHtml -Findings $findings -Esc $esc))
-    [void]$html.Append((Get-GuerrillaCartographyHtml -Findings $findings -Esc $esc))
-    [void]$html.Append((Get-GuerrillaAttackPathSectionHtml -Findings $findings -Esc $esc -OmitIfAbsent))
+    [void]$html.Append((Get-GuerrillaMaturitySectionHtml -Findings $findings -Esc $esc -Language $Language))
+    [void]$html.Append((Get-GuerrillaIndicatorsOfExposureHtml -Findings $findings -Esc $esc -Language $Language))
+    [void]$html.Append((Get-GuerrillaCartographyHtml -Findings $findings -Esc $esc -Language $Language))
+    [void]$html.Append((Get-GuerrillaAttackPathSectionHtml -Findings $findings -Esc $esc -OmitIfAbsent -Language $Language))
 
     # ═══ PLATFORM SUMMARY CARDS ═══
-    [void]$html.Append('<h2>Platform Summary</h2>')
+    [void]$html.Append("<h2>$(& $t 'campaign.platformSummary')</h2>")
     [void]$html.Append('<div class="platform-grid">')
 
     foreach ($platformKey in ($platformScores.GetEnumerator() | Sort-Object { $_.Value.Score })) {
@@ -185,16 +190,16 @@ function Export-CampaignReportHtml {
   <div class="platform-header">
     <div>
       <span class="platform-name">$(& $esc $tName)</span>
-      <div class="platform-label">$(& $esc $tLabel) &middot; $tFindingCount checks</div>
+      <div class="platform-label">$(& $esc $tLabel) &middot; $tFindingCount $(& $t 'campaign.checksWord')</div>
     </div>
     <span class="platform-score" style="color:$tColor">$tScore</span>
   </div>
   <div class="platform-bar-bg"><div class="platform-bar-fill" style="width:${tScore}%;background:$tColor"></div></div>
   <div class="platform-counts">
-    <span class="verdict-pass">Pass: $tPassCount</span>
-    <span class="verdict-fail">Fail: $tFailCount</span>
-    <span class="verdict-warn">Warn: $tWarnCount</span>
-    <span class="verdict-na">Skip: $tSkipCount</span>
+    <span class="verdict-pass">$(& $t 'common.passLabel') $tPassCount</span>
+    <span class="verdict-fail">$(& $t 'common.failLabel') $tFailCount</span>
+    <span class="verdict-warn">$(& $t 'common.warnLabel') $tWarnCount</span>
+    <span class="verdict-na">$(& $t 'common.skipLabel') $tSkipCount</span>
   </div>
 </div>
 "@)
@@ -202,7 +207,7 @@ function Export-CampaignReportHtml {
     [void]$html.Append('</div>')
 
     # ═══ CATEGORY SCORE GRID (grouped by platform) ═══
-    [void]$html.Append('<h2>Category Scores by Platform</h2>')
+    [void]$html.Append("<h2>$(& $t 'campaign.categoryScoresByPlatform')</h2>")
 
     foreach ($platformKey in ($platformScores.GetEnumerator() | Sort-Object Key)) {
         $tName = $platformKey.Key
@@ -218,7 +223,7 @@ function Export-CampaignReportHtml {
         $openAttr = if ($tHasFailures) { ' open' } else { '' }
 
         [void]$html.Append("<details class=`"cat-detail`"$openAttr>")
-        [void]$html.Append("<summary>$(& $esc $tName)<span class=`"sum-counts`">$($tCategoryScores.Count) categories</span></summary>")
+        [void]$html.Append("<summary>$(& $esc $tName)<span class=`"sum-counts`">$($tCategoryScores.Count) $(& $t 'campaign.categoriesWord')</span></summary>")
         [void]$html.Append('<div class="detail-body">')
         [void]$html.Append('<div class="category-grid">')
 
@@ -232,14 +237,14 @@ function Export-CampaignReportHtml {
             [void]$html.Append(@"
 <div class="cat-card">
   <div class="cat-header">
-    <div class="cat-name">$(& $esc $cat.Key)</div>
+    <div class="cat-name">$(& $esc (Get-GuerrillaLocalizedCategoryName -Name "$($cat.Key)" -Language $Language))</div>
     <div class="cat-score" style="color:$catColor">$catScore</div>
   </div>
   <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:${catScore}%;background:$catColor"></div></div>
   <div class="cat-counts">
-    <span class="verdict-pass">Pass: $catPass</span>
-    <span class="verdict-fail">Fail: $catFail</span>
-    <span class="verdict-warn">Warn: $catWarn</span>
+    <span class="verdict-pass">$(& $t 'common.passLabel') $catPass</span>
+    <span class="verdict-fail">$(& $t 'common.failLabel') $catFail</span>
+    <span class="verdict-warn">$(& $t 'common.warnLabel') $catWarn</span>
   </div>
 </div>
 "@)
@@ -249,14 +254,14 @@ function Export-CampaignReportHtml {
     }
 
     # ═══ FINDINGS TABLE (interactive with filters) ═══
-    [void]$html.Append('<h2>All Findings</h2>')
+    [void]$html.Append("<h2>$(& $t 'common.allFindings')</h2>")
 
     # --- Filter bar ---
     [void]$html.Append('<div class="gg-filter" id="filterBar">')
 
     # Platform filter group
-    [void]$html.Append('<div class="filter-group"><span class="gg-lbl">Platform</span>')
-    [void]$html.Append('<button class="gg-btn active" data-filter-type="platform" data-filter-value="all" onclick="toggleFilter(this)">All</button>')
+    [void]$html.Append("<div class=`"filter-group`"><span class=`"gg-lbl`">$(& $t 'filter.platform')</span>")
+    [void]$html.Append("<button class=`"gg-btn active`" data-filter-type=`"platform`" data-filter-value=`"all`" onclick=`"toggleFilter(this)`">$(& $t 'filter.all')</button>")
     foreach ($platformKey in ($platformScores.GetEnumerator() | Sort-Object Key)) {
         $tName = $platformKey.Key
         $tSlug = ($tName -replace '[^a-zA-Z0-9]', '-').ToLower()
@@ -265,36 +270,36 @@ function Export-CampaignReportHtml {
     [void]$html.Append('</div>')
 
     # Status filter group
-    [void]$html.Append('<div class="filter-group"><span class="gg-lbl">Status</span>')
-    [void]$html.Append('<button class="gg-btn active" data-filter-type="status" data-filter-value="all" onclick="toggleFilter(this)">All</button>')
+    [void]$html.Append("<div class=`"filter-group`"><span class=`"gg-lbl`">$(& $t 'filter.status')</span>")
+    [void]$html.Append("<button class=`"gg-btn active`" data-filter-type=`"status`" data-filter-value=`"all`" onclick=`"toggleFilter(this)`">$(& $t 'filter.all')</button>")
     foreach ($statusVal in @('PASS', 'FAIL', 'WARN', 'SKIP')) {
         [void]$html.Append("<button class=`"gg-btn`" data-filter-type=`"status`" data-filter-value=`"$statusVal`" onclick=`"toggleFilter(this)`">$statusVal</button>")
     }
     [void]$html.Append('</div>')
 
     # Severity filter group
-    [void]$html.Append('<div class="filter-group"><span class="gg-lbl">Severity</span>')
-    [void]$html.Append('<button class="gg-btn active" data-filter-type="severity" data-filter-value="all" onclick="toggleFilter(this)">All</button>')
+    [void]$html.Append("<div class=`"filter-group`"><span class=`"gg-lbl`">$(& $t 'filter.severity')</span>")
+    [void]$html.Append("<button class=`"gg-btn active`" data-filter-type=`"severity`" data-filter-value=`"all`" onclick=`"toggleFilter(this)`">$(& $t 'filter.all')</button>")
     foreach ($sevVal in @('Critical', 'High', 'Medium', 'Low')) {
         [void]$html.Append("<button class=`"gg-btn`" data-filter-type=`"severity`" data-filter-value=`"$sevVal`" onclick=`"toggleFilter(this)`">$sevVal</button>")
     }
     [void]$html.Append('</div>')
 
-    [void]$html.Append('<span class="filter-count" id="filterCount">Showing all findings</span>')
+    [void]$html.Append("<span class=`"filter-count`" id=`"filterCount`">$(& $t 'filter.showingAll')</span>")
     [void]$html.Append('</div>') # gg-filter
 
     # --- Findings table ---
-    [void]$html.Append(@'
+    [void]$html.Append(@"
 <div class="table-wrap">
 <table id="findingsTable">
   <thead>
   <tr>
-    <th>Platform</th><th>Check ID</th><th>Check Name</th><th>Category</th>
-    <th>Severity</th><th>Status</th><th>Current Value</th>
+    <th>$(& $t 'common.thPlatform')</th><th>$(& $t 'common.thCheckId')</th><th>$(& $t 'common.thCheckName')</th><th>$(& $t 'common.thCategory')</th>
+    <th>$(& $t 'common.thSeverity')</th><th>$(& $t 'common.thStatus')</th><th>$(& $t 'common.thCurrentValue')</th>
   </tr>
   </thead>
   <tbody>
-'@)
+"@)
 
     $sortedFindings = @($findings | Sort-Object {
         switch ($_.Severity) { 'Critical' { 0 } 'High' { 1 } 'Medium' { 2 } 'Low' { 3 } default { 4 } }
@@ -308,13 +313,14 @@ function Export-CampaignReportHtml {
         $sevClass    = $f.Severity.ToLower()
         $platform     = if ($f.Platform) { $f.Platform } else { 'Unknown' }
         $platformSlug = ($platform -replace '[^a-zA-Z0-9]', '-').ToLower()
+        $catLabel     = & $esc (Get-GuerrillaLocalizedCategoryName -Name "$($f.Category)" -Language $Language)
 
         [void]$html.Append(@"
   <tr class="clickable-row finding-row" data-platform="$platformSlug" data-status="$($f.Status)" data-severity="$($f.Severity)" data-idx="$findingIdx" onclick="toggleFindingDetail($findingIdx)">
     <td><span class="badge">$(& $esc $platform)</span></td>
     <td><code>$(& $esc $f.CheckId)</code></td>
     <td>$(& $esc $f.CheckName)</td>
-    <td>$(& $esc $f.Category)</td>
+    <td>$catLabel</td>
     <td><span class="badge badge-sev-$sevClass">$($f.Severity)</span></td>
     <td><span class="badge badge-status-$statusClass">$($f.Status)</span></td>
     <td>$(& $esc $f.CurrentValue)</td>
@@ -365,12 +371,12 @@ function Export-CampaignReportHtml {
         # Affected entities (FAIL/WARN only) — bulleted list of impacted accounts/objects.
         $affectedBlock = ''
         if ($f.Status -in @('FAIL', 'WARN')) {
-            $affectedHtml = Get-GuerrillaReportAffectedHtml -Details $f.Details
+            $affectedHtml = Get-GuerrillaReportAffectedHtml -Details $f.Details -Language $Language
             if ($affectedHtml) {
                 $affectedBlock = @"
 
         <div class="fd-block fd-full">
-          <div class="fd-label">Affected Entities</div>
+          <div class="fd-label">$(& $t 'campaign.affectedEntities')</div>
           <div class="fd-value">$affectedHtml</div>
         </div>
 "@
@@ -382,27 +388,27 @@ function Export-CampaignReportHtml {
     <td colspan="7">
       <div class="finding-detail-content">
         <div class="fd-block fd-full">
-          <div class="fd-label">Description</div>
+          <div class="fd-label">$(& $t 'campaign.descriptionLabel')</div>
           <div class="fd-value">$descHtml</div>
         </div>$affectedBlock
         <div class="fd-block">
-          <div class="fd-label">Current Value</div>
+          <div class="fd-label">$(& $t 'campaign.currentValueLabel')</div>
           <div class="fd-value">$curValHtml</div>
         </div>
         <div class="fd-block">
-          <div class="fd-label">Recommended Value</div>
+          <div class="fd-label">$(& $t 'campaign.recommendedValueLabel')</div>
           <div class="fd-value">$recValHtml</div>
         </div>
         <div class="fd-block fd-full">
-          <div class="fd-label">Remediation Steps</div>
+          <div class="fd-label">$(& $t 'campaign.remediationStepsLabel')</div>
           <div class="fd-value">$remStepsHtml</div>
         </div>
         <div class="fd-block fd-full">
-          <div class="fd-label">Remediation URL</div>
+          <div class="fd-label">$(& $t 'campaign.remediationUrlLabel')</div>
           <div class="fd-value">$remUrlHtml</div>
         </div>
         <div class="fd-block fd-full">
-          <div class="fd-label">Compliance Mappings</div>
+          <div class="fd-label">$(& $t 'campaign.complianceMappingsLabel')</div>
           <div class="fd-value">$($compHtml.ToString())</div>
         </div>
       </div>
@@ -424,18 +430,18 @@ function Export-CampaignReportHtml {
     }, CheckId)
 
     if ($complianceFindings.Count -gt 0) {
-        [void]$html.Append(@'
-<h2>Compliance Cross-Reference</h2>
+        [void]$html.Append(@"
+<h2>$(& $t 'common.complianceCrossReference')</h2>
 <div class="table-wrap">
 <table class="compliance-table">
   <thead>
   <tr>
-    <th>Platform</th><th>Check ID</th><th>Check Name</th><th>Severity</th>
-    <th>NIST SP 800-53</th><th>MITRE ATT&amp;CK</th><th>CIS Benchmark</th>
+    <th>$(& $t 'common.thPlatform')</th><th>$(& $t 'common.thCheckId')</th><th>$(& $t 'common.thCheckName')</th><th>$(& $t 'common.thSeverity')</th>
+    <th>$(& $t 'common.thNist')</th><th>$(& $t 'common.thMitre')</th><th>$(& $t 'common.thCisBenchmark')</th>
   </tr>
   </thead>
   <tbody>
-'@)
+"@)
         foreach ($f in $complianceFindings) {
             $sevClass = $f.Severity.ToLower()
             $platform  = if ($f.Platform) { $f.Platform } else { 'Unknown' }
@@ -549,7 +555,7 @@ function Export-CampaignReportHtml {
 
     # ═══ FOOTER + SHELL END ═══
     [void]$html.Append((Get-GuerrillaReportShellEnd `
-        -FooterNote 'Unified Campaign Audit' `
+        -FooterNote (& $tr 'campaign.footer') `
         -TimestampText $timestampStr))
 
     Set-Content -Path $OutputPath -Value $html.ToString() -Encoding UTF8

@@ -30,7 +30,9 @@ function Export-TechnicalReport {
         [switch]$IncludePass,
 
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
-        [string]$Style = 'Auto'
+        [string]$Style = 'Auto',
+
+        [string]$Language = ''
     )
 
     if (-not $OutputPath) { $OutputPath = Join-Path (Get-Location) 'Guerrilla-Technical-Report.html' }
@@ -49,7 +51,11 @@ function Export-TechnicalReport {
         return [PSCustomObject]@{ Success = $false; Message = 'No findings'; Path = $null }
     }
 
+    if (-not $Language) { $Language = Resolve-GuerrillaReportLanguage -Configured '' }
     $esc = { param([string]$s) [System.Web.HttpUtility]::HtmlEncode($s) }
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
+    $Findings = Get-GuerrillaLocalizedFindings -Findings $Findings -Language $Language
     $timestampStr = [datetime]::UtcNow.ToString('yyyy-MM-dd HH:mm:ss') + ' UTC'
     $html = [System.Text.StringBuilder]::new(131072)
 
@@ -89,27 +95,27 @@ function Export-TechnicalReport {
 @media print { .finding { break-inside: avoid; border: 1px solid var(--g-border); } }
 '@
 
-    $subtitle = "$(& $esc $OrganizationName) &middot; Generated: $timestampStr"
+    $subtitle = "$(& $esc $OrganizationName) &middot; $(& $t 'common.generated'): $timestampStr"
     [void]$html.Append((Get-GuerrillaReportShellStart `
-        -Title 'Technical Security Assessment Report' `
+        -Title (& $tr 'technical.title') `
         -Subtitle $subtitle `
-        -HtmlTitle "Technical Security Report - $OrganizationName" `
-        -TopbarMeta 'Technical Report' `
+        -HtmlTitle "$(& $tr 'technical.htmlTitle') - $OrganizationName" `
+        -TopbarMeta (& $tr 'technical.topbar') `
         -Style $Style -ExtraCss $extraCss))
 
     [void]$html.Append(@"
 <div class="stat-grid">
-  <div class="stat"><span class="value">$totalChecks</span><span class="label">Total Checks</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-ok)">$passCount</span><span class="label">Pass</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-bad)">$failCount</span><span class="label">Fail</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-warn)">$warnCount</span><span class="label">Warn</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-sev-critical)">$critCount</span><span class="label">Critical</span></div>
+  <div class="stat"><span class="value">$totalChecks</span><span class="label">$(& $t 'common.totalChecks')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-ok)">$passCount</span><span class="label">$(& $t 'common.pass')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-bad)">$failCount</span><span class="label">$(& $t 'common.fail')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-warn)">$warnCount</span><span class="label">$(& $t 'common.warn')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-sev-critical)">$critCount</span><span class="label">$(& $t 'common.critical')</span></div>
 </div>
 
-<h2>Category Breakdown</h2>
+<h2>$(& $t 'common.categoryBreakdown')</h2>
 <div class="table-wrap">
 <table>
-<thead><tr><th>Category</th><th>Pass</th><th>Fail</th><th>Warn</th><th>Total</th></tr></thead>
+<thead><tr><th>$(& $t 'common.thCategory')</th><th>$(& $t 'common.pass')</th><th>$(& $t 'common.fail')</th><th>$(& $t 'common.warn')</th><th>$(& $t 'technical.thTotal')</th></tr></thead>
 <tbody>
 "@)
 
@@ -117,20 +123,21 @@ function Export-TechnicalReport {
         $cp = @($cat.Group | Where-Object Status -eq 'PASS').Count
         $cf = @($cat.Group | Where-Object Status -eq 'FAIL').Count
         $cw = @($cat.Group | Where-Object Status -eq 'WARN').Count
-        [void]$html.Append("<tr><td>$(& $esc $cat.Name)</td><td><span class='verdict-pass'>$cp</span></td><td><span class='verdict-fail'>$cf</span></td><td><span class='verdict-warn'>$cw</span></td><td>$($cat.Count)</td></tr>`n")
+        $catLabel = & $esc (Get-GuerrillaLocalizedCategoryName -Name "$($cat.Name)" -Language $Language)
+        [void]$html.Append("<tr><td>$catLabel</td><td><span class='verdict-pass'>$cp</span></td><td><span class='verdict-fail'>$cf</span></td><td><span class='verdict-warn'>$cw</span></td><td>$($cat.Count)</td></tr>`n")
     }
 
     [void]$html.Append('</tbody></table></div>')
 
     # Security Maturity + Attack Paths (shared sections). Maturity spans all checks; the attack-path
     # section only renders when AD attack-path findings are present (-OmitIfAbsent).
-    [void]$html.Append((Get-GuerrillaMaturitySectionHtml -Findings $Findings -Esc $esc))
-    [void]$html.Append((Get-GuerrillaIndicatorsOfExposureHtml -Findings $Findings -Esc $esc))
-    [void]$html.Append((Get-GuerrillaCartographyHtml -Findings $Findings -Esc $esc))
-    [void]$html.Append((Get-GuerrillaAttackPathSectionHtml -Findings $Findings -Esc $esc -OmitIfAbsent))
+    [void]$html.Append((Get-GuerrillaMaturitySectionHtml -Findings $Findings -Esc $esc -Language $Language))
+    [void]$html.Append((Get-GuerrillaIndicatorsOfExposureHtml -Findings $Findings -Esc $esc -Language $Language))
+    [void]$html.Append((Get-GuerrillaCartographyHtml -Findings $Findings -Esc $esc -Language $Language))
+    [void]$html.Append((Get-GuerrillaAttackPathSectionHtml -Findings $Findings -Esc $esc -OmitIfAbsent -Language $Language))
 
     [void]$html.Append(@"
-<h2>Detailed Findings ($($displayFindings.Count))</h2>
+<h2>$(& $tr 'technical.detailedFindings' $displayFindings.Count)</h2>
 "@)
 
     foreach ($finding in $displayFindings) {
@@ -141,25 +148,25 @@ function Export-TechnicalReport {
 
         # Check risk acceptance
         $isAccepted = $riskAcceptances.ContainsKey($checkId)
-        $statusDisplay = if ($isAccepted) { 'ACCEPTED' } else { $status }
+        $statusDisplay = if ($isAccepted) { & $t 'common.accepted' } else { & $esc "$status" }
         $sevClass = ("$sev").ToLower()
-        $statusClass = ("$statusDisplay").ToLower()
+        $statusClass = if ($isAccepted) { 'accepted' } else { ("$status").ToLower() }
 
         [void]$html.Append(@"
 <div class="finding">
 <div class="finding-header">
 <div><strong>$(& $esc $checkId)</strong> &middot; $name</div>
-<div class="badges"><span class="badge badge-sev-$sevClass">$(& $esc "$sev")</span> <span class="badge badge-status-$statusClass">$(& $esc "$statusDisplay")</span></div>
+<div class="badges"><span class="badge badge-sev-$sevClass">$(& $esc "$sev")</span> <span class="badge badge-status-$statusClass">$statusDisplay</span></div>
 </div>
 <div class="finding-body">
 <dl>
-$(if ($finding.Description) { "<dt>Description</dt><dd>$(& $esc $finding.Description)</dd>" })
-$(if ($finding.RecommendedValue) { "<dt>Recommended</dt><dd>$(& $esc $finding.RecommendedValue)</dd>" })
-$(if ($finding.RemediationSteps) { "<dt>Remediation Steps</dt><dd>$(& $esc $finding.RemediationSteps)</dd>" })
-$(if ($finding.RemediationUrl) { "<dt>Reference</dt><dd><a href='$(& $esc $finding.RemediationUrl)'>$(& $esc $finding.RemediationUrl)</a></dd>" })
-$(if ($isAccepted) { "<dt>Risk Acceptance</dt><dd class='finding-accepted'>Accepted by $(& $esc $riskAcceptances[$checkId].AcceptedBy) &middot; $(& $esc $riskAcceptances[$checkId].Justification)</dd>" })
+$(if ($finding.Description) { "<dt>$(& $t 'technical.descriptionLabel')</dt><dd>$(& $esc $finding.Description)</dd>" })
+$(if ($finding.RecommendedValue) { "<dt>$(& $t 'technical.recommendedLabel')</dt><dd>$(& $esc $finding.RecommendedValue)</dd>" })
+$(if ($finding.RemediationSteps) { "<dt>$(& $t 'technical.remediationStepsLabel')</dt><dd>$(& $esc $finding.RemediationSteps)</dd>" })
+$(if ($finding.RemediationUrl) { "<dt>$(& $t 'technical.referenceLabel')</dt><dd><a href='$(& $esc $finding.RemediationUrl)'>$(& $esc $finding.RemediationUrl)</a></dd>" })
+$(if ($isAccepted) { "<dt>$(& $t 'technical.riskAcceptanceLabel')</dt><dd class='finding-accepted'>$(& $tr 'technical.acceptedBy' (& $esc $riskAcceptances[$checkId].AcceptedBy) (& $esc $riskAcceptances[$checkId].Justification))</dd>" })
 $(if ($finding.Compliance) {
-    $compHtml = '<dt>Compliance</dt><dd>'
+    $compHtml = "<dt>$(& $t 'technical.complianceLabel')</dt><dd>"
     if ($finding.Compliance.nistSp80053) { $compHtml += "NIST: $($finding.Compliance.nistSp80053 -join ', ') | " }
     if ($finding.Compliance.mitreAttack) { $compHtml += "MITRE: $($finding.Compliance.mitreAttack -join ', ') | " }
     if ($finding.Compliance.cisBenchmark) { $compHtml += "CIS: $($finding.Compliance.cisBenchmark -join ', ')" }
@@ -173,7 +180,7 @@ $(if ($finding.Compliance) {
     }
 
     [void]$html.Append((Get-GuerrillaReportShellEnd `
-        -FooterNote 'Technical Report' `
+        -FooterNote (& $tr 'technical.footer') `
         -TimestampText $timestampStr))
 
     $html.ToString() | Set-Content -Path $OutputPath -Encoding UTF8

@@ -39,7 +39,9 @@ function Export-BudgetJustification {
         [string]$ConfigPath,
 
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
-        [string]$Style = 'Auto'
+        [string]$Style = 'Auto',
+
+        [string]$Language = ''
     )
 
     # Load config
@@ -74,6 +76,11 @@ function Export-BudgetJustification {
         Write-Warning 'No audit findings available. Run a scan first.'
         return [PSCustomObject]@{ Success = $false; Message = 'No findings'; Path = $null }
     }
+
+    if (-not $Language) { $Language = Resolve-GuerrillaReportLanguage -Configured '' }
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
+    $Findings = Get-GuerrillaLocalizedFindings -Findings $Findings -Language $Language
 
     # Load remediation costs
     $remPath = Join-Path $script:ModuleRoot 'Data/RemediationCosts.json'
@@ -175,7 +182,7 @@ function Export-BudgetJustification {
 
     $complianceRows = ''
     foreach ($fw in $complianceFrameworks) {
-        $complianceRows += "<tr><td>$(& $esc ([string]$fw.Framework))</td><td><span class=`"verdict-fail`">$($fw.GapCount) gap(s)</span></td></tr>`n"
+        $complianceRows += "<tr><td>$(& $esc ([string]$fw.Framework))</td><td><span class=`"verdict-fail`">$(& $tr 'budget.gaps' $fw.GapCount)</span></td></tr>`n"
     }
 
     $extraCss = @'
@@ -186,43 +193,43 @@ function Export-BudgetJustification {
 .phase > p:first-of-type { margin-top: 0.4em; }
 '@
 
-    $subtitle = "<strong>$(& $esc $OrganizationName)</strong> &middot; Profile: $(& $esc $ProfileName) &middot; Generated: $timestamp UTC"
+    $subtitle = "<strong>$(& $esc $OrganizationName)</strong> &middot; $(& $t 'budget.profileLabel'): $(& $esc $ProfileName) &middot; $(& $t 'common.generated'): $timestamp UTC"
     $shellStart = Get-GuerrillaReportShellStart `
-        -Title 'Security Budget Justification' `
+        -Title (& $tr 'budget.title') `
         -Subtitle $subtitle `
-        -HtmlTitle "Guerrilla Budget Justification - $OrganizationName - $timestamp UTC" `
-        -TopbarMeta 'Budget Justification' `
+        -HtmlTitle "$(& $tr 'budget.htmlTitle') - $OrganizationName - $timestamp UTC" `
+        -TopbarMeta (& $tr 'budget.topbar') `
         -Style $Style -ExtraCss $extraCss
 
     $html = @"
 $shellStart
-<h2>Executive Summary</h2>
+<h2>$(& $t 'budget.executiveSummary')</h2>
 <div class="stat-grid">
 <div class="stat">
 <span class="value" style="color:$scoreColor">$score</span>
-<span class="label">Guerrilla Score$(if ($label) { " ($(& $esc $label))" })</span>
+<span class="label">$(& $t 'budget.guerrillaScore')$(if ($label) { " ($(& $esc $label))" })</span>
 </div>
 <div class="stat">
 <span class="value" style="color:var(--g-sev-critical)">$criticalFails</span>
-<span class="label">Critical Failures</span>
+<span class="label">$(& $t 'budget.criticalFailures')</span>
 </div>
 <div class="stat">
 <span class="value" style="color:var(--g-sev-high)">$highFails</span>
-<span class="label">High Failures</span>
+<span class="label">$(& $t 'budget.highFailures')</span>
 </div>
 <div class="stat">
 <span class="value">$totalChecks</span>
-<span class="label">Total Checks ($passCount pass / $failCount fail / $warnCount warn)</span>
+<span class="label">$(& $tr 'budget.totalChecksBreakdown' $passCount $failCount $warnCount)</span>
 </div>
 </div>
 
 $(if ($complianceFrameworks.Count -gt 0) {
 @"
-<h2>Compliance Impact</h2>
-<p>The following compliance frameworks have gaps based on current audit findings:</p>
+<h2>$(& $t 'budget.complianceImpact')</h2>
+<p>$(& $t 'budget.complianceIntro')</p>
 <div class="table-wrap">
 <table>
-<thead><tr><th>Framework</th><th>Gaps Found</th></tr></thead>
+<thead><tr><th>$(& $t 'budget.thFramework')</th><th>$(& $t 'budget.thGapsFound')</th></tr></thead>
 <tbody>
 $complianceRows
 </tbody>
@@ -231,86 +238,86 @@ $complianceRows
 "@
 })
 
-<h2>Recommended Investment Phases</h2>
+<h2>$(& $t 'budget.investmentPhases')</h2>
 
 <div class="phase">
 <div class="phase-head">
-<span class="phase-title">Phase 1: Quick Wins (No Cost)</span>
+<span class="phase-title">$(& $t 'budget.phase1Title')</span>
 <span class="phase-cost">$($costRanges.Free.annualCostRange ?? '$0')</span>
 </div>
-<p>Configuration changes using existing tools &middot; highest ROI, immediate security improvement.</p>
+<p>$(& $tr 'budget.phase1Desc')</p>
 $(if ($freeFixes.Count -gt 0) {
 @"
 <div class="table-wrap">
 <table>
-<thead><tr><th>Check</th><th>Finding</th><th>Severity</th><th>Effort</th><th>Time</th></tr></thead>
+<thead><tr><th>$(& $t 'budget.thCheck')</th><th>$(& $t 'budget.thFinding')</th><th>$(& $t 'budget.thSeverity')</th><th>$(& $t 'budget.thEffort')</th><th>$(& $t 'budget.thTime')</th></tr></thead>
 <tbody>
 $freeRows
 </tbody>
 </table>
 </div>
-<p><strong>$($freeFixes.Count) action(s)</strong> &middot; Estimated total effort: $([Math]::Round(($freeFixes | Measure-Object EstimatedHours -Sum).Sum, 1)) hours</p>
+<p><strong>$(& $t 'budget.actions' $freeFixes.Count)</strong> &middot; $(& $tr 'budget.estimatedEffort' ([Math]::Round(($freeFixes | Measure-Object EstimatedHours -Sum).Sum, 1)))</p>
 "@
-} else { '<p>No free fixes identified.</p>' })
+} else { "<p>$(& $t 'budget.noFree')</p>" })
 </div>
 
 <div class="phase">
 <div class="phase-head">
-<span class="phase-title">Phase 2: Low-Cost Improvements</span>
+<span class="phase-title">$(& $t 'budget.phase2Title')</span>
 <span class="phase-cost">$($costRanges.Low.annualCostRange ?? '$0 - $500')</span>
 </div>
-<p>Minor purchases or license add-ons within existing budget.</p>
+<p>$(& $t 'budget.phase2Desc')</p>
 $(if ($lowFixes.Count -gt 0) {
 @"
 <div class="table-wrap">
 <table>
-<thead><tr><th>Check</th><th>Finding</th><th>Severity</th><th>Effort</th><th>Time</th></tr></thead>
+<thead><tr><th>$(& $t 'budget.thCheck')</th><th>$(& $t 'budget.thFinding')</th><th>$(& $t 'budget.thSeverity')</th><th>$(& $t 'budget.thEffort')</th><th>$(& $t 'budget.thTime')</th></tr></thead>
 <tbody>
 $lowRows
 </tbody>
 </table>
 </div>
-<p><strong>$($lowFixes.Count) action(s)</strong> &middot; Estimated total effort: $([Math]::Round(($lowFixes | Measure-Object EstimatedHours -Sum).Sum, 1)) hours</p>
+<p><strong>$(& $t 'budget.actions' $lowFixes.Count)</strong> &middot; $(& $tr 'budget.estimatedEffort' ([Math]::Round(($lowFixes | Measure-Object EstimatedHours -Sum).Sum, 1)))</p>
 "@
-} else { '<p>No low-cost fixes identified.</p>' })
+} else { "<p>$(& $t 'budget.noLow')</p>" })
 </div>
 
 <div class="phase">
 <div class="phase-head">
-<span class="phase-title">Phase 3: Moderate Investment</span>
+<span class="phase-title">$(& $t 'budget.phase3Title')</span>
 <span class="phase-cost">$($costRanges.Medium.annualCostRange ?? '$500 - $5,000')</span>
 </div>
-<p>License upgrades or add-on products for enhanced security capabilities.</p>
+<p>$(& $t 'budget.phase3Desc')</p>
 $(if ($medFixes.Count -gt 0) {
 @"
 <div class="table-wrap">
 <table>
-<thead><tr><th>Check</th><th>Finding</th><th>Severity</th><th>Effort</th><th>Time</th></tr></thead>
+<thead><tr><th>$(& $t 'budget.thCheck')</th><th>$(& $t 'budget.thFinding')</th><th>$(& $t 'budget.thSeverity')</th><th>$(& $t 'budget.thEffort')</th><th>$(& $t 'budget.thTime')</th></tr></thead>
 <tbody>
 $medRows
 </tbody>
 </table>
 </div>
-<p><strong>$($medFixes.Count) action(s)</strong> &middot; Estimated total effort: $([Math]::Round(($medFixes | Measure-Object EstimatedHours -Sum).Sum, 1)) hours</p>
+<p><strong>$(& $t 'budget.actions' $medFixes.Count)</strong> &middot; $(& $tr 'budget.estimatedEffort' ([Math]::Round(($medFixes | Measure-Object EstimatedHours -Sum).Sum, 1)))</p>
 "@
-} else { '<p>No medium-cost fixes identified.</p>' })
+} else { "<p>$(& $t 'budget.noMed')</p>" })
 </div>
 
 $(if ($highCostFixes.Count -gt 0) {
 @"
 <div class="phase">
 <div class="phase-head">
-<span class="phase-title">Phase 4: Strategic Investment</span>
+<span class="phase-title">$(& $t 'budget.phase4Title')</span>
 <span class="phase-cost">$($costRanges.High.annualCostRange ?? '$5,000+')</span>
 </div>
-<p>Major purchases or infrastructure changes for long-term security posture improvement.</p>
-<p><strong>$($highCostFixes.Count) item(s)</strong> identified requiring significant investment. Contact your security advisor for detailed scoping.</p>
+<p>$(& $tr 'budget.phase4Desc')</p>
+<p>$(& $tr 'budget.phase4Body' $highCostFixes.Count)</p>
 </div>
 "@
 })
 
-<p style="color:var(--g-muted);font-size:0.9rem;font-style:italic;">This report is for internal planning purposes.</p>
-$(Get-GuerrillaReportShellEnd -FooterNote 'Budget Justification' -TimestampText "$timestamp UTC")
+<p style="color:var(--g-muted);font-size:0.9rem;font-style:italic;">$(& $t 'budget.disclaimer')</p>
+$(Get-GuerrillaReportShellEnd -FooterNote (& $tr 'budget.footer') -TimestampText "$timestamp UTC")
 "@
 
     $html | Set-Content -Path $OutputPath -Encoding UTF8

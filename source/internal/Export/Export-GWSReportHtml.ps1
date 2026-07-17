@@ -25,17 +25,23 @@ function Export-GWSReportHtml {
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
         [string]$Style = 'Auto',
 
-        [hashtable]$Branding
+        [hashtable]$Branding,
+
+        [string]$Language = 'en'
     )
 
     $esc = { param([string]$s) [System.Web.HttpUtility]::HtmlEncode($s) }
+
+    $Findings = Get-GuerrillaLocalizedFindings -Findings $Findings -Language $Language
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
 
     # Render the affected accounts/objects captured in a finding's Details as one or more
     # labeled BULLETED lists — delegates to the shared Get-GuerrillaReportAffectedHtml so the
     # GWS, AD, Entra and Campaign reports all surface affected entities identically.
     $renderAffected = {
         param($Details)
-        Get-GuerrillaReportAffectedHtml -Details $Details
+        Get-GuerrillaReportAffectedHtml -Details $Details -Language $Language
     }
 
     $timestampStr = [datetime]::UtcNow.ToString('yyyy-MM-dd HH:mm:ss') + ' UTC'
@@ -65,13 +71,13 @@ function Export-GWSReportHtml {
     $html = [System.Text.StringBuilder]::new(65536)
 
     # ═══ SHELL + HEADER ═══
-    $domainLine = if ($TenantDomain) { "Domain: $(& $esc $TenantDomain) &middot; " } else { '' }
-    $subtitle = "${domainLine}Generated: $timestampStr &middot; $totalChecks configuration checks evaluated"
+    $domainLine = if ($TenantDomain) { "$(& $t 'common.domain'): $(& $esc $TenantDomain) &middot; " } else { '' }
+    $subtitle = "${domainLine}$(& $t 'common.generated'): $timestampStr &middot; $(& $tr 'gws.configChecksEvaluated' $totalChecks)"
     [void]$html.Append((Get-GuerrillaReportShellStart `
-        -Title 'Google Workspace Report' `
+        -Title (& $tr 'gws.title') `
         -Subtitle $subtitle `
-        -HtmlTitle "Guerrilla Google Workspace Report$(if ($TenantDomain) { " - $TenantDomain" }) - $timestampStr" `
-        -TopbarMeta 'Google Workspace Assessment' `
+        -HtmlTitle "$(& $tr 'gws.htmlTitle')$(if ($TenantDomain) { " - $TenantDomain" }) - $timestampStr" `
+        -TopbarMeta (& $tr 'gws.topbar') `
         -Style $Style -Branding $Branding -ExtraCss $extraCss))
 
     # ═══ SCORE PANEL ═══
@@ -91,53 +97,53 @@ function Export-GWSReportHtml {
   </div>
   <div class="score-detail">
     <div class="label" style="color:$scoreColor">$(& $esc $displayLabel)</div>
-    <div class="desc">Google Workspace security posture score (0-100)</div>
-    <div class="desc">$totalChecks checks evaluated &middot; $passCount passed, $failCount failed, $warnCount warnings, $skipCount skipped</div>
+    <div class="desc">$(& $t 'gws.postureDesc')</div>
+    <div class="desc">$(& $tr 'common.checksSummary' $totalChecks $passCount $failCount $warnCount $skipCount)</div>
   </div>
 </div>
 "@)
 
     # ═══ WHAT CHANGED SINCE LAST RUN — shared section, before findings ═══
-    [void]$html.Append((Get-GuerrillaComparisonSectionHtml -RunDiff $RunDiff -Esc $esc))
+    [void]$html.Append((Get-GuerrillaComparisonSectionHtml -RunDiff $RunDiff -Esc $esc -Language $Language))
 
     # ═══ EXECUTIVE SUMMARY ═══
     $summaryVerdict = if ($critCount -gt 0) {
-        "Immediate action required. $critCount critical-severity configuration failure(s) detected that expose the tenant to significant risk."
+        & $t 'gws.verdictCrit' $critCount
     } elseif ($highCount -gt 0) {
-        "Remediation recommended. $highCount high-severity finding(s) identified that should be addressed promptly."
+        & $t 'gws.verdictHigh' $highCount
     } elseif ($medCount -gt 0) {
-        "Monitor and improve. $medCount medium-severity finding(s) warrant review and hardening."
+        & $t 'gws.verdictMed' $medCount
     } elseif ($failCount -gt 0) {
-        "Minor gaps detected. $lowCount low-severity finding(s) present. Overall posture is sound."
+        & $t 'gws.verdictLow' $lowCount
     } else {
-        "All checks passed. The tenant configuration meets baseline security expectations."
+        & $t 'gws.verdictPass'
     }
     $noticeClass = if ($critCount -gt 0) { 'notice-bad' } elseif ($highCount -gt 0 -or $medCount -gt 0) { 'notice-warn' } else { 'notice-ok' }
 
     [void]$html.Append(@"
 <div class="notice $noticeClass">
-  <h3>Executive Summary</h3>
-  <p><strong>Assessment:</strong> $(& $esc $summaryVerdict)</p>
-  <p><strong>Scope:</strong> $totalChecks configuration checks across $($CategoryScores.Count) categories.</p>
-  <p><strong>Results:</strong> $passCount passed, $failCount failed, $warnCount warnings, $skipCount skipped.</p>
+  <h3>$(& $t 'common.executiveSummary')</h3>
+  <p><strong>$(& $t 'gws.assessmentLabel')</strong> $summaryVerdict</p>
+  <p><strong>$(& $t 'gws.scopeLabel')</strong> $(& $tr 'gws.scope' $totalChecks $CategoryScores.Count)</p>
+  <p><strong>$(& $t 'gws.resultsLabel')</strong> $(& $tr 'gws.results' $passCount $failCount $warnCount $skipCount)</p>
 "@)
     if ($critCount -gt 0) {
-        [void]$html.Append("<p style=`"color:var(--g-bad)`"><strong>$critCount critical finding(s) require immediate remediation.</strong></p>")
+        [void]$html.Append("<p style=`"color:var(--g-bad)`"><strong>$(& $t 'gws.criticalRequire' $critCount)</strong></p>")
     }
     [void]$html.Append('</div>')
 
     # ═══ STAT CARDS ═══
     [void]$html.Append('<div class="stat-grid">')
     $statCards = @(
-        @{ Value = $totalChecks; Label = 'Total Checks'; Color = 'var(--g-heading)' }
-        @{ Value = $passCount;   Label = 'Passed';       Color = 'var(--g-ok)' }
-        @{ Value = $failCount;   Label = 'Failed';       Color = 'var(--g-bad)' }
-        @{ Value = $warnCount;   Label = 'Warnings';     Color = 'var(--g-warn)' }
-        @{ Value = $skipCount;   Label = 'Skipped';      Color = 'var(--g-muted)' }
-        @{ Value = $critCount;   Label = 'Critical';     Color = 'var(--g-sev-critical)' }
-        @{ Value = $highCount;   Label = 'High';         Color = 'var(--g-sev-high)' }
-        @{ Value = $medCount;    Label = 'Medium';       Color = 'var(--g-sev-medium)' }
-        @{ Value = $lowCount;    Label = 'Low';          Color = 'var(--g-sev-low)' }
+        @{ Value = $totalChecks; Label = (& $t 'common.totalChecks'); Color = 'var(--g-heading)' }
+        @{ Value = $passCount;   Label = (& $t 'common.passed');      Color = 'var(--g-ok)' }
+        @{ Value = $failCount;   Label = (& $t 'common.failed');      Color = 'var(--g-bad)' }
+        @{ Value = $warnCount;   Label = (& $t 'common.warnings');    Color = 'var(--g-warn)' }
+        @{ Value = $skipCount;   Label = (& $t 'common.skipped');     Color = 'var(--g-muted)' }
+        @{ Value = $critCount;   Label = (& $t 'common.critical');    Color = 'var(--g-sev-critical)' }
+        @{ Value = $highCount;   Label = (& $t 'common.high');        Color = 'var(--g-sev-high)' }
+        @{ Value = $medCount;    Label = (& $t 'common.medium');      Color = 'var(--g-sev-medium)' }
+        @{ Value = $lowCount;    Label = (& $t 'common.low');         Color = 'var(--g-sev-low)' }
     )
     foreach ($card in $statCards) {
         [void]$html.Append(@"
@@ -150,25 +156,26 @@ function Export-GWSReportHtml {
     [void]$html.Append('</div>')
 
     # ═══ SECURITY MATURITY + INDICATORS OF EXPOSURE — shared sections ═══
-    [void]$html.Append((Get-GuerrillaMaturitySectionHtml -Findings $Findings -Esc $esc))
-    [void]$html.Append((Get-GuerrillaIndicatorsOfExposureHtml -Findings $Findings -Esc $esc))
+    [void]$html.Append((Get-GuerrillaMaturitySectionHtml -Findings $Findings -Esc $esc -Language $Language))
+    [void]$html.Append((Get-GuerrillaIndicatorsOfExposureHtml -Findings $Findings -Esc $esc -Language $Language))
 
     # ═══ CATEGORY SCORES ═══
-    [void]$html.Append('<h2>Category Scores</h2><div class="category-grid">')
+    [void]$html.Append("<h2>$(& $t 'common.categoryScores')</h2><div class=`"category-grid`">")
     foreach ($cat in ($CategoryScores.GetEnumerator() | Sort-Object { $_.Value.Score })) {
         $catScore = $cat.Value.Score
         $catColor = Get-GuerrillaScoreColorVar -Score $catScore
+        $catLabel = & $esc (Get-GuerrillaLocalizedCategoryName -Name "$($cat.Key)" -Language $Language)
         [void]$html.Append(@"
   <div class="cat-card">
     <div class="cat-header">
-      <div class="cat-name">$(& $esc $cat.Key)</div>
+      <div class="cat-name">$catLabel</div>
       <div class="cat-score" style="color:$catColor">$catScore</div>
     </div>
     <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:${catScore}%;background:$catColor"></div></div>
     <div class="cat-counts">
-      <span class="verdict-pass">Pass: $($cat.Value.Pass)</span>
-      <span class="verdict-fail">Fail: $($cat.Value.Fail)</span>
-      <span class="verdict-warn">Warn: $($cat.Value.Warn)</span>
+      <span class="verdict-pass">$(& $t 'common.passLabel') $($cat.Value.Pass)</span>
+      <span class="verdict-fail">$(& $t 'common.failLabel') $($cat.Value.Fail)</span>
+      <span class="verdict-warn">$(& $t 'common.warnLabel') $($cat.Value.Warn)</span>
     </div>
   </div>
 "@)
@@ -176,7 +183,7 @@ function Export-GWSReportHtml {
     [void]$html.Append('</div>')
 
     # ═══ INTERACTIVE FILTER BAR (live status/severity/search over the findings tables below) ═══
-    [void]$html.Append((Get-GuerrillaFindingsFilterHtml))
+    [void]$html.Append((Get-GuerrillaFindingsFilterHtml -Language $Language))
 
     # ═══ CRITICAL & HIGH FINDINGS TABLE ═══
     $priorityFindings = @($failFindings | Where-Object { $_.Severity -in @('Critical', 'High') } |
@@ -184,21 +191,22 @@ function Export-GWSReportHtml {
 
     if ($priorityFindings.Count -gt 0) {
         [void]$html.Append(@"
-<h2>Priority Findings &middot; Critical &amp; High</h2>
+<h2>$(& $tr 'gws.priorityCritHigh')</h2>
 <div class="table-wrap">
 <table class="priority-table">
-  <thead><tr><th>Check ID</th><th>Check Name</th><th>Category</th><th>Severity</th><th>Current Value</th><th>Remediation</th></tr></thead>
+  <thead><tr><th>$(& $t 'common.thCheckId')</th><th>$(& $t 'common.thCheckName')</th><th>$(& $t 'common.thCategory')</th><th>$(& $t 'common.thSeverity')</th><th>$(& $t 'common.thCurrentValue')</th><th>$(& $t 'common.thRemediation')</th></tr></thead>
   <tbody>
 "@)
         foreach ($f in $priorityFindings) {
             $sevClass = $f.Severity.ToLower()
             $rowText = & $esc (("$($f.CheckId) $($f.CheckName) $($f.Category) $($f.CurrentValue)").ToLower())
+            $catLabel = & $esc (Get-GuerrillaLocalizedCategoryName -Name "$($f.Category)" -Language $Language)
             $remParts = [System.Collections.Generic.List[string]]::new()
             if ($f.RemediationUrl) {
-                $remParts.Add("<a href=`"$(& $esc $f.RemediationUrl)`" target=`"_blank`" rel=`"noopener`">Fix in Admin Console</a>")
+                $remParts.Add("<a href=`"$(& $esc $f.RemediationUrl)`" target=`"_blank`" rel=`"noopener`">$(& $t 'gws.fixInConsole')</a>")
             }
             if ($f.ReferenceUrl) {
-                $remParts.Add("<a href=`"$(& $esc $f.ReferenceUrl)`" target=`"_blank`" rel=`"noopener`">Why it's unsafe</a>")
+                $remParts.Add("<a href=`"$(& $esc $f.ReferenceUrl)`" target=`"_blank`" rel=`"noopener`">$(& $tr 'gws.whyUnsafe')</a>")
             }
             $remLink = if ($remParts.Count -gt 0) { $remParts -join '<br>' } else { '' }
 
@@ -206,7 +214,7 @@ function Export-GWSReportHtml {
     <tr class="gg-row" data-status="$(& $esc $f.Status)" data-sev="$(& $esc $f.Severity)" data-text="$rowText">
       <td><code>$(& $esc $f.CheckId)</code></td>
       <td>$(& $esc $f.CheckName)</td>
-      <td>$(& $esc $f.Category)</td>
+      <td>$catLabel</td>
       <td><span class="badge badge-sev-$sevClass">$(& $esc $f.Severity)</span></td>
       <td>$(& $esc $f.CurrentValue)</td>
       <td>$remLink</td>
@@ -217,7 +225,7 @@ function Export-GWSReportHtml {
     }
 
     # ═══ PER-CATEGORY DETAIL SECTIONS ═══
-    [void]$html.Append('<h2>Detailed Findings by Category</h2>')
+    [void]$html.Append("<h2>$(& $t 'common.detailedByCategory')</h2>")
 
     $categories = $Findings | Group-Object -Property Category | Sort-Object Name
 
@@ -235,20 +243,21 @@ function Export-GWSReportHtml {
         $openAttr = if ($catHasFailures) { ' open' } else { '' }
 
         $catInfo = $CategoryScores[$catName]
-        $catScoreStr = if ($catInfo) { "Score: $($catInfo.Score)/100 &middot; " } else { '' }
+        $catScoreStr = if ($catInfo) { "$(& $t 'common.thScore'): $($catInfo.Score)/100 &middot; " } else { '' }
+        $catLabel = & $esc (Get-GuerrillaLocalizedCategoryName -Name "$catName" -Language $Language)
 
         [void]$html.Append(@"
 <details class="cat-detail"$openAttr>
-  <summary>$(& $esc $catName)<span class="sum-counts">$catScoreStr$($catFindings.Count) checks &middot; P:$catPass F:$catFail W:$catWarn</span></summary>
+  <summary>$catLabel<span class="sum-counts">$catScoreStr$(& $tr 'common.summaryCounts' $catFindings.Count $catPass $catFail $catWarn)</span></summary>
   <div class="detail-body">
     <table>
-      <thead><tr><th>Check ID</th><th>Name</th><th>Severity</th><th>Status</th><th>Current Value</th><th>Recommended Value</th><th>Remediation Steps</th></tr></thead>
+      <thead><tr><th>$(& $t 'common.thCheckId')</th><th>$(& $t 'common.thName')</th><th>$(& $t 'common.thSeverity')</th><th>$(& $t 'common.thStatus')</th><th>$(& $t 'common.thCurrentValue')</th><th>$(& $t 'common.thRecommendedValue')</th><th>$(& $t 'common.thRemediationSteps')</th></tr></thead>
       <tbody>
 "@)
         foreach ($f in $catFindings) {
             $isAccepted  = try { Test-RiskAccepted -CheckId $f.CheckId } catch { $false }
             $statusClass = if ($isAccepted) { 'accepted' } else { $f.Status.ToLower() }
-            $statusLabel = if ($isAccepted) { 'ACCEPTED' } else { $f.Status }
+            $statusLabel = if ($isAccepted) { & $t 'common.accepted' } else { & $esc $f.Status }
             $sevClass    = $f.Severity.ToLower()
             $rowText     = & $esc (("$($f.CheckId) $($f.CheckName) $($f.Category) $($f.CurrentValue)").ToLower())
 
@@ -261,7 +270,7 @@ function Export-GWSReportHtml {
           <td><code>$(& $esc $f.CheckId)</code></td>
           <td>$(& $esc $f.CheckName)</td>
           <td><span class="badge badge-sev-$sevClass">$(& $esc $f.Severity)</span></td>
-          <td><span class="badge badge-status-$statusClass">$(& $esc $statusLabel)</span></td>
+          <td><span class="badge badge-status-$statusClass">$statusLabel</span></td>
           <td>$(& $esc $f.CurrentValue)</td>
           <td>$(& $esc $f.RecommendedValue)</td>
           <td>$remedSteps</td>
@@ -273,11 +282,11 @@ function Export-GWSReportHtml {
             $linkParts = [System.Collections.Generic.List[string]]::new()
             if ($f.Status -in @('FAIL', 'WARN', 'ERROR')) {
                 if ($f.ReferenceUrl) {
-                    $whyTitle = if ($f.ReferenceTitle) { $f.ReferenceTitle } else { 'Why this is unsafe' }
-                    $linkParts.Add("<span class=`"why`"><a href=`"$(& $esc $f.ReferenceUrl)`" target=`"_blank`" rel=`"noopener`">Why this is unsafe: $(& $esc $whyTitle)</a></span>")
+                    $whyTitle = if ($f.ReferenceTitle) { & $esc $f.ReferenceTitle } else { & $tr 'gws.whyUnsafeDefault' }
+                    $linkParts.Add("<span class=`"why`"><a href=`"$(& $esc $f.ReferenceUrl)`" target=`"_blank`" rel=`"noopener`">$(& $tr 'gws.whyUnsafeArticle' $whyTitle)</a></span>")
                 }
                 if ($f.RemediationUrl) {
-                    $linkParts.Add("<a class=`"admin-link`" href=`"$(& $esc $f.RemediationUrl)`" target=`"_blank`" rel=`"noopener`">Fix in Admin Console</a>")
+                    $linkParts.Add("<a class=`"admin-link`" href=`"$(& $esc $f.RemediationUrl)`" target=`"_blank`" rel=`"noopener`">$(& $t 'gws.fixInConsole')</a>")
                 }
             }
             $linksHtml = if ($linkParts.Count -gt 0) { "<div class=`"extra-links`">$($linkParts -join '')</div>" } else { '' }
@@ -299,10 +308,10 @@ function Export-GWSReportHtml {
 
     if ($complianceFindings.Count -gt 0) {
         [void]$html.Append(@"
-<h2>Compliance Cross-Reference</h2>
+<h2>$(& $t 'common.complianceCrossReference')</h2>
 <div class="table-wrap">
 <table class="compliance-table">
-  <thead><tr><th>Check ID</th><th>Check Name</th><th>Severity</th><th>NIST SP 800-53</th><th>MITRE ATT&amp;CK</th><th>CIS Benchmark</th></tr></thead>
+  <thead><tr><th>$(& $t 'common.thCheckId')</th><th>$(& $t 'common.thCheckName')</th><th>$(& $t 'common.thSeverity')</th><th>$(& $t 'common.thNist')</th><th>$(& $t 'common.thMitre')</th><th>$(& $t 'common.thCisBenchmark')</th></tr></thead>
   <tbody>
 "@)
         foreach ($f in $complianceFindings) {
@@ -336,7 +345,7 @@ function Export-GWSReportHtml {
 
     # ═══ FOOTER + SHELL END ═══
     [void]$html.Append((Get-GuerrillaReportShellEnd `
-        -FooterNote 'Google Workspace Audit' `
+        -FooterNote (& $tr 'gws.footer') `
         -TimestampText $timestampStr))
 
     [System.IO.File]::WriteAllText($FilePath, $html.ToString(), [System.Text.Encoding]::UTF8)

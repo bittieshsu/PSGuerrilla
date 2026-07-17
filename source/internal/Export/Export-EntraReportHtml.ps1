@@ -15,12 +15,17 @@ function Export-EntraReportHtml {
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
         [string]$Style = 'Auto',
 
-        [hashtable]$Branding
+        [hashtable]$Branding,
+
+        [string]$Language = 'en'
     )
 
     $esc = { param([string]$s) [System.Web.HttpUtility]::HtmlEncode($s) }
 
-    $findings = $Result.Findings
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
+
+    $findings = Get-GuerrillaLocalizedFindings -Findings $Result.Findings -Language $Language
     $score = $Result.Score
     $overallScore = $score.OverallScore
     $categoryScores = $score.CategoryScores
@@ -45,12 +50,12 @@ function Export-EntraReportHtml {
     $html = [System.Text.StringBuilder]::new(65536)
 
     # ═══ SHELL + HEADER ═══
-    $subtitle = "Tenant: $(& $esc $Result.TenantId) &middot; Generated: $timestampStr"
+    $subtitle = "$(& $t 'common.tenant'): $(& $esc $Result.TenantId) &middot; $(& $t 'common.generated'): $timestampStr"
     [void]$html.Append((Get-GuerrillaReportShellStart `
-        -Title 'Entra ID / M365 Report' `
+        -Title (& $tr 'entra.title') `
         -Subtitle $subtitle `
-        -HtmlTitle "Guerrilla Entra ID / M365 Report - $($Result.TenantId) - $timestampStr" `
-        -TopbarMeta 'Entra ID / M365 Assessment' `
+        -HtmlTitle "$(& $tr 'entra.htmlTitle') - $($Result.TenantId) - $timestampStr" `
+        -TopbarMeta (& $tr 'entra.topbar') `
         -Style $Style -Branding $Branding))
 
     # ═══ SCORE PANEL ═══
@@ -70,8 +75,8 @@ function Export-EntraReportHtml {
   </div>
   <div class="score-detail">
     <div class="label" style="color:$scoreColor">$(& $esc $scoreLabel)</div>
-    <div class="desc">Entra ID / Azure / M365 security posture score (0-100)</div>
-    <div class="desc">$totalChecks checks evaluated &middot; $passCount passed, $failCount failed, $warnCount warnings, $skipCount skipped</div>
+    <div class="desc">$(& $t 'entra.postureDesc')</div>
+    <div class="desc">$(& $tr 'common.checksSummary' $totalChecks $passCount $failCount $warnCount $skipCount)</div>
   </div>
 </div>
 "@)
@@ -79,16 +84,16 @@ function Export-EntraReportHtml {
     # ═══ SUMMARY STATS ═══
     [void]$html.Append(@"
 <div class="stat-grid">
-  <div class="stat"><span class="value">$totalChecks</span><span class="label">Total Checks</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-ok)">$passCount</span><span class="label">Passed</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-bad)">$failCount</span><span class="label">Failed</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-warn)">$warnCount</span><span class="label">Warnings</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-muted)">$skipCount</span><span class="label">Skipped</span></div>
+  <div class="stat"><span class="value">$totalChecks</span><span class="label">$(& $t 'common.totalChecks')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-ok)">$passCount</span><span class="label">$(& $t 'common.passed')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-bad)">$failCount</span><span class="label">$(& $t 'common.failed')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-warn)">$warnCount</span><span class="label">$(& $t 'common.warnings')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-muted)">$skipCount</span><span class="label">$(& $t 'common.skipped')</span></div>
 </div>
 "@)
 
     # ═══ WHAT CHANGED SINCE LAST RUN — shared section, before findings ═══
-    [void]$html.Append((Get-GuerrillaComparisonSectionHtml -RunDiff $RunDiff -Esc $esc))
+    [void]$html.Append((Get-GuerrillaComparisonSectionHtml -RunDiff $RunDiff -Esc $esc -Language $Language))
 
     # ═══ ZERO TRUST POSTURE (CISA ZTMM) — pillar scores that disclose their own coverage ═══
     $ztScores = @($findings | Get-ZeroTrustScore)
@@ -100,7 +105,7 @@ function Export-EntraReportHtml {
         }) -join ' &middot; '
         [void]$html.Append(@"
 <div class="notice">
-  <p><strong>Zero Trust posture</strong> (CISA ZTMM): $ztLine</p>
+  <p><strong>$(& $t 'entra.zeroTrust')</strong> (CISA ZTMM): $ztLine</p>
 </div>
 "@)
     }
@@ -109,31 +114,32 @@ function Export-EntraReportHtml {
     if ($failCount -gt 0) {
         [void]$html.Append(@"
 <div class="stat-grid">
-  <div class="stat"><span class="value" style="color:var(--g-sev-critical)">$critCount</span><span class="label">Critical</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-sev-high)">$highCount</span><span class="label">High</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-sev-medium)">$medCount</span><span class="label">Medium</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-sev-low)">$lowCount</span><span class="label">Low</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-sev-critical)">$critCount</span><span class="label">$(& $t 'common.critical')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-sev-high)">$highCount</span><span class="label">$(& $t 'common.high')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-sev-medium)">$medCount</span><span class="label">$(& $t 'common.medium')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-sev-low)">$lowCount</span><span class="label">$(& $t 'common.low')</span></div>
 </div>
 "@)
     }
 
     # ═══ CATEGORY SCORES ═══
-    [void]$html.Append('<h2>Category Scores</h2><div class="category-grid">')
+    [void]$html.Append("<h2>$(& $t 'common.categoryScores')</h2><div class=`"category-grid`">")
     foreach ($cat in ($categoryScores.GetEnumerator() | Sort-Object { $_.Value.Score })) {
         $catScore = $cat.Value.Score
         $catColor = Get-GuerrillaScoreColorVar -Score $catScore
+        $catLabel = & $esc (Get-GuerrillaLocalizedCategoryName -Name "$($cat.Key)" -Language $Language)
         [void]$html.Append(@"
   <div class="cat-card">
     <div class="cat-header">
-      <div class="cat-name">$(& $esc $cat.Key)</div>
+      <div class="cat-name">$catLabel</div>
       <div class="cat-score" style="color:$catColor">$catScore</div>
     </div>
     <div class="cat-bar-bg"><div class="cat-bar-fill" style="width:${catScore}%;background:$catColor"></div></div>
     <div class="cat-counts">
-      <span class="verdict-pass">Pass: $($cat.Value.Pass)</span>
-      <span class="verdict-fail">Fail: $($cat.Value.Fail)</span>
-      <span class="verdict-warn">Warn: $($cat.Value.Warn)</span>
-      <span class="verdict-na">Skip: $($cat.Value.Skip)</span>
+      <span class="verdict-pass">$(& $t 'common.passLabel') $($cat.Value.Pass)</span>
+      <span class="verdict-fail">$(& $t 'common.failLabel') $($cat.Value.Fail)</span>
+      <span class="verdict-warn">$(& $t 'common.warnLabel') $($cat.Value.Warn)</span>
+      <span class="verdict-na">$(& $t 'common.skipLabel') $($cat.Value.Skip)</span>
     </div>
   </div>
 "@)
@@ -141,13 +147,13 @@ function Export-EntraReportHtml {
     [void]$html.Append('</div>')
 
     # ═══ ALL FINDINGS (interactive filter over the table below) ═══
-    [void]$html.Append('<h2>All Findings</h2>')
-    [void]$html.Append((Get-GuerrillaFindingsFilterHtml))
+    [void]$html.Append("<h2>$(& $t 'common.allFindings')</h2>")
+    [void]$html.Append((Get-GuerrillaFindingsFilterHtml -Language $Language))
 
     [void]$html.Append(@"
 <div class="table-wrap">
 <table id="findings-table">
-  <thead><tr><th>ID</th><th>Check</th><th>Category</th><th>Severity</th><th>Status</th><th>Current Value</th><th>Remediation</th></tr></thead>
+  <thead><tr><th>$(& $t 'common.thId')</th><th>$(& $t 'common.thCheck')</th><th>$(& $t 'common.thCategory')</th><th>$(& $t 'common.thSeverity')</th><th>$(& $t 'common.thStatus')</th><th>$(& $t 'common.thCurrentValue')</th><th>$(& $t 'common.thRemediation')</th></tr></thead>
   <tbody>
 "@)
 
@@ -155,7 +161,8 @@ function Export-EntraReportHtml {
         $isAccepted = try { Test-RiskAccepted -CheckId $f.CheckId } catch { $false }
         $sevClass = $f.Severity.ToLower()
         $statusClass = if ($isAccepted) { 'accepted' } else { $f.Status.ToLower() }
-        $statusLabel = if ($isAccepted) { 'ACCEPTED' } else { $f.Status }
+        $statusLabel = if ($isAccepted) { & $t 'common.accepted' } else { & $esc $f.Status }
+        $catLabel = & $esc (Get-GuerrillaLocalizedCategoryName -Name "$($f.Category)" -Language $Language)
         $rowText = & $esc (("$($f.CheckId) $($f.CheckName) $($f.Category) $($f.CurrentValue)").ToLower())
 
         $remCell = ''
@@ -163,23 +170,23 @@ function Export-EntraReportHtml {
             $remCell += "<small>$(& $esc $f.RemediationSteps)</small>"
         }
         if ($f.RemediationUrl) {
-            $remCell += "<br><a href=`"$(& $esc $f.RemediationUrl)`" target=`"_blank`" rel=`"noopener`">Open in Admin Portal</a>"
+            $remCell += "<br><a href=`"$(& $esc $f.RemediationUrl)`" target=`"_blank`" rel=`"noopener`">$(& $t 'entra.openInPortal')</a>"
         }
 
         [void]$html.Append(@"
     <tr class="gg-row" data-status="$(& $esc $f.Status)" data-sev="$(& $esc $f.Severity)" data-text="$rowText">
       <td><code>$(& $esc $f.CheckId)</code></td>
       <td>$(& $esc $f.CheckName)<br><small>$(& $esc $f.Description)</small></td>
-      <td>$(& $esc $f.Category)<br><small>$(& $esc $f.Subcategory)</small></td>
+      <td>$catLabel<br><small>$(& $esc $f.Subcategory)</small></td>
       <td><span class="badge badge-sev-$sevClass">$(& $esc $f.Severity)</span></td>
-      <td><span class="badge badge-status-$statusClass">$(& $esc $statusLabel)</span></td>
+      <td><span class="badge badge-status-$statusClass">$statusLabel</span></td>
       <td>$(& $esc $f.CurrentValue)</td>
       <td>$remCell</td>
     </tr>
 "@)
 
         if ($f.Status -in @('FAIL', 'WARN')) {
-            $affectedHtml = Get-GuerrillaReportAffectedHtml -Details $f.Details
+            $affectedHtml = Get-GuerrillaReportAffectedHtml -Details $f.Details -Language $Language
             if ($affectedHtml) {
                 [void]$html.Append("<tr class=`"gg-row finding-extra`" data-status=`"$(& $esc $f.Status)`" data-sev=`"$(& $esc $f.Severity)`" data-text=`"$rowText`"><td colspan=`"7`">$affectedHtml</td></tr>")
             }
@@ -190,7 +197,7 @@ function Export-EntraReportHtml {
 
     # ═══ FOOTER + SHELL END ═══
     [void]$html.Append((Get-GuerrillaReportShellEnd `
-        -FooterNote 'Entra ID / M365 Audit' `
+        -FooterNote (& $tr 'entra.footer') `
         -TimestampText $timestampStr))
 
     $html.ToString() | Set-Content -Path $OutputPath -Encoding UTF8

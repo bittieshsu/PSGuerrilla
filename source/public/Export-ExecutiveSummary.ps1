@@ -30,7 +30,9 @@ function Export-ExecutiveSummary {
         [string]$ProfileName,
 
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
-        [string]$Style = 'Auto'
+        [string]$Style = 'Auto',
+
+        [string]$Language = ''
     )
 
     if (-not $OutputPath) { $OutputPath = Join-Path (Get-Location) 'Guerrilla-Executive-Summary.html' }
@@ -46,7 +48,11 @@ function Export-ExecutiveSummary {
         }
     }
 
+    if (-not $Language) { $Language = Resolve-GuerrillaReportLanguage -Configured '' }
     $esc = { param([string]$s) [System.Web.HttpUtility]::HtmlEncode($s) }
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
+    $Findings = Get-GuerrillaLocalizedFindings -Findings $Findings -Language $Language
     $timestamp = [datetime]::UtcNow.ToString('yyyy-MM-dd HH:mm:ss')
 
     # Calculate score
@@ -75,26 +81,27 @@ function Export-ExecutiveSummary {
         $matLevel = [int]$maturity.OverallLevel
         $matColor = $matColors["$matLevel"] ?? 'var(--g-sev-info)'
         $matLabel = & $esc ([string]$maturity.OverallLabel)
-        $maturityStat = "<div class=`"stat`"><span class=`"value`" style=`"color:$matColor`">$matLevel/5</span><span class=`"label`">Maturity ($matLabel)</span></div>"
+        $maturityStat = "<div class=`"stat`"><span class=`"value`" style=`"color:$matColor`">$matLevel/5</span><span class=`"label`">$(& $tr 'exec.maturityStat' $matLabel)</span></div>"
 
         $catRows = ''
         foreach ($k in ($maturity.CategoryLevels.Keys | Sort-Object { [int]$maturity.CategoryLevels[$_].Level })) {
             $cl = $maturity.CategoryLevels[$k]
             $cc = $matColors["$([int]$cl.Level)"] ?? 'var(--g-sev-info)'
-            $catRows += "<tr><td>$(& $esc ([string]$cl.Category))</td><td style=`"color:$cc;font-weight:600;`">Level $([int]$cl.Level)</td><td>$(& $esc ([string]$cl.Label))</td></tr>"
+            $catName = & $esc (Get-GuerrillaLocalizedCategoryName -Name ([string]$cl.Category) -Language $Language)
+            $catRows += "<tr><td>$catName</td><td style=`"color:$cc;font-weight:600;`">$(& $t 'exec.matLevelCell' ([int]$cl.Level))</td><td>$(& $esc ([string]$cl.Label))</td></tr>"
         }
         $blockerHtml = ''
         if ($maturity.NextLevel) {
             $bl = (@($maturity.NextLevelBlockers | Select-Object -First 8 | ForEach-Object { "<li>$(& $esc ([string]$_))</li>" }) -join '')
-            if ($bl) { $blockerHtml = "<p>To reach <strong>Level $([int]$maturity.NextLevel)</strong>, address:</p><ul>$bl</ul>" }
+            if ($bl) { $blockerHtml = "<p>$(& $tr 'exec.maturityToReach' ([int]$maturity.NextLevel))</p><ul>$bl</ul>" }
         }
         $maturitySection = @"
-<h2>Security Maturity</h2>
+<h2>$(& $t 'exec.maturityHeading')</h2>
 <div class="card">
-<p>Overall maturity: <strong style="color:$matColor">Level $matLevel of 5: $matLabel</strong>. The lowest unmet control anchors the rating, so a single critical exposure caps the score until it is resolved (CMMI-style scale: 1 Initial to 5 Optimized).</p>
+<p>$(& $tr 'exec.maturityOverall' $matColor $matLevel $matLabel)</p>
 $blockerHtml
 <div class="table-wrap">
-<table><thead><tr><th>Category</th><th>Level</th><th>Maturity</th></tr></thead><tbody>$catRows</tbody></table>
+<table><thead><tr><th>$(& $t 'exec.thCategory')</th><th>$(& $t 'exec.thLevel')</th><th>$(& $t 'exec.thMaturity')</th></tr></thead><tbody>$catRows</tbody></table>
 </div>
 </div>
 "@
@@ -135,31 +142,31 @@ $blockerHtml
     # Quick wins rows
     $quickWinRows = ''
     foreach ($qw in $quickWins) {
-        $quickWinRows += "<li><strong>$(& $esc $qw.CheckName)</strong> ($(& $esc $qw.Severity), ~$($qw.EstimatedHours)h effort)</li>`n"
+        $quickWinRows += "<li><strong>$(& $esc $qw.CheckName)</strong> $(& $tr 'exec.quickWinItem' (& $esc $qw.Severity) $qw.EstimatedHours)</li>`n"
     }
 
     # Compliance rows
     $complianceHtml = ''
     foreach ($cg in $complianceGaps) {
-        $complianceHtml += "<span class=`"badge`"><strong>$(& $esc ([string]$cg.Framework))</strong>: $($cg.Gaps) gap(s)</span>`n"
+        $complianceHtml += "<span class=`"badge`"><strong>$(& $esc ([string]$cg.Framework))</strong>: $(& $tr 'exec.gaps' $cg.Gaps)</span>`n"
     }
 
     $html = [System.Text.StringBuilder]::new(32768)
 
-    $subtitle = "$(& $esc $OrganizationName) &middot; $(if ($ProfileName) { "$(& $esc $ProfileName) Profile &middot; " })$timestamp UTC"
+    $subtitle = "$(& $esc $OrganizationName) &middot; $(if ($ProfileName) { "$(& $esc $ProfileName) $(& $t 'exec.profileSuffix') &middot; " })$timestamp UTC"
     [void]$html.Append((Get-GuerrillaReportShellStart `
-        -Title 'Executive Security Summary' `
+        -Title (& $tr 'exec.title') `
         -Subtitle $subtitle `
-        -HtmlTitle "Guerrilla Executive Summary - $OrganizationName - $timestamp UTC" `
-        -TopbarMeta 'Executive Summary' `
+        -HtmlTitle "$(& $tr 'exec.htmlTitle') - $OrganizationName - $timestamp UTC" `
+        -TopbarMeta (& $tr 'exec.topbar') `
         -Style $Style))
 
     $circumference = 2 * [Math]::PI * 50
     $dashOffset = if ($scoreIsNumeric) { $circumference * (1 - ($scoreNum / 100)) } else { $circumference }
-    $verdict = if (-not $scoreIsNumeric) { 'No score could be computed from the available findings. Run a scan to establish a baseline.' }
-        elseif ($scoreNum -ge 75) { 'Your organization has a strong security foundation. Continue monitoring and address remaining gaps.' }
-        elseif ($scoreNum -ge 50) { 'Your security posture has room for improvement. Priority action on critical findings is recommended.' }
-        else { 'Immediate attention required. Critical security gaps put your organization at elevated risk.' }
+    $verdict = if (-not $scoreIsNumeric) { & $t 'exec.verdictNoScore' }
+        elseif ($scoreNum -ge 75) { & $t 'exec.verdict75' }
+        elseif ($scoreNum -ge 50) { & $t 'exec.verdict50' }
+        else { & $t 'exec.verdict0' }
 
     [void]$html.Append(@"
 <div class="score-panel">
@@ -173,23 +180,23 @@ $blockerHtml
     <div class="value">$score</div>
   </div>
   <div class="score-detail">
-    <div class="label" style="color:$scoreColor">Security Posture: $(& $esc $label)</div>
+    <div class="label" style="color:$scoreColor">$(& $tr 'exec.securityPosture' (& $esc $label))</div>
     <div class="desc">$verdict</div>
   </div>
 </div>
 
 <div class="stat-grid">
-<div class="stat"><span class="value">$totalFindings</span><span class="label">Total Checks</span></div>
-<div class="stat"><span class="value" style="color:var(--g-ok)">$passRate%</span><span class="label">Pass Rate</span></div>
-<div class="stat"><span class="value" style="color:var(--g-sev-critical)">$criticalFails</span><span class="label">Critical Issues</span></div>
-<div class="stat"><span class="value" style="color:var(--g-sev-high)">$highFails</span><span class="label">High Issues</span></div>
+<div class="stat"><span class="value">$totalFindings</span><span class="label">$(& $t 'common.totalChecks')</span></div>
+<div class="stat"><span class="value" style="color:var(--g-ok)">$passRate%</span><span class="label">$(& $t 'exec.passRate')</span></div>
+<div class="stat"><span class="value" style="color:var(--g-sev-critical)">$criticalFails</span><span class="label">$(& $t 'exec.criticalIssues')</span></div>
+<div class="stat"><span class="value" style="color:var(--g-sev-high)">$highFails</span><span class="label">$(& $t 'exec.highIssues')</span></div>
 $maturityStat
 </div>
 
 $maturitySection
 $(if ($criticalRows) {
 @"
-<h2>Key Findings Requiring Attention</h2>
+<h2>$(& $t 'exec.keyFindings')</h2>
 <div class="card">
 <ul>
 $criticalRows
@@ -200,9 +207,9 @@ $criticalRows
 
 $(if ($complianceHtml) {
 @"
-<h2>Compliance Impact</h2>
+<h2>$(& $t 'exec.complianceImpact')</h2>
 <div class="card">
-<p>The following compliance frameworks have identified gaps:</p>
+<p>$(& $t 'exec.complianceIntro')</p>
 $complianceHtml
 </div>
 "@
@@ -210,9 +217,9 @@ $complianceHtml
 
 $(if ($quickWinRows) {
 @"
-<h2>Recommended Quick Wins (No Cost)</h2>
+<h2>$(& $t 'exec.quickWins')</h2>
 <div class="card">
-<p>These actions can be completed at no cost using existing tools:</p>
+<p>$(& $t 'exec.quickWinsIntro')</p>
 <ol>
 $quickWinRows
 </ol>
@@ -220,21 +227,21 @@ $quickWinRows
 "@
 })
 
-<h2>Next Steps</h2>
+<h2>$(& $t 'exec.nextSteps')</h2>
 <div class="card">
 <ol>
-<li>Address critical findings immediately &middot; these represent the highest risk to your organization.</li>
-<li>Implement the quick wins above to improve your security score with minimal effort.</li>
-<li>Review the detailed technical report for complete remediation guidance.</li>
-<li>Schedule a follow-up scan in 30 days to measure improvement.</li>
+<li>$(& $tr 'exec.nextStep1')</li>
+<li>$(& $t 'exec.nextStep2')</li>
+<li>$(& $t 'exec.nextStep3')</li>
+<li>$(& $t 'exec.nextStep4')</li>
 </ol>
 </div>
 
-<p style="color:var(--g-muted);font-size:0.9rem;font-style:italic;">This report provides a point-in-time security assessment for internal planning purposes. Findings should be validated and remediated according to organizational risk tolerance.</p>
+<p style="color:var(--g-muted);font-size:0.9rem;font-style:italic;">$(& $t 'exec.disclaimer')</p>
 "@)
 
     [void]$html.Append((Get-GuerrillaReportShellEnd `
-        -FooterNote 'Executive Summary' `
+        -FooterNote (& $tr 'exec.footer') `
         -TimestampText "$timestamp UTC"))
 
     $html.ToString() | Set-Content -Path $OutputPath -Encoding UTF8

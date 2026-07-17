@@ -118,6 +118,9 @@ function Invoke-Campaign {
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
         [string]$ReportStyle = 'Auto',
 
+        # Report language for HTML exports (report shell + translated check content).
+        [string]$ReportLanguage = '',
+
         [switch]$TestMode
     )
 
@@ -555,9 +558,13 @@ function Invoke-Campaign {
             if (-not $PSBoundParameters.ContainsKey('ReportStyle') -and $config -and $config.output -and ($config.output.reportStyle -in 'Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')) {
                 $ReportStyle = [string]$config.output.reportStyle
             }
+            if (-not $PSBoundParameters.ContainsKey('ReportLanguage') -and $config -and $config.output -and $config.output.reportLanguage) {
+                $ReportLanguage = [string]$config.output.reportLanguage
+            }
+            $reportLang = Resolve-GuerrillaReportLanguage -Configured $ReportLanguage
             $htmlPath = Join-Path $outDir "$baseName.html"
             Export-CampaignReportHtml -Result $result -OutputPath $htmlPath `
-                -Style $ReportStyle -Branding (Get-GuerrillaBranding -Config $config)
+                -Style $ReportStyle -Language $reportLang -Branding (Get-GuerrillaBranding -Config $config)
             $result | Add-Member -NotePropertyName 'HtmlReportPath' -NotePropertyValue $htmlPath
             if (-not $Quiet) { Write-ProgressLine -Phase REPORTING -Message 'HTML report' -Detail $htmlPath }
         } catch {

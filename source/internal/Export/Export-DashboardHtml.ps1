@@ -28,10 +28,14 @@ function Export-DashboardHtml {
         [string]$OutputPath,
         [string]$OrganizationName = 'Organization',
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
-        [string]$Style = 'Auto'
+        [string]$Style = 'Auto',
+        [string]$Language = 'en'
     )
 
     $esc = { param([string]$s) [System.Web.HttpUtility]::HtmlEncode($s) }
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
+    $Findings = Get-GuerrillaLocalizedFindings -Findings $Findings -Language $Language
     $html = [System.Text.StringBuilder]::new(65536)
     $timestampStr = [datetime]::UtcNow.ToString('yyyy-MM-dd HH:mm:ss') + ' UTC'
 
@@ -60,13 +64,14 @@ function Export-DashboardHtml {
     $components = $ScoreResult.Components
     $componentHtml = ''
     if ($components) {
+        $compLabels = @{ Posture = (& $t 'dashboard.posture'); Threats = (& $t 'dashboard.threats'); Coverage = (& $t 'dashboard.coverage'); Trend = (& $t 'dashboard.trend') }
         foreach ($comp in @('Posture', 'Threats', 'Coverage', 'Trend')) {
             $c = $components.$comp
             if ($c) {
                 $barWidth = [Math]::Max(2, $c.Score)
                 $componentHtml += @"
 <div class="comp-row">
-  <div class="comp-head"><span>$comp</span><span>$($c.Score) ($([Math]::Round($c.Weight * 100))%)</span></div>
+  <div class="comp-head"><span>$($compLabels[$comp])</span><span>$($c.Score) ($([Math]::Round($c.Weight * 100))%)</span></div>
   <div class="comp-bar-bg"><div class="comp-bar-fill" style="width:${barWidth}%"></div></div>
 </div>
 "@
@@ -89,7 +94,7 @@ function Export-DashboardHtml {
       <td>$(& $esc ($f.Name ?? $f.CheckName ?? ''))</td>
       <td><span class="badge badge-sev-$sevClass">$(& $esc "$($f.Severity)")</span></td>
       <td><span class="badge badge-status-$statusClass">$(& $esc "$($f.Status)")</span></td>
-      <td>$(& $esc ($f.Category ?? ''))</td>
+      <td>$(& $esc (Get-GuerrillaLocalizedCategoryName -Name "$($f.Category ?? '')" -Language $Language))</td>
     </tr>
 "@
     }
@@ -111,9 +116,9 @@ function Export-DashboardHtml {
       <div class="cat-score" style="color:$tScoreColor">$(if ($isActive) { "$tScore%" } else { 'N/A' })</div>
     </div>
     $(if ($isActive) {
-        "<div class=`"cat-counts`"><span>Checks: $tTotal</span><span class=`"verdict-fail`">Failures: $tFail</span></div>"
+        "<div class=`"cat-counts`"><span>$(& $tr 'dashboard.checks' $tTotal)</span><span class=`"verdict-fail`">$(& $tr 'dashboard.failuresLabel' $tFail)</span></div>"
     } else {
-        "<div class=`"cat-counts`"><span>Not scanned</span></div>"
+        "<div class=`"cat-counts`"><span>$(& $t 'dashboard.notScanned')</span></div>"
     })
   </div>
 "@
@@ -126,12 +131,12 @@ function Export-DashboardHtml {
 .comp-bar-fill { height: 100%; border-radius: 3px; background: var(--g-accent); }
 '@
 
-    $subtitle = "$(& $esc $OrganizationName) &middot; Generated: $timestampStr"
+    $subtitle = "$(& $esc $OrganizationName) &middot; $(& $t 'common.generated'): $timestampStr"
     [void]$html.Append((Get-GuerrillaReportShellStart `
-        -Title 'Security Dashboard' `
+        -Title (& $tr 'dashboard.title') `
         -Subtitle $subtitle `
-        -HtmlTitle "Security Dashboard - $OrganizationName" `
-        -TopbarMeta 'Dashboard' `
+        -HtmlTitle "$(& $tr 'dashboard.htmlTitle') - $OrganizationName" `
+        -TopbarMeta (& $tr 'dashboard.topbar') `
         -Style $Style -ExtraCss $extraCss))
 
     [void]$html.Append(@"
@@ -147,14 +152,14 @@ function Export-DashboardHtml {
   </div>
   <div class="score-detail">
     <div class="label" style="color:$ringColor">$(& $esc "$label")</div>
-    <div class="desc">Guerrilla Score (0-100)</div>
-    <div class="desc">$totalFindings checks evaluated &middot; $passCount passed, $failCount failed, $warnCount warnings</div>
+    <div class="desc">$(& $t 'dashboard.scoreDesc')</div>
+    <div class="desc">$(& $tr 'dashboard.checksSummary' $totalFindings $passCount $failCount $warnCount)</div>
   </div>
 </div>
 
 $(if ($componentHtml) {
 @"
-<h2>Score Components</h2>
+<h2>$(& $t 'dashboard.scoreComponents')</h2>
 <div class="card">
 $componentHtml
 </div>
@@ -162,35 +167,35 @@ $componentHtml
 })
 
 <div class="stat-grid">
-  <div class="stat"><span class="value">$totalFindings</span><span class="label">Total Checks</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-ok)">$passRate%</span><span class="label">Pass Rate</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-bad)">$failCount</span><span class="label">Failures</span></div>
-  <div class="stat"><span class="value" style="color:var(--g-warn)">$warnCount</span><span class="label">Warnings</span></div>
+  <div class="stat"><span class="value">$totalFindings</span><span class="label">$(& $t 'common.totalChecks')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-ok)">$passRate%</span><span class="label">$(& $t 'dashboard.passRate')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-bad)">$failCount</span><span class="label">$(& $t 'dashboard.failures')</span></div>
+  <div class="stat"><span class="value" style="color:var(--g-warn)">$warnCount</span><span class="label">$(& $t 'common.warnings')</span></div>
 </div>
 
-<h2>Platform Overview</h2>
+<h2>$(& $t 'dashboard.platformOverview')</h2>
 <div class="category-grid">
 $platformCardsHtml
 </div>
 
 $(if ($findingsTableHtml) {
 @"
-<h2>Top Findings</h2>
+<h2>$(& $t 'dashboard.topFindings')</h2>
 <div class="table-wrap">
 <table>
-<thead><tr><th>ID</th><th>Finding</th><th>Severity</th><th>Status</th><th>Category</th></tr></thead>
+<thead><tr><th>$(& $t 'common.thId')</th><th>$(& $t 'common.thFinding')</th><th>$(& $t 'common.thSeverity')</th><th>$(& $t 'common.thStatus')</th><th>$(& $t 'common.thCategory')</th></tr></thead>
 <tbody>
 $findingsTableHtml
 </tbody>
 </table>
 </div>
-$(if ($sortedFindings.Count -ge 50) { "<p class='ap-note'>Showing top 50 findings. See detailed reports for full listing.</p>" })
+$(if ($sortedFindings.Count -ge 50) { "<p class='ap-note'>$(& $t 'dashboard.showingTop50')</p>" })
 "@
 })
 "@)
 
     [void]$html.Append((Get-GuerrillaReportShellEnd `
-        -FooterNote 'Unified Dashboard' `
+        -FooterNote (& $tr 'dashboard.footer') `
         -TimestampText $timestampStr))
 
     $html.ToString() | Set-Content -Path $OutputPath -Encoding UTF8

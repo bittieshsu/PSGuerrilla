@@ -122,6 +122,10 @@ function Invoke-ADAudit {
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
         [string]$ReportStyle = 'Auto',
 
+        # Report language for HTML exports (report shell + translated check content).
+        # Empty resolves to the GUI language / OS culture / English. See Get-GuerrillaReportLanguages.
+        [string]$ReportLanguage = '',
+
         [switch]$TestMode,
 
         # When set, also writes a BloodHound OpenGraph export of the collected AD graph to this path.
@@ -372,6 +376,10 @@ function Invoke-ADAudit {
             if (-not $PSBoundParameters.ContainsKey('ReportStyle') -and $config -and $config.output -and ($config.output.reportStyle -in 'Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')) {
                 $ReportStyle = [string]$config.output.reportStyle
             }
+            if (-not $PSBoundParameters.ContainsKey('ReportLanguage') -and $config -and $config.output -and $config.output.reportLanguage) {
+                $ReportLanguage = [string]$config.output.reportLanguage
+            }
+            $reportLang = Resolve-GuerrillaReportLanguage -Configured $ReportLanguage
             $reportBranding = Get-GuerrillaBranding -Config $config
             $htmlPath = Join-Path $outDir "ad_report_$timestamp.html"
             Export-ADReportHtml `
@@ -384,6 +392,7 @@ function Invoke-ADAudit {
                 -FilePath $htmlPath `
                 -Style $ReportStyle `
                 -Branding $reportBranding `
+                -Language $reportLang `
                 -BloodHoundPath $bloodHoundWritten
             if (-not $Quiet) { Write-ProgressLine -Phase REPORTING -Message 'HTML report' -Detail $htmlPath }
         }

@@ -33,7 +33,9 @@ function Export-RemediationPlaybook {
         [string]$MaxCostTier = 'Medium',
 
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
-        [string]$Style = 'Auto'
+        [string]$Style = 'Auto',
+
+        [string]$Language = ''
     )
 
     if (-not $OutputPath) { $OutputPath = Join-Path (Get-Location) 'Guerrilla-Remediation-Playbook.html' }
@@ -62,7 +64,11 @@ function Export-RemediationPlaybook {
     $tierOrder = @{ 'Free' = 0; 'Low' = 1; 'Medium' = 2; 'High' = 3; 'Enterprise' = 4 }
     $maxTierIndex = $tierOrder[$MaxCostTier] ?? 2
 
+    if (-not $Language) { $Language = Resolve-GuerrillaReportLanguage -Configured '' }
     $esc = { param([string]$s) [System.Web.HttpUtility]::HtmlEncode($s) }
+    $t  = Get-GuerrillaReportStringResolver -Language $Language
+    $tr = Get-GuerrillaReportStringResolver -Language $Language -Raw
+    $Findings = Get-GuerrillaLocalizedFindings -Findings $Findings -Language $Language
     $timestamp = [datetime]::UtcNow.ToString('yyyy-MM-dd HH:mm:ss')
     $html = [System.Text.StringBuilder]::new(65536)
 
@@ -81,10 +87,10 @@ function Export-RemediationPlaybook {
 
     # Group by severity phase
     $phases = @(
-        @{ Name = 'Phase 1: Critical Fixes'; Severity = 'Critical' }
-        @{ Name = 'Phase 2: High Priority'; Severity = 'High' }
-        @{ Name = 'Phase 3: Medium Priority'; Severity = 'Medium' }
-        @{ Name = 'Phase 4: Low Priority'; Severity = 'Low' }
+        @{ Name = (& $t 'playbook.phase1'); Severity = 'Critical' }
+        @{ Name = (& $t 'playbook.phase2'); Severity = 'High' }
+        @{ Name = (& $t 'playbook.phase3'); Severity = 'Medium' }
+        @{ Name = (& $t 'playbook.phase4'); Severity = 'Low' }
     )
 
     $extraCss = @'
@@ -98,12 +104,12 @@ h2.pb-phase { background: var(--g-surface); border-left: 3px solid var(--g-borde
 .pb-note { font-style: italic; }
 '@
 
-    $subtitle = "$(& $esc $OrganizationName) &middot; $($actionable.Count) actionable item(s) &middot; Max cost: $MaxCostTier &middot; $timestamp UTC"
+    $subtitle = "$(& $esc $OrganizationName) &middot; $(& $tr 'playbook.subtitle' $actionable.Count $MaxCostTier) &middot; $timestamp UTC"
     [void]$html.Append((Get-GuerrillaReportShellStart `
-        -Title 'Remediation Playbook' `
+        -Title (& $tr 'playbook.title') `
         -Subtitle $subtitle `
-        -HtmlTitle "Guerrilla Remediation Playbook - $OrganizationName - $timestamp UTC" `
-        -TopbarMeta 'Remediation Playbook' `
+        -HtmlTitle "$(& $tr 'playbook.htmlTitle') - $OrganizationName - $timestamp UTC" `
+        -TopbarMeta (& $tr 'playbook.topbar') `
         -Style $Style -ExtraCss $extraCss))
 
     $itemNum = 0
@@ -114,7 +120,7 @@ h2.pb-phase { background: var(--g-surface); border-left: 3px solid var(--g-borde
 
         $phaseColor = Get-GuerrillaSeverityColorVar -Severity $phase.Severity
         $sevClass = $phase.Severity.ToLower()
-        [void]$html.Append("<h2 class=`"pb-phase`" style=`"border-left-color:$phaseColor;color:$phaseColor;`">$($phase.Name) ($($phaseItems.Count) items)</h2>`n")
+        [void]$html.Append("<h2 class=`"pb-phase`" style=`"border-left-color:$phaseColor;color:$phaseColor;`">$(& $tr 'playbook.phaseItems' $phase.Name $phaseItems.Count)</h2>`n")
 
         foreach ($item in $phaseItems) {
             $itemNum++
@@ -128,17 +134,17 @@ h2.pb-phase { background: var(--g-surface); border-left: 3px solid var(--g-borde
 <span class="badge badge-sev-$sevClass">$(& $esc $item.Severity)</span>
 </div>
 <div class="pb-meta">
-<span>ID: <code>$(& $esc $checkId)</code></span>
-<span>Cost: $($item._CostTier)</span>
-<span>Effort: $effortHours</span>
-<span>Category: $(& $esc ($item.Category ?? ''))</span>
+<span>$(& $t 'playbook.idLabel') <code>$(& $esc $checkId)</code></span>
+<span>$(& $t 'playbook.costLabel') $($item._CostTier)</span>
+<span>$(& $t 'playbook.effortLabel') $effortHours</span>
+<span>$(& $t 'playbook.categoryLabel') $(& $esc (Get-GuerrillaLocalizedCategoryName -Name "$($item.Category ?? '')" -Language $Language))</span>
 </div>
 $(if ($item.Description) { "<p>$(& $esc $item.Description)</p>" })
 $(if ($item.RemediationSteps) {
-    "<p><strong>Steps:</strong> $(& $esc $item.RemediationSteps)</p>"
+    "<p><strong>$(& $t 'playbook.stepsLabel')</strong> $(& $esc $item.RemediationSteps)</p>"
 })
-$(if ($item.RecommendedValue) { "<p class='pb-target'><strong>Target:</strong> $(& $esc $item.RecommendedValue)</p>" })
-$(if ($item._Notes) { "<p class='pb-note'>Note: $(& $esc $item._Notes)</p>" })
+$(if ($item.RecommendedValue) { "<p class='pb-target'><strong>$(& $t 'playbook.targetLabel')</strong> $(& $esc $item.RecommendedValue)</p>" })
+$(if ($item._Notes) { "<p class='pb-note'>$(& $t 'playbook.noteLabel') $(& $esc $item._Notes)</p>" })
 $(if ($item.RemediationUrl) { "<p><a href='$(& $esc $item.RemediationUrl)'>$(& $esc $item.RemediationUrl)</a></p>" })
 </div>
 "@)
@@ -146,11 +152,11 @@ $(if ($item.RemediationUrl) { "<p><a href='$(& $esc $item.RemediationUrl)'>$(& $
     }
 
     [void]$html.Append(@"
-<p style="color:var(--g-muted);font-size:0.9rem;font-style:italic;">Review each remediation step before implementing. Test changes in a non-production environment first.</p>
+<p style="color:var(--g-muted);font-size:0.9rem;font-style:italic;">$(& $t 'playbook.disclaimer')</p>
 "@)
 
     [void]$html.Append((Get-GuerrillaReportShellEnd `
-        -FooterNote 'Remediation Playbook' `
+        -FooterNote (& $tr 'playbook.footer') `
         -TimestampText "$timestamp UTC"))
 
     $html.ToString() | Set-Content -Path $OutputPath -Encoding UTF8
