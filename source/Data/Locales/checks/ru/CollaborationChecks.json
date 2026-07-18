@@ -1,0 +1,153 @@
+{
+  "_family": "CollaborationChecks.json",
+  "COLLAB-001": {
+    "name": { "value": "Настройки записи в Meet", "status": "machine-draft" },
+    "description": { "value": "Настройки записи встреч следует контролировать, чтобы предотвратить несанкционированную запись конфиденциальных обсуждений", "status": "machine-draft" },
+    "recommendedValue": { "value": "Запись ограничена организаторами встреч или отключена для конфиденциальных организационных подразделений", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Google Meet > Настройки видео Meet > Запись > Настройте разрешения на запись", "status": "machine-draft" }
+  },
+  "COLLAB-002": {
+    "name": { "value": "Настройки внешних участников Meet", "status": "machine-draft" },
+    "description": { "value": "Доступ внешних участников к встречам следует контролировать, чтобы предотвратить несанкционированное присутствие и раскрытие информации", "status": "machine-draft" },
+    "recommendedValue": { "value": "Внешние участники требуют одобрения или запроса на присоединение", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Google Meet > Настройки видео Meet > Участники > Требуйте одобрения для внешних участников", "status": "machine-draft" }
+  },
+  "COLLAB-003": {
+    "name": { "value": "Настройки анонимного присоединения в Meet", "status": "machine-draft" },
+    "description": { "value": "Анонимные пользователи (без аккаунтов Google) не должны иметь возможности присоединяться к встречам без явного одобрения организатора", "status": "machine-draft" },
+    "recommendedValue": { "value": "Анонимное присоединение отключено или требует одобрения организатора", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Google Meet > Настройки видео Meet > Участники > Отключите анонимное присоединение или требуйте запроса на присоединение", "status": "machine-draft" }
+  },
+  "COLLAB-004": {
+    "name": { "value": "Внешние коммуникации в Chat", "status": "machine-draft" },
+    "description": { "value": "Внешние коммуникации в чате следует ограничивать, чтобы предотвратить утечку данных через прямые сообщения с внешними пользователями", "status": "machine-draft" },
+    "recommendedValue": { "value": "Внешний чат ограничен или отключён для большинства пользователей", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Google Chat > Настройки Chat > Внешний чат > Ограничьте внешний чат конкретными организационными подразделениями", "status": "machine-draft" }
+  },
+  "COLLAB-005": {
+    "name": { "value": "Настройки истории Chat", "status": "machine-draft" },
+    "description": { "value": "Историю чата следует включить и хранить в целях соответствия требованиям и аудита. Отключение истории может скрыть вредоносные коммуникации", "status": "machine-draft" },
+    "recommendedValue": { "value": "История чата включена и хранится согласно политике хранения", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Google Chat > Настройки Chat > История > Включите историю и настройте хранение", "status": "machine-draft" }
+  },
+  "COLLAB-006": {
+    "name": { "value": "Внешний доступ к пространствам Chat", "status": "machine-draft" },
+    "description": { "value": "Пространства чата (комнаты), разрешающие внешних участников, могут раскрывать внутренние коммуникации и общие файлы неавторизованным сторонам", "status": "machine-draft" },
+    "recommendedValue": { "value": "Внешний доступ к пространствам Chat ограничен или отключён", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Google Chat > Настройки Chat > Пространства > Ограничьте внешний доступ к пространствам", "status": "machine-draft" }
+  },
+  "COLLAB-007": {
+    "name": { "value": "Настройки установки приложений Chat", "status": "machine-draft" },
+    "description": { "value": "Установку приложений чата (ботов) следует контролировать, чтобы предотвратить доступ несанкционированных интеграций к данным переписки", "status": "machine-draft" },
+    "recommendedValue": { "value": "Установка приложений Chat ограничена приложениями, одобренными администратором", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Google Chat > Настройки Chat > Приложения > Ограничьте установку приложений одобренными приложениями", "status": "machine-draft" }
+  },
+  "COLLAB-008": {
+    "name": { "value": "Внешний доступ к Calendar", "status": "machine-draft" },
+    "description": { "value": "Общий доступ к календарю с внешними пользователями следует ограничивать информацией о занятости, чтобы предотвратить раскрытие деталей встреч и участников", "status": "machine-draft" },
+    "recommendedValue": { "value": "Внешний доступ к календарю ограничен только информацией о занятости", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Calendar > Настройки доступа > Параметры внешнего доступа > Установите значение «Только информация о занятости»", "status": "machine-draft" }
+  },
+  "COLLAB-009": {
+    "name": { "value": "Внешние приглашения Calendar", "status": "machine-draft" },
+    "description": { "value": "Пользователей следует предупреждать или ограничивать при отправке приглашений в календаре внешним получателям, чтобы предотвратить случайное раскрытие информации", "status": "machine-draft" },
+    "recommendedValue": { "value": "Предупреждения о внешних приглашениях включены", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Calendar > Настройки доступа > Включите предупреждения о внешних приглашениях", "status": "machine-draft" }
+  },
+  "COLLAB-010": {
+    "name": { "value": "Внешняя видимость слотов записи в Calendar", "status": "machine-draft" },
+    "description": { "value": "Видимость слотов записи в календаре следует контролировать, чтобы ограничить внешнее раскрытие доступности и деталей расписания", "status": "machine-draft" },
+    "recommendedValue": { "value": "Внешняя видимость слотов записи ограничена", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Calendar > Настройки доступа > Проверьте настройки видимости слотов записи", "status": "machine-draft" }
+  },
+  "COLLAB-011": {
+    "name": { "value": "Маркировка внешних участников в Meet", "status": "machine-draft" },
+    "description": { "value": "Внешних участников встреч следует наглядно помечать, чтобы организаторы и участники могли легко определять посторонних и избегать раскрытия конфиденциальной информации", "status": "machine-draft" },
+    "recommendedValue": { "value": "Маркировка внешних участников включена", "status": "machine-draft" },
+    "remediationSteps": { "value": "Приложения > Google Workspace > Google Meet > Настройки безопасности Meet > Внешние участники > Включите маркировку внешних участников", "status": "machine-draft" }
+  },
+  "COLLAB-012": {
+    "name": { "value": "Управление организатором в Meet", "status": "machine-draft" },
+    "description": { "value": "Управление организатором следует включить, чтобы организаторы встреч сохраняли средства модерации, такие как отключение звука, удаление и блокировка, для предотвращения захвата и срыва встреч", "status": "machine-draft" },
+    "recommendedValue": { "value": "Управление организатором включено", "status": "machine-draft" },
+    "remediationSteps": { "value": "Приложения > Google Workspace > Google Meet > Настройки безопасности Meet > Управление организатором > Включите средства управления организатором", "status": "machine-draft" }
+  },
+  "GROUP-001": {
+    "name": { "value": "Внешний доступ к Google Groups ограничен (GWS.GROUPS.1.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.1 требует, чтобы общий доступ Groups for Business был ограничен, чтобы группы не были доступны людям за пределами организации. Когда возможность совместной работы для доступа к группам не установлена только на пользователей домена, содержимое групп, которое в школе может включать данные учащихся и сотрудников, становится доступным внешним сторонам. Эта проверка читает политику groups_for_business.groups_sharing из Cloud Identity Policy API и отмечает любое организационное подразделение, чья возможность совместной работы не равна DOMAIN_USERS_ONLY.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Возможность совместной работы для доступа к группам установлена на DOMAIN_USERS_ONLY для всех организационных подразделений", "status": "machine-draft" },
+    "remediationSteps": { "value": "В Консоли администратора Google в разделе Приложения > Google Workspace > Groups for Business > Настройки доступа установите доступ к группам с ограничением пользователями организации (а не «Любой в интернете»), чтобы внешние стороны не могли получить доступ к содержимому групп.", "status": "machine-draft" }
+  },
+  "GROUP-002": {
+    "name": { "value": "Владельцы групп не могут добавлять внешних участников (GWS.GROUPS.1.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.2 требует, чтобы владельцам групп не разрешалось добавлять участников из-за пределов организации. Внешние участники получают доступ ко всему, чем поделились с группой. Эта проверка отмечает организационные подразделения, где владельцы могут разрешать внешних участников (ownersCanAllowExternalMembers включён).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Владельцы групп не могут разрешать внешних участников (ownersCanAllowExternalMembers отключён)", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках доступа Groups for Business отключите параметр, позволяющий владельцам групп добавлять участников из-за пределов организации, чтобы внешнее членство требовало действий администратора.", "status": "machine-draft" }
+  },
+  "GROUP-003": {
+    "name": { "value": "Группы не могут получать почту извне организации (GWS.GROUPS.1.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.3 требует, чтобы владельцам групп не разрешалось разрешать входящую почту из-за пределов организации. Разрешение публичной входящей почты в группы является вектором входящего фишинга и спама. Эта проверка отмечает организационные подразделения, где владельцы могут разрешать входящую почту от публики (ownersCanAllowIncomingMailFromPublic включён).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Владельцы групп не могут разрешать входящую почту от публики (ownersCanAllowIncomingMailFromPublic отключён)", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках доступа Groups for Business отключите параметр, позволяющий владельцам групп принимать входящую почту из-за пределов организации, ограничивая почту групп внутренними отправителями, если это явно не настроено иначе.", "status": "machine-draft" }
+  },
+  "GROUP-004": {
+    "name": { "value": "Создание групп ограничено администраторами (GWS.GROUPS.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.2.1 рекомендует ограничить круг лиц, которые могут создавать Groups for Business, администраторами. Когда любой пользователь может создавать группы, разрастание групп опережает управление, и настройки внешнего доступа по умолчанию могут применяться без проверки. Эта проверка отмечает организационные подразделения, где уровень доступа для создания групп не равен ADMIN_ONLY.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Уровень доступа для создания групп установлен на ADMIN_ONLY", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках Groups for Business установите для параметра «кто может создавать группы» значение только администраторы, чтобы новые группы создавались осознанно и наследовали проверенные настройки доступа.", "status": "machine-draft" }
+  },
+  "GROUP-005": {
+    "name": { "value": "Видимость обсуждений групп по умолчанию ограничена участниками (GWS.GROUPS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.3.1 требует, чтобы разрешение по умолчанию на просмотр обсуждений групп было ограничено участниками группы, а не всем доменом или публикой. Чрезмерно открытая видимость обсуждений раскрывает архивы дискуссий, которые могут содержать конфиденциальную информацию об учащихся и сотрудниках. Эта проверка читает viewTopicsDefaultAccessLevel из политики groups_for_business.groups_sharing и предупреждает там, где значение по умолчанию шире, чем участники группы.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Доступ по умолчанию на просмотр обсуждений установлен на GROUP_MEMBERS", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках Groups for Business установите для разрешения по умолчанию «кто может просматривать обсуждения» значение участники группы.", "status": "machine-draft" }
+  },
+  "COLLAB-013": {
+    "name": { "value": "Внешний обмен файлами в Chat отключён (GWS.CHAT.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.2.1 требует, чтобы внешний обмен файлами в Google Chat был отключён (установлен на отсутствие файлов). Разрешение обмена файлами с внешними пользователями через Chat является прямым путём для утечки данных. Эта проверка читает chat.chat_file_sharing и не проходит для любого организационного подразделения, где внешний обмен файлами не установлен на NO_FILES.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Внешний обмен файлами в Chat установлен на NO_FILES", "status": "machine-draft" },
+    "remediationSteps": { "value": "В Консоли администратора в разделе Приложения > Google Workspace > Google Chat > Внешний обмен файлами установите значение «Без файлов», чтобы файлы нельзя было передавать людям за пределами организации через Chat.", "status": "machine-draft" }
+  },
+  "COLLAB-014": {
+    "name": { "value": "История пространств Chat включена (GWS.CHAT.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.3.1 требует, чтобы история пространств Chat была всегда включена, чтобы переписка сохранялась для надзора, расследований и eDiscovery. Эта проверка читает chat.space_history и предупреждает любое организационное подразделение, где история пространств не установлена на HISTORY_ALWAYS_ON.", "status": "machine-draft" },
+    "recommendedValue": { "value": "История пространств Chat установлена на HISTORY_ALWAYS_ON", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках Google Chat установите историю пространств на «всегда включена», чтобы переписка сохранялась и была доступна для надзора и eDiscovery.", "status": "machine-draft" }
+  },
+  "COLLAB-015": {
+    "name": { "value": "Присоединение к встрече ограничено организацией (GWS.MEET.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.2.1 требует, чтобы доступ к встречам был ограничен так, чтобы присоединяться могли только пользователи организации (или доверенные организации Workspace). Оставление встреч открытыми для всех впускает внешних и неаутентифицированных участников в сессии, которые могут касаться учащихся. Эта проверка читает meet.safety_access и не проходит для любого организационного подразделения, где meetingsAllowedToJoin шире, чем SAME_ORGANIZATION_ONLY / ANY_WORKSPACE_ORGANIZATION.", "status": "machine-draft" },
+    "recommendedValue": { "value": "meetingsAllowedToJoin установлен на SAME_ORGANIZATION_ONLY (или ANY_WORKSPACE_ORGANIZATION)", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках безопасности Google Meet ограничьте круг лиц, которые могут присоединяться к встречам, пользователями вашей организации, чтобы внешние или неаутентифицированные участники не могли присоединяться по умолчанию.", "status": "machine-draft" }
+  },
+  "COLLAB-016": {
+    "name": { "value": "Автоматическая транскрипция Meet отключена по умолчанию (GWS.MEET.5.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.2 рекомендует, чтобы автоматическая транскрипция в Google Meet была отключена по умолчанию. Автоматическая транскрипция встреч захватывает и хранит содержимое переписки, что конфиденциально при присутствии учащихся, без осознанного решения. Эта проверка читает meet.automatic_transcription и предупреждает любое организационное подразделение, где она включена по умолчанию.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Автоматическая транскрипция отключена по умолчанию", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках Google Meet отключите автоматическую транскрипцию по умолчанию, чтобы содержимое встречи захватывалось только тогда, когда организатор осознанно её включает.", "status": "machine-draft" }
+  },
+  "COLLAB-017": {
+    "name": { "value": "Внешняя совместимость Calendar управляется (GWS.CALENDAR.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.3.1 требует, чтобы Calendar Interop (обмен информацией о занятости и данными календаря с внешней системой, такой как Microsoft Exchange) был отключён, если он не управляется осознанно. Interop связывает данные календаря с внешней платформой. Эта проверка читает calendar.interoperability и предупреждает любое организационное подразделение, где enableInteroperability включён.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Совместимость Calendar отключена, если она не управляется осознанно", "status": "machine-draft" },
+    "remediationSteps": { "value": "В Консоли администратора в разделе Приложения > Google Workspace > Calendar > Управление Calendar Interop отключите совместимость, если проверенная интеграция её не требует.", "status": "machine-draft" }
+  },
+  "COLLAB-018": {
+    "name": { "value": "Платежи за записи в Calendar отключены (GWS.CALENDAR.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.4.1 рекомендует отключить платные расписания записи. Эта проверка читает calendar.appointment_schedules и предупреждает любое организационное подразделение, где enablePayments включён.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Платные расписания записи отключены", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках расписаний записи Google Calendar отключите платежи, если организация не использует платные записи осознанно.", "status": "machine-draft" }
+  },
+  "COLLAB-019": {
+    "name": { "value": "Автоматическая запись Meet отключена по умолчанию (GWS.MEET.5.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.1 рекомендует, чтобы автоматическая запись в Google Meet была отключена по умолчанию. Автоматическая запись захватывает и хранит видео и аудио встречи, что конфиденциально при присутствии учащихся, без осознанного решения. Эта проверка читает meet.automatic_recording и предупреждает любое организационное подразделение, где она включена по умолчанию.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Автоматическая запись отключена по умолчанию", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках Google Meet отключите автоматическую запись по умолчанию, чтобы встречи записывались только тогда, когда организатор осознанно начинает запись.", "status": "machine-draft" }
+  },
+  "GROUP-006": {
+    "name": { "value": "Группы видны в каталоге (GWS.GROUPS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.4.1 требует, чтобы группы нельзя было скрывать из каталога: скрытые группы подрывают прозрачность и надзор за тем, с кем можно связаться и какой доступ существует. Эта проверка читает политику groups_for_business.groups_sharing и предупреждает любое организационное подразделение, где владельцы могут скрывать группы (ownersCanHideGroups) или новые группы скрыты по умолчанию (newGroupsAreHidden).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Владельцы не могут скрывать группы, и новые группы не скрыты по умолчанию", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках Groups for Business запретите владельцам групп скрывать группы из каталога и убедитесь, что новые группы не скрыты по умолчанию, сохраняя прозрачность каталога.", "status": "machine-draft" }
+  }
+}

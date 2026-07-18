@@ -1,0 +1,105 @@
+{
+  "_family": "DriveSecurityChecks.json",
+  "DRIVE-001": {
+    "name": { "value": "Настройки внешнего доступа по умолчанию", "status": "machine-draft" },
+    "description": { "value": "Общий доступ за пределы организации по умолчанию следует ограничивать или отключать, чтобы предотвратить случайное раскрытие данных внешним сторонам", "status": "machine-draft" },
+    "recommendedValue": { "value": "Внешний доступ ограничен доменами из списка разрешённых или отключён", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Настройки доступа > Установите общий доступ за пределы организации в значение «Отключено» или «Домены из списка разрешённых»", "status": "machine-draft" }
+  },
+  "DRIVE-002": {
+    "name": { "value": "Настройки доступа по ссылке по умолчанию", "status": "machine-draft" },
+    "description": { "value": "Доступ по ссылке по умолчанию следует установить в значение «Ограниченный» (конкретные люди), а не широкий доступ, чтобы предотвратить непреднамеренное раскрытие данных", "status": "machine-draft" },
+    "recommendedValue": { "value": "Доступ по ссылке по умолчанию установлен в значение «Ограниченный» (только конкретные люди)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Настройки доступа > Установите доступ по ссылке по умолчанию в значение «Ограниченный»", "status": "machine-draft" }
+  },
+  "DRIVE-003": {
+    "name": { "value": "Аудит доступа «Все, у кого есть ссылка»", "status": "machine-draft" },
+    "description": { "value": "Файлы, к которым предоставлен доступ «Все, у кого есть ссылка», доступны любому в интернете и представляют значительный риск раскрытия данных", "status": "machine-draft" },
+    "recommendedValue": { "value": "Доступ «Все, у кого есть ссылка» отключён или строго контролируется", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Настройки доступа > Отключите параметр «Все, у кого есть ссылка» или ограничьте до «Пользователи домена, у которых есть ссылка»", "status": "machine-draft" }
+  },
+  "DRIVE-004": {
+    "name": { "value": "Ограничения на создание общих дисков", "status": "machine-draft" },
+    "description": { "value": "Создание общих дисков следует ограничивать, чтобы предотвратить неконтролируемое распространение и обеспечить надлежащее управление общими хранилищами данных", "status": "machine-draft" },
+    "recommendedValue": { "value": "Создание общих дисков ограничено конкретными группами или администраторами", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Настройки доступа > Создание общих дисков > Ограничьте круг лиц, которые могут создавать общие диски", "status": "machine-draft" }
+  },
+  "DRIVE-005": {
+    "name": { "value": "Управление участниками общих дисков", "status": "machine-draft" },
+    "description": { "value": "Управление участниками общих дисков следует контролировать, чтобы предотвратить добавление неавторизованных пользователей или повышение уровня доступа", "status": "machine-draft" },
+    "recommendedValue": { "value": "Только менеджеры могут добавлять участников и менять уровни доступа", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Настройки доступа > Настройки общих дисков > Настройте права управления участниками", "status": "machine-draft" }
+  },
+  "DRIVE-006": {
+    "name": { "value": "Внешний доступ к общим дискам", "status": "machine-draft" },
+    "description": { "value": "Внешний доступ на общих дисках следует ограничивать, чтобы предотвратить передачу конфиденциальных организационных данных за пределы домена", "status": "machine-draft" },
+    "recommendedValue": { "value": "Внешний доступ на общих дисках отключён или ограничен доменами из списка разрешённых", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Настройки доступа > Доступ к общим дискам > Ограничьте внешний доступ", "status": "machine-draft" }
+  },
+  "DRIVE-007": {
+    "name": { "value": "Настройки передачи прав владения файлами", "status": "machine-draft" },
+    "description": { "value": "Передачу прав владения файлами следует контролировать, чтобы предотвратить несанкционированную миграцию данных и поддерживать надлежащие цепочки управления данными", "status": "machine-draft" },
+    "recommendedValue": { "value": "Передача прав владения файлами ограничена администраторами или контролируемым процессом", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Настройки передачи прав владения > Настройте ограничения", "status": "machine-draft" }
+  },
+  "DRIVE-008": {
+    "name": { "value": "Разрешение или блокировка Drive for Desktop", "status": "machine-draft" },
+    "description": { "value": "Drive for Desktop синхронизирует файлы локально, его следует контролировать, чтобы предотвратить хранение данных на неуправляемых конечных точках", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive for Desktop ограничен управляемыми устройствами или отключён", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Функции и приложения > Drive for Desktop > Настройте доступ", "status": "machine-draft" }
+  },
+  "DRIVE-009": {
+    "name": { "value": "Доступ сторонних приложений к Drive", "status": "machine-draft" },
+    "description": { "value": "Сторонние приложения с доступом к данным Drive следует проверять и ограничивать, чтобы предотвратить несанкционированную утечку данных", "status": "machine-draft" },
+    "recommendedValue": { "value": "Доступ сторонних приложений к данным Drive ограничен и проверен", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Безопасность > Управление API > Доступ сторонних приложений > Проверьте и ограничьте приложения с доступом к Drive", "status": "machine-draft" }
+  },
+  "DRIVE-010": {
+    "name": { "value": "Аудит правил DLP в Drive", "status": "machine-draft" },
+    "description": { "value": "Правила предотвращения потери данных (DLP) следует настроить для обнаружения и предотвращения передачи конфиденциальных данных через Google Drive", "status": "machine-draft" },
+    "recommendedValue": { "value": "Правила DLP настроены для конфиденциальных типов данных (персональные данные, финансовые, медицинские данные)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Безопасность > Защита данных > Управление правилами > Создайте правила для конфиденциальных типов данных в Drive", "status": "machine-draft" }
+  },
+  "DRIVE-011": {
+    "name": { "value": "Настройки целевой аудитории", "status": "machine-draft" },
+    "description": { "value": "Настройки целевой аудитории определяют, кого можно предлагать при предоставлении доступа к файлам, их следует настроить для ограничения случайного доступа", "status": "machine-draft" },
+    "recommendedValue": { "value": "Целевые аудитории настроены для надлежащего ограничения предложений по доступу", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Каталог > Целевые аудитории > Проверьте и настройте группы целевой аудитории", "status": "machine-draft" }
+  },
+  "DRIVE-012": {
+    "name": { "value": "Настройки дополнений Drive", "status": "machine-draft" },
+    "description": { "value": "Дополнения Drive могут получать доступ к содержимому файлов, их следует контролировать, чтобы предотвратить раскрытие данных через недоверенные расширения", "status": "machine-draft" },
+    "recommendedValue": { "value": "Установка дополнений Drive ограничена дополнениями, одобренными администратором", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Функции и приложения > Дополнения > Настройте ограничения на установку", "status": "machine-draft" }
+  },
+  "DRIVE-013": {
+    "name": { "value": "Настройки автономного доступа", "status": "machine-draft" },
+    "description": { "value": "Автономный доступ позволяет кэшировать файлы Drive локально на устройствах, его следует контролировать, чтобы предотвратить раскрытие данных на общих или неуправляемых устройствах", "status": "machine-draft" },
+    "recommendedValue": { "value": "Автономный доступ отключён или ограничен управляемыми устройствами", "status": "machine-draft" },
+    "remediationSteps": { "value": "Консоль администратора > Приложения > Google Workspace > Drive and Docs > Функции и приложения > Автономный режим > Отключите или ограничьте автономный доступ", "status": "machine-draft" }
+  },
+  "DRIVE-014": {
+    "name": { "value": "Доступ к API Drive SDK отключён (GWS.DRIVEDOCS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.4.1: Drive SDK позволяет сторонним приложениям читать и записывать содержимое Drive через API, что является прямым каналом утечки данных при широком включении. Читает drive_and_docs.drive_sdk; не проходит там, где enableDriveSdkApiAccess включён.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Доступ к API Drive SDK отключён", "status": "machine-draft" },
+    "remediationSteps": { "value": "В Консоли администратора > Приложения > Google Workspace > Drive and Docs > Функции и приложения отключите Drive SDK, если конкретные проверенные интеграции его не требуют.", "status": "machine-draft" }
+  },
+  "DRIVE-015": {
+    "name": { "value": "Предупреждение о внешних файлах Drive включено (GWS.DRIVEDOCS.1.9)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.9: предупреждение пользователей при предоставлении внешнего доступа к файлам является средством предотвращения потери данных с низким трением. Читает drive_and_docs.external_file_warning; предупреждает там, где highlightingEnabled отключён.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Предупреждение о внешнем доступе к файлам включено", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках доступа Drive включите предупреждения при предоставлении пользователями доступа к файлам людям за пределами организации.", "status": "machine-draft" }
+  },
+  "DRIVE-016": {
+    "name": { "value": "Обновление безопасности файлов Drive применяется принудительно (GWS.DRIVEDOCS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.3.1: обновление безопасности файлов ужесточает доступ по ссылке к затронутым файлам; разрешение пользователям удалять его вновь открывает доступ. Читает drive_and_docs.file_security_update; предупреждает там, где пользователям разрешено удалять или управлять обновлением безопасности.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Обновление безопасности применено, и пользователи не могут его удалить", "status": "machine-draft" },
+    "remediationSteps": { "value": "В настройках Drive примените обновление безопасности файлов и не позволяйте пользователям удалять его из файлов, которыми они владеют.", "status": "machine-draft" }
+  },
+  "DRIVE-017": {
+    "name": { "value": "Доступ к файлам по умолчанию установлен как приватный для владельца (GWS.DRIVEDOCS.1.8)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.8 требует, чтобы «Приватный для владельца» был уровнем доступа по умолчанию для вновь создаваемых объектов Drive, чтобы файлы не были доступны шире, чем предполагалось, в момент создания. Эта проверка читает политику Cloud Identity drive_and_docs.general_access_default и отмечает любое организационное подразделение, где доступ к файлам по умолчанию не равен PRIVATE_TO_OWNER.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Уровень доступа по умолчанию для новых файлов установлен на PRIVATE_TO_OWNER (defaultFileAccess) во всех организационных подразделениях.", "status": "machine-draft" },
+    "remediationSteps": { "value": "В Консоли администратора Google в разделе Приложения > Google Workspace > Drive and Docs > Настройки доступа > Общий доступ по умолчанию установите значение по умолчанию «Приватный для владельца», чтобы вновь создаваемые файлы изначально были приватными, а доступ предоставлялся только осознанным действием.", "status": "machine-draft" }
+  }
+}
