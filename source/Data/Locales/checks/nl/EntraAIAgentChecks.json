@@ -1,0 +1,27 @@
+{
+  "_family": "EntraAIAgentChecks.json",
+  "AIAGENT-001": {
+    "name": { "value": "Copilot-agents beperken wie kan interacteren (geen brede toegang)", "status": "machine-draft" },
+    "description": { "value": "Een Copilot Studio-agent waarvan het toegangsbeheerbeleid 'Any' of 'Any multitenant' is, kan door elke gebruiker in de tenant, of door gebruikers uit elke tenant, zonder beperking worden benaderd. Voor een agent die is gekoppeld aan organisatiegegevens en hulpprogramma's is dat een pad voor niet-geverifieerde gegevenstoegang en prompt-injectie. Deze controle markeert agents waarvan het toegangsbeheer is ingesteld op Any / Any multitenant. Wanneer agentgegevens niet worden verzameld, is het resultaat Niet Beoordeeld; een tenant zonder agents slaagt (er valt niets te beheren).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen enkele gepubliceerde agent gebruikt toegangsbeheer 'Any' of 'Any multitenant'; toegang is beperkt tot specifieke geverifieerde gebruikers of beveiligingsgroepen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Open in Copilot Studio voor elke gemarkeerde agent de instellingen onder Security > Authentication and access en wijzig het toegangsbeheer van 'Any' / 'Any multitenant' naar geverifieerde toegang die is beperkt tot uw organisatie (en idealiter tot specifieke beveiligingsgroepen). Publiceer de agent opnieuw nadat u de toegang hebt aangescherpt.", "status": "machine-draft" }
+  },
+  "AIAGENT-002": {
+    "name": { "value": "Copilot-agents vereisen authenticatie", "status": "machine-draft" },
+    "description": { "value": "Een Copilot Studio-agent met gebruikersauthenticatietype 'None' accepteert anonieme interactie; een agent die alleen 'As Needed' authenticeert, laat authenticatie optioneel. Beide laten niet-geverifieerde gebruikers een agent bereiken die organisatiegegevens kan tonen of hulpprogramma's kan aanroepen, wat misbruik, gegevensexfiltratie en prompt-injectie mogelijk maakt. Deze controle geeft FAIL voor agents zonder authenticatie en WARN voor agents waarvan de authenticatie alleen naar behoefte wordt geactiveerd.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Elke gepubliceerde agent vereist authenticatie (het gebruikersauthenticatietype is niet 'None' en authenticatie wordt altijd afgedwongen, niet 'As Needed')", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in Copilot Studio de authenticatie van elke agent in op verplicht aanmelden (Microsoft Entra ID-authenticatie) in plaats van 'No authentication', en zorg dat authenticatie altijd wordt afgedwongen in plaats van alleen naar behoefte te worden geactiveerd. Publiceer opnieuw na de wijziging.", "status": "machine-draft" }
+  },
+  "AIAGENT-003": {
+    "name": { "value": "Gepubliceerde Copilot-agents worden onderhouden (niet inactief)", "status": "machine-draft" },
+    "description": { "value": "Een gepubliceerde Copilot Studio-agent die lange tijd niet is gewijzigd, blijft functionaliteit en toegang blootstellen terwijl niemand de configuratie, machtigingen of gekoppelde hulpprogramma's onderhoudt. Inactieve gepubliceerde agents stapelen risico's stilzwijgend op. Deze controle markeert gepubliceerde agents waarvan de laatste wijziging ouder is dan de inactiviteitsdrempel (standaard 90 dagen) voor beoordeling of buitengebruikstelling.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gepubliceerde agents worden actief onderhouden; verouderde gepubliceerde agents worden beoordeeld of buiten gebruik gesteld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beoordeel elke inactieve gepubliceerde agent. Stel agents die niet langer nodig zijn buiten gebruik (publicatie ongedaan maken en verwijderen) en bevestig voor agents die nog in gebruik zijn dat hun toegangsbeheer, authenticatie en gekoppelde hulpprogramma's nog passend zijn; werk ze vervolgens bij om de onderhoudsklok opnieuw in te stellen.", "status": "machine-draft" }
+  },
+  "AIAGENT-004": {
+    "name": { "value": "Copilot-agenttoegang is afgebakend tot beveiligingsgroepen", "status": "machine-draft" },
+    "description": { "value": "Een geverifieerde Copilot Studio-agent zonder geautoriseerde beveiligingsgroepen is bereikbaar voor elke geverifieerde gebruiker in de tenant. Door een agent af te bakenen tot specifieke beveiligingsgroepen wordt het publiek beperkt tot degenen met een zakelijke noodzaak, waarmee het principe van minimale rechten wordt toegepast op wie een agent kan aanroepen en de gegevens die deze ontsluit. Deze controle markeert geverifieerde agents die geen geautoriseerde beveiligingsgroepen hebben geconfigureerd.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geverifieerde agents die gevoelige gegevens ontsluiten, worden afgebakend tot specifieke geautoriseerde beveiligingsgroepen in plaats van alle geverifieerde gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer voor agents die gevoelige gegevens ontsluiten geautoriseerde beveiligingsgroepen in de toegangsinstellingen van de agent, zodat alleen leden van die groepen met de agent kunnen interacteren. Laat tenantbrede toegang alleen bestaan voor agents die bewust voor alle medewerkers zijn bedoeld.", "status": "machine-draft" }
+  }
+}

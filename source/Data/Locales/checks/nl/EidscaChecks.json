@@ -1,0 +1,267 @@
+{
+  "_family": "EidscaChecks.json",
+  "EIDSCA-AP01": {
+    "name": { "value": "EIDSCA AP01: Standaardautorisatie-instellingen - Selfservice-wachtwoordherstel voor beheerders ingeschakeld", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AP01): evalueert 'allowedToUseSSPR' op het Entra ID-autorisatiebeleid ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq false", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-autorisatiebeleid zo dat 'allowedToUseSSPR' is ingesteld op false. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AP01.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AP04": {
+    "name": { "value": "EIDSCA AP04: Standaardautorisatie-instellingen - Beperkingen voor gastuitnodigingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AP04): evalueert 'allowInvitesFrom' op het Entra ID-autorisatiebeleid ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "in adminsAndGuestInviters, none", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-autorisatiebeleid zo dat 'allowInvitesFrom' is ingesteld op een van adminsAndGuestInviters, none. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AP04.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AP05": {
+    "name": { "value": "EIDSCA AP05: Standaardautorisatie-instellingen - Aanmelden voor e-mailgebaseerd abonnement", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AP05): evalueert 'allowedToSignUpEmailBasedSubscriptions' op het Entra ID-autorisatiebeleid ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq false", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-autorisatiebeleid zo dat 'allowedToSignUpEmailBasedSubscriptions' is ingesteld op false. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AP05.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AP06": {
+    "name": { "value": "EIDSCA AP06: Standaardautorisatie-instellingen - Gebruiker kan lid worden van de tenant via e-mailvalidatie", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AP06): evalueert 'allowEmailVerifiedUsersToJoinOrganization' op het Entra ID-autorisatiebeleid ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq false", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-autorisatiebeleid zo dat 'allowEmailVerifiedUsersToJoinOrganization' is ingesteld op false. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AP06.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AP07": {
+    "name": { "value": "EIDSCA AP07: Standaardautorisatie-instellingen - Toegang voor gastgebruikers", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AP07): evalueert 'guestUserRoleId' op het Entra ID-autorisatiebeleid ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq 2af84b1e-32c8-42b7-82bc-daa82404023b", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-autorisatiebeleid zo dat 'guestUserRoleId' is ingesteld op 2af84b1e-32c8-42b7-82bc-daa82404023b. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AP07.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AP08": {
+    "name": { "value": "EIDSCA AP08: Standaardautorisatie-instellingen - Gebruikerstoestemmingsbeleid toegewezen voor applicaties", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AP08): evalueert 'permissionGrantPolicyIdsAssignedToDefaultUserRole' op het Entra ID-autorisatiebeleid ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "clike-any ManagePermissionGrantsForSelf", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-autorisatiebeleid zo dat 'permissionGrantPolicyIdsAssignedToDefaultUserRole' ManagePermissionGrantsForSelf bevat. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AP08.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AP09": {
+    "name": { "value": "EIDSCA AP09: Standaardautorisatie-instellingen - Gebruikerstoestemming toestaan voor risicogebaseerde apps", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AP09): evalueert 'allowUserConsentForRiskyApps' op het Entra ID-autorisatiebeleid ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq false", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-autorisatiebeleid zo dat 'allowUserConsentForRiskyApps' is ingesteld op false. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AP09.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AP10": {
+    "name": { "value": "EIDSCA AP10: Standaardautorisatie-instellingen - Machtigingen van de standaardgebruikersrol - Mag apps maken", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AP10): evalueert 'defaultUserRolePermissions.allowedToCreateApps' op het Entra ID-autorisatiebeleid ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq false", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-autorisatiebeleid zo dat 'defaultUserRolePermissions.allowedToCreateApps' is ingesteld op false. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AP10.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AP14": {
+    "name": { "value": "EIDSCA AP14: Standaardautorisatie-instellingen - Machtigingen van de standaardgebruikersrol - Mag andere gebruikers lezen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AP14): evalueert 'defaultUserRolePermissions.allowedToReadOtherUsers' op het Entra ID-autorisatiebeleid ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-autorisatiebeleid zo dat 'defaultUserRolePermissions.allowedToReadOtherUsers' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AP14.)", "status": "machine-draft" }
+  },
+  "EIDSCA-CP01": {
+    "name": { "value": "EIDSCA CP01: Standaardinstellingen - Instellingen voor toestemmingsbeleid - Toestemming van groepseigenaar voor apps die gegevens openen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA CP01): evalueert de instelling 'EnableGroupSpecificConsent' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq False", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'EnableGroupSpecificConsent' is ingesteld op False. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA CP01.)", "status": "machine-draft" }
+  },
+  "EIDSCA-CP03": {
+    "name": { "value": "EIDSCA CP03: Standaardinstellingen - Instellingen voor toestemmingsbeleid - Gebruikerstoestemming voor risicovolle apps blokkeren", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA CP03): evalueert de instelling 'BlockUserConsentForRiskyApps' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'BlockUserConsentForRiskyApps' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA CP03.)", "status": "machine-draft" }
+  },
+  "EIDSCA-CP04": {
+    "name": { "value": "EIDSCA CP04: Standaardinstellingen - Instellingen voor toestemmingsbeleid - Gebruikers kunnen beheerderstoestemming aanvragen voor apps waarvoor ze zelf geen toestemming kunnen geven", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA CP04): evalueert de instelling 'EnableAdminConsentRequests' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'EnableAdminConsentRequests' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA CP04.)", "status": "machine-draft" }
+  },
+  "EIDSCA-PR01": {
+    "name": { "value": "EIDSCA PR01: Standaardinstellingen - Instellingen voor wachtwoordregels - Wachtwoordbeveiliging - Modus", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA PR01): evalueert de instelling 'BannedPasswordCheckOnPremisesMode' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq Enforce", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'BannedPasswordCheckOnPremisesMode' is ingesteld op Enforce. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA PR01.)", "status": "machine-draft" }
+  },
+  "EIDSCA-PR02": {
+    "name": { "value": "EIDSCA PR02: Standaardinstellingen - Instellingen voor wachtwoordregels - Wachtwoordbeveiliging - Wachtwoordbeveiliging inschakelen op Windows Server Active Directory", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA PR02): evalueert de instelling 'EnableBannedPasswordCheckOnPremises' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq True", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'EnableBannedPasswordCheckOnPremises' is ingesteld op True. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA PR02.)", "status": "machine-draft" }
+  },
+  "EIDSCA-PR03": {
+    "name": { "value": "EIDSCA PR03: Standaardinstellingen - Instellingen voor wachtwoordregels - Aangepaste lijst afdwingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA PR03): evalueert de instelling 'EnableBannedPasswordCheck' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq True", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'EnableBannedPasswordCheck' is ingesteld op True. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA PR03.)", "status": "machine-draft" }
+  },
+  "EIDSCA-PR05": {
+    "name": { "value": "EIDSCA PR05: Standaardinstellingen - Instellingen voor wachtwoordregels - Smart Lockout - Vergrendelingsduur in seconden", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA PR05): evalueert de instelling 'LockoutDurationInSeconds' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "ge 60", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'LockoutDurationInSeconds' ten minste 60 is. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA PR05.)", "status": "machine-draft" }
+  },
+  "EIDSCA-PR06": {
+    "name": { "value": "EIDSCA PR06: Standaardinstellingen - Instellingen voor wachtwoordregels - Smart Lockout - Vergrendelingsdrempel", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA PR06): evalueert de instelling 'LockoutThreshold' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "le 10", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'LockoutThreshold' maximaal 10 is. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA PR06.)", "status": "machine-draft" }
+  },
+  "EIDSCA-ST08": {
+    "name": { "value": "EIDSCA ST08: Standaardinstellingen - Classificatie en M365-groepen - M365-groepen - Gasten toestaan groepseigenaar te worden", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA ST08): evalueert de instelling 'AllowGuestsToBeGroupOwner' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq false", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'AllowGuestsToBeGroupOwner' is ingesteld op false. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA ST08.)", "status": "machine-draft" }
+  },
+  "EIDSCA-ST09": {
+    "name": { "value": "EIDSCA ST09: Standaardinstellingen - Classificatie en M365-groepen - M365-groepen - Gasten toegang geven tot groepsinhoud", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA ST09): evalueert de instelling 'AllowGuestsToAccessGroups' op de Entra ID-directory-instellingen (groep) ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq True", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Entra ID-directory-instellingen (groep) zo dat de instelling 'AllowGuestsToAccessGroups' is ingesteld op True. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA ST09.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AG01": {
+    "name": { "value": "EIDSCA AG01: Authenticatiemethode - Algemene instellingen - Migratie beheren", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AG01): evalueert 'policyMigrationState' op het Entra ID-beleid voor authenticatiemethoden ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "in migrationComplete, ", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-beleid voor authenticatiemethoden zo dat 'policyMigrationState' is ingesteld op een van migrationComplete, . (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AG01.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AG02": {
+    "name": { "value": "EIDSCA AG02: Authenticatiemethode - Algemene instellingen - Verdachte activiteit melden - Status", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AG02): evalueert 'reportSuspiciousActivitySettings.state' op het Entra ID-beleid voor authenticatiemethoden ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq enabled", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-beleid voor authenticatiemethoden zo dat 'reportSuspiciousActivitySettings.state' is ingesteld op enabled. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AG02.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AG03": {
+    "name": { "value": "EIDSCA AG03: Authenticatiemethode - Algemene instellingen - Verdachte activiteit melden - Opgenomen gebruikers/groepen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AG03): evalueert 'reportSuspiciousActivitySettings.includeTarget.id' op het Entra ID-beleid voor authenticatiemethoden ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq all_users", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-beleid voor authenticatiemethoden zo dat 'reportSuspiciousActivitySettings.includeTarget.id' is ingesteld op all_users. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AG03.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AM01": {
+    "name": { "value": "EIDSCA AM01: Authenticatiemethode - Microsoft Authenticator - Status", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AM01): evalueert 'state' op de MicrosoftAuthenticator-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq enabled", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de MicrosoftAuthenticator-authenticatiemethode zo dat 'state' is ingesteld op enabled. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AM01.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AM02": {
+    "name": { "value": "EIDSCA AM02: Authenticatiemethode - Microsoft Authenticator - Gebruik van Microsoft Authenticator-OTP toestaan", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AM02): evalueert 'isSoftwareOathEnabled' op de MicrosoftAuthenticator-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq false", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de MicrosoftAuthenticator-authenticatiemethode zo dat 'isSoftwareOathEnabled' is ingesteld op false. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AM02.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AM03": {
+    "name": { "value": "EIDSCA AM03: Authenticatiemethode - Microsoft Authenticator - Cijferovereenkomst vereisen voor pushmeldingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AM03): evalueert 'featureSettings.numberMatchingRequiredState.state' op de MicrosoftAuthenticator-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq enabled", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de MicrosoftAuthenticator-authenticatiemethode zo dat 'featureSettings.numberMatchingRequiredState.state' is ingesteld op enabled. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AM03.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AM04": {
+    "name": { "value": "EIDSCA AM04: Authenticatiemethode - Microsoft Authenticator - Opgenomen gebruikers/groepen voor cijferovereenkomst bij pushmeldingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AM04): evalueert 'featureSettings.numberMatchingRequiredState.includeTarget.id' op de MicrosoftAuthenticator-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq all_users", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de MicrosoftAuthenticator-authenticatiemethode zo dat 'featureSettings.numberMatchingRequiredState.includeTarget.id' is ingesteld op all_users. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AM04.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AM06": {
+    "name": { "value": "EIDSCA AM06: Authenticatiemethode - Microsoft Authenticator - Applicatienaam tonen in push- en wachtwoordloze meldingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AM06): evalueert 'featureSettings.displayAppInformationRequiredState.state' op de MicrosoftAuthenticator-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq enabled", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de MicrosoftAuthenticator-authenticatiemethode zo dat 'featureSettings.displayAppInformationRequiredState.state' is ingesteld op enabled. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AM06.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AM07": {
+    "name": { "value": "EIDSCA AM07: Authenticatiemethode - Microsoft Authenticator - Opgenomen gebruikers/groepen om de applicatienaam te tonen in push- en wachtwoordloze meldingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AM07): evalueert 'featureSettings.displayAppInformationRequiredState.includeTarget.id' op de MicrosoftAuthenticator-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq all_users", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de MicrosoftAuthenticator-authenticatiemethode zo dat 'featureSettings.displayAppInformationRequiredState.includeTarget.id' is ingesteld op all_users. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AM07.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AM09": {
+    "name": { "value": "EIDSCA AM09: Authenticatiemethode - Microsoft Authenticator - Geografische locatie tonen in push- en wachtwoordloze meldingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AM09): evalueert 'featureSettings.displayLocationInformationRequiredState.state' op de MicrosoftAuthenticator-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq enabled", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de MicrosoftAuthenticator-authenticatiemethode zo dat 'featureSettings.displayLocationInformationRequiredState.state' is ingesteld op enabled. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AM09.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AM10": {
+    "name": { "value": "EIDSCA AM10: Authenticatiemethode - Microsoft Authenticator - Opgenomen gebruikers/groepen om de geografische locatie te tonen in push- en wachtwoordloze meldingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AM10): evalueert 'featureSettings.displayLocationInformationRequiredState.includeTarget.id' op de MicrosoftAuthenticator-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq all_users", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de MicrosoftAuthenticator-authenticatiemethode zo dat 'featureSettings.displayLocationInformationRequiredState.includeTarget.id' is ingesteld op all_users. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AM10.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AF01": {
+    "name": { "value": "EIDSCA AF01: Authenticatiemethode - FIDO2-beveiligingssleutel - Status", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AF01): evalueert 'state' op de Fido2-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq enabled", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Fido2-authenticatiemethode zo dat 'state' is ingesteld op enabled. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AF01.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AF02": {
+    "name": { "value": "EIDSCA AF02: Authenticatiemethode - FIDO2-beveiligingssleutel - Selfservice-instelling toestaan", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AF02): evalueert 'isSelfServiceRegistrationAllowed' op de Fido2-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Fido2-authenticatiemethode zo dat 'isSelfServiceRegistrationAllowed' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AF02.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AF03": {
+    "name": { "value": "EIDSCA AF03: Authenticatiemethode - FIDO2-beveiligingssleutel - Attestatie afdwingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AF03): evalueert 'isAttestationEnforced' op de Fido2-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Fido2-authenticatiemethode zo dat 'isAttestationEnforced' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AF03.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AF04": {
+    "name": { "value": "EIDSCA AF04: Authenticatiemethode - FIDO2-beveiligingssleutel - Sleutelbeperkingen afdwingen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AF04): evalueert 'keyRestrictions.isEnforced' op de Fido2-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Fido2-authenticatiemethode zo dat 'keyRestrictions.isEnforced' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AF04.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AF05": {
+    "name": { "value": "EIDSCA AF05: Authenticatiemethode - FIDO2-beveiligingssleutel - Beperkt", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AF05): evalueert 'keyRestrictions.aaGuids' op de Fido2-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "notempty ", "status": "machine-draft" },
+    "remediationSteps": { "value": "Zorg dat 'keyRestrictions.aaGuids' op de Fido2-authenticatiemethode is geconfigureerd (niet leeg). (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AF05.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AF06": {
+    "name": { "value": "EIDSCA AF06: Authenticatiemethode - FIDO2-beveiligingssleutel - Specifieke sleutels beperken", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AF06): evalueert 'keyRestrictions' op de Fido2-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "fido2-aaguid-enforced ", "status": "machine-draft" },
+    "remediationSteps": { "value": "Zorg dat 'keyRestrictions' op de Fido2-authenticatiemethode wordt afgedwongen met een lijst met toegestane/geblokkeerde AAGUID's. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AF06.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AT01": {
+    "name": { "value": "EIDSCA AT01: Authenticatiemethode - Temporary Access Pass - Status", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AT01): evalueert 'state' op de TemporaryAccessPass-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq enabled", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de TemporaryAccessPass-authenticatiemethode zo dat 'state' is ingesteld op enabled. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AT01.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AT02": {
+    "name": { "value": "EIDSCA AT02: Authenticatiemethode - Temporary Access Pass - Eenmalig", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AT02): evalueert 'isUsableOnce' op de TemporaryAccessPass-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de TemporaryAccessPass-authenticatiemethode zo dat 'isUsableOnce' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AT02.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AV01": {
+    "name": { "value": "EIDSCA AV01: Authenticatiemethode - Spraakoproep - Status", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AV01): evalueert 'state' op de Voice-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq disabled", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Voice-authenticatiemethode zo dat 'state' is ingesteld op disabled. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AV01.)", "status": "machine-draft" }
+  },
+  "EIDSCA-AS04": {
+    "name": { "value": "EIDSCA AS04: Authenticatiemethode - Sms - Gebruik voor aanmelding", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA AS04): evalueert 'includeTargets.isUsableForSignIn' op de Sms-authenticatiemethode ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq false", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer de Sms-authenticatiemethode zo dat 'includeTargets.isUsableForSignIn' is ingesteld op false. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA AS04.)", "status": "machine-draft" }
+  },
+  "EIDSCA-CR01": {
+    "name": { "value": "EIDSCA CR01: Toestemmingsframework - Beheerderstoestemmingsaanvraag - Beleid om de functie voor beheerderstoestemmingsaanvragen in of uit te schakelen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA CR01): evalueert 'isEnabled' op het Entra ID-beleid voor beheerderstoestemmingsaanvragen ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-beleid voor beheerderstoestemmingsaanvragen zo dat 'isEnabled' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA CR01.)", "status": "machine-draft" }
+  },
+  "EIDSCA-CR02": {
+    "name": { "value": "EIDSCA CR02: Toestemmingsframework - Beheerderstoestemmingsaanvraag - Beoordelaars ontvangen e-mailmeldingen voor aanvragen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA CR02): evalueert 'notifyReviewers' op het Entra ID-beleid voor beheerderstoestemmingsaanvragen ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-beleid voor beheerderstoestemmingsaanvragen zo dat 'notifyReviewers' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA CR02.)", "status": "machine-draft" }
+  },
+  "EIDSCA-CR03": {
+    "name": { "value": "EIDSCA CR03: Toestemmingsframework - Beheerderstoestemmingsaanvraag - Beoordelaars ontvangen e-mailmeldingen wanneer beheerderstoestemmingsaanvragen bijna verlopen", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA CR03): evalueert 'remindersEnabled' op het Entra ID-beleid voor beheerderstoestemmingsaanvragen ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "eq true", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-beleid voor beheerderstoestemmingsaanvragen zo dat 'remindersEnabled' is ingesteld op true. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA CR03.)", "status": "machine-draft" }
+  },
+  "EIDSCA-CR04": {
+    "name": { "value": "EIDSCA CR04: Toestemmingsframework - Beheerderstoestemmingsaanvraag - Duur van toestemmingsaanvraag (dagen)", "status": "machine-draft" },
+    "description": { "value": "Entra ID-beveiligingsconfiguratiecontrole (EIDSCA CR04): evalueert 'requestDurationInDays' op het Entra ID-beleid voor beheerderstoestemmingsaanvragen ten opzichte van de aanbevolen veilige waarde.", "status": "machine-draft" },
+    "recommendedValue": { "value": "le 30", "status": "machine-draft" },
+    "remediationSteps": { "value": "Configureer het Entra ID-beleid voor beheerderstoestemmingsaanvragen zo dat 'requestDurationInDays' maximaal 30 is. (Entra ID-beveiligingsconfiguratiebaseline, controle EIDSCA CR04.)", "status": "machine-draft" }
+  }
+}
