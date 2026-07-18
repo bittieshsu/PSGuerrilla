@@ -1,0 +1,111 @@
+{
+  "_family": "AuthenticationChecks.json",
+  "AUTH-001": {
+    "name": { "value": "2SV-afdwinging", "status": "machine-draft" },
+    "description": { "value": "Verificatie in twee stappen (2SV/MFA) moet worden afgedwongen voor alle gebruikers om accountovername via gestolen referenties te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Afgedwongen voor alle organisatie-eenheden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Verificatie > Verificatie in twee stappen > Stel Afdwinging in op 'Aan'", "status": "machine-draft" }
+  },
+  "AUTH-002": {
+    "name": { "value": "2SV-registratiepercentage", "status": "machine-draft" },
+    "description": { "value": "Alle actieve gebruikers moeten voor 2SV zijn geregistreerd. Lage registratiepercentages maken accounts kwetsbaar voor op referenties gebaseerde aanvallen", "status": "machine-draft" },
+    "recommendedValue": { "value": "95% of hogere registratie onder actieve gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Rapportage > Gebruikersrapporten > Beveiliging > Beoordeel gebruikers zonder 2SV. Stel de registratiedeadline in via Beveiliging > Verificatie in twee stappen", "status": "machine-draft" }
+  },
+  "AUTH-003": {
+    "name": { "value": "Sterkte van 2SV-methode", "status": "machine-draft" },
+    "description": { "value": "Beveiligingssleutels moeten de primaire 2SV-methode zijn. Op sms en spraak gebaseerde 2SV is kwetsbaar voor SIM-swapping en onderscheppingsaanvallen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Beveiligingssleutels afgedwongen als primaire methode", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Verificatie > Verificatie in twee stappen > Stel toegestane methoden in op 'Alleen beveiligingssleutel'", "status": "machine-draft" }
+  },
+  "AUTH-004": {
+    "name": { "value": "Minimale wachtwoordlengte", "status": "machine-draft" },
+    "description": { "value": "De minimale wachtwoordlengte moet ten minste 12 tekens zijn om bestand te zijn tegen brute-force- en woordenboekaanvallen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Minimaal 12 tekens", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Verificatie > Wachtwoordbeheer > Stel de minimale lengte in op 12 of hoger", "status": "machine-draft" }
+  },
+  "AUTH-005": {
+    "name": { "value": "Beperking op hergebruik van wachtwoorden", "status": "machine-draft" },
+    "description": { "value": "Gebruikers mogen recente wachtwoorden niet kunnen hergebruiken, wat aanvallen met het rouleren van referenties voorkomt", "status": "machine-draft" },
+    "recommendedValue": { "value": "Hergebruik van wachtwoorden niet toegestaan", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Verificatie > Wachtwoordbeheer > Schakel 'Wachtwoordbeleid afdwingen bij volgende aanmelding' in en beperk hergebruik", "status": "machine-draft" }
+  },
+  "AUTH-006": {
+    "name": { "value": "Sessieduur", "status": "machine-draft" },
+    "description": { "value": "De duur van websessies moet worden beperkt om het venster voor sessiekaping en ongeautoriseerde toegang vanaf gedeelde apparaten te verkleinen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sessieduur van 12 uur of minder", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Google-sessiebeheer > Stel de duur van websessies in", "status": "machine-draft" }
+  },
+  "AUTH-007": {
+    "name": { "value": "SSO-configuratie", "status": "machine-draft" },
+    "description": { "value": "Als SSO is geconfigureerd, moet het gebruikmaken van veilige protocollen en vertrouwde identiteitsproviders", "status": "machine-draft" },
+    "recommendedValue": { "value": "SAML-SSO correct geconfigureerd met een vertrouwde IdP", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Verificatie > SSO met externe IdP > Controleer de configuratie", "status": "machine-draft" }
+  },
+  "AUTH-008": {
+    "name": { "value": "Toegang voor minder veilige apps", "status": "machine-draft" },
+    "description": { "value": "Minder veilige apps (apps die geen moderne verificatie ondersteunen) moeten worden geblokkeerd om blootstelling van referenties te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Uitgeschakeld voor alle gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Verificatie > Minder veilige apps > Stel in op 'Toegang voor minder veilige apps uitschakelen'", "status": "machine-draft" }
+  },
+  "AUTH-009": {
+    "name": { "value": "Beleid voor app-wachtwoorden", "status": "machine-draft" },
+    "description": { "value": "App-specifieke wachtwoorden omzeilen 2SV en moeten worden beheerd. Indien toegestaan, moeten ze eerst 2SV-registratie vereisen", "status": "machine-draft" },
+    "recommendedValue": { "value": "App-wachtwoorden beperkt of uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Verificatie > Verificatie in twee stappen > Beoordeel de instellingen voor app-wachtwoorden", "status": "machine-draft" }
+  },
+  "AUTH-010": {
+    "name": { "value": "Configuratie van herstelopties", "status": "machine-draft" },
+    "description": { "value": "Zelfserviceherstel voor gebruikers moet passend worden geconfigureerd. Superbeheerders mogen geen persoonlijke herstelopties hebben om social engineering te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Superbeheerders: geen persoonlijk herstel. Reguliere gebruikers: herstelopties toegestaan met beheerdersoverriding", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Verificatie > Accountherstel > Schakel persoonlijk herstel uit voor de OU van superbeheerders", "status": "machine-draft" }
+  },
+  "AUTH-011": {
+    "name": { "value": "Instellingen voor aanmeldingsuitdagingen", "status": "machine-draft" },
+    "description": { "value": "Aanmeldingsuitdagingen moeten worden ingeschakeld om aanvullende verificatie te bieden wanneer verdachte aanmeldingspogingen worden gedetecteerd", "status": "machine-draft" },
+    "recommendedValue": { "value": "Aanmeldingsuitdagingen ingeschakeld met werknemers-ID of andere verificatie", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Verificatie > Aanmeldingsuitdagingen > Inschakelen", "status": "machine-draft" }
+  },
+  "AUTH-012": {
+    "name": { "value": "2SV-registratie van superbeheerders", "status": "machine-draft" },
+    "description": { "value": "Alle superbeheerdersaccounts moeten voor 2SV zijn geregistreerd. Superbeheerders hebben onbeperkte toegang tot alle instellingen en gegevens", "status": "machine-draft" },
+    "recommendedValue": { "value": "100% van de superbeheerders geregistreerd voor 2SV", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Rapportage > Gebruikersrapporten > Beveiliging > Filteren op beheerdersstatus > Zorg dat alle superbeheerders voor 2SV zijn geregistreerd", "status": "machine-draft" }
+  },
+  "AUTH-013": {
+    "name": { "value": "Verouderde superbeheerdersaccounts", "status": "machine-draft" },
+    "description": { "value": "Superbeheerdersaccounts die zich niet recent hebben aangemeld, zijn mogelijk verweesd en lopen risico op compromittering. Alle superbeheerdersaccounts moeten actief worden beheerd", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen superbeheerdersaccounts die langer dan 90 dagen inactief zijn", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Gebruikers > Filteren op beheerdersrol > Beoordeel en verwijder of schors inactieve superbeheerdersaccounts", "status": "machine-draft" }
+  },
+  "AUTH-014": {
+    "name": { "value": "2SV-registratie toegestaan", "status": "machine-draft" },
+    "description": { "value": "Gebruikers moeten zich kunnen registreren voor verificatie in twee stappen. Het uitschakelen van 2SV-registratie blokkeert de invoering van MFA en laat accounts uitsluitend beschermd door wachtwoorden", "status": "machine-draft" },
+    "recommendedValue": { "value": "2SV-registratie toegestaan in alle organisatie-eenheden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beveiliging > Verificatie > Verificatie in twee stappen > Stel 'Gebruikers toestaan verificatie in twee stappen in te schakelen' in op Aan voor alle organisatie-eenheden", "status": "machine-draft" }
+  },
+  "AUTH-015": {
+    "name": { "value": "Respijtperiode voor 2SV-registratie", "status": "machine-draft" },
+    "description": { "value": "De respijtperiode voordat nieuw toegevoegde gebruikers zich voor 2SV moeten registreren, moet kort zijn. Een lange respijtperiode laat accounts gedurende een langere periode na het aanmaken onbeschermd door MFA", "status": "machine-draft" },
+    "recommendedValue": { "value": "Respijtperiode van 7 dagen (168 uur) of minder", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beveiliging > Verificatie > Verificatie in twee stappen > Stel de respijtperiode voor registratie van nieuwe gebruikers in op 7 dagen of minder", "status": "machine-draft" }
+  },
+  "AUTH-016": {
+    "name": { "value": "Zelfregistratie voor Advanced Protection", "status": "machine-draft" },
+    "description": { "value": "Het toestaan van zelfregistratie in het Advanced Protection Program stelt gebruikers met een hoog risico in staat de sterkst beschikbare accountbescherming toe te passen zonder tussenkomst van een beheerder", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zelfregistratie voor Advanced Protection toegestaan in alle organisatie-eenheden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beveiliging > Verificatie > Advanced Protection Program > Sta gebruikers toe zich zelf te registreren voor Advanced Protection", "status": "machine-draft" }
+  },
+  "AUTH-017": {
+    "name": { "value": "Zelfherstel van superbeheerdersaccounts", "status": "machine-draft" },
+    "description": { "value": "Zelfserviceaccountherstel voor superbeheerders is een pad naar accountovername via social engineering en moet worden uitgeschakeld. Superbeheerders mogen alleen door een andere beheerder worden hersteld", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zelfherstel voor superbeheerders uitgeschakeld in alle organisatie-eenheden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beveiliging > Verificatie > Accountherstel > Schakel 'Superbeheerders toestaan hun account te herstellen' uit voor alle organisatie-eenheden", "status": "machine-draft" }
+  },
+  "AUTH-018": {
+    "name": { "value": "Zelfherstel van accounts uitgeschakeld voor gebruikers en niet-superbeheerders (GWS.COMMONCONTROLS.8.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.8.2 vereist dat zelfherstel van accounts wordt uitgeschakeld voor gebruikers en niet-superbeheerdersaccounts. Zelfserviceherstel is een vector voor accountovername: een aanvaller die een herstelkanaal beheert, kan het account overnemen zonder de helpdesk. Deze controle leest het Cloud Identity-beleid security.user_account_recovery en markeert elke organisatie-eenheid waar zelfherstel is ingeschakeld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zelfherstel van accounts uitgeschakeld (enableAccountRecovery = false) voor gebruikers en niet-superbeheerders in alle organisatie-eenheden.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de Google Admin console onder Beveiliging > Accountherstel het zelfherstel voor gebruikers (en niet-superbeheerders) uit, zodat accountherstel via een beheerder of helpdeskproces verloopt in plaats van via een door de gebruiker beheerd kanaal.", "status": "machine-draft" }
+  }
+}

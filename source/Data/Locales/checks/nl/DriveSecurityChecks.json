@@ -1,0 +1,105 @@
+{
+  "_family": "DriveSecurityChecks.json",
+  "DRIVE-001": {
+    "name": { "value": "Standaardinstellingen voor extern delen", "status": "machine-draft" },
+    "description": { "value": "Delen buiten de organisatie moet standaard worden beperkt of uitgeschakeld om onbedoelde blootstelling van gegevens aan externe partijen te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Extern delen beperkt tot toegestane domeinen (allowlist) of uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Instellingen voor delen > Stel delen buiten de organisatie in op 'Uit' of 'Toegestane domeinen'", "status": "machine-draft" }
+  },
+  "DRIVE-002": {
+    "name": { "value": "Standaardinstellingen voor het delen via links", "status": "machine-draft" },
+    "description": { "value": "Het standaard delen via links moet worden ingesteld op 'Beperkt' (specifieke personen) in plaats van brede toegang, om onbedoelde blootstelling van gegevens te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Standaard delen via links ingesteld op 'Beperkt' (alleen specifieke personen)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Instellingen voor delen > Stel standaard delen via links in op 'Beperkt'", "status": "machine-draft" }
+  },
+  "DRIVE-003": {
+    "name": { "value": "Audit van delen via 'Iedereen met de link'", "status": "machine-draft" },
+    "description": { "value": "Bestanden die worden gedeeld met 'Iedereen met de link' zijn toegankelijk voor iedereen op internet en vormen een aanzienlijk risico op blootstelling van gegevens", "status": "machine-draft" },
+    "recommendedValue": { "value": "Delen via 'Iedereen met de link' uitgeschakeld of streng beheerd", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Instellingen voor delen > Schakel de optie 'Iedereen met de link' uit of beperk deze tot 'Domeingebruikers met de link'", "status": "machine-draft" }
+  },
+  "DRIVE-004": {
+    "name": { "value": "Beperkingen op het maken van gedeelde Drives", "status": "machine-draft" },
+    "description": { "value": "Het maken van gedeelde Drives moet worden beperkt om ongecontroleerde wildgroei te voorkomen en een goede governance van gedeelde gegevensopslag te waarborgen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Het maken van gedeelde Drives beperkt tot specifieke groepen of beheerders", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Instellingen voor delen > Gedeelde Drives maken > Beperk wie gedeelde Drives kan maken", "status": "machine-draft" }
+  },
+  "DRIVE-005": {
+    "name": { "value": "Ledenbeheer van gedeelde Drives", "status": "machine-draft" },
+    "description": { "value": "Het ledenbeheer van gedeelde Drives moet worden beheerd om te voorkomen dat onbevoegde gebruikers worden toegevoegd of dat rechten worden geëscaleerd", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alleen managers kunnen leden toevoegen en toegangsniveaus wijzigen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Instellingen voor delen > Instellingen voor gedeelde Drives > Configureer de rechten voor ledenbeheer", "status": "machine-draft" }
+  },
+  "DRIVE-006": {
+    "name": { "value": "Extern delen van gedeelde Drives", "status": "machine-draft" },
+    "description": { "value": "Extern delen op gedeelde Drives moet worden beperkt om te voorkomen dat gevoelige organisatiegegevens buiten het domein worden gedeeld", "status": "machine-draft" },
+    "recommendedValue": { "value": "Extern delen op gedeelde Drives uitgeschakeld of beperkt tot toegestane domeinen (allowlist)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Instellingen voor delen > Delen van gedeelde Drives > Beperk extern delen", "status": "machine-draft" }
+  },
+  "DRIVE-007": {
+    "name": { "value": "Instellingen voor overdracht van bestandseigendom", "status": "machine-draft" },
+    "description": { "value": "De overdracht van bestandseigendom moet worden beheerd om ongeautoriseerde gegevensmigratie te voorkomen en de juiste ketens van gegevensgovernance te behouden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Overdracht van bestandseigendom beperkt tot beheerders of een beheerd proces", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Instellingen voor eigendomsoverdracht > Configureer de beperkingen", "status": "machine-draft" }
+  },
+  "DRIVE-008": {
+    "name": { "value": "Drive for Desktop toegestaan/geblokkeerd", "status": "machine-draft" },
+    "description": { "value": "Drive for Desktop synchroniseert bestanden lokaal en moet worden beheerd om te voorkomen dat gegevens worden opgeslagen op onbeheerde eindpunten", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive for Desktop beperkt tot beheerde apparaten of uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Functies en applicaties > Drive for Desktop > Configureer de toegang", "status": "machine-draft" }
+  },
+  "DRIVE-009": {
+    "name": { "value": "Drive-toegang voor apps van derden", "status": "machine-draft" },
+    "description": { "value": "Applicaties van derden met toegang tot Drive-gegevens moeten worden beoordeeld en beperkt om ongeautoriseerde gegevensexfiltratie te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Toegang van apps van derden tot Drive-gegevens beperkt en beoordeeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > API-beheer > Toegang voor apps van derden > Beoordeel en beperk apps met Drive-toegang", "status": "machine-draft" }
+  },
+  "DRIVE-010": {
+    "name": { "value": "Audit van DLP-regels voor Drive", "status": "machine-draft" },
+    "description": { "value": "Regels voor Data Loss Prevention moeten worden geconfigureerd om het delen van gevoelige gegevens via Google Drive te detecteren en te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "DLP-regels geconfigureerd voor gevoelige gegevenstypen (PII, financiële gegevens, gezondheidsgegevens)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Beveiliging > Gegevensbescherming > Regels beheren > Maak regels voor gevoelige gegevenstypen in Drive", "status": "machine-draft" }
+  },
+  "DRIVE-011": {
+    "name": { "value": "Instellingen voor doelgroepen", "status": "machine-draft" },
+    "description": { "value": "Instellingen voor doelgroepen bepalen wie kan worden voorgesteld bij het delen van bestanden en moeten worden geconfigureerd om onbedoeld delen te beperken", "status": "machine-draft" },
+    "recommendedValue": { "value": "Doelgroepen geconfigureerd om suggesties voor delen op passende wijze te beperken", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Doelgroepen > Beoordeel en configureer doelgroepgroepen", "status": "machine-draft" }
+  },
+  "DRIVE-012": {
+    "name": { "value": "Instellingen voor Drive-add-ons", "status": "machine-draft" },
+    "description": { "value": "Drive-add-ons hebben toegang tot bestandsinhoud en moeten worden beheerd om blootstelling van gegevens via niet-vertrouwde extensies te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installatie van Drive-add-ons beperkt tot door de beheerder goedgekeurde add-ons", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Functies en applicaties > Add-ons > Configureer de installatiebeperkingen", "status": "machine-draft" }
+  },
+  "DRIVE-013": {
+    "name": { "value": "Instellingen voor offline toegang", "status": "machine-draft" },
+    "description": { "value": "Offline toegang staat toe dat Drive-bestanden lokaal op apparaten worden gecachet en moet worden beheerd om blootstelling van gegevens op gedeelde of onbeheerde apparaten te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Offline toegang uitgeschakeld of beperkt tot beheerde apparaten", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Functies en applicaties > Offline > Schakel offline toegang uit of beperk deze", "status": "machine-draft" }
+  },
+  "DRIVE-014": {
+    "name": { "value": "Drive SDK API-toegang uitgeschakeld (GWS.DRIVEDOCS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.4.1: de Drive SDK laat apps van derden Drive-content lezen en schrijven via de API, een direct kanaal voor gegevensexfiltratie wanneer dit breed is ingeschakeld. Leest drive_and_docs.drive_sdk; keurt af waar enableDriveSdkApiAccess aan staat.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive SDK API-toegang uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Functies en applicaties de Drive SDK uit, tenzij specifieke beoordeelde integraties deze vereisen.", "status": "machine-draft" }
+  },
+  "DRIVE-015": {
+    "name": { "value": "Waarschuwing voor externe bestanden in Drive ingeschakeld (GWS.DRIVEDOCS.1.9)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.9: gebruikers waarschuwen wanneer zij bestanden extern delen is een gegevensverliesmaatregel met weinig wrijving. Leest drive_and_docs.external_file_warning; waarschuwt waar highlightingEnabled uit staat.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Waarschuwing voor het extern delen van bestanden ingeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de instellingen voor delen van Drive waarschuwingen in wanneer gebruikers bestanden delen met mensen buiten de organisatie.", "status": "machine-draft" }
+  },
+  "DRIVE-016": {
+    "name": { "value": "Beveiligingsupdate voor Drive-bestanden afgedwongen (GWS.DRIVEDOCS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.3.1: de beveiligingsupdate voor bestanden scherpt het delen via links op betrokken bestanden aan; gebruikers deze laten verwijderen stelt de toegang weer open. Leest drive_and_docs.file_security_update; waarschuwt waar gebruikers de beveiligingsupdate mogen verwijderen of beheren.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Beveiligingsupdate toegepast en gebruikers kunnen deze niet verwijderen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Pas in de instellingen van Drive de beveiligingsupdate voor bestanden toe en sta gebruikers niet toe deze te verwijderen van bestanden die ze bezitten.", "status": "machine-draft" }
+  },
+  "DRIVE-017": {
+    "name": { "value": "Standaardbestandstoegang ingesteld op privé voor eigenaar (GWS.DRIVEDOCS.1.8)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.8 vereist dat 'Privé voor eigenaar' het standaardtoegangsniveau is voor nieuw gemaakte Drive-items, zodat bestanden bij het maken niet ruimer worden gedeeld dan bedoeld. Deze controle leest het Cloud Identity-beleid drive_and_docs.general_access_default en markeert elke organisatie-eenheid waar de standaardbestandstoegang niet PRIVATE_TO_OWNER is.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Standaardtoegangsniveau voor nieuwe bestanden ingesteld op PRIVATE_TO_OWNER (defaultFileAccess) in alle organisatie-eenheden.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in de Google Admin console onder Apps > Google Workspace > Drive en Docs > Instellingen voor delen > Standaard algemene toegang de standaard in op 'Privé voor eigenaar', zodat nieuw gemaakte bestanden privé beginnen en alleen door een bewuste actie worden gedeeld.", "status": "machine-draft" }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "_family": "AdminManagementChecks.json",
+  "ADMIN-001": {
+    "name": { "value": "Inventaris van superbeheerdersaccounts", "status": "machine-draft" },
+    "description": { "value": "Alle superbeheerdersaccounts moeten worden geïnventariseerd en beoordeeld. Superbeheerders hebben onbeperkte toegang tot alle organisatie-instellingen en gegevens", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle superbeheerdersaccounts gedocumenteerd en gerechtvaardigd met een duidelijke zakelijke noodzaak", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Gebruikers > Filteren op beheerdersrol > Beoordeel alle superbeheerdersaccounts en verwijder onnodige toewijzingen", "status": "machine-draft" }
+  },
+  "ADMIN-002": {
+    "name": { "value": "Audit van beheerdersroltoewijzingen", "status": "machine-draft" },
+    "description": { "value": "Toewijzingen van beheerdersrollen moeten het principe van minimale rechten volgen. Aangepaste rollen moeten worden gebruikt in plaats van brede ingebouwde rollen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle beheerdersroltoewijzingen beoordeeld met waar mogelijk aangepaste rollen met minimale rechten", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Account > Beheerdersrollen > Beoordeel elke roltoewijzing > Vervang brede rollen door aangepaste rollen met een beperkt bereik", "status": "machine-draft" }
+  },
+  "ADMIN-003": {
+    "name": { "value": "Beoordeling van gedelegeerde beheerdersrechten", "status": "machine-draft" },
+    "description": { "value": "Aangepaste beheerdersrollen moeten worden beoordeeld om te waarborgen dat gedelegeerde rechten een passend bereik hebben en geen buitensporige toegang verlenen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Aangepaste beheerdersrollen beperkt tot de minimaal noodzakelijke rechten", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Account > Beheerdersrollen > Beoordeel elke aangepaste rol > Controleer of de rechten een passend bereik hebben", "status": "machine-draft" }
+  },
+  "ADMIN-004": {
+    "name": { "value": "Inactieve/geschorste beheerdersaccounts", "status": "machine-draft" },
+    "description": { "value": "Geschorste of inactieve gebruikers mogen geen beheerdersroltoewijzingen behouden. Deze accounts kunnen doelwit zijn van reactiveringsaanvallen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen geschorste of inactieve gebruikers met beheerdersroltoewijzingen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Gebruikers > Filteren op geschorste gebruikers > Verwijder beheerdersrollen van alle geschorste accounts", "status": "machine-draft" }
+  },
+  "ADMIN-005": {
+    "name": { "value": "Inventaris van gebruikersaccounts", "status": "machine-draft" },
+    "description": { "value": "Een inventaris van gebruikersaccounts moet worden bijgehouden met duidelijke aantallen actieve, geschorste en gearchiveerde accounts ten behoeve van governance", "status": "machine-draft" },
+    "recommendedValue": { "value": "Volledige gebruikersinventaris waarbij alle accounts de juiste status actief/geschorst/gearchiveerd hebben", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Gebruikers > Beoordeel de gebruikerslijst > Schors of archiveer accounts die niet langer nodig zijn", "status": "machine-draft" }
+  },
+  "ADMIN-006": {
+    "name": { "value": "Verouderde gebruikersaccounts", "status": "machine-draft" },
+    "description": { "value": "Gebruikersaccounts zonder aanmelding gedurende 90 dagen of meer zijn mogelijk verweesd en moeten worden beoordeeld voor schorsing of verwijdering", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen gebruikersaccounts die langer dan 90 dagen inactief zijn zonder gedocumenteerde rechtvaardiging", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Gebruikers > Sorteren op laatste aanmelding > Beoordeel en schors accounts die 90 dagen of langer inactief zijn", "status": "machine-draft" }
+  },
+  "ADMIN-007": {
+    "name": { "value": "Beoordeling van OU-structuur", "status": "machine-draft" },
+    "description": { "value": "De structuur van organisatie-eenheden moet worden beoordeeld om te waarborgen dat beleid effectief op het juiste bereik kan worden toegepast", "status": "machine-draft" },
+    "recommendedValue": { "value": "OU-structuur gedocumenteerd met een duidelijke koppeling aan beleid", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Organisatie-eenheden > Beoordeel de OU-hiërarchie en zorg dat deze aansluit bij de behoeften voor beleidstoepassing", "status": "machine-draft" }
+  },
+  "ADMIN-008": {
+    "name": { "value": "Instellingen voor het delen van de directory", "status": "machine-draft" },
+    "description": { "value": "Het delen van de directory bepaalt wie organisatiecontacten en -profielen kan bekijken. Extern delen van de directory moet worden beperkt", "status": "machine-draft" },
+    "recommendedValue": { "value": "Delen van de directory beperkt tot uitsluitend interne gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Directory-instellingen > Instellingen voor delen > Beperk het delen van contacten tot domeingebruikers", "status": "machine-draft" }
+  },
+  "ADMIN-009": {
+    "name": { "value": "Zichtbaarheid van gebruikersprofielen", "status": "machine-draft" },
+    "description": { "value": "De zichtbaarheid van gegevens in gebruikersprofielen moet worden beheerd om de verkenningsmogelijkheden voor externe actoren te beperken", "status": "machine-draft" },
+    "recommendedValue": { "value": "Zichtbaarheid van gebruikersprofielen beperkt tot interne gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Directory-instellingen > Profielen delen > Beperk de zichtbaarheid van profielen", "status": "machine-draft" }
+  },
+  "ADMIN-010": {
+    "name": { "value": "Groepsinstellingen en extern lidmaatschap", "status": "machine-draft" },
+    "description": { "value": "Google Groups die externe leden toestaan, kunnen interne communicatie en gegevens blootstellen aan onbevoegde partijen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Extern groepslidmaatschap uitgeschakeld of beperkt tot specifieke groepen met gedocumenteerde rechtvaardiging", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Groups for Business > Instellingen voor delen > Beperk extern lidmaatschap", "status": "machine-draft" }
+  },
+  "ADMIN-011": {
+    "name": { "value": "Beperkingen op het maken van groepen", "status": "machine-draft" },
+    "description": { "value": "Het maken van groepen moet worden beperkt om wildgroei van onbeheerde groepen te voorkomen die organisatiegegevens kunnen blootstellen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Het maken van groepen beperkt tot beheerders of specifieke gedelegeerde rollen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Groups for Business > Instellingen voor delen > Beperk wie groepen kan maken", "status": "machine-draft" }
+  },
+  "ADMIN-012": {
+    "name": { "value": "Instellingen voor Groups for Business", "status": "machine-draft" },
+    "description": { "value": "De instellingen van Groups for Business bepalen groepsfuncties zoals extern plaatsen van berichten, zichtbaarheid van leden en het delen van content", "status": "machine-draft" },
+    "recommendedValue": { "value": "Groups for Business geconfigureerd met beperkte externe toegang en berichtplaatsing", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Groups for Business > Instellingen voor delen > Beoordeel alle instellingen", "status": "machine-draft" }
+  },
+  "ADMIN-013": {
+    "name": { "value": "Aantal superbeheerders", "status": "machine-draft" },
+    "description": { "value": "Het aantal superbeheerdersaccounts moet tussen 2 en 4 liggen. Te weinig zorgt voor een enkel punt van falen; te veel vergroot het aanvalsoppervlak", "status": "machine-draft" },
+    "recommendedValue": { "value": "2 tot 4 superbeheerdersaccounts", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Directory > Gebruikers > Filteren op de rol superbeheerder > Pas het aantal aan naar 2 tot 4 door onnodige superbeheerders te verwijderen of een reserve toe te voegen", "status": "machine-draft" }
+  },
+  "ADMIN-014": {
+    "name": { "value": "Assured Controls - Access Approvals ingeschakeld", "status": "machine-draft" },
+    "description": { "value": "Access Approvals moet worden ingeschakeld zodat Google-ondersteuningsmedewerkers goedkeuring van de organisatie moeten aanvragen en verkrijgen voordat zij toegang krijgen tot betrokken gegevens, wat het risico op ongeautoriseerde toegang door de provider vermindert.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Access Approvals ingeschakeld (Google-medewerkers hebben goedkeuring van de klant nodig voordat zij toegang krijgen tot gegevens)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Gegevens > Naleving > Access Management / Access Approvals > Schakel de vereiste in dat Google-ondersteuningsmedewerkers goedkeuring moeten aanvragen voordat zij toegang krijgen tot organisatiegegevens. Vereist Assured Controls.", "status": "machine-draft" }
+  },
+  "ADMIN-015": {
+    "name": { "value": "Assured Controls - Ondersteuningstoegang beperkt tot Amerikaanse medewerkers", "status": "machine-draft" },
+    "description": { "value": "Ondersteuningstoegang moet worden beperkt tot Google-medewerkers in de Verenigde Staten om de gegevenssoevereiniteit te behouden en te voorkomen dat betrokken gegevens worden verwerkt door personeel buiten de Verenigde Staten.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Doelgroep voor ondersteuningstoegang beperkt tot Amerikaanse Google-medewerkers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Gegevens > Naleving > Access Management > Stel de toegestane ondersteuningsdoelgroep in op uitsluitend Amerikaanse Google-medewerkers. Vereist Assured Controls.", "status": "machine-draft" }
+  },
+  "ADMIN-016": {
+    "name": { "value": "Assured Controls - Gegevensverwerking in meerdere regio's uitgeschakeld", "status": "machine-draft" },
+    "description": { "value": "Gegevensverwerking in meerdere regio's moet worden uitgeschakeld voor alle Google Workspace-producten, zodat betrokken gegevens alleen binnen de aangewezen opslagregio worden verwerkt en de gegevenssoevereiniteit behouden blijft.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gegevensverwerking beperkt tot de opslagregio (verwerking in meerdere regio's uitgeschakeld)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Gegevens > Naleving > Gegevensregio's > Schakel 'Gegevensverwerking beperken tot de gekozen opslagregio' in voor Calendar, Drive en Docs, Gmail, Chat, Meet en Gemini. Vereist Assured Controls / Data Regions.", "status": "machine-draft" }
+  },
+  "ADMIN-017": {
+    "name": { "value": "Interne apps niet automatisch vertrouwd (GWS.COMMONCONTROLS.10.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.3: het automatisch vertrouwen van interne (domeineigen) OAuth-apps verleent ze toegang zonder beoordeling, een pad voor gegevenstoegang door insiders of via laterale beweging. Leest api_controls.internal_apps; waarschuwt waar trustInternalApps aan staat.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Interne apps worden niet automatisch vertrouwd", "status": "machine-draft" },
+    "remediationSteps": { "value": "Ga in Beheerdersconsole > Beveiliging > API-beheer en schakel het automatisch vertrouwen van interne apps uit, zodat ze dezelfde beoordeling ondergaan als apps van derden.", "status": "machine-draft" }
+  },
+  "ADMIN-018": {
+    "name": { "value": "Regio voor gegevens in rust geconfigureerd (GWS.COMMONCONTROLS.15.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.1: het instellen van een regio voor gegevens in rust dwingt af waar organisatiegegevens worden opgeslagen (residentie/naleving). Leest data_regions.data_at_rest_region; waarschuwt waar geen regiovoorkeur is ingesteld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Een specifieke regio voor gegevens in rust is geconfigureerd volgens het organisatiebeleid", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in Beheerdersconsole > Gegevens > Gegevensregio's de regio voor gegevens in rust in die vereist is volgens het residentiebeleid van uw organisatie, in plaats van deze niet in te stellen.", "status": "machine-draft" }
+  },
+  "ADMIN-019": {
+    "name": { "value": "Gegevensverwerking beperkt tot opslagregio (GWS.COMMONCONTROLS.15.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.2 vereist dat gegevens worden verwerkt in dezelfde regio die is gekozen voor gegevens in rust, zodat verwerking betrokken gegevens niet buiten de gekozen jurisdictie verplaatst. Deze controle leest het Cloud Identity-beleid data_regions.data_processing_region en markeert elke organisatie-eenheid waar de verwerking niet is beperkt tot de opslagregio.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gegevensverwerking beperkt tot de opslagregio (limitToStorageRegion = true) in alle organisatie-eenheden.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de Google Admin console onder Account > Gegevensregio's de optie 'Gegevens alleen in de geselecteerde regio verwerken' in, zodat verwerking binnen de voor gegevens in rust gekozen regio blijft.", "status": "machine-draft" }
+  },
+  "ADMIN-020": {
+    "name": { "value": "Toegang tot niet-geconfigureerde apps van derden geblokkeerd (GWS.COMMONCONTROLS.10.4)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.4 vereist dat gebruikers GEEN toegang mogen krijgen tot niet-geconfigureerde apps van derden, omdat een app die niet expliciet is beoordeeld brede OAuth-scopes kan aanvragen en een pad voor gegevensexfiltratie of accountovername kan worden. Deze controle leest het Cloud Identity-beleid api_controls.unconfigured_third_party_apps en markeert elke organisatie-eenheid waarvan het toegangsniveau niet BLOCK_ALL_SCOPES is (de waarde die alle toegang tot niet-geconfigureerde apps blokkeert).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Toegangsniveau voor niet-geconfigureerde apps van derden ingesteld op BLOCK_ALL_SCOPES in alle organisatie-eenheden.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in de Google Admin console onder Beveiliging > API-beheer > Toegangsbeheer voor apps niet-geconfigureerde apps van derden in op 'Geblokkeerd', zodat gebruikers geen toegang kunnen verlenen aan apps die niet expliciet zijn geconfigureerd en beoordeeld.", "status": "machine-draft" }
+  },
+  "ADMIN-021": {
+    "name": { "value": "Aanvullende Google-services zonder individueel beheer beperkt (GWS.COMMONCONTROLS.16.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.1 raadt aan om Google-services die geen eigen individueel beheer hebben voor iedereen UIT te schakelen. Google modelleert dit met omgekeerde semantiek: de service enterprise_service_restrictions moet ENABLED zijn om die aanvullende services te beperken (blokkeren). Deze controle leest het Cloud Identity-beleid enterprise_service_restrictions.service_status en markeert elke organisatie-eenheid waar serviceState niet ENABLED is, wat betekent dat gebruikers nog steeds niet-geconfigureerde aanvullende services kunnen bereiken.", "status": "machine-draft" },
+    "recommendedValue": { "value": "enterprise_service_restrictions serviceState ingesteld op ENABLED (aanvullende services beperkt) in alle organisatie-eenheden.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in de Google Admin console onder Apps > Aanvullende Google-services de toegangsinstelling voor services zonder individueel beheer in op UIT voor iedereen. Hiermee wordt de enterprise service-beperking ingeschakeld, zodat gebruikers die aanvullende services niet kunnen gebruiken.", "status": "machine-draft" }
+  },
+  "ADMIN-022": {
+    "name": { "value": "Early Access-applicaties uitgeschakeld (GWS.COMMONCONTROLS.16.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.2 raadt aan om gebruikerstoegang tot Early Access-applicaties uit te schakelen; dit zijn pre-release-functies die de volledige beoordeling van Google niet hebben doorlopen en een niet-beoordeeld risico kunnen inhouden. Deze controle leest het Cloud Identity-beleid early_access_apps.service_status en markeert elke organisatie-eenheid waar serviceState ENABLED is.", "status": "machine-draft" },
+    "recommendedValue": { "value": "early_access_apps serviceState niet ENABLED (Early Access-applicaties uitgeschakeld) in alle organisatie-eenheden.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Zet in de Google Admin console onder Apps > Aanvullende Google-services > Early Access Apps de service UIT voor iedereen, zodat gebruikers geen pre-release Early Access-applicaties kunnen inschakelen.", "status": "machine-draft" }
+  }
+}

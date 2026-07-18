@@ -1,0 +1,153 @@
+{
+  "_family": "CollaborationChecks.json",
+  "COLLAB-001": {
+    "name": { "value": "Meet-opname-instellingen", "status": "machine-draft" },
+    "description": { "value": "Instellingen voor het opnemen van vergaderingen moeten worden beheerd om ongeautoriseerde vastlegging van gevoelige gesprekken te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Opname beperkt tot vergaderorganisatoren of uitgeschakeld voor gevoelige OU's", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Google Meet > Meet-video-instellingen > Opname > Configureer opnamerechten", "status": "machine-draft" }
+  },
+  "COLLAB-002": {
+    "name": { "value": "Instellingen voor externe deelnemers in Meet", "status": "machine-draft" },
+    "description": { "value": "De toegang van externe deelnemers tot vergaderingen moet worden beheerd om ongeautoriseerde aanwezigheid en het vrijgeven van informatie te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe deelnemers hebben goedkeuring nodig of moeten aankloppen om deel te nemen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Google Meet > Meet-video-instellingen > Deelnemers > Vereis goedkeuring voor externe deelnemers", "status": "machine-draft" }
+  },
+  "COLLAB-003": {
+    "name": { "value": "Instellingen voor anoniem deelnemen aan Meet", "status": "machine-draft" },
+    "description": { "value": "Anonieme gebruikers (zonder Google-account) mogen niet zonder expliciete goedkeuring van de host aan vergaderingen kunnen deelnemen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Anoniem deelnemen uitgeschakeld of vereist goedkeuring van de host", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Google Meet > Meet-video-instellingen > Deelnemers > Schakel anoniem deelnemen uit of vereis aankloppen", "status": "machine-draft" }
+  },
+  "COLLAB-004": {
+    "name": { "value": "Externe communicatie in Chat", "status": "machine-draft" },
+    "description": { "value": "Externe chatcommunicatie moet worden beperkt om gegevenslekkage via directe berichten met externe gebruikers te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe chat beperkt of uitgeschakeld voor de meeste gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Google Chat > Chat-instellingen > Externe chat > Beperk externe chat tot specifieke OU's", "status": "machine-draft" }
+  },
+  "COLLAB-005": {
+    "name": { "value": "Instellingen voor chatgeschiedenis", "status": "machine-draft" },
+    "description": { "value": "Chatgeschiedenis moet worden ingeschakeld en bewaard voor naleving en auditdoeleinden. Het uitschakelen van de geschiedenis kan kwaadaardige communicatie verbergen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chatgeschiedenis ingeschakeld en bewaard volgens het bewaarbeleid", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Google Chat > Chat-instellingen > Geschiedenis > Schakel geschiedenis in en configureer de bewaring", "status": "machine-draft" }
+  },
+  "COLLAB-006": {
+    "name": { "value": "Externe toegang tot Chat-spaces", "status": "machine-draft" },
+    "description": { "value": "Chat-spaces (ruimtes) die externe leden toestaan, kunnen interne communicatie en gedeelde bestanden blootstellen aan onbevoegde partijen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe toegang tot Chat-spaces beperkt of uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Google Chat > Chat-instellingen > Spaces > Beperk externe toegang tot spaces", "status": "machine-draft" }
+  },
+  "COLLAB-007": {
+    "name": { "value": "Instellingen voor installatie van Chat-apps", "status": "machine-draft" },
+    "description": { "value": "De installatie van Chat-apps (bots) moet worden beheerd om te voorkomen dat ongeautoriseerde integraties toegang krijgen tot gespreksgegevens", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installatie van Chat-apps beperkt tot door de beheerder goedgekeurde apps", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Google Chat > Chat-instellingen > Apps > Beperk app-installatie tot goedgekeurde apps", "status": "machine-draft" }
+  },
+  "COLLAB-008": {
+    "name": { "value": "Extern delen in Calendar", "status": "machine-draft" },
+    "description": { "value": "Het delen van Calendar met externe gebruikers moet worden beperkt tot beschikbaarheidsinformatie (vrij/bezet) om blootstelling van vergaderdetails en deelnemers te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Extern agenda delen beperkt tot uitsluitend beschikbaarheidsinformatie (vrij/bezet)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Calendar > Instellingen voor delen > Opties voor extern delen > Stel in op 'Alleen beschikbaarheidsinformatie (vrij/bezet)'", "status": "machine-draft" }
+  },
+  "COLLAB-009": {
+    "name": { "value": "Externe uitnodigingen in Calendar", "status": "machine-draft" },
+    "description": { "value": "Gebruikers moeten worden gewaarschuwd of beperkt bij het verzenden van agenda-uitnodigingen naar externe ontvangers om het per ongeluk vrijgeven van informatie te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Waarschuwingen voor externe uitnodigingen ingeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Calendar > Instellingen voor delen > Schakel waarschuwingen voor externe uitnodigingen in", "status": "machine-draft" }
+  },
+  "COLLAB-010": {
+    "name": { "value": "Externe zichtbaarheid van afspraakslots in Calendar", "status": "machine-draft" },
+    "description": { "value": "De zichtbaarheid van afspraakslots in Calendar moet worden beheerd om externe blootstelling van beschikbaarheid en planningsdetails te beperken", "status": "machine-draft" },
+    "recommendedValue": { "value": "Externe zichtbaarheid van afspraakslots beperkt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apps > Google Workspace > Calendar > Instellingen voor delen > Beoordeel de zichtbaarheidsinstellingen voor afspraakslots", "status": "machine-draft" }
+  },
+  "COLLAB-011": {
+    "name": { "value": "Labeling van externe deelnemers in Meet", "status": "machine-draft" },
+    "description": { "value": "Externe deelnemers aan vergaderingen moeten zichtbaar worden gelabeld, zodat hosts en deelnemers buitenstaanders gemakkelijk kunnen herkennen en het vrijgeven van gevoelige informatie kunnen vermijden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Labeling van externe deelnemers ingeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Google Meet > Meet-veiligheidsinstellingen > Externe deelnemers > Schakel labeling van externe deelnemers in", "status": "machine-draft" }
+  },
+  "COLLAB-012": {
+    "name": { "value": "Hostbeheer in Meet", "status": "machine-draft" },
+    "description": { "value": "Hostbeheer moet worden ingeschakeld zodat vergaderhosts moderatiemogelijkheden behouden zoals dempen, verwijderen en vergrendelen om kaping en verstoring van vergaderingen te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Hostbeheer ingeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Google Meet > Meet-veiligheidsinstellingen > Hostbeheer > Schakel de mogelijkheden voor hostbeheer in", "status": "machine-draft" }
+  },
+  "GROUP-001": {
+    "name": { "value": "Externe toegang tot Google Groups beperkt (GWS.GROUPS.1.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.1 vereist dat het delen via Groups for Business wordt beperkt, zodat groepen niet toegankelijk zijn voor mensen buiten de organisatie. Wanneer de samenwerkingsmogelijkheid voor groepsdeling niet is ingesteld op alleen domeingebruikers, wordt groepscontent, die op een school gegevens van leerlingen en personeel kan bevatten, bereikbaar voor externe partijen. Deze controle leest het beleid groups_for_business.groups_sharing uit de Cloud Identity Policy API en markeert elke organisatie-eenheid waarvan de samenwerkingsmogelijkheid niet DOMAIN_USERS_ONLY is.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Samenwerkingsmogelijkheid voor groepsdeling ingesteld op DOMAIN_USERS_ONLY voor alle organisatie-eenheden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in de Google Admin console onder Apps > Google Workspace > Groups for Business > Instellingen voor delen de groepstoegang zo in dat deze beperkt is tot gebruikers in de organisatie (niet 'Iedereen op internet'), zodat externe partijen geen toegang hebben tot groepscontent.", "status": "machine-draft" }
+  },
+  "GROUP-002": {
+    "name": { "value": "Groepseigenaren kunnen geen externe leden toevoegen (GWS.GROUPS.1.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.2 vereist dat groepseigenaren geen leden van buiten de organisatie mogen toevoegen. Externe leden krijgen toegang tot alles wat met de groep wordt gedeeld. Deze controle markeert organisatie-eenheden waar eigenaren externe leden kunnen toestaan (ownersCanAllowExternalMembers is ingeschakeld).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Groepseigenaren kunnen geen externe leden toestaan (ownersCanAllowExternalMembers uitgeschakeld)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de instellingen voor delen van Groups for Business de optie uit waarmee groepseigenaren leden van buiten de organisatie kunnen toevoegen, zodat extern lidmaatschap administratieve actie vereist.", "status": "machine-draft" }
+  },
+  "GROUP-003": {
+    "name": { "value": "Groepen kunnen geen e-mail ontvangen van buiten de organisatie (GWS.GROUPS.1.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.3 vereist dat groepseigenaren geen inkomende e-mail van buiten de organisatie mogen toestaan. Het toestaan van openbare inkomende e-mail naar groepen is een vector voor inkomende phishing en spam. Deze controle markeert organisatie-eenheden waar eigenaren inkomende e-mail van het publiek kunnen toestaan (ownersCanAllowIncomingMailFromPublic is ingeschakeld).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Groepseigenaren kunnen geen inkomende e-mail van het publiek toestaan (ownersCanAllowIncomingMailFromPublic uitgeschakeld)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de instellingen voor delen van Groups for Business de optie uit waarmee groepseigenaren inkomende e-mail van buiten de organisatie kunnen accepteren, zodat groepsmail wordt beperkt tot interne afzenders tenzij dit expliciet is geconfigureerd.", "status": "machine-draft" }
+  },
+  "GROUP-004": {
+    "name": { "value": "Het maken van groepen beperkt tot beheerders (GWS.GROUPS.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.2.1 raadt aan om het maken van Groups for Business te beperken tot beheerders. Wanneer elke gebruiker groepen kan maken, overstijgt de wildgroei aan groepen de governance en kunnen standaardinstellingen voor extern delen zonder beoordeling worden toegepast. Deze controle markeert organisatie-eenheden waar het toegangsniveau voor het maken van groepen niet ADMIN_ONLY is.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Toegangsniveau voor het maken van groepen ingesteld op ADMIN_ONLY", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in de instellingen van Groups for Business 'wie groepen kan maken' in op alleen beheerders, zodat nieuwe groepen bewust worden gemaakt en beoordeelde instellingen voor delen overnemen.", "status": "machine-draft" }
+  },
+  "GROUP-005": {
+    "name": { "value": "Zichtbaarheid van groepsgesprekken standaard beperkt tot leden (GWS.GROUPS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.3.1 vereist dat de standaardmachtiging voor het bekijken van groepsgesprekken wordt beperkt tot groepsleden in plaats van het hele domein of het publiek. Een te ruime zichtbaarheid van gesprekken stelt discussiearchieven bloot, die gevoelige informatie over leerlingen en personeel kunnen bevatten. Deze controle leest viewTopicsDefaultAccessLevel uit het beleid groups_for_business.groups_sharing en waarschuwt waar de standaardinstelling ruimer is dan groepsleden.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Standaardtoegang voor het bekijken van gesprekken ingesteld op GROUP_MEMBERS", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in de instellingen van Groups for Business de standaardmachtiging 'wie kan gesprekken bekijken' in op groepsleden.", "status": "machine-draft" }
+  },
+  "COLLAB-013": {
+    "name": { "value": "Extern bestanden delen in Chat uitgeschakeld (GWS.CHAT.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.2.1 vereist dat het extern delen van bestanden in Google Chat wordt uitgeschakeld (ingesteld op geen bestanden). Het toestaan dat bestanden via Chat met externe gebruikers worden gedeeld, is een direct pad voor gegevensexfiltratie. Deze controle leest chat.chat_file_sharing en keurt elke organisatie-eenheid af waar het extern delen van bestanden niet is ingesteld op NO_FILES.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Extern bestanden delen in Chat ingesteld op NO_FILES", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in de Beheerdersconsole onder Apps > Google Workspace > Google Chat > Extern bestanden delen het extern delen van bestanden in op 'Geen bestanden', zodat bestanden niet via Chat kunnen worden gedeeld met mensen buiten de organisatie.", "status": "machine-draft" }
+  },
+  "COLLAB-014": {
+    "name": { "value": "Geschiedenis van Chat-spaces staat aan (GWS.CHAT.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.3.1 vereist dat de geschiedenis voor Chat-spaces altijd aan staat, zodat gesprekken worden bewaard voor toezicht, onderzoek en eDiscovery. Deze controle leest chat.space_history en waarschuwt bij elke organisatie-eenheid waar de spacegeschiedenis niet is ingesteld op HISTORY_ALWAYS_ON.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geschiedenis van Chat-spaces ingesteld op HISTORY_ALWAYS_ON", "status": "machine-draft" },
+    "remediationSteps": { "value": "Stel in de instellingen van Google Chat de spacegeschiedenis in op altijd aan, zodat gesprekken worden bewaard en beschikbaar zijn voor toezicht en eDiscovery.", "status": "machine-draft" }
+  },
+  "COLLAB-015": {
+    "name": { "value": "Deelname aan vergaderingen beperkt tot de organisatie (GWS.MEET.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.2.1 vereist dat de toegang tot vergaderingen wordt beperkt, zodat alleen gebruikers in de organisatie (of vertrouwde Workspace-organisaties) kunnen deelnemen. Vergaderingen voor iedereen openlaten geeft externe en niet-geverifieerde partijen toegang tot sessies waarbij leerlingen betrokken kunnen zijn. Deze controle leest meet.safety_access en keurt elke organisatie-eenheid af waar meetingsAllowedToJoin ruimer is dan SAME_ORGANIZATION_ONLY / ANY_WORKSPACE_ORGANIZATION.", "status": "machine-draft" },
+    "recommendedValue": { "value": "meetingsAllowedToJoin ingesteld op SAME_ORGANIZATION_ONLY (of ANY_WORKSPACE_ORGANIZATION)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beperk in de veiligheidsinstellingen van Google Meet wie kan deelnemen aan vergaderingen tot gebruikers in uw organisatie, zodat externe of niet-geverifieerde deelnemers standaard niet kunnen deelnemen.", "status": "machine-draft" }
+  },
+  "COLLAB-016": {
+    "name": { "value": "Automatische transcriptie in Meet standaard uit (GWS.MEET.5.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.2 raadt aan om automatische transcriptie in Google Meet standaard uit te zetten. Het automatisch transcriberen van vergaderingen legt gespreksinhoud vast en slaat deze op, wat gevoelig is wanneer leerlingen aanwezig zijn, zonder een bewuste beslissing. Deze controle leest meet.automatic_transcription en waarschuwt bij elke organisatie-eenheid waar dit standaard is ingeschakeld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Automatische transcriptie standaard uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de instellingen van Google Meet automatische transcriptie standaard uit, zodat vergaderinhoud alleen wordt vastgelegd wanneer een host dit bewust inschakelt.", "status": "machine-draft" }
+  },
+  "COLLAB-017": {
+    "name": { "value": "Externe interoperabiliteit van Calendar beheerd (GWS.CALENDAR.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.3.1 vereist dat Calendar Interop (het delen van beschikbaarheidsgegevens (vrij/bezet) en agendagegevens met een extern systeem zoals Microsoft Exchange) uit staat tenzij het bewust wordt beheerd. Interop koppelt agendagegevens aan een extern platform. Deze controle leest calendar.interoperability en waarschuwt bij elke organisatie-eenheid waar enableInteroperability aan staat.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Interoperabiliteit van Calendar uitgeschakeld tenzij bewust beheerd", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de Beheerdersconsole onder Apps > Google Workspace > Calendar > Calendar Interop-beheer de interoperabiliteit uit, tenzij een beoordeelde integratie deze vereist.", "status": "machine-draft" }
+  },
+  "COLLAB-018": {
+    "name": { "value": "Betalingen voor Calendar-afspraken uitgeschakeld (GWS.CALENDAR.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.4.1 raadt aan om betaalde afspraakschema's uit te schakelen. Deze controle leest calendar.appointment_schedules en waarschuwt bij elke organisatie-eenheid waar enablePayments aan staat.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Betaalde afspraakschema's uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de instellingen voor afspraakschema's van Google Calendar betalingen uit, tenzij de organisatie bewust gebruikmaakt van betaalde afspraken.", "status": "machine-draft" }
+  },
+  "COLLAB-019": {
+    "name": { "value": "Automatische opname in Meet standaard uit (GWS.MEET.5.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.1 raadt aan om automatische opname in Google Meet standaard uit te zetten. Het automatisch opnemen legt video en audio van vergaderingen vast en slaat deze op, wat gevoelig is wanneer leerlingen aanwezig zijn, zonder een bewuste beslissing. Deze controle leest meet.automatic_recording en waarschuwt bij elke organisatie-eenheid waar dit standaard is ingeschakeld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Automatische opname standaard uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de instellingen van Google Meet automatische opname standaard uit, zodat vergaderingen alleen worden opgenomen wanneer een host bewust een opname start.", "status": "machine-draft" }
+  },
+  "GROUP-006": {
+    "name": { "value": "Groepen zijn zichtbaar in de directory (GWS.GROUPS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.4.1 vereist dat groepen niet uit de directory kunnen worden verborgen; verborgen groepen ondermijnen de transparantie en het toezicht op wie bereikbaar is en welke toegang bestaat. Deze controle leest het beleid groups_for_business.groups_sharing en waarschuwt bij elke organisatie-eenheid waar eigenaren groepen kunnen verbergen (ownersCanHideGroups) of nieuwe groepen standaard verborgen zijn (newGroupsAreHidden).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Eigenaren kunnen groepen niet verbergen en nieuwe groepen zijn standaard niet verborgen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Voorkom in de instellingen van Groups for Business dat groepseigenaren groepen uit de directory verbergen en zorg dat nieuwe groepen standaard niet verborgen zijn, om de transparantie van de directory te behouden.", "status": "machine-draft" }
+  }
+}

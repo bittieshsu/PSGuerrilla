@@ -1,0 +1,69 @@
+{
+  "_family": "DeviceManagementChecks.json",
+  "DEVICE-001": {
+    "name": { "value": "Audit van MDM-beleid", "status": "machine-draft" },
+    "description": { "value": "Mobiele apparaten die toegang hebben tot organisatiegegevens moeten worden beheerd via MDM-beleid om beveiligingsmaatregelen af te dwingen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle mobiele apparaten onder MDM-beheer met afgedwongen beveiligingsbeleid", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Mobiele apparaten > Beoordeel de beheerstatus van apparaten > Schakel geavanceerd MDM in voor onbeheerde apparaten", "status": "machine-draft" }
+  },
+  "DEVICE-002": {
+    "name": { "value": "Vereisten voor apparaatgoedkeuring", "status": "machine-draft" },
+    "description": { "value": "Mobiele apparaten moeten goedkeuring van een beheerder vereisen voordat ze toegang krijgen tot organisatiegegevens, om ongeautoriseerde apparaattoegang te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Apparaatgoedkeuring vereist voordat toegang tot organisatiegegevens wordt verkregen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Mobiel en eindpunten > Instellingen > Algemeen > Vereis beheerdersgoedkeuring voor apparaattoegang", "status": "machine-draft" }
+  },
+  "DEVICE-003": {
+    "name": { "value": "Afdwinging van schermvergrendeling", "status": "machine-draft" },
+    "description": { "value": "Schermvergrendeling moet worden afgedwongen op alle mobiele apparaten om ongeautoriseerde fysieke toegang tot organisatiegegevens te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Schermvergrendeling afgedwongen met minimale vereisten voor pincode/wachtwoord", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Mobiel en eindpunten > Instellingen > Universele instellingen > Schermvergrendeling > Dwing schermvergrendeling af met minimale complexiteit", "status": "machine-draft" }
+  },
+  "DEVICE-004": {
+    "name": { "value": "Vereisten voor apparaatversleuteling", "status": "machine-draft" },
+    "description": { "value": "Apparaatversleuteling moet worden vereist op alle mobiele apparaten om gegevens in rust te beschermen tegen fysieke diefstal of verlies", "status": "machine-draft" },
+    "recommendedValue": { "value": "Versleuteling vereist op alle beheerde apparaten", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Mobiel en eindpunten > Instellingen > Universele instellingen > Versleuteling > Vereis apparaatversleuteling", "status": "machine-draft" }
+  },
+  "DEVICE-005": {
+    "name": { "value": "Blokkeren van gecompromitteerde apparaten", "status": "machine-draft" },
+    "description": { "value": "Gecompromitteerde apparaten moeten automatisch worden geblokkeerd voor toegang tot organisatiegegevens om blootstelling van gegevens te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Detectie en blokkering van gecompromitteerde apparaten ingeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Mobiel en eindpunten > Instellingen > Universele instellingen > Gecompromitteerde apparaten > Blokkeer gegevenstoegang voor gecompromitteerde apparaten", "status": "machine-draft" }
+  },
+  "DEVICE-006": {
+    "name": { "value": "Beleid voor jailbroken/gerootte apparaten", "status": "machine-draft" },
+    "description": { "value": "Jailbroken (iOS) of gerootte (Android) apparaten omzeilen beveiligingsmaatregelen op besturingssysteemniveau en moeten worden geblokkeerd voor toegang tot organisatiegegevens", "status": "machine-draft" },
+    "recommendedValue": { "value": "Jailbroken/gerootte apparaten geblokkeerd voor toegang tot organisatiegegevens", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Mobiel en eindpunten > Instellingen > Universele instellingen > Gecompromitteerde apparaten > Blokkeer jailbroken/gerootte apparaten", "status": "machine-draft" }
+  },
+  "DEVICE-007": {
+    "name": { "value": "Beheer van Chrome-browser", "status": "machine-draft" },
+    "description": { "value": "Chrome-browsers die worden gebruikt om toegang te krijgen tot organisatiegegevens, moeten worden geregistreerd in Chrome Browser Cloud Management voor het afdwingen van beleid", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chrome-browsers geregistreerd in Cloud Management met afgedwongen beleid", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Chrome > Instellingen > Beoordeel en configureer Chrome-browserbeleid voor beheerde browsers", "status": "machine-draft" }
+  },
+  "DEVICE-008": {
+    "name": { "value": "Chrome-extensie-allowlist/blocklist", "status": "machine-draft" },
+    "description": { "value": "Chrome-extensies moeten worden beheerd via een allowlist of blocklist om te voorkomen dat kwaadaardige extensies toegang krijgen tot organisatiegegevens", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installatie van extensies beperkt tot door de beheerder goedgekeurde extensies via een allowlist", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Chrome > Apps en extensies > Configureer de allowlist en blocklist voor extensies", "status": "machine-draft" }
+  },
+  "DEVICE-009": {
+    "name": { "value": "Beleid voor Chrome OS-apparaten", "status": "machine-draft" },
+    "description": { "value": "Voor Chrome OS-apparaten moet passend beleid worden afgedwongen, waaronder automatische updates, aanmeldingsbeperkingen en beveiligingsinstellingen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chrome OS-apparaten beheerd met afgedwongen beleid voor updates, aanmelding en beveiliging", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Chrome > Instellingen > Apparaatinstellingen > Configureer automatische updates, aanmeldingsbeperkingen en beveiligingsbeleid", "status": "machine-draft" }
+  },
+  "DEVICE-010": {
+    "name": { "value": "Instellingen voor eindpuntverificatie", "status": "machine-draft" },
+    "description": { "value": "Eindpuntverificatie levert vertrouwenssignalen over apparaten voor contextbewust toegangsbeleid en moet worden ingeschakeld", "status": "machine-draft" },
+    "recommendedValue": { "value": "Eindpuntverificatie ingeschakeld voor contextbewuste toegang", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Mobiel en eindpunten > Instellingen > Algemeen > Schakel eindpuntverificatie in voor contextbewust toegangsbeleid", "status": "machine-draft" }
+  },
+  "DEVICE-011": {
+    "name": { "value": "Inventaris van bedrijfseigen apparaten", "status": "machine-draft" },
+    "description": { "value": "Bedrijfseigen apparaten moeten worden geïnventariseerd om zicht te houden op organisatiemiddelen die toegang hebben tot bedrijfsgegevens", "status": "machine-draft" },
+    "recommendedValue": { "value": "Volledige inventaris van alle bedrijfseigen apparaten bijgehouden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beheerdersconsole > Apparaten > Mobiele apparaten > Beoordeel de apparaatinventaris > Zorg dat alle bedrijfseigen apparaten zijn geregistreerd en verantwoord", "status": "machine-draft" }
+  }
+}
