@@ -1,0 +1,39 @@
+{
+  "_family": "LoggingAlertingChecks.json",
+  "LOG-001": {
+    "name": { "value": "Instellingen voor bewaartermijn van auditlogs", "status": "machine-draft" },
+    "description": { "value": "Auditlogs moeten gedurende een adequate periode worden bewaard om incidentonderzoek en nalevingsvereisten te ondersteunen. De standaardbewaartermijn verschilt per Workspace-editie", "status": "machine-draft" },
+    "recommendedValue": { "value": "Bewaartermijn voor auditlogs van 12 maanden of langer; verlengd via BigQuery-export voor langdurige bewaring", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Rapportage > Controle en onderzoek > Beoordeel de beschikbaarheid van logs. Configureer BigQuery-export via Google Admin Console > Rapportage > BigQuery-export voor langdurige bewaring", "status": "machine-draft" }
+  },
+  "LOG-002": {
+    "name": { "value": "Inventaris van regels in het waarschuwingscentrum", "status": "machine-draft" },
+    "description": { "value": "Regels in het waarschuwingscentrum moeten worden geconfigureerd om beveiligingsrelevante gebeurtenissen te detecteren en er meldingen over te geven, waaronder verdachte aanmeldingen, data-exfiltratie en beleidsschendingen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Waarschuwingsregels geconfigureerd voor belangrijke beveiligingsgebeurtenissen (verdachte aanmelding, data-exfiltratie, rechtenwijzigingen)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > Waarschuwingscentrum > Beoordeel bestaande regels > Maak regels voor ontbrekende categorieën van beveiligingsgebeurtenissen", "status": "machine-draft" }
+  },
+  "LOG-003": {
+    "name": { "value": "Analyse van de dekking door activiteitsregels", "status": "machine-draft" },
+    "description": { "value": "Activiteitsregels moeten een adequate dekking bieden over beveiligingsdomeinen heen, waaronder aanmeldings-, Drive-, Admin- en e-mailgebeurtenissen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Activiteitsregels die aanmelding, Drive-delen, adminwijzigingen, e-maildoorsturing en OAuth-gebeurtenissen dekken", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > Waarschuwingscentrum > Regels > Beoordeel de dekking over gebeurteniscategorieën heen > Voeg regels toe voor niet-gedekte beveiligingsdomeinen", "status": "machine-draft" }
+  },
+  "LOG-004": {
+    "name": { "value": "Instellingen voor data-export", "status": "machine-draft" },
+    "description": { "value": "Google Takeout (data-export) moet worden beheerd om te voorkomen dat gebruikers organisatiegegevens massaal buiten het domein exporteren", "status": "machine-draft" },
+    "recommendedValue": { "value": "Google Takeout uitgeschakeld of beperkt voor de meeste gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Aanvullende Google-services > Google Takeout > Uitschakelen of beperken voor de betreffende OU's", "status": "machine-draft" }
+  },
+  "LOG-005": {
+    "name": { "value": "Configuratie van e-mailwaarschuwingen voor beheerders", "status": "machine-draft" },
+    "description": { "value": "E-mailwaarschuwingen moeten worden geconfigureerd voor kritieke beheerdersacties, waaronder wijzigingen aan superbeheerders, wijzigingen van beveiligingsinstellingen en bulkbewerkingen", "status": "machine-draft" },
+    "recommendedValue": { "value": "E-mailwaarschuwingen ingeschakeld voor kritieke beheerdersacties en beveiligingsgebeurtenissen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > Waarschuwingscentrum > Configureer de ontvangers van e-mailmeldingen voor kritieke waarschuwingstypen", "status": "machine-draft" }
+  },
+  "LOG-006": {
+    "name": { "value": "Toegang tot de Reporting API", "status": "machine-draft" },
+    "description": { "value": "De toegang tot de Reports API moet worden beoordeeld om te waarborgen dat alleen geautoriseerde serviceaccounts en applicaties audit- en gebruiksgegevens kunnen ophalen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Toegang tot de Reports API beperkt tot uitsluitend geautoriseerde serviceaccounts", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > API-beheer > Domeinbrede delegatie > Beoordeel toekenningen met Reports API-scopes > Verwijder ongeautoriseerde toegang", "status": "machine-draft" }
+  }
+}

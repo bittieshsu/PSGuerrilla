@@ -1,0 +1,63 @@
+{
+  "_family": "OAuthSecurityChecks.json",
+  "OAUTH-001": {
+    "name": { "value": "OAuth-app-toelatingslijst/blokkeerlijst", "status": "machine-draft" },
+    "description": { "value": "Toegang van OAuth-apps moet worden beheerd via een toelatingslijst of blokkeerlijst om te voorkomen dat ongeautoriseerde applicaties toegang krijgen tot organisatiegegevens", "status": "machine-draft" },
+    "recommendedValue": { "value": "OAuth-app-toelatingslijst geconfigureerd met uitsluitend goedgekeurde applicaties", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > API-beheer > Toegangsbeheer voor apps > Toegang van externe apps beheren > Configureer vertrouwde/geblokkeerde apps", "status": "machine-draft" }
+  },
+  "OAUTH-002": {
+    "name": { "value": "Inventaris van geïnstalleerde OAuth-apps", "status": "machine-draft" },
+    "description": { "value": "Alle door gebruikers geïnstalleerde OAuth-applicaties moeten worden geïnventariseerd en beoordeeld om ongeautoriseerde of risicovolle applicaties te identificeren die toegang hebben tot organisatiegegevens", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle geïnstalleerde OAuth-apps beoordeeld en goedgekeurd door het beveiligingsteam", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > API-beheer > Toegangsbeheer voor apps > Beoordeel geïnstalleerde apps en trek de toegang in voor ongeautoriseerde applicaties", "status": "machine-draft" }
+  },
+  "OAUTH-003": {
+    "name": { "value": "Analyse van OAuth-scopes", "status": "machine-draft" },
+    "description": { "value": "OAuth-applicaties met risicovolle scopes (Gmail, Drive, Admin) vormen een aanzienlijk risico op data-exfiltratie en moeten worden beoordeeld en beperkt", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen ongeautoriseerde apps met risicovolle scopes (gmail, drive, admin)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > API-beheer > Toegangsbeheer voor apps > Beoordeel apps met gevoelige scopes > Trek in of beperk naar behoefte", "status": "machine-draft" }
+  },
+  "OAUTH-004": {
+    "name": { "value": "Risicoscoring van OAuth-apps", "status": "machine-draft" },
+    "description": { "value": "OAuth-applicaties moeten een risicoscore krijgen op basis van hun toegekende scopes en de betrouwbaarheid van de uitgever om de beveiligingsbeoordeling te prioriteren", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle risicovolle apps beoordeeld en goedgekeurd; geen niet-beoordeelde apps met brede scopes", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > API-beheer > Toegangsbeheer voor apps > Beoordeel apps gesorteerd op scope-omvang > Pak risicovolle applicaties aan", "status": "machine-draft" }
+  },
+  "OAUTH-005": {
+    "name": { "value": "Toegangsbeleid voor niet-geverifieerde apps", "status": "machine-draft" },
+    "description": { "value": "Toegang tot niet-geverifieerde externe apps moet worden beperkt om te voorkomen dat gebruikers rechten verlenen aan mogelijk schadelijke applicaties", "status": "machine-draft" },
+    "recommendedValue": { "value": "Toegang tot niet-geverifieerde apps geblokkeerd voor alle gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > API-beheer > Toegangsbeheer voor apps > Instellingen > Blokkeer niet-geverifieerde apps", "status": "machine-draft" }
+  },
+  "OAUTH-006": {
+    "name": { "value": "API-toegangsbeheer", "status": "machine-draft" },
+    "description": { "value": "API-toegang moet worden beheerd met passende scoping en beperkingen om ongeautoriseerde programmatische toegang tot organisatiegegevens te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "API-toegang beperkt tot goedgekeurde applicaties en scopes", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > API-beheer > Google-services beheren > Beperk de API-toegang tot uitsluitend vertrouwde apps", "status": "machine-draft" }
+  },
+  "OAUTH-007": {
+    "name": { "value": "Beperkingen voor de installatie van Marketplace-apps", "status": "machine-draft" },
+    "description": { "value": "De installatie van apps uit de Google Workspace Marketplace moet worden beperkt om te voorkomen dat gebruikers ongeautoriseerde applicaties installeren", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installatie van Marketplace-apps beperkt tot uitsluitend door beheerders goedgekeurde apps of apps op de toelatingslijst", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace Marketplace-apps > Instellingen > Beperk de installatie van Marketplace-apps", "status": "machine-draft" }
+  },
+  "OAUTH-008": {
+    "name": { "value": "Audit van domeinbrede delegatietoekenningen", "status": "machine-draft" },
+    "description": { "value": "Domeinbrede delegatie stelt serviceaccounts in staat zich voor te doen als elke gebruiker en toegang te krijgen tot diens gegevens. Ongeautoriseerde of te ruime toekenningen vormen een kritiek beveiligingsrisico", "status": "machine-draft" },
+    "recommendedValue": { "value": "Minimale domeinbrede delegatietoekenningen met beperkte rechten; alle toekenningen beoordeeld en goedgekeurd", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > API-beheer > Domeinbrede delegatie > Beoordeel alle toekenningen, verwijder onnodige en beperk de scopes tot het vereiste minimum", "status": "machine-draft" }
+  },
+  "OAUTH-009": {
+    "name": { "value": "Enumeratie van serviceaccountsleutels", "status": "machine-draft" },
+    "description": { "value": "Serviceaccountsleutels moeten worden geïnventariseerd en regelmatig geroteerd. Gelekte of verouderde sleutels bieden aanhoudende ongeautoriseerde toegang", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle serviceaccountsleutels geïnventariseerd, binnen 90 dagen geroteerd en ongebruikte sleutels verwijderd", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Cloud Console > IAM & beheer > Serviceaccounts > Beoordeel en roteer sleutels > Verwijder ongebruikte serviceaccountsleutels", "status": "machine-draft" }
+  },
+  "OAUTH-010": {
+    "name": { "value": "Verbonden apps met gevoelige scopes", "status": "machine-draft" },
+    "description": { "value": "Applicaties met toegang tot Drive-, Gmail- of Agenda-gegevens moeten worden geïnventariseerd en gevalideerd om data-exfiltratie via verbonden apps te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle apps met gevoelige scopes (Drive, Gmail, Agenda) beoordeeld en goedgekeurd", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Beveiliging > API-beheer > Toegangsbeheer voor apps > Filter op scope (Drive, Gmail, Agenda) > Beoordeel en beperk ongeautoriseerde apps", "status": "machine-draft" }
+  }
+}

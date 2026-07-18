@@ -1,0 +1,189 @@
+{
+  "_family": "EmailSecurityChecks.json",
+  "EMAIL-001": {
+    "name": { "value": "Validatie van SPF-record", "status": "machine-draft" },
+    "description": { "value": "Sender Policy Framework (SPF)-records moeten bestaan en geldig zijn voor alle domeinen. SPF voorkomt e-mailspoofing door te specificeren welke mailservers geautoriseerd zijn om e-mail namens een domein te verzenden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geldig v=spf1-record gepubliceerd voor alle domeinen met de qualifier -all of ~all", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > E-mail authenticeren > Publiceer een SPF-record: v=spf1 include:_spf.google.com ~all voor elk domein", "status": "machine-draft" }
+  },
+  "EMAIL-002": {
+    "name": { "value": "DKIM-ondertekening ingeschakeld", "status": "machine-draft" },
+    "description": { "value": "DomainKeys Identified Mail (DKIM)-ondertekening moet zijn ingeschakeld en geldig voor alle domeinen. DKIM levert cryptografisch bewijs dat de inhoud van e-mail onderweg niet is gemanipuleerd", "status": "machine-draft" },
+    "recommendedValue": { "value": "DKIM-ondertekening ingeschakeld met een geldige sleutel gepubliceerd voor alle domeinen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > E-mail authenticeren > Genereer een DKIM-sleutel en publiceer een DNS-record voor elk domein", "status": "machine-draft" }
+  },
+  "EMAIL-003": {
+    "name": { "value": "Audit van DMARC-beleid", "status": "machine-draft" },
+    "description": { "value": "Het beleid voor Domain-based Message Authentication, Reporting and Conformance (DMARC) moet voor alle domeinen op reject of quarantine worden ingesteld. Een DMARC-beleid van none biedt geen bescherming tegen spoofing", "status": "machine-draft" },
+    "recommendedValue": { "value": "DMARC-beleid ingesteld op reject of quarantine voor alle domeinen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Publiceer een DMARC-TXT-record op _dmarc.<domain> met p=reject of p=quarantine. Begin met p=none voor monitoring, escaleer daarna naar quarantine en ten slotte reject", "status": "machine-draft" }
+  },
+  "EMAIL-004": {
+    "name": { "value": "MTA-STS-beleid", "status": "machine-draft" },
+    "description": { "value": "Mail Transfer Agent Strict Transport Security (MTA-STS) voorkomt TLS-downgrade-aanvallen en man-in-the-middle-onderschepping van e-mail onderweg door geauthenticeerde TLS-verbindingen te vereisen", "status": "machine-draft" },
+    "recommendedValue": { "value": "MTA-STS-TXT-record gepubliceerd en beleid gehost op https://mta-sts.<domain>/.well-known/mta-sts.txt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Publiceer een _mta-sts.<domain>-TXT-record met v=STSv1; id=<unique_id> en host het MTA-STS-beleidsbestand op https://mta-sts.<domain>/.well-known/mta-sts.txt", "status": "machine-draft" }
+  },
+  "EMAIL-005": {
+    "name": { "value": "Afdwinging van TLS", "status": "machine-draft" },
+    "description": { "value": "Transport Layer Security (TLS) moet worden vereist voor het verzenden van e-mail om afluisteren te voorkomen. TLS-nalevingsinstellingen zorgen voor versleutelde verbindingen met opgegeven partnerdomeinen", "status": "machine-draft" },
+    "recommendedValue": { "value": "TLS vereist voor alle uitgaande en inkomende verbindingen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Naleving > Naleving veilig transport (TLS) > Voeg een regel toe die TLS vereist voor alle domeinen of specifieke partnerdomeinen", "status": "machine-draft" }
+  },
+  "EMAIL-006": {
+    "name": { "value": "Beoordeling van e-mail-toelatingslijst/blokkeerlijst", "status": "machine-draft" },
+    "description": { "value": "E-mail-toelatingslijsten en blokkeerlijsten moeten worden beoordeeld op te ruime vermeldingen. Afzenders op de toelatingslijst omzeilen spamfiltering en kunnen bij een verkeerde configuratie worden misbruikt", "status": "machine-draft" },
+    "recommendedValue": { "value": "Minimale vermeldingen op de toelatingslijst zonder wildcarddomeinen; blokkeerlijst actief onderhouden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Spam, phishing en malware > Beoordeel de e-mail-toelatingslijsten en lijsten met geblokkeerde afzenders op te ruime vermeldingen", "status": "machine-draft" }
+  },
+  "EMAIL-007": {
+    "name": { "value": "Configuratie van inkomende gateway", "status": "machine-draft" },
+    "description": { "value": "Inkomende e-mailgateways moeten correct worden geconfigureerd om de resultaten van afzenderauthenticatie te behouden. Verkeerd geconfigureerde gateways kunnen SPF/DKIM/DMARC-headers verwijderen of beveiligingsfiltering omzeilen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Inkomende gateways geconfigureerd met correcte IP-bereiken en behoud van headers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Spam, phishing en malware > Inkomende gateway > Controleer de gateway-IP's en of authenticatieheaders worden behouden", "status": "machine-draft" }
+  },
+  "EMAIL-008": {
+    "name": { "value": "Audit van e-mailrouteringsregels", "status": "machine-draft" },
+    "description": { "value": "E-mailrouteringsregels moeten worden beoordeeld op verdachte of ongeautoriseerde configuraties. Kwaadaardige routeringsregels kunnen e-mail omleiden naar door aanvallers beheerde bestemmingen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle routeringsregels beoordeeld en gedocumenteerd met een zakelijke rechtvaardiging", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Routering > Beoordeel alle routeringsregels, standaardroutering en ontvangertoewijzingen op ongeautoriseerde vermeldingen", "status": "machine-draft" }
+  },
+  "EMAIL-009": {
+    "name": { "value": "Beleid voor automatisch doorsturen", "status": "machine-draft" },
+    "description": { "value": "Automatisch doorsturen van e-mail naar externe adressen moet worden uitgeschakeld om data-exfiltratie te voorkomen. Aanvallers stellen vaak doorstuurregels in nadat ze een account hebben gecompromitteerd", "status": "machine-draft" },
+    "recommendedValue": { "value": "Automatisch doorsturen uitgeschakeld voor alle organisatie-eenheden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Toegang voor eindgebruikers > Schakel automatisch doorsturen uit voor alle OU's. Beoordeel bestaande doorstuurregels via de Gmail API", "status": "machine-draft" }
+  },
+  "EMAIL-010": {
+    "name": { "value": "Instellingen voor gedelegeerde toegang", "status": "machine-draft" },
+    "description": { "value": "E-maildelegatie stelt gebruikers in staat andere gebruikers lees- en verzendtoegang tot hun mailbox te verlenen. Buitensporige delegatie kan leiden tot ongeautoriseerde toegang en identiteitsimitatie", "status": "machine-draft" },
+    "recommendedValue": { "value": "E-maildelegatie beperkt en periodiek beoordeeld; geen onverwachte gemachtigden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Toegang voor eindgebruikers > Beoordeel de instellingen voor e-maildelegatie. Controleer afzonderlijke gebruikers op ongeautoriseerde gemachtigden via de Gmail API", "status": "machine-draft" }
+  },
+  "EMAIL-011": {
+    "name": { "value": "Instellingen voor POP/IMAP-toegang", "status": "machine-draft" },
+    "description": { "value": "POP- en IMAP-toegang moet worden uitgeschakeld tenzij specifiek vereist. Deze verouderde protocollen omzeilen moderne beveiligingscontroles en kunnen worden gebruikt voor op referenties gebaseerde aanvallen", "status": "machine-draft" },
+    "recommendedValue": { "value": "POP en IMAP uitgeschakeld voor alle gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Toegang voor eindgebruikers > Schakel POP- en IMAP-toegang uit. Beoordeel de instellingen van afzonderlijke gebruikers via de Gmail API", "status": "machine-draft" }
+  },
+  "EMAIL-012": {
+    "name": { "value": "Instellingen voor spam- en phishingfilter", "status": "machine-draft" },
+    "description": { "value": "Verbeterde spam- en phishingfilters moeten worden ingeschakeld om maximale bescherming te bieden tegen social-engineeringaanvallen en kwaadaardige e-mailcampagnes", "status": "machine-draft" },
+    "recommendedValue": { "value": "Verbeterde spamfiltering en agressieve phishingdetectie ingeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Spam, phishing en malware > Schakel 'Agressiever filteren bij spam' en alle opties voor phishingbescherming in", "status": "machine-draft" }
+  },
+  "EMAIL-013": {
+    "name": { "value": "Verbeterde scan van berichten vóór aflevering", "status": "machine-draft" },
+    "description": { "value": "Verbeterde scan van berichten vóór aflevering gebruikt geavanceerde heuristiek en sandboxing om malware en bedreigingen te detecteren voordat berichten in de inbox van gebruikers worden afgeleverd", "status": "machine-draft" },
+    "recommendedValue": { "value": "Verbeterde scan van berichten vóór aflevering ingeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Spam, phishing en malware > Schakel 'Verbeterde scan van berichten vóór aflevering' in om verdachte inhoud te identificeren", "status": "machine-draft" }
+  },
+  "EMAIL-014": {
+    "name": { "value": "Waarschuwing bij externe ontvanger", "status": "machine-draft" },
+    "description": { "value": "Gebruikers moeten worden gewaarschuwd bij het verzenden van e-mail naar ontvangers buiten de organisatie om onbedoelde openbaarmaking van gegevens en social engineering te voorkomen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Waarschuwing bij externe ontvanger ingeschakeld voor alle gebruikers", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Toegang voor eindgebruikers > Schakel 'Gebruikers waarschuwen wanneer ze berichten buiten het domein verzenden' in", "status": "machine-draft" }
+  },
+  "EMAIL-015": {
+    "name": { "value": "Veiligheidsinstellingen voor bijlagen", "status": "machine-draft" },
+    "description": { "value": "Alle veiligheidsbeschermingen voor bijlagen moeten worden ingeschakeld om kwaadaardige bestandsbijlagen te detecteren en te blokkeren, waaronder versleutelde archieven, afwijkende bestandstypen en scripts", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle beschermingsopties voor bijlagen ingeschakeld met quarantaineactie", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Veiligheid > Bijlagen > Schakel alle beschermingen in: versleutelde bijlagen, scripts van niet-vertrouwde afzenders en afwijkende bijlagetypen", "status": "machine-draft" }
+  },
+  "EMAIL-016": {
+    "name": { "value": "Bescherming van links en externe afbeeldingen", "status": "machine-draft" },
+    "description": { "value": "Linkbescherming moet worden ingeschakeld om URL's te scannen op phishing en malware. Het proxyen van externe afbeeldingen voorkomt trackingpixels en openbaarmaking van IP-adressen", "status": "machine-draft" },
+    "recommendedValue": { "value": "URL-scanning, waarschuwingen op het moment van klikken en het proxyen van externe afbeeldingen ingeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Veiligheid > Links en externe afbeeldingen > Schakel 'Links achter verkorte URL's identificeren', 'Gelinkte afbeeldingen scannen' en 'Waarschuwing tonen bij het klikken op links naar niet-vertrouwde domeinen' in", "status": "machine-draft" }
+  },
+  "EMAIL-017": {
+    "name": { "value": "Bescherming tegen spoofing en authenticatie", "status": "machine-draft" },
+    "description": { "value": "Beschermingen tegen spoofing en authenticatie beschermen tegen domeinspoofing, spoofing van medewerkersnamen en niet-geauthenticeerde e-mail van domeinen die lijken op die van de organisatie", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle beschermingen tegen spoofing en authenticatie ingeschakeld met quarantaineactie", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Veiligheid > Spoofing en authenticatie > Schakel alle beschermingen in: domeinspoofing, spoofing van medewerkersnamen, spoofing van inkomende e-mail en niet-geauthenticeerde e-mail", "status": "machine-draft" }
+  },
+  "EMAIL-018": {
+    "name": { "value": "Audit van nalevingsregels", "status": "machine-draft" },
+    "description": { "value": "Regels voor inhoudsnaleving moeten worden beoordeeld om te waarborgen dat gevoelige gegevens passend worden behandeld. Regels kunnen versleuteling, quarantaine of weigering afdwingen op basis van inhoudspatronen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Regels voor inhoudsnaleving geconfigureerd voor gevoelige gegevenstypen met passende acties", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Naleving > Inhoudsnaleving > Beoordeel bestaande regels en maak regels voor gevoelige inhoudstypen (PII, financiële gegevens, medische dossiers)", "status": "machine-draft" }
+  },
+  "EMAIL-019": {
+    "name": { "value": "Configuratie van DLP-regels", "status": "machine-draft" },
+    "description": { "value": "Regels voor Data Loss Prevention (DLP) moeten worden geconfigureerd om te detecteren en te voorkomen dat gevoelige gegevens de organisatie via e-mail verlaten. DLP biedt geautomatiseerde inspectie van inhoud en handhaving van beleid", "status": "machine-draft" },
+    "recommendedValue": { "value": "DLP-regels geconfigureerd voor belangrijke gegevenstypen (creditcards, burgerservicenummers, medische dossiers) met een blokkeer- of waarschuwingsactie", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beveiliging > Gegevensbescherming > Regels beheren: maak een Gmail-DLP-regel die patronen van gevoelige inhoud detecteert (creditcards, burgerservicenummers, medische dossiers) en een blokkeer- of waarschuwingsactie toepast", "status": "machine-draft" }
+  },
+  "EMAIL-020": {
+    "name": { "value": "Vertrouwelijke modus van Gmail", "status": "machine-draft" },
+    "description": { "value": "De vertrouwelijke modus van Gmail stelt afzenders in staat vervaldatums in te stellen en toegang tot berichten in te trekken. Beoordeel of deze functie is ingeschakeld of beperkt overeenkomstig het organisatiebeleid", "status": "machine-draft" },
+    "recommendedValue": { "value": "Vertrouwelijke modus van Gmail ingeschakeld voor gebruikers die gevoelige gegevens verwerken", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Toegang voor eindgebruikers > Beoordeel de instellingen voor de vertrouwelijke modus van Gmail en schakel deze in of beperk deze op basis van de organisatievereisten", "status": "machine-draft" }
+  },
+  "EMAIL-021": {
+    "name": { "value": "S/MIME-instellingen", "status": "machine-draft" },
+    "description": { "value": "S/MIME biedt end-to-end-versleuteling van e-mail en digitale handtekeningen. Indien vereist door naleving, moeten S/MIME-certificaten correct worden geconfigureerd en beheerd", "status": "machine-draft" },
+    "recommendedValue": { "value": "S/MIME ingeschakeld indien vereist door naleving; certificaten correct beheerd", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Gmail > Toegang voor eindgebruikers > S/MIME > Schakel gehost S/MIME in indien vereist en zorg dat certificaten zijn geüpload en geldig zijn", "status": "machine-draft" }
+  },
+  "EMAIL-022": {
+    "name": { "value": "Enumeratie van e-maildoorstuurregels", "status": "machine-draft" },
+    "description": { "value": "Alle doorstuurregels op gebruikersniveau moeten worden geïnventariseerd en beoordeeld. Aanvallers stellen vaak doorstuurregels in om aanhoudende toegang tot e-mail te behouden na compromittering van een account", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen ongeautoriseerde doorstuurregels; alle doorstuurregels gedocumenteerd en goedgekeurd", "status": "machine-draft" },
+    "remediationSteps": { "value": "Inventariseer doorstuurregels via de Gmail API voor alle gebruikers. Verwijder ongeautoriseerde doorstuuradressen. Schakel automatisch doorsturen uit op OU-niveau om toekomstig misbruik te voorkomen", "status": "machine-draft" }
+  },
+  "EMAIL-023": {
+    "name": { "value": "Uitgaande gateways per gebruiker uitgeschakeld (GWS.GMAIL.12.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.12.1 vereist dat uitgaande gateways per gebruiker worden uitgeschakeld. Wanneer deze zijn ingeschakeld, kunnen gebruikers uitgaande e-mail via hun eigen externe SMTP-servers routeren, waarmee ze de mailbeveiligingscontroles van de organisatie omzeilen en een pad voor data-exfiltratie en spoofing creëren. Deze controle leest het beleid gmail.per_user_outbound_gateway uit de Cloud Identity Policy API en markeert elke organisatie-eenheid waar externe SMTP-routering is toegestaan. Wanneer het beleid niet wordt teruggegeven, is het resultaat Niet beoordeeld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Uitgaande gateways per gebruiker (externe SMTP) uitgeschakeld voor alle organisatie-eenheden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Zorg in de Google Admin Console onder Apps > Google Workspace > Gmail > Routering dat uitgaande gateways per gebruiker niet zijn toegestaan, zodat gebruikers geen e-mail via externe SMTP-servers kunnen routeren. Houd uitgaande routering gecentraliseerd via uitsluitend goedgekeurde gateways.", "status": "machine-draft" }
+  },
+  "EMAIL-024": {
+    "name": { "value": "Gmail Security Sandbox ingeschakeld (GWS.GMAIL.16.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.16.1 raadt aan de Gmail Security Sandbox in te schakelen, die inkomende bijlagen in een virtuele omgeving detoneert om zeroday-malware te detecteren die signatuurscanning mist. Deze controle leest het beleid gmail.security_sandbox uit de Cloud Identity Policy API en markeert organisatie-eenheden waar de sandbox is uitgeschakeld. Het exacte beleidsveld is een beste inspanning in afwachting van bevestiging op een tenant met licentie; wanneer het beleid niet wordt teruggegeven, is het resultaat Niet beoordeeld in plaats van een verzonnen oordeel.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Security Sandbox ingeschakeld (virtuele detonatie van bijlagen) voor alle organisatie-eenheden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de Google Admin Console onder Apps > Google Workspace > Gmail > Veiligheid > Bijlagen de Security Sandbox in, zodat inkomende bijlagen vóór aflevering in een virtuele omgeving worden gedetoneerd. Let op: de Security Sandbox vereist de juiste Google Workspace-editie.", "status": "machine-draft" }
+  },
+  "EMAIL-025": {
+    "name": { "value": "E-maildelegatie van Gmail uitgeschakeld (GWS.GMAIL.1.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.1.1: e-maildelegatie laat een gebruiker een ander account lees-/verzendtoegang tot zijn mailbox verlenen, een permanent pad voor gegevenstoegang dat het doel van de delegatie overleeft. Leest gmail.mail_delegation; waarschuwt waar enableMailDelegation aan staat.", "status": "machine-draft" },
+    "recommendedValue": { "value": "E-maildelegatie uitgeschakeld tenzij bewust vereist", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in Gmail-instellingen > Gebruikersinstellingen e-maildelegatie uit, tenzij er een beoordeelde zakelijke behoefte bestaat.", "status": "machine-draft" }
+  },
+  "EMAIL-026": {
+    "name": { "value": "POP- en IMAP-toegang van Gmail uitgeschakeld (GWS.GMAIL.9.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.9.1: de verouderde protocollen POP en IMAP omzeilen moderne authenticatie en vormen een vector voor credential stuffing / MFA-omzeiling. Leest gmail.imap_access en gmail.pop_access; faalt waar een van beide is ingeschakeld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "POP- en IMAP-toegang uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in Gmail-instellingen > Toegang voor eindgebruikers POP en IMAP uit, zodat mailclients moderne geauthenticeerde protocollen moeten gebruiken.", "status": "machine-draft" }
+  },
+  "EMAIL-027": {
+    "name": { "value": "Import van e-mail/contacten door gebruikers in Gmail uitgeschakeld (GWS.GMAIL.8.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.8.1: uploads van gebruikerse-mail (het importeren van e-mail en contacten uit externe accounts) haalt externe gegevens de tenant binnen en kan omgekeerd exfiltreren. Leest gmail.user_email_uploads; waarschuwt waar enableMailAndContactsImport aan staat.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Import van e-mail/contacten door gebruikers uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in Gmail-instellingen de mogelijkheid voor gebruikers om e-mail en contacten uit andere accounts te importeren uit, tenzij dit vereist is.", "status": "machine-draft" }
+  },
+  "EMAIL-028": {
+    "name": { "value": "Google Workspace Sync for Outlook uitgeschakeld (GWS.GMAIL.10.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.10.1: Google Workspace Sync for Microsoft Outlook (GWSMO) verbindt mailboxgegevens met een Outlook-client, waarmee het gegevensoppervlak wordt vergroot en sommige webbeschermingen worden omzeild. Leest gmail.workspace_sync_for_outlook; waarschuwt waar dit is ingeschakeld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "GWSMO uitgeschakeld tenzij vereist", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de Gmail-instellingen voor toegang voor eindgebruikers Google Workspace Sync for Microsoft Outlook uit, tenzij er een beoordeelde behoefte bestaat.", "status": "machine-draft" }
+  },
+  "EMAIL-029": {
+    "name": { "value": "Lijsten met afzenders die spamfiltering overschrijven in Gmail beoordeeld (GWS.GMAIL.18.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.18.1: lijsten met goedgekeurde afzenders / spamoverschrijving zorgen ervoor dat e-mail van vermelde domeinen spamfiltering omzeilt, een phishingomzeiling indien te ruim. Leest gmail.spam_override_lists; waarschuwt waar overschrijvende afzenderdomeinen zijn geconfigureerd.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Lijsten met afzenders die spamfiltering overschrijven afwezig of minimaal en beoordeeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beoordeel en minimaliseer in de spaminstellingen van Gmail de lijsten met goedgekeurde afzenders / uitzonderingen, zodat e-mail van vertrouwde domeinen niet zonder meer wordt uitgezonderd van spamfiltering.", "status": "machine-draft" }
+  },
+  "EMAIL-030": {
+    "name": { "value": "Automatisch doorsturen van e-mail uitgeschakeld (GWS.GMAIL.11.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.11.1 raadt aan automatisch doorsturen van e-mail uit te schakelen, vooral naar externe domeinen. Automatisch doorsturen is een veelvoorkomend kanaal voor data-exfiltratie en een persistentiemechanisme na accountovername, omdat het inkomende e-mail ongemerkt kopieert naar een door een aanvaller beheerd adres. Deze controle leest het Cloud Identity-beleid gmail.auto_forwarding en markeert elke organisatie-eenheid waar automatisch doorsturen is ingeschakeld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Automatisch doorsturen van e-mail uitgeschakeld (enableAutoForwarding = false) in alle organisatie-eenheden.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de Google Admin Console, onder Apps > Google Workspace > Gmail > Toegang voor eindgebruikers, 'Gebruikers toestaan inkomende e-mail automatisch door te sturen naar een ander adres' uit, waarbij externe bestemmingen prioriteit krijgen. Beoordeel bestaande doorstuurregels op onverwachte externe ontvangers.", "status": "machine-draft" }
+  },
+  "EMAIL-031": {
+    "name": { "value": "Verbeterde scan van berichten vóór aflevering ingeschakeld (GWS.GMAIL.15.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.15.1 vereist een verbeterde scan van berichten vóór aflevering, die de detectie van verdachte en phishinginhoud verbetert voordat een bericht de inbox bereikt. Deze controle leest het Cloud Identity-beleid gmail.enhanced_pre_delivery_message_scanning en markeert elke organisatie-eenheid waar verbeterde detectie van verdachte inhoud niet is ingeschakeld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Verbeterde scan van berichten vóór aflevering ingeschakeld (enableImprovedSuspiciousContentDetection = true) in alle organisatie-eenheden.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Schakel in de Google Admin Console, onder Apps > Google Workspace > Gmail > Spam, phishing en malware, de verbeterde scan van berichten vóór aflevering in, zodat Gmail vóór aflevering aanvullende analyse van verdachte inhoud uitvoert.", "status": "machine-draft" }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "_family": "GwsServiceChecks.json",
+  "GWS-SITES-001": {
+    "name": { "value": "Sites-service uitgeschakeld", "status": "machine-draft" },
+    "description": { "value": "De Google Sites-service moet voor alle gebruikers worden uitgeschakeld om het aanvalsoppervlak te verkleinen, in lijn met minimale rechten. Sites kan selectief per organisatie-eenheid of groep worden ingeschakeld waar een gedocumenteerde behoefte bestaat.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sites-service UIT voor iedereen (schakel selectief per OU/groep in, alleen indien nodig)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Sites > Servicestatus > Zet op UIT voor iedereen. Schakel selectief in per organisatie-eenheid of groep, alleen waar een gedocumenteerde zakelijke behoefte bestaat.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-001": {
+    "name": { "value": "Classroom-lidmaatschap: wie kan deelnemen aan klassen", "status": "machine-draft" },
+    "description": { "value": "Wie kan deelnemen aan klassen in uw domein moet worden beperkt tot uitsluitend gebruikers in uw domein, zodat externe accounts niet kunnen deelnemen aan interne klassen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Wie kan deelnemen aan klassen ingesteld op 'Alleen gebruikers in uw domein'", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Aanvullende Google-services > Classroom > Klasinstellingen > Over klaslidmaatschap > Wie kan deelnemen aan klassen in uw domein > Zet op 'Alleen gebruikers in uw domein'.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-002": {
+    "name": { "value": "Classroom-lidmaatschap: aan welke klassen gebruikers kunnen deelnemen", "status": "machine-draft" },
+    "description": { "value": "Aan welke klassen gebruikers in uw domein kunnen deelnemen moet worden beperkt tot uitsluitend klassen in uw domein, zodat interne gebruikers niet deelnemen aan externe klassen die gegevens kunnen exfiltreren.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Aan welke klassen gebruikers kunnen deelnemen ingesteld op 'Alleen klassen in uw domein'", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Aanvullende Google-services > Classroom > Klasinstellingen > Over klaslidmaatschap > Aan welke klassen gebruikers in uw domein kunnen deelnemen > Zet op 'Alleen klassen in uw domein'.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-003": {
+    "name": { "value": "Classroom API-gegevenstoegang beperkt", "status": "machine-draft" },
+    "description": { "value": "Gebruikers mogen geen externe apps kunnen autoriseren om toegang te krijgen tot hun Google Classroom-gegevens, zodat ongecontroleerde gegevenstoegang door externe integraties wordt voorkomen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gebruikers kunnen apps niet autoriseren voor toegang tot Classroom-gegevens (API-gegevenstoegang uitgeschakeld)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Aanvullende Google-services > Classroom > Gegevenstoegang > Schakel 'Gebruikers kunnen apps autoriseren voor toegang tot hun Google Classroom-gegevens' uit.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-004": {
+    "name": { "value": "Classroom-naamlijstimport uitgeschakeld", "status": "machine-draft" },
+    "description": { "value": "Naamlijstimport via externe integratie moet worden uitgeschakeld, zodat klasnaamlijsten niet zonder expliciet bestuur worden gesynchroniseerd vanuit externe systemen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Naamlijstimport UIT", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Aanvullende Google-services > Classroom > Naamlijstimport > Selecteer UIT.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-005": {
+    "name": { "value": "Uitschrijving van leerlingen in Classroom beperkt", "status": "machine-draft" },
+    "description": { "value": "Alleen docenten mogen leerlingen uit klassen uitschrijven, zodat leerlingen zichzelf of anderen niet kunnen verwijderen en de integriteit van het klaslidmaatschap niet verstoren.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Uitschrijving van leerlingen beperkt tot uitsluitend docenten", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Aanvullende Google-services > Classroom > Uitschrijving van leerlingen > Selecteer 'Alleen docenten'.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-006": {
+    "name": { "value": "Aanmaken van klassen in Classroom beperkt tot geverifieerde docenten", "status": "machine-draft" },
+    "description": { "value": "Het aanmaken van klassen moet worden beperkt tot uitsluitend geverifieerde docenten, zodat ongeautoriseerde gebruikers geen klassen kunnen aanmaken en leden kunnen verzamelen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Aanmaken van klassen beperkt tot uitsluitend geverifieerde docenten", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Aanvullende Google-services > Classroom > Algemene instellingen > Docentrechten > Selecteer 'Alleen geverifieerde docenten'.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-001": {
+    "name": { "value": "Toegang tot de Gemini-app beperkt tot gebruikers met licentie", "status": "machine-draft" },
+    "description": { "value": "Gebruikerstoegang tot de Gemini-app moet op UIT worden gezet voor iedereen zonder licentie, zodat toegang tot generatieve AI wordt geregeld door licentietoewijzing in plaats van open te staan voor alle gebruikers.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Toegang tot de Gemini-app UIT voor gebruikers zonder licentie", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Generatieve AI > Gemini-app > Gebruikerstoegang > Schakel 'Alle gebruikers toegang geven tot de Gemini-app, ongeacht licentie' uit.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-002": {
+    "name": { "value": "Alfafuncties van Gemini uitgeschakeld", "status": "machine-draft" },
+    "description": { "value": "Alfafuncties van Gemini moeten worden uitgeschakeld. Prereleasefuncties hebben mogelijk de beveiligingsbeoordeling niet doorlopen en kunnen organisatiegegevens blootstellen aan niet-gecontroleerde verwerking.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Toegang tot alfafuncties in Gemini for Workspace uitgeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Generatieve AI > Gemini for Workspace > Alfafuncties > Selecteer 'Toegang tot alfafuncties in Gemini for Google Workspace uitschakelen'.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-003": {
+    "name": { "value": "Gespreksgeschiedenis van Gemini ingeschakeld", "status": "machine-draft" },
+    "description": { "value": "De gespreksgeschiedenis van Gemini moet worden ingeschakeld, zodat AI-interacties worden bewaard voor audit- en nalevingsdoeleinden. Een uitgeschakelde geschiedenis kan de omgang met gegevens verhullen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gespreksgeschiedenis van Gemini ingeschakeld", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Generatieve AI > Gemini-app > Gespreksgeschiedenis van Gemini > Zorg dat de gespreksgeschiedenis is ingeschakeld.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-004": {
+    "name": { "value": "Bewaartermijn van Gemini-gesprekken minimaal 18 maanden", "status": "machine-draft" },
+    "description": { "value": "De bewaartermijn van Gemini-gesprekken moet op minimaal 18 maanden worden ingesteld om audit-, bewaarplicht- en incidentonderzoeksvereisten te ondersteunen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Bewaartermijn van gesprekken ingesteld op minimaal 18 maanden", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Generatieve AI > Gemini-app > Gespreksgeschiedenis van Gemini > Stel de bewaartermijn in op minimaal 18 maanden.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-005": {
+    "name": { "value": "Delen van Gemini-gesprekken uitgeschakeld", "status": "machine-draft" },
+    "description": { "value": "Het delen van Gemini-gesprekken via een link moet op UIT worden gezet om te voorkomen dat AI-gespreksinhoud, die gevoelige prompts en uitvoer kan bevatten, buiten de beoogde ontvangers wordt gedeeld.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Delen van gesprekken via een link ingesteld op UIT", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Generatieve AI > Gemini-app > Delen > Zet 'Delen van gesprekken via een link toestaan' op UIT.", "status": "machine-draft" }
+  }
+}

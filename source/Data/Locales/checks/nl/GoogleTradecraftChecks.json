@@ -1,0 +1,39 @@
+{
+  "_family": "GoogleTradecraftChecks.json",
+  "GTRADE-001": {
+    "name": { "value": "Blootstelling aan organisatieovername via domeinbrede delegatie", "status": "machine-draft" },
+    "description": { "value": "Domeinbrede delegatie koppelt identiteitsimitatie aan de OAuth-client-ID van een serviceaccount, niet aan de sleutel; iedereen die een sleutel kan aanmaken op een gedelegeerd serviceaccount met brede scopes verkrijgt daarmee organisatiebrede identiteitsimitatie zonder superbeheerder te zijn (de DeleFriend-techniek). Gedelegeerde toekenningen met volledige Gmail/Drive/Directory/cloud-platform-scopes vormen de voorwaarde voor overname.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen serviceaccount met gedelegeerde scopes voor organisatiebrede identiteitsimitatie (volledige Gmail/Drive/Directory/cloud-platform); uitsluitend beperkte alleen-lezen-scopes", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beveiliging > API-beheer > Domeinbrede delegatie: verwijder of beperk elke toekenning met volledige mail.google.com-, volledige drive-, admin.directory- of cloud-platform-scopes; beperk tot de minimaal vereiste alleen-lezen-scopes. Weiger in GCP het aanmaken van sleutels op gedelegeerde serviceaccounts (iam.disableServiceAccountKeyCreation).", "status": "machine-draft" }
+  },
+  "GTRADE-002": {
+    "name": { "value": "Via internet leesbare Google Groups", "status": "machine-draft" },
+    "description": { "value": "Groepen waarvan de onderwerpen zichtbaar zijn voor 'iedereen op internet' lekken ongemerkt hun volledige berichtgeschiedenis; een categorie die de interne e-mail van duizenden organisaties heeft blootgesteld (financiële gegevens, referenties, PII). Google biedt geen ingebouwde waarschuwing voor deze blootstelling.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen groep zichtbaar voor iedereen op internet (whoCanViewGroup niet ANYONE_CAN_VIEW)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Groups for Business > Instellingen voor delen, en de toegangsinstellingen per groep: zet 'Wie kan gesprekken bekijken' van 'Iedereen op internet' naar uitsluitend leden/organisatie.", "status": "machine-draft" }
+  },
+  "GTRADE-003": {
+    "name": { "value": "Groepen met open toetreding / externe leden", "status": "machine-draft" },
+    "description": { "value": "Groepen waar iedereen (of iedereen in het domein) lid van kan worden, of die externe leden toestaan, verbreden de vertrouwensgrens en maken selfservicetoegang mogelijk; als zo'n groep ook resource- of IAM-toegang bezit, erft toetreding die toegang (een pad voor rechtenescalatie dat Google als bedoeld gedrag classificeert).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Groepen beperkt tot uitgenodigde leden; geen open toetreding en geen externe leden tenzij expliciet vereist", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Groups for Business: stel de standaardinstelling 'Wie kan lid worden' in op 'Alleen uitgenodigde gebruikers' en schakel 'Externe leden toestaan' uit tenzij een groep deze expliciet vereist; beoordeel groepen die resource-/IAM-toegang verlenen.", "status": "machine-draft" }
+  },
+  "GTRADE-004": {
+    "name": { "value": "Wildgroei van superbeheerders", "status": "machine-draft" },
+    "description": { "value": "Superbeheerders omzeilen SSO en de meeste controles; een grote populatie superbeheerders vergroot het meest waardevolle aanvalsoppervlak van de organisatie. De best practice van Google is het aantal klein te houden (minder dan vijf), waarbij dagelijkse werkzaamheden onder rollen met minimale rechten worden uitgevoerd.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Minder dan 5 actieve superbeheerders", "status": "machine-draft" },
+    "remediationSteps": { "value": "Account > Beheerdersrollen > Super Admin: beperk het lidmaatschap tot de minimale break-glass-set; verplaats routinetaken naar aangepaste/vooraf ingebouwde rollen met minimale rechten; dwing phishingbestendige 2SV af voor alle overige superbeheerders.", "status": "machine-draft" }
+  },
+  "GTRADE-005": {
+    "name": { "value": "Aangepaste rollen gelijkwaardig aan superbeheerder", "status": "machine-draft" },
+    "description": { "value": "Aangepaste beheerdersrollen met zeer krachtige rechten (gebruikersbeheer, beveiligingsinstellingen, rolbeheer, data-export/Takeout) kunnen de mogelijkheden van een superbeheerder benaderen terwijl ze aan een eenvoudige telling van superbeheerders ontsnappen; een stille vector voor rechtenconcentratie en persistentie.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen aangepaste rol met rechten gelijkwaardig aan superbeheerder (gebruikers-/beveiligings-/rolbeheer of data-export) buiten break-glass-gebruik", "status": "machine-draft" },
+    "remediationSteps": { "value": "Account > Beheerdersrollen: beoordeel aangepaste rollen met rechten voor gebruikersbeheer, beveiligingsinstellingen, rolbeheer of data-export/Takeout; splits deze op in eng afgebakende rollen en beperk het aantal toegewezen personen.", "status": "machine-draft" }
+  },
+  "GTRADE-006": {
+    "name": { "value": "Aanhoudende / te ruim ingestelde OAuth-toekenningen", "status": "machine-draft" },
+    "description": { "value": "Externe OAuth-toekenningen met volledige Gmail/Drive/admin-scopes omzeilen MFA en overleven een wachtwoordreset (Apps Script, app-wachtwoorden en IMAP-OAuth-sessies worden door een reset niet ingetrokken); een duurzaam persistentiekanaal. Google registreert toekenningen, maar levert standaard geen classificatie van kwaadaardige toekenningen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Geen externe OAuth-app met volledige mail/drive/admin-scopes; aanhoudende toekenningen beoordeeld en expliciet ingetrokken", "status": "machine-draft" },
+    "remediationSteps": { "value": "Beveiliging > API-beheer > Toegangsbeheer voor apps: beoordeel apps met volledige Gmail/Drive/Directory-scopes, beperk tot apps op de toelatingslijst en trek onnodige toekenningen expliciet in (een wachtwoordreset alleen trekt OAuth-, app-wachtwoord- of Apps Script-toegang NIET in).", "status": "machine-draft" }
+  }
+}
