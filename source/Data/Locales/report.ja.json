@@ -1,0 +1,1476 @@
+{
+  "_language": {
+    "code": "ja",
+    "name": "日本語"
+  },
+  "common": {
+    "domain": {
+      "value": "ドメイン",
+      "status": "machine-draft"
+    },
+    "tenant": {
+      "value": "テナント",
+      "status": "machine-draft"
+    },
+    "generated": {
+      "value": "生成日時",
+      "status": "machine-draft"
+    },
+    "reportGenerated": {
+      "value": "レポート生成日時",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "{0} 件のチェックを評価 &middot; 合格 {1} 件、不合格 {2} 件、警告 {3} 件、スキップ {4} 件",
+      "status": "machine-draft"
+    },
+    "summaryCounts": {
+      "value": "{0} 件のチェック &middot; 合格:{1} 不合格:{2} 警告:{3}",
+      "status": "machine-draft"
+    },
+    "totalChecks": {
+      "value": "チェック総数",
+      "status": "machine-draft"
+    },
+    "passed": {
+      "value": "合格",
+      "status": "machine-draft"
+    },
+    "failed": {
+      "value": "不合格",
+      "status": "machine-draft"
+    },
+    "warnings": {
+      "value": "警告",
+      "status": "machine-draft"
+    },
+    "skipped": {
+      "value": "スキップ",
+      "status": "machine-draft"
+    },
+    "pass": {
+      "value": "合格",
+      "status": "machine-draft"
+    },
+    "fail": {
+      "value": "不合格",
+      "status": "machine-draft"
+    },
+    "warn": {
+      "value": "警告",
+      "status": "machine-draft"
+    },
+    "skip": {
+      "value": "スキップ",
+      "status": "machine-draft"
+    },
+    "passLabel": {
+      "value": "合格:",
+      "status": "machine-draft"
+    },
+    "failLabel": {
+      "value": "不合格:",
+      "status": "machine-draft"
+    },
+    "warnLabel": {
+      "value": "警告:",
+      "status": "machine-draft"
+    },
+    "skipLabel": {
+      "value": "スキップ:",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "重大",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "高",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "中",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "低",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "エグゼクティブサマリー",
+      "status": "machine-draft"
+    },
+    "categoryBreakdown": {
+      "value": "カテゴリ別内訳",
+      "status": "machine-draft"
+    },
+    "categoryScores": {
+      "value": "カテゴリ別スコア",
+      "status": "machine-draft"
+    },
+    "detailedByCategory": {
+      "value": "カテゴリ別の詳細な検出結果",
+      "status": "machine-draft"
+    },
+    "complianceMapping": {
+      "value": "コンプライアンスマッピング",
+      "status": "machine-draft"
+    },
+    "complianceCrossReference": {
+      "value": "コンプライアンス相互参照",
+      "status": "machine-draft"
+    },
+    "allFindings": {
+      "value": "すべての検出結果",
+      "status": "machine-draft"
+    },
+    "thId": {
+      "value": "ID",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "重大度",
+      "status": "machine-draft"
+    },
+    "thStatus": {
+      "value": "ステータス",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "カテゴリ",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "チェック",
+      "status": "machine-draft"
+    },
+    "thCheckName": {
+      "value": "チェック名",
+      "status": "machine-draft"
+    },
+    "thCheckId": {
+      "value": "チェック ID",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "検出結果",
+      "status": "machine-draft"
+    },
+    "thRemediation": {
+      "value": "修復",
+      "status": "machine-draft"
+    },
+    "thCurrentValue": {
+      "value": "現在の値",
+      "status": "machine-draft"
+    },
+    "thRecommended": {
+      "value": "推奨",
+      "status": "machine-draft"
+    },
+    "thRecommendedValue": {
+      "value": "推奨値",
+      "status": "machine-draft"
+    },
+    "thRemediationSteps": {
+      "value": "修復手順",
+      "status": "machine-draft"
+    },
+    "thName": {
+      "value": "名前",
+      "status": "machine-draft"
+    },
+    "thDescription": {
+      "value": "説明",
+      "status": "machine-draft"
+    },
+    "thPlatform": {
+      "value": "プラットフォーム",
+      "status": "machine-draft"
+    },
+    "thTimestamp": {
+      "value": "タイムスタンプ",
+      "status": "machine-draft"
+    },
+    "thScore": {
+      "value": "スコア",
+      "status": "machine-draft"
+    },
+    "thLabel": {
+      "value": "ラベル",
+      "status": "machine-draft"
+    },
+    "thDelta": {
+      "value": "差分",
+      "status": "machine-draft"
+    },
+    "thProfile": {
+      "value": "プロファイル",
+      "status": "machine-draft"
+    },
+    "thMitre": {
+      "value": "MITRE ATT&CK",
+      "status": "machine-draft"
+    },
+    "thNist": {
+      "value": "NIST SP 800-53",
+      "status": "machine-draft"
+    },
+    "thCisAd": {
+      "value": "CIS AD",
+      "status": "machine-draft"
+    },
+    "thCisBenchmark": {
+      "value": "CIS Benchmark",
+      "status": "machine-draft"
+    },
+    "thAnssi": {
+      "value": "ANSSI",
+      "status": "machine-draft"
+    },
+    "accepted": {
+      "value": "承認済み",
+      "status": "machine-draft"
+    }
+  },
+  "sections": {
+    "affectedItems": {
+      "value": "影響を受ける項目",
+      "status": "machine-draft"
+    }
+  },
+  "maturity": {
+    "heading": {
+      "value": "セキュリティ成熟度",
+      "status": "machine-draft"
+    },
+    "overall": {
+      "value": "全体的な成熟度: 5 段階中レベル {0} &middot; {1}",
+      "status": "machine-draft"
+    },
+    "anchorNote": {
+      "value": "最も低い未達成の統制が評価の基準となるため (CMMI 型の尺度: 1 初期状態から 5 最適化まで)、単一の重大な露出が解消されるまでスコアの上限が抑えられます。",
+      "status": "machine-draft"
+    },
+    "toReach": {
+      "value": "<strong>レベル {0}</strong> に到達するには、次に対処してください:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "カテゴリ",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "レベル",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "成熟度",
+      "status": "machine-draft"
+    },
+    "levelCell": {
+      "value": "レベル {0}",
+      "status": "machine-draft"
+    },
+    "na": {
+      "value": "該当なし",
+      "status": "machine-draft"
+    }
+  },
+  "ioe": {
+    "heading": {
+      "value": "露出の指標",
+      "status": "machine-draft"
+    },
+    "note": {
+      "value": "{0} 件の未対応の露出、重大度と影響範囲の順にランク付けされています。",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "重大",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "高",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "中",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "低",
+      "status": "machine-draft"
+    },
+    "affected": {
+      "value": "{0} 件が影響を受けています",
+      "status": "machine-draft"
+    },
+    "warning": {
+      "value": "警告",
+      "status": "machine-draft"
+    },
+    "more": {
+      "value": "+ 以下の詳細な検出結果にさらに {0} 件の露出があります。",
+      "status": "machine-draft"
+    }
+  },
+  "attackpath": {
+    "heading": {
+      "value": "Tier-0 への攻撃経路",
+      "status": "machine-draft"
+    },
+    "noneRan": {
+      "value": "収集された ACL の範囲内では、Tier-0 への昇格経路は見つかりませんでした。低権限からの深いチェーンにはドメイン全体の ACL 収集が必要です &middot; カバレッジを広げるには <code>-FullDomainAcl</code> を指定して再実行してください。",
+      "status": "machine-draft"
+    },
+    "noneNotRun": {
+      "value": "攻撃経路の分析は実行されませんでした。<code>ACLDelegation</code> と <code>PrivilegedAccounts</code> のカテゴリ (または <code>All</code>) を有効にし、深い推移的チェーンには <code>-FullDomainAcl</code> を追加してください。",
+      "status": "machine-draft"
+    },
+    "summary": {
+      "value": "Tier-0 に到達する昇格経路が {0} 件 &middot; そのうち {1} 件は非特権のプリンシパルからのものです (最初に表示、最もリスクが高い)。各矢印は、攻撃者がたどることのできる統制またはメンバーシップのエッジです。",
+      "status": "machine-draft"
+    },
+    "hop": {
+      "value": "ホップ",
+      "status": "machine-draft"
+    },
+    "hops": {
+      "value": "ホップ",
+      "status": "machine-draft"
+    },
+    "nonPrivSource": {
+      "value": "非特権の起点",
+      "status": "machine-draft"
+    },
+    "privSource": {
+      "value": "既に特権を持つ起点",
+      "status": "machine-draft"
+    }
+  },
+  "cartography": {
+    "heading": {
+      "value": "攻撃経路マップ",
+      "status": "machine-draft"
+    },
+    "legend": {
+      "value": "Tier-0 への昇格ルートの視覚的マップ。<span style='color:var(--g-sev-critical)'>&#9873; 赤</span> = 非特権の開始点、<span style='color:var(--g-sev-high)'>オレンジ</span> = 既に特権あり、<span style='color:var(--g-accent)'>&#9733; 青</span> = Tier-0 の目標。矢印を左から右へたどってください。",
+      "status": "machine-draft"
+    },
+    "showingFirst": {
+      "value": " 最初の {0} 件の経路を表示しています。",
+      "status": "machine-draft"
+    }
+  },
+  "comparison": {
+    "heading": {
+      "value": "前回の実行からの変更点",
+      "status": "machine-draft"
+    },
+    "firstRun": {
+      "value": "これはこの範囲で記録された最初の実行です。実行履歴はこのバージョンの統合\n比較エンジンから始まるため、以前の差分ファイルは読み込まれません。比較は\n次回の評価から開始され、その際にこの実行がベースラインになります。",
+      "status": "machine-draft"
+    },
+    "previousRun": {
+      "value": "前回の実行: {0}、モジュールバージョン {1}",
+      "status": "machine-draft"
+    },
+    "versionSkew": {
+      "value": " (今回の実行: {0}。チェックカタログが異なるため、以下の新規および廃止のエントリは想定内です)",
+      "status": "machine-draft"
+    },
+    "scoreLabel": {
+      "value": "スコア (現在 {0}、以前 {1})",
+      "status": "machine-draft"
+    },
+    "notAssessedLabel": {
+      "value": "未評価の件数",
+      "status": "machine-draft"
+    },
+    "pillarsMoved": {
+      "value": "変動したゼロトラストの柱:",
+      "status": "machine-draft"
+    },
+    "newlyFailing": {
+      "value": "新たに不合格",
+      "status": "machine-draft"
+    },
+    "lostVisibility": {
+      "value": "可視性の喪失 (以前は評価済み、現在は未評価)",
+      "status": "machine-draft"
+    },
+    "stillNotAssessed": {
+      "value": "依然として未評価 (今回と前回の実行の両方で不可視)",
+      "status": "machine-draft"
+    },
+    "newlyPassing": {
+      "value": "新たに合格 (修復を確認)",
+      "status": "machine-draft"
+    },
+    "regressed": {
+      "value": "警告へ後退",
+      "status": "machine-draft"
+    },
+    "improved": {
+      "value": "警告へ改善 (まだ合格ではない)",
+      "status": "machine-draft"
+    },
+    "restoredVisibility": {
+      "value": "可視性を回復",
+      "status": "machine-draft"
+    },
+    "newChecks": {
+      "value": "今回の実行での新規チェック (遷移ではない)",
+      "status": "machine-draft"
+    },
+    "retiredChecks": {
+      "value": "廃止されたチェック (以前は存在、現在は不在。遷移ではない)",
+      "status": "machine-draft"
+    },
+    "noChange": {
+      "value": "前回の実行から判定が変わったものはありません。{0} 件のチェックは変更されていません。{1}",
+      "status": "machine-draft"
+    },
+    "unchanged": {
+      "value": "{0} 件のチェックは変更されていません。{1}",
+      "status": "machine-draft"
+    }
+  },
+  "filter": {
+    "status": {
+      "value": "ステータス",
+      "status": "machine-draft"
+    },
+    "severity": {
+      "value": "重大度",
+      "status": "machine-draft"
+    },
+    "all": {
+      "value": "すべて",
+      "status": "machine-draft"
+    },
+    "searchPlaceholder": {
+      "value": "検出結果を検索 (ID、名前、値)...",
+      "status": "machine-draft"
+    },
+    "empty": {
+      "value": "現在のフィルターに一致する検出結果はありません。",
+      "status": "machine-draft"
+    },
+    "platform": {
+      "value": "プラットフォーム",
+      "status": "machine-draft"
+    },
+    "showingAll": {
+      "value": "すべての検出結果を表示しています",
+      "status": "machine-draft"
+    }
+  },
+  "ad": {
+    "title": {
+      "value": "Active Directory レポート",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Active Directory 評価",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla Active Directory レポート",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Active Directory セキュリティ態勢スコア (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Active Directory 監査",
+      "status": "machine-draft"
+    },
+    "verdict90": {
+      "value": "Active Directory 環境は堅牢なセキュリティ態勢を示しており、検出結果は最小限です。",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "AD 環境は良好なセキュリティ態勢を備えていますが、いくつかの注意が必要な領域があります。",
+      "status": "machine-draft"
+    },
+    "verdict60": {
+      "value": "AD 環境のセキュリティ態勢は普通です。いくつかの重要な検出結果に修復が必要です。",
+      "status": "machine-draft"
+    },
+    "verdict40": {
+      "value": "AD 環境のセキュリティ態勢は不十分です。複数の重大かつ高い重大度の検出結果に早急な対応が必要です。",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "AD 環境には重大なセキュリティ上の欠陥があります。侵害を防ぐために即時の修復が必要です。",
+      "status": "machine-draft"
+    },
+    "sevSummary": {
+      "value": "重大: <strong>{0}</strong> &middot; 高: <strong>{1}</strong> &middot;\n     中: <strong>{2}</strong> &middot; 低: <strong>{3}</strong>",
+      "status": "machine-draft"
+    },
+    "bloodhoundHeading": {
+      "value": "BloodHound エクスポート",
+      "status": "machine-draft"
+    },
+    "bloodhoundExport": {
+      "value": "収集された AD 攻撃グラフの OpenGraph エクスポートが <code>{0}</code> に書き込まれました。",
+      "status": "machine-draft"
+    },
+    "bloodhoundImport": {
+      "value": "BloodHound CE でインポート: <strong>Administration &rarr; File Ingest</strong> &rarr; ファイルをアップロードし、組み込みのパス探索クエリを実行します。ノードは SID をキーとしており (ネイティブの SharpHound データに重ね合わされます)、エッジはネイティブの BloodHound の種別を使用します。",
+      "status": "machine-draft"
+    },
+    "findingsByPriority": {
+      "value": "優先度別の検出結果",
+      "status": "machine-draft"
+    }
+  },
+  "entra": {
+    "title": {
+      "value": "Entra ID / M365 レポート",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Entra ID / M365 評価",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla Entra ID / M365 レポート",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Entra ID / Azure / M365 セキュリティ態勢スコア (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Entra ID / M365 監査",
+      "status": "machine-draft"
+    },
+    "zeroTrust": {
+      "value": "ゼロトラスト態勢",
+      "status": "machine-draft"
+    },
+    "openInPortal": {
+      "value": "管理ポータルで開く",
+      "status": "machine-draft"
+    }
+  },
+  "gws": {
+    "title": {
+      "value": "Google Workspace レポート",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Google Workspace 評価",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla Google Workspace レポート",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Google Workspace セキュリティ態勢スコア (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Google Workspace 監査",
+      "status": "machine-draft"
+    },
+    "configChecksEvaluated": {
+      "value": "{0} 件の構成チェックを評価",
+      "status": "machine-draft"
+    },
+    "verdictCrit": {
+      "value": "即時対応が必要です。テナントを重大なリスクにさらす、重大な重大度の構成の不合格が {0} 件検出されました。",
+      "status": "machine-draft"
+    },
+    "verdictHigh": {
+      "value": "修復を推奨します。速やかに対処すべき高い重大度の検出結果が {0} 件特定されました。",
+      "status": "machine-draft"
+    },
+    "verdictMed": {
+      "value": "監視と改善を行ってください。レビューと強化を要する中程度の重大度の検出結果が {0} 件あります。",
+      "status": "machine-draft"
+    },
+    "verdictLow": {
+      "value": "軽微なギャップが検出されました。低い重大度の検出結果が {0} 件あります。全体的な態勢は健全です。",
+      "status": "machine-draft"
+    },
+    "verdictPass": {
+      "value": "すべてのチェックに合格しました。テナントの構成はベースラインのセキュリティ要件を満たしています。",
+      "status": "machine-draft"
+    },
+    "assessmentLabel": {
+      "value": "評価:",
+      "status": "machine-draft"
+    },
+    "scopeLabel": {
+      "value": "範囲:",
+      "status": "machine-draft"
+    },
+    "resultsLabel": {
+      "value": "結果:",
+      "status": "machine-draft"
+    },
+    "scope": {
+      "value": "{1} カテゴリにわたる {0} 件の構成チェック。",
+      "status": "machine-draft"
+    },
+    "results": {
+      "value": "合格 {0} 件、不合格 {1} 件、警告 {2} 件、スキップ {3} 件。",
+      "status": "machine-draft"
+    },
+    "criticalRequire": {
+      "value": "{0} 件の重大な検出結果に即時の修復が必要です。",
+      "status": "machine-draft"
+    },
+    "priorityCritHigh": {
+      "value": "優先的な検出結果 &middot; 重大 &amp; 高",
+      "status": "machine-draft"
+    },
+    "fixInConsole": {
+      "value": "管理コンソールで修正",
+      "status": "machine-draft"
+    },
+    "whyUnsafe": {
+      "value": "なぜ安全でないか",
+      "status": "machine-draft"
+    },
+    "whyUnsafeDefault": {
+      "value": "なぜこれが安全でないか",
+      "status": "machine-draft"
+    },
+    "whyUnsafeArticle": {
+      "value": "なぜこれが安全でないか: {0}",
+      "status": "machine-draft"
+    }
+  },
+  "campaign": {
+    "title": {
+      "value": "キャンペーンレポート",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "統合キャンペーン評価",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla キャンペーンレポート",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "統合キャンペーン監査",
+      "status": "machine-draft"
+    },
+    "subtitleLead": {
+      "value": "統合セキュリティ態勢評価",
+      "status": "machine-draft"
+    },
+    "subtitleChecks": {
+      "value": "{1} プラットフォームにわたる {0} 件のチェック ({2})",
+      "status": "machine-draft"
+    },
+    "scanId": {
+      "value": "スキャン ID",
+      "status": "machine-draft"
+    },
+    "duration": {
+      "value": "所要時間",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "キャンペーンスコア (0-100) &middot; {1} プラットフォームにわたる {0} 件のチェックの加重評価",
+      "status": "machine-draft"
+    },
+    "platformSummary": {
+      "value": "プラットフォーム別サマリー",
+      "status": "machine-draft"
+    },
+    "categoryScoresByPlatform": {
+      "value": "プラットフォーム別のカテゴリスコア",
+      "status": "machine-draft"
+    },
+    "checksWord": {
+      "value": "チェック",
+      "status": "machine-draft"
+    },
+    "categoriesWord": {
+      "value": "カテゴリ",
+      "status": "machine-draft"
+    },
+    "unknown": {
+      "value": "不明",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "説明",
+      "status": "machine-draft"
+    },
+    "affectedEntities": {
+      "value": "影響を受けるエンティティ",
+      "status": "machine-draft"
+    },
+    "currentValueLabel": {
+      "value": "現在の値",
+      "status": "machine-draft"
+    },
+    "recommendedValueLabel": {
+      "value": "推奨値",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "修復手順",
+      "status": "machine-draft"
+    },
+    "remediationUrlLabel": {
+      "value": "修復 URL",
+      "status": "machine-draft"
+    },
+    "complianceMappingsLabel": {
+      "value": "コンプライアンスマッピング",
+      "status": "machine-draft"
+    },
+    "showingAllFindings": {
+      "value": "{0} 件すべての検出結果を表示しています",
+      "status": "machine-draft"
+    },
+    "showingSome": {
+      "value": "{1} 件中 {0} 件の検出結果を表示しています",
+      "status": "machine-draft"
+    }
+  },
+  "technical": {
+    "title": {
+      "value": "技術的セキュリティ評価レポート",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "技術レポート",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "技術的セキュリティレポート",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "技術レポート",
+      "status": "machine-draft"
+    },
+    "thTotal": {
+      "value": "合計",
+      "status": "machine-draft"
+    },
+    "detailedFindings": {
+      "value": "詳細な検出結果 ({0})",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "説明",
+      "status": "machine-draft"
+    },
+    "recommendedLabel": {
+      "value": "推奨",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "修復手順",
+      "status": "machine-draft"
+    },
+    "referenceLabel": {
+      "value": "参照",
+      "status": "machine-draft"
+    },
+    "riskAcceptanceLabel": {
+      "value": "リスク受容",
+      "status": "machine-draft"
+    },
+    "acceptedBy": {
+      "value": "承認者: {0} &middot; {1}",
+      "status": "machine-draft"
+    },
+    "complianceLabel": {
+      "value": "コンプライアンス",
+      "status": "machine-draft"
+    },
+    "noFindings": {
+      "value": "利用可能な監査の検出結果がありません。まずスキャンを実行してください。",
+      "status": "machine-draft"
+    }
+  },
+  "exec": {
+    "title": {
+      "value": "エグゼクティブセキュリティサマリー",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "エグゼクティブサマリー",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla エグゼクティブサマリー",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "エグゼクティブサマリー",
+      "status": "machine-draft"
+    },
+    "profileSuffix": {
+      "value": "プロファイル",
+      "status": "machine-draft"
+    },
+    "securityPosture": {
+      "value": "セキュリティ態勢: {0}",
+      "status": "machine-draft"
+    },
+    "verdictNoScore": {
+      "value": "利用可能な検出結果からスコアを算出できませんでした。ベースラインを確立するにはスキャンを実行してください。",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "貴組織は堅牢なセキュリティ基盤を備えています。監視を継続し、残りのギャップに対処してください。",
+      "status": "machine-draft"
+    },
+    "verdict50": {
+      "value": "貴組織のセキュリティ態勢には改善の余地があります。重大な検出結果への優先的な対応を推奨します。",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "即時の対応が必要です。重大なセキュリティギャップにより、貴組織は高いリスクにさらされています。",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "合格率",
+      "status": "machine-draft"
+    },
+    "criticalIssues": {
+      "value": "重大な問題",
+      "status": "machine-draft"
+    },
+    "highIssues": {
+      "value": "高い問題",
+      "status": "machine-draft"
+    },
+    "maturityStat": {
+      "value": "成熟度 ({0})",
+      "status": "machine-draft"
+    },
+    "maturityHeading": {
+      "value": "セキュリティ成熟度",
+      "status": "machine-draft"
+    },
+    "maturityOverall": {
+      "value": "全体的な成熟度: <strong style=\"color:{0}\">5 段階中レベル {1}: {2}</strong>。最も低い未達成の統制が評価の基準となるため、単一の重大な露出が解消されるまでスコアの上限が抑えられます (CMMI 型の尺度: 1 初期状態から 5 最適化まで)。",
+      "status": "machine-draft"
+    },
+    "maturityToReach": {
+      "value": "<strong>レベル {0}</strong> に到達するには、次に対処してください:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "カテゴリ",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "レベル",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "成熟度",
+      "status": "machine-draft"
+    },
+    "matLevelCell": {
+      "value": "レベル {0}",
+      "status": "machine-draft"
+    },
+    "keyFindings": {
+      "value": "対応が必要な主要な検出結果",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "コンプライアンスへの影響",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "以下のコンプライアンスフレームワークでギャップが特定されました:",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "{0} 件のギャップ",
+      "status": "machine-draft"
+    },
+    "quickWins": {
+      "value": "推奨されるクイックウィン (無償)",
+      "status": "machine-draft"
+    },
+    "quickWinsIntro": {
+      "value": "これらの対応は既存のツールを使用して無償で完了できます:",
+      "status": "machine-draft"
+    },
+    "quickWinItem": {
+      "value": "({0}、所要時間 約 {1} 時間)",
+      "status": "machine-draft"
+    },
+    "nextSteps": {
+      "value": "次のステップ",
+      "status": "machine-draft"
+    },
+    "nextStep1": {
+      "value": "重大な検出結果に直ちに対処してください &middot; これらは貴組織にとって最も高いリスクを表します。",
+      "status": "machine-draft"
+    },
+    "nextStep2": {
+      "value": "上記のクイックウィンを実施し、最小限の労力でセキュリティスコアを向上させてください。",
+      "status": "machine-draft"
+    },
+    "nextStep3": {
+      "value": "完全な修復ガイダンスについては、詳細な技術レポートをご確認ください。",
+      "status": "machine-draft"
+    },
+    "nextStep4": {
+      "value": "改善を測定するため、30 日後にフォローアップスキャンを予定してください。",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "本レポートは、内部計画を目的とした特定時点のセキュリティ評価を提供します。検出結果は、組織のリスク許容度に応じて検証および修復する必要があります。",
+      "status": "machine-draft"
+    }
+  },
+  "playbook": {
+    "title": {
+      "value": "修復プレイブック",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "修復プレイブック",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla 修復プレイブック",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "修復プレイブック",
+      "status": "machine-draft"
+    },
+    "subtitle": {
+      "value": "{0} 件の対応可能な項目 &middot; 最大コスト: {1}",
+      "status": "machine-draft"
+    },
+    "phase1": {
+      "value": "フェーズ 1: 重大な修正",
+      "status": "machine-draft"
+    },
+    "phase2": {
+      "value": "フェーズ 2: 高優先度",
+      "status": "machine-draft"
+    },
+    "phase3": {
+      "value": "フェーズ 3: 中優先度",
+      "status": "machine-draft"
+    },
+    "phase4": {
+      "value": "フェーズ 4: 低優先度",
+      "status": "machine-draft"
+    },
+    "phaseItems": {
+      "value": "{0} ({1} 項目)",
+      "status": "machine-draft"
+    },
+    "idLabel": {
+      "value": "ID:",
+      "status": "machine-draft"
+    },
+    "costLabel": {
+      "value": "コスト:",
+      "status": "machine-draft"
+    },
+    "effortLabel": {
+      "value": "労力:",
+      "status": "machine-draft"
+    },
+    "categoryLabel": {
+      "value": "カテゴリ:",
+      "status": "machine-draft"
+    },
+    "stepsLabel": {
+      "value": "手順:",
+      "status": "machine-draft"
+    },
+    "targetLabel": {
+      "value": "対象:",
+      "status": "machine-draft"
+    },
+    "noteLabel": {
+      "value": "備考:",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "実装前に各修復手順を確認してください。まず本番環境以外で変更をテストしてください。",
+      "status": "machine-draft"
+    }
+  },
+  "budget": {
+    "title": {
+      "value": "セキュリティ予算の正当化",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "予算の正当化",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla 予算の正当化",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "予算の正当化",
+      "status": "machine-draft"
+    },
+    "profileLabel": {
+      "value": "プロファイル",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "エグゼクティブサマリー",
+      "status": "machine-draft"
+    },
+    "guerrillaScore": {
+      "value": "Guerrilla スコア",
+      "status": "machine-draft"
+    },
+    "criticalFailures": {
+      "value": "重大な不合格",
+      "status": "machine-draft"
+    },
+    "highFailures": {
+      "value": "高い不合格",
+      "status": "machine-draft"
+    },
+    "totalChecksBreakdown": {
+      "value": "チェック総数 (合格 {0} / 不合格 {1} / 警告 {2})",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "コンプライアンスへの影響",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "現在の監査の検出結果に基づき、以下のコンプライアンスフレームワークにギャップがあります:",
+      "status": "machine-draft"
+    },
+    "thFramework": {
+      "value": "フレームワーク",
+      "status": "machine-draft"
+    },
+    "thGapsFound": {
+      "value": "検出されたギャップ",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "{0} 件のギャップ",
+      "status": "machine-draft"
+    },
+    "investmentPhases": {
+      "value": "推奨される投資フェーズ",
+      "status": "machine-draft"
+    },
+    "phase1Title": {
+      "value": "フェーズ 1: クイックウィン (無償)",
+      "status": "machine-draft"
+    },
+    "phase1Desc": {
+      "value": "既存のツールを使用した構成変更 &middot; 最も高い投資対効果、即時のセキュリティ改善。",
+      "status": "machine-draft"
+    },
+    "phase2Title": {
+      "value": "フェーズ 2: 低コストの改善",
+      "status": "machine-draft"
+    },
+    "phase2Desc": {
+      "value": "既存の予算内での小規模な購入またはライセンスの追加。",
+      "status": "machine-draft"
+    },
+    "phase3Title": {
+      "value": "フェーズ 3: 中程度の投資",
+      "status": "machine-draft"
+    },
+    "phase3Desc": {
+      "value": "セキュリティ機能を強化するためのライセンスアップグレードまたはアドオン製品。",
+      "status": "machine-draft"
+    },
+    "phase4Title": {
+      "value": "フェーズ 4: 戦略的投資",
+      "status": "machine-draft"
+    },
+    "phase4Desc": {
+      "value": "長期的なセキュリティ態勢の改善のための大規模な購入またはインフラの変更。",
+      "status": "machine-draft"
+    },
+    "phase4Body": {
+      "value": "大規模な投資を要する <strong>{0} 項目</strong>が特定されました。詳細なスコープの策定については、セキュリティアドバイザーにお問い合わせください。",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "チェック",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "検出結果",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "重大度",
+      "status": "machine-draft"
+    },
+    "thEffort": {
+      "value": "労力",
+      "status": "machine-draft"
+    },
+    "thTime": {
+      "value": "時間",
+      "status": "machine-draft"
+    },
+    "actions": {
+      "value": "{0} 件のアクション",
+      "status": "machine-draft"
+    },
+    "estimatedEffort": {
+      "value": "推定合計労力: {0} 時間",
+      "status": "machine-draft"
+    },
+    "noFree": {
+      "value": "無償の修正は特定されませんでした。",
+      "status": "machine-draft"
+    },
+    "noLow": {
+      "value": "低コストの修正は特定されませんでした。",
+      "status": "machine-draft"
+    },
+    "noMed": {
+      "value": "中コストの修正は特定されませんでした。",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "本レポートは内部計画を目的としています。",
+      "status": "machine-draft"
+    }
+  },
+  "dashboard": {
+    "title": {
+      "value": "セキュリティダッシュボード",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "ダッシュボード",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "セキュリティダッシュボード",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "統合ダッシュボード",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "Guerrilla スコア (0-100)",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "{0} 件のチェックを評価 &middot; 合格 {1} 件、不合格 {2} 件、警告 {3} 件",
+      "status": "machine-draft"
+    },
+    "scoreComponents": {
+      "value": "スコアの構成要素",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "合格率",
+      "status": "machine-draft"
+    },
+    "failures": {
+      "value": "不合格",
+      "status": "machine-draft"
+    },
+    "platformOverview": {
+      "value": "プラットフォーム概要",
+      "status": "machine-draft"
+    },
+    "checks": {
+      "value": "チェック: {0}",
+      "status": "machine-draft"
+    },
+    "failuresLabel": {
+      "value": "不合格: {0}",
+      "status": "machine-draft"
+    },
+    "notScanned": {
+      "value": "未スキャン",
+      "status": "machine-draft"
+    },
+    "topFindings": {
+      "value": "上位の検出結果",
+      "status": "machine-draft"
+    },
+    "showingTop50": {
+      "value": "上位 50 件の検出結果を表示しています。完全な一覧については詳細レポートをご覧ください。",
+      "status": "machine-draft"
+    },
+    "posture": {
+      "value": "態勢",
+      "status": "machine-draft"
+    },
+    "threats": {
+      "value": "脅威",
+      "status": "machine-draft"
+    },
+    "coverage": {
+      "value": "カバレッジ",
+      "status": "machine-draft"
+    },
+    "trend": {
+      "value": "傾向",
+      "status": "machine-draft"
+    }
+  },
+  "trend": {
+    "title": {
+      "value": "セキュリティ傾向レポート",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "スコアの傾向",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "セキュリティ傾向レポート",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "スコアの傾向",
+      "status": "machine-draft"
+    },
+    "scansCount": {
+      "value": "{0} 件のスキャン",
+      "status": "machine-draft"
+    },
+    "currentScore": {
+      "value": "現在のスコア",
+      "status": "machine-draft"
+    },
+    "averageScore": {
+      "value": "平均スコア",
+      "status": "machine-draft"
+    },
+    "trendLabel": {
+      "value": "傾向 ({0})",
+      "status": "machine-draft"
+    },
+    "improving": {
+      "value": "改善中",
+      "status": "machine-draft"
+    },
+    "declining": {
+      "value": "低下中",
+      "status": "machine-draft"
+    },
+    "stable": {
+      "value": "安定",
+      "status": "machine-draft"
+    },
+    "highestLowest": {
+      "value": "最高 / 最低",
+      "status": "machine-draft"
+    },
+    "scoreHistory": {
+      "value": "スコア履歴",
+      "status": "machine-draft"
+    },
+    "scanLog": {
+      "value": "スキャンログ",
+      "status": "machine-draft"
+    },
+    "defaultProfile": {
+      "value": "デフォルト",
+      "status": "machine-draft"
+    }
+  },
+  "category": {
+    "adacldelegation": {
+      "value": "AD ACL と委任",
+      "status": "machine-draft"
+    },
+    "adadversarytradecraftindicators": {
+      "value": "AD 攻撃者の手口の指標",
+      "status": "machine-draft"
+    },
+    "adcertificateservices": {
+      "value": "AD 証明書サービス",
+      "status": "machine-draft"
+    },
+    "addomainforestconfiguration": {
+      "value": "AD ドメインとフォレストの構成",
+      "status": "machine-draft"
+    },
+    "adgrouppolicy": {
+      "value": "AD グループポリシー",
+      "status": "machine-draft"
+    },
+    "adkerberossecurity": {
+      "value": "AD Kerberos セキュリティ",
+      "status": "machine-draft"
+    },
+    "adloggingedrposture": {
+      "value": "AD ログと EDR 態勢",
+      "status": "machine-draft"
+    },
+    "adlogonscriptsnetworkshares": {
+      "value": "AD ログオンスクリプトとネットワーク共有",
+      "status": "machine-draft"
+    },
+    "adnetworkrelaypreconditions": {
+      "value": "AD ネットワークとリレーの前提条件",
+      "status": "machine-draft"
+    },
+    "adpasswordlockoutpolicies": {
+      "value": "AD パスワードとロックアウトのポリシー",
+      "status": "machine-draft"
+    },
+    "adprivilegedaccountsecurity": {
+      "value": "AD 特権アカウントのセキュリティ",
+      "status": "machine-draft"
+    },
+    "adstaleobsoleteobjects": {
+      "value": "AD 陳腐化および廃止されたオブジェクト",
+      "status": "machine-draft"
+    },
+    "adtrustrelationships": {
+      "value": "AD 信頼関係",
+      "status": "machine-draft"
+    },
+    "adminusermanagement": {
+      "value": "管理者とユーザーの管理",
+      "status": "machine-draft"
+    },
+    "adversarytradecraft": {
+      "value": "攻撃者の手口",
+      "status": "machine-draft"
+    },
+    "attackpaths": {
+      "value": "攻撃経路",
+      "status": "machine-draft"
+    },
+    "authenticationaccesscontrols": {
+      "value": "認証とアクセス制御",
+      "status": "machine-draft"
+    },
+    "azureiamresourcesecurity": {
+      "value": "Azure IAM とリソースのセキュリティ",
+      "status": "machine-draft"
+    },
+    "collaborationcommunicationsecurity": {
+      "value": "コラボレーションとコミュニケーションのセキュリティ",
+      "status": "machine-draft"
+    },
+    "copilotstudioaiagentgovernance": {
+      "value": "Copilot Studio AI エージェントガバナンス",
+      "status": "machine-draft"
+    },
+    "defenderforoffice365": {
+      "value": "Defender for Office 365",
+      "status": "machine-draft"
+    },
+    "deviceendpointmanagement": {
+      "value": "デバイスとエンドポイントの管理",
+      "status": "machine-draft"
+    },
+    "drivesecuritydataprotection": {
+      "value": "Drive セキュリティとデータ保護",
+      "status": "machine-draft"
+    },
+    "eidscabaseline": {
+      "value": "EIDSCA ベースライン",
+      "status": "machine-draft"
+    },
+    "emailsecurity": {
+      "value": "メールセキュリティ",
+      "status": "machine-draft"
+    },
+    "entraidapplicationserviceprincipalsecurity": {
+      "value": "Entra ID アプリケーションとサービスプリンシパルのセキュリティ",
+      "status": "machine-draft"
+    },
+    "entraidauthenticationmethodsmfa": {
+      "value": "Entra ID 認証方法と MFA",
+      "status": "machine-draft"
+    },
+    "entraidconditionalaccess": {
+      "value": "Entra ID 条件付きアクセス",
+      "status": "machine-draft"
+    },
+    "entraidfederationhybrididentity": {
+      "value": "Entra ID フェデレーションとハイブリッド ID",
+      "status": "machine-draft"
+    },
+    "entraidgovernance": {
+      "value": "Entra ID ガバナンス",
+      "status": "machine-draft"
+    },
+    "entraidprivilegedidentitymanagement": {
+      "value": "Entra ID 特権 ID 管理",
+      "status": "machine-draft"
+    },
+    "entraidtenantconfiguration": {
+      "value": "Entra ID テナント構成",
+      "status": "machine-draft"
+    },
+    "exchangeonlinesecurity": {
+      "value": "Exchange Online セキュリティ",
+      "status": "machine-draft"
+    },
+    "intuneendpointmanagement": {
+      "value": "Intune / エンドポイント管理",
+      "status": "machine-draft"
+    },
+    "k12baseline": {
+      "value": "K12 ベースライン",
+      "status": "machine-draft"
+    },
+    "loggingalertingmonitoring": {
+      "value": "ログ、アラート、監視",
+      "status": "machine-draft"
+    },
+    "microsoftteamssecurity": {
+      "value": "Microsoft Teams セキュリティ",
+      "status": "machine-draft"
+    },
+    "oauthapisecurity": {
+      "value": "OAuth と API のセキュリティ",
+      "status": "machine-draft"
+    },
+    "powerplatformsecurity": {
+      "value": "Power Platform セキュリティ",
+      "status": "machine-draft"
+    },
+    "sharepointonedrivesecurity": {
+      "value": "SharePoint と OneDrive のセキュリティ",
+      "status": "machine-draft"
+    },
+    "tier0hygienehybrididentitysurface": {
+      "value": "Tier-0 の衛生とハイブリッド ID の攻撃面",
+      "status": "machine-draft"
+    },
+    "unifiedauditlogging": {
+      "value": "統合監査とログ",
+      "status": "machine-draft"
+    },
+    "workspaceservicesecuritysitesclassroomgemini": {
+      "value": "Workspace サービスのセキュリティ (Sites / Classroom / Gemini)",
+      "status": "machine-draft"
+    }
+  }
+}
