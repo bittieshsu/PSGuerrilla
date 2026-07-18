@@ -1,0 +1,99 @@
+{
+  "_family": "ADAclDelegationChecks.json",
+  "ADACL-001": {
+    "name": { "value": "Auditoria de ACL de objetos críticos", "status": "machine-draft" },
+    "description": { "value": "As listas de controlo de acesso em objetos críticos do AD (raiz do domínio, AdminSDHolder, Schema, Configuration, OU Domain Controllers) têm de ser auditadas quanto a permissões não autorizadas ou excessivas. ACL mal configuradas nestes objetos podem permitir que atacantes elevem privilégios, modifiquem os serviços de diretório ou assumam o controlo total do domínio", "status": "machine-draft" },
+    "recommendedValue": { "value": "Apenas ACE predefinidas e explicitamente autorizadas nos objetos críticos do AD; nenhum principal inesperado com acesso de modificação ou controlo total", "status": "machine-draft" },
+    "remediationSteps": { "value": "Reveja as ACL nos objetos críticos com Get-Acl ou dsacls.exe. Remova as ACE não predefinidas que concedem permissões de escrita, modificação ou controlo total a principais não autorizados. Utilize o AdminSDHolder para impor ACL consistentes nos grupos protegidos. Documente todas as delegações intencionais.", "status": "machine-draft" }
+  },
+  "ADACL-002": {
+    "name": { "value": "Permissões GenericAll em objetos críticos", "status": "machine-draft" },
+    "description": { "value": "O GenericAll concede controlo total sobre um objeto do AD, incluindo a capacidade de modificar atributos, repor palavras-passe, alterar a pertença a grupos e modificar a DACL. Principais não predefinidos com GenericAll em objetos críticos, tais como administradores de domínio, controladores de domínio ou a raiz do domínio, representam um caminho direto para o comprometimento do domínio", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nenhum principal não predefinido com GenericAll em objetos críticos do AD", "status": "machine-draft" },
+    "remediationSteps": { "value": "Enumere as ACL nos objetos críticos com PowerShell ou BloodHound. Remova as ACE GenericAll de qualquer principal que não necessite de controlo total. Substitua por permissões delegadas de privilégio mínimo onde existam necessidades operacionais. Monitorize as alterações de ACL com a auditoria de Alterações ao Serviço de Diretório (Event ID 5136).", "status": "machine-draft" }
+  },
+  "ADACL-003": {
+    "name": { "value": "Permissões GenericWrite em objetos críticos", "status": "machine-draft" },
+    "description": { "value": "O GenericWrite permite a modificação da maioria dos atributos de um objeto, viabilizando ataques como o Kerberoasting dirigido (escrita de um SPN), a Delegação Restrita Baseada em Recursos (escrita de msDS-AllowedToActOnBehalfOfOtherIdentity) ou as Shadow Credentials (escrita de msDS-KeyCredentialLink). Principais não predefinidos com GenericWrite em objetos críticos devem ser investigados", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nenhum principal não predefinido com GenericWrite em objetos críticos do AD", "status": "machine-draft" },
+    "remediationSteps": { "value": "Audite as ACL em objetos de utilizador, computador e grupo quanto a permissões GenericWrite. Remova as ACE GenericWrite desnecessárias e substitua-as por permissões de escrita específicas ao nível do atributo. Preste especial atenção ao acesso de escrita aos atributos msDS-AllowedToActOnBehalfOfOtherIdentity, servicePrincipalName e msDS-KeyCredentialLink.", "status": "machine-draft" }
+  },
+  "ADACL-004": {
+    "name": { "value": "Permissões WriteDACL em objetos críticos", "status": "machine-draft" },
+    "description": { "value": "A permissão WriteDACL permite que um principal modifique a lista de controlo de acesso discricionário de um objeto, concedendo-lhe efetivamente a capacidade de atribuir qualquer permissão, incluindo GenericAll, a si próprio ou a terceiros. Trata-se de um vetor crítico de elevação de privilégios, pois permite que um atacante se conceda controlo total sem o possuir diretamente", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nenhum principal não predefinido com WriteDACL em objetos críticos do AD", "status": "machine-draft" },
+    "remediationSteps": { "value": "Enumere as permissões WriteDACL em todos os objetos críticos, incluindo a raiz do domínio, o AdminSDHolder, os objetos GPO e os objetos de grupos privilegiados. Remova o WriteDACL dos principais não predefinidos. Ative a auditoria de alterações de ACL (Event ID 5136) para detetar modificações não autorizadas à DACL. Reveja as alterações regularmente.", "status": "machine-draft" }
+  },
+  "ADACL-005": {
+    "name": { "value": "Permissões WriteOwner em objetos críticos", "status": "machine-draft" },
+    "description": { "value": "A permissão WriteOwner permite alterar o proprietário de um objeto do AD. O proprietário de um objeto tem implicitamente a capacidade de modificar a DACL, tornando o WriteOwner funcionalmente equivalente ao WriteDACL do ponto de vista de um ataque. Um atacante pode assumir a propriedade e, em seguida, conceder a si próprio quaisquer permissões pretendidas", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nenhum principal não predefinido com WriteOwner em objetos críticos do AD", "status": "machine-draft" },
+    "remediationSteps": { "value": "Audite as permissões WriteOwner nos objetos críticos. Remova as ACE WriteOwner dos principais não predefinidos. Verifique se os proprietários dos objetos são contas privilegiadas adequadas. Ative a auditoria de alterações de propriedade e monitorize o Event ID 4662 para operações WriteOwner.", "status": "machine-draft" }
+  },
+  "ADACL-006": {
+    "name": { "value": "Direitos ForceChangePassword", "status": "machine-draft" },
+    "description": { "value": "O Direito Estendido User-Force-Change-Password (também conhecido como Reset Password) permite que um principal reponha a palavra-passe de outro utilizador sem conhecer a palavra-passe atual. Quando concedido a contas sem privilégios ou a grupos amplos, cria um caminho direto de tomada de controlo de contas que contorna os requisitos normais de autenticação", "status": "machine-draft" },
+    "recommendedValue": { "value": "ForceChangePassword limitado apenas a grupos de suporte técnico e de administração autorizados; não concedido a contas sem privilégios", "status": "machine-draft" },
+    "remediationSteps": { "value": "Enumere todos os principais com o direito estendido User-Force-Change-Password em objetos de utilizador. Verifique se cada delegação é intencional e tem um âmbito adequado. Remova os direitos de qualquer principal que não tenha uma necessidade operacional documentada. Utilize delegação com âmbito de OU em vez de concessões a nível de todo o domínio.", "status": "machine-draft" }
+  },
+  "ADACL-007": {
+    "name": { "value": "Delegação excessiva a grupos amplos", "status": "machine-draft" },
+    "description": { "value": "A delegação de permissões sensíveis a grupos amplos, tais como Authenticated Users, Domain Users ou Everyone, cria uma vasta superfície de ataque na qual qualquer conta comprometida pode abusar dos direitos delegados. Trata-se de uma configuração incorreta comum que reduz drasticamente o esforço necessário para a elevação de privilégios", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nenhuma permissão sensível delegada a Authenticated Users, Domain Users, Everyone ou outros grupos amplos", "status": "machine-draft" },
+    "remediationSteps": { "value": "Audite todas as ACL quanto a ACE concedidas a grupos amplos conhecidos (S-1-5-11 Authenticated Users, Domain Users, Everyone, Domain Computers). Substitua as delegações a grupos amplos por grupos de segurança específicos que contenham apenas os principais necessários. Aplique as delegações no âmbito de OU mais restrito possível.", "status": "machine-draft" }
+  },
+  "ADACL-008": {
+    "name": { "value": "Análise da delegação de OU", "status": "machine-draft" },
+    "description": { "value": "A delegação de Unidade Organizacional é o método recomendado para conceder permissões administrativas no Active Directory, mas delegações de OU mal configuradas podem criar caminhos de acesso não intencionais. Esta verificação analisa todas as delegações de permissões ao nível de OU para identificar concessões demasiado permissivas, permissões herdadas que contornam o âmbito pretendido e delegações que possam ter ficado obsoletas", "status": "machine-draft" },
+    "recommendedValue": { "value": "Todas as delegações de OU documentadas, com âmbito limitado a tipos de objeto específicos e utilizando permissões de privilégio mínimo", "status": "machine-draft" },
+    "remediationSteps": { "value": "Reveja todas as ACE não predefinidas em cada OU com dsacls.exe ou PowerShell. Verifique se as delegações usam o InheritedObjectType para limitar o âmbito das permissões a classes de objeto específicas. Remova as delegações que já não sejam necessárias. Documente todas as delegações intencionais numa matriz de autorização.", "status": "machine-draft" }
+  },
+  "ADACL-009": {
+    "name": { "value": "Quota de contas de máquina", "status": "machine-draft" },
+    "description": { "value": "O atributo ms-DS-MachineAccountQuota na raiz do domínio determina quantas contas de computador qualquer utilizador autenticado pode criar. O valor predefinido de 10 permite que qualquer utilizador do domínio associe computadores ao domínio, criando contas de máquina que podem ser abusadas para ataques de delegação restrita baseada em recursos, ataques de relay e outras técnicas de elevação de privilégios", "status": "machine-draft" },
+    "recommendedValue": { "value": "ms-DS-MachineAccountQuota definido como 0", "status": "machine-draft" },
+    "remediationSteps": { "value": "Defina ms-DS-MachineAccountQuota como 0 na raiz do domínio com Set-ADDomain -Identity (Get-ADDomain) -Replace @{'ms-DS-MachineAccountQuota'=0}. Delegue a criação de contas de computador a grupos de administração específicos ou utilize um fluxo de trabalho de pré-preparação. Reveja as contas de computador existentes criadas por utilizadores não administradores.", "status": "machine-draft" }
+  },
+  "ADACL-010": {
+    "name": { "value": "Auditoria de direitos estendidos", "status": "machine-draft" },
+    "description": { "value": "Os direitos estendidos no Active Directory incluem operações poderosas como DS-Replication-Get-Changes (DCSync), User-Force-Change-Password e DS-Replication-Get-Changes-All. A concessão não autorizada destes direitos pode conduzir ao comprometimento total do domínio através de roubo de credenciais ou tomada de controlo direta de contas", "status": "machine-draft" },
+    "recommendedValue": { "value": "Direitos estendidos limitados a principais predefinidos e explicitamente autorizados; direitos DCSync apenas nos controladores de domínio", "status": "machine-draft" },
+    "remediationSteps": { "value": "Enumere todas as ACE de direitos estendidos na raiz do domínio e nos objetos críticos. Verifique se DS-Replication-Get-Changes e DS-Replication-Get-Changes-All são concedidos apenas a controladores de domínio e a contas de replicação autorizadas. Remova quaisquer concessões de direitos estendidos não predefinidas. Monitorize o Event ID 4662 quanto à utilização de direitos estendidos.", "status": "machine-draft" }
+  },
+  "ADACL-011": {
+    "name": { "value": "Propriedade de objetos críticos", "status": "machine-draft" },
+    "description": { "value": "O proprietário de um objeto do AD tem permissão implícita para modificar a DACL do objeto independentemente das entradas de ACL explícitas. Se objetos críticos como a raiz do domínio, o AdminSDHolder, grupos privilegiados ou GPO forem propriedade de contas sem privilégios ou inesperadas, essas contas dispõem de um caminho oculto para o controlo total", "status": "machine-draft" },
+    "recommendedValue": { "value": "Objetos críticos cuja propriedade pertence apenas a Domain Admins, Enterprise Admins ou SYSTEM", "status": "machine-draft" },
+    "remediationSteps": { "value": "Enumere a propriedade de todos os objetos críticos, incluindo a raiz do domínio, o AdminSDHolder, o contentor Schema, o contentor Configuration, os objetos de grupos privilegiados e os objetos GPO. Transfira a propriedade de quaisquer objetos com propriedade incorreta para Domain Admins com Set-Acl ou o separador Segurança no ADUC. Ative a auditoria de alterações de propriedade.", "status": "machine-draft" }
+  },
+  "ADACL-012": {
+    "name": { "value": "Permissões não predefinidas na raiz do domínio", "status": "machine-draft" },
+    "description": { "value": "O objeto raiz do domínio situa-se no topo da hierarquia do AD e as permissões aqui definidas podem ser herdadas por todo o diretório. ACE não predefinidas na raiz do domínio que concedam direitos de escrita, modificação ou direitos estendidos a principais inesperados representam um risco significativo, pois podem afetar todos os objetos do domínio", "status": "machine-draft" },
+    "recommendedValue": { "value": "Apenas ACE predefinidas da Microsoft na raiz do domínio; todas as ACE personalizadas documentadas e justificadas", "status": "machine-draft" },
+    "remediationSteps": { "value": "Compare a ACL atual da raiz do domínio com a ACL predefinida para o nível funcional do seu domínio. Documente quaisquer ACE não predefinidas e valide a sua necessidade operacional. Remova as ACE que já não sejam necessárias ou que concedam permissões excessivas. Preste especial atenção às ACE que se aplicam a \"Este objeto e todos os objetos descendentes\".", "status": "machine-draft" }
+  },
+  "ADACL-013": {
+    "name": { "value": "Permissões de ligação de GPO", "status": "machine-draft" },
+    "description": { "value": "A capacidade de ligar Objetos de Política de Grupo a sites, domínios ou OU controla que políticas se aplicam a que objetos. Permissões não autorizadas de ligação de GPO permitem que um atacante aplique GPO maliciosas a OU visadas, potencialmente implementando malware, modificando definições de segurança ou criando tarefas agendadas nos computadores afetados", "status": "machine-draft" },
+    "recommendedValue": { "value": "Permissões de ligação de GPO restringidas apenas a administradores de Política de Grupo autorizados", "status": "machine-draft" },
+    "remediationSteps": { "value": "Audite as permissões de escrita de gPLink e gPOptions em todas as OU, na raiz do domínio e nos objetos de site. Remova as permissões de ligação de GPO dos principais não administrativos. Utilize o Modelação de Política de Grupo para verificar o impacto das ligações de GPO atuais. Implemente controlo de alterações para as operações de ligação de GPO.", "status": "machine-draft" }
+  },
+  "ADACL-014": {
+    "name": { "value": "Permissões de edição de GPO", "status": "machine-draft" },
+    "description": { "value": "As permissões de edição de Objetos de Política de Grupo permitem modificar definições de segurança de todo o domínio, implementação de software, scripts de início de sessão e tarefas agendadas. O acesso de edição de GPO não autorizado é um alvo de elevado valor para os atacantes, pois viabiliza a execução de código generalizada e alterações de configuração em todo o ambiente", "status": "machine-draft" },
+    "recommendedValue": { "value": "Permissões de edição de GPO restringidas apenas a Group Policy Creator Owners e a administradores autorizados", "status": "machine-draft" },
+    "remediationSteps": { "value": "Reveja os separadores de filtragem de segurança e de delegação em cada GPO. Verifique se apenas os principais autorizados têm as permissões de Editar definições, Eliminar ou Modificar segurança. Remova as permissões de edição de GPO dos grupos não administrativos. Utilize a Consola de Gestão de Política de Grupo para auditar as permissões de GPO de forma sistemática.", "status": "machine-draft" }
+  },
+  "ADACL-015": {
+    "name": { "value": "Deteção de Shadow Admins", "status": "machine-draft" },
+    "description": { "value": "Os Shadow Admins são contas que dispõem de caminhos indiretos para acesso equivalente a Domain Admin através de cadeias de ACL, mas que não são membros de qualquer grupo privilegiado. Estas contas contornam a proteção do AdminSDHolder e a monitorização tradicional de acessos privilegiados. Por exemplo, uma conta com WriteDACL no grupo Domain Admins pode conceder a si própria a pertença sem ser assinalada pela monitorização de pertença a grupos", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nenhum caminho de shadow admin identificado; todo o acesso equivalente a administrador é obtido através de pertença explícita a grupos privilegiados", "status": "machine-draft" },
+    "remediationSteps": { "value": "Utilize o BloodHound ou ferramentas semelhantes para identificar caminhos de ataque baseados em ACL para acesso equivalente a Domain Admin. Remova as ACE desnecessárias que criam caminhos indiretos de elevação de privilégios. Garanta que todo o acesso administrativo é concedido através de pertença a grupos protegidos. Implemente análise regular de caminhos de ataque como parte das operações de segurança.", "status": "machine-draft" }
+  },
+  "ADACL-016": {
+    "name": { "value": "Enumeração de caminhos de ataque", "status": "machine-draft" },
+    "description": { "value": "Os caminhos de ataque do Active Directory são cadeias de permissões, pertenças a grupos e relações de confiança que podem ser percorridas para escalar de uma conta com poucos privilégios até administrador de domínio. Uma enumeração abrangente de caminhos de ataque identifica riscos que verificações de ACL individuais podem não detetar, tais como cadeias de escalada com múltiplos saltos através de objetos intermédios", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nenhum caminho de ataque viável de utilizadores sem privilégios para ativos Tier 0; todos os caminhos identificados corrigidos ou documentados como risco aceite", "status": "machine-draft" },
+    "remediationSteps": { "value": "Realize a análise de caminhos de ataque com ferramentas como o BloodHound. Concentre-se nos caminhos mais curtos de Domain Users ou Authenticated Users para Domain Admins, Enterprise Admins e Domain Controllers. Quebre as cadeias de ataque identificadas removendo o elo mais fraco de cada caminho. Priorize os caminhos que possam ser explorados sem quaisquer ferramentas especiais ou acesso elevado.", "status": "machine-draft" }
+  }
+}
