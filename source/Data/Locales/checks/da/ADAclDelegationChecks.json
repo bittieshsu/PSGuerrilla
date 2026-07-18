@@ -1,0 +1,99 @@
+{
+  "_family": "ADAclDelegationChecks.json",
+  "ADACL-001": {
+    "name": { "value": "Revision af ACL på kritiske objekter", "status": "machine-draft" },
+    "description": { "value": "Adgangskontrollister på kritiske AD-objekter (domænerod, AdminSDHolder, Schema, Configuration, OU'en Domain Controllers) skal revideres for uautoriserede eller overdrevne rettigheder. Fejlkonfigurerede ACL'er på disse objekter kan give angribere mulighed for at eskalere rettigheder, ændre katalogtjenester eller overtage fuld kontrol over domænet", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kun standard-ACE'er og eksplicit autoriserede ACE'er på kritiske AD-objekter; ingen uventede principaler med ret til at ændre eller fuld kontrol", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå ACL'er på kritiske objekter med Get-Acl eller dsacls.exe. Fjern ikke-standardmæssige ACE'er, der giver skrive-, ændrings- eller fuldkontrolrettigheder til uautoriserede principaler. Brug AdminSDHolder til at håndhæve konsistente ACL'er på beskyttede grupper. Dokumentér alle tilsigtede delegeringer.", "status": "machine-draft" }
+  },
+  "ADACL-002": {
+    "name": { "value": "GenericAll-rettigheder på kritiske objekter", "status": "machine-draft" },
+    "description": { "value": "GenericAll giver fuld kontrol over et AD-objekt, herunder muligheden for at ændre attributter, nulstille adgangskoder, ændre gruppemedlemskab og ændre DACL'en. Ikke-standardmæssige principaler med GenericAll på kritiske objekter såsom domæneadministratorer, domænecontrollere eller domænerod udgør en direkte vej til kompromittering af domænet", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen ikke-standardmæssige principaler med GenericAll på kritiske AD-objekter", "status": "machine-draft" },
+    "remediationSteps": { "value": "Optæl ACL'er på kritiske objekter med PowerShell eller BloodHound. Fjern GenericAll-ACE'er for enhver principal, der ikke kræver fuld kontrol. Erstat med delegerede rettigheder efter mindsteprivilegium-princippet, hvor der er driftsmæssige behov. Overvåg ACL-ændringer med revision af Directory Service Changes (Event ID 5136).", "status": "machine-draft" }
+  },
+  "ADACL-003": {
+    "name": { "value": "GenericWrite-rettigheder på kritiske objekter", "status": "machine-draft" },
+    "description": { "value": "GenericWrite tillader ændring af de fleste attributter på et objekt og muliggør angreb såsom målrettet Kerberoasting (skrivning af et SPN), ressourcebaseret begrænset delegering (skrivning af msDS-AllowedToActOnBehalfOfOtherIdentity) eller Shadow Credentials (skrivning af msDS-KeyCredentialLink). Ikke-standardmæssige principaler med GenericWrite på kritiske objekter bør undersøges", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen ikke-standardmæssige principaler med GenericWrite på kritiske AD-objekter", "status": "machine-draft" },
+    "remediationSteps": { "value": "Revidér ACL'er på bruger-, computer- og gruppeobjekter for GenericWrite-rettigheder. Fjern unødvendige GenericWrite-ACE'er, og erstat dem med specifikke skriverettigheder på attributniveau. Vær særligt opmærksom på skriveadgang til attributterne msDS-AllowedToActOnBehalfOfOtherIdentity, servicePrincipalName og msDS-KeyCredentialLink.", "status": "machine-draft" }
+  },
+  "ADACL-004": {
+    "name": { "value": "WriteDACL-rettigheder på kritiske objekter", "status": "machine-draft" },
+    "description": { "value": "WriteDACL-rettigheden giver en principal mulighed for at ændre den skønsmæssige adgangskontrolliste på et objekt og giver dermed reelt muligheden for at tildele enhver rettighed, herunder GenericAll, til sig selv eller andre. Dette er en kritisk vektor for rettighedseskalering, da den gør det muligt for en angriber at tildele sig selv fuld kontrol uden direkte at have den", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen ikke-standardmæssige principaler med WriteDACL på kritiske AD-objekter", "status": "machine-draft" },
+    "remediationSteps": { "value": "Optæl WriteDACL-rettigheder på alle kritiske objekter, herunder domænerod, AdminSDHolder, GPO-objekter og privilegerede gruppeobjekter. Fjern WriteDACL for ikke-standardmæssige principaler. Aktivér revision af ACL-ændringer (Event ID 5136) for at opdage uautoriserede DACL-ændringer. Gennemgå ændringerne regelmæssigt.", "status": "machine-draft" }
+  },
+  "ADACL-005": {
+    "name": { "value": "WriteOwner-rettigheder på kritiske objekter", "status": "machine-draft" },
+    "description": { "value": "WriteOwner-rettigheden gør det muligt at ændre ejeren af et AD-objekt. Ejeren af et objekt har implicit muligheden for at ændre DACL'en, hvilket gør WriteOwner funktionelt ækvivalent med WriteDACL fra et angrebsperspektiv. En angriber kan overtage ejerskabet og derefter tildele sig selv enhver ønsket rettighed", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen ikke-standardmæssige principaler med WriteOwner på kritiske AD-objekter", "status": "machine-draft" },
+    "remediationSteps": { "value": "Revidér WriteOwner-rettigheder på kritiske objekter. Fjern WriteOwner-ACE'er for ikke-standardmæssige principaler. Kontrollér, at objektejere er passende privilegerede konti. Aktivér revision af ejerskabsændringer, og overvåg Event ID 4662 for WriteOwner-handlinger.", "status": "machine-draft" }
+  },
+  "ADACL-006": {
+    "name": { "value": "ForceChangePassword-rettigheder", "status": "machine-draft" },
+    "description": { "value": "Den udvidede rettighed User-Force-Change-Password (også kendt som Reset Password) giver en principal mulighed for at nulstille en anden brugers adgangskode uden at kende den aktuelle adgangskode. Når den tildeles ikke-privilegerede konti eller brede grupper, skaber den en direkte vej til kontoovertagelse, der omgår normale godkendelseskrav", "status": "machine-draft" },
+    "recommendedValue": { "value": "ForceChangePassword er begrænset til udelukkende autoriserede helpdesk- og administratorgrupper; tildeles ikke ikke-privilegerede konti", "status": "machine-draft" },
+    "remediationSteps": { "value": "Optæl alle principaler med den udvidede rettighed User-Force-Change-Password på brugerobjekter. Kontrollér, at hver delegering er tilsigtet og passende afgrænset. Fjern rettigheder fra enhver principal, der ikke har et dokumenteret driftsmæssigt behov. Brug OU-afgrænset delegering frem for domæneomfattende tildelinger.", "status": "machine-draft" }
+  },
+  "ADACL-007": {
+    "name": { "value": "Overdreven delegering til brede grupper", "status": "machine-draft" },
+    "description": { "value": "Delegering af følsomme rettigheder til brede grupper såsom Authenticated Users, Domain Users eller Everyone skaber en bred angrebsflade, hvor enhver kompromitteret konto kan misbruge de delegerede rettigheder. Dette er en almindelig fejlkonfiguration, der dramatisk reducerer den indsats, der kræves for rettighedseskalering", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen følsomme rettigheder delegeret til Authenticated Users, Domain Users, Everyone eller andre brede grupper", "status": "machine-draft" },
+    "remediationSteps": { "value": "Revidér alle ACL'er for ACE'er, der er tildelt velkendte brede grupper (S-1-5-11 Authenticated Users, Domain Users, Everyone, Domain Computers). Erstat delegeringer til brede grupper med specifikke sikkerhedsgrupper, der kun indeholder de påkrævede principaler. Anvend delegeringer på den snævrest mulige OU-afgrænsning.", "status": "machine-draft" }
+  },
+  "ADACL-008": {
+    "name": { "value": "Analyse af OU-delegering", "status": "machine-draft" },
+    "description": { "value": "Delegering på organisationsenhedsniveau er den anbefalede metode til at tildele administrative rettigheder i Active Directory, men fejlkonfigurerede OU-delegeringer kan skabe utilsigtede adgangsstier. Denne kontrol analyserer alle rettighedsdelegeringer på OU-niveau for at identificere for tilladende tildelinger, nedarvede rettigheder, der omgår den tilsigtede afgrænsning, og delegeringer, der kan være blevet forældede", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle OU-delegeringer er dokumenteret, afgrænset til specifikke objekttyper og anvender rettigheder efter mindsteprivilegium-princippet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå alle ikke-standardmæssige ACE'er på hver OU med dsacls.exe eller PowerShell. Kontrollér, at delegeringer anvender InheritedObjectType til at afgrænse rettigheder til specifikke objektklasser. Fjern delegeringer, der ikke længere er nødvendige. Dokumentér alle tilsigtede delegeringer i en autorisationsmatrix.", "status": "machine-draft" }
+  },
+  "ADACL-009": {
+    "name": { "value": "Maskinkontokvote", "status": "machine-draft" },
+    "description": { "value": "Attributten ms-DS-MachineAccountQuota på domæneroden bestemmer, hvor mange computerkonti enhver godkendt bruger kan oprette. Standardværdien 10 giver enhver domænebruger mulighed for at slutte computere til domænet og oprette maskinkonti, der kan misbruges til angreb med ressourcebaseret begrænset delegering, relay-angreb og andre teknikker til rettighedseskalering", "status": "machine-draft" },
+    "recommendedValue": { "value": "ms-DS-MachineAccountQuota indstillet til 0", "status": "machine-draft" },
+    "remediationSteps": { "value": "Indstil ms-DS-MachineAccountQuota til 0 på domæneroden med Set-ADDomain -Identity (Get-ADDomain) -Replace @{'ms-DS-MachineAccountQuota'=0}. Deleger oprettelse af computerkonti til specifikke administratorgrupper, eller anvend et forhåndsklargøringsflow. Gennemgå eksisterende computerkonti oprettet af ikke-administrative brugere.", "status": "machine-draft" }
+  },
+  "ADACL-010": {
+    "name": { "value": "Revision af udvidede rettigheder", "status": "machine-draft" },
+    "description": { "value": "Udvidede rettigheder i Active Directory omfatter kraftfulde handlinger såsom DS-Replication-Get-Changes (DCSync), User-Force-Change-Password og DS-Replication-Get-Changes-All. Uautoriseret tildeling af disse rettigheder kan føre til fuld kompromittering af domænet gennem tyveri af legitimationsoplysninger eller direkte kontoovertagelse", "status": "machine-draft" },
+    "recommendedValue": { "value": "Udvidede rettigheder er begrænset til standardprincipaler og eksplicit autoriserede principaler; DCSync-rettigheder kun på domænecontrollere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Optæl alle ACE'er for udvidede rettigheder på domæneroden og kritiske objekter. Kontrollér, at DS-Replication-Get-Changes og DS-Replication-Get-Changes-All kun tildeles domænecontrollere og autoriserede replikeringskonti. Fjern enhver ikke-standardmæssig tildeling af udvidede rettigheder. Overvåg Event ID 4662 for brug af udvidede rettigheder.", "status": "machine-draft" }
+  },
+  "ADACL-011": {
+    "name": { "value": "Ejerskab af kritiske objekter", "status": "machine-draft" },
+    "description": { "value": "Ejeren af et AD-objekt har implicit tilladelse til at ændre objektets DACL uanset de eksplicitte ACL-poster. Hvis kritiske objekter såsom domænerod, AdminSDHolder, privilegerede grupper eller GPO'er ejes af ikke-privilegerede eller uventede konti, har disse konti en skjult vej til fuld kontrol", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kritiske objekter ejes udelukkende af Domain Admins, Enterprise Admins eller SYSTEM", "status": "machine-draft" },
+    "remediationSteps": { "value": "Optæl ejerskab af alle kritiske objekter, herunder domænerod, AdminSDHolder, Schema-container, Configuration-container, privilegerede gruppeobjekter og GPO-objekter. Overfør ejerskabet af eventuelt forkert ejede objekter til Domain Admins med Set-Acl eller fanen Sikkerhed i ADUC. Aktivér revision af ejerskabsændringer.", "status": "machine-draft" }
+  },
+  "ADACL-012": {
+    "name": { "value": "Ikke-standardmæssige rettigheder på domænerod", "status": "machine-draft" },
+    "description": { "value": "Domænerodobjektet er toppen af AD-hierarkiet, og rettigheder, der angives her, kan nedarves i hele kataloget. Ikke-standardmæssige ACE'er på domæneroden, der giver skrive-, ændrings- eller udvidede rettigheder til uventede principaler, udgør en væsentlig risiko, da de kan påvirke hvert objekt i domænet", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kun standard-ACE'er fra Microsoft på domæneroden; alle brugerdefinerede ACE'er er dokumenteret og begrundet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sammenlign den aktuelle ACL på domæneroden med standard-ACL'en for dit domænes funktionsniveau. Dokumentér eventuelle ikke-standardmæssige ACE'er, og valider deres driftsmæssige nødvendighed. Fjern ACE'er, der ikke længere er nødvendige, eller som giver overdrevne rettigheder. Vær særligt opmærksom på ACE'er, der gælder for 'Dette objekt og alle underordnede objekter'.", "status": "machine-draft" }
+  },
+  "ADACL-013": {
+    "name": { "value": "Rettigheder til GPO-kædning", "status": "machine-draft" },
+    "description": { "value": "Muligheden for at kæde gruppepolitikobjekter til websteder, domæner eller OU'er styrer, hvilke politikker der gælder for hvilke objekter. Uautoriserede rettigheder til GPO-kædning giver en angriber mulighed for at anvende ondsindede GPO'er på målrettede OU'er og potentielt udrulle malware, ændre sikkerhedsindstillinger eller oprette planlagte opgaver på berørte computere", "status": "machine-draft" },
+    "recommendedValue": { "value": "Rettigheder til GPO-kædning er begrænset til udelukkende autoriserede gruppepolitikadministratorer", "status": "machine-draft" },
+    "remediationSteps": { "value": "Revidér skriverettigheder til gPLink og gPOptions på alle OU'er, domæneroden og webstedsobjekter. Fjern rettigheder til GPO-kædning fra ikke-administrative principaler. Brug Group Policy Modeling til at kontrollere virkningen af de aktuelle GPO-kædninger. Indfør ændringskontrol for GPO-kædningshandlinger.", "status": "machine-draft" }
+  },
+  "ADACL-014": {
+    "name": { "value": "Rettigheder til redigering af GPO'er", "status": "machine-draft" },
+    "description": { "value": "Rettigheder til at redigere gruppepolitikobjekter tillader ændring af domæneomfattende sikkerhedsindstillinger, softwareudrulning, logonscripts og planlagte opgaver. Uautoriseret redigeringsadgang til GPO'er er et mål af høj værdi for angribere, da den muliggør udbredt kodeeksekvering og konfigurationsændringer på tværs af miljøet", "status": "machine-draft" },
+    "recommendedValue": { "value": "Rettigheder til redigering af GPO'er er begrænset til Group Policy Creator Owners og udelukkende autoriserede administratorer", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå fanerne for sikkerhedsfiltrering og delegering på hver GPO. Kontrollér, at kun autoriserede principaler har rettighederne Rediger indstillinger, Slet eller Rediger sikkerhed. Fjern rettigheder til redigering af GPO'er fra ikke-administrative grupper. Brug Group Policy Management Console til systematisk at revidere GPO-rettigheder.", "status": "machine-draft" }
+  },
+  "ADACL-015": {
+    "name": { "value": "Registrering af skjulte administratorer", "status": "machine-draft" },
+    "description": { "value": "Skjulte administratorer er konti, der har indirekte veje til adgang svarende til Domain Admin gennem ACL-kæder, men som ikke er medlemmer af nogen privilegerede grupper. Disse konti omgår AdminSDHolder-beskyttelse og traditionel overvågning af privilegeret adgang. For eksempel kan en konto med WriteDACL på gruppen Domain Admins tildele sig selv medlemskab uden at blive markeret af overvågning af gruppemedlemskab", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen identificerede stier for skjulte administratorer; al adgang svarende til administrator sker gennem eksplicit medlemskab af privilegerede grupper", "status": "machine-draft" },
+    "remediationSteps": { "value": "Brug BloodHound eller lignende værktøjer til at identificere ACL-baserede angrebsstier til adgang svarende til Domain Admin. Fjern unødvendige ACE'er, der skaber indirekte stier til rettighedseskalering. Sørg for, at al administrativ adgang tildeles gennem medlemskab af beskyttede grupper. Indfør regelmæssig analyse af angrebsstier som en del af sikkerhedsdriften.", "status": "machine-draft" }
+  },
+  "ADACL-016": {
+    "name": { "value": "Optælling af angrebsstier", "status": "machine-draft" },
+    "description": { "value": "Angrebsstier i Active Directory er kæder af rettigheder, gruppemedlemskaber og tillidsforhold, der kan gennemløbes for at eskalere fra en lavt privilegeret konto til domæneadministrator. Omfattende optælling af angrebsstier identificerer risici, som individuelle ACL-kontroller kan overse, såsom eskaleringskæder med flere hop gennem mellemliggende objekter", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen brugbare angrebsstier fra ikke-privilegerede brugere til Tier Zero-aktiver; alle identificerede stier er afhjulpet eller dokumenteret som accepteret risiko", "status": "machine-draft" },
+    "remediationSteps": { "value": "Udfør analyse af angrebsstier med værktøjer såsom BloodHound. Fokusér på de korteste stier fra Domain Users eller Authenticated Users til Domain Admins, Enterprise Admins og domænecontrollere. Bryd identificerede angrebskæder ved at fjerne det svageste led i hver sti. Prioritér stier, der kan udnyttes uden nogen særlige værktøjer eller forhøjet adgang.", "status": "machine-draft" }
+  }
+}

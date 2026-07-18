@@ -1,0 +1,147 @@
+{
+  "_family": "ADGroupPolicyChecks.json",
+  "ADGPO-001": {
+    "name": { "value": "GPO-oversigt med linkstatus", "status": "machine-draft" },
+    "description": { "value": "En omfattende oversigt over alle gruppepolitikobjekter med deres linkstatus, omfang og håndhævelsestilstand udgør grundlaget for sikkerhedsanalyse af GPO'er. Forståelse af, hvilke GPO'er der er kædet, håndhævet eller deaktiveret, er afgørende for at vurdere den effektive sikkerhedstilstand, der leveres gennem gruppepolitik", "status": "machine-draft" },
+    "recommendedValue": { "value": "En komplet GPO-oversigt er dokumenteret med linkstatus, omfang og ejer for hver GPO", "status": "machine-draft" },
+    "remediationSteps": { "value": "Generer en fuld GPO-oversigt med Get-GPO -All og Get-GPOReport. Dokumentér hver GPO's formål, ejer, linkplaceringer og håndhævelsesstatus. Etablér en navngivningskonvention for GPO'er, og sørg for, at alle GPO'er overholder den. Indfør en proces til ændringshåndtering af GPO'er.", "status": "machine-draft" }
+  },
+  "ADGPO-002": {
+    "name": { "value": "Tomme GPO'er", "status": "machine-draft" },
+    "description": { "value": "GPO'er, der ikke indeholder nogen konfigurerede indstillinger (både sektionerne Computerkonfiguration og Brugerkonfiguration er tomme), tilføjer unødvendig kompleksitet til behandlingen af gruppepolitik og kan indikere forladte konfigurationsforsøg eller testartefakter, der aldrig blev ryddet op", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen tomme GPO'er i domænet; alle GPO'er indeholder mindst én konfigureret indstilling", "status": "machine-draft" },
+    "remediationSteps": { "value": "Identificer GPO'er uden konfigurerede indstillinger med Get-GPOReport i XML-format og ved at kontrollere for tomme ExtensionData-elementer. Kontrollér, at tomme GPO'er ikke er pladsholdere til fremtidig brug. Slet helt tomme GPO'er efter at have bekræftet, at de ikke refereres af nogen automatisering eller dokumentation.", "status": "machine-draft" }
+  },
+  "ADGPO-003": {
+    "name": { "value": "Ikke-kædede GPO'er", "status": "machine-draft" },
+    "description": { "value": "GPO'er, der ikke er kædet til noget websted, domæne eller nogen OU, anvendes ikke og udgør ubrugt konfiguration. Ikke-kædede GPO'er kan indeholde følsomme indstillinger, legitimationsoplysninger i GPP eller scripts, der kan udnyttes, hvis en angriber senere kæder dem til en mål-OU", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen ikke-kædede GPO'er, medmindre de er dokumenteret som skabeloner eller sikkerhedskopier med passende adgangskontroller", "status": "machine-draft" },
+    "remediationSteps": { "value": "Identificer ikke-kædede GPO'er ved at sammenligne alle GPO-GUID'er med gPLink-attributter på alle OU'er, websteder og domæneroden. Gennemgå hver ikke-kædet GPO for at afgøre, om den bør kædes, arkiveres eller slettes. Fjern følsomt indhold fra ikke-kædede GPO'er, der bevares som skabeloner.", "status": "machine-draft" }
+  },
+  "ADGPO-004": {
+    "name": { "value": "Deaktiverede GPO'er med indhold", "status": "machine-draft" },
+    "description": { "value": "GPO'er, hvor enten sektionen Brugerkonfiguration eller Computerkonfiguration er deaktiveret, men stadig indeholder konfigurerede indstillinger, kan indikere ufuldstændig udfasning eller utilsigtet deaktivering. Hvis en angriber med rettigheder til redigering af GPO'er genaktiverer dem, ville de hvilende indstillinger træde i kraft", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen GPO'er med deaktiverede sektioner, der indeholder konfigurerede indstillinger; deaktiverede sektioner bør være tomme", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå alle GPO'er, hvor GpoStatus er UserSettingsDisabled eller ComputerSettingsDisabled. Kontrollér, at den deaktiverede sektion ikke indeholder aktive indstillinger. Genaktivér enten sektionen, hvis indstillingerne er nødvendige, eller fjern indstillingerne fra den deaktiverede sektion. Dokumentér årsagen til eventuelle bevidst deaktiverede sektioner.", "status": "machine-draft" }
+  },
+  "ADGPO-005": {
+    "name": { "value": "Dublerede GPO'er", "status": "machine-draft" },
+    "description": { "value": "Flere GPO'er med i det væsentlige ens eller identiske indstillinger skaber administrativ byrde, øger risikoen for konfigurationsafvigelse og vanskeliggør fejlfinding. Dublerede GPO'er kan også resultere i modstridende indstillinger, der giver uforudsigelig adfærd", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen dublerede GPO'er; hver GPO har et unikt formål og ikke-overlappende indstillinger", "status": "machine-draft" },
+    "remediationSteps": { "value": "Eksportér alle GPO-rapporter i XML-format, og sammenlign indstillinger på tværs af GPO'er for at identificere dubletter. Konsolidér dublerede GPO'er til en enkelt GPO, hvor det er muligt. Opdater OU-links, så de refererer til den konsoliderede GPO. Test den konsoliderede GPO i en midlertidig OU, før du fjerner dubletterne.", "status": "machine-draft" }
+  },
+  "ADGPO-006": {
+    "name": { "value": "GPO'er med brudte links", "status": "machine-draft" },
+    "description": { "value": "GPO-links, der refererer til ikke-eksisterende GPO'er eller GPO'er, hvis SYSVOL-data mangler, indikerer replikeringsproblemer, forkert sletning eller korruption. Brudte links kan forårsage fejl i behandlingen af gruppepolitik og kan skjule fraværet af tilsigtede sikkerhedskonfigurationer", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen brudte GPO-links; alle gPLink-referencer opløses til gyldige GPO'er med intakte SYSVOL-data", "status": "machine-draft" },
+    "remediationSteps": { "value": "Fortolk gPLink-attributter på alle OU'er, websteder og domæneroden for at udtrække de refererede GPO-GUID'er. Kontrollér, at hver GUID findes i GPC-containeren (Active Directory) og GPT-containeren (SYSVOL). Fjern brudte links med Set-GPLink eller ved direkte at redigere gPLink-attributten. Undersøg den grundlæggende årsag til eventuelle manglende GPO-data.", "status": "machine-draft" }
+  },
+  "ADGPO-007": {
+    "name": { "value": "Inkonsistente GPO-rettigheder", "status": "machine-draft" },
+    "description": { "value": "Hver GPO har både AD-rettigheder (på GPC-objektet) og NTFS-rettigheder (på SYSVOL GPT-mappen). Inkonsistens mellem disse rettighedssæt kan forhindre anvendelse af GPO'en, tillade uautoriseret ændring eller skabe sikkerhedshuller, hvor SYSVOL-indholdet er mere tilladende end AD-objektet", "status": "machine-draft" },
+    "recommendedValue": { "value": "Konsistente rettigheder mellem AD GPC-objekter og SYSVOL GPT-mapper for alle GPO'er; Authenticated Users har læseadgang", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sammenlign sikkerhedsbeskrivelsen på hvert GPC-objekt i Active Directory med NTFS-ACL'en på den tilsvarende GPT-mappe i SYSVOL. Sørg for, at begge giver læseadgang til Authenticated Users (påkrævet for anvendelse af GPO'en). Løs eventuelle inkonsistenser ved at tilpasse SYSVOL-rettigheder til AD-objektet. Kør dcdiag /test:sysvolcheck for at identificere problemer.", "status": "machine-draft" }
+  },
+  "ADGPO-008": {
+    "name": { "value": "GPO'er, der ikke anvendes på grund af WMI-filtre", "status": "machine-draft" },
+    "description": { "value": "WMI-filtre kan forhindre GPO'er i at blive anvendt på målsystemer på grundlag af WQL-forespørgsler. For brede eller fejlkonfigurerede WMI-filtre kan utilsigtet blokere sikkerhedskritiske GPO'er fra at blive anvendt på systemer, der kræver dem, hvilket skaber huller i den tilsigtede sikkerhedskonfiguration", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle sikkerhedskritiske GPO'er anvendes på de tilsigtede mål; WMI-filtre er valideret mod de faktiske miljøforhold", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå WMI-filtre, der er kædet til sikkerhedskritiske GPO'er, med Get-GPO og ved at undersøge WMI-filtertildelinger. Test WMI-filterforespørgsler mod repræsentative målsystemer for at kontrollere, at de evalueres korrekt. Brug Group Policy Results (gpresult) på eksempelsystemer for at bekræfte, at GPO'er anvendes. Erstat eller ret WMI-filtre, der blokerer den tilsigtede anvendelse.", "status": "machine-draft" }
+  },
+  "ADGPO-009": {
+    "name": { "value": "GPO'er uden anvendelsesrettighed", "status": "machine-draft" },
+    "description": { "value": "Hvis rettigheden Anvend gruppepolitik (Læs + Anvend) ikke tildeles de passende sikkerhedsprincipaler, behandles GPO'en ikke af de pågældende systemer, selv når den er kædet til den korrekte OU. Dette forekommer ofte, når Authenticated Users fjernes fra GPO'ens sikkerhedsfiltrering uden at tilføje specifikke grupper", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle GPO'er har rettigheden Anvend gruppepolitik tildelt passende sikkerhedsgrupper; ingen GPO'er uden anvendelsesmål", "status": "machine-draft" },
+    "remediationSteps": { "value": "Kontrollér hver GPO for rettigheder til Anvend gruppepolitik med Get-GPPermission. Sørg for, at mindst én sikkerhedsgruppe med medlemmer har rettigheden Anvend. For GPO'er, der udelukkende bør anvendes på specifikke grupper, skal du kontrollere, at målgrupperne indeholder de tilsigtede medlemmer. Tilføj Authenticated Users med skrivebeskyttet rettighed (uden Anvend), hvis der bruges sikkerhedsfiltrering.", "status": "machine-draft" }
+  },
+  "ADGPO-010": {
+    "name": { "value": "Versionsuoverensstemmelse mellem SYSVOL og AD for GPO", "status": "machine-draft" },
+    "description": { "value": "Hver GPO vedligeholder versionsnumre i både AD GPC-objektet (attributten versionNumber) og SYSVOL GPT-mappen (gpt.ini). En uoverensstemmelse mellem disse versioner indikerer replikeringsfejl, SYSVOL-korruption eller ufuldstændige GPO-opdateringer. Versionsuoverensstemmelser kan få klienter til at anvende forældede eller ufuldstændige politikker", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle GPO-versioner stemmer overens mellem AD GPC-objekter og SYSVOL GPT gpt.ini-filer på tværs af alle domænecontrollere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sammenlign attributten versionNumber i Active Directory med værdien Version i SYSVOL gpt.ini for hver GPO på tværs af alle domænecontrollere. Undersøg og løs eventuelle DFSR- eller FRS-replikeringsproblemer, der forårsager uoverensstemmelser. Fremtving replikering med repadmin /syncall og DFSRDIAG. Ved vedvarende uoverensstemmelser skal du bruge den autoritative gendannelsesproces for SYSVOL.", "status": "machine-draft" }
+  },
+  "ADGPO-011": {
+    "name": { "value": "Sikkerhedsanalyse af GPO-indstillinger", "status": "machine-draft" },
+    "description": { "value": "GPO-indstillinger kan svække sikkerhedstilstanden, hvis de deaktiverer beskyttelser, lemper godkendelseskrav eller konfigurerer usikre standardværdier. Denne kontrol analyserer centrale sikkerhedsrelevante indstillinger på tværs af alle GPO'er, herunder adgangskodepolitikker, kontospærring, tildeling af brugerrettigheder, sikkerhedsindstillinger og revisionspolitikker", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle GPO-indstillinger er i overensstemmelse med organisationens sikkerhedsbaseline; ingen GPO'er, der svækker standardsikkerhedskonfigurationer", "status": "machine-draft" },
+    "remediationSteps": { "value": "Eksportér alle GPO-rapporter, og analyser sikkerhedsrelevante indstillinger, herunder adgangskodepolitikker, kontospærring, tildeling af brugerrettigheder, begrænsede grupper, sikkerhedsindstillinger og Windows Firewall-regler. Sammenlign indstillingerne med CIS-benchmarks eller organisationens baselines. Afhjælp GPO'er, der konfigurerer indstillinger, der er svagere end baseline.", "status": "machine-draft" }
+  },
+  "ADGPO-012": {
+    "name": { "value": "Registrering af cPassword/GPP-adgangskode", "status": "machine-draft" },
+    "description": { "value": "Adgangskoder gemt i Group Policy Preferences (cPassword) er krypteret med en offentligt kendt AES-nøgle, som Microsoft har publiceret (MS14-025). Enhver domænebruger kan læse XML-filerne i SYSVOL, der indeholder disse adgangskoder, og trivielt dekryptere dem. Dette er en af de mest almindelige og lettest udnyttelige Active Directory-sårbarheder", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen cPassword-værdier til stede i nogen GPP XML-filer i SYSVOL", "status": "machine-draft" },
+    "remediationSteps": { "value": "Søg i alle SYSVOL GPO-mapper efter XML-filer, der indeholder cpassword-attributter i Groups.xml, Services.xml, Scheduledtasks.xml, DataSources.xml, Printers.xml og Drives.xml. Fjern alle GPP-elementer, der indeholder gemte adgangskoder. Brug LAPS, gMSA eller andre moderne løsninger til håndtering af legitimationsoplysninger i stedet. Anvend rettelsen MS14-025 for at forhindre oprettelse af nye cPassword-værdier.", "status": "machine-draft" }
+  },
+  "ADGPO-013": {
+    "name": { "value": "Analyse af scripts i GPO'er", "status": "machine-draft" },
+    "description": { "value": "GPO-scripts til opstart, nedlukning, logon og logoff udføres med systemets eller brugerens rettigheder og gemmes i det tilgængelige SYSVOL-share. Ondsindede scripts placeret i GPO'er kan opnå udbredt kodeeksekvering på tværs af domænet. Scripts bør gennemgås for sikkerhedsproblemer, herunder hardkodede legitimationsoplysninger, usikre kommandoer og referencer til ikke-sikre placeringer", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle GPO-scripts er gennemgået, signeret hvor det er muligt, og fri for hardkodede legitimationsoplysninger eller usikre handlinger", "status": "machine-draft" },
+    "remediationSteps": { "value": "Optæl alle scripts konfigureret i GPO'er (opstart, nedlukning, logon, logoff) fra scriptsektionen i GPO-rapporter. Gennemgå scriptindhold for hardkodede legitimationsoplysninger, brug af LOLBins, referencer til eksterne ressourcer og usikre handlinger. Indfør scriptsignering, hvor det understøttes. Sørg for, at scriptfilrettigheder begrænser ændring til udelukkende autoriserede administratorer.", "status": "machine-draft" }
+  },
+  "ADGPO-014": {
+    "name": { "value": "MSI-pakker i GPO'er", "status": "machine-draft" },
+    "description": { "value": "GPO-indstillinger til softwareinstallation udruller MSI-pakker til målrettede computere. Kompromitterede eller uautoriserede MSI-pakker i GPO'er kan udrulle malware på tværs af domænet. Kildeplaceringen for MSI-pakker og adgangskontrollerne på disse placeringer skal kontrolleres", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle GPO-udrullede MSI-pakker hentes fra sikre, adgangskontrollerede placeringer med bekræftet integritet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Identificer alle indstillinger til softwareinstallation i GPO'er. Kontrollér, at MSI-kildestier peger på sikrede shares med passende NTFS- og share-rettigheder. Bekræft, at MSI-pakker er fra betroede leverandører og ikke er blevet manipuleret. Overvej at bruge WDAC eller AppLocker til at begrænse MSI-installation til godkendte pakker.", "status": "machine-draft" }
+  },
+  "ADGPO-015": {
+    "name": { "value": "Planlagte opgaver i GPO'er", "status": "machine-draft" },
+    "description": { "value": "Group Policy Preferences kan oprette planlagte opgaver, der kører med angivne legitimationsoplysninger eller som SYSTEM på målrettede computere. Ondsindede planlagte opgaver udrullet via GPO giver vedvarende kodeeksekvering på tværs af miljøet. Dette er en almindelig teknik efter kompromittering til at opretholde domæneomfattende persistens", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle GPO-udrullede planlagte opgaver er dokumenteret, anvender konti efter mindsteprivilegium-princippet og udfører udelukkende autoriserede handlinger", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå alle elementer for planlagte opgaver i GPO Preferences på tværs af alle GPO'er. Kontrollér, at hver opgave kører en legitim og autoriseret kommando med de minimalt påkrævede rettigheder. Fjern eventuelle opgaver, der gemmer legitimationsoplysninger (brug gMSA eller SYSTEM-kontekst i stedet). Sørg for, at opgavernes eksekverbare filer gemmes på beskyttede placeringer. Dokumentér det forretningsmæssige formål for hver GPO-udrullet planlagt opgave.", "status": "machine-draft" }
+  },
+  "ADGPO-016": {
+    "name": { "value": "Sikkerhedsgennemgang af registreringsindstillinger", "status": "machine-draft" },
+    "description": { "value": "GPO'er kan udrulle registreringsindstillinger, der påvirker sikkerhedskonfigurationer, herunder deaktivering af sikkerhedsfunktioner, svækkelse af godkendelsesprotokoller eller aktivering af usikre tjenester. Registreringsbaserede indstillinger i GPO'er bør gennemgås for at sikre, at de ikke svækker sikkerhedstilstanden på målrettede systemer", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen GPO-registreringsindstillinger, der svækker sikkerhedsstandarder; alle registreringsændringer er dokumenteret og begrundet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Eksportér GPO-registreringsindstillinger fra administrative skabeloner og Registry Preferences. Gennemgå indstillinger, der påvirker sikkerhedsrelevante registreringsnøgler, herunder HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa, HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies og godkendelsesrelaterede nøgler. Fjern eller ret indstillinger, der svækker sikkerhedstilstanden.", "status": "machine-draft" }
+  },
+  "ADGPO-017": {
+    "name": { "value": "Analyse af begrænsede grupper", "status": "machine-draft" },
+    "description": { "value": "GPO-indstillingen Begrænsede grupper håndhæver gruppemedlemskab på målsystemer og bruges ofte til at administrere medlemskab af den lokale gruppe Administratorer. Fejlkonfigurerede begrænsede grupper kan utilsigtet give lokal administratoradgang til uautoriserede brugere eller undlade at fjerne uautoriserede medlemmer fra privilegerede lokale grupper", "status": "machine-draft" },
+    "recommendedValue": { "value": "Begrænsede grupper er konfigureret til at håndhæve medlemskab af lokal administrator efter mindsteprivilegium-princippet; kun autoriserede grupper i den lokale gruppe Administratorer", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå indstillingerne for begrænsede grupper i alle GPO'er. Kontrollér, at den lokale gruppe Administratorer administreres, så den udelukkende omfatter autoriserede administratorgrupper. Sørg for, at begrænsede grupper ikke tilføjer Domain Users eller andre brede grupper til privilegerede lokale grupper. Overvej at bruge Group Policy Preferences for mere granulær kontrol (tilføj/fjern medlemmer uden at erstatte hele medlemskabet).", "status": "machine-draft" }
+  },
+  "ADGPO-018": {
+    "name": { "value": "Konfiguration af revisionspolitik via GPO", "status": "machine-draft" },
+    "description": { "value": "Windows-revisionspolitikker konfigureret via gruppepolitik bestemmer, hvilke sikkerhedshændelser der logges på domænetilsluttede systemer. Utilstrækkelig revisionskonfiguration skaber blinde vinkler, der giver angribere mulighed for at operere uopdaget. Centrale revisionskategorier omfatter logonhændelser, kontoadministration, adgang til katalogtjenester og objektadgang", "status": "machine-draft" },
+    "recommendedValue": { "value": "Avanceret revisionspolitik er konfigureret via GPO med revision af både succes og fejl for alle kritiske kategorier i overensstemmelse med organisationens registreringskrav", "status": "machine-draft" },
+    "remediationSteps": { "value": "Konfigurer Avanceret konfiguration af revisionspolitik (ikke den ældre revisionspolitik) via GPO. Aktivér som minimum: Kontologon (succes/fejl), Kontoadministration (succes/fejl), Adgang til katalogtjeneste (succes/fejl), Logon/logoff (succes/fejl), Objektadgang (succes/fejl for følsomme ressourcer), Politikændring (succes), Brug af rettigheder (succes/fejl) og System (succes/fejl). Udrul til alle domænetilsluttede systemer.", "status": "machine-draft" }
+  },
+  "ADGPO-019": {
+    "name": { "value": "Konfiguration af Windows Firewall via GPO", "status": "machine-draft" },
+    "description": { "value": "Indstillinger for Windows Defender Firewall med avanceret sikkerhed udrullet via GPO styrer netværksadgang på domænetilsluttede systemer. GPO'er, der deaktiverer firewallen, tillader for tilladende indgående regler eller undlader at konfigurere firewallen, efterlader systemer sårbare over for lateral bevægelse og netværksbaserede angreb", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Firewall er aktiveret for alle profiler (domæne, privat, offentlig) med indgående regler, der nægter som standard, konfigureret via GPO", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå Windows Firewall-GPO-indstillinger på tværs af alle relevante GPO'er. Sørg for, at firewallen er aktiveret for profilerne domæne, privat og offentlig. Kontrollér, at indgående regler følger en tilgang, der nægter som standard, med specifikke tillad-regler udelukkende for påkrævede tjenester. Fjern eventuelle GPO-indstillinger, der deaktiverer Windows Firewall. Test firewallregler i en midlertidig OU før domæneomfattende udrulning.", "status": "machine-draft" }
+  },
+  "ADGPO-020": {
+    "name": { "value": "PowerShell-eksekveringspolitik via GPO", "status": "machine-draft" },
+    "description": { "value": "PowerShell-eksekveringspolitikken styrer, hvilke scripts der kan køre på et system. Selv om eksekveringspolitikken ikke er en sikkerhedsgrænse, fjerner det at indstille den til Unrestricted eller Bypass via GPO et forsvarslag og gør det lettere for angribere at eksekvere ondsindede scripts uden brugerprompter", "status": "machine-draft" },
+    "recommendedValue": { "value": "PowerShell-eksekveringspolitikken er indstillet til AllSigned eller RemoteSigned via GPO; ikke indstillet til Unrestricted eller Bypass", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå GPO-indstillinger under Computerkonfiguration > Administrative skabeloner > Windows-komponenter > Windows PowerShell > Aktivér scripteksekvering. Indstil eksekveringspolitikken til AllSigned for højsikkerhedsmiljøer eller RemoteSigned for standardmiljøer. Indfør kodesignering for autoriserede PowerShell-scripts. Undgå at indstille Bypass eller Unrestricted via GPO.", "status": "machine-draft" }
+  },
+  "ADGPO-021": {
+    "name": { "value": "Konfiguration af PowerShell-logning", "status": "machine-draft" },
+    "description": { "value": "PowerShell-modullogning, scriptblok-logning og transskription giver kritisk indsigt i PowerShell-baserede angreb, som anvendes i størstedelen af moderne Active Directory-kompromitteringer. Uden disse logningsfunktioner kan forsvarere ikke opdage eller undersøge PowerShell-baseret rekognoscering, tyveri af legitimationsoplysninger eller lateral bevægelse", "status": "machine-draft" },
+    "recommendedValue": { "value": "Modullogning, scriptblok-logning og transskription er aktiveret via GPO på alle systemer", "status": "machine-draft" },
+    "remediationSteps": { "value": "Konfigurer GPO-indstillinger under Computerkonfiguration > Administrative skabeloner > Windows-komponenter > Windows PowerShell. Aktivér modullogning med '*' for at logge alle moduler. Aktivér scriptblok-logning med 'Log hændelser for start/stop af scriptblokkald'. Aktivér PowerShell-transskription med en sikker outputmappe. Udrul til alle domænetilsluttede systemer, og kontrollér logindsamlingen.", "status": "machine-draft" }
+  },
+  "ADGPO-022": {
+    "name": { "value": "Vurdering af AppLocker/WDAC-politik", "status": "machine-draft" },
+    "description": { "value": "Programstyringspolitikker såsom AppLocker og Windows Defender Application Control begrænser, hvilke eksekverbare filer, scripts og DLL'er der kan køre på administrerede systemer. Uden programstyring kan angribere eksekvere vilkårlige værktøjer og malware på kompromitterede systemer for at fremme lateral bevægelse og persistens", "status": "machine-draft" },
+    "recommendedValue": { "value": "AppLocker- eller WDAC-politik er udrullet via GPO i håndhævelsestilstand på alle arbejdsstationer og servere med en dokumenteret baseline", "status": "machine-draft" },
+    "remediationSteps": { "value": "Udrul AppLocker- eller WDAC-politikker via GPO, begyndende i revisionstilstand. Analyser revisionslogge for at opbygge en baseline af godkendte programmer. Opret tilladelseslisteregler baseret på udgiver, sti eller hash. Skift fra revisions- til håndhævelsestilstand efter validering af baselinen. Overvåg blokerede eksekveringshændelser, og opdater reglerne efter behov.", "status": "machine-draft" }
+  },
+  "ADGPO-023": {
+    "name": { "value": "LAPS-GPO-konfiguration", "status": "machine-draft" },
+    "description": { "value": "Local Administrator Password Solution (LAPS) muliggør automatiseret udskiftning af lokale administratoradgangskoder på domænetilsluttede systemer og forhindrer lateral bevægelse via delte lokale administratorlegitimationsoplysninger. LAPS skal udrulles via GPO for at være effektiv, og dens konfigurationsindstillinger bestemmer adgangskodekompleksitet, udskiftningshyppighed og hvilken konto der administreres", "status": "machine-draft" },
+    "recommendedValue": { "value": "LAPS er aktiveret via GPO på alle domænetilsluttede systemer med adgangskoder på 24 tegn og en maksimal alder på 30 dage", "status": "machine-draft" },
+    "remediationSteps": { "value": "Installer LAPS CSE på alle administrerede systemer via GPO-softwareinstallation eller SCCM. Konfigurer LAPS-GPO-indstillinger: Aktivér administration af lokal administratoradgangskode, indstil adgangskodekompleksitet til store bogstaver + små bogstaver + tal + specialtegn, indstil adgangskodelængde til 24 tegn eller mere, og indstil adgangskodealder til 30 dage eller mindre. Kontrollér, at LAPS fungerer, ved at undersøge attributterne ms-Mcs-AdmPwdExpirationTime.", "status": "machine-draft" }
+  },
+  "ADGPO-024": {
+    "name": { "value": "Gennemgang af GPO-WMI-filtre", "status": "machine-draft" },
+    "description": { "value": "WMI-filtre styrer anvendelse af GPO'er på grundlag af WQL-forespørgsler, der evalueres på målsystemer. Ondsindede eller fejlkonfigurerede WMI-filtre kan selektivt forhindre sikkerheds-GPO'er i at blive anvendt på specifikke systemer, hvilket skaber målrettede sikkerhedshuller. WMI-filtre bør gennemgås for korrekthed, ydelsespåvirkning og potentielt misbrug", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle WMI-filtre er dokumenteret, testet og giver de forventede resultater; ingen WMI-filtre, der blokerer sikkerhedskritiske GPO'er", "status": "machine-draft" },
+    "remediationSteps": { "value": "Optæl alle WMI-filtre med Get-ADObject -Filter 'objectClass -eq \"msWMI-Som\"'. Gennemgå WQL-forespørgslen i hvert filter for korrekthed, og test mod repræsentative målsystemer. Kontrollér, at WMI-filtre ikke blokerer sikkerhedskritiske GPO'er fra at blive anvendt. Fjern ubrugte WMI-filtre. Dokumentér formålet og den forventede adfærd for hvert aktivt WMI-filter.", "status": "machine-draft" }
+  }
+}

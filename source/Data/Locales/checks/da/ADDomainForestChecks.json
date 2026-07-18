@@ -1,0 +1,123 @@
+{
+  "_family": "ADDomainForestChecks.json",
+  "ADDOM-001": {
+    "name": { "value": "Skovens funktionsniveau", "status": "machine-draft" },
+    "description": { "value": "Active Directory-skovens funktionsniveau bør være Windows Server 2016 eller nyere for at aktivere moderne sikkerhedsfunktioner såsom Privileged Access Management og forbedret Kerberos-beskyttelse. At køre ældre funktionsniveauer udsætter miljøet for angreb, der udnytter svagheder i ældre protokoller", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2016 eller nyere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Hæv skovens funktionsniveau via Active Directory Domæner og Tillidsforhold > højreklik på skovroden > Hæv skovens funktionsniveau. Sørg for, at alle domænecontrollere kører en understøttet OS-version, før du hæver niveauet", "status": "machine-draft" }
+  },
+  "ADDOM-002": {
+    "name": { "value": "Domænets funktionsniveau", "status": "machine-draft" },
+    "description": { "value": "Active Directory-domænets funktionsniveau bør være Windows Server 2016 eller nyere. Lavere funktionsniveauer forhindrer brugen af kritiske sikkerhedsfunktioner, herunder funktionaliteten for gruppen Protected Users, godkendelsespolitikker og moderne Kerberos-panser", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2016 eller nyere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Hæv domænets funktionsniveau via Active Directory Domæner og Tillidsforhold > højreklik på domænet > Hæv domænets funktionsniveau. Kontrollér først, at alle domænecontrollere i domænet kører en kompatibel OS-version", "status": "machine-draft" }
+  },
+  "ADDOM-003": {
+    "name": { "value": "Identifikation af skemaversion", "status": "machine-draft" },
+    "description": { "value": "AD-skemaversionen bør dokumenteres og svare til den nyeste understøttede version. Et forældet skema kan mangle attributter, som moderne sikkerhedsfunktioner og programmer kræver", "status": "machine-draft" },
+    "recommendedValue": { "value": "Skemaversion svarende til Windows Server 2022 (version 88) eller nyere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Kør adprep /forestprep og adprep /domainprep fra det nyeste Windows Server-installationsmedie for at opdatere skemaet. Kontrollér attributten objectVersion på CN=Schema,CN=Configuration,DC=domain", "status": "machine-draft" }
+  },
+  "ADDOM-004": {
+    "name": { "value": "Oversigt over domænecontrollere", "status": "machine-draft" },
+    "description": { "value": "Alle domænecontrollere bør registreres med deres OS-version, rettelsesniveau og placering. Uregistrerede domænecontrollere udgør en væsentlig sikkerhedsrisiko, da de kan mangle rettelser eller blive kompromitteret uden opdagelse", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle domænecontrollere er dokumenteret med den aktuelle OS-version, webstedsmedlemskab og rettelsesstatus", "status": "machine-draft" },
+    "remediationSteps": { "value": "Forespørg alle DC-computerobjekter fra OU'en Domain Controllers. Kontrollér, at hver domænecontroller er gjort rede for, kører et understøttet OS og modtager regelmæssige rettelser. Fjern eller degrader eventuelle uautoriserede domænecontrollere øjeblikkeligt", "status": "machine-draft" }
+  },
+  "ADDOM-005": {
+    "name": { "value": "Forældet OS på domænecontrollere", "status": "machine-draft" },
+    "description": { "value": "Domænecontrollere, der kører operativsystemer, hvis levetid er udløbet (Windows Server 2012 R2 eller ældre), modtager ikke sikkerhedsopdateringer og er sårbare over for kendte udnyttelser. Disse udgør en kritisk infrastrukturrisiko, da kompromittering af en domænecontroller giver fuld kontrol over domænet", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle domænecontrollere kører Windows Server 2019 eller nyere med de aktuelle rettelser", "status": "machine-draft" },
+    "remediationSteps": { "value": "Planlæg migrering af domænecontrollere, der kører forældede OS-versioner. Byg nye domænecontrollere på Windows Server 2022, overfør FSMO-roller om nødvendigt, replikér, og degrader og udfas derefter gamle domænecontrollere. Prioritér denne afhjælpning, da ældre domænecontrollere er aktive mål", "status": "machine-draft" }
+  },
+  "ADDOM-006": {
+    "name": { "value": "Identifikation af FSMO-rolleindehavere", "status": "machine-draft" },
+    "description": { "value": "De fem FSMO-roller (Schema Master, Domain Naming Master, RID Master, PDC Emulator, Infrastructure Master) bør dokumenteres og placeres på passende domænecontrollere. Kendskab til rolleplacering er afgørende for katastrofeberedskab og driftsmæssig indsigt", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle FSMO-roller er dokumenteret, placeret på pålidelige domænecontrollere og medtaget i katastrofeberedskabsplanlægningen", "status": "machine-draft" },
+    "remediationSteps": { "value": "Kør 'netdom query fsmo', eller forespørg AD-skemaet og domænepartitionerne for at identificere rolleindehaverne. Dokumentér rollerne, og kontrollér, at de er placeret på højtilgængelige domænecontrollere. Overfør roller, hvis de nuværende indehavere er uhensigtsmæssige", "status": "machine-draft" }
+  },
+  "ADDOM-007": {
+    "name": { "value": "Tilstand for AD-replikering", "status": "machine-draft" },
+    "description": { "value": "Fejl i Active Directory-replikering kan føre til inkonsistent anvendelse af sikkerhedspolitik, forældede legitimationsoplysninger, der forbliver gyldige, og split-brain-scenarier. Vedvarende replikeringsfejl kan også indikere en kompromitteret eller useriøs domænecontroller", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle domænecontrollere replikerer korrekt uden fejl inden for de sidste 24 timer", "status": "machine-draft" },
+    "remediationSteps": { "value": "Kør 'repadmin /replsummary' og 'repadmin /showrepl' for at identificere fejl. Undersøg og løs DNS-problemer, problemer med netværksforbindelse eller tilstande med USN-tilbagerulning. Overvåg replikeringsstatus som en del af den rutinemæssige drift", "status": "machine-draft" }
+  },
+  "ADDOM-008": {
+    "name": { "value": "Konfiguration af tombstone-levetid", "status": "machine-draft" },
+    "description": { "value": "Tombstone-levetiden definerer, hvor længe slettede objekter bevares, før de fjernes permanent, og bestemmer den maksimale offlinetid for en domænecontroller, før den skal genopbygges. En for lav værdi kan forårsage dvælende objekter; standardværdien på 60 dage bør hæves til 180 dage i moderne miljøer", "status": "machine-draft" },
+    "recommendedValue": { "value": "180 dage", "status": "machine-draft" },
+    "remediationSteps": { "value": "Ændr attributten tombstoneLifetime på CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=domain. Indstil den til 180 med ADSIEdit eller PowerShell. Sørg for, at AD-papirkurven er aktiveret, før du foretager ændringen", "status": "machine-draft" }
+  },
+  "ADDOM-009": {
+    "name": { "value": "Status for AD-papirkurv", "status": "machine-draft" },
+    "description": { "value": "Active Directory-papirkurven muliggør gendannelse af slettede objekter med alle attributter intakte. Uden den kræver gendannelse af utilsigtet eller ondsindet slettede objekter en autoritativ gendannelse fra sikkerhedskopi, hvilket forårsager betydelig nedetid", "status": "machine-draft" },
+    "recommendedValue": { "value": "Aktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Aktivér AD-papirkurven via Active Directory Administrationscenter > højreklik på domænet > Aktivér papirkurv, eller kør Enable-ADOptionalFeature 'Recycle Bin Feature' i PowerShell. Bemærk: denne handling kan ikke fortrydes", "status": "machine-draft" }
+  },
+  "ADDOM-010": {
+    "name": { "value": "Konfiguration af websteder og undernet", "status": "machine-draft" },
+    "description": { "value": "Alle anvendte IP-undernet bør tildeles AD-websteder. Manglende tilknytninger mellem undernet og websteder får klienter til at godkende sig mod suboptimale domænecontrollere, hvilket potentielt sender legitimationsoplysninger på tværs af WAN-forbindelser i klartekst og forringer sikkerhedstilstanden", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle IP-undernet er tilknyttet passende AD-websteder uden forældreløse undernet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå AD-websteder og -tjenester > containeren Subnets. Krydsreferer med netværksdokumentationen for at identificere ikke-tilknyttede undernet. Opret undernetobjekter for alle produktionsnetværk, og knyt dem til det korrekte websted", "status": "machine-draft" }
+  },
+  "ADDOM-011": {
+    "name": { "value": "Konfiguration af webstedslinks", "status": "machine-draft" },
+    "description": { "value": "AD-webstedslinks bør konfigureres med passende omkostning, replikeringsinterval og tidsplan for at sikre rettidig replikering under hensyntagen til netværksbegrænsninger. Fejlkonfigurerede webstedslinks kan forsinke udbredelsen af sikkerhedspolitik", "status": "machine-draft" },
+    "recommendedValue": { "value": "Webstedslinks er konfigureret med passende omkostninger og replikeringsintervaller på 15 til 60 minutter afhængigt af forbindelsens kapacitet", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gennemgå AD-websteder og -tjenester > Inter-Site Transports > IP. Kontrollér, at hvert webstedslink har passende omkostningsværdier, replikeringsinterval (standardværdien på 180 minutter er ofte for lang) og tidsplan. Justér efter netværkstopologien", "status": "machine-draft" }
+  },
+  "ADDOM-012": {
+    "name": { "value": "Sikkerhed for DNS-zone", "status": "machine-draft" },
+    "description": { "value": "AD-integrerede DNS-zoner bør udelukkende bruge sikre dynamiske opdateringer. At tillade ikke-sikre opdateringer gør det muligt for angribere at forgifte DNS-poster, omdirigere godkendelsestrafik og udføre modstander-i-midten-angreb mod domænetilsluttede systemer", "status": "machine-draft" },
+    "recommendedValue": { "value": "Udelukkende sikre dynamiske opdateringer på alle AD-integrerede DNS-zoner", "status": "machine-draft" },
+    "remediationSteps": { "value": "Åbn DNS-Manager > højreklik på hver AD-integreret zone > Egenskaber > fanen Generelt > ændr Dynamiske opdateringer til 'Kun sikre'. Gennemgå alle fremadrettede og omvendte opslagszoner. Kontrollér DNSSEC-signering, hvis det er relevant", "status": "machine-draft" }
+  },
+  "ADDOM-013": {
+    "name": { "value": "Krav om LDAP-signering", "status": "machine-draft" },
+    "description": { "value": "LDAP-signering skal være påkrævet på alle domænecontrollere for at forhindre modstander-i-midten-angreb på LDAP-trafik. Uden signering kan angribere opsnappe og ændre LDAP-forespørgsler og -svar, hvilket potentielt eskalerer rettigheder eller exfiltrerer data", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kravet om LDAP-serversignering er indstillet til 'Kræv signering' på alle domænecontrollere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Konfigurer via gruppepolitik: Computerkonfiguration > Politikker > Windows-indstillinger > Sikkerhedsindstillinger > Lokale politikker > Sikkerhedsindstillinger > 'Domænecontroller: krav om LDAP-serversignering' = 'Kræv signering'. Anvend på OU'en Domain Controllers", "status": "machine-draft" }
+  },
+  "ADDOM-014": {
+    "name": { "value": "LDAP-kanaltilknytning", "status": "machine-draft" },
+    "description": { "value": "Tokens til LDAP-kanaltilknytning forhindrer relay-angreb ved kryptografisk at binde LDAP-sessionen til TLS-kanalen. Uden kanaltilknytning kan angribere videresende LDAP-godkendelse for at opnå uautoriseret adgang", "status": "machine-draft" },
+    "recommendedValue": { "value": "LDAP-kanaltilknytning er indstillet til 'Altid' på alle domænecontrollere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Indstil registreringsdatabaseværdien LdapEnforceChannelBinding til 2 (Altid) under HKLM\\System\\CurrentControlSet\\Services\\NTDS\\Parameters på alle domænecontrollere. Test først med værdien 1 (Når understøttet) for at identificere inkompatible klienter", "status": "machine-draft" }
+  },
+  "ADDOM-015": {
+    "name": { "value": "Krav om SMB-signering", "status": "machine-draft" },
+    "description": { "value": "SMB-signering skal være påkrævet på alle domænecontrollere for at forhindre modstander-i-midten- og relay-angreb på SMB-trafik. SMB-relay-angreb kan bruges til at opnå adgang på SYSTEM-niveau på domænecontrollere, hvilket fører til fuld kompromittering af domænet", "status": "machine-draft" },
+    "recommendedValue": { "value": "SMB-signering er påkrævet på alle domænecontrollere og medlemsservere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Konfigurer via gruppepolitik: Computerkonfiguration > Politikker > Windows-indstillinger > Sikkerhedsindstillinger > Lokale politikker > Sikkerhedsindstillinger > 'Microsoft-netværksserver: signer kommunikation digitalt (altid)' = Aktiveret. Anvend på OU'en Domain Controllers og alle server-OU'er", "status": "machine-draft" }
+  },
+  "ADDOM-016": {
+    "name": { "value": "Registrering af NTLMv1-brug", "status": "machine-draft" },
+    "description": { "value": "NTLMv1 er en alvorligt svækket godkendelsesprotokol, der kan knækkes på sekunder med moderne hardware. Enhver brug af NTLMv1 i miljøet skal identificeres og elimineres, da den udsætter legitimationsoplysninger for trivielle offlineangreb", "status": "machine-draft" },
+    "recommendedValue": { "value": "Nul registrerede NTLMv1-godkendelseshændelser; LAN Manager-godkendelsesniveauet er indstillet til at afvise NTLMv1", "status": "machine-draft" },
+    "remediationSteps": { "value": "Aktivér NTLM-revision via gruppepolitik: Computerkonfiguration > Politikker > Windows-indstillinger > Sikkerhedsindstillinger > Lokale politikker > Sikkerhedsindstillinger > indstillingerne 'Netværkssikkerhed: begræns NTLM'. Gennemgå hændelseslogge for NTLMv1-brug, og afhjælp programmer, og indstil derefter 'Netværkssikkerhed: LAN Manager-godkendelsesniveau' til 'Send kun NTLMv2-svar. Afvis LM og NTLM'", "status": "machine-draft" }
+  },
+  "ADDOM-017": {
+    "name": { "value": "Håndhævelse af NTLMv2", "status": "machine-draft" },
+    "description": { "value": "LAN Manager-godkendelsesniveauet bør konfigureres til udelukkende at sende NTLMv2-svar og afvise LM og NTLMv1. Selv om NTLMv2 stadig er mindre sikker end Kerberos, er den væsentligt stærkere end NTLMv1 og bør være minimumsstandarden for NTLM", "status": "machine-draft" },
+    "recommendedValue": { "value": "LAN Manager-godkendelsesniveauet er indstillet til 'Send kun NTLMv2-svar. Afvis LM og NTLM' (niveau 5)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Konfigurer via gruppepolitik: Computerkonfiguration > Politikker > Windows-indstillinger > Sikkerhedsindstillinger > Lokale politikker > Sikkerhedsindstillinger > 'Netværkssikkerhed: LAN Manager-godkendelsesniveau' = 'Send kun NTLMv2-svar. Afvis LM og NTLM'. Test grundigt før håndhævelse", "status": "machine-draft" }
+  },
+  "ADDOM-018": {
+    "name": { "value": "Optælling via null-session", "status": "machine-draft" },
+    "description": { "value": "Anonym adgang (null-session) til Active Directory giver ikke-godkendte angribere mulighed for at optælle brugere, grupper, shares og domæneoplysninger. Disse rekognosceringsdata bruges til at planlægge angreb på legitimationsoplysninger og lateral bevægelse", "status": "machine-draft" },
+    "recommendedValue": { "value": "Optælling via null-session er deaktiveret; RestrictAnonymous og RestrictAnonymousSAM er indstillet til at forhindre anonym adgang", "status": "machine-draft" },
+    "remediationSteps": { "value": "Konfigurer via gruppepolitik: Computerkonfiguration > Politikker > Windows-indstillinger > Sikkerhedsindstillinger > Lokale politikker > Sikkerhedsindstillinger > indstil 'Netværksadgang: begræns anonym adgang til navngivne pipes og shares' = Aktiveret, 'Netværksadgang: tillad ikke anonym optælling af SAM-konti' = Aktiveret, 'Netværksadgang: tillad ikke anonym optælling af SAM-konti og shares' = Aktiveret", "status": "machine-draft" }
+  },
+  "ADDOM-019": {
+    "name": { "value": "Print Spooler på domænecontrollere", "status": "machine-draft" },
+    "description": { "value": "Tjenesten Print Spooler på domænecontrollere muliggør angrebene PrintNightmare (CVE-2021-34527) og SpoolSample/PrinterBug. En angriber kan fremtvinge, at en domænecontroller godkender sig over for en server, der styres af angriberen, hvilket muliggør relay af legitimationsoplysninger og misbrug af ubegrænset delegering", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tjenesten Print Spooler er deaktiveret på alle domænecontrollere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Deaktivér tjenesten Print Spooler på alle domænecontrollere via gruppepolitik: Computerkonfiguration > Politikker > Windows-indstillinger > Sikkerhedsindstillinger > Systemtjenester > Print Spooler > opstartstilstand = Deaktiveret. Anvend på OU'en Domain Controllers. Kontrollér, at ingen udskrivningsfunktionalitet afhænger af domænecontrollere", "status": "machine-draft" }
+  },
+  "ADDOM-020": {
+    "name": { "value": "Konfiguration af DSRM-adgangskode", "status": "machine-draft" },
+    "description": { "value": "Adgangskoden til Directory Services Restore Mode (DSRM) giver lokal administratoradgang til en domænecontroller, når den startes i gendannelsestilstand. En angriber med fysisk eller fjernadgang, der kender DSRM-adgangskoden, kan udtrække hele AD-databasen. DSRM-adgangskoden bør være unik pr. domænecontroller og udskiftes regelmæssigt", "status": "machine-draft" },
+    "recommendedValue": { "value": "DSRM-adgangskoden er unik pr. domænecontroller, udskiftes årligt og opbevares sikkert. DsrmAdminLogonBehavior er indstillet til 0 for at forhindre netværks-DSRM-logon", "status": "machine-draft" },
+    "remediationSteps": { "value": "Nulstil DSRM-adgangskoder med 'ntdsutil > set dsrm password' på hver domænecontroller. Indstil registreringsdatabaseværdien DsrmAdminLogonBehavior til 0 under HKLM\\System\\CurrentControlSet\\Control\\Lsa for at forhindre, at DSRM-kontoen bruges til netværkslogon. Dokumentér og opbevar adgangskoderne sikkert", "status": "machine-draft" }
+  }
+}
