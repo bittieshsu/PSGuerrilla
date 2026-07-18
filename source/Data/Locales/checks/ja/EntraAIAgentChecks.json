@@ -1,0 +1,27 @@
+{
+  "_family": "EntraAIAgentChecks.json",
+  "AIAGENT-001": {
+    "name": { "value": "Copilot エージェントが操作可能なユーザーを制限している (広範なアクセスなし)", "status": "machine-draft" },
+    "description": { "value": "アクセス制御ポリシーが 'Any' または 'Any multitenant' に設定された Copilot Studio エージェントは、テナント内の任意のユーザー、または任意のテナントのユーザーが制限なく操作できます。組織のデータやツールに接続されたエージェントにとって、これは認証されていないデータアクセスおよびプロンプトインジェクションの経路となります。このチェックは、アクセス制御が Any / Any multitenant に設定されたエージェントにフラグを立てます。エージェントのデータが収集されていない場合、結果は Not Assessed となります。エージェントが存在しないテナントは合格となります (統制すべき対象がないため)。", "status": "machine-draft" },
+    "recommendedValue": { "value": "公開されているエージェントで 'Any' または 'Any multitenant' のアクセス制御を使用しているものがない。アクセスは特定の認証済みユーザーまたはセキュリティグループに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Copilot Studio で、フラグが立てられた各エージェントの Security > Authentication and access settings を開き、アクセス制御を 'Any' / 'Any multitenant' から、組織 (理想的には特定のセキュリティグループ) に制限された認証済みアクセスに変更します。アクセスを厳格化した後、エージェントを再公開します。", "status": "machine-draft" }
+  },
+  "AIAGENT-002": {
+    "name": { "value": "Copilot エージェントが認証を必須としている", "status": "machine-draft" },
+    "description": { "value": "ユーザー認証の種類が 'None' の Copilot Studio エージェントは、匿名での操作を受け入れます。認証が 'As Needed' のみのエージェントは、認証を任意のままにします。いずれの場合も、組織のデータを表示したりツールを呼び出したりできるエージェントに、認証されていないユーザーが到達でき、悪用、データ流出、プロンプトインジェクションを可能にします。このチェックは、認証のないエージェントを FAIL とし、認証が必要に応じてのみトリガーされるエージェントを WARN とします。", "status": "machine-draft" },
+    "recommendedValue": { "value": "公開されているすべてのエージェントが認証を必須としている (ユーザー認証の種類が 'None' ではなく、認証が 'As Needed' ではなく常に強制されている)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Copilot Studio で、各エージェントの認証を 'No authentication' ではなくサインイン必須 (Microsoft Entra ID 認証) に設定し、認証が必要に応じてのみトリガーされるのではなく常に強制されるようにします。変更後に再公開します。", "status": "machine-draft" }
+  },
+  "AIAGENT-003": {
+    "name": { "value": "公開された Copilot エージェントが保守されている (休眠状態でない)", "status": "machine-draft" },
+    "description": { "value": "長期間変更されていない、公開された Copilot Studio エージェントは、誰もその構成、アクセス許可、接続されたツールを保守していない間も、機能とアクセスを露出し続けます。休眠状態の公開エージェントは、静かにリスクを蓄積します。このチェックは、最終更新が休眠のしきい値 (既定 90 日) を超えている公開エージェントに、レビューまたは廃止のためのフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "公開されているエージェントが積極的に保守されている。古くなった公開エージェントはレビューまたは廃止されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "休眠状態の各公開エージェントを確認します。不要になったエージェントは廃止し (公開を取り消して削除)、まだ使用中のエージェントについては、アクセス制御、認証、接続されたツールが依然として適切であることを確認したうえで更新し、保守のタイマーをリセットします。", "status": "machine-draft" }
+  },
+  "AIAGENT-004": {
+    "name": { "value": "Copilot エージェントのアクセスがセキュリティグループにスコープされている", "status": "machine-draft" },
+    "description": { "value": "承認されたセキュリティグループがない認証済みの Copilot Studio エージェントは、テナント内の任意の認証済みユーザーが到達できます。エージェントを特定のセキュリティグループにスコープすると、対象を業務上の必要性がある者に限定し、エージェントを呼び出せる人物とエージェントが仲介するデータに最小権限を適用します。このチェックは、承認されたセキュリティグループが構成されていない認証済みエージェントにフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "機密性の高いデータを仲介する認証済みエージェントは、すべての認証済みユーザーではなく、特定の承認されたセキュリティグループにスコープされている", "status": "machine-draft" },
+    "remediationSteps": { "value": "機密性の高いデータを仲介するエージェントについては、エージェントのアクセス設定で承認されたセキュリティグループを構成し、それらのグループのメンバーのみがエージェントを操作できるようにします。テナント全体へのアクセスは、意図的に全従業員を対象とするエージェントに限定します。", "status": "machine-draft" }
+  }
+}

@@ -1,0 +1,795 @@
+{
+  "_family": "EidscaChecks.json",
+  "EIDSCA-AP01": {
+    "name": {
+      "value": "EIDSCA AP01: 既定の承認設定: 管理者のセルフサービス パスワード リセットが有効",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AP01): Entra ID 承認ポリシーの'allowedToUseSSPR'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 承認ポリシーで'allowedToUseSSPR'を false に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AP01。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP04": {
+    "name": {
+      "value": "EIDSCA AP04: 既定の承認設定: ゲスト招待の制限",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AP04): Entra ID 承認ポリシーの'allowInvitesFrom'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "in adminsAndGuestInviters, none",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 承認ポリシーで'allowInvitesFrom'を adminsAndGuestInviters, none のいずれかに設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AP04。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP05": {
+    "name": {
+      "value": "EIDSCA AP05: 既定の承認設定: メールベースのサブスクリプションへのサインアップ",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AP05): Entra ID 承認ポリシーの'allowedToSignUpEmailBasedSubscriptions'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 承認ポリシーで'allowedToSignUpEmailBasedSubscriptions'を false に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AP05。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP06": {
+    "name": {
+      "value": "EIDSCA AP06: 既定の承認設定: ユーザーがメール検証によってテナントに参加可能",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AP06): Entra ID 承認ポリシーの'allowEmailVerifiedUsersToJoinOrganization'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 承認ポリシーで'allowEmailVerifiedUsersToJoinOrganization'を false に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AP06。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP07": {
+    "name": {
+      "value": "EIDSCA AP07: 既定の承認設定: ゲストユーザーのアクセス",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AP07): Entra ID 承認ポリシーの'guestUserRoleId'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq 2af84b1e-32c8-42b7-82bc-daa82404023b",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 承認ポリシーで'guestUserRoleId'を 2af84b1e-32c8-42b7-82bc-daa82404023b に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AP07。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP08": {
+    "name": {
+      "value": "EIDSCA AP08: 既定の承認設定: アプリケーションに割り当てられたユーザー同意ポリシー",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AP08): Entra ID 承認ポリシーの'permissionGrantPolicyIdsAssignedToDefaultUserRole'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "clike-any ManagePermissionGrantsForSelf",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 承認ポリシーで'permissionGrantPolicyIdsAssignedToDefaultUserRole'に ManagePermissionGrantsForSelf を含めます。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AP08。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP09": {
+    "name": {
+      "value": "EIDSCA AP09: 既定の承認設定: リスクベースのアプリに対するユーザー同意の許可",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AP09): Entra ID 承認ポリシーの'allowUserConsentForRiskyApps'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 承認ポリシーで'allowUserConsentForRiskyApps'を false に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AP09。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP10": {
+    "name": {
+      "value": "EIDSCA AP10: 既定の承認設定: 既定のユーザーロールのアクセス許可: アプリの作成を許可",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AP10): Entra ID 承認ポリシーの'defaultUserRolePermissions.allowedToCreateApps'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 承認ポリシーで'defaultUserRolePermissions.allowedToCreateApps'を false に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AP10。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP14": {
+    "name": {
+      "value": "EIDSCA AP14: 既定の承認設定: 既定のユーザーロールのアクセス許可: 他のユーザーの読み取りを許可",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AP14): Entra ID 承認ポリシーの'defaultUserRolePermissions.allowedToReadOtherUsers'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 承認ポリシーで'defaultUserRolePermissions.allowedToReadOtherUsers'を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AP14。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CP01": {
+    "name": {
+      "value": "EIDSCA CP01: 既定の設定: 同意ポリシー設定: データにアクセスするアプリへのグループ所有者の同意",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA CP01): Entra ID ディレクトリ (グループ) 設定の'EnableGroupSpecificConsent' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq False",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'EnableGroupSpecificConsent' 設定を False に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA CP01。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CP03": {
+    "name": {
+      "value": "EIDSCA CP03: 既定の設定: 同意ポリシー設定: リスクのあるアプリに対するユーザー同意のブロック",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA CP03): Entra ID ディレクトリ (グループ) 設定の'BlockUserConsentForRiskyApps' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'BlockUserConsentForRiskyApps' 設定を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA CP03。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CP04": {
+    "name": {
+      "value": "EIDSCA CP04: 既定の設定: 同意ポリシー設定: ユーザーが同意できないアプリについて管理者同意を要求可能",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA CP04): Entra ID ディレクトリ (グループ) 設定の'EnableAdminConsentRequests' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'EnableAdminConsentRequests' 設定を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA CP04。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR01": {
+    "name": {
+      "value": "EIDSCA PR01: 既定の設定: パスワードルール設定: パスワード保護: モード",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA PR01): Entra ID ディレクトリ (グループ) 設定の'BannedPasswordCheckOnPremisesMode' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq Enforce",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'BannedPasswordCheckOnPremisesMode' 設定を Enforce に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA PR01。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR02": {
+    "name": {
+      "value": "EIDSCA PR02: 既定の設定: パスワードルール設定: パスワード保護: Windows Server Active Directory でのパスワード保護を有効化",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA PR02): Entra ID ディレクトリ (グループ) 設定の'EnableBannedPasswordCheckOnPremises' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq True",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'EnableBannedPasswordCheckOnPremises' 設定を True に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA PR02。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR03": {
+    "name": {
+      "value": "EIDSCA PR03: 既定の設定: パスワードルール設定: カスタムリストの適用",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA PR03): Entra ID ディレクトリ (グループ) 設定の'EnableBannedPasswordCheck' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq True",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'EnableBannedPasswordCheck' 設定を True に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA PR03。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR05": {
+    "name": {
+      "value": "EIDSCA PR05: 既定の設定: パスワードルール設定: スマートロックアウト: ロックアウト期間 (秒)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA PR05): Entra ID ディレクトリ (グループ) 設定の'LockoutDurationInSeconds' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "ge 60",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'LockoutDurationInSeconds' 設定を 60 以上に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA PR05。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR06": {
+    "name": {
+      "value": "EIDSCA PR06: 既定の設定: パスワードルール設定: スマートロックアウト: ロックアウトのしきい値",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA PR06): Entra ID ディレクトリ (グループ) 設定の'LockoutThreshold' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "le 10",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'LockoutThreshold' 設定を 10 以下に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA PR06。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-ST08": {
+    "name": {
+      "value": "EIDSCA ST08: 既定の設定: 分類と M365 グループ: M365 グループ: ゲストがグループ所有者になることを許可",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA ST08): Entra ID ディレクトリ (グループ) 設定の'AllowGuestsToBeGroupOwner' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'AllowGuestsToBeGroupOwner' 設定を false に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA ST08。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-ST09": {
+    "name": {
+      "value": "EIDSCA ST09: 既定の設定: 分類と M365 グループ: M365 グループ: ゲストがグループのコンテンツにアクセスすることを許可",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA ST09): Entra ID ディレクトリ (グループ) 設定の'AllowGuestsToAccessGroups' 設定を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq True",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID ディレクトリ (グループ) 設定で'AllowGuestsToAccessGroups' 設定を True に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA ST09。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AG01": {
+    "name": {
+      "value": "EIDSCA AG01: 認証方法: 全般設定: 移行の管理",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AG01): Entra ID 認証方法ポリシーの'policyMigrationState'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "in migrationComplete, ",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 認証方法ポリシーで'policyMigrationState'を migrationComplete,  のいずれかに設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AG01。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AG02": {
+    "name": {
+      "value": "EIDSCA AG02: 認証方法: 全般設定: 不審なアクティビティの報告: 状態",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AG02): Entra ID 認証方法ポリシーの'reportSuspiciousActivitySettings.state'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 認証方法ポリシーで'reportSuspiciousActivitySettings.state'を enabled に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AG02。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AG03": {
+    "name": {
+      "value": "EIDSCA AG03: 認証方法: 全般設定: 不審なアクティビティの報告: 対象ユーザー/グループ",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AG03): Entra ID 認証方法ポリシーの'reportSuspiciousActivitySettings.includeTarget.id'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq all_users",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 認証方法ポリシーで'reportSuspiciousActivitySettings.includeTarget.id'を all_users に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AG03。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM01": {
+    "name": {
+      "value": "EIDSCA AM01: 認証方法: Microsoft Authenticator: 状態",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AM01): MicrosoftAuthenticator 認証方法の'state'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "MicrosoftAuthenticator 認証方法で'state'を enabled に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AM01。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM02": {
+    "name": {
+      "value": "EIDSCA AM02: 認証方法: Microsoft Authenticator: Microsoft Authenticator OTP の使用を許可",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AM02): MicrosoftAuthenticator 認証方法の'isSoftwareOathEnabled'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "MicrosoftAuthenticator 認証方法で'isSoftwareOathEnabled'を false に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AM02。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM03": {
+    "name": {
+      "value": "EIDSCA AM03: 認証方法: Microsoft Authenticator: プッシュ通知で番号照合を必須化",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AM03): MicrosoftAuthenticator 認証方法の'featureSettings.numberMatchingRequiredState.state'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "MicrosoftAuthenticator 認証方法で'featureSettings.numberMatchingRequiredState.state'を enabled に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AM03。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM04": {
+    "name": {
+      "value": "EIDSCA AM04: 認証方法: Microsoft Authenticator: プッシュ通知の番号照合の対象ユーザー/グループ",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AM04): MicrosoftAuthenticator 認証方法の'featureSettings.numberMatchingRequiredState.includeTarget.id'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq all_users",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "MicrosoftAuthenticator 認証方法で'featureSettings.numberMatchingRequiredState.includeTarget.id'を all_users に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AM04。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM06": {
+    "name": {
+      "value": "EIDSCA AM06: 認証方法: Microsoft Authenticator: プッシュ通知およびパスワードレス通知でアプリケーション名を表示",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AM06): MicrosoftAuthenticator 認証方法の'featureSettings.displayAppInformationRequiredState.state'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "MicrosoftAuthenticator 認証方法で'featureSettings.displayAppInformationRequiredState.state'を enabled に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AM06。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM07": {
+    "name": {
+      "value": "EIDSCA AM07: 認証方法: Microsoft Authenticator: プッシュ通知およびパスワードレス通知でアプリケーション名を表示する対象ユーザー/グループ",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AM07): MicrosoftAuthenticator 認証方法の'featureSettings.displayAppInformationRequiredState.includeTarget.id'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq all_users",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "MicrosoftAuthenticator 認証方法で'featureSettings.displayAppInformationRequiredState.includeTarget.id'を all_users に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AM07。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM09": {
+    "name": {
+      "value": "EIDSCA AM09: 認証方法: Microsoft Authenticator: プッシュ通知およびパスワードレス通知で地理的な場所を表示",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AM09): MicrosoftAuthenticator 認証方法の'featureSettings.displayLocationInformationRequiredState.state'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "MicrosoftAuthenticator 認証方法で'featureSettings.displayLocationInformationRequiredState.state'を enabled に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AM09。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM10": {
+    "name": {
+      "value": "EIDSCA AM10: 認証方法: Microsoft Authenticator: プッシュ通知およびパスワードレス通知で地理的な場所を表示する対象ユーザー/グループ",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AM10): MicrosoftAuthenticator 認証方法の'featureSettings.displayLocationInformationRequiredState.includeTarget.id'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq all_users",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "MicrosoftAuthenticator 認証方法で'featureSettings.displayLocationInformationRequiredState.includeTarget.id'を all_users に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AM10。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF01": {
+    "name": {
+      "value": "EIDSCA AF01: 認証方法: FIDO2 セキュリティ キー: 状態",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AF01): Fido2 認証方法の'state'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Fido2 認証方法で'state'を enabled に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AF01。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF02": {
+    "name": {
+      "value": "EIDSCA AF02: 認証方法: FIDO2 セキュリティ キー: セルフサービスでのセットアップを許可",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AF02): Fido2 認証方法の'isSelfServiceRegistrationAllowed'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Fido2 認証方法で'isSelfServiceRegistrationAllowed'を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AF02。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF03": {
+    "name": {
+      "value": "EIDSCA AF03: 認証方法: FIDO2 セキュリティ キー: 構成証明の適用",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AF03): Fido2 認証方法の'isAttestationEnforced'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Fido2 認証方法で'isAttestationEnforced'を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AF03。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF04": {
+    "name": {
+      "value": "EIDSCA AF04: 認証方法: FIDO2 セキュリティ キー: キー制限の適用",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AF04): Fido2 認証方法の'keyRestrictions.isEnforced'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Fido2 認証方法で'keyRestrictions.isEnforced'を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AF04。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF05": {
+    "name": {
+      "value": "EIDSCA AF05: 認証方法: FIDO2 セキュリティ キー: 制限あり",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AF05): Fido2 認証方法の'keyRestrictions.aaGuids'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "notempty ",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Fido2 認証方法の'keyRestrictions.aaGuids'が構成されている (空でない) ことを確認します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AF05。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF06": {
+    "name": {
+      "value": "EIDSCA AF06: 認証方法: FIDO2 セキュリティ キー: 特定のキーを制限",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AF06): Fido2 認証方法の'keyRestrictions'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "fido2-aaguid-enforced ",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Fido2 認証方法の'keyRestrictions'が AAGUID の許可/ブロック リストで強制されていることを確認します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AF06。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AT01": {
+    "name": {
+      "value": "EIDSCA AT01: 認証方法: 一時アクセス パス: 状態",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AT01): TemporaryAccessPass 認証方法の'state'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "TemporaryAccessPass 認証方法で'state'を enabled に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AT01。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AT02": {
+    "name": {
+      "value": "EIDSCA AT02: 認証方法: 一時アクセス パス: 1 回限りの使用",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AT02): TemporaryAccessPass 認証方法の'isUsableOnce'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "TemporaryAccessPass 認証方法で'isUsableOnce'を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AT02。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AV01": {
+    "name": {
+      "value": "EIDSCA AV01: 認証方法: 音声通話: 状態",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AV01): Voice 認証方法の'state'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq disabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Voice 認証方法で'state'を disabled に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AV01。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AS04": {
+    "name": {
+      "value": "EIDSCA AS04: 認証方法: SMS: サインインでの使用",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA AS04): Sms 認証方法の'includeTargets.isUsableForSignIn'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Sms 認証方法で'includeTargets.isUsableForSignIn'を false に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA AS04。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CR01": {
+    "name": {
+      "value": "EIDSCA CR01: 同意フレームワーク: 管理者同意要求: 管理者同意要求機能を有効または無効にするポリシー",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA CR01): Entra ID 管理者同意要求ポリシーの'isEnabled'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 管理者同意要求ポリシーで'isEnabled'を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA CR01。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CR02": {
+    "name": {
+      "value": "EIDSCA CR02: 同意フレームワーク: 管理者同意要求: レビュー担当者が要求に関するメール通知を受信",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA CR02): Entra ID 管理者同意要求ポリシーの'notifyReviewers'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 管理者同意要求ポリシーで'notifyReviewers'を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA CR02。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CR03": {
+    "name": {
+      "value": "EIDSCA CR03: 同意フレームワーク: 管理者同意要求: 管理者同意要求の期限が近づいたときにレビュー担当者がメール通知を受信",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA CR03): Entra ID 管理者同意要求ポリシーの'remindersEnabled'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 管理者同意要求ポリシーで'remindersEnabled'を true に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA CR03。)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CR04": {
+    "name": {
+      "value": "EIDSCA CR04: 同意フレームワーク: 管理者同意要求: 同意要求の期間 (日)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Entra ID セキュリティ構成コントロール (EIDSCA CR04): Entra ID 管理者同意要求ポリシーの'requestDurationInDays'を推奨されるセキュアな値と照合して評価します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "le 30",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Entra ID 管理者同意要求ポリシーで'requestDurationInDays'を 30 以下に設定します。(Entra ID セキュリティ構成ベースライン、コントロール EIDSCA CR04。)",
+      "status": "machine-draft"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "_family": "EntraAuthChecks.json",
+  "EIDAUTH-001": {
+    "name": { "value": "認証方法ポリシーの監査", "status": "machine-draft" },
+    "description": { "value": "認証方法ポリシーは、サインインおよび MFA のためにユーザーが利用できる方法を定義します。構成を誤ったポリシーは、脆弱な、あるいは非推奨の方法を許可し、攻撃対象領域を拡大する可能性があります。このチェックは、現在のポリシー状態を認められた Entra ID セキュリティベースラインと照合して監査します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "認証方法ポリシーがレビューされ、組織のセキュリティベースラインに沿っている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > Policies に移動します。有効化された各方法を確認し、組織で必要とされないものを無効にします。FIDO2 や Microsoft Authenticator などのフィッシング耐性のある方法を、SMS や音声通話よりも優先します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-002": {
+    "name": { "value": "全ユーザーの MFA 登録状況", "status": "machine-draft" },
+    "description": { "value": "窃取または推測された資格情報によるアカウント侵害を防ぐため、すべてのユーザーが多要素認証に登録されている必要があります。MFA が登録されていないアカウントは、パスワードスプレーやフィッシングを含む資格情報ベースの攻撃の主要な標的です。未登録のユーザーは、ID セキュリティ体制における重大なギャップとなります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "アクティブなユーザーの 100% が MFA に登録されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > User registration details から MFA 登録状況を確認します。すべてのユーザーに MFA を要求する条件付きアクセスポリシーを通じて MFA 登録を強制します。登録期限を設定し、未登録のユーザーに要件を周知します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-003": {
+    "name": { "value": "MFA 方法の分布分析", "status": "machine-draft" },
+    "description": { "value": "ユーザー全体にわたる MFA 方法の分布を把握することは、認証制御全体の強度を評価するのに役立ちます。組織は、SMS などの脆弱な方法に対して、FIDO2 や Authenticator プッシュなどのフィッシング耐性のある方法の採用状況を追跡する必要があります。この可視性により、ユーザーをより強力な方法へ移行させる的を絞ったキャンペーンが可能になります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "大多数のユーザーがフィッシング耐性のある MFA 方法 (FIDO2、Microsoft Authenticator、Windows Hello) に登録されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > User registration details から方法の分布を確認します。脆弱な方法のみに依存しているユーザーを特定し、移行計画を作成します。認証方法アクティビティレポートを使用して採用の進捗を追跡します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-004": {
+    "name": { "value": "SMS/音声 MFA 方法のみのユーザー", "status": "machine-draft" },
+    "description": { "value": "SMS または音声ベースの MFA のみに依存するユーザーは、攻撃者が携帯通信事業者をソーシャルエンジニアリングして被害者の電話番号を移管する SIM スワップ攻撃や、転送中の SMS メッセージを傍受する SS7 シグナリングプロトコル攻撃に対して脆弱です。これらの方法は、アプリベースやハードウェアトークンによる認証よりも大幅に弱い保護しか提供しません。組織はこれらのユーザーを特定し、フィッシング耐性のある方法へ移行させる必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "唯一の MFA 方法として SMS または音声のみに依存するユーザーがいない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > User registration details から SMS/音声 MFA のみのユーザーを特定します。これらのユーザーを Microsoft Authenticator または FIDO2 セキュリティキーへ移行させる計画を作成します。移行が完了した後、認証方法ポリシーで SMS/音声を許可された方法として無効にすることを検討します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-005": {
+    "name": { "value": "MFA 方法が登録されていないユーザー", "status": "machine-draft" },
+    "description": { "value": "登録された MFA 方法がないユーザーは MFA チャレンジを満たすことができず、重大なセキュリティギャップとなります。これらのアカウントは、パスワードスプレー、フィッシング、ブルートフォース攻撃を含む資格情報ベースの攻撃に完全にさらされています。すべてのアクティブなアカウントが少なくとも 1 つの MFA 方法を登録していることを保証するため、直ちに修復する必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "少なくとも 1 つの MFA 方法が登録されていないアクティブなユーザーがゼロである", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > User registration details からユーザー登録の詳細を照会し、方法がないユーザーを特定します。未登録のユーザーを対象とする条件付きアクセスポリシーを通じて MFA 登録を強制します。MFA 登録をブートストラップする必要があるユーザーを支援するために一時アクセスパスを使用します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-006": {
+    "name": { "value": "FIDO2 セキュリティキーのインベントリと監査", "status": "machine-draft" },
+    "description": { "value": "FIDO2 セキュリティキーはフィッシング耐性のある認証を提供しますが、ライフサイクル全体にわたってインベントリ化し管理する必要があります。追跡されていないキーは、退職した従業員に関連付けられたまま残ったり、検出されずに紛失したりする可能性があります。定期的な監査により、認可されたキーのみがアクティブで、現在のユーザーに適切に割り当てられていることを保証します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "登録されたすべての FIDO2 キーが、文書化された所有者の割り当てと定期的な構成証明レビューとともにインベントリ化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > FIDO2 security key から FIDO2 キーの登録を確認します。登録されたキーをハードウェア資産インベントリと相互参照し、退職したユーザーのキーを削除します。許可される AAGUID 値を承認済みのベンダーモデルに制限するキー登録ポリシーを実装します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-007": {
+    "name": { "value": "FIDO2 キーの ROCA 脆弱性チェック", "status": "machine-draft" },
+    "description": { "value": "ROCA (Return of Coppersmith's Attack) 脆弱性 (CVE-2017-15361) は、特定の FIDO2 セキュリティキーで使用される Infineon TPM ファームウェアの RSA キー生成に影響し、公開鍵から秘密鍵を復元できるようにします。影響を受けるキーは、因数分解可能な脆弱な RSA キーペアを生成し、認証資格情報のセキュリティを完全に損ないます。脆弱なファームウェアを持つキーは特定し、直ちに交換する必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "ROCA に対して脆弱な Infineon TPM ファームウェアを使用する FIDO2 キーが使用されていない", "status": "machine-draft" },
+    "remediationSteps": { "value": "AAGUID 値を既知の脆弱なモデルと照合して、Infineon TPM を使用する FIDO2 キーを特定します。ROCA 検出ツールを使用して登録済みのキーをテストし、脆弱性の状態を確認します。影響を受けるすべてのキーを、パッチ適用済みのファームウェアバージョンまたは代替ハードウェアに交換し、Entra ID で古いキーの登録を取り消します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-008": {
+    "name": { "value": "パスワードレス認証への準備状況", "status": "machine-draft" },
+    "description": { "value": "パスワードレス認証は、攻撃ベクトルとしてのパスワードを排除し、資格情報の窃取、フィッシング、パスワードスプレーのリスクを取り除きます。組織は、FIDO2、Windows Hello for Business、Microsoft Authenticator の電話サインインなどのパスワードレス方法を展開する準備状況を評価する必要があります。このチェックは、現在の方法の採用状況を評価し、パスワードレス展開を妨げるギャップを特定します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "組織にパスワードレス展開計画があり、少なくとも 50% のユーザーがパスワードレスサインイン可能である", "status": "machine-draft" },
+    "remediationSteps": { "value": "認証方法の登録を確認し、パスワードレス対応の方法を登録しているユーザーの数を把握します。認証方法ポリシーで FIDO2 および Microsoft Authenticator のパスワードレスサインインを有効にします。特権ユーザーと IT スタッフから始めて、より広範な組織へ拡大する段階的な展開計画を作成します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-009": {
+    "name": { "value": "Windows Hello for Business の構成", "status": "machine-draft" },
+    "description": { "value": "Windows Hello for Business は、デバイスの TPM に紐付けられた生体認証または PIN を使用して、フィッシング耐性のあるハードウェア裏付けの認証を提供します。構成を誤った WHfB の展開は、適切な TPM 構成証明なしに脆弱な便宜的 PIN にフォールバックし、セキュリティ保証を低下させる可能性があります。構成では、TPM 裏付けのキーと適切な生体認証ポリシーを強制する必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "TPM 要件が強制され、機密性の高いロールに対して多要素ロック解除が構成された状態で Windows Hello for Business が有効化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > Windows Hello for Business に移動します。この方法を有効にし、TPM 裏付けのキーを要求するようにキー制限を構成します。Intune を介して WHfB 構成プロファイルを展開し、管理対象デバイス全体で TPM 構成証明と PIN 複雑性の要件を強制します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-010": {
+    "name": { "value": "一時アクセスパス (TAP) ポリシーの監査", "status": "machine-draft" },
+    "description": { "value": "一時アクセスパスは、ユーザーをパスワードレス資格情報にオンボードするための期間限定のパスコードを可能にしますが、適切に制限されないとバックドアとして機能する可能性があります。有効期間が長い、あるいは再利用可能な設定で構成された TAP は、発行プロセスを侵害した攻撃者に悪用される可能性があります。TAP ポリシーでは、短い有効期間、1 回限りの使用制限を強制し、発行を認可された管理者に限定する必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "最大有効期間 1 時間、1 回限りの使用のみで、認可されたオンボーディング管理者に制限された状態で TAP が有効化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > Temporary Access Pass で TAP ポリシーを確認します。最小および最大の有効期間を実用的な最短の期間に設定し、1 回限りの使用を有効にします。ロールベースのアクセス制御を通じて、TAP の発行アクセス許可を限られた管理者に制限します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-011": {
+    "name": { "value": "セルフサービスパスワードリセット (SSPR) の構成", "status": "machine-draft" },
+    "description": { "value": "SSPR は、ヘルプデスクの介入なしにユーザーが自分のパスワードをリセットできるようにしますが、アカウント乗っ取りを防ぐために適切に構成する必要があります。脆弱な検証方法や不十分な必須方法で構成を誤った SSPR は、侵害された個人情報を使用して攻撃者がパスワードをリセットできるようにします。SSPR は、複数の強力な検証方法を要求し、すべてのユーザーに対して有効にする必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "リセットに少なくとも 2 つの認証方法を要求した状態で、すべてのユーザーに対して SSPR が有効化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Password reset > Properties に移動し、すべてのユーザーに対して SSPR を有効にします。リセットに必要な方法の数を 2 に設定します。Authentication methods で、モバイルアプリ通知、モバイルアプリコード、メールなどの強力な方法のみを許可し、秘密の質問を無効にします。", "status": "machine-draft" }
+  },
+  "EIDAUTH-012": {
+    "name": { "value": "SSPR の方法と要件", "status": "machine-draft" },
+    "description": { "value": "SSPR に許可される特定の方法と必要な数は、パスワードリセットプロセスのセキュリティに直接影響します。秘密の質問などの脆弱な方法を許可したり、単一の方法のみを要求したりすると、攻撃者がソーシャルエンジニアリングや OSINT を通じてパスワードをリセットする機会を生み出します。組織は、すべてのパスワードリセットに対して少なくとも 2 つの強力な方法を要求する必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "パスワードリセットに 2 つ以上の強力な認証方法が要求され、秘密の質問が無効化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Password reset > Authentication methods に移動します。必要な方法の数を 2 に設定し、許可される方法のリストから秘密の質問を削除します。強力な検証を確保するため、モバイルアプリ通知とモバイルアプリコードを主要な SSPR 方法として優先します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-013": {
+    "name": { "value": "パスワード保護 (禁止パスワード) の構成", "status": "machine-draft" },
+    "description": { "value": "Entra ID パスワード保護は、Microsoft が維持するグローバルな禁止パスワードリストと照合することで、ユーザーが一般的に侵害されたパスワードを選択するのを防ぎます。パスワード保護が有効になっていないと、ユーザーは既知の侵害データベースに現れるパスワードを選択でき、アカウントがパスワードスプレーや辞書攻撃に対して脆弱になります。この機能は、クラウドとオンプレミスの両方の環境で強制モードで有効にする必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "グローバルな禁止パスワードリストが有効な状態で、パスワード保護が強制 (Enforced) モードで有効化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > Password protection に移動します。モードを Enforced に設定し、グローバルな禁止パスワードリストが有効になっていることを確認します。オンプレミス Active Directory とのハイブリッド ID を使用している場合は、Entra ID パスワード保護のプロキシと DC エージェントを展開して、保護をオンプレミスのパスワード変更へ拡張します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-014": {
+    "name": { "value": "カスタム禁止パスワードリストの状態", "status": "machine-draft" },
+    "description": { "value": "グローバルな禁止パスワードリストに加えて、組織は、会社固有の用語、製品名、拠点、その他の容易に推測できるバリエーションを含むカスタム禁止パスワードリストを維持する必要があります。カスタムリストがないと、ユーザーは組織のコンテキストに基づくパスワードを選択する可能性があり、攻撃者は的を絞った攻撃を通じてこれを容易に推測できます。カスタムリストは最大 1000 エントリをサポートしており、定期的に更新する必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "会社名、製品、拠点、一般的なバリエーションを含む組織固有の用語で、カスタム禁止パスワードリストが有効化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > Password protection に移動します。カスタム禁止パスワードリストを有効にし、組織名、製品名、オフィスの拠点、よく使われる内部用語のエントリを追加します。パスワード監査で特定された新しい用語やパターンを含めるため、リストを四半期ごとに見直して更新します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-015": {
+    "name": { "value": "レガシー認証プロトコルの使用", "status": "machine-draft" },
+    "description": { "value": "POP3、IMAP4、SMTP AUTH、Exchange ActiveSync Basic を含むレガシー認証プロトコルは、最新の認証や MFA をサポートしておらず、攻撃者が窃取した資格情報を使用して MFA を完全に迂回できるようにします。これらのプロトコルは、傍受されやすい方法で資格情報を送信し、Microsoft 365 テナントに対するパスワードスプレー攻撃の主要なベクトルです。すべてのレガシー認証は、条件付きアクセスポリシーを通じてブロックする必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのレガシー認証プロトコルが条件付きアクセスを通じてブロックされ、サインインログでアクティブな使用が検出されない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Monitoring > Sign-in logs でクライアントアプリ (レガシープロトコル) でフィルターし、レガシー認証の使用を確認します。すべてのユーザーとすべてのクラウドアプリに対してレガシー認証をブロックする条件付きアクセスポリシーを作成します。ブロックされたサインイン試行を監視し、影響を受けるユーザーと連携して最新の認証クライアントへ移行します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-016": {
+    "name": { "value": "ROPC (リソース所有者パスワード資格情報) フローの有効化", "status": "machine-draft" },
+    "description": { "value": "リソース所有者パスワード資格情報 (ROPC) 認証フローは、ユーザー名とパスワードをトークンエンドポイントに直接送信し、多要素認証と条件付きアクセスポリシーを完全に迂回します。ROPC 付与タイプを使用するアプリケーションは、最新のセキュリティ制御で保護できない方法で資格情報を露出し、重大なセキュリティギャップとなります。ROPC は、補完的な制御を伴う絶対的な技術的要件がない限り、すべてのアプリケーションで無効にする必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのアプリケーション登録で ROPC フローが無効化されており、パスワード付与タイプを使用するアプリケーションがない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Applications > App registrations でアプリケーション登録を確認し、パブリッククライアントフローを許可するように構成されたアプリがないか確認します。ROPC を必要としないアプリケーションについては 'Allow public client flows' 設定を無効にします。ROPC を使用するアプリケーションを、PKCE を伴う認可コードやデバイスコードフローなど、サポートされている対話型フローへ移行します。", "status": "machine-draft" }
+  },
+  "EIDAUTH-017": {
+    "name": { "value": "ユーザーごとの MFA と条件付きアクセス MFA の競合検出", "status": "machine-draft" },
+    "description": { "value": "レガシーのユーザーごとの MFA 設定 (個々のユーザーレベルで有効化/強制) は、条件付きアクセスベースの MFA ポリシーと競合し、予測不能な認証動作を生み出す可能性があります。両方がアクティブな場合、どちらの仕組みが先に評価されるかによって、ユーザーは MFA プロンプトの重複、認証の失敗、あるいは一貫性のないポリシー適用を経験する可能性があります。組織は、一貫したポリシー適用を確保するため、完全に条件付きアクセスベースの MFA へ移行し、ユーザーごとの MFA 設定を無効にする必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのユーザーでユーザーごとの MFA が無効化されており、MFA が条件付きアクセスポリシーを通じてのみ強制されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Users > Per-user MFA からユーザーごとの MFA の状態を確認し、ユーザーごとの MFA が有効化または強制されているユーザーを特定します。ユーザーごとの MFA を無効にする前に、すべてのユーザーに MFA を強制する同等の条件付きアクセスポリシーを作成します。条件付きアクセス MFA のカバレッジが完了したことを確認した後、各ユーザーの状態を Disabled に設定してユーザーごとの MFA を無効にします。", "status": "machine-draft" }
+  },
+  "EIDAUTH-018": {
+    "name": { "value": "Microsoft Authenticator のログインコンテキスト (アプリケーション名と場所)", "status": "machine-draft" },
+    "description": { "value": "Microsoft Authenticator 認証方法が有効な場合、プッシュ通知およびパスワードレス通知にログインコンテキスト情報 (アプリケーション名と地理的な場所) を表示することで、ユーザーが自分で開始していない MFA プロンプトを認識し拒否するために必要な状況認識を得られます。このコンテキストがないと、ユーザーは MFA 疲労やリアルタイムのフィッシング攻撃の際に、攻撃者が開始したプッシュ要求を承認する可能性が大幅に高まります。この設定は、MicrosoftAuthenticator 方法の構成における displayAppInformationRequiredState および displayLocationInformationRequiredState の機能設定によって制御されます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Microsoft Authenticator が有効な場合、displayAppInformationRequiredState が有効 (アプリケーション名を表示) である。displayLocationInformationRequiredState も推奨される", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra ID > Protection > Authentication methods > Policies > Microsoft Authenticator に移動します。Configure タブで、'Show application name in push and passwordless notifications' をすべてのユーザーに対して Enabled に設定し、'Show geographic location in push and passwordless notifications' を有効にします。これは、Microsoft Authenticator が有効な場合にログインコンテキストを表示するように構成することを要求する SCuBA MS.AAD.3.3 を満たします。", "status": "machine-draft" }
+  }
+}
