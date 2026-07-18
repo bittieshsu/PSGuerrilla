@@ -1,0 +1,1476 @@
+{
+  "_language": {
+    "code": "pt",
+    "name": "Português"
+  },
+  "common": {
+    "domain": {
+      "value": "Domínio",
+      "status": "machine-draft"
+    },
+    "tenant": {
+      "value": "Inquilino",
+      "status": "machine-draft"
+    },
+    "generated": {
+      "value": "Gerado",
+      "status": "machine-draft"
+    },
+    "reportGenerated": {
+      "value": "Relatório gerado",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "{0} verificações avaliadas &middot; {1} aprovadas, {2} reprovadas, {3} avisos, {4} ignoradas",
+      "status": "machine-draft"
+    },
+    "summaryCounts": {
+      "value": "{0} verificações &middot; A:{1} R:{2} Av:{3}",
+      "status": "machine-draft"
+    },
+    "totalChecks": {
+      "value": "Total de verificações",
+      "status": "machine-draft"
+    },
+    "passed": {
+      "value": "Aprovadas",
+      "status": "machine-draft"
+    },
+    "failed": {
+      "value": "Reprovadas",
+      "status": "machine-draft"
+    },
+    "warnings": {
+      "value": "Avisos",
+      "status": "machine-draft"
+    },
+    "skipped": {
+      "value": "Ignoradas",
+      "status": "machine-draft"
+    },
+    "pass": {
+      "value": "Aprovada",
+      "status": "machine-draft"
+    },
+    "fail": {
+      "value": "Reprovada",
+      "status": "machine-draft"
+    },
+    "warn": {
+      "value": "Aviso",
+      "status": "machine-draft"
+    },
+    "skip": {
+      "value": "Ignorada",
+      "status": "machine-draft"
+    },
+    "passLabel": {
+      "value": "Aprovada:",
+      "status": "machine-draft"
+    },
+    "failLabel": {
+      "value": "Reprovada:",
+      "status": "machine-draft"
+    },
+    "warnLabel": {
+      "value": "Aviso:",
+      "status": "machine-draft"
+    },
+    "skipLabel": {
+      "value": "Ignorada:",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "Crítico",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "Alto",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "Médio",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "Baixo",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "Resumo executivo",
+      "status": "machine-draft"
+    },
+    "categoryBreakdown": {
+      "value": "Detalhamento por categoria",
+      "status": "machine-draft"
+    },
+    "categoryScores": {
+      "value": "Pontuações por categoria",
+      "status": "machine-draft"
+    },
+    "detailedByCategory": {
+      "value": "Constatações detalhadas por categoria",
+      "status": "machine-draft"
+    },
+    "complianceMapping": {
+      "value": "Mapeamento de conformidade",
+      "status": "machine-draft"
+    },
+    "complianceCrossReference": {
+      "value": "Referência cruzada de conformidade",
+      "status": "machine-draft"
+    },
+    "allFindings": {
+      "value": "Todas as constatações",
+      "status": "machine-draft"
+    },
+    "thId": {
+      "value": "ID",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "Gravidade",
+      "status": "machine-draft"
+    },
+    "thStatus": {
+      "value": "Estado",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "Categoria",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "Verificação",
+      "status": "machine-draft"
+    },
+    "thCheckName": {
+      "value": "Nome da verificação",
+      "status": "machine-draft"
+    },
+    "thCheckId": {
+      "value": "ID da verificação",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "Constatação",
+      "status": "machine-draft"
+    },
+    "thRemediation": {
+      "value": "Correção",
+      "status": "machine-draft"
+    },
+    "thCurrentValue": {
+      "value": "Valor atual",
+      "status": "machine-draft"
+    },
+    "thRecommended": {
+      "value": "Recomendado",
+      "status": "machine-draft"
+    },
+    "thRecommendedValue": {
+      "value": "Valor recomendado",
+      "status": "machine-draft"
+    },
+    "thRemediationSteps": {
+      "value": "Passos de correção",
+      "status": "machine-draft"
+    },
+    "thName": {
+      "value": "Nome",
+      "status": "machine-draft"
+    },
+    "thDescription": {
+      "value": "Descrição",
+      "status": "machine-draft"
+    },
+    "thPlatform": {
+      "value": "Plataforma",
+      "status": "machine-draft"
+    },
+    "thTimestamp": {
+      "value": "Data e hora",
+      "status": "machine-draft"
+    },
+    "thScore": {
+      "value": "Pontuação",
+      "status": "machine-draft"
+    },
+    "thLabel": {
+      "value": "Rótulo",
+      "status": "machine-draft"
+    },
+    "thDelta": {
+      "value": "Delta",
+      "status": "machine-draft"
+    },
+    "thProfile": {
+      "value": "Perfil",
+      "status": "machine-draft"
+    },
+    "thMitre": {
+      "value": "MITRE ATT&CK",
+      "status": "machine-draft"
+    },
+    "thNist": {
+      "value": "NIST SP 800-53",
+      "status": "machine-draft"
+    },
+    "thCisAd": {
+      "value": "CIS AD",
+      "status": "machine-draft"
+    },
+    "thCisBenchmark": {
+      "value": "CIS Benchmark",
+      "status": "machine-draft"
+    },
+    "thAnssi": {
+      "value": "ANSSI",
+      "status": "machine-draft"
+    },
+    "accepted": {
+      "value": "ACEITE",
+      "status": "machine-draft"
+    }
+  },
+  "sections": {
+    "affectedItems": {
+      "value": "Itens afetados",
+      "status": "machine-draft"
+    }
+  },
+  "maturity": {
+    "heading": {
+      "value": "Maturidade de segurança",
+      "status": "machine-draft"
+    },
+    "overall": {
+      "value": "Maturidade global: Nível {0} de 5 &middot; {1}",
+      "status": "machine-draft"
+    },
+    "anchorNote": {
+      "value": "O controlo não cumprido mais baixo determina a classificação (escala de tipo CMMI: 1 Inicial a 5 Otimizado), pelo que uma única exposição crítica limita a pontuação até ser resolvida.",
+      "status": "machine-draft"
+    },
+    "toReach": {
+      "value": "Para atingir o <strong>Nível {0}</strong>, trate:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "Categoria",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "Nível",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "Maturidade",
+      "status": "machine-draft"
+    },
+    "levelCell": {
+      "value": "Nível {0}",
+      "status": "machine-draft"
+    },
+    "na": {
+      "value": "n/d",
+      "status": "machine-draft"
+    }
+  },
+  "ioe": {
+    "heading": {
+      "value": "Indicadores de exposição",
+      "status": "machine-draft"
+    },
+    "note": {
+      "value": "{0} exposição(ões) aberta(s), ordenada(s) por gravidade e raio de impacto.",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "Crítico",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "Alto",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "Médio",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "Baixo",
+      "status": "machine-draft"
+    },
+    "affected": {
+      "value": "{0} afetado(s)",
+      "status": "machine-draft"
+    },
+    "warning": {
+      "value": "aviso",
+      "status": "machine-draft"
+    },
+    "more": {
+      "value": "+ {0} exposição(ões) adicional(ais) nas constatações detalhadas abaixo.",
+      "status": "machine-draft"
+    }
+  },
+  "attackpath": {
+    "heading": {
+      "value": "Caminhos de ataque ao Tier-0",
+      "status": "machine-draft"
+    },
+    "noneRan": {
+      "value": "Não foram encontrados caminhos de elevação para o Tier-0 no âmbito de ACL recolhido. As cadeias profundas de baixo privilégio exigem a recolha de ACL do domínio completo &middot; execute novamente com <code>-FullDomainAcl</code> para ampliar a cobertura.",
+      "status": "machine-draft"
+    },
+    "noneNotRun": {
+      "value": "A análise de caminhos de ataque não foi executada. Ative as categorias <code>ACLDelegation</code> + <code>PrivilegedAccounts</code> (ou <code>All</code>) e adicione <code>-FullDomainAcl</code> para cadeias transitivas profundas.",
+      "status": "machine-draft"
+    },
+    "summary": {
+      "value": "{0} caminho(s) de elevação a alcançar o Tier-0 &middot; {1} a partir de principais NÃO privilegiados (apresentados primeiro, risco mais elevado). Cada seta é um controlo ou uma aresta de pertença que um atacante pode percorrer.",
+      "status": "machine-draft"
+    },
+    "hop": {
+      "value": "salto",
+      "status": "machine-draft"
+    },
+    "hops": {
+      "value": "saltos",
+      "status": "machine-draft"
+    },
+    "nonPrivSource": {
+      "value": "origem não privilegiada",
+      "status": "machine-draft"
+    },
+    "privSource": {
+      "value": "origem já privilegiada",
+      "status": "machine-draft"
+    }
+  },
+  "cartography": {
+    "heading": {
+      "value": "Cartografia dos caminhos de ataque",
+      "status": "machine-draft"
+    },
+    "legend": {
+      "value": "Mapa visual das rotas de elevação para o Tier-0. <span style='color:var(--g-sev-critical)'>&#9873; Vermelho</span> = início não privilegiado, <span style='color:var(--g-sev-high)'>laranja</span> = já privilegiado, <span style='color:var(--g-accent)'>&#9733; azul</span> = objetivo Tier-0. Siga as setas da esquerda para a direita.",
+      "status": "machine-draft"
+    },
+    "showingFirst": {
+      "value": " A apresentar os primeiros {0} caminhos.",
+      "status": "machine-draft"
+    }
+  },
+  "comparison": {
+    "heading": {
+      "value": "O que mudou desde a última execução",
+      "status": "machine-draft"
+    },
+    "firstRun": {
+      "value": "Esta é a primeira execução registada neste âmbito. O histórico de execuções\ncomeça com o motor de comparação unificado desta versão, pelo que os ficheiros\nde delta anteriores não são lidos; a comparação começa com a sua próxima\navaliação, quando esta execução se tornar a base.",
+      "status": "machine-draft"
+    },
+    "previousRun": {
+      "value": "Execução anterior: {0}, versão do módulo {1}",
+      "status": "machine-draft"
+    },
+    "versionSkew": {
+      "value": " (esta execução: {0}; os catálogos de verificações diferem, pelo que as entradas NOVAS e RETIRADAS abaixo são esperadas)",
+      "status": "machine-draft"
+    },
+    "scoreLabel": {
+      "value": "Pontuação (agora {0}, antes {1})",
+      "status": "machine-draft"
+    },
+    "notAssessedLabel": {
+      "value": "Contagem de Não avaliados",
+      "status": "machine-draft"
+    },
+    "pillarsMoved": {
+      "value": "Pilares Zero Trust que se alteraram:",
+      "status": "machine-draft"
+    },
+    "newlyFailing": {
+      "value": "Novas reprovações",
+      "status": "machine-draft"
+    },
+    "lostVisibility": {
+      "value": "Visibilidade perdida (avaliado antes, Não avaliado agora)",
+      "status": "machine-draft"
+    },
+    "stillNotAssessed": {
+      "value": "Ainda não avaliado (às escuras nesta execução e na anterior)",
+      "status": "machine-draft"
+    },
+    "newlyPassing": {
+      "value": "Novas aprovações (correção confirmada)",
+      "status": "machine-draft"
+    },
+    "regressed": {
+      "value": "Regrediu para aviso",
+      "status": "machine-draft"
+    },
+    "improved": {
+      "value": "Melhorou para aviso (ainda não aprovado)",
+      "status": "machine-draft"
+    },
+    "restoredVisibility": {
+      "value": "Visibilidade restaurada",
+      "status": "machine-draft"
+    },
+    "newChecks": {
+      "value": "Novas verificações nesta execução (não é uma transição)",
+      "status": "machine-draft"
+    },
+    "retiredChecks": {
+      "value": "Verificações retiradas (presentes antes, ausentes agora; não é uma transição)",
+      "status": "machine-draft"
+    },
+    "noChange": {
+      "value": "Nenhum veredicto mudou desde a execução anterior. {0} verificações inalteradas.{1}",
+      "status": "machine-draft"
+    },
+    "unchanged": {
+      "value": "{0} verificações inalteradas.{1}",
+      "status": "machine-draft"
+    }
+  },
+  "filter": {
+    "status": {
+      "value": "Estado",
+      "status": "machine-draft"
+    },
+    "severity": {
+      "value": "Gravidade",
+      "status": "machine-draft"
+    },
+    "all": {
+      "value": "Todos",
+      "status": "machine-draft"
+    },
+    "searchPlaceholder": {
+      "value": "Pesquisar constatações (id, nome, valor)...",
+      "status": "machine-draft"
+    },
+    "empty": {
+      "value": "Nenhuma constatação corresponde ao filtro atual.",
+      "status": "machine-draft"
+    },
+    "platform": {
+      "value": "Plataforma",
+      "status": "machine-draft"
+    },
+    "showingAll": {
+      "value": "A apresentar todas as constatações",
+      "status": "machine-draft"
+    }
+  },
+  "ad": {
+    "title": {
+      "value": "Relatório do Active Directory",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Avaliação do Active Directory",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Relatório do Active Directory Guerrilla",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Pontuação da postura de segurança do Active Directory (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Auditoria do Active Directory",
+      "status": "machine-draft"
+    },
+    "verdict90": {
+      "value": "O ambiente Active Directory apresenta uma postura de segurança sólida, com um mínimo de constatações.",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "O ambiente AD apresenta uma boa postura de segurança, com algumas áreas que requerem atenção.",
+      "status": "machine-draft"
+    },
+    "verdict60": {
+      "value": "O ambiente AD apresenta uma postura de segurança razoável. Várias constatações importantes requerem correção.",
+      "status": "machine-draft"
+    },
+    "verdict40": {
+      "value": "O ambiente AD apresenta uma postura de segurança fraca. Múltiplas constatações críticas e de gravidade alta requerem atenção imediata.",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "O ambiente AD apresenta deficiências de segurança críticas. É necessária correção imediata para prevenir o comprometimento.",
+      "status": "machine-draft"
+    },
+    "sevSummary": {
+      "value": "Crítico: <strong>{0}</strong> &middot; Alto: <strong>{1}</strong> &middot;\n     Médio: <strong>{2}</strong> &middot; Baixo: <strong>{3}</strong>",
+      "status": "machine-draft"
+    },
+    "bloodhoundHeading": {
+      "value": "Exportação BloodHound",
+      "status": "machine-draft"
+    },
+    "bloodhoundExport": {
+      "value": "Uma exportação OpenGraph do grafo de ataque AD recolhido foi escrita em <code>{0}</code>.",
+      "status": "machine-draft"
+    },
+    "bloodhoundImport": {
+      "value": "Importe no BloodHound CE: <strong>Administration &rarr; File Ingest</strong> &rarr; carregue o ficheiro e, em seguida, execute as consultas de descoberta de caminhos integradas. Os nós são indexados por SID (sobrepõem-se aos dados nativos do SharpHound) e as arestas utilizam os tipos nativos do BloodHound.",
+      "status": "machine-draft"
+    },
+    "findingsByPriority": {
+      "value": "Constatações por prioridade",
+      "status": "machine-draft"
+    }
+  },
+  "entra": {
+    "title": {
+      "value": "Relatório Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Avaliação Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Relatório Entra ID / M365 Guerrilla",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Pontuação da postura de segurança Entra ID / Azure / M365 (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Auditoria Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "zeroTrust": {
+      "value": "Postura Zero Trust",
+      "status": "machine-draft"
+    },
+    "openInPortal": {
+      "value": "Abrir no portal de administração",
+      "status": "machine-draft"
+    }
+  },
+  "gws": {
+    "title": {
+      "value": "Relatório Google Workspace",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Avaliação Google Workspace",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Relatório Google Workspace Guerrilla",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Pontuação da postura de segurança Google Workspace (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Auditoria Google Workspace",
+      "status": "machine-draft"
+    },
+    "configChecksEvaluated": {
+      "value": "{0} verificações de configuração avaliadas",
+      "status": "machine-draft"
+    },
+    "verdictCrit": {
+      "value": "Ação imediata necessária. Foram detetadas {0} falha(s) de configuração de gravidade crítica que expõem o inquilino a risco significativo.",
+      "status": "machine-draft"
+    },
+    "verdictHigh": {
+      "value": "Correção recomendada. Foram identificadas {0} constatação(ões) de gravidade alta que devem ser tratadas prontamente.",
+      "status": "machine-draft"
+    },
+    "verdictMed": {
+      "value": "Monitorizar e melhorar. {0} constatação(ões) de gravidade média justificam revisão e reforço.",
+      "status": "machine-draft"
+    },
+    "verdictLow": {
+      "value": "Lacunas menores detetadas. {0} constatação(ões) de gravidade baixa presente(s). A postura global é sólida.",
+      "status": "machine-draft"
+    },
+    "verdictPass": {
+      "value": "Todas as verificações aprovadas. A configuração do inquilino cumpre as expetativas de segurança de base.",
+      "status": "machine-draft"
+    },
+    "assessmentLabel": {
+      "value": "Avaliação:",
+      "status": "machine-draft"
+    },
+    "scopeLabel": {
+      "value": "Âmbito:",
+      "status": "machine-draft"
+    },
+    "resultsLabel": {
+      "value": "Resultados:",
+      "status": "machine-draft"
+    },
+    "scope": {
+      "value": "{0} verificações de configuração em {1} categorias.",
+      "status": "machine-draft"
+    },
+    "results": {
+      "value": "{0} aprovadas, {1} reprovadas, {2} avisos, {3} ignoradas.",
+      "status": "machine-draft"
+    },
+    "criticalRequire": {
+      "value": "{0} constatação(ões) crítica(s) requerem correção imediata.",
+      "status": "machine-draft"
+    },
+    "priorityCritHigh": {
+      "value": "Constatações prioritárias &middot; Crítico &amp; Alto",
+      "status": "machine-draft"
+    },
+    "fixInConsole": {
+      "value": "Corrigir na consola de administração",
+      "status": "machine-draft"
+    },
+    "whyUnsafe": {
+      "value": "Porque é inseguro",
+      "status": "machine-draft"
+    },
+    "whyUnsafeDefault": {
+      "value": "Porque isto é inseguro",
+      "status": "machine-draft"
+    },
+    "whyUnsafeArticle": {
+      "value": "Porque isto é inseguro: {0}",
+      "status": "machine-draft"
+    }
+  },
+  "campaign": {
+    "title": {
+      "value": "Relatório de Campanha",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Avaliação unificada de Campanha",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Relatório de Campanha Guerrilla",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Auditoria unificada de Campanha",
+      "status": "machine-draft"
+    },
+    "subtitleLead": {
+      "value": "Avaliação unificada da postura de segurança",
+      "status": "machine-draft"
+    },
+    "subtitleChecks": {
+      "value": "{0} verificações em {1} plataformas ({2})",
+      "status": "machine-draft"
+    },
+    "scanId": {
+      "value": "ID da análise",
+      "status": "machine-draft"
+    },
+    "duration": {
+      "value": "Duração",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "Pontuação de campanha (0-100) &middot; avaliação ponderada de {0} verificações em {1} plataformas",
+      "status": "machine-draft"
+    },
+    "platformSummary": {
+      "value": "Resumo por plataforma",
+      "status": "machine-draft"
+    },
+    "categoryScoresByPlatform": {
+      "value": "Pontuações por categoria e por plataforma",
+      "status": "machine-draft"
+    },
+    "checksWord": {
+      "value": "verificações",
+      "status": "machine-draft"
+    },
+    "categoriesWord": {
+      "value": "categorias",
+      "status": "machine-draft"
+    },
+    "unknown": {
+      "value": "Desconhecido",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "Descrição",
+      "status": "machine-draft"
+    },
+    "affectedEntities": {
+      "value": "Entidades afetadas",
+      "status": "machine-draft"
+    },
+    "currentValueLabel": {
+      "value": "Valor atual",
+      "status": "machine-draft"
+    },
+    "recommendedValueLabel": {
+      "value": "Valor recomendado",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "Passos de correção",
+      "status": "machine-draft"
+    },
+    "remediationUrlLabel": {
+      "value": "URL de correção",
+      "status": "machine-draft"
+    },
+    "complianceMappingsLabel": {
+      "value": "Mapeamentos de conformidade",
+      "status": "machine-draft"
+    },
+    "showingAllFindings": {
+      "value": "A apresentar todas as {0} constatações",
+      "status": "machine-draft"
+    },
+    "showingSome": {
+      "value": "A apresentar {0} de {1} constatações",
+      "status": "machine-draft"
+    }
+  },
+  "technical": {
+    "title": {
+      "value": "Relatório técnico de avaliação de segurança",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Relatório técnico",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Relatório técnico de segurança",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Relatório técnico",
+      "status": "machine-draft"
+    },
+    "thTotal": {
+      "value": "Total",
+      "status": "machine-draft"
+    },
+    "detailedFindings": {
+      "value": "Constatações detalhadas ({0})",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "Descrição",
+      "status": "machine-draft"
+    },
+    "recommendedLabel": {
+      "value": "Recomendado",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "Passos de correção",
+      "status": "machine-draft"
+    },
+    "referenceLabel": {
+      "value": "Referência",
+      "status": "machine-draft"
+    },
+    "riskAcceptanceLabel": {
+      "value": "Aceitação do risco",
+      "status": "machine-draft"
+    },
+    "acceptedBy": {
+      "value": "Aceite por {0} &middot; {1}",
+      "status": "machine-draft"
+    },
+    "complianceLabel": {
+      "value": "Conformidade",
+      "status": "machine-draft"
+    },
+    "noFindings": {
+      "value": "Nenhuma constatação de auditoria disponível. Execute primeiro uma análise.",
+      "status": "machine-draft"
+    }
+  },
+  "exec": {
+    "title": {
+      "value": "Síntese executiva de segurança",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Resumo executivo",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Síntese executiva Guerrilla",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Resumo executivo",
+      "status": "machine-draft"
+    },
+    "profileSuffix": {
+      "value": "Perfil",
+      "status": "machine-draft"
+    },
+    "securityPosture": {
+      "value": "Postura de segurança: {0}",
+      "status": "machine-draft"
+    },
+    "verdictNoScore": {
+      "value": "Não foi possível calcular qualquer pontuação a partir das constatações disponíveis. Execute uma análise para estabelecer uma base.",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "A sua organização dispõe de uma base de segurança sólida. Continue a monitorização e trate as lacunas restantes.",
+      "status": "machine-draft"
+    },
+    "verdict50": {
+      "value": "A sua postura de segurança tem margem para melhorar. Recomenda-se ação prioritária sobre as constatações críticas.",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "Atenção imediata necessária. Lacunas de segurança críticas expõem a sua organização a risco elevado.",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "Taxa de aprovação",
+      "status": "machine-draft"
+    },
+    "criticalIssues": {
+      "value": "Problemas críticos",
+      "status": "machine-draft"
+    },
+    "highIssues": {
+      "value": "Problemas altos",
+      "status": "machine-draft"
+    },
+    "maturityStat": {
+      "value": "Maturidade ({0})",
+      "status": "machine-draft"
+    },
+    "maturityHeading": {
+      "value": "Maturidade de segurança",
+      "status": "machine-draft"
+    },
+    "maturityOverall": {
+      "value": "Maturidade global: <strong style=\"color:{0}\">Nível {1} de 5: {2}</strong>. O controlo não cumprido mais baixo determina a classificação, pelo que uma única exposição crítica limita a pontuação até ser resolvida (escala de tipo CMMI: 1 Inicial a 5 Otimizado).",
+      "status": "machine-draft"
+    },
+    "maturityToReach": {
+      "value": "Para atingir o <strong>Nível {0}</strong>, trate:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "Categoria",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "Nível",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "Maturidade",
+      "status": "machine-draft"
+    },
+    "matLevelCell": {
+      "value": "Nível {0}",
+      "status": "machine-draft"
+    },
+    "keyFindings": {
+      "value": "Constatações-chave que requerem atenção",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "Impacto na conformidade",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "Os seguintes referenciais de conformidade identificaram lacunas:",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "{0} lacuna(s)",
+      "status": "machine-draft"
+    },
+    "quickWins": {
+      "value": "Ganhos rápidos recomendados (sem custo)",
+      "status": "machine-draft"
+    },
+    "quickWinsIntro": {
+      "value": "Estas ações podem ser concluídas sem custo utilizando as ferramentas existentes:",
+      "status": "machine-draft"
+    },
+    "quickWinItem": {
+      "value": "({0}, ~{1}h de esforço)",
+      "status": "machine-draft"
+    },
+    "nextSteps": {
+      "value": "Próximos passos",
+      "status": "machine-draft"
+    },
+    "nextStep1": {
+      "value": "Trate imediatamente as constatações críticas &middot; representam o risco mais elevado para a sua organização.",
+      "status": "machine-draft"
+    },
+    "nextStep2": {
+      "value": "Implemente os ganhos rápidos acima para melhorar a sua pontuação de segurança com esforço mínimo.",
+      "status": "machine-draft"
+    },
+    "nextStep3": {
+      "value": "Consulte o relatório técnico detalhado para orientações de correção completas.",
+      "status": "machine-draft"
+    },
+    "nextStep4": {
+      "value": "Agende uma análise de acompanhamento em 30 dias para medir a melhoria.",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "Este relatório fornece uma avaliação de segurança pontual para fins de planeamento interno. As constatações devem ser validadas e corrigidas de acordo com a tolerância ao risco da organização.",
+      "status": "machine-draft"
+    }
+  },
+  "playbook": {
+    "title": {
+      "value": "Guia de correção",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Guia de correção",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guia de correção Guerrilla",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Guia de correção",
+      "status": "machine-draft"
+    },
+    "subtitle": {
+      "value": "{0} item(ns) acionável(eis) &middot; Custo máximo: {1}",
+      "status": "machine-draft"
+    },
+    "phase1": {
+      "value": "Fase 1: Correções críticas",
+      "status": "machine-draft"
+    },
+    "phase2": {
+      "value": "Fase 2: Prioridade alta",
+      "status": "machine-draft"
+    },
+    "phase3": {
+      "value": "Fase 3: Prioridade média",
+      "status": "machine-draft"
+    },
+    "phase4": {
+      "value": "Fase 4: Prioridade baixa",
+      "status": "machine-draft"
+    },
+    "phaseItems": {
+      "value": "{0} ({1} itens)",
+      "status": "machine-draft"
+    },
+    "idLabel": {
+      "value": "ID:",
+      "status": "machine-draft"
+    },
+    "costLabel": {
+      "value": "Custo:",
+      "status": "machine-draft"
+    },
+    "effortLabel": {
+      "value": "Esforço:",
+      "status": "machine-draft"
+    },
+    "categoryLabel": {
+      "value": "Categoria:",
+      "status": "machine-draft"
+    },
+    "stepsLabel": {
+      "value": "Passos:",
+      "status": "machine-draft"
+    },
+    "targetLabel": {
+      "value": "Alvo:",
+      "status": "machine-draft"
+    },
+    "noteLabel": {
+      "value": "Nota:",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "Reveja cada passo de correção antes de o implementar. Teste primeiro as alterações num ambiente fora de produção.",
+      "status": "machine-draft"
+    }
+  },
+  "budget": {
+    "title": {
+      "value": "Justificação do orçamento de segurança",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Justificação do orçamento",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Justificação do orçamento Guerrilla",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Justificação do orçamento",
+      "status": "machine-draft"
+    },
+    "profileLabel": {
+      "value": "Perfil",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "Resumo executivo",
+      "status": "machine-draft"
+    },
+    "guerrillaScore": {
+      "value": "Pontuação Guerrilla",
+      "status": "machine-draft"
+    },
+    "criticalFailures": {
+      "value": "Falhas críticas",
+      "status": "machine-draft"
+    },
+    "highFailures": {
+      "value": "Falhas altas",
+      "status": "machine-draft"
+    },
+    "totalChecksBreakdown": {
+      "value": "Total de verificações ({0} aprovadas / {1} reprovadas / {2} avisos)",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "Impacto na conformidade",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "Os seguintes referenciais de conformidade apresentam lacunas com base nas constatações de auditoria atuais:",
+      "status": "machine-draft"
+    },
+    "thFramework": {
+      "value": "Referencial",
+      "status": "machine-draft"
+    },
+    "thGapsFound": {
+      "value": "Lacunas encontradas",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "{0} lacuna(s)",
+      "status": "machine-draft"
+    },
+    "investmentPhases": {
+      "value": "Fases de investimento recomendadas",
+      "status": "machine-draft"
+    },
+    "phase1Title": {
+      "value": "Fase 1: Ganhos rápidos (sem custo)",
+      "status": "machine-draft"
+    },
+    "phase1Desc": {
+      "value": "Alterações de configuração com as ferramentas existentes &middot; maior retorno do investimento, melhoria de segurança imediata.",
+      "status": "machine-draft"
+    },
+    "phase2Title": {
+      "value": "Fase 2: Melhorias de baixo custo",
+      "status": "machine-draft"
+    },
+    "phase2Desc": {
+      "value": "Compras menores ou complementos de licença dentro do orçamento existente.",
+      "status": "machine-draft"
+    },
+    "phase3Title": {
+      "value": "Fase 3: Investimento moderado",
+      "status": "machine-draft"
+    },
+    "phase3Desc": {
+      "value": "Atualizações de licença ou produtos complementares para capacidades de segurança reforçadas.",
+      "status": "machine-draft"
+    },
+    "phase4Title": {
+      "value": "Fase 4: Investimento estratégico",
+      "status": "machine-draft"
+    },
+    "phase4Desc": {
+      "value": "Compras importantes ou alterações de infraestrutura para melhorar a postura de segurança a longo prazo.",
+      "status": "machine-draft"
+    },
+    "phase4Body": {
+      "value": "<strong>{0} item(ns)</strong> identificado(s) que requerem investimento significativo. Contacte o seu consultor de segurança para um dimensionamento detalhado.",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "Verificação",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "Constatação",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "Gravidade",
+      "status": "machine-draft"
+    },
+    "thEffort": {
+      "value": "Esforço",
+      "status": "machine-draft"
+    },
+    "thTime": {
+      "value": "Tempo",
+      "status": "machine-draft"
+    },
+    "actions": {
+      "value": "{0} ação(ões)",
+      "status": "machine-draft"
+    },
+    "estimatedEffort": {
+      "value": "Esforço total estimado: {0} horas",
+      "status": "machine-draft"
+    },
+    "noFree": {
+      "value": "Nenhuma correção gratuita identificada.",
+      "status": "machine-draft"
+    },
+    "noLow": {
+      "value": "Nenhuma correção de baixo custo identificada.",
+      "status": "machine-draft"
+    },
+    "noMed": {
+      "value": "Nenhuma correção de custo médio identificada.",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "Este relatório destina-se a fins de planeamento interno.",
+      "status": "machine-draft"
+    }
+  },
+  "dashboard": {
+    "title": {
+      "value": "Painel de segurança",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Painel",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Painel de segurança",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Painel unificado",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "Pontuação Guerrilla (0-100)",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "{0} verificações avaliadas &middot; {1} aprovadas, {2} reprovadas, {3} avisos",
+      "status": "machine-draft"
+    },
+    "scoreComponents": {
+      "value": "Componentes da pontuação",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "Taxa de aprovação",
+      "status": "machine-draft"
+    },
+    "failures": {
+      "value": "Falhas",
+      "status": "machine-draft"
+    },
+    "platformOverview": {
+      "value": "Visão geral das plataformas",
+      "status": "machine-draft"
+    },
+    "checks": {
+      "value": "Verificações: {0}",
+      "status": "machine-draft"
+    },
+    "failuresLabel": {
+      "value": "Falhas: {0}",
+      "status": "machine-draft"
+    },
+    "notScanned": {
+      "value": "Não analisado",
+      "status": "machine-draft"
+    },
+    "topFindings": {
+      "value": "Principais constatações",
+      "status": "machine-draft"
+    },
+    "showingTop50": {
+      "value": "A apresentar as 50 principais constatações. Consulte os relatórios detalhados para a lista completa.",
+      "status": "machine-draft"
+    },
+    "posture": {
+      "value": "Postura",
+      "status": "machine-draft"
+    },
+    "threats": {
+      "value": "Ameaças",
+      "status": "machine-draft"
+    },
+    "coverage": {
+      "value": "Cobertura",
+      "status": "machine-draft"
+    },
+    "trend": {
+      "value": "Tendência",
+      "status": "machine-draft"
+    }
+  },
+  "trend": {
+    "title": {
+      "value": "Relatório de tendência de segurança",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Tendência da pontuação",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Relatório de tendência de segurança",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Tendência da pontuação",
+      "status": "machine-draft"
+    },
+    "scansCount": {
+      "value": "{0} análise(s)",
+      "status": "machine-draft"
+    },
+    "currentScore": {
+      "value": "Pontuação atual",
+      "status": "machine-draft"
+    },
+    "averageScore": {
+      "value": "Pontuação média",
+      "status": "machine-draft"
+    },
+    "trendLabel": {
+      "value": "Tendência ({0})",
+      "status": "machine-draft"
+    },
+    "improving": {
+      "value": "A melhorar",
+      "status": "machine-draft"
+    },
+    "declining": {
+      "value": "Em declínio",
+      "status": "machine-draft"
+    },
+    "stable": {
+      "value": "Estável",
+      "status": "machine-draft"
+    },
+    "highestLowest": {
+      "value": "Mais alta / Mais baixa",
+      "status": "machine-draft"
+    },
+    "scoreHistory": {
+      "value": "Histórico de pontuações",
+      "status": "machine-draft"
+    },
+    "scanLog": {
+      "value": "Registo de análises",
+      "status": "machine-draft"
+    },
+    "defaultProfile": {
+      "value": "Predefinido",
+      "status": "machine-draft"
+    }
+  },
+  "category": {
+    "adacldelegation": {
+      "value": "ACL e delegação AD",
+      "status": "machine-draft"
+    },
+    "adadversarytradecraftindicators": {
+      "value": "Indicadores de técnicas de adversários AD",
+      "status": "machine-draft"
+    },
+    "adcertificateservices": {
+      "value": "Serviços de certificados AD",
+      "status": "machine-draft"
+    },
+    "addomainforestconfiguration": {
+      "value": "Configuração de domínio e floresta AD",
+      "status": "machine-draft"
+    },
+    "adgrouppolicy": {
+      "value": "Política de grupo AD",
+      "status": "machine-draft"
+    },
+    "adkerberossecurity": {
+      "value": "Segurança Kerberos AD",
+      "status": "machine-draft"
+    },
+    "adloggingedrposture": {
+      "value": "Registo e postura EDR AD",
+      "status": "machine-draft"
+    },
+    "adlogonscriptsnetworkshares": {
+      "value": "Scripts de início de sessão e partilhas de rede AD",
+      "status": "machine-draft"
+    },
+    "adnetworkrelaypreconditions": {
+      "value": "Pré-condições de rede e de relé AD",
+      "status": "machine-draft"
+    },
+    "adpasswordlockoutpolicies": {
+      "value": "Políticas de palavra-passe e bloqueio AD",
+      "status": "machine-draft"
+    },
+    "adprivilegedaccountsecurity": {
+      "value": "Segurança de contas privilegiadas AD",
+      "status": "machine-draft"
+    },
+    "adstaleobsoleteobjects": {
+      "value": "Objetos desatualizados e obsoletos AD",
+      "status": "machine-draft"
+    },
+    "adtrustrelationships": {
+      "value": "Relações de confiança AD",
+      "status": "machine-draft"
+    },
+    "adminusermanagement": {
+      "value": "Gestão de administradores e utilizadores",
+      "status": "machine-draft"
+    },
+    "adversarytradecraft": {
+      "value": "Técnicas de adversários",
+      "status": "machine-draft"
+    },
+    "attackpaths": {
+      "value": "Caminhos de ataque",
+      "status": "machine-draft"
+    },
+    "authenticationaccesscontrols": {
+      "value": "Autenticação e controlos de acesso",
+      "status": "machine-draft"
+    },
+    "azureiamresourcesecurity": {
+      "value": "IAM Azure e segurança de recursos",
+      "status": "machine-draft"
+    },
+    "collaborationcommunicationsecurity": {
+      "value": "Segurança de colaboração e comunicação",
+      "status": "machine-draft"
+    },
+    "copilotstudioaiagentgovernance": {
+      "value": "Governação de agentes de IA do Copilot Studio",
+      "status": "machine-draft"
+    },
+    "defenderforoffice365": {
+      "value": "Defender para Office 365",
+      "status": "machine-draft"
+    },
+    "deviceendpointmanagement": {
+      "value": "Gestão de dispositivos e pontos finais",
+      "status": "machine-draft"
+    },
+    "drivesecuritydataprotection": {
+      "value": "Segurança do Drive e proteção de dados",
+      "status": "machine-draft"
+    },
+    "eidscabaseline": {
+      "value": "Referencial EIDSCA",
+      "status": "machine-draft"
+    },
+    "emailsecurity": {
+      "value": "Segurança do correio eletrónico",
+      "status": "machine-draft"
+    },
+    "entraidapplicationserviceprincipalsecurity": {
+      "value": "Segurança de aplicações e principais de serviço Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidauthenticationmethodsmfa": {
+      "value": "Métodos de autenticação e MFA Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidconditionalaccess": {
+      "value": "Acesso condicional Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidfederationhybrididentity": {
+      "value": "Federação e identidade híbrida Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidgovernance": {
+      "value": "Governação Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidprivilegedidentitymanagement": {
+      "value": "Gestão de identidades privilegiadas Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidtenantconfiguration": {
+      "value": "Configuração do inquilino Entra ID",
+      "status": "machine-draft"
+    },
+    "exchangeonlinesecurity": {
+      "value": "Segurança Exchange Online",
+      "status": "machine-draft"
+    },
+    "intuneendpointmanagement": {
+      "value": "Intune / Gestão de pontos finais",
+      "status": "machine-draft"
+    },
+    "k12baseline": {
+      "value": "Referencial K12",
+      "status": "machine-draft"
+    },
+    "loggingalertingmonitoring": {
+      "value": "Registo, alertas e monitorização",
+      "status": "machine-draft"
+    },
+    "microsoftteamssecurity": {
+      "value": "Segurança do Microsoft Teams",
+      "status": "machine-draft"
+    },
+    "oauthapisecurity": {
+      "value": "Segurança OAuth e API",
+      "status": "machine-draft"
+    },
+    "powerplatformsecurity": {
+      "value": "Segurança da Power Platform",
+      "status": "machine-draft"
+    },
+    "sharepointonedrivesecurity": {
+      "value": "Segurança do SharePoint e OneDrive",
+      "status": "machine-draft"
+    },
+    "tier0hygienehybrididentitysurface": {
+      "value": "Higiene Tier-0 e superfície de identidade híbrida",
+      "status": "machine-draft"
+    },
+    "unifiedauditlogging": {
+      "value": "Auditoria e registo unificados",
+      "status": "machine-draft"
+    },
+    "workspaceservicesecuritysitesclassroomgemini": {
+      "value": "Segurança dos serviços Workspace (Sites / Classroom / Gemini)",
+      "status": "machine-draft"
+    }
+  }
+}
