@@ -1,0 +1,183 @@
+{
+  "_family": "ADPrivilegedAccountChecks.json",
+  "ADPRIV-001": {
+    "name": { "value": "מניית Domain Admins", "status": "machine-draft" },
+    "description": { "value": "קבוצת Domain Admins מספקת שליטה מנהלתית מלאה על כל המערכות המצורפות לדומיין. יש להגביל את החברות בה באופן מחמיר, ולכל חבר חייבת להיות הצדקה עסקית מתועדת. חברות עודפת מגדילה באופן דרמטי את משטח ההתקפה לגניבת פרטי הזדהות ולתנועה רוחבית", "status": "machine-draft" },
+    "recommendedValue": { "value": "חברות מזערית (רצוי 2 עד 3 חשבונות לכל היותר) עם הצדקה מתועדת לכל חבר. אין חשבונות משתמש לשימוש יומיומי", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את חברות Domain Admins כולל קבוצות מקוננות באמצעות Get-ADGroupMember -Identity 'Domain Admins' -Recursive. בחן כל חבר מבחינת צורך עסקי. הסר חברים מיותרים ועבור למודלים של ניהול מואצל. ודא שאין חשבונות משתמש רגילים בין החברים", "status": "machine-draft" }
+  },
+  "ADPRIV-002": {
+    "name": { "value": "מניית Enterprise Admins", "status": "machine-draft" },
+    "description": { "value": "לקבוצת Enterprise Admins יש הרשאות מנהלתיות בהיקף כל היער על פני כל הדומיינים. קבוצה זו צריכה להיות ריקה בתפעול רגיל ולהתאכלס באופן זמני בלבד לצורך שינויים ברמת היער. חשבון Enterprise Admin שנפרץ מוביל לפריצה מלאה של היער", "status": "machine-draft" },
+    "recommendedValue": { "value": "ריקה בתפעול רגיל. חברים מתווספים באופן זמני בלבד לצורך שינויים ברמת היער עם אישור מתועד", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את חברות Enterprise Admins באמצעות Get-ADGroupMember -Identity 'Enterprise Admins' -Recursive. הסר את כל החברים הקבועים. הטמע תהליך גישה בזמן אמת (just-in-time) עבור פעולות ברמת היער המוסיף ומסיר חברים באופן זמני עם רישום ביקורת מלא", "status": "machine-draft" }
+  },
+  "ADPRIV-003": {
+    "name": { "value": "מניית Schema Admins", "status": "machine-draft" },
+    "description": { "value": "קבוצת Schema Admins יכולה לשנות את סכימת ה-AD, פעולה בלתי הפיכה המשפיעה על כל היער. קבוצה זו צריכה להיות ריקה בתפעול רגיל משום ששינויי סכימה נדירים ובעלי השפעה גבוהה", "status": "machine-draft" },
+    "recommendedValue": { "value": "ריקה בתפעול רגיל. חברים מתווספים באופן זמני בלבד לצורך שינויי סכימה עם אישור ניהול שינויים", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את חברות Schema Admins באמצעות Get-ADGroupMember -Identity 'Schema Admins'. הסר את כל החברים הקבועים. הוסף חברים רק כאשר נדרשים שינויי סכימה, דרך תהליך ניהול שינויים רשמי", "status": "machine-draft" }
+  },
+  "ADPRIV-004": {
+    "name": { "value": "מניית Account Operators", "status": "machine-draft" },
+    "description": { "value": "חברי Account Operators יכולים ליצור ולשנות את רוב חשבונות המשתמש והקבוצה בדומיין, לרבות יצירת חשבונות ב-OU מורשים. קבוצה זו נעלמת לעתים קרובות מהעין אך מספקת פוטנציאל משמעותי להסלמת הרשאות", "status": "machine-draft" },
+    "recommendedValue": { "value": "ריקה. השתמש בהרשאות מואצלות ברמת OU במקום חברות בקבוצת Account Operators", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את חברות Account Operators באמצעות Get-ADGroupMember -Identity 'Account Operators'. הסר את כל החברים והחלף באצילה בהיקף OU באמצעות אשף Delegation of Control של Active Directory. תעד את כל ההרשאות המואצלות", "status": "machine-draft" }
+  },
+  "ADPRIV-005": {
+    "name": { "value": "מניית Server Operators", "status": "machine-draft" },
+    "description": { "value": "חברי Server Operators יכולים להיכנס לבקרי דומיין, לנהל שירותים ולשנות משאבים משותפים. ניתן לנצל קבוצה זו להסלמת הרשאות בבקרי דומיין על ידי מניפולציה של שירותים כדי להריץ קוד שרירותי בהקשר SYSTEM", "status": "machine-draft" },
+    "recommendedValue": { "value": "ריקה. השתמש במקום זאת בחשבונות ניהול שירות ייעודיים עם אצילה ספציפית", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את חברות Server Operators באמצעות Get-ADGroupMember -Identity 'Server Operators'. הסר את כל החברים והטמע אצילה ממוקדת לכל משימות ניהול השרתים הנדרשות. בקר בנפרד את הרשאות הכניסה לבקרי דומיין", "status": "machine-draft" }
+  },
+  "ADPRIV-006": {
+    "name": { "value": "מניית Backup Operators", "status": "machine-draft" },
+    "description": { "value": "חברי Backup Operators יכולים לגבות ולשחזר קבצים בבקרי דומיין, לרבות מסד הנתונים של AD (ntds.dit). הדבר מאפשר חילוץ של כל גיבובי הסיסמאות בדומיין, מה שהופך חברות ב-Backup Operators לשקולה לגישת Domain Admin עבור תוקף מיומן", "status": "machine-draft" },
+    "recommendedValue": { "value": "ריקה או מוגבלת לחשבונות שירות גיבוי ייעודיים בלבד. אין חשבונות משתמש", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את חברות Backup Operators באמצעות Get-ADGroupMember -Identity 'Backup Operators'. הסר את כל חשבונות המשתמש. אם חשבונות שירות גיבוי דורשים חברות, ודא שהם ייעודיים, בעלי סיסמאות חזקות ומנוטרים. שקול פתרונות גיבוי מבוססי סוכן שאינם דורשים חברות ב-Backup Operators", "status": "machine-draft" }
+  },
+  "ADPRIV-007": {
+    "name": { "value": "מניית Print Operators", "status": "machine-draft" },
+    "description": { "value": "חברי Print Operators יכולים לנהל מדפסות ולטעון מנהלי התקן של מדפסות בבקרי דומיין. מנהלי התקן זדוניים של מדפסות יכולים להריץ קוד שרירותי בהקשר SYSTEM בבקרי דומיין, ובכך לספק נתיב לפריצה מלאה של הדומיין", "status": "machine-draft" },
+    "recommendedValue": { "value": "ריקה. נהל מדפסות באמצעות שרתי הדפסה ייעודיים, לא בבקרי דומיין", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את חברות Print Operators באמצעות Get-ADGroupMember -Identity 'Print Operators'. הסר את כל החברים. פרוס שירותי הדפסה בשרתי חבר ייעודיים במקום בבקרי דומיין. הגבל התקנת מנהלי התקן של מדפסות באמצעות Group Policy", "status": "machine-draft" }
+  },
+  "ADPRIV-008": {
+    "name": { "value": "חברות בקבוצת DnsAdmins", "status": "machine-draft" },
+    "description": { "value": "חברי קבוצת DnsAdmins יכולים להגדיר את שירות ה-DNS בבקרי דומיין לטעון DLL שרירותי, המורץ בהקשר SYSTEM. נתיב הסלמת הרשאות ידוע זה יכול להוביל לפריצה מלאה של הדומיין מתוך חברות בקבוצה בעלת הרשאות נמוכות לכאורה", "status": "machine-draft" },
+    "recommendedValue": { "value": "ריקה או מוגבלת לחשבונות ניהול DNS ייעודיים בלבד. חברות מטופלת כהרשאה של Tier 0", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את חברות DnsAdmins באמצעות Get-ADGroupMember -Identity 'DnsAdmins'. הסר חברים מיותרים. התייחס ל-DnsAdmins כקבוצה מורשית של Tier 0 במודל השכבות שלך. נטר שינויים בתצורת שרת ה-DNS ובערך הרישום ServerLevelPluginDll", "status": "machine-draft" }
+  },
+  "ADPRIV-009": {
+    "name": { "value": "ניתוח חברות בקבוצות מקוננות", "status": "machine-draft" },
+    "description": { "value": "חברות בקבוצות מקוננות עלולה להסתיר את ההרשאות בפועל בכך שהיא מחביאה גישה מורשית מאחורי שרשראות של קינון קבוצות. משתמשים עשויים להחזיק בגישה השקולה ל-Domain Admin דרך קבוצות מקוננות עמוק שאינן נראות במניית קבוצות פשוטה", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל נתיבי הקבוצות המקוננות אל קבוצות מורשות מתועדים. עומק קינון מרבי של 2 רמות. אין קינון מעגלי", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה רקורסיבית את כל חברויות הקבוצות המורשות באמצעות Get-ADGroupMember -Recursive. מפה את כל נתיבי הקינון וזהה משתמשים המקבלים הרשאות דרך חברות עקיפה. שטח קינון מיותר ותעד את כל נתיבי הקינון הנותרים עם הצדקה עסקית", "status": "machine-draft" }
+  },
+  "ADPRIV-010": {
+    "name": { "value": "משתמשים מורשים עם 'הסיסמה לעולם אינה פגה'", "status": "machine-draft" },
+    "description": { "value": "חשבונות מורשים שבהם מוגדר הדגל 'Password Never Expires' פטורים ממדיניות החלפת סיסמאות. אם חשבון כזה נפרץ, התוקף שומר על גישה מתמשכת ללא הגבלת זמן משום שהסיסמה לעולם לא תיאלץ להשתנות", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות מורשים שבהם מוגדר הדגל Password Never Expires. כל החשבונות המורשים כפופים למדיניות החלפת סיסמאות של 60 ימים או פחות", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות מורשים עם PasswordNeverExpires באמצעות Get-ADUser -Filter {PasswordNeverExpires -eq $true -and AdminCount -eq 1}. נקה את הדגל וודא שחשבונות אלו מכוסים על ידי מדיניות סיסמאות מתאימה. הטמע FGPP עבור חשבונות מורשים עם גיל סיסמה מרבי של 60 ימים", "status": "machine-draft" }
+  },
+  "ADPRIV-011": {
+    "name": { "value": "משתמשים מורשים עם 'סיסמה אינה נדרשת'", "status": "machine-draft" },
+    "description": { "value": "הדגל PASSWD_NOTREQD מאפשר לחשבון להחזיק סיסמה ריקה, תוך עקיפה מוחלטת של מדיניות הסיסמאות. בחשבונות מורשים הדבר הרה אסון משום שהוא מאפשר גישה בלתי מאומתת למשאבים בעלי הרשאות גבוהות ביותר", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות מורשים שבהם מוגדר הדגל PASSWD_NOTREQD", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות באמצעות Get-ADUser -Filter {PasswordNotRequired -eq $true -and AdminCount -eq 1}. נקה מיד את הדגל PASSWD_NOTREQD והגדר סיסמה חזקה בכל החשבונות שזוהו. חקור כיצד הוגדר דגל זה משום שהוא עשוי להעיד על פריצה", "status": "machine-draft" }
+  },
+  "ADPRIV-012": {
+    "name": { "value": "משתמשים מורשים ללא אימות מוקדם של Kerberos", "status": "machine-draft" },
+    "description": { "value": "חשבונות שבהם אימות מוקדם של Kerberos מושבת פגיעים ל-AS-REP Roasting, שבו תוקף יכול לבקש חומר מוצפן במצב לא מקוון ללא כל אימות ולפצח אותו כדי לשחזר את סיסמת החשבון. בחשבונות מורשים הדבר מספק נתיב ישיר לפריצת הדומיין", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות מורשים שבהם מוגדר הדגל 'Do not require Kerberos preauthentication'", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות באמצעות Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true -and AdminCount -eq 1}. הפעל מיד אימות מוקדם של Kerberos בכל החשבונות המורשים. החלף סיסמאות בחשבונות המושפעים משום שייתכן שכבר נפרצו באמצעות AS-REP Roasting", "status": "machine-draft" }
+  },
+  "ADPRIV-013": {
+    "name": { "value": "משתמשים מורשים עם הצפנה הפיכה", "status": "machine-draft" },
+    "description": { "value": "חשבונות שבהם מופעל 'Store password using reversible encryption' מאחסנים סיסמאות בתבנית הניתנת לפענוח לטקסט גלוי. הדבר שקול לאחסון סיסמאות בטקסט גלוי ומאפשר לכל תוקף בעל גישה למסד הנתונים של AD לאחזר את הסיסמה בפועל", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות עם הצפנה הפיכה מופעלת, ובמיוחד לא חשבונות מורשים", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות באמצעות Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true -and AdminCount -eq 1}. נקה את הדגל ואכוף החלפת סיסמה מיידית בכל החשבונות המושפעים. בחן את מדיניות הסיסמאות כדי לוודא שאינה דורשת הצפנה הפיכה", "status": "machine-draft" }
+  },
+  "ADPRIV-014": {
+    "name": { "value": "משתמשים מורשים עם Kerberos בהצפנת DES בלבד", "status": "machine-draft" },
+    "description": { "value": "חשבונות המוגדרים להשתמש בהצפנת Kerberos מסוג DES בלבד משתמשים באלגוריתם שבור מבחינה קריפטוגרפית. ניתן לפצח מפתחות DES במהירות בכוח גס, מה שמאפשר לתוקפים לזייף או לפענח כרטיסי Kerberos עבור החשבונות המושפעים", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות שבהם מוגדר הדגל 'Use Kerberos DES encryption types for this account'", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות באמצעות Get-ADUser -Filter {UseDESKeyOnly -eq $true -and AdminCount -eq 1}. נקה את דגל ה-DES בלבד וודא שהחשבונות תומכים בהצפנת AES256. החלף סיסמאות בחשבונות המושפעים כדי לייצר מפתחות Kerberos חדשים מבוססי AES", "status": "machine-draft" }
+  },
+  "ADPRIV-015": {
+    "name": { "value": "חשבונות מורשים ללא אינדיקציה ל-MFA", "status": "machine-draft" },
+    "description": { "value": "חשבונות מורשים צריכים להיות מוגנים באמצעות אימות רב-גורמי (MFA) בכל הכניסות האינטראקטיביות והמרוחקות. ללא MFA, סיסמה גנובה לבדה מספיקה כדי להשיג גישה מנהלתית מלאה לדומיין", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל החשבונות המורשים נדרשים להשתמש ב-MFA באמצעות כרטיס חכם, Windows Hello for Business או FIDO2. הדגל 'Smart card is required for interactive logon' מוגדר במקומות הרלוונטיים", "status": "machine-draft" },
+    "remediationSteps": { "value": "בחן חשבונות מורשים לגבי דרישת כניסה בכרטיס חכם באמצעות Get-ADUser -Filter {SmartcardLogonRequired -eq $false -and AdminCount -eq 1}. פרוס אימות בכרטיס חכם או Windows Hello for Business לכל החשבונות המורשים. הפעל את הדגל 'Smart card is required for interactive logon' בחשבונות Tier 0", "status": "machine-draft" }
+  },
+  "ADPRIV-016": {
+    "name": { "value": "חשבונות מורשים עם סיסמאות חלשות", "status": "machine-draft" },
+    "description": { "value": "חשבונות מורשים עם סיסמאות חלשות או נפוצות נפרצים בקלות רבה באמצעות password spraying, התקפות מילון או credential stuffing. סיסמה חלשה בחשבון Domain Admin יכולה להוביל לפריצה מלאה של הדומיין בתוך דקות", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל סיסמאות החשבונות המורשים עומדות במינימום של 25 תווים ואינן נמצאות במילוני סיסמאות נפוצים", "status": "machine-draft" },
+    "remediationSteps": { "value": "בדוק את חוזק סיסמאות החשבונות המורשים על ידי השוואת גיבובי NT מול רשימות סיסמאות חלשות ידועות (באמצעות כלים כגון DSInternals). אכוף החלפת סיסמאות מיידית בכל חשבון בעל סיסמה חלשה. הטמע FGPP הדורש סיסמאות באורך 25 תווים ומעלה עבור חשבונות מורשים", "status": "machine-draft" }
+  },
+  "ADPRIV-017": {
+    "name": { "value": "חשבונות מורשים עם סיסמאות ישנות", "status": "machine-draft" },
+    "description": { "value": "חשבונות מורשים עם סיסמאות שלא הוחלפו במשך יותר מ-90 ימים בעלי חלון חשיפה מורחב. אם פרטי ההזדהות נפרצו, התוקף שומר על גישה לאורך כל התקופה שבה הסיסמה נותרת ללא שינוי", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל סיסמאות החשבונות המורשים הוחלפו ב-60 הימים האחרונים", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות מורשים עם סיסמאות ישנות באמצעות Get-ADUser -Filter {AdminCount -eq 1} -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -lt (Get-Date).AddDays(-90)}. אכוף החלפת סיסמאות בכל החשבונות שזוהו. הטמע FGPP עם גיל סיסמה מרבי של 60 ימים עבור חשבונות מורשים", "status": "machine-draft" }
+  },
+  "ADPRIV-018": {
+    "name": { "value": "חשבונות מורשים שמעולם לא נכנסו", "status": "machine-draft" },
+    "description": { "value": "חשבונות מורשים שמעולם לא נכנסו עשויים להיות חשבונות שהוקצו אך מעולם לא נדרשו, חשבונות בדיקה או שאריות ממיגרציה. חשבונות בלתי מנוהלים אלו בקבוצות מורשות מהווים סיכון משמעותי משום שייתכן שיש להם סיסמאות ברירת מחדל או חלשות", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות מורשים עם LastLogonTimestamp ריק. כל החשבונות המורשים נמצאים בשימוש פעיל על ידי הבעלים שהוקצו להם", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות מורשים שמעולם לא נכנסו באמצעות Get-ADUser -Filter {AdminCount -eq 1} -Properties LastLogonTimestamp | Where-Object {$_.LastLogonTimestamp -eq $null}. חקור כל חשבון כדי לקבוע אם הוא נחוץ. השבת או הסר חשבונות מיותרים מהקבוצות המורשות", "status": "machine-draft" }
+  },
+  "ADPRIV-019": {
+    "name": { "value": "חשבונות מושבתים בקבוצות מורשות", "status": "machine-draft" },
+    "description": { "value": "חשבונות מושבתים הנותרים בקבוצות מורשות יוצרים סיכון משום שהפעלה מחדש של החשבון (בכוונה או דרך פריצה) מעניקה מיד גישה מורשית מלאה. יש להסיר חשבונות מושבתים מכל הקבוצות המורשות", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות מושבתים באף קבוצה מורשית", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות מושבתים בקבוצות מורשות באמצעות Get-ADGroupMember 'Domain Admins' -Recursive | Get-ADUser | Where-Object {$_.Enabled -eq $false}. חזור על כך עבור כל הקבוצות המורשות. הסר מיד חשבונות מושבתים מכל חברויות הקבוצות המורשות", "status": "machine-draft" }
+  },
+  "ADPRIV-020": {
+    "name": { "value": "ביקורת אובייקטים מוגנים של AdminSDHolder", "status": "machine-draft" },
+    "description": { "value": "AdminSDHolder הוא מנגנון אבטחה הדורס את ה-ACL באובייקטים מוגנים (משתמשים וקבוצות מורשים) כל 60 דקות באמצעות SDProp. שינויים ב-ACL של AdminSDHolder מופצים לכל האובייקטים המוגנים, מה שהופך אותו ליעד בעל ערך גבוה להתמדה. ACE בלתי מורשים ב-AdminSDHolder מעניקים גישת דלת אחורית לכל החשבונות המורשים", "status": "machine-draft" },
+    "recommendedValue": { "value": "ה-ACL של AdminSDHolder מכיל רשומות ברירת מחדל בלבד ללא ACE בלתי מורשים או בלתי צפויים", "status": "machine-draft" },
+    "remediationSteps": { "value": "בחן את ה-ACL של AdminSDHolder בנתיב CN=AdminSDHolder,CN=System,DC=domain באמצעות Get-ACL או ADSIEdit. השווה מול קו הבסיס המתועד. הסר מיד כל ACE שאינו ברירת מחדל. נטר שינויים ב-AdminSDHolder כחלק מניטור אבטחה שוטף", "status": "machine-draft" }
+  },
+  "ADPRIV-021": {
+    "name": { "value": "יתומי AdminCount", "status": "machine-draft" },
+    "description": { "value": "כאשר אובייקטים מוסרים מקבוצות מוגנות, התכונה AdminCount נותרת מוגדרת ל-1 וההרשאות בירושה נותרות חסומות. ל'יתומי AdminCount' אלו יש ירושת הרשאות שבורה, העלולה למנוע החלה תקינה של מדיניות אבטחה ולהסוות הסלמת הרשאות", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות עם AdminCount=1 שאינם חברים באף קבוצה מוגנת", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות יתומים באמצעות Get-ADUser -Filter {AdminCount -eq 1} והצלב מול חברות הקבוצות המוגנות הנוכחית. עבור היתומים, נקה את התכונה AdminCount והפעל מחדש את הירושה ב-ACL של האובייקט. השתמש ב-PowerShell או ב-ADSIEdit כדי לתקן הרשאות בירושה", "status": "machine-draft" }
+  },
+  "ADPRIV-022": {
+    "name": { "value": "גיל הסיסמה של krbtgt", "status": "machine-draft" },
+    "description": { "value": "הסיסמה של חשבון krbtgt משמשת להצפנה ולחתימה של כל כרטיסי Kerberos בדומיין. אם היא נפרצת, תוקף יכול ליצור Golden Tickets המעניקים גישה בלתי מוגבלת לכל משאב ולכל משך זמן. יש להחליף את הסיסמה של krbtgt לפחות כל 180 ימים ומיד לאחר כל חשד לפריצה", "status": "machine-draft" },
+    "recommendedValue": { "value": "הסיסמה של krbtgt הוחלפה ב-180 הימים האחרונים. הוחלפה פעמיים (כדי לבטל את כל הכרטיסים הקיימים) לאחר כל חשד לפריצה", "status": "machine-draft" },
+    "remediationSteps": { "value": "בדוק את גיל הסיסמה של krbtgt באמצעות Get-ADUser krbtgt -Properties PasswordLastSet. אפס את הסיסמה פעמיים (עם מספיק זמן בין האיפוסים להשלמת השכפול) כדי לבטל את כל הכרטיסים הקיימים. השתמש בסקריפט איפוס krbtgt של Microsoft לביצוע ההחלפה בבטחה. תזמן החלפה סדירה כל 180 ימים", "status": "machine-draft" }
+  },
+  "ADPRIV-023": {
+    "name": { "value": "הערכת חשיפה של חשבון krbtgt", "status": "machine-draft" },
+    "description": { "value": "יש להעריך את תצורת חשבון krbtgt לגבי אינדיקטורים לחשיפה, לרבות סוגי ההצפנה הנתמכים, הגדרות האצלה ו-SPN. כל תצורה שגויה מגדילה את הסיכון להתקפות Golden Ticket ולהתקפות אחרות מבוססות Kerberos", "status": "machine-draft" },
+    "recommendedValue": { "value": "חשבון krbtgt מוגדר עם הצפנת AES256 בלבד, ללא האצלה, וללא SPN נוספים מעבר לברירת המחדל kadmin/changepw", "status": "machine-draft" },
+    "remediationSteps": { "value": "בחן את מאפייני חשבון krbtgt כולל msDS-SupportedEncryptionTypes, הגדרות האצלה ו-SPN. ודא ש-AES256 הוא סוג ההצפנה העיקרי. ודא שלא מוגדרים דגלי האצלה. בדוק אם קיימים SPN בלתי צפויים העלולים להעיד על פריצה או על תצורה שגויה", "status": "machine-draft" }
+  },
+  "ADPRIV-024": {
+    "name": { "value": "חשבונות שירות בקבוצות מורשות", "status": "machine-draft" },
+    "description": { "value": "חשבונות שירות בקבוצות מורשות מציבים סיכון מוגבר משום שבדרך כלל יש להם סיסמאות שאינן פגות, הם משותפים בין מנהלים, עשויים להיות מאוחסנים בסקריפטים או בקובצי תצורה, ופועלים על שרתים מרובים שבהם ניתן לקצור פרטי הזדהות", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות שירות בקבוצות מורשות. חשבונות שירות צריכים להשתמש בהרשאות מואצלות המוגבלות לגישה המזערית הנדרשת", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות שירות בקבוצות מורשות על ידי בחינת כל החברים ואיתור חשבונות המשמשים כזהויות כניסה של שירות. הסר חשבונות שירות מהקבוצות המורשות והענק רק את ההרשאות הספציפיות הנדרשות באמצעות אצילה. עבור ל-Group Managed Service Accounts (gMSA) במידת האפשר", "status": "machine-draft" }
+  },
+  "ADPRIV-025": {
+    "name": { "value": "חשבונות מחשב בקבוצות מורשות", "status": "machine-draft" },
+    "description": { "value": "חשבונות מחשב בקבוצות מורשות מעניקים לכל תהליך הפועל בהקשר SYSTEM באותם מחשבים את ההרשאות של הקבוצה. תוקף הפורץ למכונה כזו משיג גישה השקולה ל-Domain Admin, ובכך מרחיב משמעותית את משטח ההתקפה לתנועה רוחבית", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות מחשב באף קבוצה מורשית", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את חברי הקבוצות המורשות וזהה חשבונות מחשב באמצעות Get-ADGroupMember 'Domain Admins' | Where-Object {$_.objectClass -eq 'computer'}. חזור על כך עבור כל הקבוצות המורשות. הסר מיד חשבונות מחשב וחקור מדוע נוספו", "status": "machine-draft" }
+  },
+  "ADPRIV-026": {
+    "name": { "value": "כניסה מקומית של משתמשים מורשים בבקרי דומיין", "status": "machine-draft" },
+    "description": { "value": "רק חשבונות מנהל ייעודיים של Tier 0 צריכים לקבל הרשאה להיכנס מקומית לבקרי דומיין. מתן אפשרות לחשבונות שאינם Tier 0 להיכנס לבקרי דומיין חושף פרטי הזדהות מורשים להתקפות קצירת פרטי הזדהות בתחנות עבודה מאובטחות פחות", "status": "machine-draft" },
+    "recommendedValue": { "value": "רק Domain Admins וחשבונות Tier 0 ייעודיים מורשים לכניסה מקומית בבקרי דומיין. 'Allow log on locally' מוגבל באמצעות GPO על Domain Controllers OU", "status": "machine-draft" },
+    "remediationSteps": { "value": "הגדר באמצעות Group Policy המוחל על Domain Controllers OU: Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > User Rights Assignment > 'Allow log on locally' = Administrators, Domain Admins בלבד. הסר את כל הרשומות האחרות ובדוק ביסודיות", "status": "machine-draft" }
+  },
+  "ADPRIV-027": {
+    "name": { "value": "RDP של משתמשים מורשים בבקרי דומיין", "status": "machine-draft" },
+    "description": { "value": "גישת Remote Desktop לבקרי דומיין צריכה להיות מוגבלת באופן מחמיר למנהלי Tier 0 ייעודיים. הפעלות RDP שומרות במטמון פרטי הזדהות שניתן לקצור, וגישת RDP עודפת מגדילה את משטח ההתקפה לגניבת פרטי הזדהות ולתנועה רוחבית אל בקרי דומיין", "status": "machine-draft" },
+    "recommendedValue": { "value": "רק חשבונות מנהל ייעודיים של Tier 0 מורשים לגישת RDP לבקרי דומיין. 'Allow log on through Remote Desktop Services' מוגבל באמצעות GPO", "status": "machine-draft" },
+    "remediationSteps": { "value": "הגדר באמצעות Group Policy המוחל על Domain Controllers OU: Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > User Rights Assignment > 'Allow log on through Remote Desktop Services' = Administrators בלבד. שקול שימוש ב-Remote Credential Guard או במצב Restricted Admin עבור הפעלות RDP", "status": "machine-draft" }
+  },
+  "ADPRIV-028": {
+    "name": { "value": "משתמשים עם הרשאות DCSync", "status": "machine-draft" },
+    "description": { "value": "DCSync מאפשר שכפול של נתוני סיסמאות מ-Active Directory, לרבות כל גיבובי המשתמשים. חשבונות עם ההרשאות 'Replicating Directory Changes All' ו-'Replicating Directory Changes' יכולים לחלץ כל גיבוב סיסמה בדומיין מבלי לגעת בבקר דומיין. רק חשבונות מחשב של בקרי דומיין וחשבון המנהל המוגדר כברירת מחדל צריכים להחזיק בהרשאות אלו", "status": "machine-draft" },
+    "recommendedValue": { "value": "רק חשבונות מחשב של בקרי דומיין וחשבון המנהל המוגדר כברירת מחדל מחזיקים בהרשאות שכפול. אין משתמשים או קבוצות נוספים שהוענקו להם הרשאות DCSync", "status": "machine-draft" },
+    "remediationSteps": { "value": "בקר את ה-ACL של שורש הדומיין לגבי 'Replicating Directory Changes' ו-'Replicating Directory Changes All' באמצעות (Get-ACL 'AD:\\DC=domain,DC=com').Access | Where-Object {$_.ObjectType -match '1131f6a[a-d]'}. הסר מיד כל רשומה בלתי מורשית. חקור אם חשבונות בלתי מורשים כבר ביצעו DCSync", "status": "machine-draft" }
+  },
+  "ADPRIV-029": {
+    "name": { "value": "ביקורת קבוצת Protected Users", "status": "machine-draft" },
+    "description": { "value": "קבוצת האבטחה Protected Users מספקת הגנות אימות מוקשחות הכוללות השבתת אימות NTLM, אכיפת הצפנת AES של Kerberos, מניעת שמירת פרטי הזדהות במטמון והגדרת משך חיים קצר ל-TGT. כל החשבונות המורשים של Tier 0 צריכים להיות חברים", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל חשבונות המשתמש המורשים של Tier 0 חברים בקבוצת Protected Users", "status": "machine-draft" },
+    "remediationSteps": { "value": "הוסף את כל חשבונות Tier 0 לקבוצת Protected Users באמצעות Add-ADGroupMember -Identity 'Protected Users' -Members <account>. בדוק תחילה כל חשבון משום ש-Protected Users משביתה NTLM ואצילת פרטי הזדהות, מה שעלול לשבור יישומים מדור קודם. הערה: אין להוסיף חשבונות שירות וחשבונות מחשב", "status": "machine-draft" }
+  },
+  "ADPRIV-030": {
+    "name": { "value": "משתמשים מורשים שאינם ב-Protected Users", "status": "machine-draft" },
+    "description": { "value": "חשבונות מורשים שאינם חברים בקבוצת Protected Users חסרים הגנות אימות מוקשחות ונותרים פגיעים לטכניקות גניבת פרטי הזדהות, לרבות NTLM relay, שמירת פרטי הזדהות במטמון וכרטיסי Kerberos ארוכי חיים. יש להגן על כל חשבון מורשה כשיר", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל חשבונות המשתמש המורשים הכשירים רשומים בקבוצת Protected Users. חריגים מתועדים עם בקרות מפצות", "status": "machine-draft" },
+    "remediationSteps": { "value": "השווה את חברי הקבוצות המורשות מול חברות Protected Users. עבור כל חשבון מורשה שאינו ב-Protected Users, הערך תאימות (תלויות NTLM, דרישות האצלה) והוסף לקבוצה. תעד כל חריג עם סיבות טכניות ספציפיות ובקרות מפצות", "status": "machine-draft" }
+  }
+}

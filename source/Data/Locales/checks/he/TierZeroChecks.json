@@ -1,0 +1,45 @@
+{
+  "_family": "TierZeroChecks.json",
+  "ADTIER-001": {
+    "name": { "value": "ביקורת חשבון סנכרון של Azure AD Connect (MSOL_)", "status": "machine-draft" },
+    "description": { "value": "כאשר Azure AD Connect מותקן במצב Express הוא יוצר חשבון דומיין בשם MSOL_<random-hex> ומעניק לו Replicating Directory Changes + Replicating Directory Changes All על ה-domain naming context, כלומר הרשאות DCSync. החשבון הוא למעשה Tier-0 אך הוא שוכן במכל Users המוגדר כברירת מחדל, בעל תפוגת סיסמה של 10 שנים, ולעתים רחוקות מופיע בכלי מניית קבוצות מורשות משום שהוא מקבל את כוחו דרך ACL ישיר ולא דרך חברות בקבוצה. פריצה של חשבון זה שקולה מעשית להשתלטות על הדומיין.", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל חשבונות MSOL_ רשומים במלאי, סיסמתם הוחלפה ב-180 הימים האחרונים, הם ממוקמים ב-Tier-0 OU עם הרשאות כניסה מוגבלות, ושרת ה-AAD Connect עצמו מוקשח כמערכת Tier-0.", "status": "machine-draft" },
+    "remediationSteps": { "value": "אתר את חשבון MSOL_: Get-ADUser -Filter {sAMAccountName -like 'MSOL_*'}. ודא שיש לו הרשאות DCSync: dsacls 'DC=domain,DC=com' | findstr MSOL_. העבר אותו ל-Tier-0 admin OU. החלף את הסיסמה באמצעות כלי ה-AAD Connect (אל תאפס באמצעות כלים סטנדרטיים; השתמש ב-Add-ADSyncADDSConnectorAccount במודול ה-PowerShell של ADSync בשרת ה-AAD Connect). החל GPO להגבלת כניסה כך שהחשבון יוכל להיכנס מקומית רק לשרת ה-AAD Connect עצמו. התייחס למארח ה-AAD Connect כאל Tier-0; הגבל מי יכול לבצע RDP/לנהל אותו.", "status": "machine-draft" }
+  },
+  "ADTIER-002": {
+    "name": { "value": "חשבונות שירות של תוכנת גיבוי בקבוצות מורשות", "status": "machine-draft" },
+    "description": { "value": "תוכנת גיבוי (Veeam, Commvault, Rubrik, Cohesity, NAKIVO, Backup Exec, Vembu, Acronis) מבקשת בדרך כלל חשבון שירות עם הרשאות גבוהות מאוד. התיעוד מציע לעתים קרובות Domain Admin לשם קלות התקנה, ומנהלים רבים נענים. ברגע שתוקף פורץ לשרת הגיבוי (וקטור גישה ראשונית נפוץ של תוכנות כופר), הוא יורש Domain Admin דרך חשבון השירות. זהו נתיב הסלמת הכופר מספר 1 בנתוני התגובה לאירועים של 2023 עד 2025.", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות שירות של תוכנת גיבוי החברים ב-Domain Admins, Enterprise Admins, Schema Admins או Backup Operators. השתמש בחשבונות בעלי הרשאות מזעריות המתועדים על ידי היצרן ובפרטי הזדהות גיבוי מבודדים.", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה את מוצר הגיבוי שבשימוש ופעל לפי מדריך ההרשאות המזעריות שלו (Veeam: מנהל מקומי בשרת הגיבוי בלבד + חשבון AD עם קריאת אובייקטים; Rubrik: service principal ייעודי בתפקיד בענן בלבד; וכדומה). הסר את חשבון הגיבוי מ-Domain Admins. עבור ל-gMSA היכן שנתמך. מקם את שרת הגיבוי ב-Tier-1 OU עם הרשאות כניסה מוגבלות. אם נדרש באמת DA מלא עבור עומס עבודה ספציפי, תעד זאת ובודד את אותו חלק של הגיבוי לחשבון נפרד משלו, נבדל מהחשבון הראשי.", "status": "machine-draft" }
+  },
+  "ADTIER-003": {
+    "name": { "value": "חשבונות שירות של Hypervisor / וירטואליזציה בקבוצות מורשות", "status": "machine-draft" },
+    "description": { "value": "אינטגרציות של vCenter / Hyper-V / SCVMM / Citrix / Nutanix עם AD משתמשות לעתים קרובות בחשבון שירות שהוגדר במהלך ההתקנה. אם חשבון זה הוא Domain Admin, אזי פריצה של מישור הניהול של ה-hypervisor (או של מסד ה-SSO של המארח) מתפשטת ל-AD. ה-hypervisor הוא רעיונית Tier-0 ממילא; זהות ה-AD שלו צריכה להתאים לכך.", "status": "machine-draft" },
+    "recommendedValue": { "value": "לחשבונות השירות של ה-hypervisor יש רק את ההרשאות המתועדות על ידי היצרן (בדרך כלל קריאה לצורך מלאי + כתיבות ספציפיות ל-OU אם נעשה שימוש באינטגרציית VM-AD). לא ב-Domain Admins.", "status": "machine-draft" },
+    "remediationSteps": { "value": "בחן את חשבון השירות של AD עבור כל מוצר hypervisor. החל את הנחיות ההרשאות המזעריות של היצרן. עבור vCenter: השתמש בתבנית מקור הזהות SSO המתועדת במקום מיפוי של Domain Admin. עבור Hyper-V/SCVMM: הגבל את הרשאות חשבון השירות ל-OU המארחים את חשבונות המחשב של מכונות וירטואליות. התייחס למארח הניהול של ה-hypervisor כאל Tier-0 במודל הניהולי שלך.", "status": "machine-draft" }
+  },
+  "ADTIER-004": {
+    "name": { "value": "חשבונות שירות של ניהול תצורה בקבוצות מורשות", "status": "machine-draft" },
+    "description": { "value": "פלטפורמות לניהול תצורה (SCCM/MECM, Intune Connector, Jamf, KACE, Lansweeper, ManageEngine, Ivanti, BigFix) דוחפות תוכנה לכל נקודת קצה מעצם הגדרתן; הן כבר מהוות פלטפורמת תנועה רוחבית מורשית. ל-SCCM בפרט יש פרימיטיבים ידועים לניצול לרעה (חשיפת Network Access Account, כפיית NTLM לשרת האתר, client push). חשבון שירות של ניהול תצורה ב-Domain Admins נותן לתוקף הנוחת על כל נקודת קצה מנוהלת את המפתחות לדומיין.", "status": "machine-draft" },
+    "recommendedValue": { "value": "חשבונות השירות של ניהול התצורה מוגבלים להרשאות המזעריות המתועדות שלהם ולעולם אינם ב-Domain Admins / Enterprise Admins. ה-Network Access Account של SCCM הוא זהות ייעודית שאינה מורשית.", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה את מוצר ניהול התצורה ובחן את הרשאות חשבון השירות. עבור SCCM: ודא שה-Network Access Account אינו מורשה (לא Domain Admin); ודא שחשבון המכונה של שרת האתר אינו Domain Admin; בחן את חשבונות השירות של ההיררכיה מבחינת הרשאות מזעריות. העבר את שרתי האתר ואת נקודות הניהול ל-Tier-0 OU עם כניסות מוגבלות.", "status": "machine-draft" }
+  },
+  "ADTIER-005": {
+    "name": { "value": "חשבונות שירות של SQL / מסדי נתונים בקבוצות מורשות", "status": "machine-draft" },
+    "description": { "value": "חשבונות שירות של SQL Server / MySQL / PostgreSQL ב-Domain Admins נפוצים בסביבות שבהן צוות ה-DBA התקין SQL עם הנחיית ברירת המחדל 'Use existing AD account' ובחר חשבון מנהל מטעמי נוחות. ברגע ששרת מסד הנתונים נגיש ברשת, פריצת פרט הזדהות של SQL או פגיעות ב-SQL Server מעניקה לתוקף Domain Admin באופן ישיר.", "status": "machine-draft" },
+    "recommendedValue": { "value": "חשבונות השירות של מסדי הנתונים פועלים כ-gMSA או כזהויות שירות ייעודיות ללא חברות בקבוצות מורשות.", "status": "machine-draft" },
+    "remediationSteps": { "value": "העבר חשבונות שירות של SQL ל-gMSA היכן שנתמך. עבור חשבונות שחייבים להישאר מבוססי משתמש, הסר את החברות בקבוצות מורשות והענק רק את הזכויות המקומיות שמנוע מסד הנתונים דורש (Log on as a service, Bypass traverse checking, Adjust memory quotas for a process; עיין בתיעוד של Microsoft לגבי הזכויות הספציפיות).", "status": "machine-draft" }
+  },
+  "ADTIER-006": {
+    "name": { "value": "חשבונות מנהל Tier-0 מחוץ ל-Tier-0 OU ייעודי", "status": "machine-draft" },
+    "description": { "value": "אם ה-Domain Admins שלך שוכנים באותו OU כמו משתמשים רגילים, כל GPO המכוון למשתמשים (סקריפטי כניסה, מדיניות דפדפן, כונני רשת ממופים וכדומה) חל גם על ה-Domain Admins שלך, מה שאומר שכל מי שיכול לערוך את אותם GPO יכול להריץ קוד בתור Domain Admin בכניסה הבאה. המודל השכבתי של Microsoft ממליץ על Tier-0 admin OU ייעודי עם הרשאות עריכת GPO מוגבלות והרשאות כניסה מוגבלות.", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל חברי Domain Admins, Enterprise Admins ו-Schema Admins נמצאים ב-Tier-0 OU ייעודי (בדרך כלל OU=Tier-0,OU=Admin) עם הרשאות עריכת GPO מוגבלות.", "status": "machine-draft" },
+    "remediationSteps": { "value": "צור OU=Tier-0,OU=Admin אם אינו קיים. העבר אליו את כל חברי Domain/Enterprise/Schema Admins. הגבל את הרשאות עריכת ה-GPO על אותו OU (רק מנהלי Tier-0 עצמם). החל GPO ייעודי להגבלת כניסה כך שחשבונות Tier-0 יוכלו להיכנס רק למארחי Tier-0. חסום ירושה על ה-OU.", "status": "machine-draft" }
+  },
+  "ADTIER-007": {
+    "name": { "value": "חשבונות שירות עם הרשאות כניסה אינטראקטיבית דרך קבוצה מורשית", "status": "machine-draft" },
+    "description": { "value": "חשבונות שירות החברים ב-Domain Admins (או בכל קבוצה שהוענקה לה 'Allow log on locally' דרך חברות ברירת מחדל בקבוצה מורשית) ניתנים לשימוש אינטראקטיבי. תוקפים אוהבים זאת: לכידת סיסמת חשבון שירות (Kerberoasting, רישום, סקריפטים ב-SYSVOL), שימוש בה באופן אינטראקטיבי בתחנת עבודה, שאיבת LSASS ומעבר. חשבונות שירות לא צריכים להיות מסוגלים להיכנס באופן אינטראקטיבי לשום דבר מלבד המארח שהם משרתים.", "status": "machine-draft" },
+    "recommendedValue": { "value": "חשבונות שירות (היוריסטיקה: sAMAccountName מתחיל ב-svc/sa/service או שיש לו SPN + ללא כניסה אינטראקטיבית לאחרונה) נשללים במפורש מ-'Allow log on locally' ו-'Allow log on through Remote Desktop Services' באמצעות Default Domain Controllers Policy ו-GPO ייעודי להגבלת כניסה של Tier-1/Tier-2.", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה חשבונות שירות (נושאי SPN, מוסכמת שמות או מלאי עסקי). החל GPO של Default Domain Policy: Computer Configuration > Windows Settings > Security Settings > Local Policies > User Rights Assignment > 'Deny log on locally' = <service-accounts-group>. הוסף את אותם חשבונות ל-'Deny log on through Remote Desktop Services'. הוסף אותם ל-Protected Users היכן שנתמך (Server 2012 R2+).", "status": "machine-draft" }
+  }
+}

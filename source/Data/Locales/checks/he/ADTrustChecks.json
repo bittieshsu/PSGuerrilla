@@ -1,0 +1,69 @@
+{
+  "_family": "ADTrustChecks.json",
+  "ADTRUST-001": {
+    "name": { "value": "מניית יחסי אמון", "status": "machine-draft" },
+    "description": { "value": "יש לערוך מלאי של כל יחסי האמון כדי לבסס תמונה מלאה של גבול האימות. יחסי אמון בלתי מתועדים מרחיבים את משטח ההתקפה בכך שהם מאפשרים למשתמשים מדומיינים חיצוניים לגשת למשאבים", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל יחסי האמון מתועדים עם הצדקה עסקית, כיוון, סוג ובעלים", "status": "machine-draft" },
+    "remediationSteps": { "value": "הרץ Get-ADTrust -Filter * כדי למנות את כל יחסי האמון. תעד כל יחס אמון עם כיוונו, סוגו (forest, external, shortcut, realm), הטרנזיטיביות שלו והצדקה עסקית. בחן והסר כל יחס אמון שאינו משרת עוד צורך עסקי", "status": "machine-draft" }
+  },
+  "ADTRUST-002": {
+    "name": { "value": "ניתוח כיוון יחסי אמון", "status": "machine-draft" },
+    "description": { "value": "יחסי אמון נכנסים מאפשרים למשתמשים מדומיין חיצוני לאמת אל תוך הדומיין שלך. יש לבחון כל יחס אמון נכנס או דו-כיווני כדי לוודא שהדומיין המהימן מקיים בקרות אבטחה נאותות. דומיין מהימן שנפרץ עלול לשמש לתקיפת הסביבה שלך", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל כיווני יחסי האמון מוצדקים ומתועדים. יחסי אמון דו-כיווניים מומרים לחד-כיווניים במידת האפשר כדי לצמצם את משטח ההתקפה", "status": "machine-draft" },
+    "remediationSteps": { "value": "בחן כל כיוון יחס אמון באמצעות Get-ADTrust -Filter *. עבור יחסי אמון דו-כיווניים, הערך אם שני הכיוונים נדרשים. המר ליחסי אמון חד-כיווניים במקומות שבהם הצורך העסקי מחייב כיוון אחד בלבד. תעד את ההצדקה לכל נתיבי יחסי האמון הנכנסים", "status": "machine-draft" }
+  },
+  "ADTRUST-003": {
+    "name": { "value": "ניתוח טרנזיטיביות של יחסי אמון", "status": "machine-draft" },
+    "description": { "value": "יחסי אמון טרנזיטיביים מרחיבים את נתיבי האימות מעבר לשותפי האמון הישירים, ועלולים ליצור נתיבי גישה בלתי מכוונים דרך שרשראות של דומיינים מהימנים. יש להעריך כל יחס אמון טרנזיטיבי לגבי משטח ההתקפה המורחב שהוא יוצר", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל יחסי האמון הטרנזיטיביים מתועדים עם ניתוח מלא של נתיב הטרנזיטיביות. יחסי אמון external מועדפים על פני יחסי אמון forest כאשר טרנזיטיביות אינה נדרשת", "status": "machine-draft" },
+    "remediationSteps": { "value": "מפה את כל נתיבי יחסי האמון הטרנזיטיביים כדי לזהות מסלולי אימות עקיפים. עבור יחסי אמון forest, הבן שכל דומייני הצאצא מהימנים באופן טרנזיטיבי. שקול שימוש ביחסי אמון external (לא טרנזיטיביים) כאשר נדרשת גישה לדומיין ספציפי בלבד", "status": "machine-draft" }
+  },
+  "ADTRUST-004": {
+    "name": { "value": "מצב SID Filtering", "status": "machine-draft" },
+    "description": { "value": "SID filtering מסיר SID מדומיינים זרים באסימוני אימות, ובכך מונע התקפות הזרקת SID history. ללא SID filtering, תוקף הפורץ לדומיין מהימן יכול ליצור כרטיסים המכילים SID מורשים (כגון Enterprise Admins) מהדומיין שלך, ובכך להשיג פריצה מלאה", "status": "machine-draft" },
+    "recommendedValue": { "value": "SID filtering (הסגר) מופעל בכל יחסי האמון מסוג external ו-forest", "status": "machine-draft" },
+    "remediationSteps": { "value": "ודא את מצב ה-SID filtering באמצעות 'netdom trust /domain:trusted.domain /Quarantine'. הפעל SID filtering באמצעות 'netdom trust /domain:trusted.domain /Quarantine:Yes'. הערה: SID filtering מופעל כברירת מחדל ביחסי אמון external אך יש לוודא זאת ביחסי אמון forest שבהם ייתכן שהושבת במכוון", "status": "machine-draft" }
+  },
+  "ADTRUST-005": {
+    "name": { "value": "זיהוי ניצול לרעה של SID History", "status": "machine-draft" },
+    "description": { "value": "SID history מיועד למיגרציות דומיין אך ניתן לנצלו לרעה כדי להזריק SID מורשים לאסימוני משתמש על פני גבולות אמון. תוקפים הפורצים לדומיין מהימן יכולים להוסיף SID של Enterprise Admin או Domain Admin ל-SID history של כל חשבון בשליטתם", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין חשבונות עם ערכי SID history המפנים לקבוצות מורשות. SID history נוקה לאחר השלמת כל המיגרציות", "status": "machine-draft" },
+    "remediationSteps": { "value": "חפש חשבונות עם SID history באמצעות Get-ADUser -Filter {SIDHistory -like '*'} -Properties SIDHistory. זהה רשומות SID history המפנות לקבוצות מורשות (Domain Admins, Enterprise Admins וכדומה). נקה SID history לאחר המיגרציה באמצעות Remove-ADUser עם הפרמטר SIDHistory. הפעל SID filtering ביחסי האמון", "status": "machine-draft" }
+  },
+  "ADTRUST-006": {
+    "name": { "value": "מצב Selective Authentication", "status": "machine-draft" },
+    "description": { "value": "Selective authentication מגביל אילו משתמשים מדומיין מהימן יכולים לאמת מול משאבים בדומיין שלך על ידי דרישת הרשאות מפורשות בכל משאב. בלעדיו, כל המשתמשים המאומתים מהדומיין המהימן יכולים לגשת לכל משאב שיש להם הרשאות אליו, מה שמרחיב משמעותית את משטח ההתקפה", "status": "machine-draft" },
+    "recommendedValue": { "value": "Selective authentication מופעל בכל יחסי האמון מסוג forest. הרשאות Allowed-to-Authenticate מוענקות רק על המשאבים הנדרשים", "status": "machine-draft" },
+    "remediationSteps": { "value": "הפעל selective authentication ביחסי אמון forest דרך Active Directory Domains and Trusts > Properties של יחס האמון > כרטיסיית Authentication > בחר 'Selective authentication'. לאחר מכן הענק הרשאת 'Allowed to Authenticate' על אובייקטי המחשב הספציפיים שמשתמשים חיצוניים צריכים לגשת אליהם", "status": "machine-draft" }
+  },
+  "ADTRUST-007": {
+    "name": { "value": "אבטחת יחס אמון היברידי של Azure AD", "status": "machine-draft" },
+    "description": { "value": "תצורות זהות היברידית המחברות AD מקומי עם Azure AD יוצרות נתיבי התקפה נוספים. ניתן לכוון ל-Azure AD Connect, לסוכני pass-through authentication ולשירותי federation כדי לעבור בין סביבות ענן לסביבות מקומיות", "status": "machine-draft" },
+    "recommendedValue": { "value": "Azure AD Connect פועל בגרסה האחרונה על שרת ייעודי ומוקשח. PHS מועדף על פני PTA/federation. Seamless SSO מושבת אם אינו נדרש. חשבונות break-glass בענן בלבד מוגדרים", "status": "machine-draft" },
+    "remediationSteps": { "value": "בחן את תצורת Azure AD Connect וודא שהיא פועלת על שרת מוקשח של Tier 0. הערך מעבר מ-federation או PTA ל-Password Hash Sync (PHS) לצמצום משטח ההתקפה. אם אתה משתמש ב-Seamless SSO, ודא שסיסמת חשבון המחשב AZUREADSSOACC מוחלפת. ודא שקיימים חשבונות גישת חירום בענן בלבד", "status": "machine-draft" }
+  },
+  "ADTRUST-008": {
+    "name": { "value": "מניית יחסי אמון עם דומיינים זרים", "status": "machine-draft" },
+    "description": { "value": "יחסי אמון עם דומיינים מחוץ לארגון מרחיבים את גבול האבטחה לישויות בעלות תקני אבטחה שעשויים להיות שונים. יחסי אמון עם דומיינים זרים צריכים לקבל בחינה מוגברת משום שהארגון המהימן אינו יכול לשלוט במצב האבטחה של הדומיין החיצוני", "status": "machine-draft" },
+    "recommendedValue": { "value": "כל יחסי האמון עם דומיינים זרים מתועדים עם הערכת אבטחה חיצונית, דרישות אבטחה חוזיות וסקירה שנתית", "status": "machine-draft" },
+    "remediationSteps": { "value": "זהה יחסי אמון עם דומיינים מחוץ לארגון באמצעות Get-ADTrust -Filter *. עבור כל יחס אמון external, ודא שקיים הסכם אבטחה, ש-SID filtering מופעל, ש-selective authentication מוגדר, ושיחס האמון נסקר מדי שנה", "status": "machine-draft" }
+  },
+  "ADTRUST-009": {
+    "name": { "value": "זיהוי יחסי אמון יתומים", "status": "machine-draft" },
+    "description": { "value": "יחסי אמון יתומים מפנים לדומיינים שכבר אינם קיימים או שכבר אינם נגישים. אובייקטי יחסי אמון מיושנים אלו עשויים לשמור על פרטי הזדהות וליצור בלבול במהלך ביקורות אבטחה. יש להסירם כדי לצמצם משטח התקפה מיותר ולשמור על טופולוגיית אמון נקייה", "status": "machine-draft" },
+    "recommendedValue": { "value": "אין יחסי אמון יתומים או כאלה שאינם ניתנים לפענוח", "status": "machine-draft" },
+    "remediationSteps": { "value": "מנה את כל יחסי האמון ונסה לאמת כל אחד על ידי פענוח שם הדומיין המהימן ובדיקת יחס האמון באמצעות 'netdom trust /verify'. הסר יחסי אמון יתומים שבהם דומיין השותף כבר אינו קיים או אינו נגיש באמצעות 'netdom trust /Remove' או Active Directory Domains and Trusts", "status": "machine-draft" }
+  },
+  "ADTRUST-010": {
+    "name": { "value": "גיל והחלפה של מפתחות יחסי אמון", "status": "machine-draft" },
+    "description": { "value": "יש להחליף באופן סדיר סיסמאות יחסי אמון (מפתחות inter-realm). מפתחות יחסי אמון מיושנים מגדילים את החלון להתקפות מבוססות פרטי הזדהות. כברירת מחדל, סיסמאות יחסי אמון מוחלפות כל 30 ימים, אך יש לוודא זאת משום שהחלפות כושלות עלולות שלא להתגלות", "status": "machine-draft" },
+    "recommendedValue": { "value": "סיסמאות יחסי אמון הוחלפו ב-30 הימים האחרונים. החלפה אוטומטית של סיסמאות יחסי אמון אינה מושבתת", "status": "machine-draft" },
+    "remediationSteps": { "value": "בדוק את תאריך ההגדרה האחרון של סיסמת יחס האמון על ידי בחינת התכונה trustAuthOutgoing או הרצת 'netdom trust /domain:trusted.domain /verify'. אם סיסמת יחס האמון מיושנת, אפס אותה באמצעות 'netdom trust /domain:trusted.domain /Reset'. ודא שאף GPO או הגדרת רישום לא השביתו את ההחלפה האוטומטית של סיסמאות יחסי אמון", "status": "machine-draft" }
+  },
+  "ADTRUST-011": {
+    "name": { "value": "המחשה חזותית של היררכיית יחסי אמון", "status": "machine-draft" },
+    "description": { "value": "יש לתחזק מפת טופולוגיית אמון מלאה המציגה את כל יחסי האמון, הכיוונים, הסוגים ונתיבי הטרנזיטיביות. המחשה חזותית זו חיונית להבנת גבול האימות המלא ולזיהוי נתיבי גישה בלתי צפויים", "status": "machine-draft" },
+    "recommendedValue": { "value": "תרשים טופולוגיית אמון מעודכן מתוחזק ונסקר מדי רבעון", "status": "machine-draft" },
+    "remediationSteps": { "value": "צור מפת טופולוגיית אמון באמצעות כלים אוטומטיים או תעד ידנית את כל יחסי האמון כולל כיוון, סוג, טרנזיטיביות, מצב SID filtering ומצב selective authentication. עדכן את התרשים בכל פעם שיחסי אמון מתווספים, משתנים או מוסרים. כלול את המפה בתיעוד האבטחה וסקור מדי רבעון", "status": "machine-draft" }
+  }
+}
