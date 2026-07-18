@@ -1,0 +1,309 @@
+{
+  "_family": "DriveSecurityChecks.json",
+  "DRIVE-001": {
+    "name": {
+      "value": "Predefinições de partilha externa",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "A partilha fora da organização deve ser restringida ou desativada por predefinição, para evitar a exposição acidental de dados a partes externas",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Partilha externa restringida a domínios na lista de permissões ou desativada",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Definições de partilha > Defina a partilha fora da organização como 'Desativada' ou 'Domínios na lista de permissões'",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-002": {
+    "name": {
+      "value": "Definições predefinidas de partilha por link",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "A partilha por link predefinida deve ser definida como 'Restrita' (pessoas específicas), em vez de acesso amplo, para evitar a exposição não intencional de dados",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Partilha por link predefinida definida como 'Restrita' (apenas pessoas específicas)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Definições de partilha > Defina a partilha por link predefinida como 'Restrita'",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-003": {
+    "name": {
+      "value": "Auditoria da partilha 'Qualquer pessoa com o link'",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Os ficheiros partilhados com 'Qualquer pessoa com o link' estão acessíveis a qualquer pessoa na Internet e representam um risco significativo de exposição de dados",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Partilha 'Qualquer pessoa com o link' desativada ou rigorosamente controlada",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Definições de partilha > Desative a opção 'Qualquer pessoa com o link' ou restrinja a 'Utilizadores do domínio com o link'",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-004": {
+    "name": {
+      "value": "Restrições à criação de Drives partilhados",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "A criação de Drives partilhados deve ser restringida para evitar a proliferação descontrolada e garantir uma governação adequada dos repositórios de dados partilhados",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Criação de Drives partilhados restringida a grupos específicos ou a administradores",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Definições de partilha > Criação de Drives partilhados > Restrinja quem pode criar Drives partilhados",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-005": {
+    "name": {
+      "value": "Gestão de membros dos Drives partilhados",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "A gestão de membros dos Drives partilhados deve ser controlada para impedir que utilizadores não autorizados sejam adicionados ou que as permissões sejam elevadas",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Apenas os gestores podem adicionar membros e alterar os níveis de acesso",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Definições de partilha > Definições dos Drives partilhados > Configure as permissões de gestão de membros",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-006": {
+    "name": {
+      "value": "Partilha externa dos Drives partilhados",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "A partilha externa nos Drives partilhados deve ser restringida para impedir que dados sensíveis da organização sejam partilhados fora do domínio",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Partilha externa nos Drives partilhados desativada ou restringida a domínios na lista de permissões",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Definições de partilha > Partilha de Drives partilhados > Restrinja a partilha externa",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-007": {
+    "name": {
+      "value": "Definições de transferência de propriedade de ficheiros",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "A transferência de propriedade de ficheiros deve ser controlada para evitar a migração não autorizada de dados e manter cadeias adequadas de governação de dados",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Transferência de propriedade de ficheiros restringida a administradores ou a um processo controlado",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Definições de transferência de propriedade > Configure as restrições",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-008": {
+    "name": {
+      "value": "Drive for Desktop permitido/bloqueado",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "O Drive for Desktop sincroniza ficheiros localmente e deve ser controlado para impedir que os dados sejam armazenados em pontos finais não geridos",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive for Desktop restringido a dispositivos geridos ou desativado",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Funcionalidades e aplicações > Drive for Desktop > Configure o acesso",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-009": {
+    "name": {
+      "value": "Acesso de aplicações de terceiros ao Drive",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "As aplicações de terceiros com acesso aos dados do Drive devem ser revistas e restringidas para evitar a exfiltração não autorizada de dados",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Acesso de aplicações de terceiros aos dados do Drive restringido e revisto",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Segurança > Controlos de API > Acesso de aplicações de terceiros > Reveja e restrinja as aplicações com acesso ao Drive",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-010": {
+    "name": {
+      "value": "Auditoria das regras de DLP do Drive",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "As regras de prevenção de perda de dados (DLP) devem ser configuradas para detetar e impedir a partilha de dados sensíveis através do Google Drive",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Regras de DLP configuradas para tipos de dados sensíveis (PII, dados financeiros e de saúde)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Segurança > Proteção de dados > Gerir regras > Crie regras para os tipos de dados sensíveis no Drive",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-011": {
+    "name": {
+      "value": "Definições de público-alvo",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "As definições de público-alvo controlam quem pode ser sugerido ao partilhar ficheiros e devem ser configuradas para limitar a partilha acidental",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Públicos-alvo configurados para limitar adequadamente as sugestões de partilha",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Diretório > Públicos-alvo > Reveja e configure os grupos de público-alvo",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-012": {
+    "name": {
+      "value": "Definições dos suplementos do Drive",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Os suplementos do Drive podem aceder ao conteúdo dos ficheiros e devem ser controlados para evitar a exposição de dados através de extensões não fidedignas",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Instalação de suplementos do Drive restringida aos suplementos aprovados pelo administrador",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Funcionalidades e aplicações > Suplementos > Configure as restrições de instalação",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-013": {
+    "name": {
+      "value": "Definições de acesso offline",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "O acesso offline permite que os ficheiros do Drive sejam colocados em cache localmente nos dispositivos e deve ser controlado para evitar a exposição de dados em dispositivos partilhados ou não geridos",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Acesso offline desativado ou restringido a dispositivos geridos",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Funcionalidades e aplicações > Offline > Desative ou restrinja o acesso offline",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-014": {
+    "name": {
+      "value": "Acesso à API do Drive SDK desativado (GWS.DRIVEDOCS.4.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.4.1: o Drive SDK permite que aplicações de terceiros leiam e escrevam conteúdo do Drive através da API, um canal direto de exfiltração de dados quando amplamente ativado. Lê drive_and_docs.drive_sdk; reprova quando enableDriveSdkApiAccess está ativado.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Acesso à API do Drive SDK desativado",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Na Consola de administração > Aplicações > Google Workspace > Drive and Docs > Funcionalidades e aplicações, desative o Drive SDK, salvo se integrações revistas específicas o exigirem.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-015": {
+    "name": {
+      "value": "Aviso de ficheiro externo do Drive ativado (GWS.DRIVEDOCS.1.9)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.9: avisar os utilizadores quando partilham ficheiros externamente é um controlo de perda de dados de baixo atrito. Lê drive_and_docs.external_file_warning; alerta quando highlightingEnabled está desativado.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aviso de partilha de ficheiros externos ativado",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nas definições de partilha do Drive, ative os avisos quando os utilizadores partilham ficheiros com pessoas fora da organização.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-016": {
+    "name": {
+      "value": "Atualização de segurança de ficheiros do Drive imposta (GWS.DRIVEDOCS.3.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.3.1: a atualização de segurança de ficheiros reforça a partilha por link nos ficheiros afetados; permitir que os utilizadores a removam volta a abrir o acesso. Lê drive_and_docs.file_security_update; alerta quando os utilizadores estão autorizados a remover/gerir a atualização de segurança.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Atualização de segurança aplicada e os utilizadores não podem removê-la",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Nas definições do Drive, aplique a atualização de segurança de ficheiros e não permita que os utilizadores a removam dos ficheiros de que são proprietários.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-017": {
+    "name": {
+      "value": "Acesso predefinido de ficheiros definido como privado para o proprietário (GWS.DRIVEDOCS.1.8)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.8 exige que 'Privado para o proprietário' seja o nível de acesso predefinido dos itens do Drive recém-criados, para que os ficheiros não sejam partilhados de forma mais ampla do que o pretendido no momento da criação. Esta verificação lê a política drive_and_docs.general_access_default do Cloud Identity e assinala qualquer unidade organizacional em que o acesso predefinido dos ficheiros não seja PRIVATE_TO_OWNER.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Nível de acesso predefinido para novos ficheiros definido como PRIVATE_TO_OWNER (defaultFileAccess) em todas as unidades organizacionais.",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Na Consola de administração, em Aplicações > Google Workspace > Drive and Docs > Definições de partilha > Acesso geral predefinido, defina a predefinição como 'Privado para o proprietário' para que os ficheiros recém-criados comecem privados e só sejam partilhados por ação deliberada.",
+      "status": "machine-draft"
+    }
+  }
+}
