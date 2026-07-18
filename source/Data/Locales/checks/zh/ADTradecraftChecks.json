@@ -1,0 +1,63 @@
+{
+  "_family": "ADTradecraftChecks.json",
+  "ADTRADE-001": {
+    "name": { "value": "SYSVOL 中残留的组策略首选项 cpassword", "status": "machine-draft" },
+    "description": { "value": "从 2008 年到 2014 年 5 月，组策略首选项允许管理员使用“cpassword”字段推送计划任务、本地用户密码、映射驱动器和服务，该字段以一个被 Microsoft 公开记录的 AES-256 密钥加密。MS14-025 中的修复禁用了新首选项中的 cpassword 字段，但未触动 SYSVOL 中已有的首选项。每次红队行动仍会发现它们。任何经过身份验证的域用户都可读取 SYSVOL，获取 cpassword 并离线解密。若在此处发现任何内容，请将暴露的每个凭据都视为已被攻陷并予以轮换。", "status": "machine-draft" },
+    "recommendedValue": { "value": "\\\\domain\\SYSVOL\\domain\\Policies\\**\\*.xml 下任何位置都没有 cpassword 属性。", "status": "machine-draft" },
+    "remediationSteps": { "value": "扫描 SYSVOL：Get-ChildItem -Path \\\\<domain>\\SYSVOL\\<domain>\\Policies -Recurse -Include *.xml | Select-String 'cpassword'。对于每个匹配项：(1) 轮换其凭据被暴露的账户的密码（用户名就在同一 XML 中），(2) 审计日志，查看自该首选项创建以来该凭据的使用情况，(3) 待新凭据就位后删除该 GPP 首选项。Microsoft 的 KB2962486 提供了清理指南。", "status": "machine-draft" }
+  },
+  "ADTRADE-002": {
+    "name": { "value": "DCShadow 指标（Configuration 分区中的恶意服务器）", "status": "machine-draft" },
+    "description": { "value": "DCShadow（Vincent LE TOUX / Benjamin Delpy，BlueHat IL 2018）通过在 CN=Sites,CN=Configuration 下写入 nTDSDSA + server 对象，将攻击者控制的主机注册为域控制器。随后利用这个假 DC 注入恶意复制数据（SID history、密码哈希），而它本身从不需要成为真正的 DC。注意：在存续时间长的域中，一个无法匹配的 server 对象更常见的是残留的 DC 元数据（未经“ntdsutil metadata cleanup”而被移除的 DC），而非真正的 DCShadow 攻击，因此其评级为 High 而非 Critical，请调查 whenCreated 时间戳，以区分近期创建的（可疑）对象和陈旧的旧元数据。", "status": "machine-draft" },
+    "recommendedValue": { "value": "CN=Sites,CN=Configuration 下的所有 server 对象都对应真实、已清点的域控制器。没有与已知 DC 不匹配的近期创建 server 对象。", "status": "machine-draft" },
+    "remediationSteps": { "value": "枚举：Get-ADObject -Filter {objectClass -eq 'server'} -SearchBase \"CN=Sites,$((Get-ADRootDSE).configurationNamingContext)\" -Properties whenCreated, dNSHostName | Sort whenCreated。与你的 DC 清单交叉比对（Get-ADDomainController -Filter *）。任何与真实 DC 不匹配的 server 对象，尤其是近期创建的，都需要立即进行事件响应：DCShadow 是域接管级别的原语。将架构容器上的 5137 / 5141 事件作为检测时的信号进行监视。", "status": "machine-draft" }
+  },
+  "ADTRADE-003": {
+    "name": { "value": "陈旧的 BitLocker 恢复密钥", "status": "machine-draft" },
+    "description": { "value": "BitLocker 恢复密钥作为 msFVE-RecoveryInformation 子对象存储在 AD 中，隶属于备份它们的计算机。当计算机被停用但其 AD 对象被遗留悬置时，恢复密钥仍可被任何拥有 BitLocker 恢复权限的人查询，而这通常是一个比“Tier-0”更宽泛的群体。陈旧密钥意味着，若已处置的驱动器从翻新商或垃圾箱中被回收，仍可被解密。", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有 msFVE-RecoveryInformation 对象都属于最近 90 天内活动的计算机。没有密钥孤立于已禁用或近期修改后又变陈旧的计算机账户。", "status": "machine-draft" },
+    "remediationSteps": { "value": "枚举恢复信息：Get-ADObject -Filter {objectClass -eq 'msFVE-RecoveryInformation'} -Properties whenCreated。对于每一个，向上追溯到父计算机对象并检查其 lastLogonTimestamp / Enabled。对于不活动超过 90 天的计算机：确认驱动器已被擦除或销毁，然后删除该 AD 计算机对象（会级联删除恢复信息）。对于仍在积极使用但恢复密钥非常陈旧的计算机：通过 Backup-BitLockerKeyProtector 轮换。核实 BitLocker 恢复组的成员身份是严格控制的。", "status": "machine-draft" }
+  },
+  "ADTRADE-004": {
+    "name": { "value": "RODC 密码复制策略卫生", "status": "machine-draft" },
+    "description": { "value": "只读域控制器会为其密码复制策略（PRP）中列出的主体缓存密码。如果某个 Tier-0 账户（Domain Admin、Enterprise Admin、krbtgt）可被某台 RODC 的 PRP 触及（直接触及或通过组嵌套），那么攻陷该 RODC 就会攻陷这些账户。默认的“Denied RODC Password Replication Group”应显式包含 DA / EA / SA / Schema Admins / krbtgt；某些环境自定义了该策略并意外移除了这些拒绝项。", "status": "machine-draft" },
+    "recommendedValue": { "value": "域中所有 RODC 的密码复制策略中，Domain Admins、Enterprise Admins、Schema Admins、krbtgt 和 Account Operators 都在拒绝一侧。没有高权限账户位于允许一侧。", "status": "machine-draft" },
+    "remediationSteps": { "value": "对于每台 RODC：Get-ADDomainController -Filter {IsReadOnly -eq $true} | ForEach-Object { Get-ADDomainControllerPasswordReplicationPolicy -Identity $_ -Allowed; Get-ADDomainControllerPasswordReplicationPolicy -Identity $_ -Denied }。核实拒绝列表包含内置的“Denied RODC Password Replication Group”。如果你的环境没有 RODC，此检查为 N/A，即 PASS。Microsoft 的 RODC 规划指南提供了标准的 PRP 模板。", "status": "machine-draft" }
+  },
+  "ADTRADE-005": {
+    "name": { "value": "Entra 无缝 SSO 计算机账户（AZUREADSSOACC$）密钥轮换", "status": "machine-draft" },
+    "description": { "value": "当为混合标识启用了 Entra（Azure AD）无缝单点登录时，AD 会创建一个名为 AZUREADSSOACC$ 的计算机账户。其密码即 Entra 用于验证 SSO 票据的共享 Kerberos 密钥。Microsoft 明确记载该密钥不会自动轮换，管理员必须手动滚动它。如果攻击者提取了 AZUREADSSOACC$ 密钥（它是一个普通的 NT 哈希，可通过 DCSync 或从 DC 读取），就能为 Azure AD 服务伪造 Kerberos Silver Ticket，并以任何已同步的混合用户身份进行身份验证，无需任何进一步交互，只要该密钥仍然有效即可。超过 90 天未轮换的密钥会大幅拉宽这一窗口。", "status": "machine-draft" },
+    "recommendedValue": { "value": "AZUREADSSOACC$ Kerberos 密钥至少每 90 天轮换一次（每次轮换滚动两次，以使前一个密钥失效）。", "status": "machine-draft" },
+    "remediationSteps": { "value": "在装有 Entra Connect / Azure AD 模块的机器上轮换无缝 SSO 密钥：Import-Module 'C:\\Program Files\\Microsoft Azure Active Directory Connect\\AzureADSSO.psd1'; New-AzureADSSOAuthenticationContext; Update-AzureADSSOForest。执行轮换两次（该账户会存储当前密钥 + 前一个密钥），并将其安排为定期执行。如果不再使用无缝 SSO，请禁用它并删除 AZUREADSSOACC$ 对象。", "status": "machine-draft" }
+  },
+  "ADTRADE-006": {
+    "name": { "value": "特权主体上的 Shadow Credentials（msDS-KeyCredentialLink）", "status": "machine-draft" },
+    "description": { "value": "msDS-KeyCredentialLink 属性保存用于 Windows Hello for Business / 无密码 PKINIT 登录的公钥。对目标该属性拥有写访问权的攻击者可添加自己的密钥对（Whisker / pyWhisker），然后使用匹配的私钥以该账户身份请求 Kerberos TGT，这是一种被称为“shadow credentials”的隐蔽持久化和冒充技术。Tier-0 对象（域管理员、域控制器或任何 adminCount=1 账户）上任何意外的密钥凭据，在被证明是合法的 WHfB 注册之前，都应被视为潜在后门。", "status": "machine-draft" },
+    "recommendedValue": { "value": "特权/Tier-0 主体上没有无法识别的 msDS-KeyCredentialLink 值；每个密钥都对应一个已知的 WHfB/无密码注册。", "status": "machine-draft" },
+    "remediationSteps": { "value": "对于每个被标记的主体，检查其密钥凭据（Get-ADObject -Properties msDS-KeyCredentialLink，或 DSInternals 的 Get-ADKeyCredential cmdlet），并将每个设备密钥与合法的 Windows Hello for Business 注册相关联。移除任何你无法归因于经批准注册的条目。限制谁可以写入 msDS-KeyCredentialLink（审计 Key Admins / Enterprise Key Admins 以及授予该写权限的 OU/对象 DACL）。若怀疑遭到入侵，重置受影响的账户。", "status": "machine-draft" }
+  },
+  "ADTRADE-007": {
+    "name": { "value": "BadSuccessor dMSA 迁移提权面", "status": "machine-draft" },
+    "description": { "value": "Windows Server 2025 引入了委派托管服务账户（dMSA，对象类 msDS-DelegatedManagedServiceAccount），并带有一项迁移功能：dMSA 可被标记为取代某个现有账户，此后它将继承该账户的权限和 Kerberos 密钥。2024 年披露的“BadSuccessor”技术滥用了这一点：一个仅能在某个 OU 中创建 dMSA 的主体（对 dMSA 类拥有 CreateChild，或对该 OU 拥有宽泛的写权限/GenericAll），即可创建一个 dMSA、将其指向某个特权账户并继承其密钥，从而在从不直接持有对该账户权限的情况下提权为该账户。此检查清点非 Tier-0 主体持有该能力的 OU。", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有非 Tier-0 主体能在任何 OU 中创建或写入委派 MSA（msDS-DelegatedManagedServiceAccount）。", "status": "machine-draft" },
+    "remediationSteps": { "value": "在每个被标记的 OU 上，从非管理主体处移除 CreateChild（针对 msDS-DelegatedManagedServiceAccount 类）、GenericAll、WriteDacl 和 WriteOwner。广泛审计委派的 OU 权限：使 BadSuccessor 成为可能的那些 ACE，同样会使其他对象创建滥用成为可能。在修补/缓解之前，监视 msDS-DelegatedManagedServiceAccount 对象的创建（4662/5137 事件）。此检查在架构早于 Server 2025 的林上会 SKIP。", "status": "machine-draft" }
+  },
+  "ADTRADE-008": {
+    "name": { "value": "Key Admins / Enterprise Key Admins 组成员身份", "status": "machine-draft" },
+    "description": { "value": "Key Admins（域 RID 526）和 Enterprise Key Admins（RID 527）组被授予在整个域/林范围写入 msDS-KeyCredentialLink 属性的权利。这使任何成员成为一个域范围的 shadow-credential 原语：成员可在任何账户上植入密钥凭据并通过 PKINIT 以其身份进行身份验证。这些组出厂时为空，且应保持为空，除非某个特定的 Windows Hello for Business 密钥预配工作流确实需要它们。任何成员都是必须有理由的提权途径。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Key Admins 和 Enterprise Key Admins 组为空（没有常驻成员）。", "status": "machine-draft" },
+    "remediationSteps": { "value": "审查 Key Admins 和 Enterprise Key Admins 的每个成员。移除任何不具有记录在案、持续性的 Windows Hello for Business 密钥预配需求的账户。如果 WHfB 密钥预配需要委派权限，请将其范围限定给一个权限尽可能狭窄的专用服务账户，而非通过这些域范围组的成员身份。将意外成员视为潜在的持久化机制。", "status": "machine-draft" }
+  },
+  "ADTRADE-009": {
+    "name": { "value": "Cert Publishers 组成员身份", "status": "machine-draft" },
+    "description": { "value": "Cert Publishers 组（域 RID 517）的成员被允许将证书发布到 NTAuth 存储以及用户/计算机对象。默认情况下该组仅包含 Enterprise CA 计算机账户。被置入该组的用户或服务账户将获得影响哪些证书被信任用于身份验证的能力，这是若干 AD CS 提权路径（ESC 类攻击）中的一块跳板，并可实现基于证书的冒充。计算机账户成员身份（CA 主机本身）是预期的；任何非计算机成员都是一个发现项。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Cert Publishers 仅包含 Enterprise CA 计算机账户，没有用户或服务账户。", "status": "machine-draft" },
+    "remediationSteps": { "value": "从 Cert Publishers 组中移除任何用户或服务账户；只有 Enterprise CA 计算机账户才应在其中。审查 NTAuth 存储内容（certutil -viewstore -enterprise NTAuth）以查找意外的 CA 证书。广泛加固 AD CS：审计证书模板注册权限以及 ESC1-ESC8 配置错误面。", "status": "machine-draft" }
+  },
+  "ADTRADE-010": {
+    "name": { "value": "组托管服务账户（gMSA）态势与密码暴露", "status": "machine-draft" },
+    "description": { "value": "组托管服务账户（gMSA）持有由 AD 自动生成并轮换的 240 位密码，从而消除了对弱服务账户密码的 Kerberoasting 以及手动轮换的繁琐。有两点态势值得关注：(1) 服务标识是否根本使用了 gMSA，(2) 谁被授权取回托管密码，这由 msDS-GroupMSAMembership 安全描述符（PrincipalsAllowedToRetrieveManagedPassword）控制。如果该描述符向宽泛的主体（Everyone、Authenticated Users、Domain Users）或非特权主体授权，则该主体可恢复明文 gMSA 密码（例如通过 GMSAPasswordReader）并完全冒充该服务。", "status": "machine-draft" },
+    "recommendedValue": { "value": "服务标识以 gMSA 运行；msDS-GroupMSAMembership 的范围仅限于必须运行该服务的特定主机（没有宽泛或非特权主体）。", "status": "machine-draft" },
+    "remediationSteps": { "value": "对于每个 gMSA，将 PrincipalsAllowedToRetrieveManagedPassword 设置为运行该服务的确切计算机账户（或一个严格限定范围的组）：Set-ADServiceAccount -Identity <gmsa> -PrincipalsAllowedToRetrieveManagedPassword <hosts>。从该列表中移除 Everyone / Authenticated Users / Domain Users。若服务账户仍在使用静态的用户账户密码，请将其迁移到 gMSA，以获得自动轮换和抗 Kerberoasting 能力。", "status": "machine-draft" }
+  }
+}

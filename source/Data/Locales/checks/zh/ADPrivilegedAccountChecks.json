@@ -1,0 +1,183 @@
+{
+  "_family": "ADPrivilegedAccountChecks.json",
+  "ADPRIV-001": {
+    "name": { "value": "Domain Admins 枚举", "status": "machine-draft" },
+    "description": { "value": "Domain Admins 组提供对所有加入域系统的完全管理控制。成员身份应受到严格限制，且每个成员都必须有记录在案的业务理由。成员过多会极大地增加凭据窃取和横向移动的攻击面", "status": "machine-draft" },
+    "recommendedValue": { "value": "成员身份最小化（理想情况下最多 2 至 3 个账户），每个成员都有记录在案的理由。不含日常使用的用户账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember -Identity 'Domain Admins' -Recursive 枚举包括嵌套组在内的 Domain Admins 成员身份。审查每个成员的业务需求。删除不必要的成员并迁移到委派管理模型。确保没有普通用户账户成为成员", "status": "machine-draft" }
+  },
+  "ADPRIV-002": {
+    "name": { "value": "Enterprise Admins 枚举", "status": "machine-draft" },
+    "description": { "value": "Enterprise Admins 组在所有域中拥有林范围的管理权限。该组在正常运营期间应为空，仅在进行林级别更改时临时填充。一个被攻陷的 Enterprise Admin 账户将导致整个林被完全攻陷", "status": "machine-draft" },
+    "recommendedValue": { "value": "正常运营期间为空。仅在进行林级别更改时，经记录在案的审批临时添加成员", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember -Identity 'Enterprise Admins' -Recursive 枚举 Enterprise Admins 成员身份。删除所有常驻成员。为林级别操作实施即时（just-in-time）访问流程，临时添加和移除成员并进行完整的审计日志记录", "status": "machine-draft" }
+  },
+  "ADPRIV-003": {
+    "name": { "value": "Schema Admins 枚举", "status": "machine-draft" },
+    "description": { "value": "Schema Admins 组可修改 AD 架构，此操作不可逆并影响整个林。由于架构更改罕见且影响重大，该组在正常运营期间应为空", "status": "machine-draft" },
+    "recommendedValue": { "value": "正常运营期间为空。仅在需要修改架构时，经变更管理审批临时添加成员", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember -Identity 'Schema Admins' 枚举 Schema Admins 成员身份。删除所有常驻成员。仅在通过正式变更管理流程需要进行架构更改时才添加成员", "status": "machine-draft" }
+  },
+  "ADPRIV-004": {
+    "name": { "value": "Account Operators 枚举", "status": "machine-draft" },
+    "description": { "value": "Account Operators 可在域中创建和修改大多数用户和组账户，包括在特权 OU 中创建账户。该组常被忽视，却提供了重大的提权可能性", "status": "machine-draft" },
+    "recommendedValue": { "value": "为空。使用委派的 OU 级别权限，而非 Account Operators 组成员身份", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember -Identity 'Account Operators' 枚举 Account Operators 成员身份。删除所有成员，并改用 Active Directory 控制委派向导进行 OU 范围的委派。记录所有委派的权限", "status": "machine-draft" }
+  },
+  "ADPRIV-005": {
+    "name": { "value": "Server Operators 枚举", "status": "machine-draft" },
+    "description": { "value": "Server Operators 可登录域控制器、管理服务并修改共享资源。该组可被滥用于在 DC 上提权，方法是操纵服务以 SYSTEM 身份运行任意代码", "status": "machine-draft" },
+    "recommendedValue": { "value": "为空。改用带有特定委派的专用服务管理账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember -Identity 'Server Operators' 枚举 Server Operators 成员身份。删除所有成员，并为任何必需的服务器管理任务实施定向委派。单独审计 DC 登录权限", "status": "machine-draft" }
+  },
+  "ADPRIV-006": {
+    "name": { "value": "Backup Operators 枚举", "status": "machine-draft" },
+    "description": { "value": "Backup Operators 可在域控制器上备份和还原文件，包括 AD 数据库（ntds.dit）。这允许提取域中所有密码哈希，使得对于熟练的攻击者而言，Backup Operators 成员身份等同于 Domain Admin 访问权", "status": "machine-draft" },
+    "recommendedValue": { "value": "为空或仅限专用备份服务账户。不含用户账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember -Identity 'Backup Operators' 枚举 Backup Operators 成员身份。删除所有用户账户。如果备份服务账户需要成员身份，确保它们是专用的、拥有强密码并受到监视。考虑采用不需要 Backup Operators 成员身份的基于代理的备份解决方案", "status": "machine-draft" }
+  },
+  "ADPRIV-007": {
+    "name": { "value": "Print Operators 枚举", "status": "machine-draft" },
+    "description": { "value": "Print Operators 可在域控制器上管理打印机并加载打印机驱动程序。恶意的打印机驱动程序可在 DC 上以 SYSTEM 身份执行任意代码，从而提供一条通往域完全攻陷的途径", "status": "machine-draft" },
+    "recommendedValue": { "value": "为空。使用专用打印服务器（而非域控制器）管理打印机", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember -Identity 'Print Operators' 枚举 Print Operators 成员身份。删除所有成员。在专用成员服务器（而非域控制器）上部署打印服务。通过组策略限制打印机驱动程序的安装", "status": "machine-draft" }
+  },
+  "ADPRIV-008": {
+    "name": { "value": "DnsAdmins 组成员身份", "status": "machine-draft" },
+    "description": { "value": "DnsAdmins 组的成员可将域控制器上的 DNS 服务配置为加载任意 DLL，该 DLL 会以 SYSTEM 身份执行。这条众所周知的提权途径，可将看似低权限的组成员身份升级为整个域的完全攻陷", "status": "machine-draft" },
+    "recommendedValue": { "value": "为空或仅限专用 DNS 管理账户。成员身份视为 Tier 0 特权", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember -Identity 'DnsAdmins' 枚举 DnsAdmins 成员身份。删除不必要的成员。在分层模型中将 DnsAdmins 视为 Tier 0 特权组。监视 DNS 服务器配置和 ServerLevelPluginDll 注册表值的更改", "status": "machine-draft" }
+  },
+  "ADPRIV-009": {
+    "name": { "value": "嵌套组成员身份分析", "status": "machine-draft" },
+    "description": { "value": "嵌套的组成员身份可能通过将特权访问隐藏在层层组嵌套之后而掩盖有效权限。用户可能通过深度嵌套的组获得等同于 Domain Admin 的访问权，而这在简单的组枚举中并不可见", "status": "machine-draft" },
+    "recommendedValue": { "value": "记录通往特权组的所有嵌套组路径。最大嵌套深度为 2 层。无循环嵌套", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember -Recursive 递归枚举所有特权组成员身份。绘制所有嵌套路径并识别通过间接成员身份获得权限的用户。扁平化不必要的嵌套，并为所有剩余的嵌套路径记录业务理由", "status": "machine-draft" }
+  },
+  "ADPRIV-010": {
+    "name": { "value": "密码永不过期的特权用户", "status": "machine-draft" },
+    "description": { "value": "设置了“密码永不过期”标志的特权账户可免于密码轮换策略。若此类账户被攻陷，由于密码永远不会被强制更改，攻击者将无限期地保持持久访问", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有设置密码永不过期标志的特权账户。所有特权账户均受 60 天或更短的密码轮换策略约束", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {PasswordNeverExpires -eq $true -and AdminCount -eq 1} 识别带 PasswordNeverExpires 的特权账户。清除该标志并确保这些账户受适当的密码策略覆盖。为特权账户实施最长 60 天密码使用期限的 FGPP", "status": "machine-draft" }
+  },
+  "ADPRIV-011": {
+    "name": { "value": "无需密码的特权用户", "status": "machine-draft" },
+    "description": { "value": "PASSWD_NOTREQD 标志允许账户使用空密码，从而完全绕过密码策略。在特权账户上，这是灾难性的，因为它允许未经身份验证即可访问高度特权的资源", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有设置 PASSWD_NOTREQD 标志的特权账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {PasswordNotRequired -eq $true -and AdminCount -eq 1} 识别相关账户。立即清除 PASSWD_NOTREQD 标志并为所有已识别账户设置强密码。调查此标志是如何被设置的，因为它可能表明遭到入侵", "status": "machine-draft" }
+  },
+  "ADPRIV-012": {
+    "name": { "value": "无 Kerberos 预身份验证的特权用户", "status": "machine-draft" },
+    "description": { "value": "禁用 Kerberos 预身份验证的账户易受 AS-REP Roasting 攻击：攻击者无需任何身份验证即可离线请求加密材料并将其破解以恢复账户密码。在特权账户上，这提供了一条通往域攻陷的直接途径", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有设置“不要求 Kerberos 预身份验证”标志的特权账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true -and AdminCount -eq 1} 识别相关账户。立即在所有特权账户上启用 Kerberos 预身份验证。轮换受影响账户的密码，因为它们可能已通过 AS-REP Roasting 被攻陷", "status": "machine-draft" }
+  },
+  "ADPRIV-013": {
+    "name": { "value": "使用可逆加密的特权用户", "status": "machine-draft" },
+    "description": { "value": "启用了“使用可逆加密存储密码”的账户以可解密为明文的格式存储密码。这等同于以明文存储密码，允许任何能访问 AD 数据库的攻击者取回实际密码", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有账户启用可逆加密，特权账户尤其如此", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true -and AdminCount -eq 1} 识别相关账户。清除该标志并对所有受影响账户强制立即更改密码。审查密码策略以确保它们不要求可逆加密", "status": "machine-draft" }
+  },
+  "ADPRIV-014": {
+    "name": { "value": "仅使用 DES Kerberos 的特权用户", "status": "machine-draft" },
+    "description": { "value": "配置为仅使用 DES Kerberos 加密的账户正在使用一种密码学上已被攻破的算法。DES 密钥可被快速暴力破解，允许攻击者为受影响账户伪造或解密 Kerberos 票据", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有设置“为此账户使用 Kerberos DES 加密类型”标志的账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {UseDESKeyOnly -eq $true -and AdminCount -eq 1} 识别相关账户。清除仅 DES 标志并确保账户支持 AES256 加密。轮换受影响账户的密码以生成新的基于 AES 的 Kerberos 密钥", "status": "machine-draft" }
+  },
+  "ADPRIV-015": {
+    "name": { "value": "特权账户无 MFA 指标", "status": "machine-draft" },
+    "description": { "value": "特权账户的所有交互式和远程登录都应受多重身份验证保护。若无 MFA，仅凭一个被盗密码就足以获得完全的域管理访问权", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有特权账户均要求通过智能卡、Windows Hello for Business 或 FIDO2 使用 MFA。在适用处设置“交互式登录需要智能卡”标志", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {SmartcardLogonRequired -eq $false -and AdminCount -eq 1} 审查特权账户的智能卡登录要求。为所有特权账户部署智能卡或 Windows Hello for Business 身份验证。在 Tier 0 账户上启用“交互式登录需要智能卡”标志", "status": "machine-draft" }
+  },
+  "ADPRIV-016": {
+    "name": { "value": "特权账户弱密码", "status": "machine-draft" },
+    "description": { "value": "使用弱密码或常用密码的特权账户，可通过密码喷洒、字典攻击或凭据填充被轻易攻陷。Domain Admin 账户上的一个弱密码可在数分钟内导致整个域被完全攻陷", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有特权账户密码均至少满足 25 个字符，且不出现在常用密码字典中", "status": "machine-draft" },
+    "remediationSteps": { "value": "通过将 NT 哈希与已知弱密码列表进行比较（使用 DSInternals 等工具），测试特权账户的密码强度。对任何使用弱密码的账户立即强制更改密码。实施要求特权账户使用 25 个以上字符密码的 FGPP", "status": "machine-draft" }
+  },
+  "ADPRIV-017": {
+    "name": { "value": "特权账户旧密码", "status": "machine-draft" },
+    "description": { "value": "密码超过 90 天未更改的特权账户具有更长的暴露窗口。若凭据已被泄露，攻击者将在密码保持不变的整个期间内保持访问权", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有特权账户密码均在最近 60 天内更改过", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {AdminCount -eq 1} -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -lt (Get-Date).AddDays(-90)} 识别密码陈旧的特权账户。对所有已识别账户强制轮换密码。为特权账户实施最长 60 天密码使用期限的 FGPP", "status": "machine-draft" }
+  },
+  "ADPRIV-018": {
+    "name": { "value": "从未登录的特权账户", "status": "machine-draft" },
+    "description": { "value": "从未登录过的特权账户可能是从未被认领的预配账户、测试账户或迁移遗留物。这些位于特权组中的未受管理账户构成重大风险，因为它们可能使用默认或弱密码", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有 LastLogonTimestamp 为空的特权账户。所有特权账户均由其指定所有者积极使用", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {AdminCount -eq 1} -Properties LastLogonTimestamp | Where-Object {$_.LastLogonTimestamp -eq $null} 识别从未登录过的特权账户。调查每个账户以确定是否需要它。禁用不必要的账户或将其从特权组中移除", "status": "machine-draft" }
+  },
+  "ADPRIV-019": {
+    "name": { "value": "特权组中的已禁用账户", "status": "machine-draft" },
+    "description": { "value": "仍留在特权组中的已禁用账户会造成风险，因为重新启用该账户（无论有意还是通过入侵）都会立即授予完全的特权访问权。已禁用账户应从所有特权组中移除", "status": "machine-draft" },
+    "recommendedValue": { "value": "任何特权组中都没有已禁用账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember 'Domain Admins' -Recursive | Get-ADUser | Where-Object {$_.Enabled -eq $false} 识别特权组中的已禁用账户。对所有特权组重复此操作。立即将已禁用账户从所有特权组成员身份中移除", "status": "machine-draft" }
+  },
+  "ADPRIV-020": {
+    "name": { "value": "AdminSDHolder 受保护对象审计", "status": "machine-draft" },
+    "description": { "value": "AdminSDHolder 是一种安全机制，每 60 分钟通过 SDProp 覆写受保护对象（特权用户和组）的 ACL。对 AdminSDHolder ACL 的修改会传播到所有受保护对象，使其成为持久化的高价值目标。AdminSDHolder 上未经授权的 ACE 会授予对所有特权账户的后门访问", "status": "machine-draft" },
+    "recommendedValue": { "value": "AdminSDHolder ACL 仅包含默认条目，无未经授权或意外的 ACE", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ACL 或 ADSIEdit 审查 CN=AdminSDHolder,CN=System,DC=domain 处的 AdminSDHolder ACL。与记录在案的基线进行比较。立即删除任何非默认 ACE。将监视 AdminSDHolder 的修改作为持续安全监视的一部分", "status": "machine-draft" }
+  },
+  "ADPRIV-021": {
+    "name": { "value": "AdminCount 孤儿", "status": "machine-draft" },
+    "description": { "value": "当对象从受保护组中被移除时，AdminCount 属性仍保持为 1，且继承的权限仍被阻止。这些“AdminCount 孤儿”具有断裂的权限继承，可能阻止安全策略正确应用，并可能掩盖提权", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有 AdminCount=1 但不属于任何受保护组成员的账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {AdminCount -eq 1} 识别孤儿账户，并与当前受保护组成员身份交叉比对。对于孤儿账户，清除 AdminCount 属性并在对象的 ACL 上重新启用继承。使用 PowerShell 或 ADSIEdit 修复继承的权限", "status": "machine-draft" }
+  },
+  "ADPRIV-022": {
+    "name": { "value": "krbtgt 密码年龄", "status": "machine-draft" },
+    "description": { "value": "krbtgt 账户密码用于加密和签名域中所有 Kerberos 票据。若被攻陷，攻击者可创建 Golden Ticket，在任意时长内授予对任何资源的无限制访问。krbtgt 密码应至少每 180 天轮换一次，并在任何疑似入侵后立即轮换", "status": "machine-draft" },
+    "recommendedValue": { "value": "krbtgt 密码在最近 180 天内更改过。在任何疑似入侵后轮换两次（以使所有现有票据失效）", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser krbtgt -Properties PasswordLastSet 检查 krbtgt 密码年龄。重置密码两次（两次重置之间留出足够时间以完成复制），以使所有现有票据失效。使用 Microsoft 的 krbtgt 重置脚本安全地执行轮换。安排每 180 天定期轮换", "status": "machine-draft" }
+  },
+  "ADPRIV-023": {
+    "name": { "value": "krbtgt 账户暴露评估", "status": "machine-draft" },
+    "description": { "value": "应评估 krbtgt 账户配置的暴露指标，包括支持的加密类型、委派设置和 SPN。任何配置错误都会增加 Golden Ticket 及其他基于 Kerberos 的攻击的风险", "status": "machine-draft" },
+    "recommendedValue": { "value": "krbtgt 账户仅配置 AES256 加密，无委派，且除默认的 kadmin/changepw 外没有额外的 SPN", "status": "machine-draft" },
+    "remediationSteps": { "value": "审查 krbtgt 账户属性，包括 msDS-SupportedEncryptionTypes、委派设置和 SPN。确保 AES256 是主要加密类型。核实未设置任何委派标志。检查是否存在可能表明入侵或配置错误的意外 SPN", "status": "machine-draft" }
+  },
+  "ADPRIV-024": {
+    "name": { "value": "特权组中的服务账户", "status": "machine-draft" },
+    "description": { "value": "特权组中的服务账户风险更高，因为它们通常拥有永不过期的密码、在管理员之间共享、可能存储在脚本或配置文件中，并在多台服务器上运行、其凭据可被收割", "status": "machine-draft" },
+    "recommendedValue": { "value": "特权组中没有服务账户。服务账户应使用范围限定为最小所需访问权的委派权限", "status": "machine-draft" },
+    "remediationSteps": { "value": "通过审查所有成员并检查用作服务登录标识的账户，识别特权组中的服务账户。将服务账户从特权组中移除，并仅通过委派授予所需的特定权限。在可能的情况下迁移到组托管服务账户（gMSA）", "status": "machine-draft" }
+  },
+  "ADPRIV-025": {
+    "name": { "value": "特权组中的计算机账户", "status": "machine-draft" },
+    "description": { "value": "特权组中的计算机账户会将该组的权限授予在这些计算机上以 SYSTEM 身份运行的任何进程。攻陷此类机器的攻击者可获得等同于 Domain Admin 的访问权，从而显著扩大横向移动攻击面", "status": "machine-draft" },
+    "recommendedValue": { "value": "任何特权组中都没有计算机账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADGroupMember 'Domain Admins' | Where-Object {$_.objectClass -eq 'computer'} 枚举特权组成员并识别任何计算机账户。对所有特权组重复此操作。立即移除计算机账户并调查它们为何被添加", "status": "machine-draft" }
+  },
+  "ADPRIV-026": {
+    "name": { "value": "特权用户在 DC 上的本地登录", "status": "machine-draft" },
+    "description": { "value": "只有指定的 Tier 0 管理账户才应被允许本地登录域控制器。允许非 Tier 0 账户登录 DC，会使特权凭据暴露于安全性较低的工作站上的凭据收割攻击", "status": "machine-draft" },
+    "recommendedValue": { "value": "只有 Domain Admins 和指定的 Tier 0 账户被允许在 DC 上本地登录。通过 Domain Controllers OU 上的 GPO 限制“允许本地登录”", "status": "machine-draft" },
+    "remediationSteps": { "value": "通过应用于 Domain Controllers OU 的组策略进行配置：Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > User Rights Assignment > “Allow log on locally” = 仅 Administrators、Domain Admins。删除所有其他条目并充分测试", "status": "machine-draft" }
+  },
+  "ADPRIV-027": {
+    "name": { "value": "特权用户在 DC 上的 RDP", "status": "machine-draft" },
+    "description": { "value": "对域控制器的远程桌面访问应严格限于指定的 Tier 0 管理员。RDP 会话会缓存可被收割的凭据，而过多的 RDP 访问会增加凭据窃取以及向 DC 横向移动的攻击面", "status": "machine-draft" },
+    "recommendedValue": { "value": "只有指定的 Tier 0 管理账户被允许 RDP 访问 DC。通过 GPO 限制“允许通过远程桌面服务登录”", "status": "machine-draft" },
+    "remediationSteps": { "value": "通过应用于 Domain Controllers OU 的组策略进行配置：Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > User Rights Assignment > “Allow log on through Remote Desktop Services” = 仅 Administrators。考虑对 RDP 会话使用 Remote Credential Guard 或受限管理模式", "status": "machine-draft" }
+  },
+  "ADPRIV-028": {
+    "name": { "value": "拥有 DCSync 权限的用户", "status": "machine-draft" },
+    "description": { "value": "DCSync 允许从 Active Directory 复制密码数据，包括所有用户哈希。拥有“Replicating Directory Changes All”和“Replicating Directory Changes”权限的账户，无需接触 DC 即可提取域中每一个密码哈希。只有域控制器计算机账户和默认管理员账户才应拥有这些权限", "status": "machine-draft" },
+    "recommendedValue": { "value": "只有域控制器计算机账户和默认管理员账户拥有复制权限。没有额外的用户或组被授予 DCSync 权限", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 (Get-ACL 'AD:\\DC=domain,DC=com').Access | Where-Object {$_.ObjectType -match '1131f6a[a-d]'} 审计域根 ACL 中的“Replicating Directory Changes”和“Replicating Directory Changes All”。立即删除任何未经授权的条目。调查未经授权的账户是否已执行过 DCSync", "status": "machine-draft" }
+  },
+  "ADPRIV-029": {
+    "name": { "value": "Protected Users 组审计", "status": "machine-draft" },
+    "description": { "value": "Protected Users 安全组提供加固的身份验证保护，包括禁用 NTLM 身份验证、强制 AES Kerberos 加密、阻止凭据缓存并设置较短的 TGT 生存期。所有 Tier 0 特权账户都应成为其成员", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有 Tier 0 特权用户账户都是 Protected Users 组的成员", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Add-ADGroupMember -Identity 'Protected Users' -Members <account> 将所有 Tier 0 账户添加到 Protected Users 组。请先测试每个账户，因为 Protected Users 会禁用 NTLM 和凭据委派，可能导致旧版应用程序无法工作。注意：不应添加服务账户和计算机账户", "status": "machine-draft" }
+  },
+  "ADPRIV-030": {
+    "name": { "value": "不在 Protected Users 中的特权用户", "status": "machine-draft" },
+    "description": { "value": "不属于 Protected Users 组成员的特权账户缺乏加固的身份验证保护，仍然易受凭据窃取技术攻击，包括 NTLM 中继、凭据缓存和长生存期 Kerberos 票据。每一个符合条件的特权账户都应受到保护", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有符合条件的特权用户账户都已加入 Protected Users 组。例外情况须记录在案并附有补偿性控制", "status": "machine-draft" },
+    "remediationSteps": { "value": "将特权组成员与 Protected Users 成员身份进行比较。对于每个不在 Protected Users 中的特权账户，评估兼容性（NTLM 依赖、委派要求）并将其添加到该组。记录任何例外及其具体技术原因和补偿性控制", "status": "machine-draft" }
+  }
+}

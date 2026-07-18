@@ -1,0 +1,69 @@
+{
+  "_family": "ADTrustChecks.json",
+  "ADTRUST-001": {
+    "name": { "value": "信任关系枚举", "status": "machine-draft" },
+    "description": { "value": "应清点所有信任关系，以建立身份验证边界的完整图景。未记录在案的信任会因允许来自外部域的用户访问资源而扩大攻击面", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有信任关系均记录在案，附有业务理由、方向、类型和所有者", "status": "machine-draft" },
+    "remediationSteps": { "value": "运行 Get-ADTrust -Filter * 枚举所有信任。记录每个信任的方向、类型（林、外部、快捷方式、领域）、可传递性和业务理由。审查并移除任何不再服务于业务需求的信任", "status": "machine-draft" }
+  },
+  "ADTRUST-002": {
+    "name": { "value": "信任方向分析", "status": "machine-draft" },
+    "description": { "value": "入站信任允许外部域用户向你的域进行身份验证。应审查每个入站或双向信任，以确保受信任域维持了充分的安全控制。被攻陷的受信任域可被用来攻击你的环境", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有信任方向均有理由并记录在案。在可能的情况下将双向信任转换为单向，以减少攻击面", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADTrust -Filter * 审查每个信任方向。对于双向信任，评估是否两个方向都需要。在业务需求仅要求一个方向时转换为单向信任。记录所有入站信任路径的理由", "status": "machine-draft" }
+  },
+  "ADTRUST-003": {
+    "name": { "value": "信任可传递性分析", "status": "machine-draft" },
+    "description": { "value": "可传递信任将身份验证路径扩展到直接信任伙伴之外，可能通过受信任域链创建非预期的访问路径。应评估每个可传递信任所造成的扩展攻击面", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有可传递信任均记录在案，附有完整的可传递性路径分析。在不需要可传递性时优先使用外部信任而非林信任", "status": "machine-draft" },
+    "remediationSteps": { "value": "绘制所有可传递信任路径以识别间接身份验证路由。对于林信任，须理解所有子域都是可传递受信任的。在仅需访问特定域时，考虑使用外部（不可传递）信任", "status": "machine-draft" }
+  },
+  "ADTRUST-004": {
+    "name": { "value": "SID 筛选状态", "status": "machine-draft" },
+    "description": { "value": "SID 筛选会从身份验证令牌中移除来自外部域的 SID，从而防止 SID history 注入攻击。若无 SID 筛选，攻陷受信任域的攻击者可制作包含来自你域的特权 SID（如 Enterprise Admins）的票据，实现完全攻陷", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有外部信任和林信任均启用 SID 筛选（隔离）", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用“netdom trust /domain:trusted.domain /Quarantine”核实 SID 筛选状态。使用“netdom trust /domain:trusted.domain /Quarantine:Yes”启用 SID 筛选。注意：外部信任默认启用 SID 筛选，但在林信任上必须核实，因为它可能被故意禁用", "status": "machine-draft" }
+  },
+  "ADTRUST-005": {
+    "name": { "value": "SID History 滥用检测", "status": "machine-draft" },
+    "description": { "value": "SID history 本用于域迁移，但可被滥用于跨信任边界向用户令牌注入特权 SID。攻陷受信任域的攻击者可将 Enterprise Admin 或 Domain Admin SID 添加到其所控制的任何账户的 SID history 中", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有 SID history 值引用特权组的账户。SID history 在所有迁移完成后已清理", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {SIDHistory -like '*'} -Properties SIDHistory 搜索带 SID history 的账户。识别任何引用特权组（Domain Admins、Enterprise Admins 等）的 SID history 条目。迁移后使用带 SIDHistory 参数的 Remove-ADUser 清理 SID history。在信任上启用 SID 筛选", "status": "machine-draft" }
+  },
+  "ADTRUST-006": {
+    "name": { "value": "选择性身份验证状态", "status": "machine-draft" },
+    "description": { "value": "选择性身份验证通过要求在每个资源上具有显式权限，限制来自受信任域的哪些用户可以向你域中的资源进行身份验证。若无此项，来自受信任域的所有经过身份验证的用户都可访问其有权限的任何资源，从而大幅扩大攻击面", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有林信任均启用选择性身份验证。仅在所需资源上授予“允许身份验证”权限", "status": "machine-draft" },
+    "remediationSteps": { "value": "通过 Active Directory 域和信任 > 该信任的属性 > 身份验证选项卡 > 选择“选择性身份验证”，在林信任上启用选择性身份验证。然后在外部用户需要访问的特定计算机对象上授予“允许身份验证”权限", "status": "machine-draft" }
+  },
+  "ADTRUST-007": {
+    "name": { "value": "Azure AD 混合信任安全", "status": "machine-draft" },
+    "description": { "value": "将本地 AD 与 Azure AD 相连的混合标识配置会造成额外的攻击路径。Azure AD Connect、直通身份验证代理和联合服务都可能被作为目标，用于在云端和本地环境之间横向移动", "status": "machine-draft" },
+    "recommendedValue": { "value": "Azure AD Connect 运行最新版本，部署在经过加固的专用服务器上。PHS 优于 PTA/联合。若不需要则禁用无缝 SSO。配置仅云的应急（break-glass）账户", "status": "machine-draft" },
+    "remediationSteps": { "value": "审查 Azure AD Connect 配置，并确保它运行在经过加固的 Tier 0 服务器上。评估从联合或 PTA 切换到密码哈希同步（PHS）以减少攻击面。若使用无缝 SSO，确保 AZUREADSSOACC 计算机账户密码已轮换。核实存在仅云的应急访问账户", "status": "machine-draft" }
+  },
+  "ADTRUST-008": {
+    "name": { "value": "外部域信任枚举", "status": "machine-draft" },
+    "description": { "value": "与组织外部域的信任将安全边界扩展到可能拥有不同安全标准的实体。外部域信任应受到额外审视，因为信任方组织无法控制外部域的安全态势", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有外部域信任均记录在案，附有外部安全评估、合同安全要求和年度审查", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADTrust -Filter * 识别与组织外部域的信任。对于每个外部信任，核实已订立安全协议、已启用 SID 筛选、已配置选择性身份验证，且信任每年接受审查", "status": "machine-draft" }
+  },
+  "ADTRUST-009": {
+    "name": { "value": "孤立信任检测", "status": "machine-draft" },
+    "description": { "value": "孤立信任引用了不再存在或不再可达的域。这些陈旧的信任对象可能保留凭据，并在安全审计期间造成混淆。应移除它们以减少不必要的攻击面并维持整洁的信任拓扑", "status": "machine-draft" },
+    "recommendedValue": { "value": "不存在孤立或无法解析的信任关系", "status": "machine-draft" },
+    "remediationSteps": { "value": "枚举所有信任，并尝试通过解析受信任域名以及使用“netdom trust /verify”测试信任来验证每一个。使用“netdom trust /Remove”或 Active Directory 域和信任，移除伙伴域已不存在或不可达的孤立信任", "status": "machine-draft" }
+  },
+  "ADTRUST-010": {
+    "name": { "value": "信任密钥年龄与轮换", "status": "machine-draft" },
+    "description": { "value": "信任密码（域间密钥）应定期轮换。陈旧的信任密钥会增大基于凭据的攻击窗口。默认情况下信任密码每 30 天轮换一次，但应加以核实，因为失败的轮换可能不被察觉", "status": "machine-draft" },
+    "recommendedValue": { "value": "信任密码在最近 30 天内已轮换。未禁用自动信任密码轮换", "status": "machine-draft" },
+    "remediationSteps": { "value": "通过检查 trustAuthOutgoing 属性或运行“netdom trust /domain:trusted.domain /verify”来检查信任密码的最后设置日期。若信任密码已陈旧，使用“netdom trust /domain:trusted.domain /Reset”重置它。核实没有 GPO 或注册表设置禁用了自动信任密码轮换", "status": "machine-draft" }
+  },
+  "ADTRUST-011": {
+    "name": { "value": "信任层次可视化", "status": "machine-draft" },
+    "description": { "value": "应维护一份完整的信任拓扑图，展示所有信任关系、方向、类型和可传递性路径。这种可视化对于理解完整的身份验证边界并识别非预期的访问路径至关重要", "status": "machine-draft" },
+    "recommendedValue": { "value": "维护并每季度审查最新的信任拓扑图", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用自动化工具生成信任拓扑图，或手动记录所有信任关系，包括方向、类型、可传递性、SID 筛选状态和选择性身份验证状态。每当添加、修改或移除信任时更新该图。将该图纳入安全文档并每季度审查", "status": "machine-draft" }
+  }
+}

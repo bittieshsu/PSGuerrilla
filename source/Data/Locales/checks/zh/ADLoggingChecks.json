@@ -1,0 +1,45 @@
+{
+  "_family": "ADLoggingChecks.json",
+  "ADLOG-001": {
+    "name": { "value": "已配置高级审核策略", "status": "machine-draft" },
+    "description": { "value": "传统的九类审核策略对于现代调查而言过于粗放：它只能告诉你在“审核账户登录事件”下发生了某种失败，却无法区分这究竟是 Kerberos 预身份验证失败、服务票据请求，还是一次显式的凭据传递。自 Vista 起 Windows 就已支持高级审核策略（60 多个子类别），但必须主动启用。Default Domain Controllers Policy 的 SYSVOL 文件夹中存在 audit.csv，是判断该域已完成迁移的实测指标。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Default Domain Controllers Policy 分发了 audit.csv（Computer Configuration > Policies > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Audit Policies > <子类别>）。", "status": "machine-draft" },
+    "remediationSteps": { "value": "在 GPMC 中打开 Default Domain Controllers Policy。导航至 Computer Configuration > Policies > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Audit Policies。至少启用：Account Logon > Kerberos Service Ticket Operations（成功+失败）、Logon/Logoff > Logon（成功+失败）+ Special Logon（成功）、Account Management > 全部（成功）、Object Access > File Share + Detailed File Share（若监视横向移动则成功+失败）、Detailed Tracking > Process Creation（成功）。同时在 Security Options 中启用“Audit: Force audit policy subcategory settings”，使其优先于传统的九类设置。", "status": "machine-draft" }
+  },
+  "ADLOG-002": {
+    "name": { "value": "已启用 PowerShell 脚本块日志记录", "status": "machine-draft" },
+    "description": { "value": "事件 4104（PowerShell 脚本块日志记录）是调查现代入侵时最有用的单个 Windows 事件：它捕获反混淆后实际执行的 PowerShell 代码，包括通过 -EncodedCommand 传入的代码。若无此项，调查人员在面对基于 PowerShell 的勒索软件部署时将束手无策。该设置由管理模板写入 HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging\\EnableScriptBlockLogging。", "status": "machine-draft" },
+    "recommendedValue": { "value": "在域或 DC OU 级别启用组策略“Turn on PowerShell Script Block Logging”。注册表：EnableScriptBlockLogging = 1。", "status": "machine-draft" },
+    "remediationSteps": { "value": "Computer Configuration > Policies > Administrative Templates > Windows Components > Windows PowerShell > “Turn on PowerShell Script Block Logging” = Enabled。执行 gpupdate 后验证：Get-ItemProperty 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging'。确保“Microsoft-Windows-PowerShell/Operational”事件日志的容量足以承载数据量（默认 15 MB 在高负载下数小时内即会滚动覆盖）。", "status": "machine-draft" }
+  },
+  "ADLOG-003": {
+    "name": { "value": "已启用 PowerShell 模块日志记录", "status": "machine-draft" },
+    "description": { "value": "事件 4103（PowerShell 模块日志记录）会记录任何已配置日志记录的模块的 cmdlet/参数调用。将其与脚本块日志记录配合使用，即可为任何基于 PowerShell 的攻击构建高可信度的遥测栈。该设置由管理模板写入 HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging。", "status": "machine-draft" },
+    "recommendedValue": { "value": "启用组策略“Turn on Module Logging”，且模块名称列表至少包含“*”。注册表：EnableModuleLogging = 1。", "status": "machine-draft" },
+    "remediationSteps": { "value": "Computer Configuration > Policies > Administrative Templates > Windows Components > Windows PowerShell > “Turn on Module Logging” = Enabled。在 Module Names 列表中添加“*”（记录所有模块），或专门添加 Microsoft.PowerShell.* 以及你的环境用于管理的模块。", "status": "machine-draft" }
+  },
+  "ADLOG-004": {
+    "name": { "value": "带命令行的进程创建审核", "status": "machine-draft" },
+    "description": { "value": "事件 4688（进程创建）是横向移动的基础信号：它告诉你启动了什么进程以及是谁启动的。默认的 4688 事件并不包含命令行，这使其在涉及 PowerShell、wmic、mshta 或其他“就地取材”二进制文件的调查中几乎毫无用处。“Include command line in process creation events”策略正好填补了这一缺口。", "status": "machine-draft" },
+    "recommendedValue": { "value": "启用组策略“Include command line in process creation events”，并且将高级审核策略子类别“Audit Process Creation”设置为“成功”。", "status": "machine-draft" },
+    "remediationSteps": { "value": "两项设置缺一不可：(1) Computer Configuration > Policies > Administrative Templates > System > Audit Process Creation > “Include command line in process creation events” = Enabled。(2) Computer Configuration > Policies > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Detailed Tracking > Audit Process Creation = 成功。缺少 (1)，4688 事件将不带 NewProcessName 参数字符串；缺少 (2)，事件根本不会产生。", "status": "machine-draft" }
+  },
+  "ADLOG-005": {
+    "name": { "value": "Microsoft Defender 防篡改策略", "status": "machine-draft" },
+    "description": { "value": "如果你的 EDR 无需管理员操作就能从端点被关闭，那么每个攻击者都会在其攻击手册的第一步将其关闭。Defender 防篡改（以及任何现代 EDR 中的等效功能）可阻止本地禁用。此检查查找管辖 Defender 实时防护的 GPO 设置：完整的防篡改状态在云端（Intune/MDE 门户）设置，但 GPO 侧的加固可从 SYSVOL 验证。", "status": "machine-draft" },
+    "recommendedValue": { "value": "本地用户无法禁用 Defender 实时防护；排除项受到严格管控（或为空）；SmartScreen 增强已开启。防篡改本身通过 Microsoft Defender for Endpoint 云门户设置，需带外验证。", "status": "machine-draft" },
+    "remediationSteps": { "value": "在 MDE 门户中：Settings > Endpoints > Advanced features > Tamper Protection = On（应用于所有设备）。在 GPO 中：Computer Configuration > Policies > Administrative Templates > Windows Components > Microsoft Defender Antivirus > “Turn off Microsoft Defender Antivirus” = Disabled（是的，双重否定，意为“不允许关闭 Defender”）。此外：> Real-Time Protection > “Turn off real-time protection” = Disabled。仔细审查 Exclusions 子项，其中每一条都是攻击者会发现的漏洞。", "status": "machine-draft" }
+  },
+  "ADLOG-006": {
+    "name": { "value": "Windows 事件转发（WEF）订阅管理器", "status": "machine-draft" },
+    "description": { "value": "仅存在于生成它们的主机上的日志，其价值等同于攻击者擦除后该主机的本地磁盘。Windows 事件转发在写入时即将日志转发到收集器。若没有一个将每个端点指向收集器的 SubscriptionManager GPO，WEF 就不会发生。", "status": "machine-draft" },
+    "recommendedValue": { "value": "在工作站和服务器上设置组策略“Configure target Subscription Manager”，使其指向 WEF 收集器。", "status": "machine-draft" },
+    "remediationSteps": { "value": "Computer Configuration > Policies > Administrative Templates > Windows Components > Event Forwarding > “Configure target Subscription Manager” = Enabled。值：Server=http://wec-server.domain.tld:5985/wsman/SubscriptionManager/WEC,Refresh=60。在收集器上以 xpath 查询配置订阅，涵盖你关注的事件（4624、4625、4688、4768、4769、4104、1102 等）。如果你还没有 WEF 收集器，就从这个项目开始：对于同样的遥测能力，它几乎总是比全面铺开 SIEM 代理更划算。", "status": "machine-draft" }
+  },
+  "ADLOG-007": {
+    "name": { "value": "Sysmon 部署指标", "status": "machine-draft" },
+    "description": { "value": "Sysmon（System Monitor，来自 Sysinternals）是 Windows 原生日志覆盖不足的那些事件的黄金标准端点遥测源：进程创建时的文件哈希、每个进程的网络连接、DLL 加载、注册表监视、命名管道。它以内核模式驱动的形式运行。仅凭 SYSVOL 无法从 GPO 侧检测到“Sysmon 已安装”，其指标是部署 Sysmon 的配置 GPO 或启动脚本的存在。此检查会发出 WARN 并要求审计人员带外验证。", "status": "machine-draft" },
+    "recommendedValue": { "value": "通过部署 GPO 或配置管理推送在工作站和服务器上安装 Sysmon，并使用针对环境调优的配置（SwiftOnSecurity、Olaf Hartong 或供应商提供的基线）。", "status": "machine-draft" },
+    "remediationSteps": { "value": "通过 GPO 启动脚本或你的配置管理平台部署 Sysmon（https://download.sysinternals.com/files/Sysmon.zip）。以社区基线作为起点（SwiftOnSecurity/sysmon-config 或 Olaf Hartong/sysmon-modular）。针对一组有代表性的主机，通过 Get-CimInstance Win32_Service -Filter \"Name='Sysmon64'\" 验证部署，或在 WEF 收集器中查询“Microsoft-Windows-Sysmon/Operational”事件。", "status": "machine-draft" }
+  }
+}

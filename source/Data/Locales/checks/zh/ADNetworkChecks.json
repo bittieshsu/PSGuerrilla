@@ -1,0 +1,63 @@
+{
+  "_family": "ADNetworkChecks.json",
+  "ADNET-001": {
+    "name": { "value": "域控制器上要求 LDAP 签名", "status": "machine-draft" },
+    "description": { "value": "当域控制器不要求 LDAP 签名时，能够拦截或强制 LDAP 流量的攻击者（例如通过 PetitPotam 或任何 NTLM 身份验证触发器）可将 NTLM 身份验证中继到 DC 的 LDAP 服务，并以被强制的主体身份读取或写入目录数据。强制 LDAP 签名可封堵域控制器上最常见的中继落点。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Default Domain Controllers Policy 将“Domain controller: LDAP server signing requirements”设置为“Require signing”（LDAPServerIntegrity = 2）", "status": "machine-draft" },
+    "remediationSteps": { "value": "编辑 Default Domain Controllers Policy：Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options > “Domain controller: LDAP server signing requirements” = “Require signing”。使用以下命令验证：reg query HKLM\\System\\CurrentControlSet\\Services\\NTDS\\Parameters /v LDAPServerIntegrity（应为 2）。自 2020 年起（ADV190023）Microsoft 一直在加固此默认值，并将在未来的 Windows Server 版本中默认强制启用。", "status": "machine-draft" }
+  },
+  "ADNET-002": {
+    "name": { "value": "在域控制器上强制 LDAP 通道绑定", "status": "machine-draft" },
+    "description": { "value": "LDAP 通道绑定将 LDAPS 身份验证与底层 TLS 通道绑定在一起。若无此项，即使攻击者拦截了受 TLS 保护的 LDAP 会话，仍可将 NTLM 身份验证中继到 LDAPS。通道绑定与 LDAP 签名相结合，可消除 LDAP 作为中继目标的可能性。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Default Domain Controllers Policy 将“Domain controller: LDAP server channel binding token requirements”设置为“Always”（LdapEnforceChannelBinding = 2）", "status": "machine-draft" },
+    "remediationSteps": { "value": "编辑 Default Domain Controllers Policy：Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options > “Domain controller: LDAP server channel binding token requirements” = “Always”。注册表：HKLM\\System\\CurrentControlSet\\Services\\NTDS\\Parameters\\LdapEnforceChannelBinding = 2。最初为应对 CVE-2017-8563 而引入。", "status": "machine-draft" }
+  },
+  "ADNET-003": {
+    "name": { "value": "要求 SMB 服务器签名（域策略）", "status": "machine-draft" },
+    "description": { "value": "如果服务器端未要求 SMB 签名，能够置身于网络路径中或强制 SMB 身份验证的攻击者可将 NTLM 中继到 SMB，并以被强制的主体身份执行文件操作。这是 ntlmrelayx 等工具经典的中继落点；强制服务器端签名可将其封堵。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Default Domain Policy 启用“Microsoft network server: Digitally sign communications (always)”（LanManServer 上的 RequireSecuritySignature = 1）", "status": "machine-draft" },
+    "remediationSteps": { "value": "编辑 Default Domain Policy：Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options > “Microsoft network server: Digitally sign communications (always)” = Enabled。注册表：HKLM\\System\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\RequireSecuritySignature = 1。Windows 11 24H2 / Server 2025 默认启用此项；较旧的操作系统版本需显式配置策略。", "status": "machine-draft" }
+  },
+  "ADNET-004": {
+    "name": { "value": "要求 SMB 客户端签名（域策略）", "status": "machine-draft" },
+    "description": { "value": "客户端 SMB 签名是这一约定中防止工作站被诱骗向恶意 SMB 服务器进行身份验证（Responder 式）的另一半。若无此项，网络上任何被诱骗去解析恶意名称（LLMNR 投毒、WPAD 等）的用户都会交出一个 NTLM 哈希，攻击者可对其进行破解或中继。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Default Domain Policy 启用“Microsoft network client: Digitally sign communications (always)”（LanmanWorkstation 上的 RequireSecuritySignature = 1）", "status": "machine-draft" },
+    "remediationSteps": { "value": "编辑 Default Domain Policy：Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options > “Microsoft network client: Digitally sign communications (always)” = Enabled。注册表：HKLM\\System\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters\\RequireSecuritySignature = 1。", "status": "machine-draft" }
+  },
+  "ADNET-005": {
+    "name": { "value": "通过域策略禁用 LLMNR", "status": "machine-draft" },
+    "description": { "value": "链路本地多播名称解析是一种基于广播的回退机制，本地网段上的任何主机都可以应答。Responder.py 及类似工具会假冒应答、收割 NTLMv2 质询-响应，然后离线破解或将其中继。在全域范围内禁用 LLMNR，是从内部渗透测试态势角度看你能做的影响最大的单项工作站加固。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Default Domain Policy 启用“Turn off multicast name resolution”（DnsClient 策略 EnableMulticast = 0）", "status": "machine-draft" },
+    "remediationSteps": { "value": "编辑 Default Domain Policy：Computer Configuration > Policies > Administrative Templates > Network > DNS Client > “Turn off multicast name resolution” = Enabled。注册表：HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\EnableMulticast = 0。", "status": "machine-draft" }
+  },
+  "ADNET-006": {
+    "name": { "value": "已审查 TCP/IP 上的 NetBIOS 配置", "status": "machine-draft" },
+    "description": { "value": "NetBIOS-NS 是继 LLMNR 之后名称解析投毒攻击的第二条腿。在 DHCP/接口级别禁用它需要重置网络配置，而 GPO 无法完整表达这一点；不过可以通过 DHCP 作用域选项 1 或直接修改注册表来设置 Tcpip\\Parameters\\Interfaces 的 NetbiosOptions 值。此检查报告是否存在任何全域策略工件涉及此项，以便审计人员知道应在 DHCP 层还是镜像层进行调查。", "status": "machine-draft" },
+    "recommendedValue": { "value": "存在可在工作站上禁用 TCP/IP 上的 NetBIOS 的全域方法（DHCP 选项 1 = 0x2、组策略首选项或镜像基线）", "status": "machine-draft" },
+    "remediationSteps": { "value": "在整个机群范围内禁用 TCP/IP 上的 NetBIOS。可选方案：(1) 将 DHCP 作用域选项 Microsoft Disable Netbios Option（选项 1）设为 0x2；(2) 组策略首选项 > Windows Settings > Registry，向每个 Tcpip_<Interface> 项推送 NetbiosOptions = 2；(3) 将其纳入工作站镜像基线。该设置是接口特定的，无法通过标准 GPO 安全设置直接寻址。", "status": "machine-draft" }
+  },
+  "ADNET-007": {
+    "name": { "value": "IPv6 mitm6 缓解态势", "status": "machine-draft" },
+    "description": { "value": "mitm6 是 Responder 的 IPv6 版本：恶意 DHCPv6 服务器分发一个链路本地 DNS 服务器，然后投毒 WPAD 查询以收割凭据。尚未部署 IPv6 的企业通常也没有禁用它，从而使链路本地 IPv6 处于启用状态且毫无防御态势。缓解措施要么是妥善部署 IPv6 并在交换机上启用 RA Guard / DHCPv6 Guard，要么通过 DisabledComponents = 0xFF 禁用 IPv6 组件。", "status": "machine-draft" },
+    "recommendedValue": { "value": "要么通过 DisabledComponents = 0xFF 在全域禁用 IPv6，要么网络在接入层部署了 RA Guard + DHCPv6 Guard（带外实施，无法从 AD 检测）", "status": "machine-draft" },
+    "remediationSteps": { "value": "如果你不使用 IPv6：通过 GPO 注册表向所有工作站和服务器推送 HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters\\DisabledComponents = 0xFF（十六进制）。如果你确实使用 IPv6：确保接入交换机强制执行 DHCPv6 Guard / RA Guard，使恶意的 DHCPv6 通告在端口处被丢弃。Microsoft 已明确指出，对于 Windows 不建议完全禁用 IPv6，但在不使用 IPv6 的环境中这是可接受的。", "status": "machine-draft" }
+  },
+  "ADNET-008": {
+    "name": { "value": "已禁用 WPAD 自动发现", "status": "machine-draft" },
+    "description": { "value": "Web 代理自动发现通过 DNS、NetBIOS 或 LLMNR 解析名称“wpad”，并信任返回的任何代理配置。攻击者可对上述任一解析投毒，从而代理受害者的 Web 流量。即使已禁用 LLMNR 和 NetBIOS，WinHttpAutoProxySvc 仍可能尝试 WPAD，因此建议使用一条纵深防御 GPO 直接禁用 WPAD。", "status": "machine-draft" },
+    "recommendedValue": { "value": "GPO 通过“Turn off auto-proxy result caching”禁用 WPAD，或将 WinHttpAutoProxySvc 启动类型设为 4（禁用），或 DNS 服务器有一条 wpad 的 GlobalQueryBlockList 条目", "status": "machine-draft" },
+    "remediationSteps": { "value": "三项互补的控制措施：(1) 将“wpad”加入 DNS 服务器的 GlobalQueryBlockList：dnscmd /Config /GlobalQueryBlockList wpad isatap；(2) 通过 GPO 服务策略禁用 WinHttpAutoProxySvc；(3) GPO Internet Explorer / Edge：“Disable changing Automatic Configuration settings”，并确保没有自动配置的 PAC URL。其中 (1) 是影响最大的单项修复。", "status": "machine-draft" }
+  },
+  "ADNET-009": {
+    "name": { "value": "域控制器上的打印后台处理程序服务", "status": "machine-draft" },
+    "description": { "value": "域控制器上的打印后台处理程序服务，是 PrinterBug 强制身份验证技术（以及包括最初的 CVE-2021-1675 PrintNightmare 在内的一长串后续攻击）所利用的 RPC 端点。当与任何 NTLM 中继落点（ADCS Web、无签名的 LDAP、无签名的 SMB）相结合时，它为未经身份验证的攻击者提供了一个原语，可强制 DC 计算机账户向其选定的目标进行身份验证。DC 上很少需要 Spooler。", "status": "machine-draft" },
+    "recommendedValue": { "value": "在 Default Domain Controllers Policy 中将打印后台处理程序服务设为 Disabled（启动类型 4）", "status": "machine-draft" },
+    "remediationSteps": { "value": "编辑 Default Domain Controllers Policy：Computer Configuration > Policies > Windows Settings > Security Settings > System Services > Print Spooler > “Define this policy setting” = Disabled。该设置将在下次 gpupdate 时传播到每台 DC。在每台 DC 上验证：Get-Service Spooler 应显示 Status=Stopped、StartType=Disabled。如果某台 DC 同时运行打印服务（本不应如此），请先为该角色另寻主机。", "status": "machine-draft" }
+  },
+  "ADNET-010": {
+    "name": { "value": "工作站上 WebClient 服务的默认状态", "status": "machine-draft" },
+    "description": { "value": "WebClient 服务（WebDAV 重定向器）允许攻击者通过引用以含“@”的主机名开头的 UNC 路径（例如 \\\\attacker@80\\share），从工作站强制发起 HTTP 身份验证。这是 PetitPotam 在工作站上的对应技术，也是最常被用来攻击 ADCS Web 注册（ESC8）的中继源。WebClient 按需启动，但对于非移动工作站应在全域范围内设为 Disabled。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Default Domain Policy 为所有不需要 WebDAV 的成员工作站和服务器禁用 WebClient 服务（启动类型 4）", "status": "machine-draft" },
+    "remediationSteps": { "value": "编辑 Default Domain Policy：Computer Configuration > Policies > Windows Settings > Security Settings > System Services > WebClient > “Define this policy setting” = Disabled。如果某一部分主机（例如 SharePoint 客户端）确实需要 WebDAV，请针对这些 OU 单独设置一条相反的 GPO。监视 WebClient 的突然重新启用。", "status": "machine-draft" }
+  }
+}

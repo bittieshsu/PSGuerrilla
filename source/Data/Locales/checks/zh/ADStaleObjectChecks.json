@@ -1,0 +1,69 @@
+{
+  "_family": "ADStaleObjectChecks.json",
+  "ADSTALE-001": {
+    "name": { "value": "不活动的用户账户", "status": "machine-draft" },
+    "description": { "value": "长期未使用的用户账户构成不必要的攻击面。不活动账户可能仍持有有效凭据和组成员身份，使其成为攻击者的诱人目标：攻击者可攻陷被遗忘或共享的凭据，而不会触发与活跃用户相关联的告警。不活动超过 90 天的账户应予审查和禁用", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有启用的用户账户不活动超过 90 天；不活动账户已被禁用或删除", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Search-ADAccount -AccountInactive -TimeSpan 90 -UsersOnly 查询 lastLogonTimestamp 早于 90 天且账户处于启用状态的用户账户。在采取行动前先与账户所有者或管理者核实。先禁用不活动账户，若在 30 天宽限期后仍无人认领则删除。将已禁用账户从所有安全组中移除。实施自动化的生命周期管理", "status": "machine-draft" }
+  },
+  "ADSTALE-002": {
+    "name": { "value": "不活动的计算机账户", "status": "machine-draft" },
+    "description": { "value": "长期未向域进行身份验证的计算机账户表明系统已停用、被重新镜像或处于离线状态。这些陈旧的计算机账户保留其机器凭据和组成员身份，恢复或重置机器账户密码的攻击者可以计算机身份进行身份验证，从而可能访问资源或执行 Kerberos 委派攻击", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有启用的计算机账户不活动超过 90 天；不活动账户已被禁用或删除", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Search-ADAccount -AccountInactive -TimeSpan 90 -ComputersOnly 查询 lastLogonTimestamp 早于 90 天的计算机账户。与资产管理系统交叉比对以核实停用状态。禁用陈旧的计算机账户并将其移至 Disabled Computers OU。若系统在 60 天宽限期后仍未重新连接则删除。禁用时从安全组中移除", "status": "machine-draft" }
+  },
+  "ADSTALE-003": {
+    "name": { "value": "带组成员身份的已禁用账户", "status": "machine-draft" },
+    "description": { "value": "保留安全组成员身份的已禁用用户和计算机账户会继续出现在基于组的访问控制评估中，并可能在访问审查中造成混淆。虽然已禁用账户无法进行身份验证，但如果账户被重新启用，其组成员身份可能会恢复，而保留的成员身份会使组规模膨胀并使最小权限分析复杂化", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有已禁用账户均已从除 Domain Users 之外的所有安全组中移除", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {Enabled -eq $false} -Properties MemberOf 识别带非默认组成员身份的已禁用账户。将所有安全组成员身份（主组除外）从已禁用账户中移除。实施一个在账户被禁用时剥离组成员身份的自动化工作流。将组成员身份清理纳入账户注销流程", "status": "machine-draft" }
+  },
+  "ADSTALE-004": {
+    "name": { "value": "密码过期但未禁用的账户", "status": "machine-draft" },
+    "description": { "value": "密码已超过最长密码使用期限但仍处于启用状态的账户，可能表明这些账户未受积极管理。这些账户可能已被通过历史泄露或凭据转储获得的凭据攻陷，而长期未更改的密码增加了离线暴力破解的窗口", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有密码超过最长密码使用期限策略的账户，除非作为记录在案的服务账户被明确豁免", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter * -Properties PasswordLastSet,PasswordNeverExpires 查询 PasswordLastSet 早于最长密码使用期限的账户。排除带 PasswordNeverExpires 且记录在案的服务账户。对密码已过期的账户强制在下次登录时重置密码。对通知后仍无人认领的账户予以禁用。每年审查 PasswordNeverExpires 豁免", "status": "machine-draft" }
+  },
+  "ADSTALE-005": {
+    "name": { "value": "过时操作系统的计算机", "status": "machine-draft" },
+    "description": { "value": "运行不再接收任何安全更新的过时操作系统（Windows XP、Windows Server 2003、Windows Vista、Windows Server 2008）的加入域计算机构成高风险资产。这些系统包含已知的未修补漏洞，正被攻击者积极利用，且无法支持 Credential Guard 或 LAPS 等现代安全控制", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有运行 Windows XP、Server 2003、Vista 或 Server 2008 的计算机加入域", "status": "machine-draft" },
+    "remediationSteps": { "value": "按 operatingSystem 属性查询计算机账户以识别过时的操作系统版本。使用 lastLogonTimestamp 和 ping 测试核实已识别的系统是否仍处于活动状态。制定迁移计划以升级或更换过时系统。对于无法立即升级的系统，使用 VLAN 和防火墙规则实施网络隔离。为已确认停用的系统禁用计算机账户", "status": "machine-draft" }
+  },
+  "ADSTALE-006": {
+    "name": { "value": "不受支持的操作系统版本", "status": "machine-draft" },
+    "description": { "value": "运行已过支持终止日期的操作系统（Windows 7、Windows 8.1、Windows Server 2008 R2、Windows Server 2012/R2）的加入域计算机不再接收常规安全补丁。虽然其中一些可能提供扩展安全更新，但这些系统风险升高，应予识别、跟踪，并优先迁移到受支持的平台", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有运行支持终止操作系统的计算机，除非受扩展安全更新覆盖且有记录在案的迁移计划", "status": "machine-draft" },
+    "remediationSteps": { "value": "按 operatingSystem 属性查询计算机账户以识别支持终止的操作系统版本。确定哪些系统受扩展安全更新（ESU）覆盖。为所有不受支持的系统制定迁移时间表。为无法立即升级的系统实施补偿性控制：网络分段、增强监视、限制服务访问。对照迁移时间表跟踪进度", "status": "machine-draft" }
+  },
+  "ADSTALE-007": {
+    "name": { "value": "孤立的外部安全主体", "status": "machine-draft" },
+    "description": { "value": "外部安全主体（FSP）是在通过信任将外部域用户或组添加到本地域组时，于 ForeignSecurityPrincipals 容器中创建的占位符对象。孤立的 FSP 引用了来自不再存在的受信任域的 SID 或已被删除的账户，导致组成员身份中出现无法解析的 SID，从而扰乱访问控制并使审计复杂化", "status": "machine-draft" },
+    "recommendedValue": { "value": "域中没有带无法解析 SID 的孤立外部安全主体", "status": "machine-draft" },
+    "remediationSteps": { "value": "枚举 CN=ForeignSecurityPrincipals 中的所有对象，并尝试使用对应的信任将每个 SID 解析为名称。识别 SID 无法解析的 FSP（信任已移除或账户已删除）。将孤立的 FSP 从任何组成员身份中移除。删除孤立的 FSP 对象。审查其余 FSP 以核实信任关系和被引用账户仍然有效", "status": "machine-draft" }
+  },
+  "ADSTALE-008": {
+    "name": { "value": "孤立的 SID History", "status": "machine-draft" },
+    "description": { "value": "SID History 在域迁移期间用于保留对源域中资源的访问权。迁移完成后，应移除 SID History 条目，因为它们可被滥用于提权。引用不存在域或已删除账户的孤立 SID History 条目不提供任何合法收益，并会增加跨信任边界 SID 注入攻击的风险", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有引用不存在域的 SID History 条目。SID History 在迁移完成后已清理", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {SIDHistory -like '*'} -Properties SIDHistory 查询所有带 SID History 的用户和组账户。将每个 SID History 的域组成部分与现有信任交叉比对以识别孤立条目。使用带 -Remove 参数的 Remove-ADUser 或 Netdom trust /CleanupSIDHistory 移除已完成迁移的 SID History 条目。使用事件 ID 4765 监视新增的 SID History", "status": "machine-draft" }
+  },
+  "ADSTALE-009": {
+    "name": { "value": "废弃的 OU", "status": "machine-draft" },
+    "description": { "value": "不再发挥作用的空或近乎空的组织单位会增加 AD 结构的复杂性、使组策略分析复杂化，并可能带有不再受监视的委派权限。来自过去组织重组或已停用项目的废弃 OU 会使管理员困惑，并可能成为 GPO 链接攻击的潜在目标", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有无记录用途的空 OU；OU 结构反映当前的组织需求", "status": "machine-draft" },
+    "remediationSteps": { "value": "枚举所有 OU 并统计其子对象。识别对象为零或极少的 OU。审查 OU 说明及任何相关文档，以确定该 OU 是否计划用于未来。从废弃的 OU 中移除委派权限。在核实这些空 OU 未被 GPO 链接、脚本或自动化引用后，删除无记录用途的空 OU。更新 OU 结构文档", "status": "machine-draft" }
+  },
+  "ADSTALE-010": {
+    "name": { "value": "打印机对象", "status": "machine-draft" },
+    "description": { "value": "在 Active Directory 中发布的打印机对象会暴露可用于侦察的打印机共享路径和服务器名称。PrintNightmare 漏洞家族（CVE-2021-34527 及相关漏洞）表明，与打印机相关的对象和配置可被利用来执行远程代码。引用已停用打印服务器的陈旧打印机对象提供误导性信息并构成不必要的攻击面", "status": "machine-draft" },
+    "recommendedValue": { "value": "AD 中仅发布活动且受管理的打印机对象；陈旧的打印机对象已被移除", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADObject -Filter {objectClass -eq 'printQueue'} 枚举 AD 中的所有 printQueue 对象。核实每个打印机对象都引用一个活动、可访问的打印服务器和打印机。移除已停用打印机或打印服务器的打印机对象。审查环境是否需要在 AD 中发布打印机。确保打印服务器已针对 PrintNightmare 漏洞打补丁", "status": "machine-draft" }
+  },
+  "ADSTALE-011": {
+    "name": { "value": "DNS 记录陈旧", "status": "machine-draft" },
+    "description": { "value": "Active Directory 集成 DNS 区域中的陈旧 DNS 记录指向不再分配给原始主机的 IP 地址。攻击者可占用这些被弃用的 IP 地址并拦截原本发往原始主机的流量，从而实施中间人攻击、凭据收割和服务假冒。应启用 DNS 清理以自动清除陈旧记录", "status": "machine-draft" },
+    "recommendedValue": { "value": "启用 DNS 清理并设置适当的无刷新和刷新间隔；没有超过 30 天的陈旧 DNS 记录", "status": "machine-draft" },
+    "remediationSteps": { "value": "在 DNS 服务器属性以及每个 AD 集成 DNS 区域上启用 DNS 清理。将无刷新间隔配置为 7 天，刷新间隔配置为 7 天。在至少一台 DNS 服务器上设置清理周期。在首次清理运行前人工审查陈旧的 DNS 记录，以识别需要排除的关键静态记录。将不应被清理的记录标记为静态", "status": "machine-draft" }
+  }
+}

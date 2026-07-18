@@ -1,0 +1,15 @@
+{
+  "_family": "ADAttackPathChecks.json",
+  "ADPATH-001": {
+    "name": { "value": "通往 Tier-0 的提权路径", "status": "machine-draft" },
+    "description": { "value": "将对 Tier-0 对象（域根、AdminSDHolder、Domain Controllers OU 以及 GPO / Configuration / Schema 容器）的非默认控制权建模为提权路径，并报告每条路径所支持的具体接管技术。任何对上述对象持有 GenericAll / WriteDacl / WriteOwner / 复制权限的非默认主体，都构成一条通往 Domain Admin 等效权限的单跳路径。此检查还会将嵌套在 Tier-0 组内部的非默认组标记为提权跳板：控制此类组或被添加到其中，即可获得该 Tier-0 组的权限。完整的全域传递式控制链计算（低权限用户经由一连串 GenericWrite/AddMember 边到达 Domain Admins）需要全域 ACL 收集，这是一个独立的路线图项目。", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有任何非默认主体对 Tier-0 对象拥有控制权。", "status": "machine-draft" },
+    "remediationSteps": { "value": "对于每一条报告出的路径，从目标对象的 DACL 中删除攻击者可控的 ACE（Active Directory Users and Computers > Advanced Security，或使用 Set-Acl），或将该主体从授予其权限的组中移除。只有 Tier-0 管理员才应对域根、AdminSDHolder、Domain Controllers OU 以及 Policies/Configuration/Schema 容器持有 GenericAll/WriteDacl/WriteOwner 或复制权限。", "status": "machine-draft" }
+  },
+  "ADPATH-002": {
+    "name": { "value": "通往 Tier-0 的传递式提权链", "status": "machine-draft" },
+    "description": { "value": "通过传递式地跟随控制权（GenericAll / WriteDacl / WriteOwner / AddMember）和组成员关系边，计算通往 Tier-0 的多跳提权链，例如 HelpDesk --[WriteDacl]--> CORP-Admins --[MemberOf]--> Domain Admins。此检查作为 ADPATH-001（单跳）的补充，可将任意长度的边串联起来，并为每个主体报告最短路径。链的深度受 ACL 收集覆盖范围的限制：在当前仅收集六个关键对象的情况下，大多数链只有一跳，因此该检查目前通常为干净状态；全域 ACL 收集器（路线图项目，实时受控）会填充针对任意对象的控制边，从而解锁从低权限直达 Domain Admin 的深层链。引擎本身支持任意深度的链式计算（BFS 最短路径，防环）。", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有任何传递式控制链能使非特权主体到达 Tier-0。", "status": "machine-draft" },
+    "remediationSteps": { "value": "对于每一条链，斩断其最薄弱的环节：删除第一跳处攻击者可控的 ACE（即非特权主体对链中下一个对象的控制权），或将嵌套组从 Tier-0 组中移除。重新运行以确认该链已被切断。", "status": "machine-draft" }
+  }
+}

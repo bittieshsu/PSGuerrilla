@@ -1,0 +1,69 @@
+{
+  "_family": "ADLogonScriptChecks.json",
+  "ADSCRIPT-001": {
+    "name": { "value": "NETLOGON 共享权限", "status": "machine-draft" },
+    "description": { "value": "NETLOGON 共享托管着登录脚本，这些脚本会在用户登录时于每台加入域的系统上执行。NETLOGON 上过于宽松的 NTFS 或共享权限允许任何经过身份验证的用户修改脚本，从而实现大范围的代码执行。只有 Domain Admins 和获授权的管理员才应拥有写访问权", "status": "machine-draft" },
+    "recommendedValue": { "value": "NETLOGON 共享：Authenticated Users 仅读；写访问权限限于 Domain Admins 和获授权的 GPO 管理员", "status": "machine-draft" },
+    "remediationSteps": { "value": "审查每台域控制器上 NETLOGON 文件夹（通常为 %SystemRoot%\\SYSVOL\\sysvol\\<domain>\\Scripts）的 NTFS 权限。删除非管理组的写入、修改或完全控制权限。核实共享权限与 NTFS 权限一致。确保通过 DFSR 复制使各域控制器之间的权限保持一致。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-002": {
+    "name": { "value": "SYSVOL 共享权限", "status": "machine-draft" },
+    "description": { "value": "SYSVOL 共享包含应用于所有加入域系统的组策略模板、脚本和配置文件。不正确的 SYSVOL 权限可能允许未经授权的用户修改组策略设置、部署恶意脚本，或篡改影响整个域的安全配置", "status": "machine-draft" },
+    "recommendedValue": { "value": "SYSVOL 共享：Authenticated Users 仅读；写访问权限限于 Domain Admins 和 SYSTEM", "status": "machine-draft" },
+    "remediationSteps": { "value": "审计每台域控制器上 SYSVOL 文件夹树的 NTFS 权限。SYSVOL 根文件夹应授予 Authenticated Users 读取和执行权限。GPO 子文件夹应与 AD 中对应 GPC 对象上定义的权限一致。运行 dcdiag /test:sysvolcheck 以识别权限问题。必要时使用 icacls 重置权限。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-003": {
+    "name": { "value": "登录脚本清单", "status": "machine-draft" },
+    "description": { "value": "对用户账户所引用的所有登录脚本（scriptPath 属性）、组策略登录/注销脚本以及启动/关机脚本进行清点，可为环境中所有自动执行的代码提供可见性。存在于 NETLOGON 中但未被引用的脚本，可能是遗留孤儿脚本，也可能是过去遭入侵的迹象", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有登录脚本的完整清单，附有记录在案的用途、所有者和最后修改日期", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用 Get-ADUser -Filter {scriptPath -like '*'} -Properties scriptPath 枚举所有用户的 scriptPath 属性。从 GPO 报告中列出所有 GPO 配置的脚本。清点 NETLOGON 共享中的所有文件。交叉比对以识别孤儿脚本、未使用的脚本，以及被用户账户引用但在 NETLOGON 中缺失的脚本。记录每个脚本的用途和所有者。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-004": {
+    "name": { "value": "脚本中的硬编码凭据", "status": "machine-draft" },
+    "description": { "value": "登录脚本经常包含硬编码凭据，包括用于网络驱动器映射、服务账户、数据库连接和 API 密钥的密码。这些凭据可被所有经过身份验证的用户通过 NETLOGON 共享读取，对攻击者而言是一个轻而易举的凭据收割机会", "status": "machine-draft" },
+    "recommendedValue": { "value": "任何 NETLOGON 或 SYSVOL 脚本中都没有硬编码凭据、密码或 API 密钥", "status": "machine-draft" },
+    "remediationSteps": { "value": "扫描 NETLOGON 和 SYSVOL 中的所有脚本，查找表明存在凭据的模式：password、passwd、pwd、credential、secret、apikey、token、connectionstring 及类似关键词。用安全的替代方案替换硬编码凭据，例如 Windows 凭据管理器、gMSA 账户或访问受限的加密配置文件。立即轮换在脚本中发现的任何凭据。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-005": {
+    "name": { "value": "脚本中的 LOLBins 使用", "status": "machine-draft" },
+    "description": { "value": "“就地取材”二进制文件（LOLBins）是可被滥用于恶意目的的合法 Windows 可执行文件。它们出现在登录脚本中，可能表明攻击者注入了与正常操作混为一体的恶意命令。常见的 LOLBins 包括 certutil、bitsadmin、mshta、regsvr32、rundll32 和 wscript，用于下载或执行有效载荷", "status": "machine-draft" },
+    "recommendedValue": { "value": "登录脚本中不使用 LOLBins，除非有记录在案且有运营理由", "status": "machine-draft" },
+    "remediationSteps": { "value": "扫描所有脚本，查找对已知 LOLBins 的引用，包括 certutil、bitsadmin、mshta、regsvr32、rundll32、wscript、cscript、msiexec、installutil、regasm、regsvcs、msconfig 和 control。审查每一处出现，判断其使用是否合法。在可能的情况下用更安全的替代方案取代 LOLBins。记录任何运营上必需的 LOLBins 使用。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-006": {
+    "name": { "value": "脚本中的明文密码", "status": "machine-draft" },
+    "description": { "value": "在 net use 命令、数据库连接字符串或变量赋值中包含明文密码的脚本，会将凭据暴露给每一个能读取 NETLOGON 共享的、经过身份验证的域用户。这包括可能提供横向移动路径的服务账户、数据库账户和网络资源的密码", "status": "machine-draft" },
+    "recommendedValue": { "value": "任何脚本文件中都没有明文密码；所有身份验证均使用集成安全性或安全的凭据存储", "status": "machine-draft" },
+    "remediationSteps": { "value": "搜索所有脚本文件，查找诸如“net use * /user:”、PowerShell 或批处理中的密码赋值、含 Password= 或 Pwd= 的连接字符串，以及带凭据的 WScript.Network.MapNetworkDrive 调用等模式。用 Windows 集成身份验证、凭据管理器或 gMSA 账户替换所有明文凭据的使用。立即轮换所有已暴露的密码。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-007": {
+    "name": { "value": "全局可写的脚本权限", "status": "machine-draft" },
+    "description": { "value": "NETLOGON 或 SYSVOL 中，若单个脚本文件向非管理用户授予了写入或修改权限，则任何持有域凭据的攻击者都可修改它。即使共享级别的权限正确，单个脚本上过于宽松的文件级 NTFS 权限也会造成代码执行机会", "status": "machine-draft" },
+    "recommendedValue": { "value": "NETLOGON 和 SYSVOL 中的所有脚本文件仅可由 Domain Admins 和 SYSTEM 写入；Domain Users 或 Authenticated Users 无写访问权", "status": "machine-draft" },
+    "remediationSteps": { "value": "枚举 NETLOGON 共享和 SYSVOL 脚本文件夹中每个文件的 NTFS 权限。识别 Domain Users、Authenticated Users、Everyone 或其他宽泛组拥有写入、修改或完全控制权限的文件。使用 icacls 重置权限，仅向 Authenticated Users 授予读取和执行权限，向 Domain Admins 和 SYSTEM 授予完全控制权限。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-008": {
+    "name": { "value": "外部资源引用", "status": "machine-draft" },
+    "description": { "value": "引用外部资源（如互联网 URL、非域 UNC 路径或云存储位置）的登录脚本会引入供应链风险。若外部资源被攻陷，所有执行该脚本的系统都将下载并执行恶意内容。外部引用还会造成数据外泄的机会", "status": "machine-draft" },
+    "recommendedValue": { "value": "登录脚本中没有对外部 URL、互联网资源或非域 UNC 路径的引用", "status": "machine-draft" },
+    "remediationSteps": { "value": "扫描所有脚本，查找 HTTP/HTTPS URL、FTP 引用、非域 UNC 路径以及云存储 URL（OneDrive、SharePoint Online、Azure Blob、AWS S3）。用托管在内部文件共享上的本地副本替换外部引用。如确需外部资源，则在执行前实施完整性验证（哈希校验）。记录所有已批准的外部资源依赖。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-009": {
+    "name": { "value": "格式错误的脚本", "status": "machine-draft" },
+    "description": { "value": "存在语法错误、编码问题或内容损坏的脚本可能在执行时静默失败，导致安全配置不完整或驱动器映射缺失。格式错误的脚本还可能表明存在篡改：攻击者修改了脚本但引入了错误，或编码问题掩盖了注入的恶意内容", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有脚本均通过语法验证，无编码异常或结构性错误", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用相应工具验证脚本语法：PowerShell 脚本使用 Test-ScriptFileInfo 或 PSScriptAnalyzer，批处理文件通过人工审查未闭合的代码块和无效命令，VBScript 使用 WSH 语法检查。检查文件编码是否存在意外的字节序列或混合编码。审查编码异常的脚本（批处理文件中带 BOM 的 UTF-16、空字节）是否存在潜在注入。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-010": {
+    "name": { "value": "指向非 DC 位置的 UNC 路径", "status": "machine-draft" },
+    "description": { "value": "引用指向非域控制器文件共享的 UNC 路径的登录脚本，会对额外系统产生依赖并扩大攻击面。若被引用的文件服务器被攻陷，攻击者便可修改共享资源，通过受信任的登录脚本机制投递恶意有效载荷。UNC 路径还可被用于 NTLM 中继攻击", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有脚本 UNC 路径均引用域控制器上的 SYSVOL 或 NETLOGON；脚本内容不引用非 DC 文件共享", "status": "machine-draft" },
+    "remediationSteps": { "value": "扫描所有脚本，查找 UNC 路径（\\\\server\\share 模式）。识别不指向域 SYSVOL 或 NETLOGON 共享的路径。在合适的情况下将被引用的资源迁移到 NETLOGON 共享。对于合法的文件共享引用，确保目标服务器是经过适当加固的 Tier 0 或 Tier 1 资产。记录所有已批准的非 DC UNC 路径依赖。", "status": "machine-draft" }
+  },
+  "ADSCRIPT-011": {
+    "name": { "value": "脚本内容分析", "status": "machine-draft" },
+    "description": { "value": "对所有登录脚本进行全面的内容分析，可揭示超出特定检查范围的可疑模式，例如混淆代码、base64 编码的命令、PowerShell 下载器、编码的可执行文件以及反分析技术。这些模式是恶意脚本注入或攻击者植入后门的有力指标", "status": "machine-draft" },
+    "recommendedValue": { "value": "任何登录脚本中都不存在混淆代码、编码的有效载荷、下载器或反分析技术", "status": "machine-draft" },
+    "remediationSteps": { "value": "分析所有脚本以查找可疑模式，包括 base64 编码（Convert-FromBase64、certutil -decode）、下载器（Invoke-WebRequest、Net.WebClient、BitsTransfer）、混淆技术（字符串拼接、字符编码、用变量替换来隐藏命令），以及反分析技术（睡眠计时器、环境检查）。调查并替换任何包含可疑模式的脚本。", "status": "machine-draft" }
+  }
+}

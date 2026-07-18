@@ -1,0 +1,45 @@
+{
+  "_family": "TierZeroChecks.json",
+  "ADTIER-001": {
+    "name": { "value": "Azure AD Connect 同步账户（MSOL_）审计", "status": "machine-draft" },
+    "description": { "value": "当 Azure AD Connect 以 Express 模式安装时，它会创建一个名为 MSOL_<随机十六进制> 的域账户，并在域命名上下文上授予它 Replicating Directory Changes + Replicating Directory Changes All，即 DCSync 权限。该账户实际上是 Tier-0，但它默认存放在默认的 Users 容器中，密码有效期长达 10 年，且很少出现在特权组枚举工具中，因为它的权力来自直接 ACL 而非组成员身份。攻陷该账户在功能上等同于接管整个域。", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有 MSOL_ 账户均已清点、密码在最近 180 天内轮换、置于登录权限受限的 Tier-0 OU 中，且 AAD Connect 服务器本身作为 Tier-0 系统加固。", "status": "machine-draft" },
+    "remediationSteps": { "value": "定位 MSOL_ 账户：Get-ADUser -Filter {sAMAccountName -like 'MSOL_*'}。确认它拥有 DCSync 权限：dsacls 'DC=domain,DC=com' | findstr MSOL_。将其移至 Tier-0 管理 OU。使用 AAD Connect 工具轮换密码（不要通过标准工具重置，请在 AAD Connect 服务器上使用 ADSync PowerShell 模块中的 Add-ADSyncADDSConnectorAccount）。应用一条登录限制 GPO，使该账户只能本地登录到 AAD Connect 服务器本身。将 AAD Connect 主机视为 Tier-0：限制谁可以对其进行 RDP/管理。", "status": "machine-draft" }
+  },
+  "ADTIER-002": {
+    "name": { "value": "特权组中的备份软件服务账户", "status": "machine-draft" },
+    "description": { "value": "备份软件（Veeam、Commvault、Rubrik、Cohesity、NAKIVO、Backup Exec、Vembu、Acronis）通常要求一个权限极高的服务账户。文档往往为了便于安装而建议使用 Domain Admin，许多管理员照做。一旦攻击者攻陷备份服务器（一个常见的勒索软件初始访问途径），他们便可通过该服务账户继承 Domain Admin。在 2023-2025 年事件响应数据中，这是排名第一的勒索软件提权路径。", "status": "machine-draft" },
+    "recommendedValue": { "value": "没有备份软件服务账户是 Domain Admins、Enterprise Admins、Schema Admins 或 Backup Operators 的成员。使用供应商记载的最小权限账户和隔离的备份凭据。", "status": "machine-draft" },
+    "remediationSteps": { "value": "确定所使用的备份产品并遵循其最小权限指南（Veeam：仅备份服务器本地管理员 + 具有对象读取权限的 AD 账户；Rubrik：仅云角色中的专用服务主体；等等）。将备份账户从 Domain Admins 中移除。在受支持处迁移到 gMSA。将备份服务器置于登录权限受限的 Tier-1 OU 中。如果某个特定工作负载确实需要完整的 DA，请记录在案，并将该部分备份隔离到独立于主账户的自有账户。", "status": "machine-draft" }
+  },
+  "ADTIER-003": {
+    "name": { "value": "特权组中的虚拟化管理程序 / 虚拟化服务账户", "status": "machine-draft" },
+    "description": { "value": "vCenter / Hyper-V / SCVMM / Citrix / Nutanix 与 AD 的集成通常使用一个在安装期间配置的服务账户。如果该账户是 Domain Admin，那么攻陷虚拟化管理程序管理平面（或主机的 SSO 数据库）便会级联到 AD。虚拟化管理程序在概念上已经是 Tier-0；其 AD 标识也应与之匹配。", "status": "machine-draft" },
+    "recommendedValue": { "value": "虚拟化管理程序服务账户仅拥有供应商记载的权限（通常为用于清点的读取权限 + 在使用 VM-AD 集成时对特定 OU 的写入权限）。不在 Domain Admins 中。", "status": "machine-draft" },
+    "remediationSteps": { "value": "审查每个虚拟化管理程序产品的 AD 服务账户。应用供应商的最小权限指南。对于 vCenter：使用记载的 SSO 标识源模式，而非映射一个 Domain Admin。对于 Hyper-V/SCVMM：将服务账户权限的范围限定为托管 VM 计算机账户的那些 OU。在你的管理模型中将虚拟化管理程序管理主机视为 Tier-0。", "status": "machine-draft" }
+  },
+  "ADTIER-004": {
+    "name": { "value": "特权组中的配置管理服务账户", "status": "machine-draft" },
+    "description": { "value": "配置管理平台（SCCM/MECM、Intune Connector、Jamf、KACE、Lansweeper、ManageEngine、Ivanti、BigFix）就其定义而言会向每个端点推送软件，它们本身已经是一个特权横向移动平台。SCCM 尤其具有众所周知的滥用原语（网络访问账户暴露、向站点服务器的 NTLM 强制、客户端推送）。位于 Domain Admins 中的配置管理服务账户，会让落到任何受管端点上的攻击者获得整个域的钥匙。", "status": "machine-draft" },
+    "recommendedValue": { "value": "配置管理服务账户的范围限定为其记载的最小权限，且绝不位于 Domain Admins / Enterprise Admins 中。SCCM 网络访问账户是一个非特权的专用标识。", "status": "machine-draft" },
+    "remediationSteps": { "value": "确定配置管理产品并审查服务账户权限。对于 SCCM：确保网络访问账户为非特权（不是 Domain Admin）；确保站点服务器的机器账户不是 Domain Admin；审查层次结构服务账户以实现最小权限。将站点服务器和管理点移至登录权限受限的 Tier-0 OU。", "status": "machine-draft" }
+  },
+  "ADTIER-005": {
+    "name": { "value": "特权组中的 SQL / 数据库服务账户", "status": "machine-draft" },
+    "description": { "value": "在 DBA 团队按默认的“使用现有 AD 账户”指引安装 SQL 并图省事选了一个管理账户的环境中，位于 Domain Admins 中的 SQL Server / MySQL / PostgreSQL 服务账户很常见。一旦数据库服务器在网络上可达，一次 SQL 凭据泄露或一个 SQL Server 漏洞就会直接给予攻击者 Domain Admin 权限。", "status": "machine-draft" },
+    "recommendedValue": { "value": "数据库服务账户以 gMSA 或专用服务标识运行，不具有任何特权组成员身份。", "status": "machine-draft" },
+    "remediationSteps": { "value": "在受支持处将 SQL 服务账户迁移到 gMSA。对于必须保持基于用户的账户，移除其特权组成员身份，仅授予数据库引擎所需的本地权限（Log on as a service、Bypass traverse checking、Adjust memory quotas for a process，具体权限见 Microsoft 文档）。", "status": "machine-draft" }
+  },
+  "ADTIER-006": {
+    "name": { "value": "位于专用 Tier-0 OU 之外的 Tier-0 管理账户", "status": "machine-draft" },
+    "description": { "value": "如果你的 Domain Admins 与普通用户位于同一个 OU，那么每一条面向用户的 GPO（登录脚本、浏览器策略、映射驱动器等）也会应用到你的 Domain Admins，这意味着任何能编辑这些 GPO 的人都可以在下次登录时以 Domain Admin 身份运行代码。Microsoft 的分层模型建议使用一个专用的 Tier-0 管理 OU，并限制其 GPO 编写权限和登录权限。", "status": "machine-draft" },
+    "recommendedValue": { "value": "所有 Domain Admins、Enterprise Admins 和 Schema Admins 成员都位于一个 GPO 编写权限受限的专用 Tier-0 OU 中（通常为 OU=Tier-0,OU=Admin）。", "status": "machine-draft" },
+    "remediationSteps": { "value": "如果 OU=Tier-0,OU=Admin 不存在则创建它。将 Domain/Enterprise/Schema Admins 的所有成员移入其中。限制该 OU 上的 GPO 编写权限（仅限 Tier-0 管理员本身）。应用一条专用的登录限制 GPO，使 Tier-0 账户只能登录到 Tier-0 主机。在该 OU 上阻止继承。", "status": "machine-draft" }
+  },
+  "ADTIER-007": {
+    "name": { "value": "通过特权组获得交互式登录权限的服务账户", "status": "machine-draft" },
+    "description": { "value": "作为 Domain Admins 成员（或任何通过默认特权组成员身份被授予“允许本地登录”的组）的服务账户可被交互式使用。攻击者对此青睐有加：捕获一个服务账户密码（Kerberoasting、注册表、SYSVOL 中的脚本），在工作站上交互式使用它，转储 LSASS，然后横向移动。除了其所服务的主机外，服务账户不应能交互式登录到任何设备。", "status": "machine-draft" },
+    "recommendedValue": { "value": "服务账户（启发式判断：sAMAccountName 以 svc/sa/service 开头，或有 SPN 且近期无交互式登录）通过 Default Domain Controllers Policy 和一条专用的 Tier-1/Tier-2 登录限制 GPO 被显式拒绝“允许本地登录”和“允许通过远程桌面服务登录”。", "status": "machine-draft" },
+    "remediationSteps": { "value": "识别服务账户（带 SPN、命名约定或业务清单）。应用一条 Default Domain Policy GPO：Computer Configuration > Windows Settings > Security Settings > Local Policies > User Rights Assignment > “Deny log on locally” = <服务账户组>。将相同的账户添加到“Deny log on through Remote Desktop Services”。在受支持处（Server 2012 R2+）将它们添加到 Protected Users。", "status": "machine-draft" }
+  }
+}
