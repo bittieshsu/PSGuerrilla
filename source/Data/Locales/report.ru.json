@@ -1,0 +1,1476 @@
+{
+  "_language": {
+    "code": "ru",
+    "name": "Русский"
+  },
+  "common": {
+    "domain": {
+      "value": "Домен",
+      "status": "machine-draft"
+    },
+    "tenant": {
+      "value": "Клиент",
+      "status": "machine-draft"
+    },
+    "generated": {
+      "value": "Сформировано",
+      "status": "machine-draft"
+    },
+    "reportGenerated": {
+      "value": "Отчёт сформирован",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "Проверок оценено: {0} &middot; {1} пройдено, {2} провалено, {3} предупреждений, {4} пропущено",
+      "status": "machine-draft"
+    },
+    "summaryCounts": {
+      "value": "{0} проверок &middot; П:{1} Н:{2} А:{3}",
+      "status": "machine-draft"
+    },
+    "totalChecks": {
+      "value": "Всего проверок",
+      "status": "machine-draft"
+    },
+    "passed": {
+      "value": "Пройдено",
+      "status": "machine-draft"
+    },
+    "failed": {
+      "value": "Провалено",
+      "status": "machine-draft"
+    },
+    "warnings": {
+      "value": "Предупреждения",
+      "status": "machine-draft"
+    },
+    "skipped": {
+      "value": "Пропущено",
+      "status": "machine-draft"
+    },
+    "pass": {
+      "value": "Пройдено",
+      "status": "machine-draft"
+    },
+    "fail": {
+      "value": "Провалено",
+      "status": "machine-draft"
+    },
+    "warn": {
+      "value": "Предупреждение",
+      "status": "machine-draft"
+    },
+    "skip": {
+      "value": "Пропущено",
+      "status": "machine-draft"
+    },
+    "passLabel": {
+      "value": "Пройдено:",
+      "status": "machine-draft"
+    },
+    "failLabel": {
+      "value": "Провалено:",
+      "status": "machine-draft"
+    },
+    "warnLabel": {
+      "value": "Предупреждение:",
+      "status": "machine-draft"
+    },
+    "skipLabel": {
+      "value": "Пропущено:",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "Критический",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "Высокий",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "Средний",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "Низкий",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "Сводка для руководства",
+      "status": "machine-draft"
+    },
+    "categoryBreakdown": {
+      "value": "Разбивка по категориям",
+      "status": "machine-draft"
+    },
+    "categoryScores": {
+      "value": "Оценки по категориям",
+      "status": "machine-draft"
+    },
+    "detailedByCategory": {
+      "value": "Подробные результаты по категориям",
+      "status": "machine-draft"
+    },
+    "complianceMapping": {
+      "value": "Сопоставление с требованиями",
+      "status": "machine-draft"
+    },
+    "complianceCrossReference": {
+      "value": "Перекрёстные ссылки на требования",
+      "status": "machine-draft"
+    },
+    "allFindings": {
+      "value": "Все результаты",
+      "status": "machine-draft"
+    },
+    "thId": {
+      "value": "ID",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "Серьёзность",
+      "status": "machine-draft"
+    },
+    "thStatus": {
+      "value": "Статус",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "Категория",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "Проверка",
+      "status": "machine-draft"
+    },
+    "thCheckName": {
+      "value": "Название проверки",
+      "status": "machine-draft"
+    },
+    "thCheckId": {
+      "value": "ID проверки",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "Результат",
+      "status": "machine-draft"
+    },
+    "thRemediation": {
+      "value": "Устранение",
+      "status": "machine-draft"
+    },
+    "thCurrentValue": {
+      "value": "Текущее значение",
+      "status": "machine-draft"
+    },
+    "thRecommended": {
+      "value": "Рекомендуется",
+      "status": "machine-draft"
+    },
+    "thRecommendedValue": {
+      "value": "Рекомендуемое значение",
+      "status": "machine-draft"
+    },
+    "thRemediationSteps": {
+      "value": "Шаги по устранению",
+      "status": "machine-draft"
+    },
+    "thName": {
+      "value": "Название",
+      "status": "machine-draft"
+    },
+    "thDescription": {
+      "value": "Описание",
+      "status": "machine-draft"
+    },
+    "thPlatform": {
+      "value": "Платформа",
+      "status": "machine-draft"
+    },
+    "thTimestamp": {
+      "value": "Метка времени",
+      "status": "machine-draft"
+    },
+    "thScore": {
+      "value": "Оценка",
+      "status": "machine-draft"
+    },
+    "thLabel": {
+      "value": "Метка",
+      "status": "machine-draft"
+    },
+    "thDelta": {
+      "value": "Изменение",
+      "status": "machine-draft"
+    },
+    "thProfile": {
+      "value": "Профиль",
+      "status": "machine-draft"
+    },
+    "thMitre": {
+      "value": "MITRE ATT&CK",
+      "status": "machine-draft"
+    },
+    "thNist": {
+      "value": "NIST SP 800-53",
+      "status": "machine-draft"
+    },
+    "thCisAd": {
+      "value": "CIS AD",
+      "status": "machine-draft"
+    },
+    "thCisBenchmark": {
+      "value": "CIS Benchmark",
+      "status": "machine-draft"
+    },
+    "thAnssi": {
+      "value": "ANSSI",
+      "status": "machine-draft"
+    },
+    "accepted": {
+      "value": "ПРИНЯТО",
+      "status": "machine-draft"
+    }
+  },
+  "sections": {
+    "affectedItems": {
+      "value": "Затронутые объекты",
+      "status": "machine-draft"
+    }
+  },
+  "maturity": {
+    "heading": {
+      "value": "Зрелость безопасности",
+      "status": "machine-draft"
+    },
+    "overall": {
+      "value": "Общая зрелость: уровень {0} из 5 &middot; {1}",
+      "status": "machine-draft"
+    },
+    "anchorNote": {
+      "value": "Самый низкий невыполненный контроль определяет итоговую оценку (шкала типа CMMI: от 1 Начальный до 5 Оптимизированный), поэтому одна критическая уязвимость ограничивает оценку до её устранения.",
+      "status": "machine-draft"
+    },
+    "toReach": {
+      "value": "Чтобы достичь <strong>уровня {0}</strong>, устраните:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "Категория",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "Уровень",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "Зрелость",
+      "status": "machine-draft"
+    },
+    "levelCell": {
+      "value": "Уровень {0}",
+      "status": "machine-draft"
+    },
+    "na": {
+      "value": "н/д",
+      "status": "machine-draft"
+    }
+  },
+  "ioe": {
+    "heading": {
+      "value": "Индикаторы уязвимости",
+      "status": "machine-draft"
+    },
+    "note": {
+      "value": "Открытых уязвимостей: {0}, отсортированы по серьёзности и радиусу поражения.",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "Критический",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "Высокий",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "Средний",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "Низкий",
+      "status": "machine-draft"
+    },
+    "affected": {
+      "value": "затронуто: {0}",
+      "status": "machine-draft"
+    },
+    "warning": {
+      "value": "предупреждение",
+      "status": "machine-draft"
+    },
+    "more": {
+      "value": "+ ещё {0} уязвимостей в подробных результатах ниже.",
+      "status": "machine-draft"
+    }
+  },
+  "attackpath": {
+    "heading": {
+      "value": "Пути атаки к Tier-0",
+      "status": "machine-draft"
+    },
+    "noneRan": {
+      "value": "В собранном объёме ACL не найдено путей повышения привилегий до Tier-0. Глубокие цепочки с низкими привилегиями требуют сбора ACL по всему домену &middot; повторите запуск с <code>-FullDomainAcl</code>, чтобы расширить охват.",
+      "status": "machine-draft"
+    },
+    "noneNotRun": {
+      "value": "Анализ путей атаки не выполнялся. Включите категории <code>ACLDelegation</code> + <code>PrivilegedAccounts</code> (или <code>All</code>) и добавьте <code>-FullDomainAcl</code> для глубоких транзитивных цепочек.",
+      "status": "machine-draft"
+    },
+    "summary": {
+      "value": "Путей повышения привилегий до Tier-0: {0} &middot; {1} от НЕпривилегированных субъектов (показаны первыми, наивысший риск). Каждая стрелка это контроль или связь членства, которую может использовать злоумышленник.",
+      "status": "machine-draft"
+    },
+    "hop": {
+      "value": "переход",
+      "status": "machine-draft"
+    },
+    "hops": {
+      "value": "переходов",
+      "status": "machine-draft"
+    },
+    "nonPrivSource": {
+      "value": "непривилегированный источник",
+      "status": "machine-draft"
+    },
+    "privSource": {
+      "value": "уже привилегированный источник",
+      "status": "machine-draft"
+    }
+  },
+  "cartography": {
+    "heading": {
+      "value": "Картография путей атаки",
+      "status": "machine-draft"
+    },
+    "legend": {
+      "value": "Визуальная карта маршрутов повышения привилегий до Tier-0. <span style='color:var(--g-sev-critical)'>&#9873; Красный</span> = непривилегированный старт, <span style='color:var(--g-sev-high)'>оранжевый</span> = уже привилегированный, <span style='color:var(--g-accent)'>&#9733; синий</span> = цель Tier-0. Следуйте по стрелкам слева направо.",
+      "status": "machine-draft"
+    },
+    "showingFirst": {
+      "value": " Показаны первые {0} путей.",
+      "status": "machine-draft"
+    }
+  },
+  "comparison": {
+    "heading": {
+      "value": "Что изменилось с последнего запуска",
+      "status": "machine-draft"
+    },
+    "firstRun": {
+      "value": "Это первый зафиксированный запуск в данном объёме. История запусков начинается с\nунифицированного механизма сравнения этой версии, поэтому более ранние файлы изменений\nне читаются; сравнение начнётся со следующей оценки, когда этот запуск станет\nбазовым.",
+      "status": "machine-draft"
+    },
+    "previousRun": {
+      "value": "Предыдущий запуск: {0}, версия модуля {1}",
+      "status": "machine-draft"
+    },
+    "versionSkew": {
+      "value": " (этот запуск: {0}; каталоги проверок различаются, поэтому записи НОВЫЕ и ИЗЪЯТЫЕ ниже ожидаемы)",
+      "status": "machine-draft"
+    },
+    "scoreLabel": {
+      "value": "Оценка (сейчас {0}, было {1})",
+      "status": "machine-draft"
+    },
+    "notAssessedLabel": {
+      "value": "Количество Не оценено",
+      "status": "machine-draft"
+    },
+    "pillarsMoved": {
+      "value": "Изменившиеся принципы Zero Trust:",
+      "status": "machine-draft"
+    },
+    "newlyFailing": {
+      "value": "Новые провалы",
+      "status": "machine-draft"
+    },
+    "lostVisibility": {
+      "value": "Утрачена видимость (ранее оценивалось, теперь Не оценено)",
+      "status": "machine-draft"
+    },
+    "stillNotAssessed": {
+      "value": "По-прежнему не оценено (не охвачено в этом и предыдущем запуске)",
+      "status": "machine-draft"
+    },
+    "newlyPassing": {
+      "value": "Новые успешные (устранение подтверждено)",
+      "status": "machine-draft"
+    },
+    "regressed": {
+      "value": "Регресс до предупреждения",
+      "status": "machine-draft"
+    },
+    "improved": {
+      "value": "Улучшено до предупреждения (ещё не пройдено)",
+      "status": "machine-draft"
+    },
+    "restoredVisibility": {
+      "value": "Видимость восстановлена",
+      "status": "machine-draft"
+    },
+    "newChecks": {
+      "value": "Новые проверки в этом запуске (не переход)",
+      "status": "machine-draft"
+    },
+    "retiredChecks": {
+      "value": "Изъятые проверки (присутствовали ранее, отсутствуют сейчас; не переход)",
+      "status": "machine-draft"
+    },
+    "noChange": {
+      "value": "С предыдущего запуска ни один вердикт не изменился. Без изменений проверок: {0}.{1}",
+      "status": "machine-draft"
+    },
+    "unchanged": {
+      "value": "Без изменений проверок: {0}.{1}",
+      "status": "machine-draft"
+    }
+  },
+  "filter": {
+    "status": {
+      "value": "Статус",
+      "status": "machine-draft"
+    },
+    "severity": {
+      "value": "Серьёзность",
+      "status": "machine-draft"
+    },
+    "all": {
+      "value": "Все",
+      "status": "machine-draft"
+    },
+    "searchPlaceholder": {
+      "value": "Поиск результатов (id, название, значение)...",
+      "status": "machine-draft"
+    },
+    "empty": {
+      "value": "Нет результатов, соответствующих текущему фильтру.",
+      "status": "machine-draft"
+    },
+    "platform": {
+      "value": "Платформа",
+      "status": "machine-draft"
+    },
+    "showingAll": {
+      "value": "Показаны все результаты",
+      "status": "machine-draft"
+    }
+  },
+  "ad": {
+    "title": {
+      "value": "Отчёт Active Directory",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Оценка Active Directory",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Отчёт Guerrilla по Active Directory",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Оценка состояния безопасности Active Directory (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Аудит Active Directory",
+      "status": "machine-draft"
+    },
+    "verdict90": {
+      "value": "Среда Active Directory демонстрирует высокий уровень безопасности при минимуме результатов.",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "Среда AD имеет хороший уровень безопасности с некоторыми областями, требующими внимания.",
+      "status": "machine-draft"
+    },
+    "verdict60": {
+      "value": "Среда AD имеет удовлетворительный уровень безопасности. Несколько важных результатов требуют устранения.",
+      "status": "machine-draft"
+    },
+    "verdict40": {
+      "value": "Среда AD имеет низкий уровень безопасности. Множественные критические результаты и результаты высокой серьёзности требуют немедленного внимания.",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "Среда AD имеет критические недостатки безопасности. Требуется немедленное устранение для предотвращения компрометации.",
+      "status": "machine-draft"
+    },
+    "sevSummary": {
+      "value": "Критический: <strong>{0}</strong> &middot; Высокий: <strong>{1}</strong> &middot;\n     Средний: <strong>{2}</strong> &middot; Низкий: <strong>{3}</strong>",
+      "status": "machine-draft"
+    },
+    "bloodhoundHeading": {
+      "value": "Экспорт BloodHound",
+      "status": "machine-draft"
+    },
+    "bloodhoundExport": {
+      "value": "Экспорт OpenGraph собранного графа атак AD записан в <code>{0}</code>.",
+      "status": "machine-draft"
+    },
+    "bloodhoundImport": {
+      "value": "Импорт в BloodHound CE: <strong>Administration &rarr; File Ingest</strong> &rarr; загрузите файл, затем выполните встроенные запросы поиска путей. Узлы индексируются по SID (они накладываются на нативные данные SharpHound), а рёбра используют нативные типы BloodHound.",
+      "status": "machine-draft"
+    },
+    "findingsByPriority": {
+      "value": "Результаты по приоритету",
+      "status": "machine-draft"
+    }
+  },
+  "entra": {
+    "title": {
+      "value": "Отчёт Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Оценка Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Отчёт Guerrilla по Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Оценка состояния безопасности Entra ID / Azure / M365 (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Аудит Entra ID / M365",
+      "status": "machine-draft"
+    },
+    "zeroTrust": {
+      "value": "Состояние Zero Trust",
+      "status": "machine-draft"
+    },
+    "openInPortal": {
+      "value": "Открыть в портале администрирования",
+      "status": "machine-draft"
+    }
+  },
+  "gws": {
+    "title": {
+      "value": "Отчёт Google Workspace",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Оценка Google Workspace",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Отчёт Guerrilla по Google Workspace",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Оценка состояния безопасности Google Workspace (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Аудит Google Workspace",
+      "status": "machine-draft"
+    },
+    "configChecksEvaluated": {
+      "value": "Проверок конфигурации оценено: {0}",
+      "status": "machine-draft"
+    },
+    "verdictCrit": {
+      "value": "Требуются немедленные действия. Обнаружено сбоев конфигурации критической серьёзности: {0}, которые подвергают клиента значительному риску.",
+      "status": "machine-draft"
+    },
+    "verdictHigh": {
+      "value": "Рекомендуется устранение. Выявлено результатов высокой серьёзности: {0}, которые следует устранить незамедлительно.",
+      "status": "machine-draft"
+    },
+    "verdictMed": {
+      "value": "Отслеживайте и улучшайте. Результатов средней серьёзности: {0}, требуют анализа и усиления защиты.",
+      "status": "machine-draft"
+    },
+    "verdictLow": {
+      "value": "Обнаружены незначительные пробелы. Присутствует результатов низкой серьёзности: {0}. Общее состояние надёжное.",
+      "status": "machine-draft"
+    },
+    "verdictPass": {
+      "value": "Все проверки пройдены. Конфигурация клиента соответствует базовым требованиям безопасности.",
+      "status": "machine-draft"
+    },
+    "assessmentLabel": {
+      "value": "Оценка:",
+      "status": "machine-draft"
+    },
+    "scopeLabel": {
+      "value": "Объём:",
+      "status": "machine-draft"
+    },
+    "resultsLabel": {
+      "value": "Результаты:",
+      "status": "machine-draft"
+    },
+    "scope": {
+      "value": "{0} проверок конфигурации по {1} категориям.",
+      "status": "machine-draft"
+    },
+    "results": {
+      "value": "{0} пройдено, {1} провалено, {2} предупреждений, {3} пропущено.",
+      "status": "machine-draft"
+    },
+    "criticalRequire": {
+      "value": "Критических результатов, требующих немедленного устранения: {0}.",
+      "status": "machine-draft"
+    },
+    "priorityCritHigh": {
+      "value": "Приоритетные результаты &middot; Критический &amp; Высокий",
+      "status": "machine-draft"
+    },
+    "fixInConsole": {
+      "value": "Исправить в консоли администрирования",
+      "status": "machine-draft"
+    },
+    "whyUnsafe": {
+      "value": "Почему это небезопасно",
+      "status": "machine-draft"
+    },
+    "whyUnsafeDefault": {
+      "value": "Почему это небезопасно",
+      "status": "machine-draft"
+    },
+    "whyUnsafeArticle": {
+      "value": "Почему это небезопасно: {0}",
+      "status": "machine-draft"
+    }
+  },
+  "campaign": {
+    "title": {
+      "value": "Отчёт Campaign",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Унифицированная оценка Campaign",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Отчёт Guerrilla Campaign",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Унифицированный аудит Campaign",
+      "status": "machine-draft"
+    },
+    "subtitleLead": {
+      "value": "Унифицированная оценка состояния безопасности",
+      "status": "machine-draft"
+    },
+    "subtitleChecks": {
+      "value": "{0} проверок по {1} платформам ({2})",
+      "status": "machine-draft"
+    },
+    "scanId": {
+      "value": "ID сканирования",
+      "status": "machine-draft"
+    },
+    "duration": {
+      "value": "Длительность",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "Оценка Campaign (0-100) &middot; взвешенная оценка {0} проверок по {1} платформам",
+      "status": "machine-draft"
+    },
+    "platformSummary": {
+      "value": "Сводка по платформам",
+      "status": "machine-draft"
+    },
+    "categoryScoresByPlatform": {
+      "value": "Оценки по категориям и платформам",
+      "status": "machine-draft"
+    },
+    "checksWord": {
+      "value": "проверок",
+      "status": "machine-draft"
+    },
+    "categoriesWord": {
+      "value": "категорий",
+      "status": "machine-draft"
+    },
+    "unknown": {
+      "value": "Неизвестно",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "Описание",
+      "status": "machine-draft"
+    },
+    "affectedEntities": {
+      "value": "Затронутые сущности",
+      "status": "machine-draft"
+    },
+    "currentValueLabel": {
+      "value": "Текущее значение",
+      "status": "machine-draft"
+    },
+    "recommendedValueLabel": {
+      "value": "Рекомендуемое значение",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "Шаги по устранению",
+      "status": "machine-draft"
+    },
+    "remediationUrlLabel": {
+      "value": "URL для устранения",
+      "status": "machine-draft"
+    },
+    "complianceMappingsLabel": {
+      "value": "Сопоставления с требованиями",
+      "status": "machine-draft"
+    },
+    "showingAllFindings": {
+      "value": "Показаны все результаты: {0}",
+      "status": "machine-draft"
+    },
+    "showingSome": {
+      "value": "Показано {0} из {1} результатов",
+      "status": "machine-draft"
+    }
+  },
+  "technical": {
+    "title": {
+      "value": "Технический отчёт по оценке безопасности",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Технический отчёт",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Технический отчёт по безопасности",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Технический отчёт",
+      "status": "machine-draft"
+    },
+    "thTotal": {
+      "value": "Всего",
+      "status": "machine-draft"
+    },
+    "detailedFindings": {
+      "value": "Подробные результаты ({0})",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "Описание",
+      "status": "machine-draft"
+    },
+    "recommendedLabel": {
+      "value": "Рекомендуется",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "Шаги по устранению",
+      "status": "machine-draft"
+    },
+    "referenceLabel": {
+      "value": "Ссылка",
+      "status": "machine-draft"
+    },
+    "riskAcceptanceLabel": {
+      "value": "Принятие риска",
+      "status": "machine-draft"
+    },
+    "acceptedBy": {
+      "value": "Принято: {0} &middot; {1}",
+      "status": "machine-draft"
+    },
+    "complianceLabel": {
+      "value": "Соответствие требованиям",
+      "status": "machine-draft"
+    },
+    "noFindings": {
+      "value": "Нет доступных результатов аудита. Сначала выполните сканирование.",
+      "status": "machine-draft"
+    }
+  },
+  "exec": {
+    "title": {
+      "value": "Сводка по безопасности для руководства",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Сводка для руководства",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Сводка Guerrilla для руководства",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Сводка для руководства",
+      "status": "machine-draft"
+    },
+    "profileSuffix": {
+      "value": "Профиль",
+      "status": "machine-draft"
+    },
+    "securityPosture": {
+      "value": "Состояние безопасности: {0}",
+      "status": "machine-draft"
+    },
+    "verdictNoScore": {
+      "value": "Не удалось вычислить оценку на основе доступных результатов. Выполните сканирование, чтобы установить базовый уровень.",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "Ваша организация имеет прочную основу безопасности. Продолжайте мониторинг и устраняйте оставшиеся пробелы.",
+      "status": "machine-draft"
+    },
+    "verdict50": {
+      "value": "Ваше состояние безопасности можно улучшить. Рекомендуются приоритетные действия по критическим результатам.",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "Требуется немедленное внимание. Критические пробелы в безопасности подвергают вашу организацию повышенному риску.",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "Доля пройденных",
+      "status": "machine-draft"
+    },
+    "criticalIssues": {
+      "value": "Критические проблемы",
+      "status": "machine-draft"
+    },
+    "highIssues": {
+      "value": "Проблемы высокой серьёзности",
+      "status": "machine-draft"
+    },
+    "maturityStat": {
+      "value": "Зрелость ({0})",
+      "status": "machine-draft"
+    },
+    "maturityHeading": {
+      "value": "Зрелость безопасности",
+      "status": "machine-draft"
+    },
+    "maturityOverall": {
+      "value": "Общая зрелость: <strong style=\"color:{0}\">Уровень {1} из 5: {2}</strong>. Самый низкий невыполненный контроль определяет итоговую оценку, поэтому одна критическая уязвимость ограничивает оценку до её устранения (шкала типа CMMI: от 1 Начальный до 5 Оптимизированный).",
+      "status": "machine-draft"
+    },
+    "maturityToReach": {
+      "value": "Чтобы достичь <strong>уровня {0}</strong>, устраните:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "Категория",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "Уровень",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "Зрелость",
+      "status": "machine-draft"
+    },
+    "matLevelCell": {
+      "value": "Уровень {0}",
+      "status": "machine-draft"
+    },
+    "keyFindings": {
+      "value": "Ключевые результаты, требующие внимания",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "Влияние на соответствие требованиям",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "Следующие нормативные требования выявили пробелы:",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "пробелов: {0}",
+      "status": "machine-draft"
+    },
+    "quickWins": {
+      "value": "Рекомендуемые быстрые улучшения (без затрат)",
+      "status": "machine-draft"
+    },
+    "quickWinsIntro": {
+      "value": "Эти действия можно выполнить без затрат с помощью существующих инструментов:",
+      "status": "machine-draft"
+    },
+    "quickWinItem": {
+      "value": "({0}, ~{1} ч усилий)",
+      "status": "machine-draft"
+    },
+    "nextSteps": {
+      "value": "Дальнейшие шаги",
+      "status": "machine-draft"
+    },
+    "nextStep1": {
+      "value": "Немедленно устраните критические результаты &middot; они представляют наивысший риск для вашей организации.",
+      "status": "machine-draft"
+    },
+    "nextStep2": {
+      "value": "Внедрите указанные выше быстрые улучшения, чтобы повысить оценку безопасности с минимальными усилиями.",
+      "status": "machine-draft"
+    },
+    "nextStep3": {
+      "value": "Ознакомьтесь с подробным техническим отчётом для получения полного руководства по устранению.",
+      "status": "machine-draft"
+    },
+    "nextStep4": {
+      "value": "Запланируйте повторное сканирование через 30 дней для измерения улучшений.",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "Этот отчёт предоставляет оценку безопасности на определённый момент времени для целей внутреннего планирования. Результаты следует проверять и устранять в соответствии с уровнем допустимого риска организации.",
+      "status": "machine-draft"
+    }
+  },
+  "playbook": {
+    "title": {
+      "value": "Руководство по устранению",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Руководство по устранению",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Руководство Guerrilla по устранению",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Руководство по устранению",
+      "status": "machine-draft"
+    },
+    "subtitle": {
+      "value": "Выполнимых пунктов: {0} &middot; Макс. стоимость: {1}",
+      "status": "machine-draft"
+    },
+    "phase1": {
+      "value": "Этап 1: Критические исправления",
+      "status": "machine-draft"
+    },
+    "phase2": {
+      "value": "Этап 2: Высокий приоритет",
+      "status": "machine-draft"
+    },
+    "phase3": {
+      "value": "Этап 3: Средний приоритет",
+      "status": "machine-draft"
+    },
+    "phase4": {
+      "value": "Этап 4: Низкий приоритет",
+      "status": "machine-draft"
+    },
+    "phaseItems": {
+      "value": "{0} ({1} пунктов)",
+      "status": "machine-draft"
+    },
+    "idLabel": {
+      "value": "ID:",
+      "status": "machine-draft"
+    },
+    "costLabel": {
+      "value": "Стоимость:",
+      "status": "machine-draft"
+    },
+    "effortLabel": {
+      "value": "Усилия:",
+      "status": "machine-draft"
+    },
+    "categoryLabel": {
+      "value": "Категория:",
+      "status": "machine-draft"
+    },
+    "stepsLabel": {
+      "value": "Шаги:",
+      "status": "machine-draft"
+    },
+    "targetLabel": {
+      "value": "Цель:",
+      "status": "machine-draft"
+    },
+    "noteLabel": {
+      "value": "Примечание:",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "Перед внедрением проверьте каждый шаг по устранению. Сначала протестируйте изменения в непроизводственной среде.",
+      "status": "machine-draft"
+    }
+  },
+  "budget": {
+    "title": {
+      "value": "Обоснование бюджета безопасности",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Обоснование бюджета",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Обоснование бюджета Guerrilla",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Обоснование бюджета",
+      "status": "machine-draft"
+    },
+    "profileLabel": {
+      "value": "Профиль",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "Сводка для руководства",
+      "status": "machine-draft"
+    },
+    "guerrillaScore": {
+      "value": "Оценка Guerrilla",
+      "status": "machine-draft"
+    },
+    "criticalFailures": {
+      "value": "Критические сбои",
+      "status": "machine-draft"
+    },
+    "highFailures": {
+      "value": "Сбои высокой серьёзности",
+      "status": "machine-draft"
+    },
+    "totalChecksBreakdown": {
+      "value": "Всего проверок ({0} пройдено / {1} провалено / {2} предупр.)",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "Влияние на соответствие требованиям",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "Следующие нормативные требования имеют пробелы на основе текущих результатов аудита:",
+      "status": "machine-draft"
+    },
+    "thFramework": {
+      "value": "Требование",
+      "status": "machine-draft"
+    },
+    "thGapsFound": {
+      "value": "Найдено пробелов",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "пробелов: {0}",
+      "status": "machine-draft"
+    },
+    "investmentPhases": {
+      "value": "Рекомендуемые этапы инвестиций",
+      "status": "machine-draft"
+    },
+    "phase1Title": {
+      "value": "Этап 1: Быстрые улучшения (без затрат)",
+      "status": "machine-draft"
+    },
+    "phase1Desc": {
+      "value": "Изменения конфигурации с помощью существующих инструментов &middot; наивысшая рентабельность, немедленное улучшение безопасности.",
+      "status": "machine-draft"
+    },
+    "phase2Title": {
+      "value": "Этап 2: Малозатратные улучшения",
+      "status": "machine-draft"
+    },
+    "phase2Desc": {
+      "value": "Незначительные покупки или дополнения к лицензиям в рамках существующего бюджета.",
+      "status": "machine-draft"
+    },
+    "phase3Title": {
+      "value": "Этап 3: Умеренные инвестиции",
+      "status": "machine-draft"
+    },
+    "phase3Desc": {
+      "value": "Обновления лицензий или дополнительные продукты для расширенных возможностей безопасности.",
+      "status": "machine-draft"
+    },
+    "phase4Title": {
+      "value": "Этап 4: Стратегические инвестиции",
+      "status": "machine-draft"
+    },
+    "phase4Desc": {
+      "value": "Крупные покупки или изменения инфраструктуры для долгосрочного улучшения состояния безопасности.",
+      "status": "machine-draft"
+    },
+    "phase4Body": {
+      "value": "Выявлено <strong>{0} пунктов</strong>, требующих значительных инвестиций. Обратитесь к вашему консультанту по безопасности для детальной проработки.",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "Проверка",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "Результат",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "Серьёзность",
+      "status": "machine-draft"
+    },
+    "thEffort": {
+      "value": "Усилия",
+      "status": "machine-draft"
+    },
+    "thTime": {
+      "value": "Время",
+      "status": "machine-draft"
+    },
+    "actions": {
+      "value": "действий: {0}",
+      "status": "machine-draft"
+    },
+    "estimatedEffort": {
+      "value": "Оценочные общие усилия: {0} часов",
+      "status": "machine-draft"
+    },
+    "noFree": {
+      "value": "Бесплатных исправлений не выявлено.",
+      "status": "machine-draft"
+    },
+    "noLow": {
+      "value": "Малозатратных исправлений не выявлено.",
+      "status": "machine-draft"
+    },
+    "noMed": {
+      "value": "Исправлений средней стоимости не выявлено.",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "Этот отчёт предназначен для целей внутреннего планирования.",
+      "status": "machine-draft"
+    }
+  },
+  "dashboard": {
+    "title": {
+      "value": "Панель безопасности",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Панель",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Панель безопасности",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Унифицированная панель",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "Оценка Guerrilla (0-100)",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "Проверок оценено: {0} &middot; {1} пройдено, {2} провалено, {3} предупреждений",
+      "status": "machine-draft"
+    },
+    "scoreComponents": {
+      "value": "Компоненты оценки",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "Доля пройденных",
+      "status": "machine-draft"
+    },
+    "failures": {
+      "value": "Сбои",
+      "status": "machine-draft"
+    },
+    "platformOverview": {
+      "value": "Обзор платформ",
+      "status": "machine-draft"
+    },
+    "checks": {
+      "value": "Проверок: {0}",
+      "status": "machine-draft"
+    },
+    "failuresLabel": {
+      "value": "Сбоев: {0}",
+      "status": "machine-draft"
+    },
+    "notScanned": {
+      "value": "Не сканировано",
+      "status": "machine-draft"
+    },
+    "topFindings": {
+      "value": "Основные результаты",
+      "status": "machine-draft"
+    },
+    "showingTop50": {
+      "value": "Показаны 50 основных результатов. Полный список см. в подробных отчётах.",
+      "status": "machine-draft"
+    },
+    "posture": {
+      "value": "Состояние",
+      "status": "machine-draft"
+    },
+    "threats": {
+      "value": "Угрозы",
+      "status": "machine-draft"
+    },
+    "coverage": {
+      "value": "Охват",
+      "status": "machine-draft"
+    },
+    "trend": {
+      "value": "Тенденция",
+      "status": "machine-draft"
+    }
+  },
+  "trend": {
+    "title": {
+      "value": "Отчёт о тенденциях безопасности",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Тенденция оценки",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Отчёт о тенденциях безопасности",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Тенденция оценки",
+      "status": "machine-draft"
+    },
+    "scansCount": {
+      "value": "сканирований: {0}",
+      "status": "machine-draft"
+    },
+    "currentScore": {
+      "value": "Текущая оценка",
+      "status": "machine-draft"
+    },
+    "averageScore": {
+      "value": "Средняя оценка",
+      "status": "machine-draft"
+    },
+    "trendLabel": {
+      "value": "Тенденция ({0})",
+      "status": "machine-draft"
+    },
+    "improving": {
+      "value": "Улучшается",
+      "status": "machine-draft"
+    },
+    "declining": {
+      "value": "Ухудшается",
+      "status": "machine-draft"
+    },
+    "stable": {
+      "value": "Стабильно",
+      "status": "machine-draft"
+    },
+    "highestLowest": {
+      "value": "Наивысшая / Наинизшая",
+      "status": "machine-draft"
+    },
+    "scoreHistory": {
+      "value": "История оценок",
+      "status": "machine-draft"
+    },
+    "scanLog": {
+      "value": "Журнал сканирований",
+      "status": "machine-draft"
+    },
+    "defaultProfile": {
+      "value": "По умолчанию",
+      "status": "machine-draft"
+    }
+  },
+  "category": {
+    "adacldelegation": {
+      "value": "ACL и делегирование AD",
+      "status": "machine-draft"
+    },
+    "adadversarytradecraftindicators": {
+      "value": "Индикаторы техник злоумышленников AD",
+      "status": "machine-draft"
+    },
+    "adcertificateservices": {
+      "value": "Службы сертификатов AD",
+      "status": "machine-draft"
+    },
+    "addomainforestconfiguration": {
+      "value": "Конфигурация домена и леса AD",
+      "status": "machine-draft"
+    },
+    "adgrouppolicy": {
+      "value": "Групповая политика AD",
+      "status": "machine-draft"
+    },
+    "adkerberossecurity": {
+      "value": "Безопасность Kerberos AD",
+      "status": "machine-draft"
+    },
+    "adloggingedrposture": {
+      "value": "Журналирование и состояние EDR AD",
+      "status": "machine-draft"
+    },
+    "adlogonscriptsnetworkshares": {
+      "value": "Сценарии входа и сетевые общие ресурсы AD",
+      "status": "machine-draft"
+    },
+    "adnetworkrelaypreconditions": {
+      "value": "Сетевые предусловия и предусловия ретрансляции AD",
+      "status": "machine-draft"
+    },
+    "adpasswordlockoutpolicies": {
+      "value": "Политики паролей и блокировки AD",
+      "status": "machine-draft"
+    },
+    "adprivilegedaccountsecurity": {
+      "value": "Безопасность привилегированных учётных записей AD",
+      "status": "machine-draft"
+    },
+    "adstaleobsoleteobjects": {
+      "value": "Устаревшие и неактуальные объекты AD",
+      "status": "machine-draft"
+    },
+    "adtrustrelationships": {
+      "value": "Доверительные отношения AD",
+      "status": "machine-draft"
+    },
+    "adminusermanagement": {
+      "value": "Управление администраторами и пользователями",
+      "status": "machine-draft"
+    },
+    "adversarytradecraft": {
+      "value": "Техники злоумышленников",
+      "status": "machine-draft"
+    },
+    "attackpaths": {
+      "value": "Пути атаки",
+      "status": "machine-draft"
+    },
+    "authenticationaccesscontrols": {
+      "value": "Аутентификация и контроль доступа",
+      "status": "machine-draft"
+    },
+    "azureiamresourcesecurity": {
+      "value": "Azure IAM и безопасность ресурсов",
+      "status": "machine-draft"
+    },
+    "collaborationcommunicationsecurity": {
+      "value": "Безопасность совместной работы и коммуникаций",
+      "status": "machine-draft"
+    },
+    "copilotstudioaiagentgovernance": {
+      "value": "Управление ИИ-агентами Copilot Studio",
+      "status": "machine-draft"
+    },
+    "defenderforoffice365": {
+      "value": "Defender for Office 365",
+      "status": "machine-draft"
+    },
+    "deviceendpointmanagement": {
+      "value": "Управление устройствами и конечными точками",
+      "status": "machine-draft"
+    },
+    "drivesecuritydataprotection": {
+      "value": "Безопасность Drive и защита данных",
+      "status": "machine-draft"
+    },
+    "eidscabaseline": {
+      "value": "Базовый уровень EIDSCA",
+      "status": "machine-draft"
+    },
+    "emailsecurity": {
+      "value": "Безопасность электронной почты",
+      "status": "machine-draft"
+    },
+    "entraidapplicationserviceprincipalsecurity": {
+      "value": "Безопасность приложений и субъектов-служб Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidauthenticationmethodsmfa": {
+      "value": "Методы аутентификации и MFA Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidconditionalaccess": {
+      "value": "Условный доступ Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidfederationhybrididentity": {
+      "value": "Федерация и гибридная идентификация Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidgovernance": {
+      "value": "Управление Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidprivilegedidentitymanagement": {
+      "value": "Управление привилегированными удостоверениями Entra ID",
+      "status": "machine-draft"
+    },
+    "entraidtenantconfiguration": {
+      "value": "Конфигурация клиента Entra ID",
+      "status": "machine-draft"
+    },
+    "exchangeonlinesecurity": {
+      "value": "Безопасность Exchange Online",
+      "status": "machine-draft"
+    },
+    "intuneendpointmanagement": {
+      "value": "Intune / Управление конечными точками",
+      "status": "machine-draft"
+    },
+    "k12baseline": {
+      "value": "Базовый уровень K12",
+      "status": "machine-draft"
+    },
+    "loggingalertingmonitoring": {
+      "value": "Журналирование, оповещения и мониторинг",
+      "status": "machine-draft"
+    },
+    "microsoftteamssecurity": {
+      "value": "Безопасность Microsoft Teams",
+      "status": "machine-draft"
+    },
+    "oauthapisecurity": {
+      "value": "Безопасность OAuth и API",
+      "status": "machine-draft"
+    },
+    "powerplatformsecurity": {
+      "value": "Безопасность Power Platform",
+      "status": "machine-draft"
+    },
+    "sharepointonedrivesecurity": {
+      "value": "Безопасность SharePoint и OneDrive",
+      "status": "machine-draft"
+    },
+    "tier0hygienehybrididentitysurface": {
+      "value": "Гигиена Tier-0 и поверхность гибридной идентификации",
+      "status": "machine-draft"
+    },
+    "unifiedauditlogging": {
+      "value": "Унифицированный аудит и журналирование",
+      "status": "machine-draft"
+    },
+    "workspaceservicesecuritysitesclassroomgemini": {
+      "value": "Безопасность служб Workspace (Sites / Classroom / Gemini)",
+      "status": "machine-draft"
+    }
+  }
+}
