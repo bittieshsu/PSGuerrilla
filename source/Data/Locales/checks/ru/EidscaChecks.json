@@ -1,0 +1,795 @@
+{
+  "_family": "EidscaChecks.json",
+  "EIDSCA-AP01": {
+    "name": {
+      "value": "EIDSCA AP01: параметры авторизации по умолчанию: самостоятельный сброс пароля для администраторов включён",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AP01): оценивает свойство 'allowedToUseSSPR' в политике авторизации Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику авторизации Entra ID так, чтобы свойство 'allowedToUseSSPR' было установлено в false. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AP01.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP04": {
+    "name": {
+      "value": "EIDSCA AP04: параметры авторизации по умолчанию: ограничения приглашения гостей",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AP04): оценивает свойство 'allowInvitesFrom' в политике авторизации Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "in adminsAndGuestInviters, none",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику авторизации Entra ID так, чтобы свойство 'allowInvitesFrom' было установлено в одно из значений: adminsAndGuestInviters, none. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AP04.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP05": {
+    "name": {
+      "value": "EIDSCA AP05: параметры авторизации по умолчанию: регистрация на подписки на основе электронной почты",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AP05): оценивает свойство 'allowedToSignUpEmailBasedSubscriptions' в политике авторизации Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику авторизации Entra ID так, чтобы свойство 'allowedToSignUpEmailBasedSubscriptions' было установлено в false. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AP05.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP06": {
+    "name": {
+      "value": "EIDSCA AP06: параметры авторизации по умолчанию: пользователь может присоединиться к клиенту через подтверждение электронной почты",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AP06): оценивает свойство 'allowEmailVerifiedUsersToJoinOrganization' в политике авторизации Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику авторизации Entra ID так, чтобы свойство 'allowEmailVerifiedUsersToJoinOrganization' было установлено в false. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AP06.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP07": {
+    "name": {
+      "value": "EIDSCA AP07: параметры авторизации по умолчанию: доступ гостевых пользователей",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AP07): оценивает свойство 'guestUserRoleId' в политике авторизации Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq 2af84b1e-32c8-42b7-82bc-daa82404023b",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику авторизации Entra ID так, чтобы свойство 'guestUserRoleId' было установлено в 2af84b1e-32c8-42b7-82bc-daa82404023b. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AP07.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP08": {
+    "name": {
+      "value": "EIDSCA AP08: параметры авторизации по умолчанию: политика согласия пользователей, назначенная для приложений",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AP08): оценивает свойство 'permissionGrantPolicyIdsAssignedToDefaultUserRole' в политике авторизации Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "clike-any ManagePermissionGrantsForSelf",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику авторизации Entra ID так, чтобы свойство 'permissionGrantPolicyIdsAssignedToDefaultUserRole' включало ManagePermissionGrantsForSelf. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AP08.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP09": {
+    "name": {
+      "value": "EIDSCA AP09: параметры авторизации по умолчанию: разрешить согласие пользователей для потенциально опасных приложений",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AP09): оценивает свойство 'allowUserConsentForRiskyApps' в политике авторизации Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику авторизации Entra ID так, чтобы свойство 'allowUserConsentForRiskyApps' было установлено в false. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AP09.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP10": {
+    "name": {
+      "value": "EIDSCA AP10: параметры авторизации по умолчанию: разрешения роли пользователя по умолчанию: разрешено создавать приложения",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AP10): оценивает свойство 'defaultUserRolePermissions.allowedToCreateApps' в политике авторизации Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику авторизации Entra ID так, чтобы свойство 'defaultUserRolePermissions.allowedToCreateApps' было установлено в false. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AP10.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AP14": {
+    "name": {
+      "value": "EIDSCA AP14: параметры авторизации по умолчанию: разрешения роли пользователя по умолчанию: разрешено читать других пользователей",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AP14): оценивает свойство 'defaultUserRolePermissions.allowedToReadOtherUsers' в политике авторизации Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику авторизации Entra ID так, чтобы свойство 'defaultUserRolePermissions.allowedToReadOtherUsers' было установлено в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AP14.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CP01": {
+    "name": {
+      "value": "EIDSCA CP01: параметры по умолчанию: параметры политики согласия: согласие владельца группы для приложений, обращающихся к данным",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA CP01): оценивает параметр 'EnableGroupSpecificConsent' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq False",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'EnableGroupSpecificConsent' был установлен в False. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA CP01.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CP03": {
+    "name": {
+      "value": "EIDSCA CP03: параметры по умолчанию: параметры политики согласия: блокировать согласие пользователей для потенциально опасных приложений",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA CP03): оценивает параметр 'BlockUserConsentForRiskyApps' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'BlockUserConsentForRiskyApps' был установлен в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA CP03.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CP04": {
+    "name": {
+      "value": "EIDSCA CP04: параметры по умолчанию: параметры политики согласия: пользователи могут запрашивать согласие администратора для приложений, для которых не могут дать согласие самостоятельно",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA CP04): оценивает параметр 'EnableAdminConsentRequests' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'EnableAdminConsentRequests' был установлен в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA CP04.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR01": {
+    "name": {
+      "value": "EIDSCA PR01: параметры по умолчанию: параметры правил паролей: защита паролей: режим",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA PR01): оценивает параметр 'BannedPasswordCheckOnPremisesMode' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq Enforce",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'BannedPasswordCheckOnPremisesMode' был установлен в Enforce. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA PR01.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR02": {
+    "name": {
+      "value": "EIDSCA PR02: параметры по умолчанию: параметры правил паролей: защита паролей: включить защиту паролей в Windows Server Active Directory",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA PR02): оценивает параметр 'EnableBannedPasswordCheckOnPremises' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq True",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'EnableBannedPasswordCheckOnPremises' был установлен в True. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA PR02.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR03": {
+    "name": {
+      "value": "EIDSCA PR03: параметры по умолчанию: параметры правил паролей: применять пользовательский список",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA PR03): оценивает параметр 'EnableBannedPasswordCheck' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq True",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'EnableBannedPasswordCheck' был установлен в True. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA PR03.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR05": {
+    "name": {
+      "value": "EIDSCA PR05: параметры по умолчанию: параметры правил паролей: интеллектуальная блокировка: длительность блокировки в секундах",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA PR05): оценивает параметр 'LockoutDurationInSeconds' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "ge 60",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'LockoutDurationInSeconds' составлял не менее 60. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA PR05.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-PR06": {
+    "name": {
+      "value": "EIDSCA PR06: параметры по умолчанию: параметры правил паролей: интеллектуальная блокировка: порог блокировки",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA PR06): оценивает параметр 'LockoutThreshold' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "le 10",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'LockoutThreshold' составлял не более 10. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA PR06.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-ST08": {
+    "name": {
+      "value": "EIDSCA ST08: параметры по умолчанию: классификация и группы M365: группы M365: разрешить гостям становиться владельцами групп",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA ST08): оценивает параметр 'AllowGuestsToBeGroupOwner' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'AllowGuestsToBeGroupOwner' был установлен в false. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA ST08.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-ST09": {
+    "name": {
+      "value": "EIDSCA ST09: параметры по умолчанию: классификация и группы M365: группы M365: разрешить гостям доступ к содержимому групп",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA ST09): оценивает параметр 'AllowGuestsToAccessGroups' в параметрах каталога (групп) Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq True",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте параметры каталога (групп) Entra ID так, чтобы параметр 'AllowGuestsToAccessGroups' был установлен в True. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA ST09.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AG01": {
+    "name": {
+      "value": "EIDSCA AG01: метод проверки подлинности: общие параметры: управление миграцией",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AG01): оценивает свойство 'policyMigrationState' в политике методов проверки подлинности Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "in migrationComplete, ",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику методов проверки подлинности Entra ID так, чтобы свойство 'policyMigrationState' было установлено в одно из значений: migrationComplete, . (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AG01.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AG02": {
+    "name": {
+      "value": "EIDSCA AG02: метод проверки подлинности: общие параметры: сообщение о подозрительной активности: состояние",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AG02): оценивает свойство 'reportSuspiciousActivitySettings.state' в политике методов проверки подлинности Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику методов проверки подлинности Entra ID так, чтобы свойство 'reportSuspiciousActivitySettings.state' было установлено в enabled. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AG02.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AG03": {
+    "name": {
+      "value": "EIDSCA AG03: метод проверки подлинности: общие параметры: сообщение о подозрительной активности: включённые пользователи и группы",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AG03): оценивает свойство 'reportSuspiciousActivitySettings.includeTarget.id' в политике методов проверки подлинности Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq all_users",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику методов проверки подлинности Entra ID так, чтобы свойство 'reportSuspiciousActivitySettings.includeTarget.id' было установлено в all_users. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AG03.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM01": {
+    "name": {
+      "value": "EIDSCA AM01: метод проверки подлинности: Microsoft Authenticator: состояние",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AM01): оценивает свойство 'state' в методе проверки подлинности MicrosoftAuthenticator относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности MicrosoftAuthenticator так, чтобы свойство 'state' было установлено в enabled. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AM01.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM02": {
+    "name": {
+      "value": "EIDSCA AM02: метод проверки подлинности: Microsoft Authenticator: разрешить использование одноразовых паролей (OTP) Microsoft Authenticator",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AM02): оценивает свойство 'isSoftwareOathEnabled' в методе проверки подлинности MicrosoftAuthenticator относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности MicrosoftAuthenticator так, чтобы свойство 'isSoftwareOathEnabled' было установлено в false. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AM02.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM03": {
+    "name": {
+      "value": "EIDSCA AM03: метод проверки подлинности: Microsoft Authenticator: требовать сопоставление чисел для push-уведомлений",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AM03): оценивает свойство 'featureSettings.numberMatchingRequiredState.state' в методе проверки подлинности MicrosoftAuthenticator относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности MicrosoftAuthenticator так, чтобы свойство 'featureSettings.numberMatchingRequiredState.state' было установлено в enabled. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AM03.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM04": {
+    "name": {
+      "value": "EIDSCA AM04: метод проверки подлинности: Microsoft Authenticator: включённые пользователи и группы для сопоставления чисел в push-уведомлениях",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AM04): оценивает свойство 'featureSettings.numberMatchingRequiredState.includeTarget.id' в методе проверки подлинности MicrosoftAuthenticator относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq all_users",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности MicrosoftAuthenticator так, чтобы свойство 'featureSettings.numberMatchingRequiredState.includeTarget.id' было установлено в all_users. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AM04.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM06": {
+    "name": {
+      "value": "EIDSCA AM06: метод проверки подлинности: Microsoft Authenticator: показывать имя приложения в push-уведомлениях и уведомлениях без пароля",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AM06): оценивает свойство 'featureSettings.displayAppInformationRequiredState.state' в методе проверки подлинности MicrosoftAuthenticator относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности MicrosoftAuthenticator так, чтобы свойство 'featureSettings.displayAppInformationRequiredState.state' было установлено в enabled. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AM06.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM07": {
+    "name": {
+      "value": "EIDSCA AM07: метод проверки подлинности: Microsoft Authenticator: включённые пользователи и группы для показа имени приложения в push-уведомлениях и уведомлениях без пароля",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AM07): оценивает свойство 'featureSettings.displayAppInformationRequiredState.includeTarget.id' в методе проверки подлинности MicrosoftAuthenticator относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq all_users",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности MicrosoftAuthenticator так, чтобы свойство 'featureSettings.displayAppInformationRequiredState.includeTarget.id' было установлено в all_users. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AM07.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM09": {
+    "name": {
+      "value": "EIDSCA AM09: метод проверки подлинности: Microsoft Authenticator: показывать географическое расположение в push-уведомлениях и уведомлениях без пароля",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AM09): оценивает свойство 'featureSettings.displayLocationInformationRequiredState.state' в методе проверки подлинности MicrosoftAuthenticator относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности MicrosoftAuthenticator так, чтобы свойство 'featureSettings.displayLocationInformationRequiredState.state' было установлено в enabled. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AM09.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AM10": {
+    "name": {
+      "value": "EIDSCA AM10: метод проверки подлинности: Microsoft Authenticator: включённые пользователи и группы для показа географического расположения в push-уведомлениях и уведомлениях без пароля",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AM10): оценивает свойство 'featureSettings.displayLocationInformationRequiredState.includeTarget.id' в методе проверки подлинности MicrosoftAuthenticator относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq all_users",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности MicrosoftAuthenticator так, чтобы свойство 'featureSettings.displayLocationInformationRequiredState.includeTarget.id' было установлено в all_users. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AM10.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF01": {
+    "name": {
+      "value": "EIDSCA AF01: метод проверки подлинности: ключ безопасности FIDO2: состояние",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AF01): оценивает свойство 'state' в методе проверки подлинности Fido2 относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности Fido2 так, чтобы свойство 'state' было установлено в enabled. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AF01.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF02": {
+    "name": {
+      "value": "EIDSCA AF02: метод проверки подлинности: ключ безопасности FIDO2: разрешить самостоятельную настройку",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AF02): оценивает свойство 'isSelfServiceRegistrationAllowed' в методе проверки подлинности Fido2 относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности Fido2 так, чтобы свойство 'isSelfServiceRegistrationAllowed' было установлено в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AF02.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF03": {
+    "name": {
+      "value": "EIDSCA AF03: метод проверки подлинности: ключ безопасности FIDO2: применять аттестацию",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AF03): оценивает свойство 'isAttestationEnforced' в методе проверки подлинности Fido2 относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности Fido2 так, чтобы свойство 'isAttestationEnforced' было установлено в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AF03.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF04": {
+    "name": {
+      "value": "EIDSCA AF04: метод проверки подлинности: ключ безопасности FIDO2: применять ограничения ключей",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AF04): оценивает свойство 'keyRestrictions.isEnforced' в методе проверки подлинности Fido2 относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности Fido2 так, чтобы свойство 'keyRestrictions.isEnforced' было установлено в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AF04.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF05": {
+    "name": {
+      "value": "EIDSCA AF05: метод проверки подлинности: ключ безопасности FIDO2: ограничено",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AF05): оценивает свойство 'keyRestrictions.aaGuids' в методе проверки подлинности Fido2 относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "notempty ",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Убедитесь, что свойство 'keyRestrictions.aaGuids' в методе проверки подлинности Fido2 настроено (не пусто). (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AF05.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AF06": {
+    "name": {
+      "value": "EIDSCA AF06: метод проверки подлинности: ключ безопасности FIDO2: ограничить определённые ключи",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AF06): оценивает свойство 'keyRestrictions' в методе проверки подлинности Fido2 относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "fido2-aaguid-enforced ",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Убедитесь, что свойство 'keyRestrictions' в методе проверки подлинности Fido2 применяется со списком разрешённых или заблокированных значений AAGUID. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AF06.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AT01": {
+    "name": {
+      "value": "EIDSCA AT01: метод проверки подлинности: временный пропуск доступа (Temporary Access Pass): состояние",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AT01): оценивает свойство 'state' в методе проверки подлинности TemporaryAccessPass относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq enabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности TemporaryAccessPass так, чтобы свойство 'state' было установлено в enabled. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AT01.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AT02": {
+    "name": {
+      "value": "EIDSCA AT02: метод проверки подлинности: временный пропуск доступа (Temporary Access Pass): одноразовый",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AT02): оценивает свойство 'isUsableOnce' в методе проверки подлинности TemporaryAccessPass относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности TemporaryAccessPass так, чтобы свойство 'isUsableOnce' было установлено в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AT02.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AV01": {
+    "name": {
+      "value": "EIDSCA AV01: метод проверки подлинности: голосовой вызов: состояние",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AV01): оценивает свойство 'state' в методе проверки подлинности Voice относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq disabled",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности Voice так, чтобы свойство 'state' было установлено в disabled. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AV01.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-AS04": {
+    "name": {
+      "value": "EIDSCA AS04: метод проверки подлинности: SMS: использование для входа",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA AS04): оценивает свойство 'includeTargets.isUsableForSignIn' в методе проверки подлинности Sms относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq false",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте метод проверки подлинности Sms так, чтобы свойство 'includeTargets.isUsableForSignIn' было установлено в false. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA AS04.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CR01": {
+    "name": {
+      "value": "EIDSCA CR01: платформа согласия: запрос согласия администратора: политика включения или отключения функции запроса согласия администратора",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA CR01): оценивает свойство 'isEnabled' в политике запросов согласия администратора Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику запросов согласия администратора Entra ID так, чтобы свойство 'isEnabled' было установлено в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA CR01.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CR02": {
+    "name": {
+      "value": "EIDSCA CR02: платформа согласия: запрос согласия администратора: проверяющие получают уведомления по электронной почте о запросах",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA CR02): оценивает свойство 'notifyReviewers' в политике запросов согласия администратора Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику запросов согласия администратора Entra ID так, чтобы свойство 'notifyReviewers' было установлено в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA CR02.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CR03": {
+    "name": {
+      "value": "EIDSCA CR03: платформа согласия: запрос согласия администратора: проверяющие получают уведомления по электронной почте, когда срок действия запросов согласия администратора приближается к концу",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA CR03): оценивает свойство 'remindersEnabled' в политике запросов согласия администратора Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "eq true",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику запросов согласия администратора Entra ID так, чтобы свойство 'remindersEnabled' было установлено в true. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA CR03.)",
+      "status": "machine-draft"
+    }
+  },
+  "EIDSCA-CR04": {
+    "name": {
+      "value": "EIDSCA CR04: платформа согласия: запрос согласия администратора: длительность запроса согласия (в днях)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Проверка конфигурации безопасности Entra ID (EIDSCA CR04): оценивает свойство 'requestDurationInDays' в политике запросов согласия администратора Entra ID относительно рекомендованного безопасного значения.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "le 30",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Настройте политику запросов согласия администратора Entra ID так, чтобы свойство 'requestDurationInDays' составляло не более 30. (Базовая конфигурация безопасности Entra ID, элемент управления EIDSCA CR04.)",
+      "status": "machine-draft"
+    }
+  }
+}
