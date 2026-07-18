@@ -1,0 +1,327 @@
+{
+  "_family": "EntraAuthChecks.json",
+  "EIDAUTH-001": {
+    "name": {
+      "value": "ביקורת מדיניות שיטות אימות",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "מדיניות שיטות האימות מגדירה אילו שיטות זמינות למשתמשים לצורך כניסה ו-MFA. מדיניות מוגדרת שגוי עלולה לאפשר שיטות חלשות או מיושנות ולהגדיל את משטח התקיפה. בדיקה זו מבקרת את מצב המדיניות הנוכחי אל מול בסיסי האבטחה המוכרים של Entra ID.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "מדיניות שיטות האימות נסקרה והותאמה לבסיס האבטחה הארגוני",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "נווט אל Entra ID > Protection > Authentication methods > Policies. בחן כל שיטה מופעלת והשבת כל שיטה שאינה נדרשת על ידי הארגון שלך. ודא ששיטות עמידות בפני דיוג כגון FIDO2 ו-Microsoft Authenticator מקבלות עדיפות על פני SMS וקול.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-002": {
+    "name": {
+      "value": "מצב רישום MFA עבור כל המשתמשים",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "כל המשתמשים צריכים להירשם לאימות רב-גורמי כדי למנוע השתלטות על חשבונות באמצעות פרטי הזדהות גנובים או מנוחשים. חשבונות ללא רישום MFA הם היעד המרכזי להתקפות מבוססות פרטי הזדהות, כולל ריסוס סיסמאות ודיוג. משתמשים שאינם רשומים מהווים פערים קריטיים במצב אבטחת הזהויות שלך.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "100% מהמשתמשים הפעילים רשומים ל-MFA",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "בחן את מצב רישום ה-MFA דרך Entra ID > Protection > Authentication methods > User registration details. אכוף רישום MFA באמצעות מדיניות Conditional Access הדורשת MFA עבור כל המשתמשים. קבע מועד אחרון לרישום ומסור את הדרישות למשתמשים שאינם רשומים.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-003": {
+    "name": {
+      "value": "ניתוח התפלגות שיטות MFA",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "הבנת התפלגות שיטות ה-MFA בקרב המשתמשים מסייעת בהערכת החוזק הכולל של בקרות האימות. ארגונים צריכים לעקוב אחר אימוץ שיטות עמידות בפני דיוג כגון FIDO2 ודחיפה של Authenticator לעומת שיטות חלשות יותר כגון SMS. נראות זו מאפשרת קמפיינים ממוקדים להעברת משתמשים לשיטות חזקות יותר.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "רוב המשתמשים רשומים בשיטות MFA עמידות בפני דיוג (FIDO2, Microsoft Authenticator, Windows Hello)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "בחן את התפלגות השיטות דרך Entra ID > Protection > Authentication methods > User registration details. זהה משתמשים המסתמכים אך ורק על שיטות חלשות יותר וצור תוכניות מעבר. השתמש בדוחות פעילות שיטות האימות כדי לעקוב אחר התקדמות האימוץ.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-004": {
+    "name": {
+      "value": "משתמשים בעלי שיטות MFA של SMS/קול בלבד",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "משתמשים המסתמכים אך ורק על MFA מבוסס SMS או קול פגיעים להתקפות החלפת SIM, שבהן תוקפים מהנדסים חברתית מפעילי סלולר כדי להעביר את מספר הטלפון של הקורבן, ולהתקפות פרוטוקול איתות SS7 המיירטות הודעות SMS במעבר. שיטות אלו מספקות הגנה חלשה בהרבה מאימות מבוסס יישום או אסימון חומרה. ארגונים צריכים לזהות משתמשים אלו ולהעבירם לשיטות עמידות בפני דיוג.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "אין משתמשים המסתמכים באופן בלעדי על SMS או קול כשיטת ה-MFA היחידה שלהם",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "זהה משתמשים בעלי MFA של SMS/קול בלבד דרך Entra ID > Protection > Authentication methods > User registration details. צור תוכנית מעבר להעברת משתמשים אלו ל-Microsoft Authenticator או למפתחות אבטחה FIDO2. שקול להשבית את SMS/קול כשיטות מותרות במדיניות שיטות האימות לאחר השלמת המעבר.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-005": {
+    "name": {
+      "value": "משתמשים ללא שיטות MFA רשומות",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "משתמשים ללא שיטות MFA רשומות כלשהן אינם יכולים לעמוד באתגרי MFA ומהווים פערי אבטחה קריטיים. חשבונות אלו חשופים לחלוטין להתקפות מבוססות פרטי הזדהות, כולל ריסוס סיסמאות, דיוג והתקפות כוח גס. נדרש תיקון מיידי כדי להבטיח שלכל החשבונות הפעילים תהיה לפחות שיטת MFA אחת רשומה.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "אפס משתמשים פעילים ללא לפחות שיטת MFA אחת רשומה",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "תשאל את פרטי רישום המשתמשים דרך Entra ID > Protection > Authentication methods > User registration details כדי לזהות משתמשים ללא שיטות. אכוף רישום MFA באמצעות מדיניות Conditional Access המכוונת למשתמשים שאינם רשומים. השתמש ב-Temporary Access Pass כדי לסייע למשתמשים הזקוקים לאתחול רישום ה-MFA שלהם.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-006": {
+    "name": {
+      "value": "מלאי וביקורת של מפתחות אבטחה FIDO2",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "מפתחות אבטחה FIDO2 מספקים אימות עמיד בפני דיוג אך יש לנהל אותם במלאי ולאורך כל מחזור החיים שלהם. מפתחות שאינם במעקב עלולים להישאר משויכים לעובדים שעזבו או לאבוד ללא זיהוי. ביקורות סדירות מבטיחות שרק מפתחות מורשים פעילים ומוקצים כראוי למשתמשים הנוכחיים.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "כל מפתחות ה-FIDO2 הרשומים ממופים במלאי עם הקצאות בעלים מתועדות וסקירות אישור עדות סדירות",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "בחן את רישומי מפתחות ה-FIDO2 דרך Entra ID > Protection > Authentication methods > FIDO2 security key. הצלב את המפתחות הרשומים עם מלאי נכסי החומרה שלך והסר מפתחות של משתמשים שעזבו. הטמע מדיניות רישום מפתחות המגבילה את ערכי ה-AAGUID המותרים לדגמי ספקים מאושרים.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-007": {
+    "name": {
+      "value": "בדיקת פגיעות ROCA במפתחות FIDO2",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "פגיעות ROCA (Return of Coppersmith's Attack) (CVE-2017-15361) משפיעה על יצירת מפתחות RSA בקושחת Infineon TPM המשמשת במפתחות אבטחה FIDO2 מסוימים, ומאפשרת שחזור מפתח פרטי ממפתחות ציבוריים. מפתחות מושפעים מייצרים זוגות מפתחות RSA חלשים הניתנים לפירוק לגורמים, מה שמערער לחלוטין את אבטחת פרטי ההזדהות של האימות. יש לזהות ולהחליף מיד מפתחות בעלי קושחה פגיעה.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "אין בשימוש מפתחות FIDO2 בעלי קושחת Infineon TPM הפגיעה ל-ROCA",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "זהה מפתחות FIDO2 המשתמשים ב-Infineon TPM על ידי בדיקת ערכי ה-AAGUID אל מול דגמים פגיעים ידועים. בדוק מפתחות רשומים באמצעות כלי זיהוי ROCA כדי לאשר את מצב הפגיעות. החלף את כל המפתחות המושפעים בגרסאות קושחה מתוקנות או בחומרה חלופית ובטל את רישומי המפתחות הישנים ב-Entra ID.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-008": {
+    "name": {
+      "value": "מוכנות לאימות ללא סיסמה",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "אימות ללא סיסמה מבטל את הסיסמה כווקטור תקיפה, ומסיר את הסיכון של גניבת פרטי הזדהות, דיוג וריסוס סיסמאות. ארגונים צריכים להעריך את מוכנותם לפרוס שיטות ללא סיסמה כגון FIDO2, Windows Hello for Business ו-Microsoft Authenticator בכניסת טלפון. בדיקה זו מעריכה את אימוץ השיטות הנוכחי ומזהה פערים המונעים פריסה ללא סיסמה.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "לארגון יש תוכנית פריסה ללא סיסמה שבה לפחות 50% מהמשתמשים מסוגלים לכניסה ללא סיסמה",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "בחן את רישומי שיטות האימות כדי לקבוע כמה משתמשים רשומים בשיטות התומכות בכניסה ללא סיסמה. הפעל כניסה ללא סיסמה של FIDO2 ו-Microsoft Authenticator במדיניות שיטות האימות. צור תוכנית פריסה מדורגת שתתחיל במשתמשים בעלי הרשאות ובצוות ה-IT לפני הרחבה לכלל הארגון.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-009": {
+    "name": {
+      "value": "תצורת Windows Hello for Business",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Windows Hello for Business מספק אימות עמיד בפני דיוג ומגובה חומרה באמצעות ביומטריה או PIN הקשורים ל-TPM של המכשיר. פריסות WHfB מוגדרות שגוי עלולות לחזור ל-PIN נוחות חלש ללא אישור עדות TPM תקין, ולהפחית את ערובות האבטחה. התצורה צריכה לאכוף מפתחות מגובי TPM ומדיניות ביומטרית מתאימה.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Windows Hello for Business מופעל עם אכיפת דרישת TPM ועם ביטול נעילה רב-גורמי המוגדר עבור תפקידים רגישים",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "נווט אל Entra ID > Protection > Authentication methods > Windows Hello for Business. הפעל את השיטה והגדר הגבלות מפתח כדי לדרוש מפתחות מגובי TPM. פרוס פרופילי תצורה של WHfB באמצעות Intune לאכיפת אישור עדות TPM ודרישות מורכבות PIN על פני מכשירים מנוהלים.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-010": {
+    "name": {
+      "value": "ביקורת מדיניות Temporary Access Pass (TAP)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Temporary Access Pass מאפשר סיסמאות חד-פעמיות מוגבלות בזמן לצורך קליטת משתמשים לפרטי הזדהות ללא סיסמה, אך עלול לשמש כדלת אחורית אם אינו מוגבל כראוי. TAP המוגדרים עם משך חיים ארוך או עם הגדרות רב-פעמיות ניתנים לניצול על ידי תוקפים הפורצים לתהליך ההנפקה. מדיניות ה-TAP צריכה לאכוף משך חיים קצר, הגבלת שימוש חד-פעמי ולהגביל את ההנפקה למנהלים מורשים.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "TAP מופעל עם משך חיים מרבי של שעה אחת, שימוש חד-פעמי בלבד, ומוגבל למנהלי קליטה מורשים",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "בחן את מדיניות ה-TAP ב-Entra ID > Protection > Authentication methods > Temporary Access Pass. הגדר את משך החיים המזערי והמרבי למשך הקצר ביותר המעשי והפעל שימוש חד-פעמי. הגבל את הרשאות הנפקת ה-TAP לקבוצה מצומצמת של מנהלים באמצעות בקרות גישה מבוססות תפקידים.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-011": {
+    "name": {
+      "value": "תצורת איפוס סיסמה בשירות עצמי (SSPR)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SSPR מאפשר למשתמשים לאפס את סיסמאותיהם ללא התערבות מוקד תמיכה, אך יש להגדירו כראוי כדי למנוע השתלטות על חשבונות. SSPR מוגדר שגוי עם שיטות אימות חלשות או עם מספר שיטות נדרשות בלתי מספק מאפשר לתוקפים לאפס סיסמאות באמצעות מידע אישי שנפרץ. SSPR צריך לדרוש מספר שיטות אימות חזקות ולהיות מופעל עבור כל המשתמשים.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "SSPR מופעל עבור כל המשתמשים עם דרישה למינימום של שתי שיטות אימות לצורך איפוס",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "נווט אל Entra ID > Protection > Password reset > Properties והפעל SSPR עבור כל המשתמשים. הגדר את מספר השיטות הנדרשות לאיפוס ל-2. תחת Authentication methods, ודא שרק שיטות חזקות כגון התראת יישום נייד, קוד יישום נייד ודואר אלקטרוני מותרות תוך השבתת שאלות אבטחה.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-012": {
+    "name": {
+      "value": "שיטות ודרישות SSPR",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "השיטות הספציפיות המותרות ל-SSPR והמספר הנדרש משפיעים ישירות על אבטחת תהליך איפוס הסיסמה. התרת שיטות חלשות כגון שאלות אבטחה או דרישת שיטה יחידה בלבד יוצרת הזדמנויות לתוקפים לאפס סיסמאות באמצעות הנדסה חברתית או OSINT. ארגונים צריכים לדרוש לפחות שתי שיטות חזקות עבור כל איפוסי הסיסמה.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "נדרשות שתי שיטות אימות חזקות או יותר לאיפוס סיסמה, ושאלות אבטחה מושבתות",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "נווט אל Entra ID > Protection > Password reset > Authentication methods. הגדר את מספר השיטות הנדרשות ל-2 והסר שאלות אבטחה מרשימת השיטות המותרות. תעדף התראת יישום נייד וקוד יישום נייד כשיטות ה-SSPR העיקריות כדי להבטיח אימות חזק.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-013": {
+    "name": {
+      "value": "תצורת הגנת סיסמה (סיסמאות חסומות)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "הגנת הסיסמה של Entra ID מונעת ממשתמשים לבחור סיסמאות שנפרצו לעתים קרובות על ידי בדיקה אל מול רשימת סיסמאות חסומות גלובלית המתוחזקת על ידי Microsoft. ללא הפעלת הגנת סיסמה, משתמשים יכולים לבחור סיסמאות המופיעות במסדי נתונים ידועים של פריצות, מה שהופך חשבונות לפגיעים לריסוס סיסמאות ולהתקפות מילון. יש להפעיל את התכונה במצב אכיפה הן עבור סביבות ענן והן עבור סביבות מקומיות.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "הגנת סיסמה מופעלת במצב Enforced עם רשימת הסיסמאות החסומות הגלובלית פעילה",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "נווט אל Entra ID > Protection > Authentication methods > Password protection. הגדר את המצב ל-Enforced וודא שרשימת הסיסמאות החסומות הגלובלית מופעלת. אם אתה משתמש בזהות היברידית עם Active Directory מקומי, פרוס את שרת ה-proxy של הגנת הסיסמה של Entra ID ואת סוכני ה-DC כדי להרחיב את ההגנה לשינויי סיסמה מקומיים.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-014": {
+    "name": {
+      "value": "מצב רשימת סיסמאות חסומות מותאמת אישית",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "בנוסף לרשימת הסיסמאות החסומות הגלובלית, ארגונים צריכים לתחזק רשימת סיסמאות חסומות מותאמת אישית המכילה מונחים ספציפיים לחברה, שמות מוצרים, מיקומים ווריאציות אחרות שקל לנחש. ללא רשימה מותאמת אישית, משתמשים עלולים לבחור סיסמאות המבוססות על ההקשר הארגוני שתוקפים יכולים לנחש בקלות באמצעות התקפות ממוקדות. הרשימה המותאמת אישית תומכת בעד 1000 רשומות ויש לעדכנה באופן סדיר.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "רשימת סיסמאות חסומות מותאמת אישית מופעלת עם מונחים ספציפיים לארגון, כולל שם החברה, מוצרים, מיקומים ווריאציות נפוצות",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "נווט אל Entra ID > Protection > Authentication methods > Password protection. הפעל את רשימת הסיסמאות החסומות המותאמת אישית והוסף רשומות עבור שם הארגון, שמות מוצרים, מיקומי משרדים ומונחים פנימיים בשימוש נפוץ. סקור ועדכן את הרשימה מדי רבעון כדי לכלול מונחים ודפוסים חדשים שזוהו בביקורות סיסמאות.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-015": {
+    "name": {
+      "value": "שימוש בפרוטוקולי אימות מדור קודם",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "פרוטוקולי אימות מדור קודם, כולל POP3, IMAP4, SMTP AUTH ו-Exchange ActiveSync Basic, אינם תומכים באימות מודרני או ב-MFA, ומאפשרים לתוקפים לעקוף את ה-MFA לחלוטין באמצעות פרטי הזדהות גנובים. פרוטוקולים אלו משדרים פרטי הזדהות בדרכים הרגישות ליירוט ומהווים את הווקטור המרכזי להתקפות ריסוס סיסמאות נגד דיירי Microsoft 365. יש לחסום את כל האימות מדור קודם באמצעות מדיניות Conditional Access.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "כל פרוטוקולי האימות מדור קודם חסומים באמצעות Conditional Access ללא שימוש פעיל שזוהה ביומני הכניסה",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "בחן את השימוש באימות מדור קודם ב-Entra ID > Monitoring > Sign-in logs > סנן לפי יישום לקוח (פרוטוקולים מדור קודם). צור מדיניות Conditional Access לחסימת אימות מדור קודם עבור כל המשתמשים וכל יישומי הענן. נטר ניסיונות כניסה חסומים ופעל עם המשתמשים המושפעים כדי להעבירם ללקוחות אימות מודרניים.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-016": {
+    "name": {
+      "value": "זרימת ROPC (Resource Owner Password Credentials) מופעלת",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "זרימת האימות Resource Owner Password Credentials (ROPC) שולחת שם משתמש וסיסמה ישירות לנקודת קצה של האסימון, ועוקפת לחלוטין אימות רב-גורמי ומדיניות Conditional Access. יישומים המשתמשים בסוג ההרשאה ROPC חושפים פרטי הזדהות באופן שאינו ניתן להגנה על ידי בקרות אבטחה מודרניות ומהווים פער אבטחה משמעותי. יש להשבית את ROPC עבור כל היישומים אלא אם קיימת דרישה טכנית מוחלטת עם בקרות מפצות.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "זרימת ROPC מושבתת עבור כל רישומי היישומים, ואין יישומים המשתמשים בסוג הרשאת הסיסמה",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "בחן את רישומי היישומים ב-Entra ID > Applications > App registrations לאיתור יישומים המוגדרים לאפשר זרימות לקוח ציבורי. השבת את הגדרת 'Allow public client flows' עבור יישומים שאינם דורשים ROPC. העבר יישומים המשתמשים ב-ROPC לזרימות אינטראקטיביות נתמכות כגון authorization code with PKCE או device code flow.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-017": {
+    "name": {
+      "value": "זיהוי התנגשות בין MFA לכל משתמש לבין MFA של Conditional Access",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "הגדרות MFA לכל משתמש מדור קודם (מופעלות/נאכפות ברמת המשתמש הבודד) עלולות להתנגש עם מדיניות MFA מבוססת Conditional Access, וליצור התנהגות אימות בלתי צפויה. כאשר שתיהן פעילות, משתמשים עלולים לחוות בקשות MFA כפולות, כשלי אימות או אכיפת מדיניות בלתי עקבית בהתאם למנגנון המוערך תחילה. ארגונים צריכים לעבור לחלוטין ל-MFA מבוסס Conditional Access ולהשבית את הגדרות ה-MFA לכל משתמש כדי להבטיח החלת מדיניות עקבית.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "MFA לכל משתמש מושבת עבור כל המשתמשים, כאשר MFA נאכף אך ורק באמצעות מדיניות Conditional Access",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "בדוק את מצב ה-MFA לכל משתמש דרך Entra ID > Users > Per-user MFA וזהה משתמשים בעלי MFA לכל משתמש מופעל או נאכף. צור מדיניות Conditional Access שוות ערך האוכפת MFA עבור כל המשתמשים לפני השבתת ה-MFA לכל משתמש. השבת את ה-MFA לכל משתמש על ידי הגדרת מצב כל משתמש ל-Disabled לאחר שווידאת שכיסוי ה-MFA של Conditional Access הושלם.",
+      "status": "machine-draft"
+    }
+  },
+  "EIDAUTH-018": {
+    "name": {
+      "value": "הקשר כניסה של Microsoft Authenticator (שם יישום ומיקום)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "כאשר שיטת האימות Microsoft Authenticator מופעלת, הצגת מידע הקשר הכניסה (שם היישום והמיקום הגאוגרפי) בהתראות דחיפה ובהתראות ללא סיסמה מעניקה למשתמש את המודעות המצבית הנדרשת כדי לזהות ולדחות בקשות MFA שהוא לא יזם. ללא הקשר זה, משתמשים נוטים הרבה יותר לאשר בקשות דחיפה שיזם יריב במהלך עייפות MFA או התקפות דיוג בזמן אמת. הגדרה זו נשלטת על ידי הגדרות התכונה displayAppInformationRequiredState ו-displayLocationInformationRequiredState בתצורת שיטת MicrosoftAuthenticator.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "אם Microsoft Authenticator מופעל, displayAppInformationRequiredState מופעל (שם היישום מוצג); מומלץ להפעיל גם את displayLocationInformationRequiredState",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "נווט אל Entra ID > Protection > Authentication methods > Policies > Microsoft Authenticator. תחת הכרטיסייה Configure, הגדר את 'Show application name in push and passwordless notifications' ל-Enabled עבור כל המשתמשים, והפעל את 'Show geographic location in push and passwordless notifications'. פעולה זו עומדת בדרישת SCuBA MS.AAD.3.3, המחייבת שהגדרת Microsoft Authenticator תציג הקשר כניסה כאשר היא מופעלת.",
+      "status": "machine-draft"
+    }
+  }
+}
