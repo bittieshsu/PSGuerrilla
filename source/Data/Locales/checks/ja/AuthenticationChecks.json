@@ -1,0 +1,111 @@
+{
+  "_family": "AuthenticationChecks.json",
+  "AUTH-001": {
+    "name": { "value": "2SV の適用", "status": "machine-draft" },
+    "description": { "value": "盗まれた認証情報によるアカウント乗っ取りを防ぐため、すべてのユーザーに 2 段階認証プロセス(2SV/MFA)を適用する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で適用されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > 認証 > 2 段階認証プロセス > 適用を「オン」に設定します", "status": "machine-draft" }
+  },
+  "AUTH-002": {
+    "name": { "value": "2SV の登録率", "status": "machine-draft" },
+    "description": { "value": "すべてのアクティブユーザーが 2SV に登録している必要があります。登録率が低いと、認証情報を悪用した攻撃にアカウントがさらされます", "status": "machine-draft" },
+    "recommendedValue": { "value": "アクティブユーザーの 95% 以上が登録している", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > レポート > ユーザーレポート > セキュリティ > 2SV に登録していないユーザーをレビューします。セキュリティ > 2 段階認証プロセス で登録期限を設定します", "status": "machine-draft" }
+  },
+  "AUTH-003": {
+    "name": { "value": "2SV 方式の強度", "status": "machine-draft" },
+    "description": { "value": "セキュリティキーを主要な 2SV 方式にする必要があります。SMS や音声ベースの 2SV は、SIM スワップや傍受攻撃に対して脆弱です", "status": "machine-draft" },
+    "recommendedValue": { "value": "セキュリティキーが主要な方式として適用されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > 認証 > 2 段階認証プロセス > 許可する方式を「セキュリティキーのみ」に設定します", "status": "machine-draft" }
+  },
+  "AUTH-004": {
+    "name": { "value": "パスワードの最小文字数", "status": "machine-draft" },
+    "description": { "value": "ブルートフォース攻撃や辞書攻撃に耐えるため、パスワードの最小文字数は 12 文字以上にする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "最小 12 文字", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > 認証 > パスワードの管理 > 最小文字数を 12 文字以上に設定します", "status": "machine-draft" }
+  },
+  "AUTH-005": {
+    "name": { "value": "パスワードの再利用の制限", "status": "machine-draft" },
+    "description": { "value": "認証情報の使い回しによる攻撃を防ぐため、ユーザーが最近使用したパスワードを再利用できないようにする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "パスワードの再利用が許可されていない", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > 認証 > パスワードの管理 > 「次回のログイン時にパスワードポリシーを適用する」を有効にし、再利用を制限します", "status": "machine-draft" }
+  },
+  "AUTH-006": {
+    "name": { "value": "セッションの継続時間", "status": "machine-draft" },
+    "description": { "value": "セッションハイジャックや共有デバイスからの不正アクセスの機会を減らすため、ウェブセッションの継続時間を制限する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "セッションの継続時間が 12 時間以下", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > Google セッション管理 > ウェブセッションの継続時間を設定します", "status": "machine-draft" }
+  },
+  "AUTH-007": {
+    "name": { "value": "SSO の構成", "status": "machine-draft" },
+    "description": { "value": "SSO が構成されている場合は、安全なプロトコルと信頼できる ID プロバイダを使用する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "SAML SSO が信頼できる IdP で適切に構成されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > 認証 > サードパーティ IdP による SSO > 構成を確認します", "status": "machine-draft" }
+  },
+  "AUTH-008": {
+    "name": { "value": "安全性の低いアプリのアクセス", "status": "machine-draft" },
+    "description": { "value": "認証情報の漏洩を防ぐため、安全性の低いアプリ(最新の認証をサポートしないアプリ)をブロックする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのユーザーに対して無効", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > 認証 > 安全性の低いアプリ > 「安全性の低いアプリへのアクセスを無効にする」に設定します", "status": "machine-draft" }
+  },
+  "AUTH-009": {
+    "name": { "value": "アプリパスワードのポリシー", "status": "machine-draft" },
+    "description": { "value": "アプリ固有のパスワードは 2SV を回避するため、制御する必要があります。許可する場合は、まず 2SV への登録を必須にする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "アプリパスワードが制限または無効化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > 認証 > 2 段階認証プロセス > アプリパスワードの設定をレビューします", "status": "machine-draft" }
+  },
+  "AUTH-010": {
+    "name": { "value": "復元オプションの構成", "status": "machine-draft" },
+    "description": { "value": "ユーザーのセルフサービス復元は適切に構成する必要があります。ソーシャルエンジニアリングを防ぐため、特権管理者は個人用の復元オプションを持つべきではありません", "status": "machine-draft" },
+    "recommendedValue": { "value": "特権管理者: 個人用の復元なし。一般ユーザー: 管理者による上書きを伴う復元オプションを許可", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > 認証 > アカウントの復元 > 特権管理者の組織部門で個人用の復元を無効にします", "status": "machine-draft" }
+  },
+  "AUTH-011": {
+    "name": { "value": "ログインチャレンジの設定", "status": "machine-draft" },
+    "description": { "value": "疑わしいログイン試行が検出されたときに追加の確認を行えるよう、ログインチャレンジを有効にする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "従業員 ID などの確認を用いてログインチャレンジが有効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > 認証 > ログインチャレンジ > 有効にします", "status": "machine-draft" }
+  },
+  "AUTH-012": {
+    "name": { "value": "特権管理者の 2SV 登録", "status": "machine-draft" },
+    "description": { "value": "すべての特権管理者アカウントは 2SV に登録している必要があります。特権管理者は、すべての設定とデータへの無制限のアクセス権を持ちます", "status": "machine-draft" },
+    "recommendedValue": { "value": "特権管理者の 100% が 2SV に登録している", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > レポート > ユーザーレポート > セキュリティ > 管理者ステータスでフィルタ > すべての特権管理者が 2SV に登録していることを確認します", "status": "machine-draft" }
+  },
+  "AUTH-013": {
+    "name": { "value": "放置された特権管理者アカウント", "status": "machine-draft" },
+    "description": { "value": "最近ログインしていない特権管理者アカウントは、放置されており侵害のリスクがある可能性があります。すべての特権管理者アカウントを積極的に管理する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "90 日を超えて非アクティブな特権管理者アカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > ユーザー > 管理者ロールでフィルタ > 非アクティブな特権管理者アカウントをレビューして削除または停止します", "status": "machine-draft" }
+  },
+  "AUTH-014": {
+    "name": { "value": "2SV の登録が許可されている", "status": "machine-draft" },
+    "description": { "value": "ユーザーが 2 段階認証プロセスに登録できるようにする必要があります。2SV の登録を無効にすると、MFA の導入が妨げられ、アカウントがパスワードのみで保護される状態になります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で 2SV の登録が許可されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "セキュリティ > 認証 > 2 段階認証プロセス > すべての組織部門で「ユーザーが 2 段階認証プロセスを有効にすることを許可する」をオンに設定します", "status": "machine-draft" }
+  },
+  "AUTH-015": {
+    "name": { "value": "2SV 登録の猶予期間", "status": "machine-draft" },
+    "description": { "value": "新しく追加されたユーザーが 2SV に登録するまでの猶予期間は短くする必要があります。猶予期間が長いと、作成後の長期間にわたってアカウントが MFA で保護されない状態になります", "status": "machine-draft" },
+    "recommendedValue": { "value": "猶予期間が 7 日(168 時間)以下", "status": "machine-draft" },
+    "remediationSteps": { "value": "セキュリティ > 認証 > 2 段階認証プロセス > 新規ユーザーの登録猶予期間を 7 日以下に設定します", "status": "machine-draft" }
+  },
+  "AUTH-016": {
+    "name": { "value": "Advanced Protection のセルフ登録", "status": "machine-draft" },
+    "description": { "value": "Advanced Protection Program へのセルフ登録を許可すると、リスクの高いユーザーが管理者の介入なしに利用可能な最も強力なアカウント保護を導入できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で Advanced Protection のセルフ登録が許可されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "セキュリティ > 認証 > Advanced Protection Program > ユーザーが Advanced Protection にセルフ登録することを許可します", "status": "machine-draft" }
+  },
+  "AUTH-017": {
+    "name": { "value": "特権管理者アカウントのセルフ復元", "status": "machine-draft" },
+    "description": { "value": "特権管理者向けのセルフサービスによるアカウント復元は、ソーシャルエンジニアリングを介したアカウント乗っ取りの経路であり、無効にする必要があります。特権管理者は、別の管理者によってのみ復元されるべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で特権管理者のセルフ復元が無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "セキュリティ > 認証 > アカウントの復元 > すべての組織部門で「特権管理者によるアカウントの復元を許可する」をオフにします", "status": "machine-draft" }
+  },
+  "AUTH-018": {
+    "name": { "value": "ユーザーおよび非特権管理者のアカウントセルフ復元が無効になっている (GWS.COMMONCONTROLS.8.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.8.2 は、ユーザーおよび非特権管理者のアカウントについて、アカウントのセルフ復元を無効にすることを求めています。セルフサービスによる復元はアカウント乗っ取りの経路です: 復元チャネルを掌握した攻撃者は、ヘルプデスクを介さずにアカウントを奪取できます。このチェックは security.user_account_recovery の Cloud Identity ポリシーを読み取り、セルフ復元が有効になっている組織部門にフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で、ユーザーおよび非特権管理者のアカウントセルフ復元が無効になっている(enableAccountRecovery = false)。", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google 管理コンソールの セキュリティ > アカウントの復元 で、ユーザー(および非特権管理者)のセルフ復元を無効にし、アカウントの復元がユーザーの管理するチャネルではなく、管理者またはヘルプデスクのプロセスを通じて処理されるようにします。", "status": "machine-draft" }
+  }
+}

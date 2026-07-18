@@ -1,0 +1,153 @@
+{
+  "_family": "CollaborationChecks.json",
+  "COLLAB-001": {
+    "name": { "value": "Meet の録画設定", "status": "machine-draft" },
+    "description": { "value": "機密性の高い議論が不正に記録されるのを防ぐため、会議の録画設定を制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "録画が会議の主催者に制限されているか、機密性の高い組織部門では無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Google Meet > Meet の動画設定 > 録画 > 録画権限を構成します", "status": "machine-draft" }
+  },
+  "COLLAB-002": {
+    "name": { "value": "Meet の外部参加者設定", "status": "machine-draft" },
+    "description": { "value": "不正な出席や情報漏洩を防ぐため、会議への外部参加者のアクセスを制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "外部参加者の参加に承認またはノックを必須とする", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Google Meet > Meet の動画設定 > 参加者 > 外部参加者に承認を必須にします", "status": "machine-draft" }
+  },
+  "COLLAB-003": {
+    "name": { "value": "Meet の匿名参加設定", "status": "machine-draft" },
+    "description": { "value": "匿名ユーザー(Google アカウントを持たないユーザー)は、主催者の明示的な承認なしに会議に参加できないようにする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "匿名参加が無効になっているか、主催者の承認を必須とする", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Google Meet > Meet の動画設定 > 参加者 > 匿名参加を無効にするか、ノックを必須にします", "status": "machine-draft" }
+  },
+  "COLLAB-004": {
+    "name": { "value": "Chat の外部コミュニケーション", "status": "machine-draft" },
+    "description": { "value": "外部ユーザーとのダイレクトメッセージを通じたデータ漏洩を防ぐため、外部との Chat コミュニケーションを制限する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "ほとんどのユーザーに対して外部 Chat が制限または無効化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Google Chat > Chat の設定 > 外部 Chat > 外部 Chat を特定の組織部門に制限します", "status": "machine-draft" }
+  },
+  "COLLAB-005": {
+    "name": { "value": "Chat 履歴の設定", "status": "machine-draft" },
+    "description": { "value": "コンプライアンスと監査のために、Chat 履歴を有効にして保持する必要があります。履歴を無効にすると、悪意のあるコミュニケーションが隠蔽される可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chat 履歴が有効になっており、保持ポリシーに従って保持されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Google Chat > Chat の設定 > 履歴 > 履歴を有効にし、保持を構成します", "status": "machine-draft" }
+  },
+  "COLLAB-006": {
+    "name": { "value": "Chat スペースの外部アクセス", "status": "machine-draft" },
+    "description": { "value": "外部メンバーを許可する Chat スペース(ルーム)は、内部のコミュニケーションや共有ファイルを権限のない第三者に公開する可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chat スペースへの外部アクセスが制限または無効化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Google Chat > Chat の設定 > スペース > スペースへの外部アクセスを制限します", "status": "machine-draft" }
+  },
+  "COLLAB-007": {
+    "name": { "value": "Chat アプリのインストール設定", "status": "machine-draft" },
+    "description": { "value": "不正な連携が会話データにアクセスするのを防ぐため、Chat アプリ(ボット)のインストールを制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chat アプリのインストールが管理者承認済みのアプリに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Google Chat > Chat の設定 > アプリ > アプリのインストールを承認済みのアプリに制限します", "status": "machine-draft" }
+  },
+  "COLLAB-008": {
+    "name": { "value": "Calendar の外部共有", "status": "machine-draft" },
+    "description": { "value": "会議の詳細や出席者の漏洩を防ぐため、外部ユーザーとの Calendar 共有は空き時間情報に限定する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "外部との Calendar 共有が空き時間情報のみに限定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Calendar > 共有設定 > 外部共有オプション > 「空き時間情報のみ」に設定します", "status": "machine-draft" }
+  },
+  "COLLAB-009": {
+    "name": { "value": "Calendar の外部への招待", "status": "machine-draft" },
+    "description": { "value": "偶発的な情報漏洩を防ぐため、外部の受信者にカレンダーの招待を送信する際にユーザーへ警告するか、制限する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "外部への招待に関する警告が有効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Calendar > 共有設定 > 外部への招待に関する警告を有効にします", "status": "machine-draft" }
+  },
+  "COLLAB-010": {
+    "name": { "value": "Calendar の予約枠の外部への表示範囲", "status": "machine-draft" },
+    "description": { "value": "空き状況やスケジュールの詳細が外部に露出するのを抑えるため、カレンダーの予約枠の表示範囲を制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "予約枠の外部への表示範囲が制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Calendar > 共有設定 > 予約枠の表示範囲の設定をレビューします", "status": "machine-draft" }
+  },
+  "COLLAB-011": {
+    "name": { "value": "Meet の外部参加者のラベル表示", "status": "machine-draft" },
+    "description": { "value": "主催者や出席者が外部の人物を容易に識別し、機密情報の開示を避けられるよう、会議の外部参加者に見てわかるラベルを表示する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "外部参加者のラベル表示が有効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "アプリ > Google Workspace > Google Meet > Meet の安全性設定 > 外部参加者 > 外部参加者のラベル表示を有効にします", "status": "machine-draft" }
+  },
+  "COLLAB-012": {
+    "name": { "value": "Meet の主催者管理", "status": "machine-draft" },
+    "description": { "value": "会議の乗っ取りや妨害を防ぐため、主催者管理を有効にして、会議の主催者がミュート、削除、ロックなどのモデレーション制御を保持できるようにする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "主催者管理が有効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "アプリ > Google Workspace > Google Meet > Meet の安全性設定 > 主催者管理 > 主催者管理の制御を有効にします", "status": "machine-draft" }
+  },
+  "GROUP-001": {
+    "name": { "value": "Google Groups への外部アクセスが制限されている (GWS.GROUPS.1.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.1 は、組織外の人がグループにアクセスできないよう、Groups for Business の共有を制限することを求めています。グループ共有のコラボレーション機能がドメインユーザーのみに設定されていない場合、グループのコンテンツ(学校では児童生徒や教職員のデータを含みうるもの)が外部の第三者から到達可能になります。このチェックは Cloud Identity Policy API から groups_for_business.groups_sharing ポリシーを読み取り、コラボレーション機能が DOMAIN_USERS_ONLY でない組織部門にフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で、グループ共有のコラボレーション機能が DOMAIN_USERS_ONLY に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google 管理コンソールの アプリ > Google Workspace > Groups for Business > 共有設定 で、グループへのアクセスを組織内のユーザーに限定するよう設定し(「インターネット上の誰でも」ではなく)、外部の第三者がグループのコンテンツにアクセスできないようにします。", "status": "machine-draft" }
+  },
+  "GROUP-002": {
+    "name": { "value": "グループのオーナーが外部メンバーを追加できない (GWS.GROUPS.1.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.2 は、グループのオーナーが組織外からメンバーを追加できないようにすることを求めています。外部メンバーは、グループで共有されているすべてのものにアクセスできるようになります。このチェックは、オーナーが外部メンバーを許可できる(ownersCanAllowExternalMembers が有効)組織部門にフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "グループのオーナーが外部メンバーを許可できない(ownersCanAllowExternalMembers が無効)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business の共有設定で、グループのオーナーが組織外からメンバーを追加できるオプションを無効にし、外部メンバーシップに管理者の操作を必要とするようにします。", "status": "machine-draft" }
+  },
+  "GROUP-003": {
+    "name": { "value": "グループが組織外からメールを受信できない (GWS.GROUPS.1.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.3 は、グループのオーナーが組織外からの受信メールを許可できないようにすることを求めています。グループへの一般公開された受信メールを許可することは、受信フィッシングやスパムの経路となります。このチェックは、オーナーが一般公開からの受信メールを許可できる(ownersCanAllowIncomingMailFromPublic が有効)組織部門にフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "グループのオーナーが一般公開からの受信メールを許可できない(ownersCanAllowIncomingMailFromPublic が無効)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business の共有設定で、グループのオーナーが組織外からの受信メールを受け付けられるオプションを無効にし、明示的に構成されない限りグループのメールを内部の送信者に制限します。", "status": "machine-draft" }
+  },
+  "GROUP-004": {
+    "name": { "value": "グループの作成が管理者に制限されている (GWS.GROUPS.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.2.1 は、Groups for Business を作成できるユーザーを管理者に制限することを推奨しています。任意のユーザーがグループを作成できる場合、グループの乱立がガバナンスを上回り、外部共有の既定値がレビューなしに適用される可能性があります。このチェックは、グループ作成のアクセスレベルが ADMIN_ONLY でない組織部門にフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "グループ作成のアクセスレベルが ADMIN_ONLY に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business の設定で、「グループを作成できるユーザー」を管理者のみに設定し、新しいグループが意図的に作成され、レビュー済みの共有設定を継承するようにします。", "status": "machine-draft" }
+  },
+  "GROUP-005": {
+    "name": { "value": "グループの会話の表示範囲が既定でメンバーになっている (GWS.GROUPS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.3.1 は、グループの会話を閲覧する既定の権限を、ドメイン全体や一般公開ではなくグループのメンバーに制限することを求めています。会話の表示範囲が過度に開かれていると、議論のアーカイブ(機密性の高い児童生徒や教職員の情報を含みうるもの)が露出します。このチェックは groups_for_business.groups_sharing ポリシーから viewTopicsDefaultAccessLevel を読み取り、既定値がグループのメンバーより広い場合に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "会話の閲覧に関する既定のアクセスが GROUP_MEMBERS に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business の設定で、既定の「会話を閲覧できるユーザー」権限をグループのメンバーに設定します。", "status": "machine-draft" }
+  },
+  "COLLAB-013": {
+    "name": { "value": "Chat の外部ファイル共有が無効になっている (GWS.CHAT.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.2.1 は、Google Chat での外部ファイル共有を無効にする(ファイルなしに設定する)ことを求めています。Chat を通じて外部ユーザーとファイルを共有できるようにすることは、直接的なデータ持ち出しの経路となります。このチェックは chat.chat_file_sharing を読み取り、外部ファイル共有が NO_FILES に設定されていない組織部門を不合格とします。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chat の外部ファイル共有が NO_FILES に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソールの アプリ > Google Workspace > Google Chat > 外部ファイル共有 で、外部ファイル共有を「ファイルなし」に設定し、Chat を介して組織外の人とファイルを共有できないようにします。", "status": "machine-draft" }
+  },
+  "COLLAB-014": {
+    "name": { "value": "Chat スペースの履歴がオンになっている (GWS.CHAT.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.3.1 は、監督、調査、eDiscovery のために会話が保持されるよう、Chat スペースの履歴を常にオンにすることを求めています。このチェックは chat.space_history を読み取り、スペースの履歴が HISTORY_ALWAYS_ON に設定されていない組織部門に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chat スペースの履歴が HISTORY_ALWAYS_ON に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Chat の設定で、スペースの履歴を常にオンに設定し、会話が保持され、監督や eDiscovery に利用できるようにします。", "status": "machine-draft" }
+  },
+  "COLLAB-015": {
+    "name": { "value": "会議への参加が組織に制限されている (GWS.MEET.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.2.1 は、組織内のユーザー(または信頼できる Workspace 組織)のみが参加できるよう、会議へのアクセスを制限することを求めています。会議を誰でも参加できる状態にしておくと、児童生徒が関わりうるセッションに外部や未認証の第三者が入れてしまいます。このチェックは meet.safety_access を読み取り、meetingsAllowedToJoin が SAME_ORGANIZATION_ONLY / ANY_WORKSPACE_ORGANIZATION より広い組織部門を不合格とします。", "status": "machine-draft" },
+    "recommendedValue": { "value": "meetingsAllowedToJoin が SAME_ORGANIZATION_ONLY(または ANY_WORKSPACE_ORGANIZATION)に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Meet の安全性設定で、会議に参加できるユーザーを組織内のユーザーに制限し、外部や未認証の参加者が既定では参加できないようにします。", "status": "machine-draft" }
+  },
+  "COLLAB-016": {
+    "name": { "value": "Meet の自動文字起こしが既定でオフになっている (GWS.MEET.5.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.2 は、Google Meet の自動文字起こしを既定でオフにすることを推奨しています。会議を自動で文字起こしすると、意図的な判断なしに会話の内容(児童生徒がいる場合は機密性が高いもの)がキャプチャされて保存されます。このチェックは meet.automatic_transcription を読み取り、既定で有効になっている組織部門に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "自動文字起こしが既定で無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Meet の設定で、自動文字起こしを既定で無効にし、主催者が意図的に有効にした場合にのみ会議の内容がキャプチャされるようにします。", "status": "machine-draft" }
+  },
+  "COLLAB-017": {
+    "name": { "value": "Calendar の外部相互運用が管理されている (GWS.CALENDAR.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.3.1 は、Calendar Interop(空き時間情報やカレンダーデータを Microsoft Exchange などの外部システムと共有する機能)を、意図的に管理されている場合を除いてオフにすることを求めています。Interop はカレンダーデータを外部のプラットフォームに橋渡しします。このチェックは calendar.interoperability を読み取り、enableInteroperability が有効な組織部門に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "意図的に管理されている場合を除き、Calendar の相互運用が無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソールの アプリ > Google Workspace > Calendar > Calendar Interop の管理 で、レビュー済みの連携で必要とされない限り相互運用を無効にします。", "status": "machine-draft" }
+  },
+  "COLLAB-018": {
+    "name": { "value": "Calendar の予約の支払いが無効になっている (GWS.CALENDAR.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.4.1 は、有料の予約スケジュールを無効にすることを推奨しています。このチェックは calendar.appointment_schedules を読み取り、enablePayments が有効な組織部門に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "有料の予約スケジュールが無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Calendar の予約スケジュール設定で、組織が意図的に有料予約を使用する場合を除き、支払いを無効にします。", "status": "machine-draft" }
+  },
+  "COLLAB-019": {
+    "name": { "value": "Meet の自動録画が既定でオフになっている (GWS.MEET.5.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.1 は、Google Meet の自動録画を既定でオフにすることを推奨しています。自動録画は、意図的な判断なしに会議の映像や音声(児童生徒がいる場合は機密性が高いもの)をキャプチャして保存します。このチェックは meet.automatic_recording を読み取り、既定で有効になっている組織部門に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "自動録画が既定で無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Meet の設定で、自動録画を既定で無効にし、主催者が意図的に録画を開始した場合にのみ会議が録画されるようにします。", "status": "machine-draft" }
+  },
+  "GROUP-006": {
+    "name": { "value": "グループがディレクトリに表示される (GWS.GROUPS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.4.1 は、グループをディレクトリから隠せないようにすることを求めています: 隠されたグループは、誰に連絡できるか、どのようなアクセス権が存在するかについての透明性と監督を損ないます。このチェックは groups_for_business.groups_sharing ポリシーを読み取り、オーナーがグループを隠せる(ownersCanHideGroups)、または新しいグループが既定で隠される(newGroupsAreHidden)組織部門に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "オーナーがグループを隠すことができず、新しいグループが既定で隠されない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business の設定で、グループのオーナーがグループをディレクトリから隠せないようにし、新しいグループが既定で隠されないようにして、ディレクトリの透明性を維持します。", "status": "machine-draft" }
+  }
+}

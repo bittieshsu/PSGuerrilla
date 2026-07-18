@@ -1,0 +1,69 @@
+{
+  "_family": "DeviceManagementChecks.json",
+  "DEVICE-001": {
+    "name": { "value": "MDM ポリシーの監査", "status": "machine-draft" },
+    "description": { "value": "セキュリティ制御を適用するため、組織のデータにアクセスするモバイルデバイスを MDM ポリシーによって管理する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのモバイルデバイスが MDM 管理下にあり、セキュリティポリシーが適用されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > モバイルデバイス > デバイス管理のステータスをレビュー > 管理対象外のデバイスに対して高度な MDM を有効にします", "status": "machine-draft" }
+  },
+  "DEVICE-002": {
+    "name": { "value": "デバイス承認の要件", "status": "machine-draft" },
+    "description": { "value": "不正なデバイスアクセスを防ぐため、モバイルデバイスが組織のデータにアクセスする前に管理者の承認を必須にする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "組織のデータにアクセスする前にデバイスの承認が必要", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > モバイルとエンドポイント > 設定 > 全般 > デバイスアクセスに管理者の承認を必須にします", "status": "machine-draft" }
+  },
+  "DEVICE-003": {
+    "name": { "value": "画面ロックの適用", "status": "machine-draft" },
+    "description": { "value": "組織のデータへの不正な物理アクセスを防ぐため、すべてのモバイルデバイスで画面ロックを適用する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "PIN/パスワードの最小要件とともに画面ロックが適用されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > モバイルとエンドポイント > 設定 > 汎用設定 > 画面ロック > 最小限の複雑さを備えた画面ロックを適用します", "status": "machine-draft" }
+  },
+  "DEVICE-004": {
+    "name": { "value": "デバイス暗号化の要件", "status": "machine-draft" },
+    "description": { "value": "物理的な盗難や紛失から保存データを保護するため、すべてのモバイルデバイスでデバイスの暗号化を必須にする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての管理対象デバイスで暗号化が必須", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > モバイルとエンドポイント > 設定 > 汎用設定 > 暗号化 > デバイスの暗号化を必須にします", "status": "machine-draft" }
+  },
+  "DEVICE-005": {
+    "name": { "value": "侵害されたデバイスのブロック", "status": "machine-draft" },
+    "description": { "value": "データの露出を防ぐため、侵害されたデバイスが組織のデータにアクセスするのを自動的にブロックする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "侵害されたデバイスの検出とブロックが有効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > モバイルとエンドポイント > 設定 > 汎用設定 > 侵害されたデバイス > 侵害されたデバイスによるデータへのアクセスをブロックします", "status": "machine-draft" }
+  },
+  "DEVICE-006": {
+    "name": { "value": "脱獄/ルート化されたデバイスのポリシー", "status": "machine-draft" },
+    "description": { "value": "脱獄された(iOS)またはルート化された(Android)デバイスは OS レベルのセキュリティ制御を回避するため、組織のデータへのアクセスをブロックする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "脱獄/ルート化されたデバイスが組織のデータへのアクセスをブロックされている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > モバイルとエンドポイント > 設定 > 汎用設定 > 侵害されたデバイス > 脱獄/ルート化されたデバイスをブロックします", "status": "machine-draft" }
+  },
+  "DEVICE-007": {
+    "name": { "value": "Chrome ブラウザの管理", "status": "machine-draft" },
+    "description": { "value": "ポリシーを適用するため、組織のデータへのアクセスに使用される Chrome ブラウザを Chrome Browser Cloud Management に登録する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chrome ブラウザが Cloud Management に登録され、ポリシーが適用されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > Chrome > 設定 > 管理対象ブラウザ向けの Chrome ブラウザポリシーをレビューして構成します", "status": "machine-draft" }
+  },
+  "DEVICE-008": {
+    "name": { "value": "Chrome 拡張機能の許可リスト/ブロックリスト", "status": "machine-draft" },
+    "description": { "value": "悪意のある拡張機能が組織のデータにアクセスするのを防ぐため、Chrome 拡張機能を許可リストまたはブロックリストで管理する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "拡張機能のインストールが許可リストを通じて管理者承認済みの拡張機能に制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > Chrome > アプリと拡張機能 > 拡張機能の許可リストとブロックリストを構成します", "status": "machine-draft" }
+  },
+  "DEVICE-009": {
+    "name": { "value": "Chrome OS デバイスのポリシー", "status": "machine-draft" },
+    "description": { "value": "Chrome OS デバイスには、自動更新、ログイン制限、セキュリティ設定など、適切なポリシーを適用する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chrome OS デバイスが管理され、更新、ログイン、セキュリティに関するポリシーが適用されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > Chrome > 設定 > デバイス設定 > 自動更新、ログイン制限、セキュリティポリシーを構成します", "status": "machine-draft" }
+  },
+  "DEVICE-010": {
+    "name": { "value": "エンドポイント確認の設定", "status": "machine-draft" },
+    "description": { "value": "エンドポイント確認は、コンテキストアウェアアクセスのポリシー向けにデバイスの信頼シグナルを提供するもので、有効にする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "コンテキストアウェアアクセス向けにエンドポイント確認が有効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > モバイルとエンドポイント > 設定 > 全般 > コンテキストアウェアアクセスのポリシー向けにエンドポイント確認を有効にします", "status": "machine-draft" }
+  },
+  "DEVICE-011": {
+    "name": { "value": "会社所有デバイスのインベントリ", "status": "machine-draft" },
+    "description": { "value": "会社のデータにアクセスする組織の資産を可視化し続けるため、会社所有のデバイスをインベントリ化する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての会社所有デバイスの完全なインベントリが維持されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > デバイス > モバイルデバイス > デバイスインベントリをレビュー > すべての会社所有デバイスが登録され、把握されていることを確認します", "status": "machine-draft" }
+  }
+}

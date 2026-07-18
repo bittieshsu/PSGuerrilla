@@ -1,0 +1,105 @@
+{
+  "_family": "DriveSecurityChecks.json",
+  "DRIVE-001": {
+    "name": { "value": "外部共有の既定値", "status": "machine-draft" },
+    "description": { "value": "外部の第三者への偶発的なデータの露出を防ぐため、組織外への共有を既定で制限または無効にする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "外部共有が許可リストに登録されたドメインに制限されているか、無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 共有設定 > 組織外への共有を「オフ」または「許可リストに登録されたドメイン」に設定します", "status": "machine-draft" }
+  },
+  "DRIVE-002": {
+    "name": { "value": "リンク共有の既定設定", "status": "machine-draft" },
+    "description": { "value": "意図しないデータの露出を防ぐため、既定のリンク共有を広範なアクセスではなく「制限付き」(特定のユーザー)に設定する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "既定のリンク共有が「制限付き」(特定のユーザーのみ)に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 共有設定 > 既定のリンク共有を「制限付き」に設定します", "status": "machine-draft" }
+  },
+  "DRIVE-003": {
+    "name": { "value": "「リンクを知っている全員」共有の監査", "status": "machine-draft" },
+    "description": { "value": "「リンクを知っている全員」と共有されたファイルは、インターネット上の誰でもアクセスでき、重大なデータ露出リスクとなります", "status": "machine-draft" },
+    "recommendedValue": { "value": "「リンクを知っている全員」共有が無効になっているか、厳格に制御されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 共有設定 > 「リンクを知っている全員」オプションを無効にするか、「リンクを知っているドメインユーザー」に制限します", "status": "machine-draft" }
+  },
+  "DRIVE-004": {
+    "name": { "value": "共有ドライブ作成の制限", "status": "machine-draft" },
+    "description": { "value": "制御されない乱立を防ぎ、共有データリポジトリの適切なガバナンスを確保するため、共有ドライブの作成を制限する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "共有ドライブの作成が特定のグループまたは管理者に制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 共有設定 > 共有ドライブの作成 > 共有ドライブを作成できるユーザーを制限します", "status": "machine-draft" }
+  },
+  "DRIVE-005": {
+    "name": { "value": "共有ドライブのメンバー管理", "status": "machine-draft" },
+    "description": { "value": "権限のないユーザーが追加されたり、権限が昇格されたりするのを防ぐため、共有ドライブのメンバー管理を制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "マネージャーのみがメンバーの追加とアクセスレベルの変更を行える", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 共有設定 > 共有ドライブの設定 > メンバー管理の権限を構成します", "status": "machine-draft" }
+  },
+  "DRIVE-006": {
+    "name": { "value": "共有ドライブの外部共有", "status": "machine-draft" },
+    "description": { "value": "機密性の高い組織のデータがドメイン外で共有されるのを防ぐため、共有ドライブでの外部共有を制限する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "共有ドライブでの外部共有が無効になっているか、許可リストに登録されたドメインに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 共有設定 > 共有ドライブの共有 > 外部共有を制限します", "status": "machine-draft" }
+  },
+  "DRIVE-007": {
+    "name": { "value": "ファイルの所有権譲渡の設定", "status": "machine-draft" },
+    "description": { "value": "不正なデータ移行を防ぎ、適切なデータガバナンスの連鎖を維持するため、ファイルの所有権譲渡を制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "ファイルの所有権譲渡が管理者または制御されたプロセスに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 所有権の譲渡設定 > 制限を構成します", "status": "machine-draft" }
+  },
+  "DRIVE-008": {
+    "name": { "value": "Drive for Desktop の許可/ブロック", "status": "machine-draft" },
+    "description": { "value": "Drive for Desktop はファイルをローカルに同期するため、管理対象外のエンドポイントにデータが保存されるのを防ぐよう制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive for Desktop が管理対象デバイスに制限されているか、無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 機能とアプリケーション > Drive for Desktop > アクセスを構成します", "status": "machine-draft" }
+  },
+  "DRIVE-009": {
+    "name": { "value": "サードパーティアプリの Drive アクセス", "status": "machine-draft" },
+    "description": { "value": "不正なデータの持ち出しを防ぐため、Drive のデータにアクセスできるサードパーティアプリケーションをレビューして制限する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "サードパーティアプリの Drive データへのアクセスが制限され、レビューされている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > API の制御 > サードパーティアプリのアクセス > Drive アクセスを持つアプリをレビューして制限します", "status": "machine-draft" }
+  },
+  "DRIVE-010": {
+    "name": { "value": "Drive の DLP ルールの監査", "status": "machine-draft" },
+    "description": { "value": "Google Drive を通じた機密データの共有を検出して防止するため、データ損失防止(DLP)ルールを構成する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "機密データの種類(個人を特定できる情報、財務データ、健康データ)に対して DLP ルールが構成されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > データ保護 > ルールの管理 > Drive 内の機密データの種類に対するルールを作成します", "status": "machine-draft" }
+  },
+  "DRIVE-011": {
+    "name": { "value": "対象範囲の設定", "status": "machine-draft" },
+    "description": { "value": "対象範囲の設定は、ファイルを共有する際に誰を候補として提示できるかを制御するもので、偶発的な共有を抑えるよう構成する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "共有候補の提示を適切に制限するよう対象範囲が構成されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > 対象範囲 > 対象範囲のグループをレビューして構成します", "status": "machine-draft" }
+  },
+  "DRIVE-012": {
+    "name": { "value": "Drive アドオンの設定", "status": "machine-draft" },
+    "description": { "value": "Drive アドオンはファイルの内容にアクセスできるため、信頼できない拡張機能を通じたデータの露出を防ぐよう制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive アドオンのインストールが管理者承認済みのアドオンに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 機能とアプリケーション > アドオン > インストールの制限を構成します", "status": "machine-draft" }
+  },
+  "DRIVE-013": {
+    "name": { "value": "オフラインアクセスの設定", "status": "machine-draft" },
+    "description": { "value": "オフラインアクセスは Drive のファイルをデバイス上にローカルにキャッシュできるようにするため、共有デバイスや管理対象外のデバイスでのデータの露出を防ぐよう制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "オフラインアクセスが無効になっているか、管理対象デバイスに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 機能とアプリケーション > オフライン > オフラインアクセスを無効にするか制限します", "status": "machine-draft" }
+  },
+  "DRIVE-014": {
+    "name": { "value": "Drive SDK の API アクセスが無効になっている (GWS.DRIVEDOCS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.4.1: Drive SDK は、サードパーティアプリが API を介して Drive のコンテンツを読み書きできるようにするもので、広範に有効化されている場合は直接的なデータ持ち出しの経路となります。drive_and_docs.drive_sdk を読み取り、enableDriveSdkApiAccess が有効な場合に不合格とします。", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive SDK の API アクセスが無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 機能とアプリケーション で、特定のレビュー済みの連携で必要とされない限り Drive SDK を無効にします。", "status": "machine-draft" }
+  },
+  "DRIVE-015": {
+    "name": { "value": "Drive の外部ファイル警告が有効になっている (GWS.DRIVEDOCS.1.9)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.9: ユーザーがファイルを外部と共有する際に警告することは、摩擦の少ないデータ損失対策です。drive_and_docs.external_file_warning を読み取り、highlightingEnabled が無効な場合に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "外部ファイル共有の警告が有効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Drive の共有設定で、ユーザーが組織外の人とファイルを共有する際に警告を有効にします。", "status": "machine-draft" }
+  },
+  "DRIVE-016": {
+    "name": { "value": "Drive のファイルセキュリティ更新が適用されている (GWS.DRIVEDOCS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.3.1: ファイルセキュリティ更新は、影響を受けるファイルのリンク共有を厳格化します; ユーザーがこれを削除できるようにすると、アクセスが再び開かれます。drive_and_docs.file_security_update を読み取り、ユーザーがセキュリティ更新を削除または管理できる場合に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "セキュリティ更新が適用されており、ユーザーがそれを削除できない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Drive の設定で、ファイルセキュリティ更新を適用し、ユーザーが自分の所有するファイルからそれを削除できないようにします。", "status": "machine-draft" }
+  },
+  "DRIVE-017": {
+    "name": { "value": "既定のファイルアクセスがオーナーに限定されている (GWS.DRIVEDOCS.1.8)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.8 は、新しく作成された Drive のアイテムの既定のアクセスレベルを「オーナーに限定」にすることを求めており、これによりファイルが作成時に意図した範囲を超えて共有されないようにします。このチェックは drive_and_docs.general_access_default の Cloud Identity ポリシーを読み取り、既定のファイルアクセスが PRIVATE_TO_OWNER でない組織部門にフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で、新しいファイルの既定のアクセスレベルが PRIVATE_TO_OWNER に設定されている(defaultFileAccess)。", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google 管理コンソールの アプリ > Google Workspace > Drive and Docs > 共有設定 > 全般的なアクセスの既定値 で、既定を「オーナーに限定」に設定し、新しく作成されたファイルが非公開の状態で始まり、意図的な操作によってのみ共有されるようにします。", "status": "machine-draft" }
+  }
+}

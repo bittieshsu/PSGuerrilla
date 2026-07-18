@@ -1,0 +1,135 @@
+{
+  "_family": "AdminManagementChecks.json",
+  "ADMIN-001": {
+    "name": { "value": "特権管理者アカウントのインベントリ", "status": "machine-draft" },
+    "description": { "value": "すべての特権管理者アカウントをインベントリ化し、レビューする必要があります。特権管理者は、組織のすべての設定とデータへの無制限のアクセス権を持ちます", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての特権管理者アカウントが文書化され、明確な業務上の必要性とともに正当化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > ユーザー > 管理者ロールでフィルタ > すべての特権管理者アカウントをレビューし、不要な割り当てを削除します", "status": "machine-draft" }
+  },
+  "ADMIN-002": {
+    "name": { "value": "管理者ロールの割り当ての監査", "status": "machine-draft" },
+    "description": { "value": "管理者ロールの割り当ては、最小権限の原則に従う必要があります。広範な組み込みロールの代わりに、カスタムロールを使用する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての管理者ロールの割り当てがレビューされ、可能な場合は最小権限のカスタムロールが使用されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アカウント > 管理者ロール > 各ロールの割り当てをレビュー > 広範なロールを範囲を限定したカスタムロールに置き換えます", "status": "machine-draft" }
+  },
+  "ADMIN-003": {
+    "name": { "value": "委任された管理者権限のレビュー", "status": "machine-draft" },
+    "description": { "value": "カスタム管理者ロールをレビューし、委任された権限が適切に範囲設定され、過剰なアクセス権を付与していないことを確認する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "カスタム管理者ロールが必要最小限の権限に範囲設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アカウント > 管理者ロール > 各カスタムロールをレビュー > 権限が適切に範囲設定されていることを確認します", "status": "machine-draft" }
+  },
+  "ADMIN-004": {
+    "name": { "value": "非アクティブ/停止中の管理者アカウント", "status": "machine-draft" },
+    "description": { "value": "停止中または非アクティブなユーザーは、管理者ロールの割り当てを保持すべきではありません。これらのアカウントは、再有効化攻撃の標的となる可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "管理者ロールが割り当てられた停止中または非アクティブなユーザーが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > ユーザー > 停止中のユーザーでフィルタ > 停止中のアカウントから管理者ロールを削除します", "status": "machine-draft" }
+  },
+  "ADMIN-005": {
+    "name": { "value": "ユーザーアカウントのインベントリ", "status": "machine-draft" },
+    "description": { "value": "ガバナンスのため、アクティブ、停止中、アーカイブ済みのアカウント数を明確に把握したユーザーアカウントのインベントリを維持する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのアカウントが適切なアクティブ/停止中/アーカイブ済みの状態にある完全なユーザーインベントリ", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > ユーザー > ユーザーリストをレビュー > 不要になったアカウントを停止またはアーカイブします", "status": "machine-draft" }
+  },
+  "ADMIN-006": {
+    "name": { "value": "放置されたユーザーアカウント", "status": "machine-draft" },
+    "description": { "value": "90 日以上ログインのないユーザーアカウントは、放置されている可能性があるため、停止または削除の対象としてレビューする必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "文書化された正当な理由なく 90 日を超えて非アクティブなユーザーアカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > ユーザー > 最終ログインで並べ替え > 90 日以上非アクティブなアカウントをレビューして停止します", "status": "machine-draft" }
+  },
+  "ADMIN-007": {
+    "name": { "value": "組織部門構造のレビュー", "status": "machine-draft" },
+    "description": { "value": "組織部門の構造をレビューし、ポリシーを適切な範囲で効果的に適用できることを確認する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "組織部門構造が文書化され、ポリシーとの対応が明確になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > 組織部門 > 組織部門の階層をレビューし、ポリシー適用のニーズに沿っていることを確認します", "status": "machine-draft" }
+  },
+  "ADMIN-008": {
+    "name": { "value": "ディレクトリ共有設定", "status": "machine-draft" },
+    "description": { "value": "ディレクトリ共有は、組織の連絡先とプロフィールを誰が閲覧できるかを制御します。外部へのディレクトリ共有は制限する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "ディレクトリ共有が内部ユーザーのみに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > ディレクトリ設定 > 共有設定 > 連絡先の共有をドメインユーザーに制限します", "status": "machine-draft" }
+  },
+  "ADMIN-009": {
+    "name": { "value": "ユーザープロフィールの表示範囲", "status": "machine-draft" },
+    "description": { "value": "外部の攻撃者による偵察の可能性を抑えるため、ユーザープロフィール情報の表示範囲を制御する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "ユーザープロフィールの表示範囲が内部ユーザーに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > ディレクトリ設定 > プロフィールの共有 > プロフィールの表示範囲を制限します", "status": "machine-draft" }
+  },
+  "ADMIN-010": {
+    "name": { "value": "グループ設定と外部メンバーシップ", "status": "machine-draft" },
+    "description": { "value": "外部メンバーを許可する Google Groups は、内部のコミュニケーションやデータを権限のない第三者に公開する可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "外部グループメンバーシップが無効化されているか、文書化された正当な理由とともに特定のグループに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Groups for Business > 共有設定 > 外部メンバーシップを制限します", "status": "machine-draft" }
+  },
+  "ADMIN-011": {
+    "name": { "value": "グループ作成の制限", "status": "machine-draft" },
+    "description": { "value": "組織のデータを公開しかねない管理対象外のグループの乱立を防ぐため、グループの作成を制限する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "グループの作成が管理者または特定の委任ロールに制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Groups for Business > 共有設定 > グループを作成できるユーザーを制限します", "status": "machine-draft" }
+  },
+  "ADMIN-012": {
+    "name": { "value": "Groups for Business の設定", "status": "machine-draft" },
+    "description": { "value": "Groups for Business の設定は、外部からの投稿、メンバーの表示範囲、コンテンツの共有など、グループの機能を制御します", "status": "machine-draft" },
+    "recommendedValue": { "value": "Groups for Business が外部アクセスと投稿を制限するように構成されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > アプリ > Google Workspace > Groups for Business > 共有設定 > すべての設定をレビューします", "status": "machine-draft" }
+  },
+  "ADMIN-013": {
+    "name": { "value": "特権管理者の数", "status": "machine-draft" },
+    "description": { "value": "特権管理者アカウントの数は 2 ～ 4 にする必要があります。少なすぎると単一障害点となり、多すぎると攻撃対象領域が拡大します", "status": "machine-draft" },
+    "recommendedValue": { "value": "2 ～ 4 個の特権管理者アカウント", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > ディレクトリ > ユーザー > 特権管理者ロールでフィルタ > 不要な特権管理者を削除するか、バックアップを追加して数を 2 ～ 4 に調整します", "status": "machine-draft" }
+  },
+  "ADMIN-014": {
+    "name": { "value": "Assured Controls - アクセス承認の有効化", "status": "machine-draft" },
+    "description": { "value": "対象データにアクセスする前に Google のサポート担当者が組織の承認を要求して取得する必要があるよう、アクセス承認を有効にして、プロバイダによる不正アクセスのリスクを低減する必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "アクセス承認が有効になっている(Google の担当者がデータにアクセスする前に顧客の承認を必要とする)", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > データ > コンプライアンス > Access Management / Access Approvals > Google のサポート担当者が組織のデータにアクセスする前に承認を要求することを必須にします。Assured Controls が必要です。", "status": "machine-draft" }
+  },
+  "ADMIN-015": {
+    "name": { "value": "Assured Controls - サポートアクセスを米国の担当者に制限", "status": "machine-draft" },
+    "description": { "value": "データ主権を維持し、対象データが米国外の担当者によって扱われることを防ぐため、サポートアクセスを米国に所在する Google の担当者に制限する必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "サポートアクセスの対象が米国の Google 担当者に制限されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > データ > コンプライアンス > Access Management > 許可するサポート対象を米国の Google 担当者のみに設定します。Assured Controls が必要です。", "status": "machine-draft" }
+  },
+  "ADMIN-016": {
+    "name": { "value": "Assured Controls - 複数リージョンでのデータ処理の無効化", "status": "machine-draft" },
+    "description": { "value": "対象データが指定された保存リージョン内でのみ処理され、データ主権が維持されるよう、すべての Google Workspace 製品で複数リージョンにまたがるデータ処理を無効にする必要があります。", "status": "machine-draft" },
+    "recommendedValue": { "value": "データ処理が保存リージョンに限定されている(複数リージョンでの処理が無効)", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > データ > コンプライアンス > データリージョン > Calendar、Drive and Docs、Gmail、Chat、Meet、Gemini の各サービスで「データ処理を選択した保存リージョンに限定する」を有効にします。Assured Controls / Data Regions が必要です。", "status": "machine-draft" }
+  },
+  "ADMIN-017": {
+    "name": { "value": "内部アプリが自動的に信頼されない (GWS.COMMONCONTROLS.10.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.3: 内部(ドメイン所有)の OAuth アプリを自動的に信頼すると、レビューなしにアクセス権が付与され、内部関係者や横方向のデータアクセスの経路となります。api_controls.internal_apps を読み取り、trustInternalApps が有効な場合に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "内部アプリが自動的に信頼されない", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > セキュリティ > API の制御 で、内部アプリの自動的な信頼を無効にし、サードパーティアプリと同じレビューを受けるようにします。", "status": "machine-draft" }
+  },
+  "ADMIN-018": {
+    "name": { "value": "保存データのリージョンが構成されている (GWS.COMMONCONTROLS.15.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.1: 保存データのリージョンを設定すると、組織のデータの保存場所(データレジデンシー/コンプライアンス)が強制されます。data_regions.data_at_rest_region を読み取り、リージョンの設定がない場合に警告します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "組織のポリシーに従って特定の保存データリージョンが構成されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "管理コンソール > データ > データリージョン で、保存データのリージョンを未設定のままにせず、組織のレジデンシーポリシーで求められるリージョンに設定します。", "status": "machine-draft" }
+  },
+  "ADMIN-019": {
+    "name": { "value": "データ処理が保存リージョンに制限されている (GWS.COMMONCONTROLS.15.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.2 は、処理によって対象データが選択した管轄区域の外に移動しないよう、保存データ用に選択したのと同じリージョンでデータを処理することを求めています。このチェックは data_regions.data_processing_region の Cloud Identity ポリシーを読み取り、処理が保存リージョンに限定されていない組織部門にフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門でデータ処理が保存リージョンに限定されている(limitToStorageRegion = true)。", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google 管理コンソールの アカウント > データリージョン で、「選択したリージョンでのみデータを処理する」を有効にし、処理が保存データ用に選択したリージョン内にとどまるようにします。", "status": "machine-draft" }
+  },
+  "ADMIN-020": {
+    "name": { "value": "未構成のサードパーティアプリへのアクセスがブロックされている (GWS.COMMONCONTROLS.10.4)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.4 は、明示的にレビューされていないアプリが広範な OAuth スコープを要求し、データの持ち出しやアカウント乗っ取りの経路となりうるため、ユーザーが未構成のサードパーティアプリにアクセスできないようにすることを求めています。このチェックは api_controls.unconfigured_third_party_apps の Cloud Identity ポリシーを読み取り、アクセスレベルが BLOCK_ALL_SCOPES(未構成のアプリへのすべてのアクセスをブロックする値)でない組織部門にフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で、未構成のサードパーティアプリのアクセスレベルが BLOCK_ALL_SCOPES に設定されている。", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google 管理コンソールの セキュリティ > API の制御 > アプリのアクセス制御 で、未構成のサードパーティアプリを「ブロック」に設定し、明示的に構成およびレビューされていないアプリにユーザーがアクセス権を付与できないようにします。", "status": "machine-draft" }
+  },
+  "ADMIN-021": {
+    "name": { "value": "個別の管理機能を持たない追加の Google サービスが制限されている (GWS.COMMONCONTROLS.16.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.1 は、独自の個別管理機能を持たない Google サービスを全員に対して OFF にすることを推奨しています。Google はこれを反転した意味付けでモデル化しています: これらの追加サービスを制限(ブロック)するには、enterprise_service_restrictions サービスを ENABLED にする必要があります。このチェックは enterprise_service_restrictions.service_status の Cloud Identity ポリシーを読み取り、serviceState が ENABLED でない組織部門にフラグを立てます。これはユーザーが依然として未構成の追加サービスにアクセスできることを意味します。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で enterprise_service_restrictions の serviceState が ENABLED に設定されている(追加サービスが制限されている)。", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google 管理コンソールの アプリ > 追加の Google サービス で、個別の管理機能を持たないサービスのアクセス設定を全員に対して OFF にします。これにより、エンタープライズサービスの制限が有効になり、ユーザーはそれらの追加サービスにアクセスできなくなります。", "status": "machine-draft" }
+  },
+  "ADMIN-022": {
+    "name": { "value": "早期アクセスアプリケーションが無効になっている (GWS.COMMONCONTROLS.16.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.2 は、Google の完全なレビューを完了しておらず、評価されていないリスクを伴う可能性があるプレリリース機能である早期アクセスアプリケーションへのユーザーアクセスを無効にすることを推奨しています。このチェックは early_access_apps.service_status の Cloud Identity ポリシーを読み取り、serviceState が ENABLED である組織部門にフラグを立てます。", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての組織部門で early_access_apps の serviceState が ENABLED でない(早期アクセスアプリケーションが無効になっている)。", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google 管理コンソールの アプリ > 追加の Google サービス > Early Access Apps で、サービスを全員に対して OFF にし、ユーザーがプレリリースの早期アクセスアプリケーションを有効にできないようにします。", "status": "machine-draft" }
+  }
+}
