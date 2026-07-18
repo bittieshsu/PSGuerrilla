@@ -1,0 +1,153 @@
+{
+  "_family": "CollaborationChecks.json",
+  "COLLAB-001": {
+    "name": { "value": "Indstillinger for optagelse i Meet", "status": "machine-draft" },
+    "description": { "value": "Indstillinger for mødeoptagelse bør styres for at forhindre uautoriseret optagelse af følsomme drøftelser", "status": "machine-draft" },
+    "recommendedValue": { "value": "Optagelse begrænset til mødeorganisatorer eller deaktiveret for følsomme organisationsenheder", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Google Meet > Videoindstillinger for Meet > Optagelse > Konfigurér optagelsestilladelser", "status": "machine-draft" }
+  },
+  "COLLAB-002": {
+    "name": { "value": "Indstillinger for eksterne deltagere i Meet", "status": "machine-draft" },
+    "description": { "value": "Eksterne deltageres adgang til møder bør styres for at forhindre uautoriseret deltagelse og videregivelse af oplysninger", "status": "machine-draft" },
+    "recommendedValue": { "value": "Eksterne deltagere kræver godkendelse eller anmodning om at deltage", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Google Meet > Videoindstillinger for Meet > Deltagere > Kræv godkendelse af eksterne deltagere", "status": "machine-draft" }
+  },
+  "COLLAB-003": {
+    "name": { "value": "Indstillinger for anonym deltagelse i Meet", "status": "machine-draft" },
+    "description": { "value": "Anonyme brugere (uden Google-konti) bør ikke kunne deltage i møder uden udtrykkelig godkendelse fra værten", "status": "machine-draft" },
+    "recommendedValue": { "value": "Anonym deltagelse deaktiveret eller kræver godkendelse fra værten", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Google Meet > Videoindstillinger for Meet > Deltagere > Deaktivér anonym deltagelse, eller kræv anmodning om adgang", "status": "machine-draft" }
+  },
+  "COLLAB-004": {
+    "name": { "value": "Ekstern kommunikation i Chat", "status": "machine-draft" },
+    "description": { "value": "Ekstern chatkommunikation bør begrænses for at forhindre datalækage via direkte beskeder med eksterne brugere", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ekstern chat begrænset eller deaktiveret for de fleste brugere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Google Chat > Chatindstillinger > Ekstern chat > Begræns ekstern chat til specifikke organisationsenheder", "status": "machine-draft" }
+  },
+  "COLLAB-005": {
+    "name": { "value": "Indstillinger for chathistorik", "status": "machine-draft" },
+    "description": { "value": "Chathistorik bør aktiveres og bevares af hensyn til overholdelse og revision. Deaktivering af historik kan skjule ondsindet kommunikation", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chathistorik aktiveret og bevaret i henhold til opbevaringspolitikken", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Google Chat > Chatindstillinger > Historik > Aktivér historik, og konfigurér opbevaring", "status": "machine-draft" }
+  },
+  "COLLAB-006": {
+    "name": { "value": "Ekstern adgang til chatrum", "status": "machine-draft" },
+    "description": { "value": "Chatrum (spaces), der tillader eksterne medlemmer, kan eksponere intern kommunikation og delte filer for uautoriserede parter", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ekstern adgang til chatrum begrænset eller deaktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Google Chat > Chatindstillinger > Rum > Begræns ekstern adgang til rum", "status": "machine-draft" }
+  },
+  "COLLAB-007": {
+    "name": { "value": "Indstillinger for installation af chatapps", "status": "machine-draft" },
+    "description": { "value": "Installation af chatapps (bots) bør styres for at forhindre uautoriserede integrationer i at få adgang til samtaledata", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installation af chatapps begrænset til administratorgodkendte apps", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Google Chat > Chatindstillinger > Apps > Begræns appinstallation til godkendte apps", "status": "machine-draft" }
+  },
+  "COLLAB-008": {
+    "name": { "value": "Ekstern deling i Calendar", "status": "machine-draft" },
+    "description": { "value": "Kalenderdeling med eksterne brugere bør begrænses til oplysninger om ledig/optaget for at forhindre eksponering af mødedetaljer og deltagere", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ekstern kalenderdeling begrænset til udelukkende oplysninger om ledig/optaget", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Calendar > Delingsindstillinger > Muligheder for ekstern deling > Sæt til 'Kun oplysninger om ledig/optaget'", "status": "machine-draft" }
+  },
+  "COLLAB-009": {
+    "name": { "value": "Eksterne invitationer i Calendar", "status": "machine-draft" },
+    "description": { "value": "Brugere bør advares eller begrænses, når de sender kalenderinvitationer til eksterne modtagere, for at forhindre utilsigtet videregivelse af oplysninger", "status": "machine-draft" },
+    "recommendedValue": { "value": "Advarsler om eksterne invitationer aktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Calendar > Delingsindstillinger > Aktivér advarsler om eksterne invitationer", "status": "machine-draft" }
+  },
+  "COLLAB-010": {
+    "name": { "value": "Ekstern synlighed af aftaletidspunkter i Calendar", "status": "machine-draft" },
+    "description": { "value": "Synligheden af aftaletidspunkter i kalenderen bør styres for at begrænse ekstern eksponering af tilgængelighed og planlægningsdetaljer", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ekstern synlighed af aftaletidspunkter begrænset", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Calendar > Delingsindstillinger > Gennemgå indstillingerne for synlighed af aftaletidspunkter", "status": "machine-draft" }
+  },
+  "COLLAB-011": {
+    "name": { "value": "Mærkning af eksterne deltagere i Meet", "status": "machine-draft" },
+    "description": { "value": "Eksterne deltagere i møder bør mærkes synligt, så værter og deltagere let kan identificere udenforstående og undgå at videregive følsomme oplysninger", "status": "machine-draft" },
+    "recommendedValue": { "value": "Mærkning af eksterne deltagere aktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Google Meet > Sikkerhedsindstillinger for Meet > Eksterne deltagere > Aktivér mærkning af eksterne deltagere", "status": "machine-draft" }
+  },
+  "COLLAB-012": {
+    "name": { "value": "Værtsstyring i Meet", "status": "machine-draft" },
+    "description": { "value": "Værtsstyring bør aktiveres, så mødeværter bevarer moderationskontroller som at slå lyd fra, fjerne og låse for at forhindre kapring og forstyrrelse af møder", "status": "machine-draft" },
+    "recommendedValue": { "value": "Værtsstyring aktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Google Meet > Sikkerhedsindstillinger for Meet > Værtsstyring > Aktivér kontroller for værtsstyring", "status": "machine-draft" }
+  },
+  "GROUP-001": {
+    "name": { "value": "Ekstern adgang til Google Groups begrænset (GWS.GROUPS.1.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.1 kræver, at deling i Groups for Business begrænses, så grupper ikke er tilgængelige for personer uden for organisationen. Når gruppedelingens samarbejdsfunktion ikke er sat til udelukkende domænebrugere, bliver gruppeindhold, som på en skole kan omfatte data om elever og medarbejdere, tilgængeligt for eksterne parter. Denne kontrol læser politikken groups_for_business.groups_sharing fra Cloud Identity Policy API og markerer enhver organisationsenhed, hvis samarbejdsfunktion ikke er DOMAIN_USERS_ONLY.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gruppedelingens samarbejdsfunktion sat til DOMAIN_USERS_ONLY for alle organisationsenheder", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console under Apps > Google Workspace > Groups for Business > Delingsindstillinger skal du begrænse gruppeadgang til udelukkende brugere i organisationen (ikke 'Alle på internettet'), så eksterne parter ikke kan få adgang til gruppeindhold.", "status": "machine-draft" }
+  },
+  "GROUP-002": {
+    "name": { "value": "Gruppeejere kan ikke tilføje eksterne medlemmer (GWS.GROUPS.1.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.2 kræver, at gruppeejere ikke har tilladelse til at tilføje medlemmer uden for organisationen. Eksterne medlemmer får adgang til alt, hvad der deles med gruppen. Denne kontrol markerer organisationsenheder, hvor ejere kan tillade eksterne medlemmer (ownersCanAllowExternalMembers er aktiveret).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gruppeejere kan ikke tillade eksterne medlemmer (ownersCanAllowExternalMembers deaktiveret)", "status": "machine-draft" },
+    "remediationSteps": { "value": "I delingsindstillingerne for Groups for Business skal du deaktivere den mulighed, der lader gruppeejere tilføje medlemmer uden for organisationen, så eksternt medlemskab kræver en administrativ handling.", "status": "machine-draft" }
+  },
+  "GROUP-003": {
+    "name": { "value": "Grupper kan ikke modtage mail udefra (GWS.GROUPS.1.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.3 kræver, at gruppeejere ikke har tilladelse til at tillade indgående e-mail fra uden for organisationen. At tillade offentlig indgående mail til grupper er en vektor for indgående phishing og spam. Denne kontrol markerer organisationsenheder, hvor ejere kan tillade indgående mail fra offentligheden (ownersCanAllowIncomingMailFromPublic er aktiveret).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gruppeejere kan ikke tillade indgående mail fra offentligheden (ownersCanAllowIncomingMailFromPublic deaktiveret)", "status": "machine-draft" },
+    "remediationSteps": { "value": "I delingsindstillingerne for Groups for Business skal du deaktivere den mulighed, der lader gruppeejere acceptere indgående e-mail fra uden for organisationen, hvilket begrænser gruppemail til interne afsendere, medmindre det er udtrykkeligt konfigureret.", "status": "machine-draft" }
+  },
+  "GROUP-004": {
+    "name": { "value": "Oprettelse af grupper begrænset til administratorer (GWS.GROUPS.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.2.1 anbefaler at begrænse, hvem der kan oprette Groups for Business, til administratorer. Når enhver bruger kan oprette grupper, overhaler gruppespredningen styringen, og standardindstillinger for ekstern deling kan blive anvendt uden gennemgang. Denne kontrol markerer organisationsenheder, hvor adgangsniveauet for gruppeoprettelse ikke er ADMIN_ONLY.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Adgangsniveau for gruppeoprettelse sat til ADMIN_ONLY", "status": "machine-draft" },
+    "remediationSteps": { "value": "I indstillingerne for Groups for Business skal du sætte 'hvem der kan oprette grupper' til udelukkende administratorer, så nye grupper oprettes bevidst og arver gennemgåede delingsindstillinger.", "status": "machine-draft" }
+  },
+  "GROUP-005": {
+    "name": { "value": "Synlighed af gruppesamtaler er som standard begrænset til medlemmer (GWS.GROUPS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.3.1 kræver, at standardtilladelsen for visning af gruppesamtaler begrænses til gruppemedlemmer i stedet for hele domænet eller offentligheden. Alt for åben synlighed af samtaler eksponerer diskussionsarkiver, som kan indeholde følsomme oplysninger om elever og medarbejdere. Denne kontrol læser viewTopicsDefaultAccessLevel fra politikken groups_for_business.groups_sharing og advarer, hvor standarden er bredere end gruppemedlemmer.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Standardadgang til visning af samtaler sat til GROUP_MEMBERS", "status": "machine-draft" },
+    "remediationSteps": { "value": "I indstillingerne for Groups for Business skal du sætte standardtilladelsen 'hvem der kan se samtaler' til gruppemedlemmer.", "status": "machine-draft" }
+  },
+  "COLLAB-013": {
+    "name": { "value": "Ekstern fildeling i Chat deaktiveret (GWS.CHAT.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.2.1 kræver, at ekstern fildeling i Google Chat deaktiveres (sat til ingen filer). At tillade, at filer deles med eksterne brugere via Chat, er en direkte vej til dataeksfiltrering. Denne kontrol læser chat.chat_file_sharing og fejler enhver organisationsenhed, hvor ekstern fildeling ikke er sat til NO_FILES.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ekstern fildeling i Chat sat til NO_FILES", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console under Apps > Google Workspace > Google Chat > Ekstern fildeling skal du sætte ekstern fildeling til 'Ingen filer', så filer ikke kan deles med personer uden for organisationen via Chat.", "status": "machine-draft" }
+  },
+  "COLLAB-014": {
+    "name": { "value": "Historik for chatrum er slået til (GWS.CHAT.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.3.1 kræver, at historik for chatrum altid er slået til, så samtaler bevares til tilsyn, undersøgelse og eDiscovery. Denne kontrol læser chat.space_history og advarer enhver organisationsenhed, hvor rumhistorik ikke er sat til HISTORY_ALWAYS_ON.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Historik for chatrum sat til HISTORY_ALWAYS_ON", "status": "machine-draft" },
+    "remediationSteps": { "value": "I indstillingerne for Google Chat skal du sætte rumhistorik til altid slået til, så samtaler bevares og er tilgængelige til tilsyn og eDiscovery.", "status": "machine-draft" }
+  },
+  "COLLAB-015": {
+    "name": { "value": "Deltagelse i møder begrænset til organisationen (GWS.MEET.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.2.1 kræver, at adgang til møder begrænses, så kun brugere i organisationen (eller betroede Workspace-organisationer) kan deltage. At lade møder stå åbne for alle lader eksterne og ugodkendte parter komme ind i sessioner, der kan involvere elever. Denne kontrol læser meet.safety_access og fejler enhver organisationsenhed, hvor meetingsAllowedToJoin er bredere end SAME_ORGANIZATION_ONLY / ANY_WORKSPACE_ORGANIZATION.", "status": "machine-draft" },
+    "recommendedValue": { "value": "meetingsAllowedToJoin sat til SAME_ORGANIZATION_ONLY (eller ANY_WORKSPACE_ORGANIZATION)", "status": "machine-draft" },
+    "remediationSteps": { "value": "I sikkerhedsindstillingerne for Google Meet skal du begrænse, hvem der kan deltage i møder, til brugere i din organisation, så eksterne/ugodkendte deltagere ikke kan deltage som standard.", "status": "machine-draft" }
+  },
+  "COLLAB-016": {
+    "name": { "value": "Automatisk transskription i Meet slået fra som standard (GWS.MEET.5.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.2 anbefaler, at automatisk transskription i Google Meet er slået fra som standard. Automatisk transskription af møder registrerer og lagrer samtaleindhold, følsomt når der er elever til stede, uden en bevidst beslutning. Denne kontrol læser meet.automatic_transcription og advarer enhver organisationsenhed, hvor det er aktiveret som standard.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Automatisk transskription deaktiveret som standard", "status": "machine-draft" },
+    "remediationSteps": { "value": "I indstillingerne for Google Meet skal du deaktivere automatisk transskription som standard, så mødeindhold kun registreres, når en vært bevidst aktiverer det.", "status": "machine-draft" }
+  },
+  "COLLAB-017": {
+    "name": { "value": "Ekstern interoperabilitet i Calendar administreret (GWS.CALENDAR.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.3.1 kræver, at Calendar Interop (deling af ledig/optaget og kalenderdata med et eksternt system som Microsoft Exchange) er slået fra, medmindre det administreres bevidst. Interop bygger bro mellem kalenderdata og en ekstern platform. Denne kontrol læser calendar.interoperability og advarer enhver organisationsenhed, hvor enableInteroperability er slået til.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kalenderinteroperabilitet deaktiveret, medmindre den administreres bevidst", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console under Apps > Google Workspace > Calendar > Administration af Calendar Interop skal du deaktivere interoperabilitet, medmindre en gennemgået integration kræver det.", "status": "machine-draft" }
+  },
+  "COLLAB-018": {
+    "name": { "value": "Betalinger for aftaler i Calendar deaktiveret (GWS.CALENDAR.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.4.1 anbefaler, at betalte aftaleplaner deaktiveres. Denne kontrol læser calendar.appointment_schedules og advarer enhver organisationsenhed, hvor enablePayments er slået til.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Betalte aftaleplaner deaktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "I indstillingerne for aftaleplaner i Google Calendar skal du deaktivere betalinger, medmindre organisationen bevidst anvender betalte aftaler.", "status": "machine-draft" }
+  },
+  "COLLAB-019": {
+    "name": { "value": "Automatisk optagelse i Meet slået fra som standard (GWS.MEET.5.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.1 anbefaler, at automatisk optagelse i Google Meet er slået fra som standard. Automatisk optagelse registrerer og lagrer mødevideo/-lyd, følsomt når der er elever til stede, uden en bevidst beslutning. Denne kontrol læser meet.automatic_recording og advarer enhver organisationsenhed, hvor det er aktiveret som standard.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Automatisk optagelse deaktiveret som standard", "status": "machine-draft" },
+    "remediationSteps": { "value": "I indstillingerne for Google Meet skal du deaktivere automatisk optagelse som standard, så møder kun optages, når en vært bevidst starter en optagelse.", "status": "machine-draft" }
+  },
+  "GROUP-006": {
+    "name": { "value": "Grupper er synlige i biblioteket (GWS.GROUPS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.4.1 kræver, at grupper ikke kan skjules fra biblioteket; skjulte grupper undergraver gennemsigtigheden og tilsynet med, hvem der kan nås, og hvilken adgang der findes. Denne kontrol læser politikken groups_for_business.groups_sharing og advarer enhver organisationsenhed, hvor ejere kan skjule grupper (ownersCanHideGroups), eller nye grupper er skjult som standard (newGroupsAreHidden).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ejere kan ikke skjule grupper, og nye grupper er ikke skjult som standard", "status": "machine-draft" },
+    "remediationSteps": { "value": "I indstillingerne for Groups for Business skal du forhindre gruppeejere i at skjule grupper fra biblioteket og sikre, at nye grupper ikke er skjult som standard, hvilket bevarer bibliotekets gennemsigtighed.", "status": "machine-draft" }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "_family": "AdminManagementChecks.json",
+  "ADMIN-001": {
+    "name": { "value": "Optegnelse over superadministratorkonti", "status": "machine-draft" },
+    "description": { "value": "Alle superadministratorkonti bør registreres og gennemgås. Superadministratorer har ubegrænset adgang til alle organisationsindstillinger og data", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle superadministratorkonti er dokumenteret og begrundet med et klart forretningsmæssigt behov", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Brugere > Filtrér efter administratorrolle > Gennemgå alle superadministratorkonti, og fjern unødvendige tildelinger", "status": "machine-draft" }
+  },
+  "ADMIN-002": {
+    "name": { "value": "Revision af tildelinger af administratorroller", "status": "machine-draft" },
+    "description": { "value": "Tildelinger af administrative roller bør følge princippet om mindste rettigheder. Brugerdefinerede roller bør anvendes i stedet for brede indbyggede roller", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle tildelinger af administratorroller er gennemgået, og der anvendes brugerdefinerede roller med mindste rettigheder, hvor det er muligt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Konto > Administratorroller > Gennemgå hver rolletildeling > Erstat brede roller med afgrænsede brugerdefinerede roller", "status": "machine-draft" }
+  },
+  "ADMIN-003": {
+    "name": { "value": "Gennemgang af delegerede administratortilladelser", "status": "machine-draft" },
+    "description": { "value": "Brugerdefinerede administratorroller bør gennemgås for at sikre, at delegerede tilladelser er passende afgrænset og ikke giver overdreven adgang", "status": "machine-draft" },
+    "recommendedValue": { "value": "Brugerdefinerede administratorroller er afgrænset til de minimalt nødvendige tilladelser", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Konto > Administratorroller > Gennemgå hver brugerdefineret rolle > Kontrollér, at tilladelserne er passende afgrænset", "status": "machine-draft" }
+  },
+  "ADMIN-004": {
+    "name": { "value": "Inaktive/suspenderede administratorkonti", "status": "machine-draft" },
+    "description": { "value": "Suspenderede eller inaktive brugere bør ikke bevare tildelinger af administratorroller. Disse konti kan blive mål for genaktiveringsangreb", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen suspenderede eller inaktive brugere med tildelinger af administratorroller", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Brugere > Filtrér suspenderede brugere > Fjern administratorroller fra alle suspenderede konti", "status": "machine-draft" }
+  },
+  "ADMIN-005": {
+    "name": { "value": "Optegnelse over brugerkonti", "status": "machine-draft" },
+    "description": { "value": "Der bør føres en optegnelse over brugerkonti med tydelige antal af aktive, suspenderede og arkiverede konti med henblik på styring", "status": "machine-draft" },
+    "recommendedValue": { "value": "Fuldstændig optegnelse over brugere med alle konti i den korrekte tilstand: aktiv, suspenderet eller arkiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Brugere > Gennemgå brugerlisten > Suspendér eller arkivér konti, der ikke længere er nødvendige", "status": "machine-draft" }
+  },
+  "ADMIN-006": {
+    "name": { "value": "Forældede brugerkonti", "status": "machine-draft" },
+    "description": { "value": "Brugerkonti uden login i 90 dage eller mere kan være forældreløse og bør gennemgås med henblik på suspendering eller sletning", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen brugerkonti, der har været inaktive i mere end 90 dage uden dokumenteret begrundelse", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Brugere > Sortér efter seneste login > Gennemgå og suspendér konti, der har været inaktive i 90 dage eller mere", "status": "machine-draft" }
+  },
+  "ADMIN-007": {
+    "name": { "value": "Gennemgang af OU-struktur", "status": "machine-draft" },
+    "description": { "value": "Strukturen af organisationsenheder bør gennemgås for at sikre, at politikker kan anvendes effektivt på det rette niveau", "status": "machine-draft" },
+    "recommendedValue": { "value": "OU-strukturen er dokumenteret med en klar tilknytning til politikker", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Organisationsenheder > Gennemgå OU-hierarkiet, og sørg for, at det passer til behovene for anvendelse af politikker", "status": "machine-draft" }
+  },
+  "ADMIN-008": {
+    "name": { "value": "Indstillinger for bibliotekdeling", "status": "machine-draft" },
+    "description": { "value": "Bibliotekdeling styrer, hvem der kan se organisationens kontakter og profiler. Ekstern bibliotekdeling bør begrænses", "status": "machine-draft" },
+    "recommendedValue": { "value": "Bibliotekdeling er begrænset til udelukkende interne brugere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Bibliotekindstillinger > Delingsindstillinger > Begræns kontaktdeling til domænebrugere", "status": "machine-draft" }
+  },
+  "ADMIN-009": {
+    "name": { "value": "Synlighed af brugerprofiler", "status": "machine-draft" },
+    "description": { "value": "Synligheden af oplysninger i brugerprofiler bør styres for at begrænse mulighederne for rekognoscering fra eksterne aktører", "status": "machine-draft" },
+    "recommendedValue": { "value": "Synligheden af brugerprofiler er begrænset til interne brugere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Bibliotekindstillinger > Profildeling > Begræns profilsynligheden", "status": "machine-draft" }
+  },
+  "ADMIN-010": {
+    "name": { "value": "Gruppeindstillinger og eksternt medlemskab", "status": "machine-draft" },
+    "description": { "value": "Google Groups, der tillader eksterne medlemmer, kan eksponere intern kommunikation og data for uautoriserede parter", "status": "machine-draft" },
+    "recommendedValue": { "value": "Eksternt gruppemedlemskab er deaktiveret eller begrænset til specifikke grupper med dokumenteret begrundelse", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Groups for Business > Delingsindstillinger > Begræns eksternt medlemskab", "status": "machine-draft" }
+  },
+  "ADMIN-011": {
+    "name": { "value": "Begrænsninger for oprettelse af grupper", "status": "machine-draft" },
+    "description": { "value": "Oprettelse af grupper bør begrænses for at forhindre en spredning af uadministrerede grupper, der kan eksponere organisationens data", "status": "machine-draft" },
+    "recommendedValue": { "value": "Oprettelse af grupper er begrænset til administratorer eller specifikke delegerede roller", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Groups for Business > Delingsindstillinger > Begræns, hvem der kan oprette grupper", "status": "machine-draft" }
+  },
+  "ADMIN-012": {
+    "name": { "value": "Indstillinger for Groups for Business", "status": "machine-draft" },
+    "description": { "value": "Indstillingerne for Groups for Business styrer gruppefunktioner, herunder eksterne opslag, medlemssynlighed og indholdsdeling", "status": "machine-draft" },
+    "recommendedValue": { "value": "Groups for Business er konfigureret med begrænset ekstern adgang og begrænsede opslag", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Groups for Business > Delingsindstillinger > Gennemgå alle indstillinger", "status": "machine-draft" }
+  },
+  "ADMIN-013": {
+    "name": { "value": "Antal superadministratorer", "status": "machine-draft" },
+    "description": { "value": "Antallet af superadministratorkonti bør være mellem 2 og 4. For få skaber et enkelt fejlpunkt; for mange øger angrebsfladen", "status": "machine-draft" },
+    "recommendedValue": { "value": "2 til 4 superadministratorkonti", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Brugere > Filtrér efter superadministratorrolle > Justér antallet til 2 til 4 ved at fjerne unødvendige superadministratorer eller tilføje en backup", "status": "machine-draft" }
+  },
+  "ADMIN-014": {
+    "name": { "value": "Assured Controls: Adgangsgodkendelser aktiveret", "status": "machine-draft" },
+    "description": { "value": "Adgangsgodkendelser bør aktiveres, så Googles supportmedarbejdere skal anmode om og opnå organisationens godkendelse, før de får adgang til omfattede data, hvilket reducerer risikoen for uautoriseret adgang fra udbyderen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Adgangsgodkendelser aktiveret (Googles medarbejdere kræver kundens godkendelse, før de får adgang til data)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Data > Overholdelse > Adgangsstyring / Adgangsgodkendelser > Aktivér kravet om, at Googles supportmedarbejdere skal anmode om godkendelse, før de får adgang til organisationens data. Kræver Assured Controls.", "status": "machine-draft" }
+  },
+  "ADMIN-015": {
+    "name": { "value": "Assured Controls: Supportadgang begrænset til amerikanske medarbejdere", "status": "machine-draft" },
+    "description": { "value": "Supportadgang bør begrænses til Google-medarbejdere i USA for at opretholde datasuverænitet og forhindre, at omfattede data håndteres af personale uden for USA.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Målgruppen for supportadgang er begrænset til Googles medarbejdere i USA", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Data > Overholdelse > Adgangsstyring > Angiv den tilladte supportmålgruppe til udelukkende Googles medarbejdere i USA. Kræver Assured Controls.", "status": "machine-draft" }
+  },
+  "ADMIN-016": {
+    "name": { "value": "Assured Controls: Databehandling i flere regioner deaktiveret", "status": "machine-draft" },
+    "description": { "value": "Databehandling på tværs af flere regioner bør deaktiveres for alle Google Workspace-produkter, så omfattede data kun behandles inden for deres angivne lagringsregion, hvilket bevarer datasuveræniteten.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Databehandling er begrænset til lagringsregionen (behandling i flere regioner deaktiveret)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Data > Overholdelse > Dataregioner > Aktivér 'Begræns databehandling til den valgte lagringsregion' på tværs af Calendar, Drive and Docs, Gmail, Chat, Meet og Gemini. Kræver Assured Controls / Data Regions.", "status": "machine-draft" }
+  },
+  "ADMIN-017": {
+    "name": { "value": "Interne apps betros ikke automatisk (GWS.COMMONCONTROLS.10.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.3: automatisk tillid til interne (domæneejede) OAuth-apps giver dem adgang uden gennemgang, en vej til dataadgang via insidere eller lateral bevægelse. Læser api_controls.internal_apps; advarer, hvor trustInternalApps er slået til.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Interne apps betros ikke automatisk", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console > Sikkerhed > API-styring skal du deaktivere automatisk tillid til interne apps, så de gennemgår samme kontrol som tredjepartsapps.", "status": "machine-draft" }
+  },
+  "ADMIN-018": {
+    "name": { "value": "Region for data i hvile konfigureret (GWS.COMMONCONTROLS.15.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.1: angivelse af en region for data i hvile håndhæver, hvor organisationens data lagres (residens og overholdelse). Læser data_regions.data_at_rest_region; advarer, hvor der ikke er angivet en regionspræference.", "status": "machine-draft" },
+    "recommendedValue": { "value": "En specifik region for data i hvile er konfigureret i henhold til organisationens politik", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console > Data > Dataregioner skal du angive den region for data i hvile, som din organisations residenspolitik kræver, i stedet for at lade den være uindstillet.", "status": "machine-draft" }
+  },
+  "ADMIN-019": {
+    "name": { "value": "Databehandling begrænset til lagringsregionen (GWS.COMMONCONTROLS.15.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.2 kræver, at data behandles i samme region, som er valgt for data i hvile, så behandlingen ikke flytter omfattede data uden for den valgte jurisdiktion. Denne kontrol læser Cloud Identity-politikken data_regions.data_processing_region og markerer enhver organisationsenhed, hvor behandlingen ikke er begrænset til lagringsregionen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Databehandling er begrænset til lagringsregionen (limitToStorageRegion = true) i alle organisationsenheder.", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console under Konto > Dataregioner skal du aktivere 'Behandl kun data i den valgte region', så behandlingen forbliver inden for den region, der er valgt for data i hvile.", "status": "machine-draft" }
+  },
+  "ADMIN-020": {
+    "name": { "value": "Adgang til ikke-konfigurerede tredjepartsapps blokeret (GWS.COMMONCONTROLS.10.4)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.4 kræver, at brugere IKKE må have adgang til ikke-konfigurerede tredjepartsapps, fordi en app, der ikke er blevet udtrykkeligt gennemgået, kan anmode om brede OAuth-scopes og blive en vej til dataeksfiltrering eller kontoovertagelse. Denne kontrol læser Cloud Identity-politikken api_controls.unconfigured_third_party_apps og markerer enhver organisationsenhed, hvis adgangsniveau ikke er BLOCK_ALL_SCOPES (den værdi, der blokerer al adgang til ikke-konfigurerede apps).", "status": "machine-draft" },
+    "recommendedValue": { "value": "Adgangsniveauet for ikke-konfigurerede tredjepartsapps er sat til BLOCK_ALL_SCOPES i alle organisationsenheder.", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console under Sikkerhed > API-styring > Appadgangskontrol skal du sætte ikke-konfigurerede tredjepartsapps til 'Blokeret', så brugere ikke kan give nogen adgang til apps, der ikke er blevet udtrykkeligt konfigureret og gennemgået.", "status": "machine-draft" }
+  },
+  "ADMIN-021": {
+    "name": { "value": "Yderligere Google-tjenester uden individuel styring begrænset (GWS.COMMONCONTROLS.16.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.1 anbefaler, at Google-tjenester, som ikke har deres egen individuelle administratorstyring, slås FRA for alle. Google modellerer dette med omvendt semantik: tjenesten enterprise_service_restrictions skal være ENABLED, for at de yderligere tjenester begrænses (blokeres). Denne kontrol læser Cloud Identity-politikken enterprise_service_restrictions.service_status og markerer enhver organisationsenhed, hvor serviceState ikke er ENABLED, hvilket betyder, at brugere stadig kan nå ikke-konfigurerede yderligere tjenester.", "status": "machine-draft" },
+    "recommendedValue": { "value": "enterprise_service_restrictions serviceState sat til ENABLED (yderligere tjenester begrænset) i alle organisationsenheder.", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console under Apps > Yderligere Google-tjenester skal du sætte adgangsindstillingen for tjenester uden en individuel styring til FRA for alle. Dette aktiverer begrænsningen af virksomhedstjenester, så brugere ikke kan få adgang til disse yderligere tjenester.", "status": "machine-draft" }
+  },
+  "ADMIN-022": {
+    "name": { "value": "Early Access-applikationer deaktiveret (GWS.COMMONCONTROLS.16.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.2 anbefaler at deaktivere brugeradgang til Early Access-applikationer, som er funktioner i førudgivelse, der ikke har gennemført Googles fulde gennemgang og kan indebære uvurderet risiko. Denne kontrol læser Cloud Identity-politikken early_access_apps.service_status og markerer enhver organisationsenhed, hvor serviceState er ENABLED.", "status": "machine-draft" },
+    "recommendedValue": { "value": "early_access_apps serviceState ikke ENABLED (Early Access-applikationer deaktiveret) i alle organisationsenheder.", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console under Apps > Yderligere Google-tjenester > Early Access Apps skal du slå tjenesten FRA for alle, så brugere ikke kan aktivere Early Access-applikationer i førudgivelse.", "status": "machine-draft" }
+  }
+}

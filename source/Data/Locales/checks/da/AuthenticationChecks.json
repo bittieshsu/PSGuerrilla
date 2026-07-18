@@ -1,0 +1,111 @@
+{
+  "_family": "AuthenticationChecks.json",
+  "AUTH-001": {
+    "name": { "value": "Håndhævelse af 2SV", "status": "machine-draft" },
+    "description": { "value": "Totrinsbekræftelse (2SV/MFA) bør håndhæves for alle brugere for at forhindre kontoovertagelse via stjålne legitimationsoplysninger", "status": "machine-draft" },
+    "recommendedValue": { "value": "Håndhævet for alle organisationsenheder", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Godkendelse > Totrinsbekræftelse > Sæt Håndhævelse til 'Til'", "status": "machine-draft" }
+  },
+  "AUTH-002": {
+    "name": { "value": "Tilmeldingsrate for 2SV", "status": "machine-draft" },
+    "description": { "value": "Alle aktive brugere bør have 2SV tilmeldt. Lave tilmeldingsrater efterlader konti sårbare over for angreb baseret på legitimationsoplysninger", "status": "machine-draft" },
+    "recommendedValue": { "value": "95 % eller højere tilmelding blandt aktive brugere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Rapportering > Brugerrapporter > Sikkerhed > Gennemgå brugere uden 2SV. Angiv en tilmeldingsfrist via Sikkerhed > Totrinsbekræftelse", "status": "machine-draft" }
+  },
+  "AUTH-003": {
+    "name": { "value": "Styrke af 2SV-metode", "status": "machine-draft" },
+    "description": { "value": "Sikkerhedsnøgler bør være den primære 2SV-metode. SMS- og stemmebaseret 2SV er sårbar over for SIM-swapping og opsnapningsangreb", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sikkerhedsnøgler håndhæves som den primære metode", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Godkendelse > Totrinsbekræftelse > Sæt de tilladte metoder til 'Kun sikkerhedsnøgle'", "status": "machine-draft" }
+  },
+  "AUTH-004": {
+    "name": { "value": "Minimumslængde for adgangskode", "status": "machine-draft" },
+    "description": { "value": "Minimumslængden for adgangskoder bør være mindst 12 tegn for at modstå brute force- og ordbogsangreb", "status": "machine-draft" },
+    "recommendedValue": { "value": "Mindst 12 tegn", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Godkendelse > Administration af adgangskoder > Sæt minimumslængden til 12 eller derover", "status": "machine-draft" }
+  },
+  "AUTH-005": {
+    "name": { "value": "Begrænsning af genbrug af adgangskoder", "status": "machine-draft" },
+    "description": { "value": "Brugere bør ikke kunne genbruge nylige adgangskoder, hvilket forhindrer angreb med gennemløb af legitimationsoplysninger", "status": "machine-draft" },
+    "recommendedValue": { "value": "Genbrug af adgangskoder ikke tilladt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Godkendelse > Administration af adgangskoder > Aktivér 'Håndhæv adgangskodepolitik ved næste login', og begræns genbrug", "status": "machine-draft" }
+  },
+  "AUTH-006": {
+    "name": { "value": "Sessionsvarighed", "status": "machine-draft" },
+    "description": { "value": "Varigheden af websessioner bør begrænses for at reducere vinduet for sessionskapring og uautoriseret adgang fra delte enheder", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sessionsvarighed på 12 timer eller mindre", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Google-sessionsstyring > Angiv varigheden af websessioner", "status": "machine-draft" }
+  },
+  "AUTH-007": {
+    "name": { "value": "SSO-konfiguration", "status": "machine-draft" },
+    "description": { "value": "Hvis SSO er konfigureret, bør det anvende sikre protokoller og betroede identitetsudbydere", "status": "machine-draft" },
+    "recommendedValue": { "value": "SAML SSO korrekt konfigureret med en betroet IdP", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Godkendelse > SSO med tredjeparts-IdP > Kontrollér konfigurationen", "status": "machine-draft" }
+  },
+  "AUTH-008": {
+    "name": { "value": "Adgang for mindre sikre apps", "status": "machine-draft" },
+    "description": { "value": "Mindre sikre apps (apps, der ikke understøtter moderne godkendelse) bør blokeres for at forhindre eksponering af legitimationsoplysninger", "status": "machine-draft" },
+    "recommendedValue": { "value": "Deaktiveret for alle brugere", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Godkendelse > Mindre sikre apps > Sæt til 'Deaktivér adgang for mindre sikre apps'", "status": "machine-draft" }
+  },
+  "AUTH-009": {
+    "name": { "value": "Politik for app-adgangskoder", "status": "machine-draft" },
+    "description": { "value": "App-specifikke adgangskoder omgår 2SV og bør styres. Hvis de tillades, bør de først kræve tilmelding til 2SV", "status": "machine-draft" },
+    "recommendedValue": { "value": "App-adgangskoder begrænset eller deaktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Godkendelse > Totrinsbekræftelse > Gennemgå indstillingerne for app-adgangskoder", "status": "machine-draft" }
+  },
+  "AUTH-010": {
+    "name": { "value": "Konfiguration af gendannelsesmuligheder", "status": "machine-draft" },
+    "description": { "value": "Brugernes selvbetjente gendannelse bør konfigureres hensigtsmæssigt. Superadministratorer bør ikke have personlige gendannelsesmuligheder for at forhindre social manipulation", "status": "machine-draft" },
+    "recommendedValue": { "value": "Superadministratorer: ingen personlig gendannelse. Almindelige brugere: gendannelsesmuligheder tilladt med administratorstyring", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Godkendelse > Kontogendannelse > Deaktivér personlig gendannelse for superadministratorernes OU", "status": "machine-draft" }
+  },
+  "AUTH-011": {
+    "name": { "value": "Indstillinger for loginudfordringer", "status": "machine-draft" },
+    "description": { "value": "Loginudfordringer bør aktiveres for at give yderligere verifikation, når der registreres mistænkelige loginforsøg", "status": "machine-draft" },
+    "recommendedValue": { "value": "Loginudfordringer aktiveret med medarbejder-id eller anden verifikation", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Godkendelse > Loginudfordringer > Aktivér", "status": "machine-draft" }
+  },
+  "AUTH-012": {
+    "name": { "value": "2SV-tilmelding for superadministratorer", "status": "machine-draft" },
+    "description": { "value": "Alle superadministratorkonti skal have 2SV tilmeldt. Superadministratorer har ubegrænset adgang til alle indstillinger og data", "status": "machine-draft" },
+    "recommendedValue": { "value": "100 % af superadministratorerne tilmeldt 2SV", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Rapportering > Brugerrapporter > Sikkerhed > Filtrér efter administratorstatus > Sørg for, at alle superadministratorer har 2SV tilmeldt", "status": "machine-draft" }
+  },
+  "AUTH-013": {
+    "name": { "value": "Forældede superadministratorkonti", "status": "machine-draft" },
+    "description": { "value": "Superadministratorkonti, der ikke har logget ind for nylig, kan være forældreløse og i risiko for kompromittering. Alle superadministratorkonti bør administreres aktivt", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ingen superadministratorkonti, der har været inaktive i mere end 90 dage", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Brugere > Filtrér efter administratorrolle > Gennemgå og fjern eller suspendér inaktive superadministratorkonti", "status": "machine-draft" }
+  },
+  "AUTH-014": {
+    "name": { "value": "Tilmelding til 2SV tilladt", "status": "machine-draft" },
+    "description": { "value": "Brugere skal have lov til at tilmelde sig totrinsbekræftelse. Deaktivering af 2SV-tilmelding blokerer indførelsen af MFA og efterlader konti beskyttet af adgangskoder alene", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tilmelding til 2SV tilladt i alle organisationsenheder", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sikkerhed > Godkendelse > Totrinsbekræftelse > Sæt 'Tillad brugere at aktivere totrinsbekræftelse' til Til for alle organisationsenheder", "status": "machine-draft" }
+  },
+  "AUTH-015": {
+    "name": { "value": "Frist for tilmelding til 2SV", "status": "machine-draft" },
+    "description": { "value": "Fristen, før nyligt tilføjede brugere skal tilmelde sig 2SV, bør være kort. En lang frist efterlader konti ubeskyttet af MFA i et længere vindue efter oprettelsen", "status": "machine-draft" },
+    "recommendedValue": { "value": "Frist på 7 dage (168 timer) eller mindre", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sikkerhed > Godkendelse > Totrinsbekræftelse > Sæt fristen for nye brugeres tilmelding til 7 dage eller mindre", "status": "machine-draft" }
+  },
+  "AUTH-016": {
+    "name": { "value": "Selvtilmelding til Advanced Protection", "status": "machine-draft" },
+    "description": { "value": "At tillade selvtilmelding til Advanced Protection Program lader højrisikobrugere indføre de stærkeste tilgængelige kontobeskyttelser uden administratorindgriben", "status": "machine-draft" },
+    "recommendedValue": { "value": "Selvtilmelding til Advanced Protection tilladt i alle organisationsenheder", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sikkerhed > Godkendelse > Advanced Protection Program > Tillad brugere at selvtilmelde sig Advanced Protection", "status": "machine-draft" }
+  },
+  "AUTH-017": {
+    "name": { "value": "Selvgendannelse af superadministratorkonti", "status": "machine-draft" },
+    "description": { "value": "Selvbetjent kontogendannelse for superadministratorer er en vej til kontoovertagelse via social manipulation og bør slås fra. Superadministratorer bør kun gendannes af en anden administrator", "status": "machine-draft" },
+    "recommendedValue": { "value": "Selvgendannelse for superadministratorer deaktiveret i alle organisationsenheder", "status": "machine-draft" },
+    "remediationSteps": { "value": "Sikkerhed > Godkendelse > Kontogendannelse > Slå 'Tillad superadministratorer at gendanne deres konto' fra for alle organisationsenheder", "status": "machine-draft" }
+  },
+  "AUTH-018": {
+    "name": { "value": "Selvgendannelse af konti deaktiveret for brugere og ikke-superadministratorer (GWS.COMMONCONTROLS.8.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.8.2 kræver, at selvgendannelse af konti deaktiveres for brugere og konti, der ikke er superadministratorer. Selvbetjent gendannelse er en vektor for kontoovertagelse: en angriber, der kontrollerer en gendannelseskanal, kan overtage kontoen uden hjælp fra helpdesken. Denne kontrol læser Cloud Identity-politikken security.user_account_recovery og markerer enhver organisationsenhed, hvor selvgendannelse er aktiveret.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Selvgendannelse af konti deaktiveret (enableAccountRecovery = false) for brugere og ikke-superadministratorer i alle organisationsenheder.", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console under Sikkerhed > Kontogendannelse skal du deaktivere selvgendannelse for brugere (og ikke-superadministratorer), så kontogendannelse håndteres gennem en administrator eller en helpdeskproces i stedet for en brugerstyret kanal.", "status": "machine-draft" }
+  }
+}

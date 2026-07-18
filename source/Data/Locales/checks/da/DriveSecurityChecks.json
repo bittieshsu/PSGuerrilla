@@ -1,0 +1,105 @@
+{
+  "_family": "DriveSecurityChecks.json",
+  "DRIVE-001": {
+    "name": { "value": "Standardindstillinger for ekstern deling", "status": "machine-draft" },
+    "description": { "value": "Deling uden for organisationen bør begrænses eller deaktiveres som standard for at forhindre utilsigtet dataeksponering for eksterne parter", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ekstern deling begrænset til tilladelseslistede domæner eller deaktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Delingsindstillinger > Sæt deling uden for organisationen til 'Fra' eller 'Tilladelseslistede domæner'", "status": "machine-draft" }
+  },
+  "DRIVE-002": {
+    "name": { "value": "Standardindstillinger for linkdeling", "status": "machine-draft" },
+    "description": { "value": "Standardlinkdeling bør sættes til 'Begrænset' (bestemte personer) i stedet for bred adgang for at forhindre utilsigtet dataeksponering", "status": "machine-draft" },
+    "recommendedValue": { "value": "Standardlinkdeling sat til 'Begrænset' (kun bestemte personer)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Delingsindstillinger > Sæt standardlinkdeling til 'Begrænset'", "status": "machine-draft" }
+  },
+  "DRIVE-003": {
+    "name": { "value": "Revision af deling med 'Alle med linket'", "status": "machine-draft" },
+    "description": { "value": "Filer, der deles med 'Alle med linket', er tilgængelige for alle på internettet og udgør en betydelig risiko for dataeksponering", "status": "machine-draft" },
+    "recommendedValue": { "value": "Deling med 'Alle med linket' deaktiveret eller stramt styret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Delingsindstillinger > Deaktivér muligheden 'Alle med linket', eller begræns til 'Domænebrugere med linket'", "status": "machine-draft" }
+  },
+  "DRIVE-004": {
+    "name": { "value": "Begrænsninger for oprettelse af delte drev", "status": "machine-draft" },
+    "description": { "value": "Oprettelse af delte drev bør begrænses for at forhindre ukontrolleret spredning og sikre korrekt styring af delte datalagre", "status": "machine-draft" },
+    "recommendedValue": { "value": "Oprettelse af delte drev begrænset til bestemte grupper eller administratorer", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Delingsindstillinger > Oprettelse af delte drev > Begræns, hvem der kan oprette delte drev", "status": "machine-draft" }
+  },
+  "DRIVE-005": {
+    "name": { "value": "Administration af medlemmer på delte drev", "status": "machine-draft" },
+    "description": { "value": "Administration af medlemmer på delte drev bør styres for at forhindre, at uautoriserede brugere tilføjes, eller at tilladelser eskaleres", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kun ledere kan tilføje medlemmer og ændre adgangsniveauer", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Delingsindstillinger > Indstillinger for delte drev > Konfigurér tilladelser til administration af medlemmer", "status": "machine-draft" }
+  },
+  "DRIVE-006": {
+    "name": { "value": "Ekstern deling på delte drev", "status": "machine-draft" },
+    "description": { "value": "Ekstern deling på delte drev bør begrænses for at forhindre, at følsomme organisationsdata deles uden for domænet", "status": "machine-draft" },
+    "recommendedValue": { "value": "Ekstern deling på delte drev deaktiveret eller begrænset til tilladelseslistede domæner", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Delingsindstillinger > Deling af delte drev > Begræns ekstern deling", "status": "machine-draft" }
+  },
+  "DRIVE-007": {
+    "name": { "value": "Indstillinger for overførsel af filejerskab", "status": "machine-draft" },
+    "description": { "value": "Overførsel af filejerskab bør styres for at forhindre uautoriseret datamigrering og opretholde korrekte kæder for datastyring", "status": "machine-draft" },
+    "recommendedValue": { "value": "Overførsel af filejerskab begrænset til administratorer eller en styret proces", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Indstillinger for overførsel af ejerskab > Konfigurér begrænsninger", "status": "machine-draft" }
+  },
+  "DRIVE-008": {
+    "name": { "value": "Drive for Desktop tilladt/blokeret", "status": "machine-draft" },
+    "description": { "value": "Drive for Desktop synkroniserer filer lokalt og bør styres for at forhindre, at data lagres på uadministrerede slutpunkter", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive for Desktop begrænset til administrerede enheder eller deaktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Funktioner og applikationer > Drive for Desktop > Konfigurér adgang", "status": "machine-draft" }
+  },
+  "DRIVE-009": {
+    "name": { "value": "Tredjepartsapps adgang til Drive", "status": "machine-draft" },
+    "description": { "value": "Tredjepartsapplikationer med adgang til Drive-data bør gennemgås og begrænses for at forhindre uautoriseret dataeksfiltrering", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tredjepartsapps adgang til Drive-data begrænset og gennemgået", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > API-styring > Tredjepartsappadgang > Gennemgå og begræns apps med Drive-adgang", "status": "machine-draft" }
+  },
+  "DRIVE-010": {
+    "name": { "value": "Revision af DLP-regler for Drive", "status": "machine-draft" },
+    "description": { "value": "Regler for forebyggelse af datatab (DLP) bør konfigureres for at registrere og forhindre deling af følsomme data via Google Drive", "status": "machine-draft" },
+    "recommendedValue": { "value": "DLP-regler konfigureret for følsomme datatyper (PII, finansielle data, helbredsdata)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Sikkerhed > Databeskyttelse > Administrér regler > Opret regler for følsomme datatyper i Drive", "status": "machine-draft" }
+  },
+  "DRIVE-011": {
+    "name": { "value": "Indstillinger for målgrupper", "status": "machine-draft" },
+    "description": { "value": "Indstillinger for målgrupper styrer, hvem der kan foreslås, når filer deles, og bør konfigureres for at begrænse utilsigtet deling", "status": "machine-draft" },
+    "recommendedValue": { "value": "Målgrupper konfigureret til at begrænse delingsforslag hensigtsmæssigt", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Bibliotek > Målgrupper > Gennemgå og konfigurér målgruppegrupper", "status": "machine-draft" }
+  },
+  "DRIVE-012": {
+    "name": { "value": "Indstillinger for Drive-tilføjelser", "status": "machine-draft" },
+    "description": { "value": "Drive-tilføjelser kan få adgang til filindhold og bør styres for at forhindre dataeksponering gennem ubetroede udvidelser", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installation af Drive-tilføjelser begrænset til administratorgodkendte tilføjelser", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Funktioner og applikationer > Tilføjelser > Konfigurér installationsbegrænsninger", "status": "machine-draft" }
+  },
+  "DRIVE-013": {
+    "name": { "value": "Indstillinger for offlineadgang", "status": "machine-draft" },
+    "description": { "value": "Offlineadgang gør det muligt at cachelagre Drive-filer lokalt på enheder og bør styres for at forhindre dataeksponering på delte eller uadministrerede enheder", "status": "machine-draft" },
+    "recommendedValue": { "value": "Offlineadgang deaktiveret eller begrænset til administrerede enheder", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Funktioner og applikationer > Offline > Deaktivér eller begræns offlineadgang", "status": "machine-draft" }
+  },
+  "DRIVE-014": {
+    "name": { "value": "Drive SDK API-adgang deaktiveret (GWS.DRIVEDOCS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.4.1: Drive SDK lader tredjepartsapps læse og skrive Drive-indhold via API, en direkte kanal til dataeksfiltrering, når den er bredt aktiveret. Læser drive_and_docs.drive_sdk; fejler, hvor enableDriveSdkApiAccess er slået til.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Drive SDK API-adgang deaktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console > Apps > Google Workspace > Drive and Docs > Funktioner og applikationer skal du deaktivere Drive SDK, medmindre bestemte gennemgåede integrationer kræver det.", "status": "machine-draft" }
+  },
+  "DRIVE-015": {
+    "name": { "value": "Advarsel om eksterne filer i Drive aktiveret (GWS.DRIVEDOCS.1.9)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.9: at advare brugere, når de deler filer eksternt, er en datatabsforanstaltning med lav friktion. Læser drive_and_docs.external_file_warning; advarer, hvor highlightingEnabled er slået fra.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Advarsel om ekstern fildeling aktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Drive-delingsindstillingerne skal du aktivere advarsler, når brugere deler filer med personer uden for organisationen.", "status": "machine-draft" }
+  },
+  "DRIVE-016": {
+    "name": { "value": "Sikkerhedsopdatering til Drive-filer håndhævet (GWS.DRIVEDOCS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.3.1: filsikkerhedsopdateringen strammer linkdeling på berørte filer; at lade brugere fjerne den genåbner adgangen. Læser drive_and_docs.file_security_update; advarer, hvor brugere har lov til at fjerne eller administrere sikkerhedsopdateringen.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sikkerhedsopdatering anvendt, og brugere kan ikke fjerne den", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Drive-indstillingerne skal du anvende filsikkerhedsopdateringen og ikke tillade brugere at fjerne den fra filer, de ejer.", "status": "machine-draft" }
+  },
+  "DRIVE-017": {
+    "name": { "value": "Standardfiladgang sat til privat for ejer (GWS.DRIVEDOCS.1.8)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.8 kræver, at 'Privat for ejer' er standardadgangsniveauet for nyoprettede Drive-elementer, så filer ikke deles bredere end tilsigtet på oprettelsestidspunktet. Denne kontrol læser Cloud Identity-politikken drive_and_docs.general_access_default og markerer enhver organisationsenhed, hvor standardfiladgangen ikke er PRIVATE_TO_OWNER.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Standardadgangsniveau for nye filer sat til PRIVATE_TO_OWNER (defaultFileAccess) i alle organisationsenheder.", "status": "machine-draft" },
+    "remediationSteps": { "value": "I Google Admin Console under Apps > Google Workspace > Drive and Docs > Delingsindstillinger > Standard for generel adgang skal du sætte standarden til 'Privat for ejer', så nyoprettede filer starter som private og kun deles ved en bevidst handling.", "status": "machine-draft" }
+  }
+}

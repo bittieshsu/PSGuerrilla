@@ -1,0 +1,69 @@
+{
+  "_family": "DeviceManagementChecks.json",
+  "DEVICE-001": {
+    "name": { "value": "Revision af MDM-politik", "status": "machine-draft" },
+    "description": { "value": "Mobilenheder, der får adgang til organisationens data, bør administreres gennem MDM-politikker for at håndhæve sikkerhedskontroller", "status": "machine-draft" },
+    "recommendedValue": { "value": "Alle mobilenheder under MDM-administration med håndhævede sikkerhedspolitikker", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Mobilenheder > Gennemgå enhedernes administrationsstatus > Aktivér avanceret MDM for uadministrerede enheder", "status": "machine-draft" }
+  },
+  "DEVICE-002": {
+    "name": { "value": "Krav om enhedsgodkendelse", "status": "machine-draft" },
+    "description": { "value": "Mobilenheder bør kræve administratorgodkendelse, før de får adgang til organisationens data, for at forhindre uautoriseret enhedsadgang", "status": "machine-draft" },
+    "recommendedValue": { "value": "Enhedsgodkendelse påkrævet, før der gives adgang til organisationens data", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Mobil og slutpunkter > Indstillinger > Generelt > Kræv administratorgodkendelse for enhedsadgang", "status": "machine-draft" }
+  },
+  "DEVICE-003": {
+    "name": { "value": "Håndhævelse af skærmlås", "status": "machine-draft" },
+    "description": { "value": "Skærmlås bør håndhæves på alle mobilenheder for at forhindre uautoriseret fysisk adgang til organisationens data", "status": "machine-draft" },
+    "recommendedValue": { "value": "Skærmlås håndhævet med minimumskrav til PIN-kode eller adgangskode", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Mobil og slutpunkter > Indstillinger > Universelle indstillinger > Skærmlås > Håndhæv skærmlås med mindste kompleksitet", "status": "machine-draft" }
+  },
+  "DEVICE-004": {
+    "name": { "value": "Krav om enhedskryptering", "status": "machine-draft" },
+    "description": { "value": "Enhedskryptering bør kræves på alle mobilenheder for at beskytte data i hvile mod fysisk tyveri eller tab", "status": "machine-draft" },
+    "recommendedValue": { "value": "Kryptering påkrævet på alle administrerede enheder", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Mobil og slutpunkter > Indstillinger > Universelle indstillinger > Kryptering > Kræv enhedskryptering", "status": "machine-draft" }
+  },
+  "DEVICE-005": {
+    "name": { "value": "Blokering af kompromitterede enheder", "status": "machine-draft" },
+    "description": { "value": "Kompromitterede enheder bør automatisk blokeres fra at få adgang til organisationens data for at forhindre dataeksponering", "status": "machine-draft" },
+    "recommendedValue": { "value": "Registrering og blokering af kompromitterede enheder aktiveret", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Mobil og slutpunkter > Indstillinger > Universelle indstillinger > Kompromitterede enheder > Blokér kompromitterede enheder fra at få adgang til data", "status": "machine-draft" }
+  },
+  "DEVICE-006": {
+    "name": { "value": "Politik for jailbreakede/rootede enheder", "status": "machine-draft" },
+    "description": { "value": "Jailbreakede (iOS) eller rootede (Android) enheder omgår sikkerhedskontroller på OS-niveau og bør blokeres fra at få adgang til organisationens data", "status": "machine-draft" },
+    "recommendedValue": { "value": "Jailbreakede/rootede enheder blokeret fra adgang til organisationens data", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Mobil og slutpunkter > Indstillinger > Universelle indstillinger > Kompromitterede enheder > Blokér jailbreakede/rootede enheder", "status": "machine-draft" }
+  },
+  "DEVICE-007": {
+    "name": { "value": "Administration af Chrome-browser", "status": "machine-draft" },
+    "description": { "value": "Chrome-browsere, der bruges til at få adgang til organisationens data, bør tilmeldes Chrome Browser Cloud Management med henblik på håndhævelse af politikker", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chrome-browsere tilmeldt Cloud Management med håndhævede politikker", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Chrome > Indstillinger > Gennemgå og konfigurér Chrome-browserpolitikker for administrerede browsere", "status": "machine-draft" }
+  },
+  "DEVICE-008": {
+    "name": { "value": "Tilladelses-/blokeringsliste for Chrome-udvidelser", "status": "machine-draft" },
+    "description": { "value": "Chrome-udvidelser bør administreres gennem en tilladelsesliste eller blokeringsliste for at forhindre ondsindede udvidelser i at få adgang til organisationens data", "status": "machine-draft" },
+    "recommendedValue": { "value": "Installation af udvidelser begrænset til administratorgodkendte udvidelser via tilladelsesliste", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Chrome > Apps og udvidelser > Konfigurér tilladelsesliste og blokeringsliste for udvidelser", "status": "machine-draft" }
+  },
+  "DEVICE-009": {
+    "name": { "value": "Politikker for Chrome OS-enheder", "status": "machine-draft" },
+    "description": { "value": "Chrome OS-enheder bør have passende politikker håndhævet, herunder automatisk opdatering, loginbegrænsninger og sikkerhedsindstillinger", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chrome OS-enheder administreret med håndhævede politikker for opdateringer, login og sikkerhed", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Chrome > Indstillinger > Enhedsindstillinger > Konfigurér automatisk opdatering, loginbegrænsninger og sikkerhedspolitikker", "status": "machine-draft" }
+  },
+  "DEVICE-010": {
+    "name": { "value": "Indstillinger for slutpunktsverifikation", "status": "machine-draft" },
+    "description": { "value": "Slutpunktsverifikation giver signaler om enhedstillid til kontekstbevidste adgangspolitikker og bør aktiveres", "status": "machine-draft" },
+    "recommendedValue": { "value": "Slutpunktsverifikation aktiveret for kontekstbevidst adgang", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Mobil og slutpunkter > Indstillinger > Generelt > Aktivér slutpunktsverifikation for kontekstbevidste adgangspolitikker", "status": "machine-draft" }
+  },
+  "DEVICE-011": {
+    "name": { "value": "Optegnelse over virksomhedsejede enheder", "status": "machine-draft" },
+    "description": { "value": "Virksomhedsejede enheder bør registreres for at opretholde synlighed over organisationens aktiver, der får adgang til virksomhedsdata", "status": "machine-draft" },
+    "recommendedValue": { "value": "Fuldstændig optegnelse over alle virksomhedsejede enheder føres", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin Console > Enheder > Mobilenheder > Gennemgå enhedsoptegnelsen > Sørg for, at alle virksomhedsejede enheder er registreret og gjort rede for", "status": "machine-draft" }
+  }
+}
