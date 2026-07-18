@@ -1,0 +1,69 @@
+{
+  "_family": "ADKerberosChecks.json",
+  "ADKERB-001": {
+    "name": { "value": "Kerberoasting の対象となるアカウント", "status": "machine-draft" },
+    "description": { "value": "サービスプリンシパル名 (SPN) が関連付けられたユーザーアカウントは Kerberoasting に対して脆弱です。認証済みのドメインユーザーであれば誰でも、アカウントのパスワードハッシュで暗号化されたサービスチケットを要求し、オフラインでの解読を試みることができます。この攻撃には特別な権限は不要で、検知も困難です。SPN を持つ各ユーザーアカウントは、資格情報が漏洩する潜在的な経路となります", "status": "machine-draft" },
+    "recommendedValue": { "value": "SPN を持つユーザーアカウントを最小限にする。Kerberoasting の対象となるすべてのアカウントを特定し、業務上の正当性とともに文書化し、25 文字以上のパスワードで保護するか、gMSA へ移行する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {ServicePrincipalName -ne '$null'} -Properties ServicePrincipalName を使用して Kerberoasting の対象となるアカウントを列挙します。各アカウントについて: (1) SPN が現在も必要かどうかを評価し、(2) 不要な SPN を削除し、(3) 可能な場合はグループ管理サービスアカウントへ移行し、(4) 残りのアカウントについてはパスワードが 25 文字以上であり、定期的に変更されていることを確認します。Event ID 4769 を通じて、機密性の高いアカウントを狙った Kerberos TGS 要求を監視します", "status": "machine-draft" }
+  },
+  "ADKERB-002": {
+    "name": { "value": "脆弱な暗号化を使用する Kerberoasting 対象アカウント", "status": "machine-draft" },
+    "description": { "value": "RC4 または DES 暗号化を使用するように構成された SPN を持つユーザーアカウントは、AES を使用するものに比べて Kerberoasting による解読が格段に容易です。RC4 (ARCFOUR-HMAC-MD5) のチケットは、最新の GPU ハードウェア上で AES のチケットよりも桁違いに速く解読できます。脆弱な暗号化の種類が明示的に構成されているアカウントや、AES キーを持たないアカウントは、最も優先度の高い Kerberoasting の標的となります", "status": "machine-draft" },
+    "recommendedValue": { "value": "SPN を持つすべてのアカウントが AES256 暗号化をサポートする。RC4 または DES の暗号化の種類に限定されたアカウントが存在しない。すべてのサービスアカウントで msDS-SupportedEncryptionTypes に AES フラグが含まれている", "status": "machine-draft" },
+    "remediationSteps": { "value": "SPN を持つユーザーアカウントを照会し、その msDS-SupportedEncryptionTypes 属性を確認します。値が 0 (未設定) のアカウントは既定で RC4 を使用します。RC4 (0x4) または DES (0x1, 0x2, 0x3) のフラグのみを持つアカウントは脆弱です。ドメインで AES サポートを有効にした後、対象となるすべてのアカウントのパスワードを変更して AES キーを生成します。msDS-SupportedEncryptionTypes に AES128 (0x8) および AES256 (0x10) のフラグを含めるように設定します", "status": "machine-draft" }
+  },
+  "ADKERB-003": {
+    "name": { "value": "AS-REP Roasting の対象となるアカウント", "status": "machine-draft" },
+    "description": { "value": "DONT_REQUIRE_PREAUTH フラグが設定されたアカウントでは、誰でも事前の認証なしにオフラインで解読可能な暗号化データを含む AS-REP を要求できます。Kerberoasting とは異なり、AS-REP Roasting は一部の構成では有効なドメインアカウントすら必要としないため、ドメインコントローラーへのネットワークアクセスしか持たない攻撃者にとって魅力的な初期アクセス手法となります", "status": "machine-draft" },
+    "recommendedValue": { "value": "「Kerberos 事前認証を必要としない」フラグが設定されたアカウントが存在しない。AS-REP Roasting の対象となるアカウントがゼロである", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true -and Enabled -eq $true} を使用してアカウントを特定します。すべてのアカウントで Kerberos 事前認証を有効にします。最新の環境では事前認証を無効にする正当な理由はほとんどありません。過去に脆弱であったすべてのアカウントは、すでに標的にされている可能性があるため、パスワードを変更します。事前認証の種類が 0 の Event ID 4768 を監視します", "status": "machine-draft" }
+  },
+  "ADKERB-004": {
+    "name": { "value": "制約のない委任 - コンピューター", "status": "machine-draft" },
+    "description": { "value": "制約のない委任 (TrustedForDelegation) が設定されたコンピューターアカウントは、自身に対して認証を行ったすべてのユーザーの TGT をキャッシュします。攻撃者がそのようなマシンを侵害すると、キャッシュされた TGT を抽出し、Domain Admins を含む任意のユーザーになりすますことができます。SpoolSample や PrinterBug の強制認証攻撃と組み合わせると、攻撃者はドメインコントローラーに強制的に認証させてその TGT を取得でき、ドメイン全体の侵害につながります", "status": "machine-draft" },
+    "recommendedValue": { "value": "ドメインコントローラー (本質的にこれを必要とする) を除き、制約のない委任が設定されたコンピューターアカウントが存在しない。その他のすべての委任を制約付き委任またはリソースベースの制約付き委任へ移行する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADComputer -Filter {TrustedForDelegation -eq $true} -Properties TrustedForDelegation を使用して、制約のない委任が設定されたコンピューターを特定します。検出結果からドメインコントローラーを除外します。残りのコンピューターについては、委任先となる特定のサービスを特定して制約付き委任へ移行し、msDS-AllowedToDelegateTo を構成します。機密性の高いアカウントを Protected Users グループに追加して、その TGT がキャッシュされないようにします。価値の高いアカウントには「アカウントは機密であり、委任できない」を設定します", "status": "machine-draft" }
+  },
+  "ADKERB-005": {
+    "name": { "value": "制約のない委任 - ユーザー", "status": "machine-draft" },
+    "description": { "value": "制約のない委任が設定されたユーザーアカウントは、同じ設定のコンピューターアカウントよりもさらに危険です。ユーザーアカウントは資格情報の窃取、フィッシング、パスワード攻撃によってより容易に侵害されるためです。制約のない委任が設定されたユーザーアカウントで実行されるサービスは、自身に対して認証を行った任意のユーザーになりすますことができ、ドメイン侵害への直接的な経路となります", "status": "machine-draft" },
+    "recommendedValue": { "value": "制約のない委任が設定されたユーザーアカウントが存在しない。すべてのユーザーアカウントの委任を制約付き委任またはリソースベースの制約付き委任へ移行する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {TrustedForDelegation -eq $true} -Properties TrustedForDelegation を使用して、制約のない委任が設定されたユーザーを特定します。これはユーザーアカウントにとって正当な構成であることはほとんどありません。制約のない委任フラグを削除し、委任が必要な場合は特定のサービスへの制約付き委任を構成します。アカウントが標的にされている可能性があるため、直ちにアカウントのパスワードを変更します", "status": "machine-draft" }
+  },
+  "ADKERB-006": {
+    "name": { "value": "制約付き委任の分析", "status": "machine-draft" },
+    "description": { "value": "制約付き委任は、msDS-AllowedToDelegateTo 属性を介してアカウントが委任できるサービスを制限しますが、構成を誤ると依然として権限昇格を招く可能性があります。ドメインコントローラー上の LDAP、CIFS、または HOST サービスへの委任は、DCSync 攻撃の実行、DC のファイル共有へのアクセス、または委任されたユーザーとしてのコマンド実行に悪用される可能性があります。各制約付き委任エントリは、セキュリティへの影響について確認する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての制約付き委任エントリを業務上の正当性とともに文書化する。ドメインコントローラー上の機密性の高いサービス (LDAP、CIFS、HOST、WSMAN) への委任が存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADObject -Filter {msDS-AllowedToDelegateTo -ne '$null'} -Properties msDS-AllowedToDelegateTo を使用して制約付き委任を列挙します。各委任先を確認します。DC サービス (特に LDAP、CIFS、HOST、HTTP、WSMAN) への委任は高リスクとしてフラグを立てます。不要な委任エントリを削除し、正当なものは業務上の正当性とともに文書化します。セキュリティ向上のため、リソースベースの制約付き委任への移行を検討します", "status": "machine-draft" }
+  },
+  "ADKERB-007": {
+    "name": { "value": "リソースベースの制約付き委任", "status": "machine-draft" },
+    "description": { "value": "リソースベースの制約付き委任 (RBCD) では、msDS-AllowedToActOnBehalfOfOtherIdentity 属性を介して、対象リソース自身がどのアカウントに委任を許可するかを制御できます。従来の制約付き委任よりも設計上は安全ですが、攻撃者がコンピューターオブジェクトへの書き込みアクセスを取得して不正な委任経路を構成した場合、RBCD が悪用される可能性があります。これは一般的なエクスプロイト後の手法です", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての RBCD 構成を文書化し、監査する。msDS-AllowedToActOnBehalfOfOtherIdentity に不正なエントリが存在しない。コンピューターオブジェクトへの書き込みアクセスを許可された管理者のみに制限する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADComputer -Filter {msDS-AllowedToActOnBehalfOfOtherIdentity -ne '$null'} -Properties msDS-AllowedToActOnBehalfOfOtherIdentity を使用して RBCD 構成を列挙します。各エントリの業務上の正当性を確認します。AD 内のコンピューターオブジェクトへの書き込みアクセスを誰が持っているかを監査し、RBCD 悪用の潜在的な経路を特定します。不正な RBCD エントリを削除します。msDS-AllowedToActOnBehalfOfOtherIdentity 属性の変更に対する監視を実装します", "status": "machine-draft" }
+  },
+  "ADKERB-008": {
+    "name": { "value": "プロトコル遷移の悪用経路", "status": "machine-draft" },
+    "description": { "value": "プロトコル遷移を伴う制約付き委任 (TrustedToAuthForDelegation / T2A4D フラグ) が構成されたアカウントは、ユーザーが実際に Kerberos で認証しなくても、任意のユーザーの代わりにサービスチケットを取得できます。この S4U2Self 機能により、アカウントは委任を許可されたサービスに対して任意のユーザーになりすますことができ、機密性の高いサービスへの委任と組み合わせると強力な権限昇格の経路となります", "status": "machine-draft" },
+    "recommendedValue": { "value": "明示的に必要とされ文書化されている場合を除き、すべてのアカウントでプロトコル遷移 (TrustedToAuthForDelegation) を無効にする。ドメインコントローラーのサービスへ委任できるプロトコル遷移アカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADObject -Filter {TrustedToAuthForDelegation -eq $true} -Properties TrustedToAuthForDelegation,msDS-AllowedToDelegateTo を使用して、プロトコル遷移が設定されたアカウントを特定します。各アカウントについて、プロトコル遷移が本当に必要かどうかを評価します (最初の認証で Kerberos を使用しない場合にのみ必要です)。不要な場合はプロトコル遷移を無効にします。残りのアカウントについては、委任先を厳格に制限し、DC サービスが対象範囲に含まれないようにします", "status": "machine-draft" }
+  },
+  "ADKERB-009": {
+    "name": { "value": "Kerberos の暗号化の種類", "status": "machine-draft" },
+    "description": { "value": "Kerberos の暗号化の種類は、チケット暗号化の強度を決定します。DES と RC4 (ARCFOUR-HMAC-MD5) は暗号学的に脆弱であり、AES128 および AES256 を優先して無効にする必要があります。特に RC4 は、AES で暗号化されたチケットよりも解読が格段に速いため、Kerberoasting 攻撃の標的となります。AES のみの暗号化を強制すると、オフラインでの資格情報攻撃の難易度が大幅に高まります", "status": "machine-draft" },
+    "recommendedValue": { "value": "AES256_HMAC_SHA1 および AES128_HMAC_SHA1 を唯一サポートする暗号化の種類とする。グループポリシーおよびドメインの機能レベルを介して DES と RC4 を無効にする", "status": "machine-draft" },
+    "remediationSteps": { "value": "グループポリシーを介して構成します: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > ローカル ポリシー > セキュリティ オプション > 「ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する」= AES128_HMAC_SHA1、AES256_HMAC_SHA1、将来の暗号化の種類。msDS-SupportedEncryptionTypes を持つアカウントを監査し、RC4 に限定されているものを特定します。ドメインレベルで AES サポートを有効にした後にパスワードを変更して、すべてのサービスアカウントで AES キーが生成されるようにします", "status": "machine-draft" }
+  },
+  "ADKERB-010": {
+    "name": { "value": "Kerberos チケットの有効期間", "status": "machine-draft" },
+    "description": { "value": "Kerberos チケットの有効期間は、認証チケットが有効であり続ける時間を制御します。TGT やサービスチケットの有効期間が過度に長いと、盗まれたチケットが pass-the-ticket 攻撃に使用され得る時間枠が広がります。既定の TGT 有効期間 10 時間および最大更新期間 7 日は、セキュリティと運用要件のバランスをとるために見直す必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "TGT の最大有効期間: 4 ～ 10 時間。サービスチケットの最大有効期間: 600 分。チケットの最大更新期間: 7 日。最大クロック スキュー: 5 分", "status": "machine-draft" },
+    "remediationSteps": { "value": "既定のドメイン ポリシーで Kerberos ポリシーを構成します: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > アカウント ポリシー > Kerberos ポリシー。サービスチケットの最大有効期間 (600 分)、ユーザーチケットの最大有効期間 (10 時間以下)、およびユーザーチケット更新の最大有効期間 (7 日) を設定します。Tier 0 アカウントについては、Protected Users グループに追加すると、4 時間の TGT 有効期間が自動的に強制されます", "status": "machine-draft" }
+  },
+  "ADKERB-011": {
+    "name": { "value": "コンピューター SPN の監査", "status": "machine-draft" },
+    "description": { "value": "コンピューターアカウント上のサービスプリンシパル名は、各マシンで実行するように登録されたサービスを定義します。重複した SPN は Kerberos 認証の失敗を引き起こし、不正な SPN は不正なサービスや侵害されたマシンを示している可能性があります。SPN 構成を適切に保つことは、Kerberos が正しく機能し、正確なサービスインベントリを維持するために不可欠です", "status": "machine-draft" },
+    "recommendedValue": { "value": "ドメイン全体で重複した SPN が存在しない。コンピューターアカウント上のすべての SPN が、正当かつ文書化されたサービスに対応している", "status": "machine-draft" },
+    "remediationSteps": { "value": "フォレスト内で setspn -X または Get-ADObject クエリを使用して、重複した SPN をスキャンします。重複した SPN を削除するか、正しいアカウントに再割り当てします。コンピューターオブジェクト上の SPN を確認し、不正または予期しないサービスを特定します。setspn -L <computername> を使用して、コンピューターごとの SPN を一覧表示します。既定以外のすべての SPN を、その業務上の目的とともに文書化します", "status": "machine-draft" }
+  }
+}

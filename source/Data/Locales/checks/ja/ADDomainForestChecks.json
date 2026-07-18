@@ -1,0 +1,123 @@
+{
+  "_family": "ADDomainForestChecks.json",
+  "ADDOM-001": {
+    "name": { "value": "フォレストの機能レベル", "status": "machine-draft" },
+    "description": { "value": "Active Directory のフォレストの機能レベルは、Privileged Access Management や強化された Kerberos 保護などの最新のセキュリティ機能を有効にするために、Windows Server 2016 以上である必要があります。より古い機能レベルで運用すると、レガシー プロトコルの弱点を悪用する攻撃に環境がさらされます", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2016 以上", "status": "machine-draft" },
+    "remediationSteps": { "value": "Active Directory ドメインと信頼 > フォレスト ルートを右クリック > フォレストの機能レベルの昇格 を使用して、フォレストの機能レベルを昇格します。昇格する前に、すべてのドメインコントローラーがサポートされている OS バージョンで実行されていることを確認します", "status": "machine-draft" }
+  },
+  "ADDOM-002": {
+    "name": { "value": "ドメインの機能レベル", "status": "machine-draft" },
+    "description": { "value": "Active Directory のドメインの機能レベルは、Windows Server 2016 以上である必要があります。より低い機能レベルでは、Protected Users グループの機能、認証ポリシー、最新の Kerberos アーマリングなどの重要なセキュリティ機能を使用できません", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2016 以上", "status": "machine-draft" },
+    "remediationSteps": { "value": "Active Directory ドメインと信頼 > ドメインを右クリック > ドメインの機能レベルの昇格 を使用して、ドメインの機能レベルを昇格します。まず、ドメイン内のすべての DC が互換性のある OS バージョンで実行されていることを確認します", "status": "machine-draft" }
+  },
+  "ADDOM-003": {
+    "name": { "value": "スキーマ バージョンの特定", "status": "machine-draft" },
+    "description": { "value": "AD スキーマのバージョンは文書化され、サポートされている最新のバージョンに対応している必要があります。古いスキーマでは、最新のセキュリティ機能やアプリケーションが必要とする属性が欠けている可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2022 (バージョン 88) 以降に対応するスキーマ バージョン", "status": "machine-draft" },
+    "remediationSteps": { "value": "スキーマを更新するため、最新の Windows Server インストール メディアから adprep /forestprep および adprep /domainprep を実行します。CN=Schema,CN=Configuration,DC=domain の objectVersion 属性を確認します", "status": "machine-draft" }
+  },
+  "ADDOM-004": {
+    "name": { "value": "ドメインコントローラーのインベントリ", "status": "machine-draft" },
+    "description": { "value": "すべてのドメインコントローラーは、その OS バージョン、パッチ レベル、場所とともにインベントリ化する必要があります。追跡されていないドメインコントローラーは、パッチが適用されなかったり、検出されずに侵害されたりする可能性があるため、重大なセキュリティ リスクとなります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのドメインコントローラーが、現在の OS バージョン、サイトのメンバーシップ、パッチの状態とともに文書化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Domain Controllers OU からすべての DC のコンピューターオブジェクトを照会します。各 DC が把握され、サポートされている OS で実行され、定期的なパッチを受け取っていることを確認します。不正な DC は直ちに削除または降格します", "status": "machine-draft" }
+  },
+  "ADDOM-005": {
+    "name": { "value": "ドメインコントローラー上の廃止された OS", "status": "machine-draft" },
+    "description": { "value": "サポートが終了したオペレーティングシステム (Windows Server 2012 R2 以前) で実行されているドメインコントローラーは、セキュリティ更新プログラムを受け取らず、既知のエクスプロイトに対して脆弱です。DC を侵害するとドメイン全体を制御できるため、これらは重大なインフラストラクチャ リスクとなります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのドメインコントローラーが、最新のパッチを適用した Windows Server 2019 以降で実行されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "廃止された OS バージョンで実行されている DC の移行を計画します。Windows Server 2022 で新しい DC を構築し、必要に応じて FSMO の役割を転送し、レプリケーションを行った後、古い DC を降格して廃止します。レガシー DC は積極的に標的にされているため、この修正を優先します", "status": "machine-draft" }
+  },
+  "ADDOM-006": {
+    "name": { "value": "FSMO の役割保持者の特定", "status": "machine-draft" },
+    "description": { "value": "5 つの FSMO の役割 (スキーマ マスター、ドメイン名前付けマスター、RID マスター、PDC エミュレーター、インフラストラクチャ マスター) は、文書化され、適切なドメインコントローラーに配置される必要があります。役割の配置を把握することは、災害復旧と運用上の状況認識のために不可欠です", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての FSMO の役割が文書化され、信頼性の高い DC に配置され、DR 計画に含まれている", "status": "machine-draft" },
+    "remediationSteps": { "value": "'netdom query fsmo' を実行するか、AD スキーマおよびドメイン パーティションを照会して、役割の保持者を特定します。役割を文書化し、それらが高可用性の DC 上にあることを確認します。現在の保持者が不適切な場合は、役割を転送します", "status": "machine-draft" }
+  },
+  "ADDOM-007": {
+    "name": { "value": "AD レプリケーションの正常性", "status": "machine-draft" },
+    "description": { "value": "Active Directory のレプリケーションの失敗は、セキュリティ ポリシーの適用の不整合、古い資格情報が有効なまま残ること、スプリット ブレインのシナリオにつながる可能性があります。継続的なレプリケーションの失敗は、侵害された DC や不正な DC を示している場合もあります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのドメインコントローラーが、過去 24 時間にエラーなく正常にレプリケーションを行っている", "status": "machine-draft" },
+    "remediationSteps": { "value": "'repadmin /replsummary' および 'repadmin /showrepl' を実行して、失敗を特定します。DNS の問題、ネットワーク接続の問題、または USN ロールバックの状態を調査して解決します。日常の運用の一環として、レプリケーションの状態を監視します", "status": "machine-draft" }
+  },
+  "ADDOM-008": {
+    "name": { "value": "廃棄物の有効期間の構成", "status": "machine-draft" },
+    "description": { "value": "廃棄物の有効期間は、削除されたオブジェクトが完全に削除されるまで保持される期間を定義し、DC を再構築する必要が生じるまでの最大オフライン時間を決定します。値が低すぎると、残留オブジェクト (lingering object) が発生する可能性があります。既定の 60 日は、最新の環境では 180 日に延長する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "180 日", "status": "machine-draft" },
+    "remediationSteps": { "value": "CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=domain 上の tombstoneLifetime 属性を変更します。ADSIEdit または PowerShell を使用して 180 に設定します。変更する前に、AD ごみ箱が有効になっていることを確認します", "status": "machine-draft" }
+  },
+  "ADDOM-009": {
+    "name": { "value": "AD ごみ箱の状態", "status": "machine-draft" },
+    "description": { "value": "Active Directory のごみ箱を使用すると、すべての属性を保持したまま削除されたオブジェクトを復元できます。ごみ箱がないと、誤ってまたは悪意によって削除されたオブジェクトの復元には、バックアップからの権限のある復元が必要となり、大幅なダウンタイムが発生します", "status": "machine-draft" },
+    "recommendedValue": { "value": "有効", "status": "machine-draft" },
+    "remediationSteps": { "value": "Active Directory 管理センター > ドメインを右クリック > ごみ箱の有効化 を使用するか、PowerShell で Enable-ADOptionalFeature 'Recycle Bin Feature' を実行して、AD ごみ箱を有効にします。注意: この操作は元に戻せません", "status": "machine-draft" }
+  },
+  "ADDOM-010": {
+    "name": { "value": "サイトとサブネットの構成", "status": "machine-draft" },
+    "description": { "value": "使用中のすべての IP サブネットは、AD サイトに割り当てる必要があります。サブネットとサイトのマッピングが欠けていると、クライアントが最適でない DC に対して認証を行い、WAN リンクを越えて資格情報が平文で送信され、セキュリティ体制が低下する可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての IP サブネットが適切な AD サイトにマップされ、孤立したサブネットが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "AD サイトとサービス > サブネット コンテナーを確認します。ネットワークのドキュメントと相互参照して、マップされていないサブネットを特定します。すべての運用ネットワークのサブネットオブジェクトを作成し、正しいサイトに関連付けます", "status": "machine-draft" }
+  },
+  "ADDOM-011": {
+    "name": { "value": "サイトリンクの構成", "status": "machine-draft" },
+    "description": { "value": "AD サイトリンクは、ネットワークの制約を考慮しつつタイムリーなレプリケーションを確保するため、適切なコスト、レプリケーション間隔、スケジュールで構成する必要があります。サイトリンクの構成を誤ると、セキュリティ ポリシーの伝播が遅延する可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "リンクの容量に応じて、適切なコストおよび 15 ～ 60 分のレプリケーション間隔でサイトリンクが構成されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "AD サイトとサービス > サイト間トランスポート > IP を確認します。各サイトリンクに適切なコスト値、レプリケーション間隔 (既定の 180 分はしばしば長すぎます)、スケジュールがあることを確認します。ネットワーク トポロジに基づいて調整します", "status": "machine-draft" }
+  },
+  "ADDOM-012": {
+    "name": { "value": "DNS ゾーンのセキュリティ", "status": "machine-draft" },
+    "description": { "value": "AD 統合 DNS ゾーンは、セキュリティで保護された動的更新のみを使用する必要があります。セキュリティで保護されていない更新を許可すると、攻撃者が DNS レコードを汚染したり、認証トラフィックをリダイレクトしたり、ドメインに参加しているシステムに対して中間者 (adversary-in-the-middle) 攻撃を実行したりできるようになります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての AD 統合 DNS ゾーンで、セキュリティで保護された動的更新のみを使用する", "status": "machine-draft" },
+    "remediationSteps": { "value": "DNS マネージャーを開く > 各 AD 統合ゾーンを右クリック > プロパティ > 全般 タブ > 動的更新を「セキュリティで保護のみ」に変更します。すべての前方参照ゾーンと逆引き参照ゾーンを確認します。該当する場合は DNSSEC 署名を確認します", "status": "machine-draft" }
+  },
+  "ADDOM-013": {
+    "name": { "value": "LDAP 署名の要件", "status": "machine-draft" },
+    "description": { "value": "LDAP トラフィックに対する中間者攻撃を防ぐため、すべてのドメインコントローラーで LDAP 署名を必須にする必要があります。署名がないと、攻撃者は LDAP のクエリと応答を傍受して変更でき、権限を昇格させたりデータを流出させたりする可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての DC で LDAP サーバー署名の要件が「署名を必須にする」に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "グループポリシーを介して構成します: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > ローカル ポリシー > セキュリティ オプション > 「ドメイン コントローラー: LDAP サーバー署名の要件」=「署名を必須にする」。Domain Controllers OU に適用します", "status": "machine-draft" }
+  },
+  "ADDOM-014": {
+    "name": { "value": "LDAP チャネル バインド", "status": "machine-draft" },
+    "description": { "value": "LDAP チャネル バインド トークンは、LDAP セッションを TLS チャネルに暗号的にバインドすることで、リレー攻撃を防ぎます。チャネル バインドがないと、攻撃者は LDAP 認証をリレーして不正なアクセスを取得できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのドメインコントローラーで LDAP チャネル バインドが「常に」に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべての DC で HKLM\\System\\CurrentControlSet\\Services\\NTDS\\Parameters のレジストリ値 LdapEnforceChannelBinding を 2 (常に) に設定します。まず値 1 (サポートされている場合) でテストして、互換性のないクライアントを特定します", "status": "machine-draft" }
+  },
+  "ADDOM-015": {
+    "name": { "value": "SMB 署名の要件", "status": "machine-draft" },
+    "description": { "value": "SMB トラフィックに対する中間者攻撃およびリレー攻撃を防ぐため、すべてのドメインコントローラーで SMB 署名を必須にする必要があります。SMB リレー攻撃は、ドメインコントローラー上で SYSTEM レベルのアクセスを取得するために使用され、ドメイン全体の侵害につながる可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのドメインコントローラーおよびメンバー サーバーで SMB 署名が必須になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "グループポリシーを介して構成します: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > ローカル ポリシー > セキュリティ オプション > 「Microsoft ネットワーク サーバー: 常に通信にデジタル署名する」= 有効。Domain Controllers OU およびすべてのサーバー OU に適用します", "status": "machine-draft" }
+  },
+  "ADDOM-016": {
+    "name": { "value": "NTLMv1 使用の検出", "status": "machine-draft" },
+    "description": { "value": "NTLMv1 は著しく脆弱化した認証プロトコルであり、最新のハードウェアでは数秒で解読できます。NTLMv1 は資格情報を容易なオフライン攻撃にさらすため、環境内での NTLMv1 の使用はすべて特定して排除する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "NTLMv1 認証イベントが検出されない。LAN Manager 認証レベルが NTLMv1 を拒否するように設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "グループポリシーを介して NTLM 監査を有効にします: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > ローカル ポリシー > セキュリティ オプション > 「ネットワーク セキュリティ: NTLM を制限する」の設定。イベント ログで NTLMv1 の使用を確認してアプリケーションを修正し、その後「ネットワーク セキュリティ: LAN Manager 認証レベル」を「NTLMv2 応答のみを送信します。LM と NTLM を拒否する」に設定します", "status": "machine-draft" }
+  },
+  "ADDOM-017": {
+    "name": { "value": "NTLMv2 の強制", "status": "machine-draft" },
+    "description": { "value": "LAN Manager 認証レベルは、NTLMv2 応答のみを送信し、LM および NTLMv1 を拒否するように構成する必要があります。NTLMv2 は依然として Kerberos よりも安全性は劣りますが、NTLMv1 よりは大幅に強力であり、NTLM の最低基準とすべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "LAN Manager 認証レベルが「NTLMv2 応答のみを送信します。LM と NTLM を拒否する」(レベル 5) に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "グループポリシーを介して構成します: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > ローカル ポリシー > セキュリティ オプション > 「ネットワーク セキュリティ: LAN Manager 認証レベル」=「NTLMv2 応答のみを送信します。LM と NTLM を拒否する」。強制する前に十分にテストします", "status": "machine-draft" }
+  },
+  "ADDOM-018": {
+    "name": { "value": "Null セッションの列挙", "status": "machine-draft" },
+    "description": { "value": "Active Directory への匿名 (null セッション) アクセスにより、認証されていない攻撃者がユーザー、グループ、共有、ドメイン情報を列挙できます。この偵察データは、資格情報攻撃や横方向の移動を計画するために使用されます", "status": "machine-draft" },
+    "recommendedValue": { "value": "Null セッションの列挙が無効になっている。RestrictAnonymous および RestrictAnonymousSAM が匿名アクセスを防ぐように設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "グループポリシーを介して構成します: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > ローカル ポリシー > セキュリティ オプション > 「ネットワーク アクセス: 名前付きパイプと共有への匿名アクセスを制限する」= 有効、「ネットワーク アクセス: SAM アカウントの匿名の列挙を許可しない」= 有効、「ネットワーク アクセス: SAM アカウントと共有の匿名の列挙を許可しない」= 有効 を設定します", "status": "machine-draft" }
+  },
+  "ADDOM-019": {
+    "name": { "value": "ドメインコントローラー上の印刷スプーラー", "status": "machine-draft" },
+    "description": { "value": "ドメインコントローラー上の印刷スプーラー サービスは、PrintNightmare (CVE-2021-34527) および SpoolSample/PrinterBug 攻撃を可能にします。攻撃者は DC に攻撃者が制御するサーバーへの認証を強制でき、資格情報のリレーや制約のない委任の悪用が可能になります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのドメインコントローラーで印刷スプーラー サービスが無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "グループポリシーを介して、すべてのドメインコントローラーで印刷スプーラー サービスを無効にします: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > システム サービス > Print Spooler > スタートアップ モード = 無効。Domain Controllers OU に適用します。印刷機能が DC に依存していないことを確認します", "status": "machine-draft" }
+  },
+  "ADDOM-020": {
+    "name": { "value": "DSRM パスワードの構成", "status": "machine-draft" },
+    "description": { "value": "ディレクトリ サービス復元モード (DSRM) パスワードは、回復モードで起動したときにドメインコントローラーへのローカル管理者アクセスを提供します。DSRM パスワードを知っている、物理的またはリモートのアクセスを持つ攻撃者は、AD データベース全体を抽出できます。DSRM パスワードは DC ごとに一意にし、定期的に変更する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "DSRM パスワードが DC ごとに一意であり、毎年変更され、安全に保管されている。ネットワークでの DSRM ログオンを防ぐため、DsrmAdminLogonBehavior が 0 に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "各 DC で 'ntdsutil > set dsrm password' を使用して DSRM パスワードをリセットします。DSRM アカウントがネットワーク ログオンに使用されるのを防ぐため、HKLM\\System\\CurrentControlSet\\Control\\Lsa のレジストリ値 DsrmAdminLogonBehavior を 0 に設定します。パスワードを文書化し、安全に保管します", "status": "machine-draft" }
+  }
+}

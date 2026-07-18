@@ -1,0 +1,99 @@
+{
+  "_family": "ADAclDelegationChecks.json",
+  "ADACL-001": {
+    "name": { "value": "重要オブジェクトの ACL 監査", "status": "machine-draft" },
+    "description": { "value": "重要な AD オブジェクト (ドメインルート、AdminSDHolder、スキーマ、構成、Domain Controllers OU) 上のアクセス制御リストは、不正または過剰なアクセス許可がないか監査する必要があります。これらのオブジェクトの ACL が誤って構成されていると、攻撃者が権限を昇格させたり、ディレクトリサービスを変更したり、ドメインを完全に制御したりできる可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "重要な AD オブジェクトには、既定および明示的に承認された ACE のみが存在する。変更またはフルコントロールのアクセス権を持つ予期しないプリンシパルが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-Acl または dsacls.exe を使用して、重要なオブジェクトの ACL を確認します。不正なプリンシパルに書き込み、変更、またはフルコントロールのアクセス許可を付与する既定以外の ACE を削除します。AdminSDHolder を使用して、保護されたグループに一貫した ACL を強制します。意図的なすべての委任を文書化します。", "status": "machine-draft" }
+  },
+  "ADACL-002": {
+    "name": { "value": "重要オブジェクトに対する GenericAll アクセス許可", "status": "machine-draft" },
+    "description": { "value": "GenericAll は、属性の変更、パスワードのリセット、グループメンバーシップの変更、DACL の変更を含む、AD オブジェクトに対するフルコントロールを付与します。Domain Admins、ドメインコントローラー、ドメインルートなどの重要なオブジェクトに対して GenericAll を持つ既定以外のプリンシパルは、ドメイン侵害への直接的な経路となります", "status": "machine-draft" },
+    "recommendedValue": { "value": "重要な AD オブジェクトに対して GenericAll を持つ既定以外のプリンシパルが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "PowerShell または BloodHound を使用して、重要なオブジェクトの ACL を列挙します。フルコントロールを必要としないプリンシパルの GenericAll ACE を削除します。運用上の必要性がある場合は、最小権限の委任アクセス許可に置き換えます。ディレクトリ サービスの変更監査 (Event ID 5136) を使用して、ACL の変更を監視します。", "status": "machine-draft" }
+  },
+  "ADACL-003": {
+    "name": { "value": "重要オブジェクトに対する GenericWrite アクセス許可", "status": "machine-draft" },
+    "description": { "value": "GenericWrite はオブジェクトのほとんどの属性の変更を許可し、標的型 Kerberoasting (SPN の書き込み)、リソースベースの制約付き委任 (msDS-AllowedToActOnBehalfOfOtherIdentity の書き込み)、Shadow Credentials (msDS-KeyCredentialLink の書き込み) などの攻撃を可能にします。重要なオブジェクトに対して GenericWrite を持つ既定以外のプリンシパルは、調査する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "重要な AD オブジェクトに対して GenericWrite を持つ既定以外のプリンシパルが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "ユーザー、コンピューター、グループのオブジェクトの ACL について、GenericWrite アクセス許可を監査します。不要な GenericWrite ACE を削除し、特定の属性レベルの書き込みアクセス許可に置き換えます。msDS-AllowedToActOnBehalfOfOtherIdentity、servicePrincipalName、msDS-KeyCredentialLink の各属性に対する書き込みアクセスに特に注意してください。", "status": "machine-draft" }
+  },
+  "ADACL-004": {
+    "name": { "value": "重要オブジェクトに対する WriteDACL アクセス許可", "status": "machine-draft" },
+    "description": { "value": "WriteDACL アクセス許可は、プリンシパルがオブジェクトの随意アクセス制御リストを変更することを許可し、実質的に GenericAll を含む任意のアクセス許可を自分自身または他者に割り当てる能力を付与します。これは、攻撃者がフルコントロールを直接持たなくても自分自身に付与できるようになるため、重大な権限昇格の経路です", "status": "machine-draft" },
+    "recommendedValue": { "value": "重要な AD オブジェクトに対して WriteDACL を持つ既定以外のプリンシパルが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "ドメインルート、AdminSDHolder、GPO オブジェクト、特権グループオブジェクトを含むすべての重要なオブジェクトについて、WriteDACL アクセス許可を列挙します。既定以外のプリンシパルの WriteDACL を削除します。ACL 変更の監査 (Event ID 5136) を有効にして、不正な DACL の変更を検出します。変更を定期的に確認します。", "status": "machine-draft" }
+  },
+  "ADACL-005": {
+    "name": { "value": "重要オブジェクトに対する WriteOwner アクセス許可", "status": "machine-draft" },
+    "description": { "value": "WriteOwner アクセス許可は、AD オブジェクトの所有者を変更することを許可します。オブジェクトの所有者は暗黙的に DACL を変更する能力を持つため、攻撃の観点からは WriteOwner は機能的に WriteDACL と同等です。攻撃者は所有権を取得し、その後に望む任意のアクセス許可を自分自身に付与できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "重要な AD オブジェクトに対して WriteOwner を持つ既定以外のプリンシパルが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "重要なオブジェクトの WriteOwner アクセス許可を監査します。既定以外のプリンシパルの WriteOwner ACE を削除します。オブジェクトの所有者が適切な特権アカウントであることを確認します。所有権変更の監査を有効にし、WriteOwner 操作について Event ID 4662 を監視します。", "status": "machine-draft" }
+  },
+  "ADACL-006": {
+    "name": { "value": "ForceChangePassword 権限", "status": "machine-draft" },
+    "description": { "value": "拡張権限 User-Force-Change-Password (パスワードのリセットとも呼ばれる) は、プリンシパルが現在のパスワードを知らなくても別のユーザーのパスワードをリセットすることを許可します。非特権アカウントや広範なグループに付与されると、通常の認証要件を回避する直接的なアカウント乗っ取りの経路が生じます", "status": "machine-draft" },
+    "recommendedValue": { "value": "ForceChangePassword を承認されたヘルプデスクおよび管理グループのみに限定する。非特権アカウントには付与しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "ユーザーオブジェクトに対して User-Force-Change-Password 拡張権限を持つすべてのプリンシパルを列挙します。各委任が意図的であり、適切に範囲が限定されていることを確認します。文書化された運用上の必要性を持たないプリンシパルから権限を削除します。ドメイン全体への付与ではなく、OU 単位で範囲を限定した委任を使用します。", "status": "machine-draft" }
+  },
+  "ADACL-007": {
+    "name": { "value": "広範なグループへの過剰な委任", "status": "machine-draft" },
+    "description": { "value": "Authenticated Users、Domain Users、Everyone などの広範なグループへの機密性の高いアクセス許可の委任は、侵害された任意のアカウントが委任された権限を悪用できる広い攻撃対象領域を生み出します。これは一般的な構成ミスであり、権限昇格に必要な労力を大幅に軽減してしまいます", "status": "machine-draft" },
+    "recommendedValue": { "value": "Authenticated Users、Domain Users、Everyone、その他の広範なグループに機密性の高いアクセス許可が委任されていない", "status": "machine-draft" },
+    "remediationSteps": { "value": "よく知られた広範なグループ (S-1-5-11 Authenticated Users、Domain Users、Everyone、Domain Computers) に付与された ACE がないか、すべての ACL を監査します。広範なグループへの委任を、必要なプリンシパルのみを含む特定のセキュリティグループに置き換えます。可能な限り狭い OU の範囲で委任を適用します。", "status": "machine-draft" }
+  },
+  "ADACL-008": {
+    "name": { "value": "OU 委任の分析", "status": "machine-draft" },
+    "description": { "value": "組織単位 (OU) の委任は、Active Directory で管理アクセス許可を付与する際に推奨される方法ですが、OU の委任が誤って構成されると意図しないアクセス経路が生じる可能性があります。このチェックでは、すべての OU レベルのアクセス許可委任を分析し、過度に緩やかな付与、意図した範囲設定を回避する継承されたアクセス許可、および古くなった可能性のある委任を特定します", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての OU 委任が文書化され、特定のオブジェクトの種類に範囲が限定され、最小権限のアクセス許可を使用している", "status": "machine-draft" },
+    "remediationSteps": { "value": "dsacls.exe または PowerShell を使用して、各 OU 上の既定以外のすべての ACE を確認します。委任が InheritedObjectType を使用して、特定のオブジェクトクラスにアクセス許可の範囲を限定していることを確認します。不要になった委任を削除します。意図的なすべての委任を承認マトリックスに文書化します。", "status": "machine-draft" }
+  },
+  "ADACL-009": {
+    "name": { "value": "マシンアカウントのクォータ", "status": "machine-draft" },
+    "description": { "value": "ドメインルート上の ms-DS-MachineAccountQuota 属性は、認証済みの任意のユーザーが作成できるコンピューターアカウントの数を決定します。既定値の 10 では、任意のドメインユーザーがコンピューターをドメインに参加させることができ、リソースベースの制約付き委任攻撃、リレー攻撃、その他の権限昇格手法に悪用され得るマシンアカウントを作成できてしまいます", "status": "machine-draft" },
+    "recommendedValue": { "value": "ms-DS-MachineAccountQuota を 0 に設定する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Set-ADDomain -Identity (Get-ADDomain) -Replace @{'ms-DS-MachineAccountQuota'=0} を使用して、ドメインルートで ms-DS-MachineAccountQuota を 0 に設定します。コンピューターアカウントの作成を特定の管理グループに委任するか、事前ステージングのワークフローを使用します。非管理者ユーザーによって作成された既存のコンピューターアカウントを確認します。", "status": "machine-draft" }
+  },
+  "ADACL-010": {
+    "name": { "value": "拡張権限の監査", "status": "machine-draft" },
+    "description": { "value": "Active Directory の拡張権限には、DS-Replication-Get-Changes (DCSync)、User-Force-Change-Password、DS-Replication-Get-Changes-All などの強力な操作が含まれます。これらの権限を不正に付与すると、資格情報の窃取や直接的なアカウント乗っ取りを通じてドメイン全体の侵害につながる可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "拡張権限を既定および明示的に承認されたプリンシパルに限定する。DCSync 権限はドメインコントローラーのみに付与する", "status": "machine-draft" },
+    "remediationSteps": { "value": "ドメインルートおよび重要なオブジェクト上のすべての拡張権限 ACE を列挙します。DS-Replication-Get-Changes および DS-Replication-Get-Changes-All が、ドメインコントローラーおよび承認されたレプリケーションアカウントにのみ付与されていることを確認します。既定以外の拡張権限の付与をすべて削除します。拡張権限の使用について Event ID 4662 を監視します。", "status": "machine-draft" }
+  },
+  "ADACL-011": {
+    "name": { "value": "重要オブジェクトの所有権", "status": "machine-draft" },
+    "description": { "value": "AD オブジェクトの所有者は、明示的な ACL エントリに関係なく、オブジェクトの DACL を変更する暗黙のアクセス許可を持ちます。ドメインルート、AdminSDHolder、特権グループ、GPO などの重要なオブジェクトが非特権アカウントや予期しないアカウントによって所有されている場合、それらのアカウントはフルコントロールへの隠れた経路を持つことになります", "status": "machine-draft" },
+    "recommendedValue": { "value": "重要なオブジェクトが Domain Admins、Enterprise Admins、または SYSTEM のみによって所有されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "ドメインルート、AdminSDHolder、スキーマ コンテナー、構成コンテナー、特権グループオブジェクト、GPO オブジェクトを含むすべての重要なオブジェクトの所有権を列挙します。誤って所有されているオブジェクトの所有権を、Set-Acl または ADUC のセキュリティ タブを使用して Domain Admins に移転します。所有権変更の監査を有効にします。", "status": "machine-draft" }
+  },
+  "ADACL-012": {
+    "name": { "value": "既定以外のドメインルートのアクセス許可", "status": "machine-draft" },
+    "description": { "value": "ドメインルートオブジェクトは AD 階層の最上位であり、ここで設定されたアクセス許可はディレクトリ全体に継承される可能性があります。予期しないプリンシパルに書き込み、変更、または拡張権限を付与するドメインルート上の既定以外の ACE は、ドメイン内のすべてのオブジェクトに影響を与える可能性があるため、重大なリスクとなります", "status": "machine-draft" },
+    "recommendedValue": { "value": "ドメインルートには既定の Microsoft の ACE のみが存在する。すべてのカスタム ACE が文書化され、正当性が示されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "現在のドメインルート ACL を、お使いのドメインの機能レベルの既定の ACL と比較します。既定以外の ACE を文書化し、その運用上の必要性を検証します。不要になった ACE や過剰なアクセス許可を付与する ACE を削除します。「このオブジェクトとすべての子孫オブジェクト」に適用される ACE に特に注意してください。", "status": "machine-draft" }
+  },
+  "ADACL-013": {
+    "name": { "value": "GPO リンクのアクセス許可", "status": "machine-draft" },
+    "description": { "value": "グループポリシーオブジェクトをサイト、ドメイン、または OU にリンクする能力は、どのポリシーがどのオブジェクトに適用されるかを制御します。不正な GPO リンクのアクセス許可があると、攻撃者は標的とした OU に悪意のある GPO を適用でき、対象のコンピューターにマルウェアを展開したり、セキュリティ設定を変更したり、スケジュールされたタスクを作成したりする可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "GPO リンクのアクセス許可を、承認されたグループポリシー管理者のみに制限する", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべての OU、ドメインルート、サイトオブジェクトについて、gPLink および gPOptions の書き込みアクセス許可を監査します。非管理プリンシパルから GPO リンクのアクセス許可を削除します。グループ ポリシー モデリングを使用して、現在の GPO リンクの影響を確認します。GPO のリンク操作に変更管理を実装します。", "status": "machine-draft" }
+  },
+  "ADACL-014": {
+    "name": { "value": "GPO 編集のアクセス許可", "status": "machine-draft" },
+    "description": { "value": "グループポリシーオブジェクトを編集するアクセス許可は、ドメイン全体のセキュリティ設定、ソフトウェア展開、ログオン スクリプト、スケジュールされたタスクの変更を許可します。不正な GPO 編集アクセスは、環境全体にわたる広範なコード実行や構成変更を可能にするため、攻撃者にとって価値の高い標的です", "status": "machine-draft" },
+    "recommendedValue": { "value": "GPO 編集のアクセス許可を、Group Policy Creator Owners および承認された管理者のみに制限する", "status": "machine-draft" },
+    "remediationSteps": { "value": "各 GPO のセキュリティ フィルター処理タブと委任タブを確認します。承認されたプリンシパルのみが設定の編集、削除、またはセキュリティの変更のアクセス許可を持っていることを確認します。非管理グループから GPO 編集のアクセス許可を削除します。グループ ポリシー管理コンソールを使用して、GPO のアクセス許可を体系的に監査します。", "status": "machine-draft" }
+  },
+  "ADACL-015": {
+    "name": { "value": "シャドウ管理者の検出", "status": "machine-draft" },
+    "description": { "value": "シャドウ管理者とは、ACL チェーンを介して Domain Admin と同等のアクセスへの間接的な経路を持ちながら、どの特権グループのメンバーでもないアカウントです。これらのアカウントは、AdminSDHolder による保護や従来の特権アクセス監視を回避します。たとえば、Domain Admins グループに対して WriteDACL を持つアカウントは、グループメンバーシップの監視でフラグを立てられることなく、自分自身にメンバーシップを付与できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "シャドウ管理者の経路が特定されない。すべての管理者相当のアクセスが、明示的な特権グループのメンバーシップを通じて行われる", "status": "machine-draft" },
+    "remediationSteps": { "value": "BloodHound や類似のツールを使用して、Domain Admin と同等のアクセスへの ACL ベースの攻撃経路を特定します。間接的な権限昇格の経路を生み出す不要な ACE を削除します。すべての管理アクセスが、保護されたグループのメンバーシップを通じて付与されるようにします。セキュリティ運用の一環として、定期的な攻撃経路の分析を実装します。", "status": "machine-draft" }
+  },
+  "ADACL-016": {
+    "name": { "value": "攻撃経路の列挙", "status": "machine-draft" },
+    "description": { "value": "Active Directory の攻撃経路とは、低特権アカウントからドメイン管理者へと昇格するためにたどることができる、アクセス許可、グループメンバーシップ、信頼関係の連鎖です。攻撃経路を包括的に列挙することで、中間オブジェクトを経由する複数ホップの昇格チェーンなど、個々の ACL チェックでは見逃される可能性のあるリスクを特定できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "非特権ユーザーから Tier 0 資産への実行可能な攻撃経路が存在しない。特定されたすべての経路が修正されるか、許容されたリスクとして文書化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "BloodHound などのツールを使用して攻撃経路の分析を実行します。Domain Users または Authenticated Users から Domain Admins、Enterprise Admins、Domain Controllers への最短経路に重点を置きます。各経路の最も弱いリンクを取り除くことで、特定された攻撃チェーンを断ち切ります。特別なツールや昇格されたアクセスを必要とせずに悪用できる経路を優先します。", "status": "machine-draft" }
+  }
+}

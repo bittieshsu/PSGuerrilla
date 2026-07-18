@@ -1,0 +1,117 @@
+{
+  "_family": "ADCertificateServicesChecks.json",
+  "ADCS-001": {
+    "name": { "value": "CA サーバーのインベントリ", "status": "machine-draft" },
+    "description": { "value": "環境内のすべての証明機関 (CA) サーバーのインベントリは、AD CS のセキュリティ評価の基盤となります。これには、エンタープライズ CA、スタンドアロン CA、それらの役割 (ルートまたは下位)、オペレーティングシステムのバージョン、公開された証明書テンプレートが含まれます。PKI 階層を理解することは、攻撃対象領域を特定するために不可欠です", "status": "machine-draft" },
+    "recommendedValue": { "value": "各 CA サーバーについて、CA の種類、役割、OS バージョン、公開されたテンプレートを記載した完全な CA インベントリが文書化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "AD 内の PKI 登録サービス コンテナー (CN=Enrollment Services,CN=Public Key Services,CN=Services,CN=Configuration) を照会して、すべての CA サーバーを列挙します。各 CA の種類 (エンタープライズ/スタンドアロン)、役割 (ルート/下位)、ホスト名、オペレーティングシステムのバージョン、公開された証明書テンプレートを文書化します。すべての CA サーバーがサポートされている OS バージョンで実行され、最新のパッチが適用されていることを確認します。", "status": "machine-draft" }
+  },
+  "ADCS-002": {
+    "name": { "value": "ESC1 - 登録者がサブジェクトの別名を指定", "status": "machine-draft" },
+    "description": { "value": "ESC1 は、証明書テンプレートが登録者に対して証明書要求内でのサブジェクトの別名 (SAN) の指定を許可し、クライアント認証または認証を許可する任意の EKU を持ち、低特権ユーザーによる登録を許可している場合に発生します。攻撃者は、Domain Admins を含む任意のドメインユーザーの SAN を指定した証明書を要求し、その証明書を使用してそのユーザーとして認証できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "低特権での登録を許可し、かつ認証 EKU を持つ CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT を備えた証明書テンプレートが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "msPKI-Certificate-Name-Flag に CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT (0x1) が含まれ、テンプレートがクライアント認証またはスマート カード ログオンの EKU を持ち、非管理者ユーザーに登録が許可されているテンプレートを特定します。CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT フラグを削除するか、登録のアクセス許可を特権グループに制限するか、認証 EKU を削除します。SAN の指定が運用上必要な場合は、CA マネージャーの承認を実装します。", "status": "machine-draft" }
+  },
+  "ADCS-003": {
+    "name": { "value": "ESC2 - 任意の目的の拡張キー使用法", "status": "machine-draft" },
+    "description": { "value": "ESC2 は、証明書テンプレートが任意の目的の EKU (OID 2.5.29.37.0) を指定しているか、EKU をまったく指定していない (SubCA テンプレート相当) 場合に発生します。任意の目的の EKU を持つ証明書は、クライアント認証、サーバー認証、コード署名を含む任意の目的に使用できます。登録者が制御する SAN や低い登録要件と組み合わさると、これによりドメイン侵害が可能になります", "status": "machine-draft" },
+    "recommendedValue": { "value": "低特権での登録を許可する、任意の目的の EKU または空の EKU を備えた証明書テンプレートが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "pKIExtendedKeyUsage に任意の目的の OID (2.5.29.37.0) が含まれるか、または空であり、非管理者ユーザーに登録が許可されているテンプレートを特定します。任意の目的の EKU を、必要な特定の EKU (例: クライアント認証のみ) に置き換えます。SubCA テンプレートの場合は、登録を Enterprise Admins のみに制限します。広範な EKU を持つ残りのテンプレートについては、CA マネージャーの承認を実装します。", "status": "machine-draft" }
+  },
+  "ADCS-004": {
+    "name": { "value": "ESC3 - 登録エージェント テンプレートの悪用 条件 1", "status": "machine-draft" },
+    "description": { "value": "ESC3 の条件 1 は、証明書要求エージェントの EKU (OID 1.3.6.1.4.1.311.20.2.1) を持ち、低特権ユーザーによる登録を許可する証明書テンプレートを特定します。登録エージェント証明書を保持する者は、任意のユーザーの代わりに他のテンプレートに登録でき、そこには通常 CA マネージャーの承認を必要とする認証 EKU を持つテンプレートが含まれる可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "証明書要求エージェントのテンプレートを、承認された登録エージェントのみに制限する。低特権ユーザーが登録できないようにする", "status": "machine-draft" },
+    "remediationSteps": { "value": "非管理者ユーザーによる登録を許可する、証明書要求エージェントの EKU を持つテンプレートを特定します。これらのテンプレートの登録のアクセス許可を、専用の登録エージェント セキュリティグループに制限します。CA 上で登録エージェントの制限を構成し、登録エージェントがどのテンプレートおよびどのユーザーに対して登録できるかを制限します。証明書要求エージェント証明書の発行を監視します。", "status": "machine-draft" }
+  },
+  "ADCS-005": {
+    "name": { "value": "ESC3 - 登録エージェント テンプレートの悪用 条件 2", "status": "machine-draft" },
+    "description": { "value": "ESC3 の条件 2 は、他のユーザーの代わりの登録を受け付け (登録エージェントの署名を必要とし)、認証 EKU を持つ証明書テンプレートを特定します。ESC3 の条件 1 と組み合わさると、登録エージェント証明書を取得した攻撃者は、Domain Admins を含む任意のユーザーの代わりに認証証明書を登録できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "登録エージェントの署名を必要とするテンプレートを、CA 上の登録エージェントの制限を介して特定の対象ユーザーに制限する", "status": "machine-draft" },
+    "remediationSteps": { "value": "証明書要求エージェントのアプリケーション ポリシーによる承認された署名を必要とし、クライアント認証またはスマート カード ログオンの EKU を持つテンプレートを特定します。CA 上で登録エージェントの制限を構成し、これらの登録エージェントがどのテンプレートに対して登録でき、どのユーザーの代わりに登録できるかを制限します。これは、CA のプロパティの登録エージェントの制限で構成します。", "status": "machine-draft" }
+  },
+  "ADCS-006": {
+    "name": { "value": "ESC4 - 脆弱な証明書テンプレートの ACL", "status": "machine-draft" },
+    "description": { "value": "ESC4 は、低特権ユーザーが AD 内の証明書テンプレートオブジェクトに対する書き込みアクセス許可を持ち、テンプレートの属性を変更して ESC1、ESC2、または ESC3 の状態を作り出せる場合に発生します。書き込みアクセスを持つ攻撃者は、CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT を追加したり、EKU を変更したり、登録のアクセス許可を変更したり、その他のセキュリティに関連する属性を改変したりして、証明書ベースの権限昇格を可能にできます", "status": "machine-draft" },
+    "recommendedValue": { "value": "非管理プリンシパルが証明書テンプレートオブジェクトに対する書き込みアクセス許可を持たない", "status": "machine-draft" },
+    "remediationSteps": { "value": "CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration 内のすべての証明書テンプレートオブジェクトの ACL を列挙します。非管理プリンシパルの WriteDACL、WriteOwner、WriteProperty、および GenericAll/GenericWrite の ACE を削除します。テンプレートオブジェクトへの書き込みアクセスは、Enterprise Admins および指定された PKI 管理者のみが持つべきです。証明書テンプレートオブジェクト上の ACL の変更を監視します。", "status": "machine-draft" }
+  },
+  "ADCS-007": {
+    "name": { "value": "ESC4 - 脆弱な証明書テンプレートの所有権", "status": "machine-draft" },
+    "description": { "value": "証明書テンプレートオブジェクトが非管理プリンシパルによって所有されている場合、そのプリンシパルはテンプレートの DACL を変更して自分自身に書き込みアクセスを付与し、その後テンプレートを変更して悪用可能な状態を作り出せます。テンプレートの所有権は、Enterprise Admins またはドメインの PKI 管理グループに制限する必要があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての証明書テンプレートオブジェクトが Enterprise Admins または指定された PKI 管理者によって所有されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration 内のすべての証明書テンプレートオブジェクトの所有者フィールドを確認します。誤って所有されているテンプレートの所有権を、Set-Acl または adsiedit.msc のセキュリティ タブを使用して Enterprise Admins に移転します。再発を防ぐため、非管理者アカウントがどのようにして所有者になったかを調査します。", "status": "machine-draft" }
+  },
+  "ADCS-008": {
+    "name": { "value": "ESC5 - 脆弱な PKI オブジェクトの ACL", "status": "machine-draft" },
+    "description": { "value": "ESC5 は、証明書テンプレート以外の PKI に関連する AD オブジェクト (CA サーバーの AD オブジェクト、NTAuthCertificates オブジェクト、登録サービス コンテナー、証明書テンプレート コンテナーを含む) への書き込みアクセス許可を対象とします。これらのオブジェクトへの書き込みアクセスにより、攻撃者は不正な CA を追加したり、登録設定を変更したり、悪意のあるテンプレートを公開したりできます", "status": "machine-draft" },
+    "recommendedValue": { "value": "非管理プリンシパルが PKI コンテナーオブジェクトに対する書き込みアクセス許可を持たない。書き込みアクセスを Enterprise Admins に限定する", "status": "machine-draft" },
+    "remediationSteps": { "value": "登録サービス コンテナー、AIA コンテナー、NTAuthCertificates オブジェクト、証明書テンプレート コンテナーを含む、CN=Public Key Services,CN=Services,CN=Configuration 配下のすべてのオブジェクトの ACL を監査します。非管理プリンシパルの書き込みアクセス許可を削除します。AD 内の CA コンピューターオブジェクトが、広範なグループに対する書き込みアクセス許可を持たないようにします。これらのオブジェクトについて、不正な変更がないか監視します。", "status": "machine-draft" }
+  },
+  "ADCS-009": {
+    "name": { "value": "ESC6 - EDITF_ATTRIBUTESUBJECTALTNAME2 フラグ", "status": "machine-draft" },
+    "description": { "value": "CA 上で EDITF_ATTRIBUTESUBJECTALTNAME2 フラグが有効になっている場合、テンプレートの構成に関係なく、任意の証明書要求にユーザー定義のサブジェクトの別名を含めることができます。これにより、実質的に CA 上のすべてのテンプレートが、攻撃者が特権ユーザーの SAN を指定する ESC1 型の攻撃に対して脆弱になります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての CA サーバーで EDITF_ATTRIBUTESUBJECTALTNAME2 フラグが無効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "各 CA サーバーで certutil -getreg policy\\EditFlags を使用して CA の構成を確認します。EDITF_ATTRIBUTESUBJECTALTNAME2 フラグ (0x00040000) が設定されている場合は、certutil -setreg policy\\EditFlags -EDITF_ATTRIBUTESUBJECTALTNAME2 を使用して削除します。変更後に CertSvc サービスを再起動します。過去の悪用を示す可能性のある予期しない SAN がないか、最近発行されたすべての証明書を確認します。", "status": "machine-draft" }
+  },
+  "ADCS-010": {
+    "name": { "value": "ESC7 - 脆弱な CA の ACL", "status": "machine-draft" },
+    "description": { "value": "ESC7 は、非管理プリンシパルが CA に対する ManageCA または ManageCertificates のアクセス許可を持つ場合に発生します。ManageCA では、EDITF_ATTRIBUTESUBJECTALTNAME2 の有効化 (ESC6 の状態を作り出す) を含む CA の構成の変更が可能になります。ManageCertificates では、保留中の証明書要求を承認でき、機密性の高いテンプレートに対する CA マネージャーの承認要件を回避できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "ManageCA および ManageCertificates のアクセス許可を、指定された CA 管理者のみに制限する", "status": "machine-draft" },
+    "remediationSteps": { "value": "certsrv.msc > プロパティ > セキュリティ タブ、または certutil -getacl を使用して、CA のセキュリティのアクセス許可を確認します。非管理プリンシパルから ManageCA のアクセス許可を削除します。承認された証明書マネージャーではないプリンシパルから ManageCertificates を削除します。CA 管理のアクセス許可を持つすべてのプリンシパルを文書化します。CA 管理者と証明書マネージャーの間で職務の分離を実装します。", "status": "machine-draft" }
+  },
+  "ADCS-011": {
+    "name": { "value": "ESC8 - AD CS の HTTP エンドポイントへの NTLM リレー", "status": "machine-draft" },
+    "description": { "value": "ESC8 は、NTLM 認証を受け付ける AD CS の Web 登録 (certsrv) および証明書登録サービス (CES) の HTTP エンドポイントを悪用します。攻撃者は、ドメインコントローラーや特権アカウントに認証を強制し、その NTLM 認証を CA の HTTP エンドポイントにリレーして、リレーされた ID として証明書を要求でき、ドメイン侵害につながります", "status": "machine-draft" },
+    "recommendedValue": { "value": "HTTP ベースの登録エンドポイントが存在しない。必要な場合は、認証の拡張保護 (EPA) を有効にした HTTPS を強制する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-CertificateEnrollmentService を使用し、IIS のバインドを確認して、すべての CA Web 登録エンドポイントを特定します。HTTP ベースの登録エンドポイントを無効にし、HTTPS を必須にします。NTLM リレーを防ぐため、IIS で認証の拡張保護を有効にします。あるいは、Web 登録の役割を完全に無効にし、DCOM ベースの登録インターフェイスのみを使用します。可能な場合は、CA サーバー上で NTLM 認証を無効にします。", "status": "machine-draft" }
+  },
+  "ADCS-012": {
+    "name": { "value": "ESC9 - セキュリティ拡張なし", "status": "machine-draft" },
+    "description": { "value": "ESC9 は、発行された証明書に szOID_NTDS_CA_SECURITY_EXT セキュリティ拡張が存在しないことを悪用します。この拡張がなく、StrongCertificateBindingEnforcement が 2 に設定されていない場合、(ユーザーオブジェクトに対する GenericWrite を介して) ユーザーの UPN 属性を変更できる攻撃者は、証明書を要求し、UPN を元に戻し、その証明書を使用して変更後の ID として認証できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのドメインコントローラーで StrongCertificateBindingEnforcement が 2 に設定されている。認証テンプレートに CT_FLAG_NO_SECURITY_EXTENSION が設定されていない", "status": "machine-draft" },
+    "remediationSteps": { "value": "msPKI-Enrollment-Flag に CT_FLAG_NO_SECURITY_EXTENSION (0x80000) が設定されているテンプレートがないか確認します。認証が可能なすべてのテンプレートからこのフラグを削除します。強力な証明書マッピングを強制するため、すべてのドメインコントローラーで HKLM\\SYSTEM\\CurrentControlSet\\Services\\Kdc の下のレジストリ値 StrongCertificateBindingEnforcement を 2 に設定します。強制を有効にした後、証明書ベースの認証をテストします。", "status": "machine-draft" }
+  },
+  "ADCS-013": {
+    "name": { "value": "ESC11 - 暗号化なしの RPC リレー", "status": "machine-draft" },
+    "description": { "value": "ESC11 は、CA が RPC 接続での暗号化を強制していない場合に、AD CS の RPC 登録インターフェイス (ICertPassage) を標的とします。HTTP に対する ESC8 と同様に、攻撃者は暗号化されていない RPC エンドポイントに NTLM 認証をリレーして、リレーされた ID として証明書を要求できます。これは既定の DCOM ベースの登録インターフェイスに影響します", "status": "machine-draft" },
+    "recommendedValue": { "value": "RPC の暗号化を必須にするため、すべての CA サーバーで IF_ENFORCEENCRYPTICERTREQUEST フラグが有効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "certutil -getreg CA\\InterfaceFlags を使用して CA のインターフェイス フラグを確認します。certutil -setreg CA\\InterfaceFlags +IF_ENFORCEENCRYPTICERTREQUEST を使用して IF_ENFORCEENCRYPTICERTREQUEST フラグを有効にします。CertSvc サービスを再起動します。暗号化の強制を有効にした後、ドメインに参加しているクライアントから証明書の登録が引き続き正しく機能することを確認します。", "status": "machine-draft" }
+  },
+  "ADCS-014": {
+    "name": { "value": "ESC13 - 発行ポリシー OID のグループリンク", "status": "machine-draft" },
+    "description": { "value": "ESC13 は、msDS-OIDToGroupLink 属性を介した、証明書の発行ポリシー OID と AD セキュリティグループとの間の関連付けを悪用します。証明書テンプレートがセキュリティグループにマップされる発行ポリシーを持つ場合、そのテンプレートに登録した者は誰でも、証明書ベースの認証の間、リンクされたグループのメンバーシップを実質的に取得します", "status": "machine-draft" },
+    "recommendedValue": { "value": "特権セキュリティグループにリンクされた発行ポリシー OID が存在しない。msDS-OIDToGroupLink は機密性の低いグループのみに設定する", "status": "machine-draft" },
+    "remediationSteps": { "value": "CN=OID,CN=Public Key Services,CN=Services,CN=Configuration 内のすべての OID オブジェクトについて、msDS-OIDToGroupLink 属性を照会します。特権グループ (Domain Admins、Enterprise Admins など) にリンクされている OID を特定します。機密性の高いグループにリンクされている OID から msDS-OIDToGroupLink 属性を削除します。この関連付けが運用上必要な場合は、その発行ポリシーを使用するテンプレートの登録を、承認されたプリンシパルのみに制限します。", "status": "machine-draft" }
+  },
+  "ADCS-015": {
+    "name": { "value": "ESC15 - スキーマ v1 テンプレートのアプリケーション ポリシー", "status": "machine-draft" },
+    "description": { "value": "ESC15 (EKUwu とも呼ばれる) は、証明書要求内で登録者がアプリケーション ポリシー拡張を指定できるスキーマ バージョン 1 の証明書テンプレートを悪用します。スキーマ v1 テンプレートはテンプレートのアプリケーション ポリシーを強制しないため、攻撃者はテンプレートの構成に関係なく、発行された証明書にクライアント認証やその他の任意の EKU を追加できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "低特権での登録を許可するスキーマ v1 テンプレートが公開されていない。必要なすべてのテンプレートをスキーマ v2 以降に移行する", "status": "machine-draft" },
+    "remediationSteps": { "value": "エンタープライズ CA 上で公開されているすべてのスキーマ v1 テンプレート (msPKI-Template-Schema-Version = 1) を特定します。明示的な EKU の強制を備えた v1 テンプレートに基づいて新しいテンプレートを作成することで、スキーマ v1 テンプレートをスキーマ v2 以降に移行します。残りの v1 テンプレートの登録を、管理アカウントのみに制限します。不要になった v1 テンプレートの公開を取り消します。", "status": "machine-draft" }
+  },
+  "ADCS-016": {
+    "name": { "value": "ESC16 - UPN SAN の構成ミス", "status": "machine-draft" },
+    "description": { "value": "ESC16 は、StrongCertificateBindingEnforcement が 1 (互換モード) に設定され、CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT または CT_FLAG_SUBJECT_ALT_REQUIRE_UPN を持つ証明書テンプレートが、登録者に SAN 内での UPN の設定を許可している構成ミスを悪用します。この弱いバインドにより、OID セキュリティ拡張なしに UPN のみに基づいて証明書がユーザーにマップされることが許され、なりすましが可能になります", "status": "machine-draft" },
+    "recommendedValue": { "value": "StrongCertificateBindingEnforcement が 2 に設定されている。低特権での登録で登録者が指定した UPN SAN を許可するテンプレートが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべてのドメインコントローラーで HKLM\\SYSTEM\\CurrentControlSet\\Services\\Kdc の下の StrongCertificateBindingEnforcement を 2 に設定します。登録者が指定したサブジェクトを許可する、または SAN 内での UPN を必要とするすべてのテンプレートを確認します。これらのテンプレートの登録を、承認されたプリンシパルに制限します。完全に展開する前に非互換性を特定するため、強力なバインドを強制した後に証明書ベースの認証をテストします。", "status": "machine-draft" }
+  },
+  "ADCS-017": {
+    "name": { "value": "EKEUwu - 拡張キー使用法の悪用", "status": "machine-draft" },
+    "description": { "value": "EKEUwu 攻撃は、証明書要求を通じて登録者が拡張キー使用法フィールドに影響を与えられる証明書テンプレートを標的とします。これは、EKU がテンプレートによって厳格に強制されない特定のテンプレート構成で発生し、攻撃者は認証を目的としていない証明書に認証 EKU を追加できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての証明書テンプレートがテンプレート定義の EKU を厳格に強制する。登録者が制御可能な EKU が存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべての証明書テンプレートについて、EKU の強制を確認します。EKU の強制がより堅牢なスキーマ v2 以降のテンプレートであることを確認します。EKU を厳格に定義および強制しない不要なテンプレートを削除します。証明書要求をテストして、発行された証明書の EKU がテンプレート定義と一致することを確認します。要求内の EKU を検証する CA 発行ポリシー モジュールを実装します。", "status": "machine-draft" }
+  },
+  "ADCS-018": {
+    "name": { "value": "CA の監査の構成", "status": "machine-draft" },
+    "description": { "value": "AD CS 証明機関の監査は、証明書の要求、発行、失効、CA の構成変更を含む、どの証明書関連イベントがログに記録されるかを制御します。適切な CA の監査がないと、証明書ベースの攻撃経路 (ESC1 ～ ESC16) の悪用を検出または調査できず、不正な証明書の発行が気付かれないままになります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての CA 監査カテゴリが有効になっている: 開始/停止、バックアップ/復元、証明書の発行、証明書の失効、証明書の要求、CA のセキュリティ、CA の構成変更", "status": "machine-draft" },
+    "remediationSteps": { "value": "certsrv.msc > CA のプロパティ > 監査 タブを使用して CA の監査を構成します。すべての監査カテゴリを有効にします: CA データベースのバックアップと復元、CA の構成の変更、CA のセキュリティ設定の変更、証明書要求の発行と管理、証明書の失効と CRL の公開、アーカイブされたキーの保存と取得、AD CS の開始と停止。Windows セキュリティ イベント ログに十分なサイズと保持設定があることを確認します。", "status": "machine-draft" }
+  },
+  "ADCS-019": {
+    "name": { "value": "証明書テンプレートの列挙", "status": "machine-draft" },
+    "description": { "value": "セキュリティに関連する属性を含むすべての証明書テンプレートの包括的な列挙は、ESC 脆弱性評価のベースラインとなります。これには、テンプレートのスキーマ バージョン、登録のアクセス許可、EKU の構成、名前フラグ、登録フラグ、承認された署名の要件、有効期間が含まれます。この情報は、すべての ESC 固有のチェックに利用されます", "status": "machine-draft" },
+    "recommendedValue": { "value": "セキュリティ属性を記載した完全なテンプレートインベントリが文書化されている。すべてのテンプレートが、最小権限の登録および適切な EKU について確認されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "certutil -template または PowerShell を使用して、CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration からすべての証明書テンプレートを列挙します。各テンプレートについて、表示名、スキーマ バージョン、登録のアクセス許可、EKU、名前フラグ (ENROLLEE_SUPPLIES_SUBJECT)、登録フラグ、承認された署名の要件、有効期間、更新期間を文書化します。各 CA 上の公開されたテンプレートを相互参照します。", "status": "machine-draft" }
+  }
+}
