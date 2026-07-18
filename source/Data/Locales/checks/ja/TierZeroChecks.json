@@ -1,0 +1,45 @@
+{
+  "_family": "TierZeroChecks.json",
+  "ADTIER-001": {
+    "name": { "value": "Azure AD Connect 同期アカウント (MSOL_) の監査", "status": "machine-draft" },
+    "description": { "value": "Azure AD Connect を Express モードでインストールすると、MSOL_<ランダムな 16 進数> という名前のドメイン アカウントが作成され、ドメインの名前付けコンテキストに対して Replicating Directory Changes + Replicating Directory Changes All、つまり DCSync 権限が付与されます。このアカウントは事実上 Tier-0 ですが、既定では既定の Users コンテナーに存在し、パスワードの有効期限は 10 年で、グループ メンバーシップではなく直接の ACL を介して権限を得るため、特権グループの列挙ツールにはめったに現れません。このアカウントの侵害は、機能的にはドメインの乗っ取りです", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての MSOL_ アカウントがインベントリ化され、過去 180 日以内にパスワードがローテーションされ、ログオン権限を制限した Tier-0 OU に配置され、AAD Connect サーバー自体が Tier-0 システムとして堅牢化されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "MSOL_ アカウントを特定します: Get-ADUser -Filter {sAMAccountName -like 'MSOL_*'}。DCSync 権限を持つことを確認します: dsacls 'DC=domain,DC=com' | findstr MSOL_。Tier-0 管理 OU に移動します。AAD Connect のツールを使用してパスワードをローテーションします (標準のツールでリセットしないでください: AAD Connect サーバー上の ADSync PowerShell モジュールで Add-ADSyncADDSConnectorAccount を使用します)。このアカウントが AAD Connect サーバー自体にのみローカルでログオンできるよう、ログオン制限 GPO を適用します。AAD Connect ホストを Tier-0 として扱い、誰が RDP/管理できるかを制限します", "status": "machine-draft" }
+  },
+  "ADTIER-002": {
+    "name": { "value": "特権グループ内のバックアップ ソフトウェア サービスアカウント", "status": "machine-draft" },
+    "description": { "value": "バックアップ ソフトウェア (Veeam、Commvault、Rubrik、Cohesity、NAKIVO、Backup Exec、Vembu、Acronis) は通常、非常に高いアクセス許可を持つサービスアカウントを要求します。ドキュメントはセットアップの容易さのために Domain Admin を提案することが多く、多くの管理者がそれに従います。攻撃者がバックアップ サーバー (ランサムウェアの頻繁な初期アクセス経路) を侵害すると、サービスアカウントを介して Domain Admin を継承します。これは 2023-2025 年のインシデント対応データにおける第 1 位のランサムウェア昇格経路です", "status": "machine-draft" },
+    "recommendedValue": { "value": "バックアップ ソフトウェアのサービスアカウントが、Domain Admins、Enterprise Admins、Schema Admins、または Backup Operators のメンバーでない。ベンダーが文書化した最小権限のアカウントと分離されたバックアップ資格情報を使用する", "status": "machine-draft" },
+    "remediationSteps": { "value": "使用中のバックアップ製品を特定し、その最小権限ガイドに従います (Veeam: バックアップ サーバーのローカル管理者のみ + オブジェクト読み取り権限を持つ AD アカウント。Rubrik: クラウド専用ロールの専用サービス プリンシパルなど)。バックアップ アカウントを Domain Admins から削除します。サポートされる場合は gMSA へ移行します。バックアップ サーバーをログオン権限を制限した Tier-1 OU に配置します。特定のワークロードで本当に完全な DA が必要な場合は、それを文書化し、バックアップのその部分をメインとは別の独自のアカウントに分離します", "status": "machine-draft" }
+  },
+  "ADTIER-003": {
+    "name": { "value": "特権グループ内のハイパーバイザー / 仮想化サービスアカウント", "status": "machine-draft" },
+    "description": { "value": "vCenter / Hyper-V / SCVMM / Citrix / Nutanix と AD の統合では、多くの場合セットアップ中に構成されたサービスアカウントが使用されます。そのアカウントが Domain Admin である場合、ハイパーバイザー管理プレーン (またはホストの SSO データベース) の侵害は AD へと連鎖します。ハイパーバイザーは概念的にはすでに Tier-0 であり、その AD ID もそれに一致すべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "ハイパーバイザーのサービスアカウントが、ベンダーによって文書化された権限のみを持つ (通常はインベントリのための読み取り + VM-AD 統合を使用している場合は特定の OU への書き込み)。Domain Admins に含まれない", "status": "machine-draft" },
+    "remediationSteps": { "value": "各ハイパーバイザー製品について AD サービスアカウントを確認します。ベンダーの最小権限ガイダンスを適用します。vCenter の場合: Domain Admin をマッピングするのではなく、文書化された SSO ID ソースのパターンを使用します。Hyper-V/SCVMM の場合: サービスアカウントの権限を、VM のコンピューター アカウントをホストする OU にスコープします。管理モデルにおいてハイパーバイザー管理ホストを Tier-0 として扱います", "status": "machine-draft" }
+  },
+  "ADTIER-004": {
+    "name": { "value": "特権グループ内の構成管理サービスアカウント", "status": "machine-draft" },
+    "description": { "value": "構成管理プラットフォーム (SCCM/MECM、Intune Connector、Jamf、KACE、Lansweeper、ManageEngine、Ivanti、BigFix) は、その定義からしてすべてのエンドポイントにソフトウェアをプッシュします。これらはすでに特権的な横方向移動プラットフォームです。特に SCCM には、よく知られた悪用プリミティブ (ネットワーク アクセス アカウントの露出、サイト サーバーへの NTLM 強制、クライアント プッシュ) があります。Domain Admins に含まれる構成管理サービスアカウントは、任意の管理対象エンドポイントに侵入した攻撃者にドメインの鍵を与えます", "status": "machine-draft" },
+    "recommendedValue": { "value": "構成管理サービスアカウントが、文書化された最小限の権限にスコープされ、Domain Admins / Enterprise Admins に決して含まれない。SCCM ネットワーク アクセス アカウントが非特権の専用 ID である", "status": "machine-draft" },
+    "remediationSteps": { "value": "構成管理製品を特定し、サービスアカウントの権限を確認します。SCCM の場合: ネットワーク アクセス アカウントが非特権 (Domain Admin でない) であることを確認し、サイト サーバーのマシン アカウントが Domain Admin でないことを確認し、階層のサービスアカウントを最小権限について見直します。サイト サーバーと管理ポイントを、ログオンを制限した Tier-0 OU に移動します", "status": "machine-draft" }
+  },
+  "ADTIER-005": {
+    "name": { "value": "特権グループ内の SQL / データベース サービスアカウント", "status": "machine-draft" },
+    "description": { "value": "Domain Admins 内の SQL Server / MySQL / PostgreSQL のサービスアカウントは、DBA チームが既定の『既存の AD アカウントを使用する』ガイダンスで SQL をインストールし、便宜上管理者アカウントを選んだ環境でよく見られます。データベース サーバーがネットワーク上で到達可能になると、SQL 資格情報の侵害や SQL Server の脆弱性が、攻撃者に直接 Domain Admin を与えます", "status": "machine-draft" },
+    "recommendedValue": { "value": "データベース サービスアカウントが、特権グループのメンバーシップを持たない gMSA または専用のサービス ID として実行される", "status": "machine-draft" },
+    "remediationSteps": { "value": "サポートされる場合は SQL サービスアカウントを gMSA へ移行します。ユーザー ベースのままにする必要があるアカウントについては、特権グループのメンバーシップを削除し、データベース エンジンが必要とするローカル権限のみ (サービスとしてログオン、走査チェックのバイパス、プロセスのメモリ クォータの調整: 具体的な権限は Microsoft のドキュメントを参照) を付与します", "status": "machine-draft" }
+  },
+  "ADTIER-006": {
+    "name": { "value": "専用の Tier-0 OU の外にある Tier-0 管理アカウント", "status": "machine-draft" },
+    "description": { "value": "Domain Admins が通常のユーザーと同じ OU に存在する場合、ユーザーを対象とするすべての GPO (ログオン スクリプト、ブラウザー ポリシー、マッピングされたドライブなど) は Domain Admins にも適用されます。つまり、それらの GPO を編集できる者は誰でも、次回のログオン時に Domain Admin としてコードを実行できます。Microsoft のティア モデルは、GPO の作成権限とログオン権限を制限した専用の Tier-0 管理 OU を推奨します", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての Domain Admins、Enterprise Admins、Schema Admins のメンバーが、GPO 作成権限を制限した専用の Tier-0 OU (通常は OU=Tier-0,OU=Admin) に存在する", "status": "machine-draft" },
+    "remediationSteps": { "value": "OU=Tier-0,OU=Admin が存在しない場合は作成します。Domain/Enterprise/Schema Admins のすべてのメンバーをそこに移動します。その OU の GPO 作成権限を制限します (Tier-0 管理者自身のみ)。Tier-0 アカウントが Tier-0 ホストにのみログオンできるよう、専用のログオン制限 GPO を適用します。その OU で継承をブロックします", "status": "machine-draft" }
+  },
+  "ADTIER-007": {
+    "name": { "value": "特権グループを介して対話型ログオン権限を持つサービスアカウント", "status": "machine-draft" },
+    "description": { "value": "Domain Admins のメンバーである (または既定の特権グループのメンバーシップを介して『ローカル ログオンを許可する』が付与された任意のグループの) サービスアカウントは、対話的に使用され得ます。攻撃者はこれを好みます: サービスアカウントのパスワードを取得し (Kerberoasting、レジストリ、SYSVOL 内のスクリプト)、ワークステーション上で対話的に使用し、LSASS をダンプして移動します。サービスアカウントは、それが提供するホスト以外には対話的にログオンできないようにすべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "サービスアカウント (ヒューリスティック: sAMAccountName が svc/sa/service で始まる、または SPN を持ち最近対話型ログオンがない) が、Default Domain Controllers Policy と専用の Tier-1/Tier-2 ログオン制限 GPO を介して、『ローカル ログオンを許可する』および『リモート デスクトップ サービスを使ったログオンを許可する』を明示的に拒否されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "サービスアカウントを特定します (SPN 保有、命名規則、または業務インベントリ)。Default Domain Policy GPO を適用します: コンピューターの構成 > Windows の設定 > セキュリティの設定 > ローカル ポリシー > ユーザー権利の割り当て > 「ローカル ログオンを拒否する」= <サービスアカウントのグループ>。同じアカウントを「リモート デスクトップ サービスを使ったログオンを拒否する」にも追加します。サポートされる場合 (Server 2012 R2 以降) はそれらを Protected Users に追加します", "status": "machine-draft" }
+  }
+}

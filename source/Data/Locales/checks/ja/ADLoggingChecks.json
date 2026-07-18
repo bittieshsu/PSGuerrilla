@@ -1,0 +1,45 @@
+{
+  "_family": "ADLoggingChecks.json",
+  "ADLOG-001": {
+    "name": { "value": "詳細な監査ポリシーの構成", "status": "machine-draft" },
+    "description": { "value": "従来の 9 カテゴリの監査ポリシーは、最新の調査には粗すぎます: 「アカウント ログオン イベントの監査」で何かが失敗したことは分かっても、それが Kerberos の事前認証の失敗なのか、サービスチケットの要求なのか、明示的な資格情報のパススルーなのかは分かりません。Windows は Vista 以降、詳細な監査ポリシー (60 以上のサブカテゴリ) をサポートしていますが、明示的に有効化する必要があります。Default Domain Controllers Policy の SYSVOL フォルダーに audit.csv が存在することが、ドメインが移行済みであることを示す実地の指標となります", "status": "machine-draft" },
+    "recommendedValue": { "value": "Default Domain Controllers Policy が audit.csv を配布している (コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > 高度な監査ポリシーの構成 > 監査ポリシー > <サブカテゴリ>)", "status": "machine-draft" },
+    "remediationSteps": { "value": "GPMC で Default Domain Controllers Policy を開きます。コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > 高度な監査ポリシーの構成 > 監査ポリシー に移動します。最低限次を有効にします: アカウント ログオン > Kerberos サービス チケット操作 (成功+失敗)、ログオン/ログオフ > ログオン (成功+失敗) + 特別なログオン (成功)、アカウント管理 > すべて (成功)、オブジェクト アクセス > ファイル共有 + 詳細なファイル共有 (横方向の移動を監視する場合は成功+失敗)、詳細追跡 > プロセス作成 (成功)。従来の 9 カテゴリの設定より優先されるように、セキュリティ オプションで「監査: 監査ポリシーのサブカテゴリ設定を強制する」も有効にします", "status": "machine-draft" }
+  },
+  "ADLOG-002": {
+    "name": { "value": "PowerShell スクリプト ブロック ログの有効化", "status": "machine-draft" },
+    "description": { "value": "イベント 4104 (PowerShell スクリプト ブロック ログ) は、最新の侵入を調査する上で最も有用な単一の Windows イベントです: 難読化解除後に実際に実行される PowerShell コードを、-EncodedCommand 経由で渡されたコードも含めて捕捉します。これがなければ、PowerShell ベースのランサムウェア展開を調べる調査担当者は手掛かりを失います。この設定は管理用テンプレートによって HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging\\EnableScriptBlockLogging に配布されます", "status": "machine-draft" },
+    "recommendedValue": { "value": "グループポリシー「PowerShell スクリプト ブロックのログ記録を有効にする」がドメインまたは DC OU レベルで有効になっている。レジストリ: EnableScriptBlockLogging = 1", "status": "machine-draft" },
+    "remediationSteps": { "value": "コンピューターの構成 > ポリシー > 管理用テンプレート > Windows コンポーネント > Windows PowerShell > 「PowerShell スクリプト ブロックのログ記録を有効にする」= 有効。gpupdate 後に確認します: Get-ItemProperty 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging'。「Microsoft-Windows-PowerShell/Operational」のイベントログ容量が処理量に見合うサイズであることを確認します (既定の 15 MB は高負荷時に数時間でローテーションされます)", "status": "machine-draft" }
+  },
+  "ADLOG-003": {
+    "name": { "value": "PowerShell モジュール ログの有効化", "status": "machine-draft" },
+    "description": { "value": "イベント 4103 (PowerShell モジュール ログ) は、ログ記録が構成された任意のモジュールの cmdlet/パラメーターの呼び出しを記録します。これをスクリプト ブロック ログと組み合わせると、PowerShell ベースのあらゆる攻撃に対する信頼度の高いテレメトリ基盤が得られます。この設定は管理用テンプレートによって HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging に配布されます", "status": "machine-draft" },
+    "recommendedValue": { "value": "グループポリシー「モジュールのログ記録を有効にする」が、少なくとも '*' のモジュール名リストで有効になっている。レジストリ: EnableModuleLogging = 1", "status": "machine-draft" },
+    "remediationSteps": { "value": "コンピューターの構成 > ポリシー > 管理用テンプレート > Windows コンポーネント > Windows PowerShell > 「モジュールのログ記録を有効にする」= 有効。モジュール名リストに '*' を追加する (すべてのモジュールをログ記録) か、Microsoft.PowerShell.* と環境で管理に使用するモジュールを明示的に指定します", "status": "machine-draft" }
+  },
+  "ADLOG-004": {
+    "name": { "value": "コマンド ラインを含むプロセス作成の監査", "status": "machine-draft" },
+    "description": { "value": "イベント 4688 (プロセス作成) は、横方向の移動を検知する基礎的なシグナルです: どのプロセスが誰によって起動されたかを示します。既定の 4688 イベントにはコマンド ラインが含まれておらず、そのため PowerShell、wmic、mshta、その他の環境寄生型 (living-off-the-land) バイナリが関与する調査ではほとんど役に立ちません。「プロセス作成イベントにコマンド ラインを含める」ポリシーがそのギャップを埋めます", "status": "machine-draft" },
+    "recommendedValue": { "value": "グループポリシー「プロセス作成イベントにコマンド ラインを含める」が有効であり、かつ 高度な監査ポリシーのサブカテゴリ「プロセス作成の監査」が成功に設定されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "2 つの設定が両方とも必要です: (1) コンピューターの構成 > ポリシー > 管理用テンプレート > システム > プロセス作成の監査 > 「プロセス作成イベントにコマンド ラインを含める」= 有効。(2) コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > 高度な監査ポリシーの構成 > 詳細追跡 > プロセス作成の監査 = 成功。(1) がないと 4688 イベントに NewProcessName の引数文字列が含まれません。(2) がないとイベント自体が生成されません", "status": "machine-draft" }
+  },
+  "ADLOG-005": {
+    "name": { "value": "Microsoft Defender 改ざん防止ポリシー", "status": "machine-draft" },
+    "description": { "value": "EDR が管理者の操作なしにエンドポイントから無効化できる場合、攻撃者は自らの手順の第一歩としてそれを無効にします。Defender の改ざん防止 (および最新の EDR における同等機能) はローカルでの無効化をブロックします。この検査は Defender のリアルタイム保護を管理する GPO 設定を確認します: 改ざん防止の完全な状態はクラウド (Intune/MDE ポータル) で設定されますが、GPO 側の堅牢化は SYSVOL から検証できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "Defender のリアルタイム保護をローカルユーザーが無効化できない。除外設定が厳格に管理されている (または空である)。SmartScreen 強化モードが有効になっている。改ざん防止そのものは Microsoft Defender for Endpoint のクラウドポータルで設定されるため、別経路で確認する", "status": "machine-draft" },
+    "remediationSteps": { "value": "MDE ポータルで: 設定 > エンドポイント > 高度な機能 > 改ざん防止 = オン (すべてのデバイスに適用)。GPO で: コンピューターの構成 > ポリシー > 管理用テンプレート > Windows コンポーネント > Microsoft Defender ウイルス対策 > 「Microsoft Defender ウイルス対策を無効にする」= 無効 (そうです、二重否定です: これは「Defender の無効化を許可しない」という意味です)。さらに: > リアルタイム保護 > 「リアルタイム保護を無効にする」= 無効。除外設定のサブキーを慎重に確認します: そこに記載された各エントリは攻撃者が見つける穴です", "status": "machine-draft" }
+  },
+  "ADLOG-006": {
+    "name": { "value": "Windows イベント転送 (WEF) サブスクリプション マネージャー", "status": "machine-draft" },
+    "description": { "value": "生成元ホスト上にのみ存在するログは、攻撃者がそのホストを消去した後のローカルディスクとちょうど同じ程度にしか役に立ちません。Windows イベント転送は、書き込みの時点でログをホスト外のコレクターに送出します。すべてのエンドポイントをコレクターに向ける SubscriptionManager GPO がなければ、WEF は機能しません", "status": "machine-draft" },
+    "recommendedValue": { "value": "グループポリシー「対象サブスクリプション マネージャーの構成」がワークステーションとサーバーに設定され、WEF コレクターを指している", "status": "machine-draft" },
+    "remediationSteps": { "value": "コンピューターの構成 > ポリシー > 管理用テンプレート > Windows コンポーネント > イベント転送 > 「対象サブスクリプション マネージャーの構成」= 有効。値: Server=http://wec-server.domain.tld:5985/wsman/SubscriptionManager/WEC,Refresh=60。関心のあるイベント (4624、4625、4688、4768、4769、4104、1102 など) に対する xpath クエリを用いてコレクター上でサブスクリプションを構成します。WEF コレクターがない場合は、まずこれから着手すべきプロジェクトです。同じテレメトリを得るための完全な SIEM エージェント展開よりも、ほとんどの場合安価です", "status": "machine-draft" }
+  },
+  "ADLOG-007": {
+    "name": { "value": "Sysmon 展開の指標", "status": "machine-draft" },
+    "description": { "value": "Sysmon (System Monitor、Sysinternals 提供) は、Windows のネイティブログでは十分にカバーされないイベント (プロセス作成時のファイルハッシュ、プロセスごとのネットワーク接続、DLL のロード、レジストリの監視、名前付きパイプ) について、事実上の標準となるエンドポイントテレメトリソースです。カーネルモードのドライバーとして動作します。SYSVOL のみから「Sysmon がインストールされている」ことを GPO 側で検出することはできません: 指標となるのは Sysmon 構成 GPO の存在、またはそれを展開するスタートアップ スクリプトの存在です。この検査は警告 (WARN) を発し、監査担当者に別経路での確認を求めます", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sysmon が展開 GPO または構成管理によるプッシュを通じてワークステーションとサーバーにインストールされており、環境に合わせて調整された構成 (SwiftOnSecurity、Olaf Hartong、またはベンダー提供のベースライン) が適用されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "GPO のスタートアップ スクリプトまたは構成管理プラットフォームを介して Sysmon (https://download.sysinternals.com/files/Sysmon.zip) を展開します。出発点としてコミュニティのベースライン (SwiftOnSecurity/sysmon-config または Olaf Hartong/sysmon-modular) を使用します。代表的なホスト群に対して Get-CimInstance Win32_Service -Filter \"Name='Sysmon64'\" を実行して展開を確認するか、WEF コレクターで「Microsoft-Windows-Sysmon/Operational」イベントを照会します", "status": "machine-draft" }
+  }
+}

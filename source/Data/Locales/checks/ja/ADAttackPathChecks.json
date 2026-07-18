@@ -1,0 +1,15 @@
+{
+  "_family": "ADAttackPathChecks.json",
+  "ADPATH-001": {
+    "name": { "value": "Tier-0 への昇格経路", "status": "machine-draft" },
+    "description": { "value": "収集された ACL および特権グループのデータから導出し、Tier-0 オブジェクト (ドメインルート、AdminSDHolder、Domain Controllers OU、および GPO / Configuration / Schema コンテナー) に対する既定以外の制御を権限昇格の経路 (PATH) としてモデル化し、それぞれが可能にする具体的な乗っ取り手法を報告します。これらのオブジェクトのいずれかに対して GenericAll / WriteDacl / WriteOwner / レプリケーション権限を保持する既定以外のプリンシパルは、Domain Admin 相当への 1 ホップ経路となります。また、Tier-0 グループ内にネストされた既定以外のグループを昇格の起点として検出します: そのようなグループを制御する、またはそこへ追加されると、当該 Tier-0 グループの特権が付与されます。ドメイン全体にわたる完全な推移的制御チェーンの計算 (低特権ユーザーが GenericWrite/AddMember のエッジ連鎖を経て Domain Admins に至る) には全ドメインの ACL 収集が必要であり、これは別途のロードマップ項目です", "status": "machine-draft" },
+    "recommendedValue": { "value": "Tier-0 オブジェクトを制御する既定以外のプリンシパルが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "報告された各経路について、対象オブジェクトの DACL から攻撃者が制御可能な ACE を削除するか (Active Directory ユーザーとコンピューター > 詳細セキュリティ、または Set-Acl)、それを付与しているグループからプリンシパルを削除します。ドメインルート、AdminSDHolder、Domain Controllers OU、および Policies/Configuration/Schema コンテナーに対して GenericAll/WriteDacl/WriteOwner またはレプリケーション権限を保持できるのは Tier-0 管理者のみとします", "status": "machine-draft" }
+  },
+  "ADPATH-002": {
+    "name": { "value": "Tier-0 への推移的昇格チェーン", "status": "machine-draft" },
+    "description": { "value": "制御 (GenericAll / WriteDacl / WriteOwner / AddMember) とグループメンバーシップのエッジを推移的にたどることで、Tier-0 へのマルチホップ (MULTI-HOP) 権限昇格チェーンを計算します。例: HelpDesk --[WriteDacl]--> CORP-Admins --[MemberOf]--> Domain Admins。ADPATH-001 (シングルホップ) を補完し、任意の長さのエッジを連鎖させてプリンシパルごとに最短経路を報告します。チェーンの深さ (DEPTH) は ACL 収集のカバレッジによって制限されます: 現在の 6 つの重要オブジェクトの収集ではほとんどのチェーンが 1 ホップであるため、この検査は今日では通常クリーンとなります。全ドメイン ACL コレクター (ロードマップ、ライブ環境限定) が任意のオブジェクトに対する制御エッジを投入し、低特権から Domain Admin に至る深いチェーンを明らかにします。エンジン自体は任意の深さで連鎖します (BFS による最短経路、循環対応)", "status": "machine-draft" },
+    "recommendedValue": { "value": "非特権プリンシパルを Tier-0 へ導く推移的制御チェーンが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "各チェーンについて、最も弱いリンクを断ち切ります: 最初のホップにある攻撃者が制御可能な ACE (非特権プリンシパルによるチェーン内の次のオブジェクトに対する制御) を削除するか、Tier-0 グループからネストされたグループを削除します。再実行してチェーンが切断されたことを確認します", "status": "machine-draft" }
+  }
+}

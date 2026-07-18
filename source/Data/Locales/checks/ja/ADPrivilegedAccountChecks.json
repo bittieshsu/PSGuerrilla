@@ -1,0 +1,183 @@
+{
+  "_family": "ADPrivilegedAccountChecks.json",
+  "ADPRIV-001": {
+    "name": { "value": "Domain Admins の列挙", "status": "machine-draft" },
+    "description": { "value": "Domain Admins グループは、すべてのドメイン参加システムに対する完全な管理制御を提供します。メンバーシップは厳格に制限し、各メンバーには文書化された業務上の正当性が必要です。過剰なメンバーシップは、資格情報の窃取と横方向の移動に対する攻撃対象領域を劇的に増大させます", "status": "machine-draft" },
+    "recommendedValue": { "value": "最小限のメンバーシップ (理想的には最大 2 ～ 3 アカウント) とし、各メンバーに文書化された正当性がある。日常業務用のユーザーアカウントを含めない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Domain Admins' -Recursive を使用して、ネストされたグループを含む Domain Admins のメンバーシップを列挙します。各メンバーの業務上の必要性を確認します。不要なメンバーを削除し、委任された管理モデルへ移行します。通常のユーザーアカウントがメンバーになっていないことを確認します", "status": "machine-draft" }
+  },
+  "ADPRIV-002": {
+    "name": { "value": "Enterprise Admins の列挙", "status": "machine-draft" },
+    "description": { "value": "Enterprise Admins グループは、すべてのドメインにわたるフォレスト全体の管理特権を持ちます。このグループは通常運用時は空であるべきで、フォレストレベルの変更のために一時的にのみメンバーを追加すべきです。Enterprise Admin アカウントが侵害されると、フォレスト全体の完全な侵害につながります", "status": "machine-draft" },
+    "recommendedValue": { "value": "通常運用時は空である。フォレストレベルの変更のために、文書化された承認のもとで一時的にのみメンバーを追加する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Enterprise Admins' -Recursive を使用して Enterprise Admins のメンバーシップを列挙します。すべての恒久的なメンバーを削除します。完全な監査ログを伴い、メンバーを一時的に追加・削除する Just-In-Time アクセスのプロセスをフォレストレベルの操作向けに実装します", "status": "machine-draft" }
+  },
+  "ADPRIV-003": {
+    "name": { "value": "Schema Admins の列挙", "status": "machine-draft" },
+    "description": { "value": "Schema Admins グループは AD スキーマを変更でき、これは不可逆でフォレスト全体に影響します。スキーマの変更はまれで影響が大きいため、このグループは通常運用時は空であるべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "通常運用時は空である。変更管理の承認のもとで、スキーマ変更のために一時的にのみメンバーを追加する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Schema Admins' を使用して Schema Admins のメンバーシップを列挙します。すべての恒久的なメンバーを削除します。正式な変更管理プロセスを通じてスキーマ変更が必要な場合にのみメンバーを追加します", "status": "machine-draft" }
+  },
+  "ADPRIV-004": {
+    "name": { "value": "Account Operators の列挙", "status": "machine-draft" },
+    "description": { "value": "Account Operators は、特権 OU 内でのアカウント作成を含め、ドメイン内のほとんどのユーザーおよびグループアカウントを作成・変更できます。このグループはしばしば見落とされますが、重大な権限昇格の可能性をもたらします", "status": "machine-draft" },
+    "recommendedValue": { "value": "空である。Account Operators グループのメンバーシップの代わりに、委任された OU レベルのアクセス許可を使用する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Account Operators' を使用して Account Operators のメンバーシップを列挙します。すべてのメンバーを削除し、Active Directory の制御の委任ウィザードを使用した OU スコープの委任に置き換えます。委任されたすべてのアクセス許可を文書化します", "status": "machine-draft" }
+  },
+  "ADPRIV-005": {
+    "name": { "value": "Server Operators の列挙", "status": "machine-draft" },
+    "description": { "value": "Server Operators は、ドメインコントローラーへのログオン、サービスの管理、共有リソースの変更ができます。このグループは、サービスを操作して任意のコードを SYSTEM として実行させることで、DC 上での権限昇格に悪用され得ます", "status": "machine-draft" },
+    "recommendedValue": { "value": "空である。代わりに、特定の委任を伴う専用のサービス管理アカウントを使用する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Server Operators' を使用して Server Operators のメンバーシップを列挙します。すべてのメンバーを削除し、必要なサーバー管理タスクについては的を絞った委任を実装します。DC のログオン権限は別途監査します", "status": "machine-draft" }
+  },
+  "ADPRIV-006": {
+    "name": { "value": "Backup Operators の列挙", "status": "machine-draft" },
+    "description": { "value": "Backup Operators は、AD データベース (ntds.dit) を含め、ドメインコントローラー上のファイルをバックアップおよび復元できます。これによりドメイン内のすべてのパスワード ハッシュの抽出が可能になり、Backup Operators のメンバーシップは、熟練した攻撃者にとって Domain Admin アクセスと同等になります", "status": "machine-draft" },
+    "recommendedValue": { "value": "空である、または専用のバックアップ サービスアカウントのみに制限する。ユーザーアカウントを含めない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Backup Operators' を使用して Backup Operators のメンバーシップを列挙します。すべてのユーザーアカウントを削除します。バックアップ サービスアカウントがメンバーシップを必要とする場合は、それらが専用であり、強力なパスワードを持ち、監視されていることを確認します。Backup Operators のメンバーシップを必要としないエージェントベースのバックアップ ソリューションを検討します", "status": "machine-draft" }
+  },
+  "ADPRIV-007": {
+    "name": { "value": "Print Operators の列挙", "status": "machine-draft" },
+    "description": { "value": "Print Operators は、ドメインコントローラー上でプリンターを管理し、プリンター ドライバーをロードできます。悪意のあるプリンター ドライバーは DC 上で任意のコードを SYSTEM として実行でき、完全なドメイン侵害への経路を提供します", "status": "machine-draft" },
+    "recommendedValue": { "value": "空である。ドメインコントローラーではなく専用のプリント サーバーを使用してプリンターを管理する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Print Operators' を使用して Print Operators のメンバーシップを列挙します。すべてのメンバーを削除します。ドメインコントローラーではなく専用のメンバー サーバーに印刷サービスを展開します。グループ ポリシーを通じてプリンター ドライバーのインストールを制限します", "status": "machine-draft" }
+  },
+  "ADPRIV-008": {
+    "name": { "value": "DnsAdmins グループのメンバーシップ", "status": "machine-draft" },
+    "description": { "value": "DnsAdmins グループのメンバーは、ドメインコントローラー上の DNS サービスを構成して任意の DLL をロードさせることができ、それは SYSTEM として実行されます。この著名な権限昇格経路は、一見低特権に見えるグループのメンバーシップから完全なドメイン侵害につながり得ます", "status": "machine-draft" },
+    "recommendedValue": { "value": "空である、または専用の DNS 管理アカウントのみに制限する。メンバーシップを Tier 0 特権として扱う", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'DnsAdmins' を使用して DnsAdmins のメンバーシップを列挙します。不要なメンバーを削除します。ティアリングモデルにおいて DnsAdmins を Tier 0 特権グループとして扱います。DNS サーバー構成および ServerLevelPluginDll レジストリ値への変更を監視します", "status": "machine-draft" }
+  },
+  "ADPRIV-009": {
+    "name": { "value": "ネストされたグループ メンバーシップの分析", "status": "machine-draft" },
+    "description": { "value": "ネストされたグループ メンバーシップは、特権アクセスをグループのネストの連鎖の背後に隠すことで、実効的な特権を分かりにくくします。ユーザーは、単純なグループの列挙では見えない深くネストされたグループを通じて、Domain Admin 相当のアクセスを持っている場合があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "特権グループへのすべてのネストされた経路を文書化する。最大ネスト深度は 2 レベル。循環ネストが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Recursive を使用して、すべての特権グループのメンバーシップを再帰的に列挙します。すべてのネストの経路をマッピングし、間接的なメンバーシップを通じて特権を得るユーザーを特定します。不要なネストをフラット化し、残りのネストされた経路をすべて業務上の正当性とともに文書化します", "status": "machine-draft" }
+  },
+  "ADPRIV-010": {
+    "name": { "value": "パスワードを無期限にする特権ユーザー", "status": "machine-draft" },
+    "description": { "value": "「パスワードを無期限にする」フラグが設定された特権アカウントは、パスワードのローテーション ポリシーから免除されます。そのようなアカウントが侵害されると、パスワードが変更を強制されることがないため、攻撃者は永続的なアクセスを無期限に保持します", "status": "machine-draft" },
+    "recommendedValue": { "value": "パスワードを無期限にするフラグが設定された特権アカウントが存在しない。すべての特権アカウントが 60 日以下のパスワード ローテーション ポリシーの対象となっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {PasswordNeverExpires -eq $true -and AdminCount -eq 1} を使用して、PasswordNeverExpires を持つ特権アカウントを特定します。フラグをクリアし、これらのアカウントが適切なパスワード ポリシーの対象となるようにします。最長 60 日のパスワード有効期間を持つ特権アカウント向けの FGPP を実装します", "status": "machine-draft" }
+  },
+  "ADPRIV-011": {
+    "name": { "value": "パスワードを必要としない特権ユーザー", "status": "machine-draft" },
+    "description": { "value": "PASSWD_NOTREQD フラグは、アカウントが空白のパスワードを持つことを許可し、パスワード ポリシーを完全に回避します。特権アカウントでは、これは高度に特権化されたリソースへの認証なしアクセスを許すため、致命的です", "status": "machine-draft" },
+    "recommendedValue": { "value": "PASSWD_NOTREQD フラグが設定された特権アカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {PasswordNotRequired -eq $true -and AdminCount -eq 1} を使用してアカウントを特定します。特定したすべてのアカウントについて、PASSWD_NOTREQD フラグを直ちにクリアし、強力なパスワードを設定します。このフラグがどのように設定されたかを調査します。侵害を示している可能性があります", "status": "machine-draft" }
+  },
+  "ADPRIV-012": {
+    "name": { "value": "Kerberos 事前認証がない特権ユーザー", "status": "machine-draft" },
+    "description": { "value": "Kerberos 事前認証が無効になっているアカウントは AS-REP Roasting に対して脆弱です。攻撃者は認証なしにオフラインで暗号化データを要求し、それを解読してアカウントのパスワードを回復できます。特権アカウントでは、これはドメイン侵害への直接的な経路を提供します", "status": "machine-draft" },
+    "recommendedValue": { "value": "「Kerberos 事前認証を必要としない」フラグが設定された特権アカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true -and AdminCount -eq 1} を使用してアカウントを特定します。すべての特権アカウントで Kerberos 事前認証を直ちに有効にします。影響を受けたアカウントは AS-REP Roasting によってすでに侵害されている可能性があるため、パスワードをローテーションします", "status": "machine-draft" }
+  },
+  "ADPRIV-013": {
+    "name": { "value": "可逆的暗号化を使用する特権ユーザー", "status": "machine-draft" },
+    "description": { "value": "「暗号化を元に戻せる状態でパスワードを保存する」が有効になっているアカウントは、平文に復号できる形式でパスワードを保存します。これはパスワードを平文で保存するのと同等であり、AD データベースにアクセスできる攻撃者が実際のパスワードを取得できてしまいます", "status": "machine-draft" },
+    "recommendedValue": { "value": "可逆的暗号化が有効なアカウントが存在しない、特に特権アカウントには存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true -and AdminCount -eq 1} を使用してアカウントを特定します。フラグをクリアし、影響を受けたすべてのアカウントで直ちにパスワード変更を強制します。可逆的暗号化を必要としないよう、パスワード ポリシーを見直します", "status": "machine-draft" }
+  },
+  "ADPRIV-014": {
+    "name": { "value": "DES のみの Kerberos を使用する特権ユーザー", "status": "machine-draft" },
+    "description": { "value": "DES のみの Kerberos 暗号化を使用するように構成されたアカウントは、暗号学的に破られたアルゴリズムを使用しています。DES キーは急速に総当たり解読でき、攻撃者は影響を受けたアカウントの Kerberos チケットを偽造または復号できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "「このアカウントに Kerberos DES 暗号化の種類を使う」フラグが設定されたアカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {UseDESKeyOnly -eq $true -and AdminCount -eq 1} を使用してアカウントを特定します。DES のみのフラグをクリアし、アカウントが AES256 暗号化をサポートすることを確認します。新しい AES ベースの Kerberos キーを生成するため、影響を受けたアカウントのパスワードをローテーションします", "status": "machine-draft" }
+  },
+  "ADPRIV-015": {
+    "name": { "value": "MFA の指標がない特権アカウント", "status": "machine-draft" },
+    "description": { "value": "特権アカウントは、すべての対話型およびリモートのログオンについて多要素認証で保護すべきです。MFA がないと、盗まれたパスワードだけで完全なドメイン管理アクセスを得るのに十分です", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての特権アカウントが、スマート カード、Windows Hello for Business、または FIDO2 を介した MFA の使用を要求される。該当する場合は「対話型ログオンにはスマート カードが必要」フラグを設定する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {SmartcardLogonRequired -eq $false -and AdminCount -eq 1} を使用して、スマート カード ログオン要件について特権アカウントを確認します。すべての特権アカウントにスマート カードまたは Windows Hello for Business 認証を展開します。Tier 0 アカウントで「対話型ログオンにはスマート カードが必要」フラグを有効にします", "status": "machine-draft" }
+  },
+  "ADPRIV-016": {
+    "name": { "value": "脆弱なパスワードを持つ特権アカウント", "status": "machine-draft" },
+    "description": { "value": "脆弱な、またはよく使われるパスワードを持つ特権アカウントは、パスワード スプレー、辞書攻撃、または資格情報スタッフィングによって容易に侵害されます。Domain Admin アカウントの脆弱なパスワードは、数分以内に完全なドメイン侵害につながり得ます", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての特権アカウントのパスワードが最小 25 文字を満たし、一般的なパスワード辞書に見つからない", "status": "machine-draft" },
+    "remediationSteps": { "value": "NT ハッシュを既知の脆弱なパスワード リストと比較して (DSInternals などのツールを使用)、特権アカウントのパスワード強度をテストします。脆弱なパスワードを持つアカウントには直ちにパスワード変更を強制します。特権アカウントに 25 文字以上のパスワードを要求する FGPP を実装します", "status": "machine-draft" }
+  },
+  "ADPRIV-017": {
+    "name": { "value": "古いパスワードを持つ特権アカウント", "status": "machine-draft" },
+    "description": { "value": "90 日以上変更されていないパスワードを持つ特権アカウントは、露出の窓が拡大しています。資格情報が侵害された場合、パスワードが変更されないままの期間全体にわたって攻撃者はアクセスを保持します", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての特権アカウントのパスワードが過去 60 日以内に変更されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {AdminCount -eq 1} -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -lt (Get-Date).AddDays(-90)} を使用して、古いパスワードを持つ特権アカウントを特定します。特定したすべてのアカウントでパスワードのローテーションを強制します。特権アカウント向けに最長 60 日のパスワード有効期間を持つ FGPP を実装します", "status": "machine-draft" }
+  },
+  "ADPRIV-018": {
+    "name": { "value": "一度もログインしていない特権アカウント", "status": "machine-draft" },
+    "description": { "value": "一度もログインしていない特権アカウントは、割り当てられたまま使われなかったアカウント、テストアカウント、または移行の残存物である可能性があります。特権グループ内のこれらの管理されていないアカウントは、既定または脆弱なパスワードを持つ可能性があるため、重大なリスクとなります", "status": "machine-draft" },
+    "recommendedValue": { "value": "LastLogonTimestamp が null の特権アカウントが存在しない。すべての特権アカウントが、割り当てられた所有者によって実際に使用されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {AdminCount -eq 1} -Properties LastLogonTimestamp | Where-Object {$_.LastLogonTimestamp -eq $null} を使用して、一度もログインしていない特権アカウントを特定します。各アカウントを調査して必要かどうかを判断します。不要なアカウントを無効化するか、特権グループから削除します", "status": "machine-draft" }
+  },
+  "ADPRIV-019": {
+    "name": { "value": "特権グループ内の無効なアカウント", "status": "machine-draft" },
+    "description": { "value": "特権グループに残る無効なアカウントは、アカウントの再有効化 (意図的または侵害による) が直ちに完全な特権アクセスを付与するため、リスクを生みます。無効なアカウントはすべての特権グループから削除すべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "いずれの特権グループにも無効なアカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember 'Domain Admins' -Recursive | Get-ADUser | Where-Object {$_.Enabled -eq $false} を使用して、特権グループ内の無効なアカウントを特定します。すべての特権グループについて繰り返します。すべての特権グループのメンバーシップから無効なアカウントを直ちに削除します", "status": "machine-draft" }
+  },
+  "ADPRIV-020": {
+    "name": { "value": "AdminSDHolder 保護オブジェクトの監査", "status": "machine-draft" },
+    "description": { "value": "AdminSDHolder は、SDProp を介して 60 分ごとに保護オブジェクト (特権ユーザーとグループ) の ACL を上書きするセキュリティの仕組みです。AdminSDHolder の ACL への変更はすべての保護オブジェクトに伝播するため、これは永続化のための価値の高い標的となります。AdminSDHolder 上の権限のない ACE は、すべての特権アカウントへのバックドア アクセスを付与します", "status": "machine-draft" },
+    "recommendedValue": { "value": "AdminSDHolder の ACL が既定のエントリのみを含み、権限のない、または予期しない ACE が存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ACL または ADSIEdit を使用して、CN=AdminSDHolder,CN=System,DC=domain の AdminSDHolder の ACL を確認します。文書化されたベースラインと比較します。既定以外の ACE を直ちに削除します。継続的なセキュリティ監視の一環として AdminSDHolder への変更を監視します", "status": "machine-draft" }
+  },
+  "ADPRIV-021": {
+    "name": { "value": "AdminCount の孤立", "status": "machine-draft" },
+    "description": { "value": "オブジェクトが保護グループから削除されると、AdminCount 属性は 1 のままとなり、継承されたアクセス許可はブロックされたままになります。これらの「AdminCount 孤立」はアクセス許可の継承が壊れており、セキュリティ ポリシーが正しく適用されるのを妨げたり、権限昇格を隠したりする可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "いずれの保護グループのメンバーでもない、AdminCount=1 のアカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {AdminCount -eq 1} を使用して孤立したアカウントを特定し、現在の保護グループのメンバーシップと相互参照します。孤立したものについては、AdminCount 属性をクリアし、オブジェクトの ACL で継承を再度有効にします。PowerShell または ADSIEdit を使用して継承されたアクセス許可を修正します", "status": "machine-draft" }
+  },
+  "ADPRIV-022": {
+    "name": { "value": "krbtgt パスワードの経過期間", "status": "machine-draft" },
+    "description": { "value": "krbtgt アカウントのパスワードは、ドメイン内のすべての Kerberos チケットの暗号化と署名に使用されます。侵害されると、攻撃者は任意のリソースへの無制限のアクセスを任意の期間付与する Golden Ticket を作成できます。krbtgt パスワードは少なくとも 180 日ごと、および侵害が疑われた場合は直ちにローテーションすべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "krbtgt パスワードが過去 180 日以内に変更されている。侵害が疑われた後は 2 回ローテーションしている (既存のすべてのチケットを無効にするため)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser krbtgt -Properties PasswordLastSet を使用して krbtgt パスワードの経過期間を確認します。既存のすべてのチケットを無効にするため、パスワードを 2 回リセットします (レプリケーションが完了するのに十分な時間をリセットの間に空けます)。Microsoft の krbtgt リセット スクリプトを使用して安全にローテーションを実行します。180 日ごとの定期的なローテーションをスケジュールします", "status": "machine-draft" }
+  },
+  "ADPRIV-023": {
+    "name": { "value": "krbtgt アカウントの露出評価", "status": "machine-draft" },
+    "description": { "value": "krbtgt アカウントの構成は、サポートされる暗号化の種類、委任設定、SPN などの露出指標について評価すべきです。構成の誤りはいずれも、Golden Ticket やその他の Kerberos ベースの攻撃のリスクを高めます", "status": "machine-draft" },
+    "recommendedValue": { "value": "krbtgt アカウントが AES256 暗号化のみで構成されており、委任がなく、既定の kadmin/changepw を超える追加の SPN がない", "status": "machine-draft" },
+    "remediationSteps": { "value": "msDS-SupportedEncryptionTypes、委任設定、SPN を含む krbtgt アカウントのプロパティを確認します。AES256 が主要な暗号化の種類であることを確認します。委任フラグが設定されていないことを検証します。侵害や構成の誤りを示す可能性のある予期しない SPN を確認します", "status": "machine-draft" }
+  },
+  "ADPRIV-024": {
+    "name": { "value": "特権グループ内のサービスアカウント", "status": "machine-draft" },
+    "description": { "value": "特権グループ内のサービスアカウントは、通常パスワードが無期限であり、管理者間で共有され、スクリプトや構成ファイルに格納されている可能性があり、資格情報が収集され得る複数のサーバー上で実行されるため、高いリスクをもたらします", "status": "machine-draft" },
+    "recommendedValue": { "value": "特権グループ内にサービスアカウントが存在しない。サービスアカウントは、最小限の必要なアクセスにスコープされた委任アクセス許可を使用すべきである", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべてのメンバーを確認し、サービスのログオン ID として使用されるアカウントを確認して、特権グループ内のサービスアカウントを特定します。サービスアカウントを特権グループから削除し、委任を介して必要な特定のアクセス許可のみを付与します。可能な場合は Group Managed Service Account (gMSA) へ移行します", "status": "machine-draft" }
+  },
+  "ADPRIV-025": {
+    "name": { "value": "特権グループ内のコンピューター アカウント", "status": "machine-draft" },
+    "description": { "value": "特権グループ内のコンピューター アカウントは、それらのコンピューター上で SYSTEM として実行される任意のプロセスにグループの特権を付与します。そのようなマシンを侵害した攻撃者は Domain Admin 相当のアクセスを得て、横方向の移動の攻撃対象領域を大幅に拡大します", "status": "machine-draft" },
+    "recommendedValue": { "value": "いずれの特権グループにもコンピューター アカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember 'Domain Admins' | Where-Object {$_.objectClass -eq 'computer'} を使用して、特権グループのメンバーを列挙し、コンピューター アカウントを特定します。すべての特権グループについて繰り返します。コンピューター アカウントを直ちに削除し、なぜ追加されたのかを調査します", "status": "machine-draft" }
+  },
+  "ADPRIV-026": {
+    "name": { "value": "DC 上でのローカル ログオンを持つ特権ユーザー", "status": "machine-draft" },
+    "description": { "value": "ドメインコントローラーへのローカル ログオンを許可すべきなのは、指定された Tier 0 管理アカウントのみです。Tier 0 以外のアカウントに DC へのログオンを許可すると、安全性の低いワークステーション上での資格情報収集攻撃に特権資格情報がさらされます", "status": "machine-draft" },
+    "recommendedValue": { "value": "DC へのローカル ログオンは Domain Admins および指定された Tier 0 アカウントのみに許可される。Domain Controllers OU の GPO を介して「ローカル ログオンを許可する」を制限する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Domain Controllers OU に適用されるグループ ポリシーを介して構成します: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > ローカル ポリシー > ユーザー権利の割り当て > 「ローカル ログオンを許可する」= Administrators、Domain Admins のみ。他のすべてのエントリを削除し、十分にテストします", "status": "machine-draft" }
+  },
+  "ADPRIV-027": {
+    "name": { "value": "DC 上での RDP を持つ特権ユーザー", "status": "machine-draft" },
+    "description": { "value": "ドメインコントローラーへのリモート デスクトップ アクセスは、指定された Tier 0 管理者に厳格に制限すべきです。RDP セッションは収集され得る資格情報をキャッシュし、過剰な RDP アクセスは資格情報の窃取と DC への横方向の移動に対する攻撃対象領域を増大させます", "status": "machine-draft" },
+    "recommendedValue": { "value": "DC への RDP アクセスは、指定された Tier 0 管理アカウントのみに許可される。GPO を介して「リモート デスクトップ サービスを使ったログオンを許可する」を制限する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Domain Controllers OU に適用されるグループ ポリシーを介して構成します: コンピューターの構成 > ポリシー > Windows の設定 > セキュリティの設定 > ローカル ポリシー > ユーザー権利の割り当て > 「リモート デスクトップ サービスを使ったログオンを許可する」= Administrators のみ。RDP セッションには Remote Credential Guard または Restricted Admin モードの使用を検討します", "status": "machine-draft" }
+  },
+  "ADPRIV-028": {
+    "name": { "value": "DCSync 権限を持つユーザー", "status": "machine-draft" },
+    "description": { "value": "DCSync は、すべてのユーザーハッシュを含むパスワードデータの Active Directory からのレプリケーションを可能にします。「ディレクトリ変更のすべてのレプリケーション」および「ディレクトリ変更のレプリケーション」権限を持つアカウントは、DC に触れることなくドメイン内のすべてのパスワード ハッシュを抽出できます。これらの権限を持つべきなのは、ドメインコントローラーのコンピューター アカウントと既定の管理者アカウントのみです", "status": "machine-draft" },
+    "recommendedValue": { "value": "ドメインコントローラーのコンピューター アカウントと既定の管理者アカウントのみがレプリケーション権限を持つ。追加のユーザーやグループに DCSync アクセス許可が付与されていない", "status": "machine-draft" },
+    "remediationSteps": { "value": "(Get-ACL 'AD:\\DC=domain,DC=com').Access | Where-Object {$_.ObjectType -match '1131f6a[a-d]'} を使用して、「ディレクトリ変更のレプリケーション」および「ディレクトリ変更のすべてのレプリケーション」についてドメインルートの ACL を監査します。権限のないエントリを直ちに削除します。権限のないアカウントがすでに DCSync を実行していないかを調査します", "status": "machine-draft" }
+  },
+  "ADPRIV-029": {
+    "name": { "value": "Protected Users グループの監査", "status": "machine-draft" },
+    "description": { "value": "Protected Users セキュリティ グループは、NTLM 認証の無効化、AES Kerberos 暗号化の強制、資格情報のキャッシュの防止、短い TGT 有効期間の設定など、堅牢化された認証保護を提供します。すべての Tier 0 特権アカウントがメンバーであるべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての Tier 0 特権ユーザーアカウントが Protected Users グループのメンバーである", "status": "machine-draft" },
+    "remediationSteps": { "value": "Add-ADGroupMember -Identity 'Protected Users' -Members <account> を使用して、すべての Tier 0 アカウントを Protected Users グループに追加します。Protected Users は NTLM と資格情報の委任を無効にし、レガシー アプリケーションが動作しなくなる可能性があるため、各アカウントを最初にテストします。注: サービスアカウントとコンピューター アカウントは追加すべきではありません", "status": "machine-draft" }
+  },
+  "ADPRIV-030": {
+    "name": { "value": "Protected Users に含まれない特権ユーザー", "status": "machine-draft" },
+    "description": { "value": "Protected Users グループのメンバーでない特権アカウントは、堅牢化された認証保護を欠いており、NTLM リレー、資格情報のキャッシュ、長寿命の Kerberos チケットなどの資格情報窃取手法に対して脆弱なままです。対象となるすべての特権アカウントを保護すべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "対象となるすべての特権ユーザーアカウントが Protected Users グループに登録されている。例外は補完的な制御とともに文書化する", "status": "machine-draft" },
+    "remediationSteps": { "value": "特権グループのメンバーを Protected Users のメンバーシップと比較します。Protected Users に含まれていない各特権アカウントについて、互換性 (NTLM 依存関係、委任要件) を評価し、グループに追加します。例外はいずれも、具体的な技術的理由と補完的な制御とともに文書化します", "status": "machine-draft" }
+  }
+}

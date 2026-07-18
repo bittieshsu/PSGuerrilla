@@ -1,0 +1,69 @@
+{
+  "_family": "ADStaleObjectChecks.json",
+  "ADSTALE-001": {
+    "name": { "value": "非アクティブなユーザーアカウント", "status": "machine-draft" },
+    "description": { "value": "長期間使用されていないユーザーアカウントは、不要な攻撃対象領域を表します。非アクティブなアカウントは依然として有効な資格情報とグループ メンバーシップを持っている可能性があり、アクティブなユーザーに紐づくアラートを発生させることなく、忘れられた、または共有された資格情報を侵害できる攻撃者にとって魅力的な標的となります。90 日を超えて非アクティブなアカウントは確認して無効化すべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "90 日を超えて非アクティブな有効なユーザーアカウントが存在しない。非アクティブなアカウントは無効化または削除されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Search-ADAccount -AccountInactive -TimeSpan 90 -UsersOnly を使用して、lastLogonTimestamp が 90 日より古く、アカウントが有効なユーザーアカウントを照会します。対処する前にアカウントの所有者または管理者と確認します。まず非アクティブなアカウントを無効化し、引き取り手がなければ 30 日の猶予期間の後に削除します。無効化したアカウントをすべてのセキュリティ グループから削除します。自動化されたライフサイクル管理を実装します", "status": "machine-draft" }
+  },
+  "ADSTALE-002": {
+    "name": { "value": "非アクティブなコンピューター アカウント", "status": "machine-draft" },
+    "description": { "value": "長期間ドメインに認証していないコンピューター アカウントは、廃止された、再イメージングされた、またはオフラインのシステムを示します。これらの古いコンピューター アカウントはマシンの資格情報とグループ メンバーシップを保持しており、マシン アカウントのパスワードを回復またはリセットできる攻撃者は、そのコンピューターとして認証し、リソースにアクセスしたり Kerberos 委任攻撃を実行したりできる可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "90 日を超えて非アクティブな有効なコンピューター アカウントが存在しない。非アクティブなアカウントは無効化または削除されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Search-ADAccount -AccountInactive -TimeSpan 90 -ComputersOnly を使用して、lastLogonTimestamp が 90 日より古いコンピューター アカウントを照会します。資産管理システムと相互参照して廃止状況を確認します。古いコンピューター アカウントを無効化し、Disabled Computers OU に移動します。システムが再接続しない場合は 60 日の猶予期間の後に削除します。無効化時にセキュリティ グループから削除します", "status": "machine-draft" }
+  },
+  "ADSTALE-003": {
+    "name": { "value": "グループ メンバーシップを持つ無効なアカウント", "status": "machine-draft" },
+    "description": { "value": "セキュリティ グループのメンバーシップを保持する無効なユーザーおよびコンピューター アカウントは、グループベースのアクセス制御の評価に引き続き現れ、アクセス レビューに混乱を生じ得ます。無効なアカウントは認証できませんが、そのグループ メンバーシップはアカウントが再有効化されると復元される可能性があり、保持されたメンバーシップはグループのサイズを水増しし、最小権限の分析を複雑にします", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての無効なアカウントが Domain Users を除くすべてのセキュリティ グループから削除されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {Enabled -eq $false} -Properties MemberOf を使用して、既定以外のグループ メンバーシップを持つ無効なアカウントを特定します。無効なアカウントからすべてのセキュリティ グループ メンバーシップ (プライマリ グループを除く) を削除します。アカウントが無効化されるとグループ メンバーシップを取り除く自動化ワークフローを実装します。アカウントの割り当て解除プロセスにグループ メンバーシップのクリーンアップを含めます", "status": "machine-draft" }
+  },
+  "ADSTALE-004": {
+    "name": { "value": "無効化されていない期限切れパスワード", "status": "machine-draft" },
+    "description": { "value": "最長パスワード有効期間を超過しているが有効なままのパスワードを持つアカウントは、積極的に管理されていないアカウントを示している可能性があります。これらのアカウントは、過去の侵害や資格情報ダンプから得られた資格情報で侵害されている可能性があり、長期間変更されていないパスワードはオフラインの総当たり攻撃の窓を拡大します", "status": "machine-draft" },
+    "recommendedValue": { "value": "文書化されたサービスアカウントとして明示的に免除されている場合を除き、最長パスワード有効期間ポリシーより古いパスワードを持つアカウントが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter * -Properties PasswordLastSet,PasswordNeverExpires を使用して、PasswordLastSet が最長パスワード有効期間より古いアカウントを照会します。文書化されたサービスアカウントである PasswordNeverExpires のアカウントを除外します。期限切れパスワードを持つアカウントについて、次回ログオン時のパスワード リセットを強制します。通知後に引き取り手のないアカウントを無効化します。PasswordNeverExpires の免除を毎年見直します", "status": "machine-draft" }
+  },
+  "ADSTALE-005": {
+    "name": { "value": "旧式 OS のコンピューター", "status": "machine-draft" },
+    "description": { "value": "セキュリティ更新プログラムをもはや受け取っていない旧式のオペレーティング システム (Windows XP、Windows Server 2003、Windows Vista、Windows Server 2008) を実行するドメイン参加コンピューターは、高リスクの資産を表します。これらのシステムは、攻撃者に実際に悪用される既知の未修正の脆弱性を含んでおり、Credential Guard や LAPS などの最新のセキュリティ制御をサポートできません", "status": "machine-draft" },
+    "recommendedValue": { "value": "ドメインに参加している Windows XP、Server 2003、Vista、Server 2008 を実行するコンピューターが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "operatingSystem 属性でコンピューター アカウントを照会し、旧式の OS バージョンを特定します。特定したシステムが lastLogonTimestamp と ping テストを使用して依然としてアクティブであることを確認します。旧式システムをアップグレードまたは置換する移行計画を作成します。直ちにアップグレードできないシステムについては、VLAN とファイアウォール ルールを使用したネットワーク分離を実装します。廃止が確認されたシステムのコンピューター アカウントを無効化します", "status": "machine-draft" }
+  },
+  "ADSTALE-006": {
+    "name": { "value": "サポートされていない OS バージョン", "status": "machine-draft" },
+    "description": { "value": "サポート終了日を過ぎたオペレーティング システム (Windows 7、Windows 8.1、Windows Server 2008 R2、Windows Server 2012/R2) を実行するドメイン参加コンピューターは、定期的なセキュリティ パッチをもはや受け取りません。一部は拡張セキュリティ更新プログラムが利用可能かもしれませんが、これらのシステムは高いリスクを呈するため、特定・追跡し、サポートされるプラットフォームへの移行を優先すべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "文書化された移行計画を伴う拡張セキュリティ更新プログラムの対象でない限り、サポート終了のオペレーティング システムを実行するコンピューターが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "operatingSystem 属性でコンピューター アカウントを照会し、サポート終了の OS バージョンを特定します。どのシステムが拡張セキュリティ更新プログラム (ESU) の対象かを判断します。サポートされていないすべてのシステムについて移行スケジュールを作成します。直ちにアップグレードできないシステムについては補完的な制御を実装します: ネットワーク セグメンテーション、強化された監視、制限されたサービス アクセス。移行スケジュールに対する進捗を追跡します", "status": "machine-draft" }
+  },
+  "ADSTALE-007": {
+    "name": { "value": "孤立した外部セキュリティ プリンシパル", "status": "machine-draft" },
+    "description": { "value": "外部セキュリティ プリンシパル (FSP) は、トラストを介して外部ドメインのユーザーまたはグループがローカル ドメイン グループに追加されたときに ForeignSecurityPrincipals コンテナー内に作成されるプレースホルダー オブジェクトです。孤立した FSP は、もはや存在しない信頼済みドメインの SID や削除されたアカウントを参照しており、グループ メンバーシップ内で解決不能な SID となってアクセス制御を煩雑にし、監査を複雑にします", "status": "machine-draft" },
+    "recommendedValue": { "value": "解決不能な SID を持つ孤立した外部セキュリティ プリンシパルがドメイン内に存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "CN=ForeignSecurityPrincipals 内のすべてのオブジェクトを列挙し、対応するトラストを使用して各 SID を名前に解決しようと試みます。SID を解決できない FSP (トラストが削除された、またはアカウントが削除された) を特定します。孤立した FSP をすべてのグループ メンバーシップから削除します。孤立した FSP オブジェクトを削除します。残りの FSP について、トラスト関係と参照されるアカウントが依然として有効であることを確認します", "status": "machine-draft" }
+  },
+  "ADSTALE-008": {
+    "name": { "value": "孤立した SID 履歴", "status": "machine-draft" },
+    "description": { "value": "SID 履歴は、ドメイン移行中にソース ドメインのリソースへのアクセスを保持するために使用されます。移行完了後は、権限昇格に悪用され得るため、SID 履歴のエントリを削除すべきです。存在しないドメインや削除されたアカウントを参照する孤立した SID 履歴エントリは正当な利益をもたらさず、トラスト境界を越えた SID インジェクション攻撃のリスクを高めます", "status": "machine-draft" },
+    "recommendedValue": { "value": "存在しないドメインを参照する SID 履歴エントリが存在しない。移行完了後に SID 履歴がクリーンアップされている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {SIDHistory -like '*'} -Properties SIDHistory を使用して、SID 履歴を持つすべてのユーザーおよびグループ アカウントを照会します。各 SID 履歴のドメイン コンポーネントを既存のトラストと相互参照して、孤立したエントリを特定します。完了した移行の SID 履歴エントリを、-Remove パラメーター付きの Remove-ADUser または Netdom trust /CleanupSIDHistory を使用して削除します。Event ID 4765 を使用して新しい SID 履歴の追加を監視します", "status": "machine-draft" }
+  },
+  "ADSTALE-009": {
+    "name": { "value": "放置された OU", "status": "machine-draft" },
+    "description": { "value": "もはや目的を果たさない空の、またはほぼ空の組織単位は、AD 構造に複雑さを加え、グループ ポリシーの分析を複雑にし、もはや監視されていない委任アクセス許可を持っている可能性があります。過去の組織再編や廃止されたプロジェクトから放置された OU は、管理者を混乱させ、GPO リンク攻撃の潜在的な標的を生み出す可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "文書化された目的のない空の OU が存在しない。OU 構造が現在の組織要件を反映している", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべての OU を列挙し、その子オブジェクトを数えます。オブジェクトがゼロまたはごくわずかの OU を特定します。OU の説明と関連文書を確認して、その OU が将来の使用のために計画されているかを判断します。放置された OU から委任アクセス許可を削除します。GPO リンク、スクリプト、または自動化から参照されていないことを確認した後、文書化された目的のない空の OU を削除します。OU 構造の文書を更新します", "status": "machine-draft" }
+  },
+  "ADSTALE-010": {
+    "name": { "value": "プリンター オブジェクト", "status": "machine-draft" },
+    "description": { "value": "Active Directory に公開されたプリンター オブジェクトは、偵察に使用され得るプリンターの共有パスとサーバー名を露出します。PrintNightmare 脆弱性ファミリー (CVE-2021-34527 および関連) は、プリンター関連のオブジェクトと構成がリモート コード実行に悪用され得ることを実証しました。廃止されたプリント サーバーを参照する古いプリンター オブジェクトは、誤解を招く情報と不要な攻撃対象領域を提供します", "status": "machine-draft" },
+    "recommendedValue": { "value": "アクティブで管理されたプリンター オブジェクトのみが AD に公開されている。古いプリンター オブジェクトは削除されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADObject -Filter {objectClass -eq 'printQueue'} を使用して、AD 内のすべての printQueue オブジェクトを列挙します。各プリンター オブジェクトが、アクティブでアクセス可能なプリント サーバーとプリンターを参照していることを確認します。廃止されたプリンターまたはプリント サーバーのプリンター オブジェクトを削除します。AD でのプリンター公開が環境に必要かどうかを見直します。プリント サーバーが PrintNightmare 脆弱性に対してパッチ適用されていることを確認します", "status": "machine-draft" }
+  },
+  "ADSTALE-011": {
+    "name": { "value": "DNS レコードの陳腐化", "status": "machine-draft" },
+    "description": { "value": "Active Directory 統合 DNS ゾーン内の古い DNS レコードは、元のホストにもはや割り当てられていない IP アドレスを指します。攻撃者はこれらの放棄された IP アドレスを取得し、元のホスト宛てのトラフィックを傍受でき、中間者攻撃、資格情報収集、サービスのなりすましを可能にします。古いレコードを自動的にクリーンアップするため、DNS スカベンジングを有効にすべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "適切な非更新間隔と更新間隔で DNS スカベンジングが有効になっている。30 日を超える古い DNS レコードが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "DNS サーバーのプロパティおよび各 AD 統合 DNS ゾーンで DNS スカベンジングを有効にします。非更新間隔を 7 日、更新間隔を 7 日に構成します。少なくとも 1 台の DNS サーバーでスカベンジング期間を設定します。最初のスカベンジング実行の前に、古い DNS レコードを手動で確認し、除外すべき重要な静的レコードを特定します。スカベンジングすべきでないレコードを静的としてマークします", "status": "machine-draft" }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "_family": "ADTrustChecks.json",
+  "ADTRUST-001": {
+    "name": { "value": "トラスト関係の列挙", "status": "machine-draft" },
+    "description": { "value": "認証境界の全体像を確立するため、すべてのトラスト関係をインベントリ化すべきです。文書化されていないトラストは、外部ドメインのユーザーがリソースにアクセスすることを許すことで攻撃対象領域を拡大します", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのトラスト関係を、業務上の正当性、方向、種類、所有者とともに文書化する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADTrust -Filter * を実行してすべてのトラストを列挙します。各トラストを、その方向、種類 (フォレスト、外部、ショートカット、レルム)、推移性、業務上の正当性とともに文書化します。もはや業務上の必要がないトラストを確認して削除します", "status": "machine-draft" }
+  },
+  "ADTRUST-002": {
+    "name": { "value": "トラスト方向の分析", "status": "machine-draft" },
+    "description": { "value": "受信トラストは、外部ドメインのユーザーが自ドメインに認証することを許します。各受信または双方向のトラストは、信頼済みドメインが適切なセキュリティ制御を維持していることを確認するために見直すべきです。侵害された信頼済みドメインは、自環境を攻撃するために使用され得ます", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのトラスト方向が正当化され文書化されている。攻撃対象領域を減らすため、可能な場合は双方向トラストを一方向に変換する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADTrust -Filter * を使用して各トラスト方向を確認します。双方向トラストについては、両方向が必要かどうかを評価します。業務上の必要が一方向のみを要する場合は一方向トラストに変換します。すべての受信トラスト経路の正当性を文書化します", "status": "machine-draft" }
+  },
+  "ADTRUST-003": {
+    "name": { "value": "トラスト推移性の分析", "status": "machine-draft" },
+    "description": { "value": "推移的トラストは、直接のトラスト パートナーを超えて認証経路を拡張し、信頼済みドメインの連鎖を通じて意図しないアクセス経路を生み出す可能性があります。各推移的トラストは、それが生み出す拡張された攻撃対象領域について評価すべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての推移的トラストを、完全な推移性経路の分析とともに文書化する。推移性が不要な場合はフォレスト トラストより外部トラストを優先する", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべての推移的トラスト経路をマッピングして、間接的な認証ルートを特定します。フォレスト トラストについては、すべての子ドメインが推移的に信頼されることを理解します。特定のドメイン アクセスのみが必要な場合は、外部 (非推移的) トラストの使用を検討します", "status": "machine-draft" }
+  },
+  "ADTRUST-004": {
+    "name": { "value": "SID フィルタリングの状態", "status": "machine-draft" },
+    "description": { "value": "SID フィルタリングは、認証トークンから外部ドメインの SID を削除し、SID 履歴インジェクション攻撃を防ぎます。SID フィルタリングがないと、信頼済みドメインを侵害した攻撃者は、自ドメインの特権 SID (Enterprise Admins など) を含むチケットを細工し、完全な侵害を達成できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての外部トラストおよびフォレスト トラストで SID フィルタリング (検疫) が有効になっている", "status": "machine-draft" },
+    "remediationSteps": { "value": "'netdom trust /domain:trusted.domain /Quarantine' を使用して SID フィルタリングの状態を確認します。'netdom trust /domain:trusted.domain /Quarantine:Yes' で SID フィルタリングを有効にします。注: SID フィルタリングは外部トラストでは既定で有効ですが、意図的に無効化されている可能性のあるフォレスト トラストでは確認する必要があります", "status": "machine-draft" }
+  },
+  "ADTRUST-005": {
+    "name": { "value": "SID 履歴悪用の検出", "status": "machine-draft" },
+    "description": { "value": "SID 履歴はドメイン移行を意図したものですが、トラスト境界を越えてユーザー トークンに特権 SID を注入するために悪用され得ます。信頼済みドメインを侵害した攻撃者は、制御する任意のアカウントの SID 履歴に Enterprise Admin または Domain Admin の SID を追加できます", "status": "machine-draft" },
+    "recommendedValue": { "value": "特権グループを参照する SID 履歴の値を持つアカウントが存在しない。すべての移行完了後に SID 履歴がクリーンアップされている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {SIDHistory -like '*'} -Properties SIDHistory を使用して SID 履歴を持つアカウントを検索します。特権グループ (Domain Admins、Enterprise Admins など) を参照する SID 履歴エントリを特定します。移行後は SIDHistory パラメーター付きの Remove-ADUser を使用して SID 履歴をクリーンアップします。トラストで SID フィルタリングを有効にします", "status": "machine-draft" }
+  },
+  "ADTRUST-006": {
+    "name": { "value": "選択的認証の状態", "status": "machine-draft" },
+    "description": { "value": "選択的認証は、各リソースに明示的なアクセス許可を要求することで、信頼済みドメインのどのユーザーが自ドメインのリソースに認証できるかを制限します。これがないと、信頼済みドメインのすべての認証済みユーザーが、アクセス許可を持つ任意のリソースにアクセスでき、攻撃対象領域を大幅に拡大します", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのフォレスト トラストで選択的認証が有効になっている。「認証を許可する」アクセス許可が必要なリソースにのみ付与されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Active Directory ドメインとトラスト > トラストのプロパティ > 認証タブ > 「選択的認証」を選択 を介して、フォレスト トラストで選択的認証を有効にします。次に、外部ユーザーがアクセスする必要のある特定のコンピューター オブジェクトに「認証を許可する」アクセス許可を付与します", "status": "machine-draft" }
+  },
+  "ADTRUST-007": {
+    "name": { "value": "Azure AD ハイブリッド トラストのセキュリティ", "status": "machine-draft" },
+    "description": { "value": "オンプレミス AD を Azure AD と接続するハイブリッド ID 構成は、追加の攻撃経路を生み出します。Azure AD Connect、パススルー認証エージェント、フェデレーション サービスは、クラウドとオンプレミス環境の間を移動する起点として標的にされ得ます", "status": "machine-draft" },
+    "recommendedValue": { "value": "Azure AD Connect が、堅牢化された専用サーバー上で最新バージョンを実行している。PTA/フェデレーションより PHS が優先されている。不要な場合はシームレス SSO が無効になっている。クラウド専用の緊急アクセス用アカウントが構成されている", "status": "machine-draft" },
+    "remediationSteps": { "value": "Azure AD Connect の構成を確認し、Tier 0 の堅牢化されたサーバー上で実行されていることを確認します。攻撃対象領域を減らすため、フェデレーションまたは PTA からパスワード ハッシュ同期 (PHS) への切り替えを評価します。シームレス SSO を使用している場合は、AZUREADSSOACC コンピューター アカウントのパスワードがローテーションされていることを確認します。クラウド専用の緊急アクセス用アカウントが存在することを確認します", "status": "machine-draft" }
+  },
+  "ADTRUST-008": {
+    "name": { "value": "外部ドメイン トラストの列挙", "status": "machine-draft" },
+    "description": { "value": "組織外のドメインとのトラストは、セキュリティ基準が異なる可能性のあるエンティティにまでセキュリティ境界を拡張します。信頼する側の組織は外部ドメインのセキュリティ態勢を制御できないため、外部ドメイン トラストはより一層の精査を受けるべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての外部ドメイン トラストを、外部セキュリティ評価、契約上のセキュリティ要件、年次レビューとともに文書化する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADTrust -Filter * を使用して組織外のドメインとのトラストを特定します。各外部トラストについて、セキュリティ契約が結ばれており、SID フィルタリングが有効で、選択的認証が構成され、トラストが毎年見直されていることを確認します", "status": "machine-draft" }
+  },
+  "ADTRUST-009": {
+    "name": { "value": "孤立したトラストの検出", "status": "machine-draft" },
+    "description": { "value": "孤立したトラストは、もはや存在しない、または到達できないドメインを参照します。これらの古いトラスト オブジェクトは資格情報を保持している可能性があり、セキュリティ監査中に混乱を生じます。不要な攻撃対象領域を減らし、クリーンなトラスト トポロジを維持するため、削除すべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "孤立した、または解決不能なトラスト関係が存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべてのトラストを列挙し、信頼済みドメイン名を解決して 'netdom trust /verify' でトラストをテストすることで、各トラストを検証しようと試みます。パートナー ドメインがもはや存在しない、または到達できない孤立したトラストを、'netdom trust /Remove' または Active Directory ドメインとトラストを使用して削除します", "status": "machine-draft" }
+  },
+  "ADTRUST-010": {
+    "name": { "value": "トラスト キーの経過期間とローテーション", "status": "machine-draft" },
+    "description": { "value": "トラスト パスワード (レルム間キー) は定期的にローテーションすべきです。古いトラスト キーは、資格情報ベースの攻撃の窓を拡大します。既定では、トラスト パスワードは 30 日ごとにローテーションされますが、ローテーションの失敗が気づかれないままになり得るため、これを確認すべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "トラスト パスワードが過去 30 日以内にローテーションされている。自動トラスト パスワード ローテーションが無効化されていない", "status": "machine-draft" },
+    "remediationSteps": { "value": "trustAuthOutgoing 属性を調べる、または 'netdom trust /domain:trusted.domain /verify' を実行して、トラスト パスワードの最終設定日を確認します。トラスト パスワードが古い場合は、'netdom trust /domain:trusted.domain /Reset' を使用してリセットします。自動トラスト パスワード ローテーションを無効化する GPO やレジストリ設定がないことを確認します", "status": "machine-draft" }
+  },
+  "ADTRUST-011": {
+    "name": { "value": "トラスト階層の可視化", "status": "machine-draft" },
+    "description": { "value": "すべてのトラスト関係、方向、種類、推移性経路を示す完全なトラスト トポロジ マップを維持すべきです。この可視化は、認証境界の全体像を理解し、予期しないアクセス経路を特定するために不可欠です", "status": "machine-draft" },
+    "recommendedValue": { "value": "最新のトラスト トポロジ図を維持し、四半期ごとに見直す", "status": "machine-draft" },
+    "remediationSteps": { "value": "自動化ツールを使用するか手動で、方向、種類、推移性、SID フィルタリングの状態、選択的認証の状態を含むすべてのトラスト関係を文書化して、トラスト トポロジ マップを生成します。トラストが追加、変更、または削除されるたびに図を更新します。このマップをセキュリティ文書に含め、四半期ごとに見直します", "status": "machine-draft" }
+  }
+}

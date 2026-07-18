@@ -1,0 +1,69 @@
+{
+  "_family": "ADLogonScriptChecks.json",
+  "ADSCRIPT-001": {
+    "name": { "value": "NETLOGON 共有のアクセス許可", "status": "machine-draft" },
+    "description": { "value": "NETLOGON 共有には、ユーザーのログオン時にすべてのドメイン参加システム上で実行されるログオン スクリプトが格納されています。NETLOGON の NTFS または共有のアクセス許可が過度に緩いと、認証済みユーザーであれば誰でもスクリプトを変更でき、広範囲にわたるコード実行が可能になります。書き込みアクセスを持つべきなのは Domain Admins と承認された管理者のみです", "status": "machine-draft" },
+    "recommendedValue": { "value": "NETLOGON 共有: Authenticated Users は読み取りのみ。書き込みアクセスは Domain Admins および承認された GPO 管理者に限定する", "status": "machine-draft" },
+    "remediationSteps": { "value": "各ドメインコントローラー上で NETLOGON フォルダー (通常は %SystemRoot%\\SYSVOL\\sysvol\\<domain>\\Scripts) の NTFS アクセス許可を確認します。非管理者グループの書き込み、変更、フル コントロールのアクセス許可を削除します。共有のアクセス許可が NTFS アクセス許可と一致していることを確認します。DFSR レプリケーションを介して、すべてのドメインコントローラーでアクセス許可が一貫していることを確認します", "status": "machine-draft" }
+  },
+  "ADSCRIPT-002": {
+    "name": { "value": "SYSVOL 共有のアクセス許可", "status": "machine-draft" },
+    "description": { "value": "SYSVOL 共有には、すべてのドメイン参加システムに適用されるグループポリシー テンプレート、スクリプト、構成ファイルが含まれています。SYSVOL のアクセス許可が正しくないと、権限のないユーザーがグループポリシー設定を変更したり、悪意のあるスクリプトを展開したり、ドメイン全体に影響するセキュリティ構成を改ざんしたりできてしまう可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "SYSVOL 共有: Authenticated Users は読み取りのみ。書き込みアクセスは Domain Admins および SYSTEM に限定する", "status": "machine-draft" },
+    "remediationSteps": { "value": "各ドメインコントローラー上で SYSVOL フォルダーツリーの NTFS アクセス許可を監査します。SYSVOL のルートフォルダーは Authenticated Users に読み取りと実行を付与すべきです。GPO のサブフォルダーは、AD 内の対応する GPC オブジェクトに定義されたアクセス許可と一致すべきです。dcdiag /test:sysvolcheck を実行してアクセス許可の問題を特定します。必要に応じて icacls を使用してアクセス許可をリセットします", "status": "machine-draft" }
+  },
+  "ADSCRIPT-003": {
+    "name": { "value": "ログオン スクリプトのインベントリ", "status": "machine-draft" },
+    "description": { "value": "ユーザーアカウントが参照するすべてのログオン スクリプト (scriptPath 属性)、グループポリシーのログオン/ログオフ スクリプト、およびスタートアップ/シャットダウン スクリプトのインベントリは、環境内で自動的に実行されるすべてのコードの可視性をもたらします。NETLOGON に存在するが参照されていないスクリプトは、孤立している可能性、または過去の侵害の指標である可能性があります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのログオン スクリプトの完全なインベントリ。目的、所有者、および最終更新日を文書化する", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {scriptPath -like '*'} -Properties scriptPath を使用して、すべてのユーザーの scriptPath 属性を列挙します。GPO レポートから GPO で構成されたすべてのスクリプトを一覧化します。NETLOGON 共有内のすべてのファイルをインベントリ化します。相互参照して、孤立したスクリプト、未使用のスクリプト、およびユーザーアカウントから参照されているが NETLOGON に存在しないスクリプトを特定します。各スクリプトの目的と所有者を文書化します", "status": "machine-draft" }
+  },
+  "ADSCRIPT-004": {
+    "name": { "value": "スクリプト内のハードコードされた資格情報", "status": "machine-draft" },
+    "description": { "value": "ログオン スクリプトには、ネットワークドライブのマッピング、サービスアカウント、データベース接続、API キー用のパスワードなど、ハードコードされた資格情報がしばしば含まれています。これらの資格情報は NETLOGON 共有を通じてすべての認証済みユーザーが読み取り可能であり、攻撃者にとって容易な資格情報収集の機会となります", "status": "machine-draft" },
+    "recommendedValue": { "value": "NETLOGON または SYSVOL のどのスクリプトにも、ハードコードされた資格情報、パスワード、API キーが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "NETLOGON および SYSVOL 内のすべてのスクリプトを、資格情報を示すパターン (password、passwd、pwd、credential、secret、apikey、token、connectionstring などのキーワード) についてスキャンします。ハードコードされた資格情報を、Windows 資格情報マネージャー、gMSA アカウント、またはアクセス制限付きの暗号化された構成ファイルなどの安全な代替手段に置き換えます。スクリプト内で見つかった資格情報は直ちにローテーションします", "status": "machine-draft" }
+  },
+  "ADSCRIPT-005": {
+    "name": { "value": "スクリプト内での LOLBins の使用", "status": "machine-draft" },
+    "description": { "value": "環境寄生型バイナリ (LOLBins) は、悪意のある目的に悪用され得る正規の Windows 実行可能ファイルです。ログオン スクリプト内にこれらが存在する場合、攻撃者が通常の運用に紛れ込む悪意のあるコマンドを挿入したことを示している可能性があります。一般的な LOLBins には、ペイロードのダウンロードや実行に使われる certutil、bitsadmin、mshta、regsvr32、rundll32、wscript などがあります", "status": "machine-draft" },
+    "recommendedValue": { "value": "文書化され運用上の正当性がある場合を除き、ログオン スクリプト内で LOLBins を使用しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべてのスクリプトを、既知の LOLBins (certutil、bitsadmin、mshta、regsvr32、rundll32、wscript、cscript、msiexec、installutil、regasm、regsvcs、msconfig、control) への参照についてスキャンします。各出現箇所を確認し、その使用が正当かどうかを判断します。可能な場合は LOLBins をより安全な代替手段に置き換えます。運用上必要な LOLBins の使用はすべて文書化します", "status": "machine-draft" }
+  },
+  "ADSCRIPT-006": {
+    "name": { "value": "スクリプト内の平文パスワード", "status": "machine-draft" },
+    "description": { "value": "net use コマンド、データベース接続文字列、または変数への代入に平文パスワードを含むスクリプトは、NETLOGON 共有を読み取れるすべての認証済みドメインユーザーに資格情報をさらします。これには、横方向の移動経路を提供し得るサービスアカウント、データベースアカウント、およびネットワークリソースのパスワードが含まれます", "status": "machine-draft" },
+    "recommendedValue": { "value": "どのスクリプトファイルにも平文パスワードが存在しない。すべての認証で統合セキュリティまたは安全な資格情報ストレージを使用する", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべてのスクリプトファイルを、'net use * /user:'、PowerShell やバッチでのパスワード代入、Password= または Pwd= を含む接続文字列、資格情報を伴う WScript.Network.MapNetworkDrive の呼び出しなどのパターンについて検索します。すべての平文資格情報の使用を、Windows 統合認証、資格情報マネージャー、または gMSA アカウントに置き換えます。露出したすべてのパスワードを直ちにローテーションします", "status": "machine-draft" }
+  },
+  "ADSCRIPT-007": {
+    "name": { "value": "全ユーザーに書き込み可能なスクリプトのアクセス許可", "status": "machine-draft" },
+    "description": { "value": "NETLOGON または SYSVOL 内の個々のスクリプトファイルが非管理者ユーザーに書き込みまたは変更のアクセス許可を付与している場合、ドメイン資格情報を持つ攻撃者であれば誰でもそのファイルを変更できます。たとえ共有レベルのアクセス許可が正しくても、個々のスクリプトに対するファイルレベルの NTFS アクセス許可が過度に緩いと、コード実行の機会が生じます", "status": "machine-draft" },
+    "recommendedValue": { "value": "NETLOGON および SYSVOL 内のすべてのスクリプトファイルが Domain Admins および SYSTEM のみによって書き込み可能である。Domain Users または Authenticated Users には書き込みアクセスがない", "status": "machine-draft" },
+    "remediationSteps": { "value": "NETLOGON 共有および SYSVOL の scripts フォルダー内のすべてのファイルについて NTFS アクセス許可を列挙します。Domain Users、Authenticated Users、Everyone、またはその他の広範なグループが書き込み、変更、フル コントロールのアクセス許可を持つファイルを特定します。icacls を使用してアクセス許可をリセットし、Authenticated Users には読み取りと実行を、Domain Admins および SYSTEM のみにフル コントロールを付与します", "status": "machine-draft" }
+  },
+  "ADSCRIPT-008": {
+    "name": { "value": "外部リソースへの参照", "status": "machine-draft" },
+    "description": { "value": "インターネット URL、ドメイン外の UNC パス、またはクラウドストレージの場所などの外部リソースを参照するログオン スクリプトは、サプライチェーンリスクをもたらします。外部リソースが侵害されると、そのスクリプトを実行するすべてのシステムが悪意のあるコンテンツをダウンロードして実行してしまいます。外部参照はまた、データ流出の機会も生み出します", "status": "machine-draft" },
+    "recommendedValue": { "value": "ログオン スクリプト内に、外部 URL、インターネットリソース、またはドメイン外の UNC パスへの参照が存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべてのスクリプトを、HTTP/HTTPS の URL、FTP 参照、ドメイン外の UNC パス、およびクラウドストレージの URL (OneDrive、SharePoint Online、Azure Blob、AWS S3) についてスキャンします。外部参照を、内部ファイル共有上にローカルにホストしたコピーに置き換えます。外部リソースが必要な場合は、実行前に整合性検証 (ハッシュ チェック) を実装します。承認されたすべての外部リソース依存関係を文書化します", "status": "machine-draft" }
+  },
+  "ADSCRIPT-009": {
+    "name": { "value": "不正な形式のスクリプト", "status": "machine-draft" },
+    "description": { "value": "構文エラー、エンコードの問題、または破損したコンテンツを含むスクリプトは、実行中に警告なく失敗し、セキュリティ構成が不完全になったりドライブのマッピングが欠落したりする可能性があります。不正な形式のスクリプトはまた、攻撃者がスクリプトを変更した際にエラーを持ち込んだ改ざん、またはエンコードの問題によって挿入された悪意のあるコンテンツが隠蔽されている場合を示している可能性もあります", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのスクリプトが、エンコードの異常や構造的エラーなく構文検証に合格する", "status": "machine-draft" },
+    "remediationSteps": { "value": "適切なツールを使用してスクリプトの構文を検証します: PowerShell スクリプトは Test-ScriptFileInfo または PSScriptAnalyzer、バッチファイルは閉じられていないブロックや無効なコマンドについての手動レビュー、VBScript は WSH の構文チェック。予期しないバイトシーケンスや混在したエンコードがないか、ファイルのエンコードを確認します。異常なエンコード (バッチファイル内の BOM 付き UTF-16、null バイト) を持つスクリプトについて、挿入の可能性を確認します", "status": "machine-draft" }
+  },
+  "ADSCRIPT-010": {
+    "name": { "value": "非 DC の場所を指す UNC パス", "status": "machine-draft" },
+    "description": { "value": "ドメインコントローラー以外のファイル共有を指す UNC パスを参照するログオン スクリプトは、追加のシステムへの依存関係を生み、攻撃対象領域を拡大します。参照先のファイルサーバーが侵害されると、攻撃者は共有リソースを変更し、信頼されたログオン スクリプトの仕組みを通じて悪意のあるペイロードを配信できます。UNC パスはまた、NTLM リレー攻撃にも悪用され得ます", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべてのスクリプトの UNC パスがドメインコントローラー上の SYSVOL または NETLOGON を参照している。スクリプトのコンテンツについて非 DC のファイル共有への参照が存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべてのスクリプトを UNC パス (\\\\server\\share パターン) についてスキャンします。ドメインの SYSVOL または NETLOGON 共有を指していないパスを特定します。適切な場合は、参照先のリソースを NETLOGON 共有に移行します。正当なファイル共有への参照については、対象サーバーが適切に堅牢化された Tier 0 または Tier 1 の資産であることを確認します。承認されたすべての非 DC の UNC パス依存関係を文書化します", "status": "machine-draft" }
+  },
+  "ADSCRIPT-011": {
+    "name": { "value": "スクリプトのコンテンツ分析", "status": "machine-draft" },
+    "description": { "value": "すべてのログオン スクリプトを包括的にコンテンツ分析することで、個別の検査を超えた不審なパターン (難読化されたコード、base64 エンコードされたコマンド、PowerShell のダウンロードクレードル、エンコードされた実行可能ファイル、解析対策の手法) を明らかにできます。これらのパターンは、悪意のあるスクリプトの挿入、または攻撃者によって仕掛けられたバックドアの強い指標です", "status": "machine-draft" },
+    "recommendedValue": { "value": "どのログオン スクリプトにも、難読化されたコード、エンコードされたペイロード、ダウンロードクレードル、解析対策の手法が存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "すべてのスクリプトを不審なパターンについて分析します。base64 エンコード (Convert-FromBase64、certutil -decode)、ダウンロードクレードル (Invoke-WebRequest、Net.WebClient、BitsTransfer)、難読化の手法 (コマンドを隠すための文字列連結、文字コード、変数置換)、解析対策の手法 (スリープタイマー、環境チェック) を対象とします。不審なパターンを含むスクリプトを調査し、置き換えます", "status": "machine-draft" }
+  }
+}

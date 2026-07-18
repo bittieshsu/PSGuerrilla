@@ -1,0 +1,63 @@
+{
+  "_family": "ADTradecraftChecks.json",
+  "ADTRADE-001": {
+    "name": { "value": "SYSVOL に残存するグループ ポリシー基本設定の cpassword", "status": "machine-draft" },
+    "description": { "value": "2008 年から 2014 年 5 月まで、グループ ポリシーの基本設定では、管理者が 'cpassword' フィールドを使用してスケジュールされたタスク、ローカル ユーザー パスワード、マッピングされたドライブ、サービスをプッシュできました。これは Microsoft が公開して文書化した AES-256 キーで暗号化されていました。MS14-025 の修正は新規の基本設定での cpassword フィールドを無効化しましたが、SYSVOL 内の既存のものはそのまま残しました。レッド チームの評価では今なおこれらが見つかります。認証済みドメイン ユーザーであれば誰でも SYSVOL を読み取り、cpassword を取得し、オフラインで復号できます。ここで何かが見つかった場合は、露出したすべての資格情報を侵害されたものとして扱い、ローテーションします", "status": "machine-draft" },
+    "recommendedValue": { "value": "\\\\domain\\SYSVOL\\domain\\Policies\\**\\*.xml 以下のどこにも cpassword 属性が存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "SYSVOL をスキャンします: Get-ChildItem -Path \\\\<domain>\\SYSVOL\\<domain>\\Policies -Recurse -Include *.xml | Select-String 'cpassword'。一致するたびに: (1) 資格情報が露出したアカウント (ユーザー名は同じ XML 内にあります) のパスワードをローテーションし、(2) その基本設定が作成されて以降のその資格情報の使用についてログを監査し、(3) 新しい資格情報が配置された後に GPP の基本設定を削除します。Microsoft の KB2962486 にクリーンアップのガイダンスがあります", "status": "machine-draft" }
+  },
+  "ADTRADE-002": {
+    "name": { "value": "DCShadow の指標 (不正な構成パーティション サーバー)", "status": "machine-draft" },
+    "description": { "value": "DCShadow (Vincent LE TOUX / Benjamin Delpy、BlueHat IL 2018) は、CN=Sites,CN=Configuration 下に nTDSDSA + server オブジェクトを書き込むことで、攻撃者が制御するホストをドメインコントローラーとして登録します。この偽の DC は、実際の DC になることなく、悪意のあるレプリケーション データ (SID 履歴、パスワード ハッシュ) を注入するために使用されます。注: 長期運用されているドメインでは、一致しない server オブジェクトは、実際の DCShadow 攻撃であるよりも、残存する DC メタデータ (『ntdsutil metadata cleanup』なしに削除された DC) であることの方がはるかに多いため、これは Critical ではなく High と評価されます。whenCreated タイムスタンプを調査して、最近作成された (不審な) オブジェクトと古い残存メタデータを区別します", "status": "machine-draft" },
+    "recommendedValue": { "value": "CN=Sites,CN=Configuration 下のすべての server オブジェクトが、実在しインベントリ化されたドメインコントローラーに対応している。既知の DC に一致しない最近作成された server オブジェクトが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "列挙します: Get-ADObject -Filter {objectClass -eq 'server'} -SearchBase \"CN=Sites,$((Get-ADRootDSE).configurationNamingContext)\" -Properties whenCreated, dNSHostName | Sort whenCreated。DC インベントリ (Get-ADDomainController -Filter *) と相互参照します。実際の DC に一致しない server オブジェクト、特に最近作成されたものは、直ちにインシデント対応を要します。DCShadow はドメイン乗っ取り級のプリミティブです。検知時のシグナルとして、スキーマ コンテナーの 5137 / 5141 イベントを監視します", "status": "machine-draft" }
+  },
+  "ADTRADE-003": {
+    "name": { "value": "古い BitLocker 回復キー", "status": "machine-draft" },
+    "description": { "value": "BitLocker 回復キーは、それらをバックアップしたコンピューターの msFVE-RecoveryInformation 子オブジェクトとして AD に格納されます。コンピューターが廃止されたのに AD オブジェクトが宙ぶらりんのまま残ると、回復キーは BitLocker 回復権限を持つ者 (通常は『Tier-0』よりも広いグループ) が引き続き照会できます。古いキーは、廃棄されたドライブがリサイクル業者やゴミ箱から回収された場合に復号可能であることを意味します", "status": "machine-draft" },
+    "recommendedValue": { "value": "すべての msFVE-RecoveryInformation オブジェクトが、過去 90 日以内にアクティブなコンピューターに属している。無効化された、または最近変更された後に古くなったコンピューター アカウントに孤立したキーが存在しない", "status": "machine-draft" },
+    "remediationSteps": { "value": "回復情報を列挙します: Get-ADObject -Filter {objectClass -eq 'msFVE-RecoveryInformation'} -Properties whenCreated。それぞれについて親のコンピューター オブジェクトまで遡り、その lastLogonTimestamp / Enabled を確認します。90 日を超えて非アクティブなコンピューターについて: ドライブが消去または破壊されたことを確認し、AD コンピューター オブジェクトを削除します (これは回復情報を連鎖的に削除します)。実際に使用中だが回復キーが非常に古いコンピューターについては、Backup-BitLockerKeyProtector を介してローテーションします。BitLocker 回復グループのメンバーシップが厳格であることを確認します", "status": "machine-draft" }
+  },
+  "ADTRADE-004": {
+    "name": { "value": "RODC パスワード レプリケーション ポリシーの衛生", "status": "machine-draft" },
+    "description": { "value": "読み取り専用ドメインコントローラーは、そのパスワード レプリケーション ポリシー (PRP) に列挙されたプリンシパルのパスワードをキャッシュします。Tier-0 アカウント (Domain Admin、Enterprise Admin、krbtgt) が RODC の PRP から直接またはグループのネストを介して到達可能な場合、RODC を侵害するとそれらのアカウントが侵害されます。既定の『Denied RODC Password Replication Group』には DA / EA / SA / Schema Admins / krbtgt が明示的に含まれるべきですが、一部の環境ではポリシーをカスタマイズし、誤ってそれらの拒否を削除してしまいます", "status": "machine-draft" },
+    "recommendedValue": { "value": "ドメイン内のすべての RODC で、Domain Admins、Enterprise Admins、Schema Admins、krbtgt、Account Operators が拒否側のメンバーであるパスワード レプリケーション ポリシーが設定されている。高特権アカウントが許可側のメンバーになっていない", "status": "machine-draft" },
+    "remediationSteps": { "value": "各 RODC について: Get-ADDomainController -Filter {IsReadOnly -eq $true} | ForEach-Object { Get-ADDomainControllerPasswordReplicationPolicy -Identity $_ -Allowed; Get-ADDomainControllerPasswordReplicationPolicy -Identity $_ -Denied }。拒否リストに組み込みの『Denied RODC Password Replication Group』が含まれていることを確認します。環境に RODC がない場合、この検査は N/A、つまり PASS です。Microsoft の RODC 計画ガイドに正規の PRP テンプレートがあります", "status": "machine-draft" }
+  },
+  "ADTRADE-005": {
+    "name": { "value": "Entra シームレス SSO コンピューター アカウント (AZUREADSSOACC$) のキー ローテーション", "status": "machine-draft" },
+    "description": { "value": "ハイブリッド ID 向けに Entra (Azure AD) シームレス シングル サインオンが有効になっている場合、AD は AZUREADSSOACC$ という名前のコンピューター アカウントを作成します。そのパスワードは、Entra が SSO チケットを検証するために使用する共有 Kerberos キーです。Microsoft は、このキーは自動的にはローテーションされず、管理者がローテーションしなければならないと文書化しています。攻撃者が AZUREADSSOACC$ のキー (これは DCSync や DC から読み取り可能な通常の NT ハッシュです) を抽出すると、Azure AD サービス向けの Kerberos Silver Ticket を偽造し、キーが有効なままである限り、それ以上の操作なしに任意の同期済みハイブリッド ユーザーとして認証できます。90 日を超えてローテーションされていないキーは、その窓を劇的に拡大します", "status": "machine-draft" },
+    "recommendedValue": { "value": "AZUREADSSOACC$ の Kerberos キーが少なくとも 90 日ごとにローテーションされている (ローテーションごとに 2 回実行して以前のキーを無効にする)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Entra Connect / Azure AD モジュールがあるマシンでシームレス SSO キーをローテーションします: Import-Module 'C:\\Program Files\\Microsoft Azure Active Directory Connect\\AzureADSSO.psd1'; New-AzureADSSOAuthenticationContext; Update-AzureADSSOForest。ローテーションを 2 回実行し (アカウントは現在のキーと以前のキーを保存します)、定期的にスケジュールします。シームレス SSO をもはや使用しない場合は、無効化して AZUREADSSOACC$ オブジェクトを削除します", "status": "machine-draft" }
+  },
+  "ADTRADE-006": {
+    "name": { "value": "特権プリンシパル上のシャドウ資格情報 (msDS-KeyCredentialLink)", "status": "machine-draft" },
+    "description": { "value": "msDS-KeyCredentialLink 属性は、Windows Hello for Business / パスワードレス PKINIT ログオンに使用される公開キーを保持します。この属性への書き込みアクセスを持つ攻撃者は、標的に自身のキー ペア (Whisker / pyWhisker) を追加し、対応する秘密鍵を使用してそのアカウントとして Kerberos TGT を要求できます。これは『シャドウ資格情報』として知られる、ステルス性のある永続化・なりすまし手法です。Tier-0 オブジェクト (ドメイン管理者、ドメインコントローラー、または任意の adminCount=1 アカウント) 上の予期しないキー資格情報は、正当な WHfB 登録であると証明されるまで潜在的なバックドアとして扱うべきです", "status": "machine-draft" },
+    "recommendedValue": { "value": "特権/Tier-0 プリンシパル上に認識されない msDS-KeyCredentialLink の値が存在しない。すべてのキーが既知の WHfB/パスワードレス登録に対応している", "status": "machine-draft" },
+    "remediationSteps": { "value": "フラグが立てられた各プリンシパルについて、キー資格情報を検査し (Get-ADObject -Properties msDS-KeyCredentialLink、または DSInternals の Get-ADKeyCredential コマンドレット)、各デバイス キーを正当な Windows Hello for Business 登録と関連付けます。承認された登録に帰属できないエントリを削除します。msDS-KeyCredentialLink に書き込める者を制限します (Key Admins / Enterprise Key Admins と、その書き込みを付与する OU/オブジェクトの DACL を監査します)。侵害が疑われる場合は、影響を受けたアカウントをリセットします", "status": "machine-draft" }
+  },
+  "ADTRADE-007": {
+    "name": { "value": "BadSuccessor dMSA 移行昇格の攻撃面", "status": "machine-draft" },
+    "description": { "value": "Windows Server 2025 は、委任された Managed Service Account (dMSA、オブジェクト クラス msDS-DelegatedManagedServiceAccount) を移行機能とともに導入しました: dMSA を既存アカウントの後継としてマークでき、その後そのアカウントの特権と Kerberos キーを継承します。2024 年に公開された『BadSuccessor』手法はこれを悪用します: OU 内で dMSA を作成できるだけのプリンシパル (dMSA クラスに対する CreateChild、または OU に対する広範な書き込み/GenericAll) が、dMSA を作成して特権アカウントを指し示し、そのキーを継承でき、そのアカウントに対する権限を直接持つことなくそのアカウントへ昇格できます。この検査は、非 Tier-0 プリンシパルがその能力を持つ OU をインベントリ化します", "status": "machine-draft" },
+    "recommendedValue": { "value": "非 Tier-0 プリンシパルが、いずれの OU においても委任された MSA (msDS-DelegatedManagedServiceAccount) を作成または書き込みできない", "status": "machine-draft" },
+    "remediationSteps": { "value": "フラグが立てられた各 OU で、非管理者プリンシパルから CreateChild (msDS-DelegatedManagedServiceAccount クラス向け)、GenericAll、WriteDacl、WriteOwner を削除します。委任された OU アクセス許可を広く監査します: BadSuccessor を可能にするのと同じ ACE は、他のオブジェクト作成の悪用も可能にします。パッチ適用/緩和されるまで、msDS-DelegatedManagedServiceAccount オブジェクトの作成 (4662/5137 イベント) を監視します。この検査は、スキーマが Server 2025 より前のフォレストでは SKIP されます", "status": "machine-draft" }
+  },
+  "ADTRADE-008": {
+    "name": { "value": "Key Admins / Enterprise Key Admins グループのメンバーシップ", "status": "machine-draft" },
+    "description": { "value": "Key Admins (ドメイン RID 526) および Enterprise Key Admins (RID 527) グループには、ドメイン/フォレスト全体で msDS-KeyCredentialLink 属性を書き込む権限が付与されています。これにより、いずれのメンバーもドメイン全体のシャドウ資格情報プリミティブとなります: メンバーは任意のアカウントにキー資格情報を仕込み、PKINIT を介してそのアカウントとして認証できます。これらのグループは空で出荷され、特定の Windows Hello for Business のキー プロビジョニング ワークフローが明確にそれらを必要とする場合を除き、空のままであるべきです。いずれのメンバーも、正当化されなければならない昇格経路です", "status": "machine-draft" },
+    "recommendedValue": { "value": "Key Admins および Enterprise Key Admins グループが空である (常設のメンバーがいない)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Key Admins および Enterprise Key Admins のすべてのメンバーを確認します。Windows Hello for Business のキーをプロビジョニングする文書化された継続的な必要性を持たないアカウントを削除します。WHfB のキー プロビジョニングに委任された権限が必要な場合は、これらのドメイン全体のグループへのメンバーシップではなく、可能な限り狭いアクセス許可を持つ専用のサービスアカウントにスコープします。予期しないメンバーを潜在的な永続化の仕組みとして扱います", "status": "machine-draft" }
+  },
+  "ADTRADE-009": {
+    "name": { "value": "Cert Publishers グループのメンバーシップ", "status": "machine-draft" },
+    "description": { "value": "Cert Publishers グループ (ドメイン RID 517) のメンバーは、NTAuth ストアおよびユーザー/コンピューター オブジェクトに証明書を発行することが許可されます。既定では、このグループにはエンタープライズ CA のコンピューター アカウントのみが含まれます。このグループに配置されたユーザーまたはサービスアカウントは、どの証明書が認証に信頼されるかに影響を及ぼす能力を得ます。これはいくつかの AD CS 昇格経路 (ESC 系の攻撃) における足がかりであり、証明書ベースのなりすましを可能にし得ます。コンピューター アカウントのメンバーシップ (CA ホスト自体) は想定内ですが、コンピューター以外のメンバーは検出対象です", "status": "machine-draft" },
+    "recommendedValue": { "value": "Cert Publishers にエンタープライズ CA のコンピューター アカウントのみが含まれる。ユーザーまたはサービスアカウントが含まれない", "status": "machine-draft" },
+    "remediationSteps": { "value": "Cert Publishers グループからすべてのユーザーまたはサービスアカウントを削除します。ここに属するのはエンタープライズ CA のコンピューター アカウントのみです。予期しない CA 証明書について NTAuth ストアの内容 (certutil -viewstore -enterprise NTAuth) を確認します。AD CS を広く堅牢化します: 証明書テンプレートの登録アクセス許可と ESC1-ESC8 の構成ミスの攻撃面を監査します", "status": "machine-draft" }
+  },
+  "ADTRADE-010": {
+    "name": { "value": "group Managed Service Account (gMSA) の態勢とパスワードの露出", "status": "machine-draft" },
+    "description": { "value": "group Managed Service Account (gMSA) は、AD が自動的に生成・ローテーションする 240 ビットのパスワードを保持し、脆弱なサービスアカウント パスワードの Kerberoasting と手動ローテーションの手間を排除します。2 つの態勢上の懸念: (1) サービス ID に gMSA がそもそも使用されているか、(2) 管理されたパスワードの取得を誰が許可されているか。これは msDS-GroupMSAMembership セキュリティ記述子 (PrincipalsAllowedToRetrieveManagedPassword) によって制御されます。その記述子が広範なプリンシパル (Everyone、Authenticated Users、Domain Users) または非特権プリンシパルに付与している場合、そのプリンシパルは gMSA の平文パスワードを回復し (例: GMSAPasswordReader)、そのサービスを完全になりすませます", "status": "machine-draft" },
+    "recommendedValue": { "value": "サービス ID が gMSA として実行されている。msDS-GroupMSAMembership が、サービスを実行しなければならない特定のホストのみにスコープされている (広範な、または非特権のプリンシパルがない)", "status": "machine-draft" },
+    "remediationSteps": { "value": "各 gMSA について、PrincipalsAllowedToRetrieveManagedPassword を、サービスを実行する正確なコンピューター アカウント (または厳密にスコープされたグループ) に設定します: Set-ADServiceAccount -Identity <gmsa> -PrincipalsAllowedToRetrieveManagedPassword <hosts>。そのリストから Everyone / Authenticated Users / Domain Users を削除します。サービスアカウントが依然として静的なユーザー アカウントのパスワードを使用している場合は、自動ローテーションと Kerberoasting 耐性を得るために gMSA へ移行します", "status": "machine-draft" }
+  }
+}
