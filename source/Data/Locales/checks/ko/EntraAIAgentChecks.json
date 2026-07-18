@@ -1,0 +1,27 @@
+{
+  "_family": "EntraAIAgentChecks.json",
+  "AIAGENT-001": {
+    "name": { "value": "Copilot 에이전트가 상호작용 대상을 제한함(광범위한 액세스 없음)", "status": "machine-draft" },
+    "description": { "value": "액세스 제어 정책이 'Any' 또는 'Any multitenant'로 설정된 Copilot Studio 에이전트는 테넌트 내 모든 사용자 또는 모든 테넌트의 사용자가 제한 없이 상호작용할 수 있습니다. 조직 데이터 및 도구에 연결된 에이전트의 경우, 이는 인증되지 않은 데이터 액세스 및 프롬프트 삽입 경로가 됩니다. 이 검사는 액세스 제어가 Any / Any multitenant로 설정된 에이전트를 표시합니다. 에이전트 데이터가 수집되지 않으면 결과는 평가되지 않음이 되며, 에이전트가 없는 테넌트는 통과합니다(관리할 대상이 없음).", "status": "machine-draft" },
+    "recommendedValue": { "value": "게시된 에이전트 중 'Any' 또는 'Any multitenant' 액세스 제어를 사용하는 에이전트가 없으며, 액세스가 특정 인증된 사용자 또는 보안 그룹으로 제한됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Copilot Studio에서 표시된 각 에이전트의 보안 > 인증 및 액세스 설정을 열고, 액세스 제어를 'Any' / 'Any multitenant'에서 조직으로(그리고 가급적 특정 보안 그룹으로) 제한된 인증된 액세스로 변경합니다. 액세스를 강화한 후 에이전트를 다시 게시합니다.", "status": "machine-draft" }
+  },
+  "AIAGENT-002": {
+    "name": { "value": "Copilot 에이전트가 인증을 요구함", "status": "machine-draft" },
+    "description": { "value": "사용자 인증 유형이 'None'인 Copilot Studio 에이전트는 익명 상호작용을 허용하며, 'As Needed'로만 인증하는 에이전트는 인증을 선택 사항으로 남겨 둡니다. 어느 경우든 인증되지 않은 사용자가 조직 데이터를 노출하거나 도구를 호출할 수 있는 에이전트에 접근할 수 있어, 악용, 데이터 유출 및 프롬프트 삽입이 가능해집니다. 이 검사는 인증이 없는 에이전트를 실패로 처리하고, 필요 시에만 인증이 트리거되는 에이전트를 경고로 처리합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "게시된 모든 에이전트가 인증을 요구함(사용자 인증 유형이 'None'이 아니며 인증이 'As Needed'가 아니라 항상 적용됨)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Copilot Studio에서 각 에이전트의 인증을 'No authentication' 대신 로그인 요구(Microsoft Entra ID 인증)로 설정하고, 인증이 필요 시에만 트리거되지 않고 항상 적용되도록 합니다. 변경 후 다시 게시합니다.", "status": "machine-draft" }
+  },
+  "AIAGENT-003": {
+    "name": { "value": "게시된 Copilot 에이전트가 유지 관리됨(방치되지 않음)", "status": "machine-draft" },
+    "description": { "value": "오랫동안 수정되지 않은 게시된 Copilot Studio 에이전트는 아무도 그 구성, 권한 또는 연결된 도구를 유지 관리하지 않는 동안 계속해서 기능과 액세스를 노출합니다. 방치된 게시 에이전트는 위험을 조용히 축적합니다. 이 검사는 마지막 수정이 방치 임계값(기본값 90일)보다 오래된 게시 에이전트를 검토 또는 폐기 대상으로 표시합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "게시된 에이전트가 활발히 유지 관리되고, 오래된 게시 에이전트는 검토 또는 폐기됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "방치된 각 게시 에이전트를 검토합니다. 더 이상 필요하지 않은 에이전트는 폐기하고(게시 취소 후 삭제), 여전히 사용 중인 에이전트는 액세스 제어, 인증 및 연결된 도구가 여전히 적절한지 확인한 다음 업데이트하여 유지 관리 타이머를 재설정합니다.", "status": "machine-draft" }
+  },
+  "AIAGENT-004": {
+    "name": { "value": "Copilot 에이전트 액세스가 보안 그룹으로 범위 지정됨", "status": "machine-draft" },
+    "description": { "value": "권한이 부여된 보안 그룹이 없는 인증된 Copilot Studio 에이전트는 테넌트 내 모든 인증된 사용자가 접근할 수 있습니다. 에이전트를 특정 보안 그룹으로 범위 지정하면 그 대상을 업무상 필요가 있는 사용자로 제한하여, 에이전트를 호출할 수 있는 주체와 에이전트가 노출하는 데이터에 최소 권한을 적용합니다. 이 검사는 권한이 부여된 보안 그룹이 구성되지 않은 인증된 에이전트를 표시합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "민감한 데이터를 노출하는 인증된 에이전트가 모든 인증된 사용자가 아니라 특정 권한이 부여된 보안 그룹으로 범위 지정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "민감한 데이터를 노출하는 에이전트의 경우, 에이전트의 액세스 설정에서 권한이 부여된 보안 그룹을 구성하여 해당 그룹의 구성원만 에이전트와 상호작용할 수 있도록 합니다. 테넌트 전체 액세스는 전 직원을 대상으로 의도적으로 만들어진 에이전트에만 남겨 둡니다.", "status": "machine-draft" }
+  }
+}
