@@ -36,7 +36,7 @@ function Get-GWSAuditData {
     $categoryDataNeeds = @{
         Authentication   = @('Users', 'OrgUnits')
         EmailSecurity    = @('Domains', 'DnsRecords', 'GmailSettings', 'Users')
-        DriveSecurity    = @('Users', 'OrgUnits')
+        DriveSecurity    = @('Users', 'OrgUnits', 'SharedDrives')
         OAuthSecurity    = @('OAuthApps', 'DomainWideDelegation', 'Users')
         AdminManagement  = @('Users', 'Roles', 'RoleAssignments', 'Groups', 'OrgUnits')
         Collaboration    = @('OrgUnits', 'Groups')
@@ -48,7 +48,7 @@ function Get-GWSAuditData {
         # admin audit log to infer the deep Gemini toggles that NO config API exposes
         # (GWS-GEMINI-002/003/004/005) — the same source ScubaGoggles derives them from.
         GwsService       = @('Customer', 'GeminiAuditSettings')
-        Tradecraft       = @('DomainWideDelegation', 'Users', 'Roles', 'OAuthApps', 'Groups', 'GroupSettings')
+        Tradecraft       = @('DomainWideDelegation', 'Users', 'Roles', 'RoleAssignments', 'OAuthApps', 'Groups', 'GroupSettings', 'RoleGroupMembers')
         # K12 baseline checks: OU-targeted policy resolution (CloudIdentityPolicies is
         # collected unconditionally below), plus the identity/role/delegation/device
         # surfaces the tenant-wide K12 checks read.
@@ -92,6 +92,7 @@ function Get-GWSAuditData {
         GroupSettings        = @{}
         Roles               = @()
         RoleAssignments      = @()
+        RoleGroupMembers    = @{}
         MobileDevices       = @()
         ChromeDevices       = @()
         DnsRecords          = @{}
@@ -102,6 +103,7 @@ function Get-GWSAuditData {
         ChromePoliciesByOu  = @{}
         OAuthApps           = @()
         DomainWideDelegation = @()
+        SharedDrives        = @()
         CloudIdentityPolicies = $null
         GeminiDerivedSettings = @{}
         Errors              = @{}
@@ -268,6 +270,59 @@ function Get-GWSAuditData {
             $data.RoleAssignments = @($roleAssignments ?? @())
         } catch {
             $data.Errors['RoleAssignments'] = $_.Exception.Message
+        }
+    }
+
+    # ── 7b. Role-granting group members ──────────────────────────────────
+    # Admin roles can be assigned to security groups; every member — direct or
+    # nested — inherits the role's privileges, and anyone who can edit the
+    # group's membership can grant it. Enumerate members of each group that
+    # holds a role assignment so GTRADE-007 can surface that escalation surface
+    # (the Workspace analogue of AD nested-group-to-privileged-group paths).
+    # Uses the shared directory token's group.readonly scope for members.list;
+    # no extra scope is required. Only role-granting groups are crawled, so the
+    # call count stays small. includeDerivedMembership flattens nested members.
+    if (& $needsSource 'RoleGroupMembers') {
+        try {
+            $groupsById = @{}
+            foreach ($g in @($data.Groups)) { if ($g.id) { $groupsById["$($g.id)"] = $g } }
+
+            # Grantees that are groups: assigneeType GROUP when the API returns
+            # it, else assignedTo matching a known group id.
+            $granteeGroupIds = [System.Collections.Generic.HashSet[string]]::new()
+            foreach ($a in @($data.RoleAssignments)) {
+                $to = "$($a.assignedTo)"
+                if (-not $to) { continue }
+                if (("$($a.assigneeType)" -eq 'GROUP') -or $groupsById.ContainsKey($to)) {
+                    [void]$granteeGroupIds.Add($to)
+                }
+            }
+
+            if ($granteeGroupIds.Count -gt 0 -and -not $Quiet) {
+                Write-ProgressLine -Phase AUDITING -Message 'Enumerating members of role-granting groups' `
+                    -Detail "($($granteeGroupIds.Count) group(s))"
+            }
+
+            $memberMap = @{}
+            foreach ($gid in $granteeGroupIds) {
+                try {
+                    $members = Invoke-GoogleAdminApi `
+                        -AccessToken $AccessToken `
+                        -Uri "https://admin.googleapis.com/admin/directory/v1/groups/$gid/members" `
+                        -QueryParameters @{ includeDerivedMembership = 'true'; maxResults = '200' } `
+                        -Paginate `
+                        -ItemsProperty 'members' `
+                        -Quiet:$Quiet
+                    $memberMap[$gid] = @($members ?? @())
+                } catch {
+                    # Per-group failure: the check still reports the escalation
+                    # surface, with membership marked "not enumerated".
+                    $data.Errors["RoleGroupMembers:$gid"] = $_.Exception.Message
+                }
+            }
+            $data.RoleGroupMembers = $memberMap
+        } catch {
+            $data.Errors['RoleGroupMembers'] = $_.Exception.Message
         }
     }
 
@@ -511,6 +566,41 @@ function Get-GWSAuditData {
             $data.DomainWideDelegation = @($dwdResult ?? @())
         } catch {
             $data.Errors['DomainWideDelegation'] = $_.Exception.Message
+        }
+    }
+
+    # ── 13b. Shared Drives ───────────────────────────────────────────────
+    # Enumerate every shared drive in the tenant via domain-admin access and
+    # capture each drive's sharing restrictions (restrictions.domainUsersOnly
+    # governs whether items can be shared outside the organization). Requires
+    # the drive.readonly scope delegated AND the calling admin to hold a Drive
+    # admin privilege; without either the API 403s and this records an error,
+    # so DRIVE-018 reports Not Assessed rather than a false clean.
+    if (& $needsSource 'SharedDrives') {
+        if (-not $Quiet) {
+            Write-ProgressLine -Phase AUDITING -Message 'Enumerating shared drives'
+        }
+        try {
+            $driveToken = Get-GoogleAccessToken `
+                -ServiceAccountKeyPath $ServiceAccountKeyPath `
+                -AdminEmail $AdminEmail `
+                -Scopes @('https://www.googleapis.com/auth/drive.readonly')
+
+            $driveResult = Invoke-GoogleAdminApi `
+                -AccessToken $driveToken `
+                -Uri 'https://www.googleapis.com/drive/v3/drives' `
+                -QueryParameters @{
+                    useDomainAdminAccess = 'true'
+                    pageSize             = '100'
+                    fields               = 'nextPageToken,drives(id,name,createdTime,orgUnitId,restrictions)'
+                } `
+                -Paginate `
+                -ItemsProperty 'drives' `
+                -Quiet:$Quiet
+
+            $data.SharedDrives = @($driveResult ?? @())
+        } catch {
+            $data.Errors['SharedDrives'] = $_.Exception.Message
         }
     }
 

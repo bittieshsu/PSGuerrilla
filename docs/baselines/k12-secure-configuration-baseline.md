@@ -145,6 +145,51 @@ never retained.
 apply to student OUs; whether student mail and Drive are excluded from
 retention coverage.
 
+### K12-DATA-004: Student auto-forwarding is disabled
+
+- **Scope:** OU-scoped
+- **Assessment:** Machine-assessable
+- **Verdict posture:** Standard
+- **Checks:** GWS-K12-011
+- **Status:** candidate
+
+**Rationale.** A single Gmail auto-forwarding rule silently copies every future
+message to an external address, and it survives a password reset because it is
+a setting, not a session. For staff there are occasional legitimate uses; for a
+student OU there is no defensible reason to leave the capability on, and its
+presence is a standing exfiltration and account-persistence path.
+
+**Threat addressed.** Post-compromise persistence and data exfiltration through
+a forwarding rule an attacker sets after a phishing or credential-theft
+incident; quiet leakage of student mail to an outside party.
+
+**Settings assessed.** The Gmail automatic-forwarding end-user setting
+(`gmail.auto_forwarding`) resolved for each student OU: whether users in the OU
+are permitted to configure automatic forwarding.
+
+### K12-DATA-005: Student self-service data export (Takeout) is disabled
+
+- **Scope:** Tenant-wide
+- **Assessment:** Policy review
+- **Verdict posture:** Context-dependent
+- **Checks:** GWS-K12-012
+- **Status:** candidate
+
+**Rationale.** Google Takeout is a supported one-click export of a user's whole
+Drive and Gmail. The same feature that helps a graduating senior take their work
+is, on the way out the door or in the hands of a compromised account, a bulk
+exfiltration tool. Takeout is configurable per OU in the Admin console, but no
+Cloud Identity policy surface currently exposes its state for automated
+reading, so this control is a documented manual-review item rather than a
+machine verdict.
+
+**Threat addressed.** Bulk exfiltration of a student's Drive and Gmail by the
+student on departure, or by an attacker who has taken over the account.
+
+**Settings assessed.** The Takeout service on/off state for student OUs (Admin
+console: Account > Account settings > Takeout). No config API returns this
+today; the check reports Not Assessed and directs a manual confirmation.
+
 ---
 
 ## Domain: Identity and third-party access (K12-IDENT)
@@ -220,6 +265,33 @@ scope user-management privileges to specific OUs rather than the whole
 domain. Whether a given secretary should hold a given role is a district
 determination; the machine-assessable part is surfacing scope-of-privilege
 versus scope-of-duty mismatches for review.
+
+### K12-IDENT-004: Vault export and retention privileges are restricted
+
+- **Scope:** Tenant-wide
+- **Assessment:** Machine-assisted + policy review
+- **Verdict posture:** Context-dependent
+- **Checks:** GWS-K12-014
+- **Status:** candidate
+
+**Rationale.** Google Vault is administrative reach over the whole tenant.
+"Manage Exports" is the ability to download any user's mailbox and Drive at any
+time; "Manage Retention Rules" is the ability to permanently delete records a
+misconfigured rule sweeps up. These privileges ride on admin roles and
+accumulate the same way delegated-admin roles do. The control is that every
+holder of a Vault export or retention privilege is known and needed; whether a
+given holder is legitimate is a district determination, so findings are review
+items rather than hard failures.
+
+**Threat addressed.** Mass exfiltration of student and staff mailboxes and
+Drives through a legitimate, logged export tool whose logs nobody reads;
+irreversible destruction of records through a retention rule held by an account
+that should not have it.
+
+**Settings assessed.** Admin role definitions and assignments whose privileges
+match Vault export, retention, hold, matter, or eDiscovery management. The
+privilege-to-role mapping is machine-read; the retention rules themselves are
+reviewed in Vault directly.
 
 ---
 
@@ -347,7 +419,7 @@ than a roster reconciliation.
 - **Scope:** Tenant-wide
 - **Assessment:** Machine-assisted + policy review
 - **Verdict posture:** Context-dependent
-- **Checks:** Not yet covered
+- **Checks:** GWS-K12-015
 - **Status:** candidate
 
 **Rationale.** When a student account incident is suspected, the questions are
@@ -400,6 +472,29 @@ disabled), sign-in challenge posture, and 2SV enforcement state, evaluated
 against the age band the district declares for that OU rather than against a
 single tenant-wide bar.
 
+### K12-ACCT-002: Legacy authentication is disabled for students
+
+- **Scope:** OU-scoped
+- **Assessment:** Machine-assessable
+- **Verdict posture:** Standard
+- **Checks:** GWS-K12-013
+- **Status:** candidate
+
+**Rationale.** POP and IMAP are pre-OAuth mail-access protocols that bypass
+modern sign-in challenges and second factors: a valid username and password is
+enough. They exist for legacy desktop mail clients that a student OU does not
+need. Leaving them enabled keeps a credential-only door open next to the front
+door the district has hardened with 2SV.
+
+**Threat addressed.** Account access that sidesteps 2-Step Verification and
+sign-in risk challenges through a legacy protocol; credential-stuffing and
+password-spray landing on student mailboxes over IMAP/POP.
+
+**Settings assessed.** The Gmail IMAP (`gmail.imap_access`) and POP
+(`gmail.pop_access`) end-user access settings resolved for each student OU.
+App-specific passwords, a related legacy-access path, are not exposed by this
+policy surface and remain a manual review item.
+
 ---
 
 ## Future work
@@ -411,4 +506,9 @@ Google Workspace first because it is the dominant K12 platform.
 
 ## Changelog
 
-- 0.1.0 (2026-07-12): initial candidate publication, 12 controls.
+- 0.1.0 (2026-07-12): initial candidate publication, 12 controls. Expanded
+  during the candidate phase to 16 controls, adding student auto-forwarding
+  (K12-DATA-004), self-service export/Takeout (K12-DATA-005), Vault export and
+  retention privileges (K12-IDENT-004), and legacy authentication
+  (K12-ACCT-002), and wiring the audit-log durability control (K12-AUDIT-001) to
+  a check.

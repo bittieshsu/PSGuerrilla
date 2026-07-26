@@ -915,3 +915,204 @@ function Test-GWSK12010 {
     }
     return @($findings)
 }
+
+# ── GWS-K12-011: Student Auto-Forwarding Disabled (K12-DATA-004) ─────────
+function Test-GWSK12011 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $noScope = Get-StudentScopeNotAssessed -CheckDefinition $CheckDefinition -AuditData $AuditData
+    if ($noScope) { return $noScope }
+
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' `
+            -OrgUnitPath $OrgUnitPath
+    }
+
+    $findings = foreach ($stuOu in @($AuditData.StudentOUs)) {
+        $gate = Get-K12StudentOuGate -AuditData $AuditData -CheckDefinition $CheckDefinition -StudentOuPath $stuOu
+        if ($gate) { $gate; continue }
+
+        # settings/gmail.auto_forwarding, field enableAutoForwarding (secure = false).
+        # Matches EMAIL-030's setting; here it is resolved per student OU.
+        $r = Resolve-GwsStudentOuPolicy -Policies $pol -Type 'gmail.auto_forwarding' `
+            -OrgUnitPath $stuOu -OrgUnits $AuditData.Tenant.OrgUnits -Field 'enableAutoForwarding'
+        $groupNote = Get-K12GroupOverrideNote $r
+
+        if (-not $r.Found) {
+            New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' -OrgUnitPath $stuOu `
+                -CurrentValue ("No Gmail auto-forwarding policy was returned for '$stuOu' or any ancestor. Confirm it " +
+                    "in the Admin Console (Apps > Gmail > End User Access) and disable automatic forwarding for " +
+                    "student OUs.$groupNote") `
+                -Details @{ Setting = 'gmail.auto_forwarding' }
+        } elseif ($r.Value -eq $true) {
+            New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' -OrgUnitPath $stuOu `
+                -CurrentValue ("Students in '$stuOu' can configure automatic email forwarding (resolved from " +
+                    "'$($r.SourceOuPath)'). One forwarding rule silently copies every future message to an outside " +
+                    "address and survives a password reset. Disable auto-forwarding for student OUs.$groupNote") `
+                -Details @{ EnableAutoForwarding = $true; SourceOu = $r.SourceOuPath }
+        } else {
+            New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' -OrgUnitPath $stuOu `
+                -CurrentValue ("Automatic email forwarding is disabled for '$stuOu' (resolved from " +
+                    "'$($r.SourceOuPath)').$groupNote") `
+                -Details @{ EnableAutoForwarding = $false; SourceOu = $r.SourceOuPath }
+        }
+    }
+    return @($findings)
+}
+
+# ── GWS-K12-012: Student Data Export (Takeout) Disabled (K12-DATA-005) ───
+# Manual-review control: no Cloud Identity policy surface exposes Takeout state,
+# so this reports Not Assessed with guidance rather than assuming a value it
+# cannot read. Absence of evidence is never a pass.
+function Test-GWSK12012 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' -OrgUnitPath $OrgUnitPath `
+        -CurrentValue ('Not Assessed: Google Takeout state is not exposed by any Cloud Identity policy API, so it ' +
+            'cannot be read programmatically. Verify manually that Takeout is turned off for student OUs (Admin ' +
+            'Console > Account > Account settings > Takeout). Absence of evidence is not compliance.') `
+        -Details @{ NotAssessed = $true; ManualReview = $true }
+}
+
+# ── GWS-K12-013: Legacy Authentication Disabled For Students (K12-ACCT-002) ──
+function Test-GWSK12013 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $noScope = Get-StudentScopeNotAssessed -CheckDefinition $CheckDefinition -AuditData $AuditData
+    if ($noScope) { return $noScope }
+
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' `
+            -OrgUnitPath $OrgUnitPath
+    }
+
+    $findings = foreach ($stuOu in @($AuditData.StudentOUs)) {
+        $gate = Get-K12StudentOuGate -AuditData $AuditData -CheckDefinition $CheckDefinition -StudentOuPath $stuOu
+        if ($gate) { $gate; continue }
+
+        # settings/gmail.imap_access (enableImapAccess) and settings/gmail.pop_access
+        # (enablePopAccess); secure = false for both. Either one enabled is a FAIL.
+        $imap = Resolve-GwsStudentOuPolicy -Policies $pol -Type 'gmail.imap_access' `
+            -OrgUnitPath $stuOu -OrgUnits $AuditData.Tenant.OrgUnits -Field 'enableImapAccess'
+        $pop = Resolve-GwsStudentOuPolicy -Policies $pol -Type 'gmail.pop_access' `
+            -OrgUnitPath $stuOu -OrgUnits $AuditData.Tenant.OrgUnits -Field 'enablePopAccess'
+        $groupNote = Get-K12GroupOverrideNote $imap
+
+        $enabled = [System.Collections.Generic.List[string]]::new()
+        if ($imap.Found -and $imap.Value -eq $true) { $enabled.Add('IMAP') }
+        if ($pop.Found  -and $pop.Value  -eq $true) { $enabled.Add('POP') }
+
+        if ($enabled.Count -gt 0) {
+            New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' -OrgUnitPath $stuOu `
+                -CurrentValue ("Legacy mail access is enabled for '$stuOu' ($($enabled -join ' and ')). POP and IMAP " +
+                    'authenticate with a username and password alone, bypassing 2-Step Verification and sign-in ' +
+                    "challenges. Disable IMAP and POP for student OUs. App-specific passwords are a related legacy " +
+                    "path not read here; review them separately.$groupNote") `
+                -Details @{ ImapEnabled = ($imap.Found -and $imap.Value -eq $true); PopEnabled = ($pop.Found -and $pop.Value -eq $true) }
+        } elseif ($imap.Found -and $pop.Found) {
+            New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' -OrgUnitPath $stuOu `
+                -CurrentValue ("IMAP and POP are both disabled for '$stuOu' (resolved from " +
+                    "'$($imap.SourceOuPath)'). App-specific passwords remain a manual review item.$groupNote") `
+                -Details @{ ImapEnabled = $false; PopEnabled = $false; SourceOu = $imap.SourceOuPath }
+        } else {
+            $missing = @()
+            if (-not $imap.Found) { $missing += 'IMAP' }
+            if (-not $pop.Found)  { $missing += 'POP' }
+            New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' -OrgUnitPath $stuOu `
+                -CurrentValue ("Legacy-access policy for '$stuOu' is incomplete: $($missing -join ' and ') access " +
+                    'setting(s) not returned. Confirm in the Admin Console (Apps > Gmail > End User Access) and ' +
+                    "disable IMAP and POP for student OUs.$groupNote") `
+                -Details @{ Setting = 'gmail.imap_access, gmail.pop_access'; Missing = $missing }
+        }
+    }
+    return @($findings)
+}
+
+# ── GWS-K12-014: Vault Export And Retention Privileges Restricted (K12-IDENT-004) ──
+function Test-GWSK12014 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey @('Roles', 'RoleAssignments') -Subject 'admin roles and role assignments'
+    if ($na) { return $na }
+
+    $roles = @($AuditData.Roles)
+    $assignments = @($AuditData.RoleAssignments)
+    if ($roles.Count -eq 0 -or $assignments.Count -eq 0) {
+        # A tenant always has system roles and at least one super-admin assignment;
+        # an empty result is a collection gap, not a clean tenant.
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue ('Not Assessed: the roles or role-assignments list came back empty, which no real tenant ' +
+                'produces. This control was not evaluated; absence of evidence is not compliance.') `
+            -OrgUnitPath $OrgUnitPath -Details @{ NotAssessed = $true }
+    }
+
+    # Vault privileges ride on admin roles under the Google Vault service. Their
+    # exact privilegeName strings are not documented stably, so match the family
+    # by token; a match is a review item, never a hard fail, and the clean branch
+    # still directs a manual Vault check so a missed token cannot read as a pass.
+    $vaultPattern = '(?i)(vault|ediscovery|e_discovery|retention|export|\bhold\b|matter)'
+    $rolesById = @{}
+    foreach ($r in $roles) { $rolesById["$($r.roleId)"] = $r }
+
+    $review = foreach ($a in $assignments) {
+        $role = $rolesById["$($a.roleId)"]
+        if (-not $role) { continue }
+        if ($role.isSuperAdminRole) { continue }  # super admins hold Vault reach inherently; ADMIN-001 counts them
+        $hits = @(@($role.rolePrivileges) | Where-Object { "$($_.privilegeName)" -match $vaultPattern })
+        if ($hits.Count) {
+            [pscustomobject]@{
+                RoleName   = "$($role.roleName)"
+                AssignedTo = "$($a.assignedTo)"
+                Privileges = @($hits | ForEach-Object { "$($_.privilegeName)" } | Select-Object -Unique)
+            }
+        }
+    }
+    $review = @($review)
+
+    if ($review.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue ("No delegated (non-super-admin) role assignment carries a recognized Vault export, " +
+                "retention, hold, matter, or eDiscovery privilege ($($assignments.Count) assignment(s) across " +
+                "$($roles.Count) role(s) reviewed). Super admins hold Vault reach inherently and are covered by the " +
+                'super-admin review; confirm current retention rules directly in Vault.') `
+            -OrgUnitPath $OrgUnitPath
+    }
+
+    $names = @($review | ForEach-Object { "$($_.RoleName) -> $($_.AssignedTo) ($($_.Privileges -join ', '))" })
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
+        -CurrentValue ("$($review.Count) delegated admin assignment(s) carry a Vault export/retention-family " +
+            "privilege: $($names -join '; '). Manage Exports can download any mailbox or Drive; Manage Retention " +
+            'Rules can permanently delete records. Confirm each holder needs it and remove the privilege or ' +
+            'assignment where they do not; review retention rules in Vault directly.') `
+        -OrgUnitPath $OrgUnitPath `
+        -Details @{
+            ReviewCount = $review.Count
+            Assignments = @($review)
+            Note        = 'Vault privilege names are matched by family token; treat matches as a review list, not a hard failure.'
+        }
+}
+
+# ── GWS-K12-015: Audit Logging License Coverage (K12-AUDIT-001) ──────────
+# Manual-review control: assessing the license gap needs each user's Workspace
+# edition/SKU, which the collector does not populate yet, so this reports Not
+# Assessed with guidance rather than assuming coverage.
+function Test-GWSK12015 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' -OrgUnitPath $OrgUnitPath `
+        -CurrentValue ('Not Assessed: evaluating the audit-logging license gap needs each user''s Workspace ' +
+            'edition/SKU, which the collector does not populate yet. Verify manually that every active user holds a ' +
+            'paid license so private-Drive actions generate log records (Admin Console > Billing > Licenses). ' +
+            'Absence of evidence is not compliance.') `
+        -Details @{ NotAssessed = $true; ManualReview = $true }
+}

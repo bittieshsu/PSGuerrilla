@@ -1,0 +1,14 @@
+{
+  "checkId": "DRIVE-018",
+  "platform": "GWS",
+  "scenario": "not-assessed",
+  "expectedStatus": "SKIP",
+  "description": "Shared drive enumeration failed (scope not delegated or no Drive admin privilege)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "SharedDrives": "HTTP 403: insufficient permissions"
+    },
+    "SharedDrives": []
+  }
+}

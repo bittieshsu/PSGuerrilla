@@ -409,6 +409,196 @@
         "ou-absent",
         "not-assessed"
       ]
+    },
+    {
+      "id": "GWS-K12-011",
+      "name": "Student Auto-Forwarding Disabled",
+      "description": "A single Gmail auto-forwarding rule silently copies every future message to an external address, and it survives a password reset because it is a setting, not a session. Staff occasionally have a legitimate need; a student OU does not, and leaving the capability on is a standing exfiltration and account-persistence path. This check resolves the Gmail automatic-forwarding end-user setting for each student OU.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 1,
+      "subcategory": "Data Protection",
+      "recommendedValue": "Automatic email forwarding is disabled for student OUs",
+      "remediationUrl": "https://admin.google.com/ac/apps/gmail/enduseraccess",
+      "remediationSteps": "Admin Console > Apps > Google Workspace > Gmail > End User Access. Select the student organizational unit and turn off 'Automatic forwarding' so users in the OU cannot configure forwarding rules. Apply the same to any staff OU with no business need.",
+      "compliance": {
+        "nistSp80053": [
+          "AC-4"
+        ],
+        "mitreAttack": [
+          "T1114.003"
+        ],
+        "cisBenchmark": [],
+        "scuba": []
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "ouScoped": true,
+      "guerrillaBaseline": {
+        "baselineId": "K12-DATA-004",
+        "baselineVersion": "0.1.0",
+        "status": "candidate"
+      },
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "no-policy",
+        "no-scope",
+        "ou-absent",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "GWS-K12-012",
+      "name": "Student Data Export (Takeout) Disabled",
+      "description": "Google Takeout is a supported one-click export of a user's whole Drive and Gmail; on the way out the door, or in the hands of a compromised account, it is a bulk exfiltration tool. Takeout is configurable per OU in the Admin console, but no Cloud Identity policy surface currently exposes its state for automated reading, so this control is a documented manual-review item: the check reports Not Assessed and directs a manual confirmation rather than assuming a value it cannot read.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 1,
+      "subcategory": "Data Protection",
+      "recommendedValue": "Google Takeout is turned off for student OUs (verify manually; no config API exposes this today)",
+      "remediationUrl": "https://admin.google.com/ac/accountsettings/takeout",
+      "remediationSteps": "Admin Console > Account > Account settings > Takeout. Select the student organizational unit and turn Takeout off so a one-click bulk export of Drive and Gmail is not available to students. No Cloud Identity policy surface exposes this state, so confirm it by hand.",
+      "compliance": {
+        "nistSp80053": [
+          "AC-4"
+        ],
+        "mitreAttack": [
+          "T1567"
+        ],
+        "cisBenchmark": [],
+        "scuba": []
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "ouScoped": false,
+      "guerrillaBaseline": {
+        "baselineId": "K12-DATA-005",
+        "baselineVersion": "0.1.0",
+        "status": "candidate"
+      },
+      "verdictPaths": [
+        "manual-review"
+      ]
+    },
+    {
+      "id": "GWS-K12-013",
+      "name": "Legacy Authentication Disabled For Students",
+      "description": "POP and IMAP are pre-OAuth mail-access protocols that bypass modern sign-in challenges and second factors: a valid username and password is enough. They exist for legacy desktop mail clients a student OU does not need, and leaving them on keeps a credential-only door open next to the front door the district hardened with 2SV. This check resolves the Gmail IMAP and POP end-user access settings for each student OU. App-specific passwords, a related legacy path, are not exposed by this policy surface and remain a manual review item.",
+      "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 2,
+      "subcategory": "Account Hygiene",
+      "recommendedValue": "IMAP and POP end-user access are disabled for student OUs",
+      "remediationUrl": "https://admin.google.com/ac/apps/gmail/enduseraccess",
+      "remediationSteps": "Admin Console > Apps > Google Workspace > Gmail > End User Access. Select the student organizational unit and turn off both IMAP and POP access. App-specific passwords are a related legacy-access path this check cannot read; review them separately.",
+      "compliance": {
+        "nistSp80053": [
+          "IA-2"
+        ],
+        "mitreAttack": [
+          "T1110",
+          "T1078.004"
+        ],
+        "cisBenchmark": [],
+        "scuba": []
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "ouScoped": true,
+      "guerrillaBaseline": {
+        "baselineId": "K12-ACCT-002",
+        "baselineVersion": "0.1.0",
+        "status": "candidate"
+      },
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "no-policy",
+        "no-scope",
+        "ou-absent",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "GWS-K12-014",
+      "name": "Vault Export And Retention Privileges Restricted",
+      "description": "Google Vault is administrative reach over the whole tenant. 'Manage Exports' can download any user's mailbox and Drive at any time; 'Manage Retention Rules' can permanently delete records a misconfigured rule sweeps up. These privileges ride on admin roles and accumulate the way delegated-admin roles do. This check surfaces admin role assignments whose privileges match Vault export, retention, hold, matter, or eDiscovery management; whether each holder is legitimate is the district's determination, so it reports a review list rather than a hard failure. The retention rules themselves are reviewed in Vault directly.",
+      "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 2,
+      "subcategory": "Admin Roles",
+      "recommendedValue": "Every Vault export or retention privilege maps to a known, current administrator who needs it",
+      "remediationUrl": "https://admin.google.com/ac/roles",
+      "remediationSteps": "Admin Console > Account > Admin roles. For each role flagged as carrying a Vault export, retention, hold, matter, or eDiscovery privilege, confirm the holder needs it; remove the privilege or the assignment where they do not. Review current retention rules in Vault directly (vault.google.com > Retention).",
+      "compliance": {
+        "nistSp80053": [
+          "AC-6",
+          "AU-9"
+        ],
+        "mitreAttack": [
+          "T1114",
+          "T1530"
+        ],
+        "cisBenchmark": [],
+        "scuba": []
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "ouScoped": false,
+      "guerrillaBaseline": {
+        "baselineId": "K12-IDENT-004",
+        "baselineVersion": "0.1.0",
+        "status": "candidate"
+      },
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "GWS-K12-015",
+      "name": "Audit Logging License Coverage",
+      "description": "Workspace audit logs answer the questions every account incident raises, but researchers found that without a paid license assigned to a user, actions in that user's private Drive can generate no log records, leaving the organization blind to exfiltration. Google called it intended behavior, which makes a license assignment a security control. Assessing it requires each user's Workspace edition/SKU, which the collector does not populate yet, so this control is a documented manual-review item: the check reports Not Assessed and directs a manual confirmation.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Visibility & Analytics",
+      "zeroTrustWeight": 2,
+      "subcategory": "Audit & Visibility",
+      "recommendedValue": "Every active user holds a paid license so private-Drive actions are logged (verify manually; edition/SKU not collected yet)",
+      "remediationUrl": "https://admin.google.com/ac/billing/licenses",
+      "remediationSteps": "Admin Console > Billing > Licenses. Confirm every active user is assigned a paid Workspace license so private-Drive actions generate audit records. Assessment needs each user's edition/SKU, which the collector does not populate yet, so verify coverage by hand.",
+      "compliance": {
+        "nistSp80053": [
+          "AU-12"
+        ],
+        "mitreAttack": [
+          "T1562.008"
+        ],
+        "cisBenchmark": [],
+        "scuba": []
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "ouScoped": false,
+      "guerrillaBaseline": {
+        "baselineId": "K12-AUDIT-001",
+        "baselineVersion": "0.1.0",
+        "status": "candidate"
+      },
+      "verdictPaths": [
+        "manual-review"
+      ]
     }
   ]
 }

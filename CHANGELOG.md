@@ -4,6 +4,16 @@
 
 ## [Unreleased]
 
+## [2.53.0] - 2026-07-26
+
+### Added
+- **Two Google Workspace attack-path checks.** `DRIVE-018` (Shared Drive External-Sharing Exposure) enumerates every shared drive in the tenant and flags each whose external-sharing restriction (`domainUsersOnly`) is not enforced — the drive-level gate that permits a shared drive's contents to be shared outside the organization. `GTRADE-007` (Admin Role Granted Through a Group) surfaces admin roles assigned to a security group rather than a user: every direct or nested member inherits the role, and anyone who can edit the group's membership can grant it to themselves. It is the Google Workspace analogue of an Active Directory nested-group-to-Tier-0 path; broad-privilege grants `FAIL`, narrow ones `WARN` for the district's review.
+- **Five more K12 candidate-baseline checks** (`GWS-K12-011` through `GWS-K12-015`): student Gmail auto-forwarding, Google Takeout data export, legacy IMAP/POP authentication for students, Google Vault export/retention/eDiscovery privilege sprawl, and audit-logging license coverage. Where a control's state is not exposed by any readable policy surface (Takeout, per-user audit-log SKU), the check reports **Not Assessed** with a manual-review direction rather than assuming a value it cannot read. The K12 baseline remains a Guerrilla-authored candidate community baseline, openly published for comment, not a consensus standard.
+- Google Workspace coverage is now **175 checks**; the total is **643**, each validated by a golden-fixture test (**1,854 fixtures**).
+
+### Security
+- **Service-account key staging is now owner-only.** When a scan resolves a Google service-account private key from the vault, it must stage it to a temp file for the collector, which only accepts a key by path. That file is now created empty, locked to the current user (mode `0600` on Unix; an inheritance-protected single-user ACL on Windows), and only then written — so the plaintext key is never world-readable, not even for the instant between creation and the permission change. The name now uses full `GetRandomFileName()` entropy instead of a truncated GUID slice. Routed all five staging sites (`Invoke-GWSAudit`, `Invoke-Campaign`, `Test-Safehouse`) through one helper, `New-GuerrillaSecretFile`.
+
 ## [2.52.0] - 2026-07-16
 
 ### Added

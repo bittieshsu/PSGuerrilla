@@ -1,0 +1,29 @@
+{
+  "checkId": "GTRADE-007",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A broad user-management role is assigned to a group; members inherit it",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Roles": [
+      { "roleId": "1", "roleName": "_SEED_ADMIN_ROLE", "isSuperAdminRole": true, "rolePrivileges": [ { "privilegeName": "SUPER_ADMIN" } ] },
+      { "roleId": "2", "roleName": "User Management Admin", "isSuperAdminRole": false, "rolePrivileges": [ { "privilegeName": "USERS_UPDATE" }, { "privilegeName": "USERS_RETRIEVE" } ] }
+    ],
+    "RoleAssignments": [
+      { "roleId": "1", "assignedTo": "user-super-1", "assigneeType": "USER", "scopeType": "CUSTOMER" },
+      { "roleId": "2", "assignedTo": "grp-200", "assigneeType": "GROUP", "scopeType": "CUSTOMER" }
+    ],
+    "Groups": [
+      { "id": "grp-200", "email": "helpdesk@district.example.org", "name": "Help Desk" }
+    ],
+    "RoleGroupMembers": {
+      "grp-200": [
+        { "type": "USER", "email": "tech1@district.example.org" },
+        { "type": "USER", "email": "tech2@district.example.org" },
+        { "type": "USER", "email": "student-worker@district.example.org" }
+      ]
+    }
+  }
+}

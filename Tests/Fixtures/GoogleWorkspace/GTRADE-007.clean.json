@@ -1,0 +1,23 @@
+{
+  "checkId": "GTRADE-007",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All admin roles are assigned to individual users, not groups",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Roles": [
+      { "roleId": "1", "roleName": "_SEED_ADMIN_ROLE", "isSuperAdminRole": true, "rolePrivileges": [ { "privilegeName": "SUPER_ADMIN" } ] },
+      { "roleId": "2", "roleName": "User Management Admin", "isSuperAdminRole": false, "rolePrivileges": [ { "privilegeName": "USERS_UPDATE" } ] }
+    ],
+    "RoleAssignments": [
+      { "roleId": "1", "assignedTo": "user-super-1", "assigneeType": "USER", "scopeType": "CUSTOMER" },
+      { "roleId": "2", "assignedTo": "user-helpdesk-1", "assigneeType": "USER", "scopeType": "CUSTOMER" }
+    ],
+    "Groups": [
+      { "id": "grp-100", "email": "all-staff@district.example.org", "name": "All Staff" }
+    ],
+    "RoleGroupMembers": {}
+  }
+}

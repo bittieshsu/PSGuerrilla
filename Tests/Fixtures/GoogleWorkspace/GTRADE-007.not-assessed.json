@@ -1,0 +1,18 @@
+{
+  "checkId": "GTRADE-007",
+  "platform": "GWS",
+  "scenario": "not-assessed",
+  "expectedStatus": "SKIP",
+  "description": "Role assignments failed to collect",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "RoleAssignments": "HTTP 500"
+    },
+    "Roles": [
+      { "roleId": "1", "roleName": "_SEED_ADMIN_ROLE", "isSuperAdminRole": true, "rolePrivileges": [ { "privilegeName": "SUPER_ADMIN" } ] }
+    ],
+    "RoleAssignments": [],
+    "Groups": []
+  }
+}

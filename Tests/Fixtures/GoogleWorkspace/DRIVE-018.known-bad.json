@@ -1,0 +1,28 @@
+{
+  "checkId": "DRIVE-018",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "A shared drive permits external sharing (domainUsersOnly not enforced)",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "SharedDrives": [
+      {
+        "id": "0AB1",
+        "name": "Finance",
+        "restrictions": { "domainUsersOnly": true }
+      },
+      {
+        "id": "0AB2",
+        "name": "Vendor Exchange",
+        "restrictions": { "domainUsersOnly": false }
+      },
+      {
+        "id": "0AB3",
+        "name": "Legacy Projects",
+        "restrictions": {}
+      }
+    ]
+  }
+}

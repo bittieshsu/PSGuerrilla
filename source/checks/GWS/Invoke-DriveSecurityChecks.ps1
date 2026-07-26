@@ -438,3 +438,62 @@ function Test-DRIVE017 {
         -Type 'drive_and_docs.general_access_default' -Field 'defaultFileAccess' -CompliantValues @('PRIVATE_TO_OWNER') -Status 'FAIL' `
         -BadMsg 'Default file access is not private to owner' -GoodMsg 'Default file access is private to owner'
 }
+
+# ── DRIVE-018: Shared Drive External-Sharing Exposure ─────────────────────
+# Enumerates every shared drive (collected via domain-admin access in
+# Get-GWSAuditData) and flags drives whose restrictions permit sharing outside
+# the organization. domainUsersOnly = true means access is confined to org
+# members; false or absent means items can be shared externally (and, with the
+# domain sharing setting on, made publicly accessible). Confirming an actual
+# public file link would need a per-file permission scan, which this does not do.
+function Test-DRIVE018 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey 'SharedDrives' -Subject 'shared drives'
+    if ($na) { return $na }
+
+    $drives = @($AuditData.SharedDrives | Where-Object { $null -ne $_ })
+    if ($drives.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue 'No shared drives were returned by the domain-admin enumeration; there is no shared-drive external-sharing exposure to report.' `
+            -OrgUnitPath $OrgUnitPath -Details @{ DriveCount = 0 }
+    }
+
+    # domainUsersOnly enforced (true) = confined to the org. Missing or false =
+    # external sharing permitted; an unrecognized value is never assumed safe.
+    $exposed = foreach ($d in $drives) {
+        $r = $d.restrictions
+        $domainOnly = if ($r -and $null -ne $r.domainUsersOnly) { [bool]$r.domainUsersOnly } else { $false }
+        if (-not $domainOnly) {
+            [pscustomobject]@{
+                Name  = if ("$($d.name)") { "$($d.name)" } else { "(unnamed)" }
+                Id    = "$($d.id)"
+                Label = "$(if ("$($d.name)") { "$($d.name)" } else { "(unnamed)" }) (id $($d.id))"
+            }
+        }
+    }
+    $exposed = @($exposed)
+
+    if ($exposed.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue ("All $($drives.Count) shared drive(s) restrict access to organization members " +
+                '(domainUsersOnly enforced); none permits sharing outside the organization.') `
+            -OrgUnitPath $OrgUnitPath -Details @{ DriveCount = $drives.Count; ExposedCount = 0 }
+    }
+
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+        -CurrentValue ("$($exposed.Count) of $($drives.Count) shared drive(s) permit sharing outside the " +
+            "organization (domainUsersOnly not enforced): $((@($exposed.Label) | Select-Object -First 10) -join '; '). " +
+            "Their contents can be shared with external accounts, and made publicly accessible if the domain sharing " +
+            'setting allows it. Restrict external sharing on each drive or document the exception. This reflects the ' +
+            "drive-level restriction; confirming a live public link requires a per-file permission scan not performed here.") `
+        -OrgUnitPath $OrgUnitPath `
+        -Details @{
+            DriveCount    = $drives.Count
+            ExposedCount  = $exposed.Count
+            AffectedItems = @($exposed.Label)
+            AffectedLabel = 'Shared drives permitting external sharing'
+        }
+}

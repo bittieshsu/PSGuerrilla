@@ -1,0 +1,11 @@
+{
+  "checkId": "GWS-K12-015",
+  "platform": "GWS",
+  "scenario": "manual-review",
+  "expectedStatus": "SKIP",
+  "description": "Per-user edition/SKU not collected; reported Not Assessed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {}
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "checkId": "GWS-K12-013",
+  "platform": "GWS",
+  "scenario": "no-scope",
+  "expectedStatus": "SKIP",
+  "description": "No student OU scope provided",
+  "objectShape": true,
+  "auditData": {
+    "Tenant": {
+      "Domain": "district.example.org",
+      "OrgUnits": [
+        { "orgUnitPath": "/Students", "orgUnitId": "id:stuou123", "parentOrgUnitPath": "/" },
+        { "orgUnitPath": "/Staff", "orgUnitId": "id:staffou456", "parentOrgUnitPath": "/" }
+      ]
+    },
+    "StudentOUs": [],
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "All": [],
+      "ByType": {
+        "gmail.imap_access": [
+          {
+            "setting": { "type": "settings/gmail.imap_access", "value": { "enableImapAccess": false } },
+            "policyQuery": { "orgUnit": "orgUnits/stuou123" },
+            "type": "ADMIN"
+          }
+        ]
+      },
+      "Count": 1
+    }
+  }
+}

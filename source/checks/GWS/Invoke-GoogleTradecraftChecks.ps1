@@ -299,3 +299,120 @@ function Test-GTRADE006 {
         -CurrentValue "No third-party OAuth app holds full mail/drive/admin scopes ($($apps.Count) app(s) reviewed)" `
         -OrgUnitPath $OrgUnitPath
 }
+
+# ── GTRADE-007: Admin Role Granted Through a Group ───────────────────────────
+# Workspace analogue of an AD nested-group-to-privileged-group path. An admin
+# role assigned to a security group is held by every member (direct or nested),
+# so whoever controls the group's membership effectively controls the role.
+function Test-GTRADE007 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey @('Roles', 'RoleAssignments', 'Groups') -Subject 'admin roles, assignments, and groups'
+    if ($na) { return $na }
+
+    $roles = @($AuditData.Roles)
+    $assignments = @($AuditData.RoleAssignments)
+    $groups = @($AuditData.Groups)
+    if ($roles.Count -eq 0 -or $assignments.Count -eq 0) {
+        # A tenant always has system roles and at least one super-admin
+        # assignment; an empty result is a collection gap, not a clean tenant.
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue ('Not Assessed: the roles or role-assignments list came back empty, which no real tenant ' +
+                'produces. This control was not evaluated; absence of evidence is not compliance.') `
+            -OrgUnitPath $OrgUnitPath -Details @{ NotAssessed = $true }
+    }
+
+    $rolesById = @{}
+    foreach ($r in $roles) { $rolesById["$($r.roleId)"] = $r }
+    $groupsById = @{}
+    foreach ($g in $groups) { if ($g.id) { $groupsById["$($g.id)"] = $g } }
+
+    # Privileges whose reach over identities, security, OUs, roles, or groups
+    # makes a group-mediated grant a real escalation (not merely a read role).
+    $broadPattern = '(?i)^(SUPER_ADMIN|USERS?_|SECURITY_|ORGANIZATION_UNITS?_|GROUPS?_|ROLE_MANAGEMENT)'
+    $rgm = $AuditData.RoleGroupMembers
+
+    $records = [System.Collections.Generic.List[object]]::new()
+    $highImpact = 0
+    foreach ($a in $assignments) {
+        $to = "$($a.assignedTo)"
+        if (-not $to) { continue }
+        $isGroup = ("$($a.assigneeType)" -eq 'GROUP') -or $groupsById.ContainsKey($to)
+        if (-not $isGroup) { continue }
+
+        $role = $rolesById["$($a.roleId)"]
+        if (-not $role) { continue }
+        $group = $groupsById[$to]
+        $groupLabel = if ($group) { "$($group.email ?? $group.name ?? $to)" } else { "group id $to" }
+
+        $isSuper = [bool]$role.isSuperAdminRole
+        $broad = @(@($role.rolePrivileges) | Where-Object { "$($_.privilegeName)" -match $broadPattern })
+        $high = $isSuper -or $broad.Count -gt 0
+
+        # Membership: RoleGroupMembers is keyed by group id; a per-group error
+        # means the surface exists but the roster was not enumerated.
+        $members = if ($rgm) { @($rgm[$to]) } else { @() }
+        $memberErr = $AuditData.Errors["RoleGroupMembers:$to"]
+        $userMembers = @($members | Where-Object { "$($_.type)" -eq 'USER' })
+        $subGroups   = @($members | Where-Object { "$($_.type)" -eq 'GROUP' })
+
+        $reach = if ($memberErr) {
+            'membership not enumerated'
+        } elseif ($members.Count -eq 0) {
+            'no members enumerated'
+        } else {
+            $bits = @("$($userMembers.Count) user member(s)")
+            if ($subGroups.Count -gt 0) { $bits += "$($subGroups.Count) nested subgroup(s) whose members also inherit" }
+            $bits -join ', '
+        }
+
+        $scope = if ("$($a.scopeType)" -eq 'ORG_UNIT') { "OU-scoped" } else { 'domain-wide' }
+        $roleName = if ("$($role.roleName)") { "$($role.roleName)" } else { "role $($a.roleId)" }
+        $priv = if ($isSuper) { 'SUPER_ADMIN' } elseif ($broad.Count) { (@($broad | ForEach-Object { "$($_.privilegeName)" } | Select-Object -Unique -First 3) -join ', ') } else { 'narrow privileges' }
+
+        if ($high) { $highImpact++ }
+        $records.Add([pscustomobject]@{
+            High  = $high
+            Label = "$roleName ($priv, $scope) -> group '$groupLabel': $reach"
+        })
+    }
+
+    if ($records.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue ("No admin role is assigned to a group; all $($assignments.Count) role assignment(s) target " +
+                'individual users. There is no group-membership escalation path into an admin role.') `
+            -OrgUnitPath $OrgUnitPath -Details @{ GroupGrants = 0 }
+    }
+
+    $labels = @($records | ForEach-Object { $_.Label })
+    if ($highImpact -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue ("$highImpact of $($records.Count) group-mediated admin-role grant(s) carry broad " +
+                "(user-management, security, OU, role, group, or super-admin) privileges: $(($labels | Select-Object -First 8) -join '; '). " +
+                'Every member of each group — including members of nested subgroups — holds the role, and anyone who ' +
+                'can edit the group inherits it. Assign privileged roles to named individuals, or tightly control who ' +
+                'can add members to these groups and their subgroups.') `
+            -OrgUnitPath $OrgUnitPath `
+            -Details @{
+                GroupGrants   = $records.Count
+                HighImpact    = $highImpact
+                AffectedItems = @($labels)
+                AffectedLabel = 'Admin roles reachable through group membership'
+            }
+    }
+
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'WARN' `
+        -CurrentValue ("$($records.Count) admin-role grant(s) target a group rather than a named individual, though " +
+            "none carries broad privileges: $(($labels | Select-Object -First 8) -join '; '). Each is still a " +
+            'membership-based grant: whoever can edit the group (or a nested subgroup) inherits the role. Confirm ' +
+            'each group grant is intended and its membership is controlled.') `
+        -OrgUnitPath $OrgUnitPath `
+        -Details @{
+            GroupGrants   = $records.Count
+            HighImpact    = 0
+            AffectedItems = @($labels)
+            AffectedLabel = 'Admin roles reachable through group membership'
+        }
+}

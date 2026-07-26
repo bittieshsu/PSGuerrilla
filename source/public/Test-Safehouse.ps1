@@ -136,8 +136,7 @@ function Test-Safehouse {
         if ($saJson -and $adminEmail) {
             $tempSaPath = $null
             try {
-                $tempSaPath = Join-Path ([System.IO.Path]::GetTempPath()) "guerrilla-test-sa-$([guid]::NewGuid().ToString('N').Substring(0,8)).json"
-                $saJson | Set-Content -Path $tempSaPath -Encoding UTF8 -NoNewline
+                $tempSaPath = New-GuerrillaSecretFile -Content $saJson -Prefix 'guerrilla-test-sa'
 
                 $sw = [System.Diagnostics.Stopwatch]::StartNew()
                 $accessToken = Get-GoogleAccessToken -ServiceAccountKeyPath $tempSaPath `

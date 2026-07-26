@@ -1,0 +1,12 @@
+{
+  "checkId": "DRIVE-018",
+  "platform": "GWS",
+  "scenario": "empty",
+  "expectedStatus": "PASS",
+  "description": "Tenant has no shared drives",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "SharedDrives": []
+  }
+}

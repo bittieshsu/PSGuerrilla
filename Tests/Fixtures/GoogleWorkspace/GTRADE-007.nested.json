@@ -1,0 +1,29 @@
+{
+  "checkId": "GTRADE-007",
+  "platform": "GWS",
+  "scenario": "nested",
+  "expectedStatus": "FAIL",
+  "description": "A role-granting group contains a nested subgroup whose members also inherit the role",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Roles": [
+      { "roleId": "1", "roleName": "_SEED_ADMIN_ROLE", "isSuperAdminRole": true, "rolePrivileges": [ { "privilegeName": "SUPER_ADMIN" } ] },
+      { "roleId": "3", "roleName": "Groups & OU Admin", "isSuperAdminRole": false, "rolePrivileges": [ { "privilegeName": "GROUPS_ALL" }, { "privilegeName": "ORGANIZATION_UNITS_ALL" } ] }
+    ],
+    "RoleAssignments": [
+      { "roleId": "1", "assignedTo": "user-super-1", "assigneeType": "USER", "scopeType": "CUSTOMER" },
+      { "roleId": "3", "assignedTo": "grp-300", "assigneeType": "GROUP", "scopeType": "CUSTOMER" }
+    ],
+    "Groups": [
+      { "id": "grp-300", "email": "it-admins@district.example.org", "name": "IT Admins" }
+    ],
+    "RoleGroupMembers": {
+      "grp-300": [
+        { "type": "USER", "email": "it-lead@district.example.org" },
+        { "type": "GROUP", "email": "building-techs@district.example.org" },
+        { "type": "USER", "email": "building-tech-1@district.example.org" }
+      ]
+    }
+  }
+}

@@ -186,6 +186,34 @@
       "source_url": null,
       "source_read_date": null,
       "official_id": null
+    },
+    {
+      "id": "GTRADE-007",
+      "name": "Admin Role Granted Through a Group",
+      "description": "Google Workspace lets an admin role be assigned to a security group instead of a user; every member — direct or nested through a child group — inherits the role's privileges, and anyone who can edit the group's membership can grant themselves the role. A broad-privilege role on a group is therefore a membership-based escalation path: the group's edit-membership control becomes the effective grant of the role. This is the Workspace analogue of an Active Directory nested-group-to-privileged-group path. This check enumerates every role assigned to a group, resolves the group's members (including nested subgroups), and flags the escalation surface; whether each grant is intended is the district's determination, so broad-privilege grants FAIL and narrow ones WARN for review.",
+      "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 2,
+      "subcategory": "Privileged Access",
+      "recommendedValue": "Admin roles are assigned to named individuals, not groups; where a group grant is deliberate, its membership is tightly controlled and the role is least-privilege",
+      "remediationUrl": "https://admin.google.com/ac/roles",
+      "remediationSteps": "Admin Console > Account > Admin roles > (role) > Admins. For each role assigned to a group, confirm the group grant is intended; prefer assigning privileged roles to named individuals. Where a group grant stays, restrict who can edit the group's membership (owners/managers), remove nested subgroups that widen the reach, and reduce the role to least privilege. Review who can add members to the group and any nested child groups.",
+      "compliance": {
+        "nistSp80053": [
+          "AC-6",
+          "AC-2",
+          "AC-5"
+        ],
+        "mitreAttack": [
+          "T1078.004",
+          "T1098"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null
     }
   ]
 }

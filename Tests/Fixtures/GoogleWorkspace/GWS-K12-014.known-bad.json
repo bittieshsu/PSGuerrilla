@@ -1,0 +1,32 @@
+{
+  "checkId": "GWS-K12-014",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "A delegated role carries a Vault Manage Exports privilege",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Roles": [
+      {
+        "roleId": "1",
+        "roleName": "_SEED_ADMIN_ROLE",
+        "isSuperAdminRole": true,
+        "rolePrivileges": [ { "privilegeName": "SUPER_ADMIN" } ]
+      },
+      {
+        "roleId": "2",
+        "roleName": "eDiscovery Manager",
+        "isSuperAdminRole": false,
+        "rolePrivileges": [
+          { "privilegeName": "MANAGE_EXPORTS" },
+          { "privilegeName": "MANAGE_RETENTION_RULES" }
+        ]
+      }
+    ],
+    "RoleAssignments": [
+      { "roleId": "1", "assignedTo": "it-admin", "scopeType": "CUSTOMER" },
+      { "roleId": "2", "assignedTo": "records-clerk", "scopeType": "CUSTOMER" }
+    ]
+  }
+}

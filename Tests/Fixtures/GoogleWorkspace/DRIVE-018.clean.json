@@ -1,0 +1,23 @@
+{
+  "checkId": "DRIVE-018",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "All shared drives restrict access to org members",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "SharedDrives": [
+      {
+        "id": "0AB1",
+        "name": "Finance",
+        "restrictions": { "domainUsersOnly": true }
+      },
+      {
+        "id": "0AB2",
+        "name": "HR Records",
+        "restrictions": { "domainUsersOnly": true }
+      }
+    ]
+  }
+}

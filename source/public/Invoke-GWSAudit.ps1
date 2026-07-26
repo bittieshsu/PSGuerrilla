@@ -142,8 +142,7 @@ function Invoke-GWSAudit {
             if (-not $PSBoundParameters.ContainsKey('ServiceAccountKeyPath')) {
                 try {
                     $saJson = Get-GuerrillaCredential -VaultKey $gwsRef.vaultKey -VaultName $vaultName
-                    $tempSaPath = Join-Path ([System.IO.Path]::GetTempPath()) "guerrilla-sa-$([guid]::NewGuid().ToString('N').Substring(0,8)).json"
-                    $saJson | Set-Content -Path $tempSaPath -Encoding UTF8
+                    $tempSaPath = New-GuerrillaSecretFile -Content $saJson
                     $ServiceAccountKeyPath = $tempSaPath
                 } catch {
                     Write-Warning "Failed to resolve GWS service account from vault: $_"
@@ -207,8 +206,7 @@ function Invoke-GWSAudit {
         if (-not $keyPath) {
             $saJson = Get-SafehouseSecret -VaultKey 'GUERRILLA_GWS_SA' -VaultName $vaultName
             if ($saJson) {
-                $tempSaPath = Join-Path ([System.IO.Path]::GetTempPath()) "guerrilla-sa-$([guid]::NewGuid().ToString('N').Substring(0,8)).json"
-                $saJson | Set-Content -Path $tempSaPath -Encoding UTF8
+                $tempSaPath = New-GuerrillaSecretFile -Content $saJson
                 $keyPath = $tempSaPath
             }
         }

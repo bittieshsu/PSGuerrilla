@@ -484,6 +484,39 @@
         "known-bad",
         "not-assessed"
       ]
+    },
+    {
+      "id": "DRIVE-018",
+      "name": "Shared Drive External-Sharing Exposure",
+      "description": "Enumerates every shared drive in the tenant via domain-admin access and inspects each drive's sharing restrictions. A shared drive whose restriction domainUsersOnly is not enforced permits its contents to be shared with accounts outside the organization, up to and including public 'anyone with the link' access if the domain-level sharing setting allows it. This assesses the drive-level restriction that gates external sharing; confirming an actual public file link requires a per-file permission scan this check does not perform.",
+      "severity": "High",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 2,
+      "subcategory": "Shared Drives",
+      "recommendedValue": "Every shared drive restricts access to organization members (domainUsersOnly = true), or external sharing is a documented, reviewed exception",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/55656082996/sharing",
+      "remediationSteps": "Admin Console > Apps > Google Workspace > Drive and Docs > Manage shared drives. For each flagged shared drive, open its settings and turn off 'Sharing with people outside <organization>' (and 'Sharing with non-members') so items cannot be shared externally, or record the business exception. Enforce a domain default under Sharing settings > Shared drive creation.",
+      "compliance": {
+        "nistSp80053": [
+          "AC-3",
+          "AC-4"
+        ],
+        "mitreAttack": [
+          "T1537",
+          "T1567.002"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "original",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "empty",
+        "not-assessed"
+      ]
     }
   ]
 }

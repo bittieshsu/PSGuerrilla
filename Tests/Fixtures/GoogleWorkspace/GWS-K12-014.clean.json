@@ -1,0 +1,32 @@
+{
+  "checkId": "GWS-K12-014",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "No delegated role carries a Vault export/retention privilege",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Roles": [
+      {
+        "roleId": "1",
+        "roleName": "_SEED_ADMIN_ROLE",
+        "isSuperAdminRole": true,
+        "rolePrivileges": [ { "privilegeName": "SUPER_ADMIN" } ]
+      },
+      {
+        "roleId": "2",
+        "roleName": "Help Desk Lite",
+        "isSuperAdminRole": false,
+        "rolePrivileges": [
+          { "privilegeName": "USERS_RETRIEVE" },
+          { "privilegeName": "USERS_UPDATE" }
+        ]
+      }
+    ],
+    "RoleAssignments": [
+      { "roleId": "1", "assignedTo": "it-admin", "scopeType": "CUSTOMER" },
+      { "roleId": "2", "assignedTo": "helpdesk-1", "scopeType": "ORG_UNIT" }
+    ]
+  }
+}

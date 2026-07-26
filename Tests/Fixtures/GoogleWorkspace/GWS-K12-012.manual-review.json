@@ -1,0 +1,11 @@
+{
+  "checkId": "GWS-K12-012",
+  "platform": "GWS",
+  "scenario": "manual-review",
+  "expectedStatus": "SKIP",
+  "description": "Takeout state has no config API surface; reported Not Assessed",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {}
+  }
+}
