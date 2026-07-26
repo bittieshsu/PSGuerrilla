@@ -23,8 +23,21 @@ coverage/
 # Secrets
 *.pfx
 *.pem
+*.p12
+*.key
 sa-key.json
 *-credentials.json
+
+# Google OAuth / service-account key downloads (Cloud Console default names)
+client_secret*.json
+*.apps.googleusercontent.com.json
+*service-account*.json
+*service_account*.json
+*sa-key*.json
+*-sa.json
+token.json
+*token*.json
+.gws-*
 
 # Handoff / testing-instruction docs never belong in the repo
 Tests/HANDOFF*
@@ -40,3 +53,13 @@ supabase-*.env
 
 # Golden-fixture run artifact (emitted by the gate; not committed here)
 Tests/test-summary.json
+
+# The broad *credentials* / *token*.json rules above match module source on
+# case-insensitive filesystems (e.g. Save-SafehouseCredentialSet.ps1). Never
+# let a secret-shaped rule silently swallow real source or fixtures.
+!source/**/*.ps1
+!source/**/*.psm1
+!source/**/*.psd1
+!Tests/**/*.ps1
+!Tests/**/*.psm1
+!Tests/Fixtures/**/*.json
