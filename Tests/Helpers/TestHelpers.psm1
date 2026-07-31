@@ -194,6 +194,55 @@ function New-MockCheckDefinition {
 
 # --- Golden-fixture helpers (shared by the Pester suite and the publisher) ---
 
+# Resolve relative-date tokens inside a loaded fixture's auditData so that
+# time-sensitive checks don't rot as wall-clock advances. A fixture may write a
+# datetime as a token instead of an absolute timestamp:
+#
+#     "@now"        -> [datetime]::UtcNow
+#     "@now-30d"    -> 30 days ago      "@now+5d"  -> 5 days ahead
+#     "@now-12h"    -> 12 hours ago     "@now+2h"  -> 2 hours ahead
+#
+# These are replaced with a real [datetime] (UTC) at load time. Absolute ISO
+# dates are left untouched (ConvertFrom-Json already coerces those to [datetime]),
+# so this is backward compatible with every existing fixture. Use a token whenever
+# a fixture's expected verdict depends on the value's age relative to "now" — an
+# absolute date will silently drift across its threshold and turn the gate red on
+# some future run (see ADTRADE-005: "rotated within 90 days").
+function Resolve-GuerrillaFixtureDate {
+    param($Node)
+
+    if ($Node -is [string]) {
+        if ($Node -match '^@now(?:([+-]\d+)([dh]))?$') {
+            $dt = [datetime]::UtcNow
+            if ($Matches[1]) {
+                $n = [int]$Matches[1]
+                $dt = if ($Matches[2] -eq 'h') { $dt.AddHours($n) } else { $dt.AddDays($n) }
+            }
+            return $dt
+        }
+        return $Node
+    }
+    if ($Node -is [System.Collections.IDictionary]) {
+        foreach ($k in @($Node.Keys)) { $Node[$k] = Resolve-GuerrillaFixtureDate $Node[$k] }
+        return $Node
+    }
+    # IList (arrays/lists) before IEnumerable/pscustomobject. Iterate in place and
+    # return with the unary comma so an EMPTY array survives — a bare `return @()`
+    # unrolls to $null in the pipeline, which would turn "empty config present"
+    # (FAIL) into "no data collected" (SKIP) and silently corrupt those fixtures.
+    if ($Node -is [System.Collections.IList]) {
+        for ($i = 0; $i -lt $Node.Count; $i++) { $Node[$i] = Resolve-GuerrillaFixtureDate $Node[$i] }
+        return ,$Node
+    }
+    if ($Node -is [pscustomobject]) {
+        foreach ($p in @($Node.PSObject.Properties | Where-Object MemberType -eq 'NoteProperty')) {
+            $p.Value = Resolve-GuerrillaFixtureDate $p.Value
+        }
+        return $Node
+    }
+    return $Node
+}
+
 # Build the table-driven case list from the JSON fixtures under Tests/Fixtures/,
 # pairing each fixture with the REAL check definition from Data/AuditChecks/.
 function Get-GuerrillaFixtureCases {
@@ -228,6 +277,9 @@ function Get-GuerrillaFixtureCases {
         if ($fx.objectShape) {
             $auditData = ConvertTo-MixedAuditData ($raw | ConvertFrom-Json).auditData
         }
+        # Replace any relative-date tokens (e.g. "@now-30d") with a real [datetime]
+        # so age-based checks stay pinned to the correct side of their threshold.
+        $auditData = Resolve-GuerrillaFixtureDate $auditData
 
         # EIDSCA controls have no per-ID function; they all run through the data-driven
         # dispatcher Invoke-EntraEidscaChecks (which calls Resolve-EidscaControl per control).

@@ -8,7 +8,7 @@
     "Errors": {},
     "Tradecraft": {
       "SeamlessSsoAccount": {
-        "PwdLastSet": "2026-01-01T00:00:00Z",
+        "PwdLastSet": "@now-200d",
         "DistinguishedName": "CN=AZUREADSSOACC,..."
       }
     }
