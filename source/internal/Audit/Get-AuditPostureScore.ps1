@@ -16,6 +16,15 @@ function Get-AuditPostureScore {
         Info     = 0
     }
 
+    # Deviation overlay: findings the operator has explicitly accepted or
+    # suppressed (via a guerrilla-deviations.json overlay) are removed from the
+    # posture math — an acknowledged, waived risk should not keep deducting. They
+    # remain in the finding set for the report. This is a no-op on a normal run:
+    # nothing carries these flags unless a deviation file was applied upstream.
+    if (Get-Command Test-GuerrillaDeviated -ErrorAction SilentlyContinue) {
+        $Findings = @($Findings | Where-Object { -not (Test-GuerrillaDeviated $_) })
+    }
+
     # Group findings by category
     $categories = $Findings | Group-Object -Property Category
 

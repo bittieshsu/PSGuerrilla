@@ -116,6 +116,11 @@ function Invoke-GWSAudit {
         [string]$ConfigFile,
         [string]$VaultName = 'Guerrilla',
 
+        # Optional path to a guerrilla-deviations.json overlay. Accepted/suppressed
+        # findings are annotated and removed from the posture math; the raw verdicts
+        # are otherwise untouched. Absent = no overlay (default behavior).
+        [string]$DeviationPath,
+
         [ValidateSet('Auto', 'Light', 'Dark', 'Guerrilla', 'Professional', 'Slate')]
         [string]$ReportStyle = 'Auto',
 
@@ -318,6 +323,20 @@ function Invoke-GWSAudit {
         }
 
         } # end if (-not $TestMode)
+
+        # --- Deviation overlay (opt-in) ---
+        # Apply local accepted/suppressed exceptions before scoring so the posture
+        # reflects the operator's acknowledged risk decisions. No file => no-op.
+        if ($DeviationPath) {
+            $deviations = Read-GuerrillaDeviation -Path $DeviationPath
+            $devResult  = Merge-GuerrillaDeviation -Findings @($allFindings) -Deviations $deviations
+            $allFindings = [System.Collections.Generic.List[PSCustomObject]]::new()
+            $allFindings.AddRange([PSCustomObject[]]@($devResult.Findings))
+            $s = $devResult.Summary
+            if (-not $Quiet) {
+                Write-ProgressLine -Phase GWS -Message 'Applied deviation overlay' -Detail "accepted:$($s.Accepted) suppressed:$($s.Suppressed) annotated:$($s.Annotated) expired:$($s.Expired) unmatched:$($s.Unmatched)"
+            }
+        }
 
         # --- Score ---
         if (-not $Quiet) { Write-ProgressLine -Phase GWS -Message 'Calculating posture score' }
