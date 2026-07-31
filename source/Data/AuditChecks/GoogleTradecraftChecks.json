@@ -124,7 +124,15 @@
       "provenance": "original",
       "source_url": null,
       "source_read_date": null,
-      "official_id": null
+      "official_id": null,
+      "requires": {
+        "collectors": [
+          "Users"
+        ],
+        "dataPaths": [
+          "Users"
+        ]
+      }
     },
     {
       "id": "GTRADE-005",
@@ -154,7 +162,15 @@
       "provenance": "original",
       "source_url": null,
       "source_read_date": null,
-      "official_id": null
+      "official_id": null,
+      "requires": {
+        "collectors": [
+          "Roles"
+        ],
+        "dataPaths": [
+          "Roles"
+        ]
+      }
     },
     {
       "id": "GTRADE-006",

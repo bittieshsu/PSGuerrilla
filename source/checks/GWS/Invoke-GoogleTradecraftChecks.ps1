@@ -14,6 +14,15 @@ function Invoke-GoogleTradecraftChecks {
     $findings = [System.Collections.Generic.List[PSCustomObject]]::new()
 
     foreach ($check in $checkDefs.checks) {
+        # Central prerequisite gate: a check that declares `requires` and whose
+        # evidence was not collected is Not Assessed here, before it can run.
+        $gate = Test-GuerrillaPrerequisite -CheckDefinition $check -AuditData $AuditData
+        if (-not $gate.Met) {
+            $findings.Add((New-AuditFinding -CheckDefinition $check -Status 'SKIP' `
+                -CurrentValue $gate.Reason -OrgUnitPath $OrgUnitPath `
+                -Details @{ NotAssessed = $true; UnmetRequirement = $gate.Failed }))
+            continue
+        }
         $funcName = "Test-$($check.id -replace '-', '')"
         if (Get-Command $funcName -ErrorAction SilentlyContinue) {
             try {
