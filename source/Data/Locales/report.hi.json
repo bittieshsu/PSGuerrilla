@@ -1,0 +1,1477 @@
+{
+  "_language": {
+    "code": "hi",
+    "name": "हिन्दी",
+    "direction": "ltr"
+  },
+  "common": {
+    "domain": {
+      "value": "डोमेन",
+      "status": "machine-draft"
+    },
+    "tenant": {
+      "value": "टेनेंट",
+      "status": "machine-draft"
+    },
+    "generated": {
+      "value": "जनरेट किया गया",
+      "status": "machine-draft"
+    },
+    "reportGenerated": {
+      "value": "रिपोर्ट जनरेट की गई",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "{0} जाँचें मूल्यांकित &middot; {1} उत्तीर्ण, {2} विफल, {3} चेतावनियाँ, {4} छोड़ी गईं",
+      "status": "machine-draft"
+    },
+    "summaryCounts": {
+      "value": "{0} जाँचें &middot; उ:{1} वि:{2} चे:{3}",
+      "status": "machine-draft"
+    },
+    "totalChecks": {
+      "value": "कुल जाँचें",
+      "status": "machine-draft"
+    },
+    "passed": {
+      "value": "उत्तीर्ण",
+      "status": "machine-draft"
+    },
+    "failed": {
+      "value": "विफल",
+      "status": "machine-draft"
+    },
+    "warnings": {
+      "value": "चेतावनियाँ",
+      "status": "machine-draft"
+    },
+    "skipped": {
+      "value": "छोड़ी गईं",
+      "status": "machine-draft"
+    },
+    "pass": {
+      "value": "उत्तीर्ण",
+      "status": "machine-draft"
+    },
+    "fail": {
+      "value": "विफल",
+      "status": "machine-draft"
+    },
+    "warn": {
+      "value": "चेतावनी",
+      "status": "machine-draft"
+    },
+    "skip": {
+      "value": "छोड़ें",
+      "status": "machine-draft"
+    },
+    "passLabel": {
+      "value": "उत्तीर्ण:",
+      "status": "machine-draft"
+    },
+    "failLabel": {
+      "value": "विफल:",
+      "status": "machine-draft"
+    },
+    "warnLabel": {
+      "value": "चेतावनी:",
+      "status": "machine-draft"
+    },
+    "skipLabel": {
+      "value": "छोड़ें:",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "गंभीर",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "उच्च",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "मध्यम",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "निम्न",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "कार्यकारी सारांश",
+      "status": "machine-draft"
+    },
+    "categoryBreakdown": {
+      "value": "श्रेणी विवरण",
+      "status": "machine-draft"
+    },
+    "categoryScores": {
+      "value": "श्रेणी स्कोर",
+      "status": "machine-draft"
+    },
+    "detailedByCategory": {
+      "value": "श्रेणी अनुसार विस्तृत निष्कर्ष",
+      "status": "machine-draft"
+    },
+    "complianceMapping": {
+      "value": "अनुपालन मैपिंग",
+      "status": "machine-draft"
+    },
+    "complianceCrossReference": {
+      "value": "अनुपालन क्रॉस-संदर्भ",
+      "status": "machine-draft"
+    },
+    "allFindings": {
+      "value": "सभी निष्कर्ष",
+      "status": "machine-draft"
+    },
+    "thId": {
+      "value": "ID",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "गंभीरता",
+      "status": "machine-draft"
+    },
+    "thStatus": {
+      "value": "स्थिति",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "श्रेणी",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "जाँच",
+      "status": "machine-draft"
+    },
+    "thCheckName": {
+      "value": "जाँच का नाम",
+      "status": "machine-draft"
+    },
+    "thCheckId": {
+      "value": "जाँच ID",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "निष्कर्ष",
+      "status": "machine-draft"
+    },
+    "thRemediation": {
+      "value": "सुधार",
+      "status": "machine-draft"
+    },
+    "thCurrentValue": {
+      "value": "वर्तमान मान",
+      "status": "machine-draft"
+    },
+    "thRecommended": {
+      "value": "अनुशंसित",
+      "status": "machine-draft"
+    },
+    "thRecommendedValue": {
+      "value": "अनुशंसित मान",
+      "status": "machine-draft"
+    },
+    "thRemediationSteps": {
+      "value": "सुधार के चरण",
+      "status": "machine-draft"
+    },
+    "thName": {
+      "value": "नाम",
+      "status": "machine-draft"
+    },
+    "thDescription": {
+      "value": "विवरण",
+      "status": "machine-draft"
+    },
+    "thPlatform": {
+      "value": "प्लेटफ़ॉर्म",
+      "status": "machine-draft"
+    },
+    "thTimestamp": {
+      "value": "टाइमस्टैम्प",
+      "status": "machine-draft"
+    },
+    "thScore": {
+      "value": "स्कोर",
+      "status": "machine-draft"
+    },
+    "thLabel": {
+      "value": "लेबल",
+      "status": "machine-draft"
+    },
+    "thDelta": {
+      "value": "डेल्टा",
+      "status": "machine-draft"
+    },
+    "thProfile": {
+      "value": "प्रोफ़ाइल",
+      "status": "machine-draft"
+    },
+    "thMitre": {
+      "value": "MITRE ATT&CK",
+      "status": "machine-draft"
+    },
+    "thNist": {
+      "value": "NIST SP 800-53",
+      "status": "machine-draft"
+    },
+    "thCisAd": {
+      "value": "CIS AD",
+      "status": "machine-draft"
+    },
+    "thCisBenchmark": {
+      "value": "CIS Benchmark",
+      "status": "machine-draft"
+    },
+    "thAnssi": {
+      "value": "ANSSI",
+      "status": "machine-draft"
+    },
+    "accepted": {
+      "value": "स्वीकृत",
+      "status": "machine-draft"
+    }
+  },
+  "sections": {
+    "affectedItems": {
+      "value": "प्रभावित आइटम",
+      "status": "machine-draft"
+    }
+  },
+  "maturity": {
+    "heading": {
+      "value": "सुरक्षा परिपक्वता",
+      "status": "machine-draft"
+    },
+    "overall": {
+      "value": "समग्र परिपक्वता: 5 में से स्तर {0} &middot; {1}",
+      "status": "machine-draft"
+    },
+    "anchorNote": {
+      "value": "सबसे निचला अपूर्ण नियंत्रण रेटिंग को स्थिर करता है (CMMI शैली का पैमाना: 1 प्रारंभिक से 5 अनुकूलित तक), इसलिए एक भी गंभीर एक्सपोज़र स्कोर को तब तक सीमित रखता है जब तक उसका समाधान नहीं हो जाता।",
+      "status": "machine-draft"
+    },
+    "toReach": {
+      "value": "<strong>स्तर {0}</strong> तक पहुँचने के लिए, इन्हें संबोधित करें:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "श्रेणी",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "स्तर",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "परिपक्वता",
+      "status": "machine-draft"
+    },
+    "levelCell": {
+      "value": "स्तर {0}",
+      "status": "machine-draft"
+    },
+    "na": {
+      "value": "लागू नहीं",
+      "status": "machine-draft"
+    }
+  },
+  "ioe": {
+    "heading": {
+      "value": "एक्सपोज़र के संकेतक",
+      "status": "machine-draft"
+    },
+    "note": {
+      "value": "{0} खुले एक्सपोज़र, गंभीरता और प्रभाव क्षेत्र के अनुसार क्रमबद्ध।",
+      "status": "machine-draft"
+    },
+    "critical": {
+      "value": "गंभीर",
+      "status": "machine-draft"
+    },
+    "high": {
+      "value": "उच्च",
+      "status": "machine-draft"
+    },
+    "medium": {
+      "value": "मध्यम",
+      "status": "machine-draft"
+    },
+    "low": {
+      "value": "निम्न",
+      "status": "machine-draft"
+    },
+    "affected": {
+      "value": "{0} प्रभावित",
+      "status": "machine-draft"
+    },
+    "warning": {
+      "value": "चेतावनी",
+      "status": "machine-draft"
+    },
+    "more": {
+      "value": "+ नीचे दिए गए विस्तृत निष्कर्षों में {0} और एक्सपोज़र।",
+      "status": "machine-draft"
+    }
+  },
+  "attackpath": {
+    "heading": {
+      "value": "Tier-0 तक हमले के मार्ग",
+      "status": "machine-draft"
+    },
+    "noneRan": {
+      "value": "एकत्रित ACL दायरे में Tier-0 तक कोई एस्केलेशन मार्ग नहीं मिला। गहरी निम्न-विशेषाधिकार श्रृंखलाओं के लिए पूर्ण-डोमेन ACL संग्रह की आवश्यकता होती है &middot; कवरेज बढ़ाने हेतु <code>-FullDomainAcl</code> के साथ पुनः चलाएँ।",
+      "status": "machine-draft"
+    },
+    "noneNotRun": {
+      "value": "हमले-मार्ग विश्लेषण नहीं चलाया गया। <code>ACLDelegation</code> + <code>PrivilegedAccounts</code> श्रेणियाँ (या <code>All</code>) सक्षम करें, और गहरी संक्रमणीय श्रृंखलाओं के लिए <code>-FullDomainAcl</code> जोड़ें।",
+      "status": "machine-draft"
+    },
+    "summary": {
+      "value": "{0} एस्केलेशन मार्ग जो Tier-0 तक पहुँचते हैं &middot; {1} गैर-विशेषाधिकार प्राप्त प्रिंसिपलों से (पहले दिखाए गए, सर्वाधिक जोखिम)। प्रत्येक तीर एक नियंत्रण या सदस्यता किनारा है जिसे हमलावर पार कर सकता है।",
+      "status": "machine-draft"
+    },
+    "hop": {
+      "value": "हॉप",
+      "status": "machine-draft"
+    },
+    "hops": {
+      "value": "हॉप्स",
+      "status": "machine-draft"
+    },
+    "nonPrivSource": {
+      "value": "गैर-विशेषाधिकार प्राप्त स्रोत",
+      "status": "machine-draft"
+    },
+    "privSource": {
+      "value": "पहले से विशेषाधिकार प्राप्त स्रोत",
+      "status": "machine-draft"
+    }
+  },
+  "cartography": {
+    "heading": {
+      "value": "हमले-मार्ग मानचित्रण",
+      "status": "machine-draft"
+    },
+    "legend": {
+      "value": "Tier-0 तक एस्केलेशन मार्गों का दृश्य मानचित्र। <span style='color:var(--g-sev-critical)'>&#9873; लाल</span> = गैर-विशेषाधिकार प्राप्त प्रारंभ, <span style='color:var(--g-sev-high)'>नारंगी</span> = पहले से विशेषाधिकार प्राप्त, <span style='color:var(--g-accent)'>&#9733; नीला</span> = Tier-0 लक्ष्य। तीरों का बाएँ से दाएँ अनुसरण करें।",
+      "status": "machine-draft"
+    },
+    "showingFirst": {
+      "value": " पहले {0} मार्ग दिखाए जा रहे हैं।",
+      "status": "machine-draft"
+    }
+  },
+  "comparison": {
+    "heading": {
+      "value": "पिछली रन के बाद क्या बदला",
+      "status": "machine-draft"
+    },
+    "firstRun": {
+      "value": "यह इस दायरे में पहली दर्ज की गई रन है। रन इतिहास इस संस्करण के\nएकीकृत तुलना इंजन के साथ शुरू होता है, इसलिए पूर्व के डेल्टा फ़ाइलें नहीं\nपढ़ी जातीं; तुलना आपके अगले मूल्यांकन से शुरू होती है, जब यह रन\nआधार रेखा बन जाती है।",
+      "status": "machine-draft"
+    },
+    "previousRun": {
+      "value": "पिछली रन: {0}, मॉड्यूल संस्करण {1}",
+      "status": "machine-draft"
+    },
+    "versionSkew": {
+      "value": " (यह रन: {0}; जाँच कैटलॉग भिन्न हैं, इसलिए नीचे दी गई नई और सेवानिवृत्त प्रविष्टियाँ अपेक्षित हैं)",
+      "status": "machine-draft"
+    },
+    "scoreLabel": {
+      "value": "स्कोर (अब {0}, पहले {1})",
+      "status": "machine-draft"
+    },
+    "notAssessedLabel": {
+      "value": "मूल्यांकित नहीं की गणना",
+      "status": "machine-draft"
+    },
+    "pillarsMoved": {
+      "value": "Zero Trust स्तंभ जो बदले:",
+      "status": "machine-draft"
+    },
+    "newlyFailing": {
+      "value": "नए विफल",
+      "status": "machine-draft"
+    },
+    "lostVisibility": {
+      "value": "खोई हुई दृश्यता (पहले मूल्यांकित, अब मूल्यांकित नहीं)",
+      "status": "machine-draft"
+    },
+    "stillNotAssessed": {
+      "value": "अब भी मूल्यांकित नहीं (इस रन और पिछली रन दोनों में अंधकार में)",
+      "status": "machine-draft"
+    },
+    "newlyPassing": {
+      "value": "नए उत्तीर्ण (सुधार पुष्ट)",
+      "status": "machine-draft"
+    },
+    "regressed": {
+      "value": "चेतावनी पर पीछे लौटा",
+      "status": "machine-draft"
+    },
+    "improved": {
+      "value": "चेतावनी पर सुधरा (अभी उत्तीर्ण नहीं)",
+      "status": "machine-draft"
+    },
+    "restoredVisibility": {
+      "value": "दृश्यता बहाल",
+      "status": "machine-draft"
+    },
+    "newChecks": {
+      "value": "इस रन में नई जाँचें (यह संक्रमण नहीं है)",
+      "status": "machine-draft"
+    },
+    "retiredChecks": {
+      "value": "सेवानिवृत्त जाँचें (पहले उपस्थित, अब अनुपस्थित; यह संक्रमण नहीं है)",
+      "status": "machine-draft"
+    },
+    "noChange": {
+      "value": "पिछली रन के बाद कोई फ़ैसला नहीं बदला। {0} जाँचें अपरिवर्तित हैं।{1}",
+      "status": "machine-draft"
+    },
+    "unchanged": {
+      "value": "{0} जाँचें अपरिवर्तित।{1}",
+      "status": "machine-draft"
+    }
+  },
+  "filter": {
+    "status": {
+      "value": "स्थिति",
+      "status": "machine-draft"
+    },
+    "severity": {
+      "value": "गंभीरता",
+      "status": "machine-draft"
+    },
+    "all": {
+      "value": "सभी",
+      "status": "machine-draft"
+    },
+    "searchPlaceholder": {
+      "value": "निष्कर्ष खोजें (id, नाम, मान)...",
+      "status": "machine-draft"
+    },
+    "empty": {
+      "value": "वर्तमान फ़िल्टर से कोई निष्कर्ष मेल नहीं खाता।",
+      "status": "machine-draft"
+    },
+    "platform": {
+      "value": "प्लेटफ़ॉर्म",
+      "status": "machine-draft"
+    },
+    "showingAll": {
+      "value": "सभी निष्कर्ष दिखाए जा रहे हैं",
+      "status": "machine-draft"
+    }
+  },
+  "ad": {
+    "title": {
+      "value": "Active Directory रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Active Directory मूल्यांकन",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla Active Directory रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Active Directory सुरक्षा स्थिति स्कोर (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Active Directory ऑडिट",
+      "status": "machine-draft"
+    },
+    "verdict90": {
+      "value": "Active Directory वातावरण न्यूनतम निष्कर्षों के साथ मजबूत सुरक्षा स्थिति प्रदर्शित करता है।",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "AD वातावरण की सुरक्षा स्थिति अच्छी है, कुछ क्षेत्रों पर ध्यान देने की आवश्यकता है।",
+      "status": "machine-draft"
+    },
+    "verdict60": {
+      "value": "AD वातावरण की सुरक्षा स्थिति ठीक-ठाक है। कई महत्वपूर्ण निष्कर्षों में सुधार आवश्यक है।",
+      "status": "machine-draft"
+    },
+    "verdict40": {
+      "value": "AD वातावरण की सुरक्षा स्थिति खराब है। कई गंभीर और उच्च-गंभीरता वाले निष्कर्षों पर तत्काल ध्यान देने की आवश्यकता है।",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "AD वातावरण में गंभीर सुरक्षा कमियाँ हैं। समझौते को रोकने के लिए तत्काल सुधार आवश्यक है।",
+      "status": "machine-draft"
+    },
+    "sevSummary": {
+      "value": "गंभीर: <strong>{0}</strong> &middot; उच्च: <strong>{1}</strong> &middot;\n     मध्यम: <strong>{2}</strong> &middot; निम्न: <strong>{3}</strong>",
+      "status": "machine-draft"
+    },
+    "bloodhoundHeading": {
+      "value": "BloodHound निर्यात",
+      "status": "machine-draft"
+    },
+    "bloodhoundExport": {
+      "value": "एकत्रित AD हमला ग्राफ़ का एक OpenGraph निर्यात <code>{0}</code> में लिखा गया।",
+      "status": "machine-draft"
+    },
+    "bloodhoundImport": {
+      "value": "BloodHound CE में आयात करें: <strong>Administration &rarr; File Ingest</strong> &rarr; फ़ाइल अपलोड करें, फिर अंतर्निहित पाथफाइंडिंग क्वेरी चलाएँ। नोड SID-कुंजीबद्ध हैं (वे मूल SharpHound डेटा पर आरोपित होते हैं) और किनारे मूल BloodHound प्रकारों का उपयोग करते हैं।",
+      "status": "machine-draft"
+    },
+    "findingsByPriority": {
+      "value": "प्राथमिकता अनुसार निष्कर्ष",
+      "status": "machine-draft"
+    }
+  },
+  "entra": {
+    "title": {
+      "value": "Entra ID / M365 रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Entra ID / M365 मूल्यांकन",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla Entra ID / M365 रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Entra ID / Azure / M365 सुरक्षा स्थिति स्कोर (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Entra ID / M365 ऑडिट",
+      "status": "machine-draft"
+    },
+    "zeroTrust": {
+      "value": "Zero Trust स्थिति",
+      "status": "machine-draft"
+    },
+    "openInPortal": {
+      "value": "एडमिन पोर्टल में खोलें",
+      "status": "machine-draft"
+    }
+  },
+  "gws": {
+    "title": {
+      "value": "Google Workspace रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "Google Workspace मूल्यांकन",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla Google Workspace रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "postureDesc": {
+      "value": "Google Workspace सुरक्षा स्थिति स्कोर (0-100)",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "Google Workspace ऑडिट",
+      "status": "machine-draft"
+    },
+    "configChecksEvaluated": {
+      "value": "{0} कॉन्फ़िगरेशन जाँचें मूल्यांकित",
+      "status": "machine-draft"
+    },
+    "verdictCrit": {
+      "value": "तत्काल कार्रवाई आवश्यक। {0} गंभीर-गंभीरता वाली कॉन्फ़िगरेशन विफलताएँ पाई गईं जो टेनेंट को महत्वपूर्ण जोखिम में डालती हैं।",
+      "status": "machine-draft"
+    },
+    "verdictHigh": {
+      "value": "सुधार अनुशंसित। {0} उच्च-गंभीरता वाले निष्कर्ष पहचाने गए जिन्हें शीघ्र संबोधित किया जाना चाहिए।",
+      "status": "machine-draft"
+    },
+    "verdictMed": {
+      "value": "निगरानी करें और सुधार करें। {0} मध्यम-गंभीरता वाले निष्कर्ष समीक्षा और सुदृढ़ीकरण के योग्य हैं।",
+      "status": "machine-draft"
+    },
+    "verdictLow": {
+      "value": "मामूली कमियाँ पाई गईं। {0} निम्न-गंभीरता वाले निष्कर्ष मौजूद हैं। समग्र स्थिति ठोस है।",
+      "status": "machine-draft"
+    },
+    "verdictPass": {
+      "value": "सभी जाँचें उत्तीर्ण। टेनेंट कॉन्फ़िगरेशन आधार सुरक्षा अपेक्षाओं को पूरा करता है।",
+      "status": "machine-draft"
+    },
+    "assessmentLabel": {
+      "value": "मूल्यांकन:",
+      "status": "machine-draft"
+    },
+    "scopeLabel": {
+      "value": "दायरा:",
+      "status": "machine-draft"
+    },
+    "resultsLabel": {
+      "value": "परिणाम:",
+      "status": "machine-draft"
+    },
+    "scope": {
+      "value": "{1} श्रेणियों में {0} कॉन्फ़िगरेशन जाँचें।",
+      "status": "machine-draft"
+    },
+    "results": {
+      "value": "{0} उत्तीर्ण, {1} विफल, {2} चेतावनियाँ, {3} छोड़ी गईं।",
+      "status": "machine-draft"
+    },
+    "criticalRequire": {
+      "value": "{0} गंभीर निष्कर्षों में तत्काल सुधार आवश्यक है।",
+      "status": "machine-draft"
+    },
+    "priorityCritHigh": {
+      "value": "प्राथमिकता निष्कर्ष &middot; गंभीर &amp; उच्च",
+      "status": "machine-draft"
+    },
+    "fixInConsole": {
+      "value": "एडमिन कंसोल में ठीक करें",
+      "status": "machine-draft"
+    },
+    "whyUnsafe": {
+      "value": "यह असुरक्षित क्यों है",
+      "status": "machine-draft"
+    },
+    "whyUnsafeDefault": {
+      "value": "यह असुरक्षित क्यों है",
+      "status": "machine-draft"
+    },
+    "whyUnsafeArticle": {
+      "value": "यह असुरक्षित क्यों है: {0}",
+      "status": "machine-draft"
+    }
+  },
+  "campaign": {
+    "title": {
+      "value": "Campaign रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "एकीकृत Campaign मूल्यांकन",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla Campaign रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "एकीकृत Campaign ऑडिट",
+      "status": "machine-draft"
+    },
+    "subtitleLead": {
+      "value": "एकीकृत सुरक्षा स्थिति मूल्यांकन",
+      "status": "machine-draft"
+    },
+    "subtitleChecks": {
+      "value": "{1} प्लेटफ़ॉर्म ({2}) पर {0} जाँचें",
+      "status": "machine-draft"
+    },
+    "scanId": {
+      "value": "स्कैन ID",
+      "status": "machine-draft"
+    },
+    "duration": {
+      "value": "अवधि",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "Campaign स्कोर (0-100) &middot; {1} प्लेटफ़ॉर्म पर {0} जाँचों का भारित मूल्यांकन",
+      "status": "machine-draft"
+    },
+    "platformSummary": {
+      "value": "प्लेटफ़ॉर्म सारांश",
+      "status": "machine-draft"
+    },
+    "categoryScoresByPlatform": {
+      "value": "प्लेटफ़ॉर्म अनुसार श्रेणी स्कोर",
+      "status": "machine-draft"
+    },
+    "checksWord": {
+      "value": "जाँचें",
+      "status": "machine-draft"
+    },
+    "categoriesWord": {
+      "value": "श्रेणियाँ",
+      "status": "machine-draft"
+    },
+    "unknown": {
+      "value": "अज्ञात",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "विवरण",
+      "status": "machine-draft"
+    },
+    "affectedEntities": {
+      "value": "प्रभावित एंटिटीज़",
+      "status": "machine-draft"
+    },
+    "currentValueLabel": {
+      "value": "वर्तमान मान",
+      "status": "machine-draft"
+    },
+    "recommendedValueLabel": {
+      "value": "अनुशंसित मान",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "सुधार के चरण",
+      "status": "machine-draft"
+    },
+    "remediationUrlLabel": {
+      "value": "सुधार URL",
+      "status": "machine-draft"
+    },
+    "complianceMappingsLabel": {
+      "value": "अनुपालन मैपिंग",
+      "status": "machine-draft"
+    },
+    "showingAllFindings": {
+      "value": "सभी {0} निष्कर्ष दिखाए जा रहे हैं",
+      "status": "machine-draft"
+    },
+    "showingSome": {
+      "value": "{1} में से {0} निष्कर्ष दिखाए जा रहे हैं",
+      "status": "machine-draft"
+    }
+  },
+  "technical": {
+    "title": {
+      "value": "तकनीकी सुरक्षा मूल्यांकन रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "तकनीकी रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "तकनीकी सुरक्षा रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "तकनीकी रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "thTotal": {
+      "value": "कुल",
+      "status": "machine-draft"
+    },
+    "detailedFindings": {
+      "value": "विस्तृत निष्कर्ष ({0})",
+      "status": "machine-draft"
+    },
+    "descriptionLabel": {
+      "value": "विवरण",
+      "status": "machine-draft"
+    },
+    "recommendedLabel": {
+      "value": "अनुशंसित",
+      "status": "machine-draft"
+    },
+    "remediationStepsLabel": {
+      "value": "सुधार के चरण",
+      "status": "machine-draft"
+    },
+    "referenceLabel": {
+      "value": "संदर्भ",
+      "status": "machine-draft"
+    },
+    "riskAcceptanceLabel": {
+      "value": "जोखिम स्वीकृति",
+      "status": "machine-draft"
+    },
+    "acceptedBy": {
+      "value": "{0} द्वारा स्वीकृत &middot; {1}",
+      "status": "machine-draft"
+    },
+    "complianceLabel": {
+      "value": "अनुपालन",
+      "status": "machine-draft"
+    },
+    "noFindings": {
+      "value": "कोई ऑडिट निष्कर्ष उपलब्ध नहीं। पहले एक स्कैन चलाएँ।",
+      "status": "machine-draft"
+    }
+  },
+  "exec": {
+    "title": {
+      "value": "कार्यकारी सुरक्षा सारांश",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "कार्यकारी सारांश",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla कार्यकारी सारांश",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "कार्यकारी सारांश",
+      "status": "machine-draft"
+    },
+    "profileSuffix": {
+      "value": "प्रोफ़ाइल",
+      "status": "machine-draft"
+    },
+    "securityPosture": {
+      "value": "सुरक्षा स्थिति: {0}",
+      "status": "machine-draft"
+    },
+    "verdictNoScore": {
+      "value": "उपलब्ध निष्कर्षों से कोई स्कोर की गणना नहीं की जा सकी। आधार रेखा स्थापित करने के लिए एक स्कैन चलाएँ।",
+      "status": "machine-draft"
+    },
+    "verdict75": {
+      "value": "आपके संगठन की सुरक्षा नींव मजबूत है। निगरानी जारी रखें और शेष कमियों को संबोधित करें।",
+      "status": "machine-draft"
+    },
+    "verdict50": {
+      "value": "आपकी सुरक्षा स्थिति में सुधार की गुंजाइश है। गंभीर निष्कर्षों पर प्राथमिकता कार्रवाई अनुशंसित है।",
+      "status": "machine-draft"
+    },
+    "verdict0": {
+      "value": "तत्काल ध्यान आवश्यक। गंभीर सुरक्षा कमियाँ आपके संगठन को बढ़े हुए जोखिम में डालती हैं।",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "उत्तीर्ण दर",
+      "status": "machine-draft"
+    },
+    "criticalIssues": {
+      "value": "गंभीर समस्याएँ",
+      "status": "machine-draft"
+    },
+    "highIssues": {
+      "value": "उच्च समस्याएँ",
+      "status": "machine-draft"
+    },
+    "maturityStat": {
+      "value": "परिपक्वता ({0})",
+      "status": "machine-draft"
+    },
+    "maturityHeading": {
+      "value": "सुरक्षा परिपक्वता",
+      "status": "machine-draft"
+    },
+    "maturityOverall": {
+      "value": "समग्र परिपक्वता: <strong style=\"color:{0}\">5 में से स्तर {1}: {2}</strong>। सबसे निचला अपूर्ण नियंत्रण रेटिंग को स्थिर करता है, इसलिए एक भी गंभीर एक्सपोज़र स्कोर को तब तक सीमित रखता है जब तक उसका समाधान नहीं हो जाता (CMMI शैली का पैमाना: 1 प्रारंभिक से 5 अनुकूलित तक)।",
+      "status": "machine-draft"
+    },
+    "maturityToReach": {
+      "value": "<strong>स्तर {0}</strong> तक पहुँचने के लिए, इन्हें संबोधित करें:",
+      "status": "machine-draft"
+    },
+    "thCategory": {
+      "value": "श्रेणी",
+      "status": "machine-draft"
+    },
+    "thLevel": {
+      "value": "स्तर",
+      "status": "machine-draft"
+    },
+    "thMaturity": {
+      "value": "परिपक्वता",
+      "status": "machine-draft"
+    },
+    "matLevelCell": {
+      "value": "स्तर {0}",
+      "status": "machine-draft"
+    },
+    "keyFindings": {
+      "value": "ध्यान देने योग्य मुख्य निष्कर्ष",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "अनुपालन प्रभाव",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "निम्नलिखित अनुपालन ढाँचों में कमियाँ पहचानी गई हैं:",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "{0} कमी",
+      "status": "machine-draft"
+    },
+    "quickWins": {
+      "value": "अनुशंसित त्वरित जीत (निःशुल्क)",
+      "status": "machine-draft"
+    },
+    "quickWinsIntro": {
+      "value": "इन कार्यों को मौजूदा उपकरणों का उपयोग करके निःशुल्क पूरा किया जा सकता है:",
+      "status": "machine-draft"
+    },
+    "quickWinItem": {
+      "value": "({0}, ~{1}घं प्रयास)",
+      "status": "machine-draft"
+    },
+    "nextSteps": {
+      "value": "अगले कदम",
+      "status": "machine-draft"
+    },
+    "nextStep1": {
+      "value": "गंभीर निष्कर्षों को तुरंत संबोधित करें &middot; ये आपके संगठन के लिए सर्वाधिक जोखिम दर्शाते हैं।",
+      "status": "machine-draft"
+    },
+    "nextStep2": {
+      "value": "न्यूनतम प्रयास से अपना सुरक्षा स्कोर सुधारने हेतु उपरोक्त त्वरित जीत लागू करें।",
+      "status": "machine-draft"
+    },
+    "nextStep3": {
+      "value": "पूर्ण सुधार मार्गदर्शन हेतु विस्तृत तकनीकी रिपोर्ट की समीक्षा करें।",
+      "status": "machine-draft"
+    },
+    "nextStep4": {
+      "value": "सुधार मापने के लिए 30 दिनों में एक अनुवर्ती स्कैन निर्धारित करें।",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "यह रिपोर्ट आंतरिक योजना उद्देश्यों के लिए एक समय-बिंदु सुरक्षा मूल्यांकन प्रदान करती है। निष्कर्षों को संगठनात्मक जोखिम सहनशीलता के अनुसार सत्यापित और सुधारा जाना चाहिए।",
+      "status": "machine-draft"
+    }
+  },
+  "playbook": {
+    "title": {
+      "value": "सुधार प्लेबुक",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "सुधार प्लेबुक",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla सुधार प्लेबुक",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "सुधार प्लेबुक",
+      "status": "machine-draft"
+    },
+    "subtitle": {
+      "value": "{0} कार्य योग्य आइटम &middot; अधिकतम लागत: {1}",
+      "status": "machine-draft"
+    },
+    "phase1": {
+      "value": "चरण 1: गंभीर सुधार",
+      "status": "machine-draft"
+    },
+    "phase2": {
+      "value": "चरण 2: उच्च प्राथमिकता",
+      "status": "machine-draft"
+    },
+    "phase3": {
+      "value": "चरण 3: मध्यम प्राथमिकता",
+      "status": "machine-draft"
+    },
+    "phase4": {
+      "value": "चरण 4: निम्न प्राथमिकता",
+      "status": "machine-draft"
+    },
+    "phaseItems": {
+      "value": "{0} ({1} आइटम)",
+      "status": "machine-draft"
+    },
+    "idLabel": {
+      "value": "ID:",
+      "status": "machine-draft"
+    },
+    "costLabel": {
+      "value": "लागत:",
+      "status": "machine-draft"
+    },
+    "effortLabel": {
+      "value": "प्रयास:",
+      "status": "machine-draft"
+    },
+    "categoryLabel": {
+      "value": "श्रेणी:",
+      "status": "machine-draft"
+    },
+    "stepsLabel": {
+      "value": "चरण:",
+      "status": "machine-draft"
+    },
+    "targetLabel": {
+      "value": "लक्ष्य:",
+      "status": "machine-draft"
+    },
+    "noteLabel": {
+      "value": "टिप्पणी:",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "लागू करने से पहले प्रत्येक सुधार चरण की समीक्षा करें। परिवर्तनों को पहले गैर-उत्पादन वातावरण में परखें।",
+      "status": "machine-draft"
+    }
+  },
+  "budget": {
+    "title": {
+      "value": "सुरक्षा बजट औचित्य",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "बजट औचित्य",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "Guerrilla बजट औचित्य",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "बजट औचित्य",
+      "status": "machine-draft"
+    },
+    "profileLabel": {
+      "value": "प्रोफ़ाइल",
+      "status": "machine-draft"
+    },
+    "executiveSummary": {
+      "value": "कार्यकारी सारांश",
+      "status": "machine-draft"
+    },
+    "guerrillaScore": {
+      "value": "Guerrilla स्कोर",
+      "status": "machine-draft"
+    },
+    "criticalFailures": {
+      "value": "गंभीर विफलताएँ",
+      "status": "machine-draft"
+    },
+    "highFailures": {
+      "value": "उच्च विफलताएँ",
+      "status": "machine-draft"
+    },
+    "totalChecksBreakdown": {
+      "value": "कुल जाँचें ({0} उत्तीर्ण / {1} विफल / {2} चेतावनी)",
+      "status": "machine-draft"
+    },
+    "complianceImpact": {
+      "value": "अनुपालन प्रभाव",
+      "status": "machine-draft"
+    },
+    "complianceIntro": {
+      "value": "वर्तमान ऑडिट निष्कर्षों के आधार पर निम्नलिखित अनुपालन ढाँचों में कमियाँ हैं:",
+      "status": "machine-draft"
+    },
+    "thFramework": {
+      "value": "ढाँचा",
+      "status": "machine-draft"
+    },
+    "thGapsFound": {
+      "value": "पाई गई कमियाँ",
+      "status": "machine-draft"
+    },
+    "gaps": {
+      "value": "{0} कमी",
+      "status": "machine-draft"
+    },
+    "investmentPhases": {
+      "value": "अनुशंसित निवेश चरण",
+      "status": "machine-draft"
+    },
+    "phase1Title": {
+      "value": "चरण 1: त्वरित जीत (निःशुल्क)",
+      "status": "machine-draft"
+    },
+    "phase1Desc": {
+      "value": "मौजूदा उपकरणों से कॉन्फ़िगरेशन परिवर्तन &middot; सर्वाधिक ROI, तत्काल सुरक्षा सुधार।",
+      "status": "machine-draft"
+    },
+    "phase2Title": {
+      "value": "चरण 2: कम-लागत सुधार",
+      "status": "machine-draft"
+    },
+    "phase2Desc": {
+      "value": "मौजूदा बजट के भीतर छोटी खरीद या लाइसेंस ऐड-ऑन।",
+      "status": "machine-draft"
+    },
+    "phase3Title": {
+      "value": "चरण 3: मध्यम निवेश",
+      "status": "machine-draft"
+    },
+    "phase3Desc": {
+      "value": "उन्नत सुरक्षा क्षमताओं के लिए लाइसेंस अपग्रेड या ऐड-ऑन उत्पाद।",
+      "status": "machine-draft"
+    },
+    "phase4Title": {
+      "value": "चरण 4: रणनीतिक निवेश",
+      "status": "machine-draft"
+    },
+    "phase4Desc": {
+      "value": "दीर्घकालिक सुरक्षा स्थिति सुधार हेतु बड़ी खरीद या अवसंरचना परिवर्तन।",
+      "status": "machine-draft"
+    },
+    "phase4Body": {
+      "value": "<strong>{0} आइटम</strong> पहचाने गए जिनमें महत्वपूर्ण निवेश आवश्यक है। विस्तृत स्कोपिंग के लिए अपने सुरक्षा सलाहकार से संपर्क करें।",
+      "status": "machine-draft"
+    },
+    "thCheck": {
+      "value": "जाँच",
+      "status": "machine-draft"
+    },
+    "thFinding": {
+      "value": "निष्कर्ष",
+      "status": "machine-draft"
+    },
+    "thSeverity": {
+      "value": "गंभीरता",
+      "status": "machine-draft"
+    },
+    "thEffort": {
+      "value": "प्रयास",
+      "status": "machine-draft"
+    },
+    "thTime": {
+      "value": "समय",
+      "status": "machine-draft"
+    },
+    "actions": {
+      "value": "{0} कार्रवाई",
+      "status": "machine-draft"
+    },
+    "estimatedEffort": {
+      "value": "अनुमानित कुल प्रयास: {0} घंटे",
+      "status": "machine-draft"
+    },
+    "noFree": {
+      "value": "कोई निःशुल्क सुधार पहचाना नहीं गया।",
+      "status": "machine-draft"
+    },
+    "noLow": {
+      "value": "कोई कम-लागत सुधार पहचाना नहीं गया।",
+      "status": "machine-draft"
+    },
+    "noMed": {
+      "value": "कोई मध्यम-लागत सुधार पहचाना नहीं गया।",
+      "status": "machine-draft"
+    },
+    "disclaimer": {
+      "value": "यह रिपोर्ट आंतरिक योजना उद्देश्यों के लिए है।",
+      "status": "machine-draft"
+    }
+  },
+  "dashboard": {
+    "title": {
+      "value": "सुरक्षा डैशबोर्ड",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "डैशबोर्ड",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "सुरक्षा डैशबोर्ड",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "एकीकृत डैशबोर्ड",
+      "status": "machine-draft"
+    },
+    "scoreDesc": {
+      "value": "Guerrilla स्कोर (0-100)",
+      "status": "machine-draft"
+    },
+    "checksSummary": {
+      "value": "{0} जाँचें मूल्यांकित &middot; {1} उत्तीर्ण, {2} विफल, {3} चेतावनियाँ",
+      "status": "machine-draft"
+    },
+    "scoreComponents": {
+      "value": "स्कोर घटक",
+      "status": "machine-draft"
+    },
+    "passRate": {
+      "value": "उत्तीर्ण दर",
+      "status": "machine-draft"
+    },
+    "failures": {
+      "value": "विफलताएँ",
+      "status": "machine-draft"
+    },
+    "platformOverview": {
+      "value": "प्लेटफ़ॉर्म अवलोकन",
+      "status": "machine-draft"
+    },
+    "checks": {
+      "value": "जाँचें: {0}",
+      "status": "machine-draft"
+    },
+    "failuresLabel": {
+      "value": "विफलताएँ: {0}",
+      "status": "machine-draft"
+    },
+    "notScanned": {
+      "value": "स्कैन नहीं किया गया",
+      "status": "machine-draft"
+    },
+    "topFindings": {
+      "value": "शीर्ष निष्कर्ष",
+      "status": "machine-draft"
+    },
+    "showingTop50": {
+      "value": "शीर्ष 50 निष्कर्ष दिखाए जा रहे हैं। पूर्ण सूची हेतु विस्तृत रिपोर्ट देखें।",
+      "status": "machine-draft"
+    },
+    "posture": {
+      "value": "स्थिति",
+      "status": "machine-draft"
+    },
+    "threats": {
+      "value": "खतरे",
+      "status": "machine-draft"
+    },
+    "coverage": {
+      "value": "कवरेज",
+      "status": "machine-draft"
+    },
+    "trend": {
+      "value": "रुझान",
+      "status": "machine-draft"
+    }
+  },
+  "trend": {
+    "title": {
+      "value": "सुरक्षा रुझान रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "topbar": {
+      "value": "स्कोर रुझान",
+      "status": "machine-draft"
+    },
+    "htmlTitle": {
+      "value": "सुरक्षा रुझान रिपोर्ट",
+      "status": "machine-draft"
+    },
+    "footer": {
+      "value": "स्कोर रुझान",
+      "status": "machine-draft"
+    },
+    "scansCount": {
+      "value": "{0} स्कैन",
+      "status": "machine-draft"
+    },
+    "currentScore": {
+      "value": "वर्तमान स्कोर",
+      "status": "machine-draft"
+    },
+    "averageScore": {
+      "value": "औसत स्कोर",
+      "status": "machine-draft"
+    },
+    "trendLabel": {
+      "value": "रुझान ({0})",
+      "status": "machine-draft"
+    },
+    "improving": {
+      "value": "सुधर रहा है",
+      "status": "machine-draft"
+    },
+    "declining": {
+      "value": "गिर रहा है",
+      "status": "machine-draft"
+    },
+    "stable": {
+      "value": "स्थिर",
+      "status": "machine-draft"
+    },
+    "highestLowest": {
+      "value": "उच्चतम / निम्नतम",
+      "status": "machine-draft"
+    },
+    "scoreHistory": {
+      "value": "स्कोर इतिहास",
+      "status": "machine-draft"
+    },
+    "scanLog": {
+      "value": "स्कैन लॉग",
+      "status": "machine-draft"
+    },
+    "defaultProfile": {
+      "value": "डिफ़ॉल्ट",
+      "status": "machine-draft"
+    }
+  },
+  "category": {
+    "adacldelegation": {
+      "value": "AD ACL और प्रत्यायोजन",
+      "status": "machine-draft"
+    },
+    "adadversarytradecraftindicators": {
+      "value": "AD विरोधी कार्यप्रणाली संकेतक",
+      "status": "machine-draft"
+    },
+    "adcertificateservices": {
+      "value": "AD प्रमाणपत्र सेवाएँ",
+      "status": "machine-draft"
+    },
+    "addomainforestconfiguration": {
+      "value": "AD डोमेन और फ़ॉरेस्ट कॉन्फ़िगरेशन",
+      "status": "machine-draft"
+    },
+    "adgrouppolicy": {
+      "value": "AD समूह नीति",
+      "status": "machine-draft"
+    },
+    "adkerberossecurity": {
+      "value": "AD Kerberos सुरक्षा",
+      "status": "machine-draft"
+    },
+    "adloggingedrposture": {
+      "value": "AD लॉगिंग और EDR स्थिति",
+      "status": "machine-draft"
+    },
+    "adlogonscriptsnetworkshares": {
+      "value": "AD लॉगऑन स्क्रिप्ट और नेटवर्क शेयर",
+      "status": "machine-draft"
+    },
+    "adnetworkrelaypreconditions": {
+      "value": "AD नेटवर्क और रिले पूर्वशर्तें",
+      "status": "machine-draft"
+    },
+    "adpasswordlockoutpolicies": {
+      "value": "AD पासवर्ड और लॉकआउट नीतियाँ",
+      "status": "machine-draft"
+    },
+    "adprivilegedaccountsecurity": {
+      "value": "AD विशेषाधिकार प्राप्त खाता सुरक्षा",
+      "status": "machine-draft"
+    },
+    "adstaleobsoleteobjects": {
+      "value": "AD बासी और अप्रचलित ऑब्जेक्ट",
+      "status": "machine-draft"
+    },
+    "adtrustrelationships": {
+      "value": "AD ट्रस्ट संबंध",
+      "status": "machine-draft"
+    },
+    "adminusermanagement": {
+      "value": "एडमिन और उपयोगकर्ता प्रबंधन",
+      "status": "machine-draft"
+    },
+    "adversarytradecraft": {
+      "value": "विरोधी कार्यप्रणाली",
+      "status": "machine-draft"
+    },
+    "attackpaths": {
+      "value": "हमले के मार्ग",
+      "status": "machine-draft"
+    },
+    "authenticationaccesscontrols": {
+      "value": "प्रमाणीकरण और अभिगम नियंत्रण",
+      "status": "machine-draft"
+    },
+    "azureiamresourcesecurity": {
+      "value": "Azure IAM और संसाधन सुरक्षा",
+      "status": "machine-draft"
+    },
+    "collaborationcommunicationsecurity": {
+      "value": "सहयोग और संचार सुरक्षा",
+      "status": "machine-draft"
+    },
+    "copilotstudioaiagentgovernance": {
+      "value": "Copilot Studio AI एजेंट अभिशासन",
+      "status": "machine-draft"
+    },
+    "defenderforoffice365": {
+      "value": "Defender for Office 365",
+      "status": "machine-draft"
+    },
+    "deviceendpointmanagement": {
+      "value": "डिवाइस और एंडपॉइंट प्रबंधन",
+      "status": "machine-draft"
+    },
+    "drivesecuritydataprotection": {
+      "value": "Drive सुरक्षा और डेटा संरक्षण",
+      "status": "machine-draft"
+    },
+    "eidscabaseline": {
+      "value": "EIDSCA आधार रेखा",
+      "status": "machine-draft"
+    },
+    "emailsecurity": {
+      "value": "ईमेल सुरक्षा",
+      "status": "machine-draft"
+    },
+    "entraidapplicationserviceprincipalsecurity": {
+      "value": "Entra ID एप्लिकेशन और सेवा प्रिंसिपल सुरक्षा",
+      "status": "machine-draft"
+    },
+    "entraidauthenticationmethodsmfa": {
+      "value": "Entra ID प्रमाणीकरण विधियाँ और MFA",
+      "status": "machine-draft"
+    },
+    "entraidconditionalaccess": {
+      "value": "Entra ID सशर्त अभिगम",
+      "status": "machine-draft"
+    },
+    "entraidfederationhybrididentity": {
+      "value": "Entra ID फ़ेडरेशन और हाइब्रिड पहचान",
+      "status": "machine-draft"
+    },
+    "entraidgovernance": {
+      "value": "Entra ID अभिशासन",
+      "status": "machine-draft"
+    },
+    "entraidprivilegedidentitymanagement": {
+      "value": "Entra ID विशेषाधिकार प्राप्त पहचान प्रबंधन",
+      "status": "machine-draft"
+    },
+    "entraidtenantconfiguration": {
+      "value": "Entra ID टेनेंट कॉन्फ़िगरेशन",
+      "status": "machine-draft"
+    },
+    "exchangeonlinesecurity": {
+      "value": "Exchange Online सुरक्षा",
+      "status": "machine-draft"
+    },
+    "intuneendpointmanagement": {
+      "value": "Intune / एंडपॉइंट प्रबंधन",
+      "status": "machine-draft"
+    },
+    "k12baseline": {
+      "value": "K12 आधार रेखा",
+      "status": "machine-draft"
+    },
+    "loggingalertingmonitoring": {
+      "value": "लॉगिंग, अलर्टिंग और निगरानी",
+      "status": "machine-draft"
+    },
+    "microsoftteamssecurity": {
+      "value": "Microsoft Teams सुरक्षा",
+      "status": "machine-draft"
+    },
+    "oauthapisecurity": {
+      "value": "OAuth और API सुरक्षा",
+      "status": "machine-draft"
+    },
+    "powerplatformsecurity": {
+      "value": "Power Platform सुरक्षा",
+      "status": "machine-draft"
+    },
+    "sharepointonedrivesecurity": {
+      "value": "SharePoint और OneDrive सुरक्षा",
+      "status": "machine-draft"
+    },
+    "tier0hygienehybrididentitysurface": {
+      "value": "Tier-0 स्वच्छता और हाइब्रिड पहचान सतह",
+      "status": "machine-draft"
+    },
+    "unifiedauditlogging": {
+      "value": "एकीकृत ऑडिट और लॉगिंग",
+      "status": "machine-draft"
+    },
+    "workspaceservicesecuritysitesclassroomgemini": {
+      "value": "Workspace सेवा सुरक्षा (Sites / Classroom / Gemini)",
+      "status": "machine-draft"
+    }
+  }
+}
