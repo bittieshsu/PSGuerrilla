@@ -1,0 +1,327 @@
+{
+  "_family": "DriveSecurityChecks.json",
+  "DRIVE-001": {
+    "name": {
+      "value": "외부 공유 기본값",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "외부 당사자에 대한 실수로 인한 데이터 노출을 방지하기 위해 조직 외부 공유를 기본적으로 제한하거나 비활성화해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "외부 공유를 허용 목록 도메인으로 제한하거나 비활성화",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > 조직 외부 공유를 'Off' 또는 'Allowlisted domains'로 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-002": {
+    "name": {
+      "value": "링크 공유 기본 설정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "의도하지 않은 데이터 노출을 방지하기 위해 기본 링크 공유를 광범위한 액세스가 아니라 'Restricted'(특정 사용자)로 설정해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "기본 링크 공유를 'Restricted'(특정 사용자만)로 설정",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > 기본 링크 공유를 'Restricted'로 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-003": {
+    "name": {
+      "value": "'링크가 있는 모든 사용자' 공유 감사",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "'링크가 있는 모든 사용자'와 공유된 파일은 인터넷상의 누구나 액세스할 수 있으며 상당한 데이터 노출 위험을 나타냅니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "'Anyone with the link' 공유를 비활성화하거나 엄격하게 제어",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > 'Anyone with the link' 옵션을 비활성화하거나 'Domain users with the link'로 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-004": {
+    "name": {
+      "value": "공유 드라이브 생성 제한",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "통제되지 않은 확산을 방지하고 공유 데이터 저장소의 적절한 거버넌스를 보장하기 위해 공유 드라이브 생성을 제한해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "공유 드라이브 생성을 특정 그룹 또는 관리자로 제한",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > Shared drive creation > 공유 드라이브를 생성할 수 있는 사용자를 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-005": {
+    "name": {
+      "value": "공유 드라이브 구성원 관리",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "무단 사용자가 추가되거나 권한이 상승되는 것을 방지하기 위해 공유 드라이브 구성원 관리를 제어해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "관리자만 구성원을 추가하고 액세스 수준을 변경할 수 있음",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > Shared drive settings > 구성원 관리 권한을 구성합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-006": {
+    "name": {
+      "value": "공유 드라이브 외부 공유",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "민감한 조직 데이터가 도메인 외부로 공유되는 것을 방지하기 위해 공유 드라이브의 외부 공유를 제한해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "공유 드라이브의 외부 공유를 비활성화하거나 허용 목록 도메인으로 제한",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > Shared drive sharing > 외부 공유를 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-007": {
+    "name": {
+      "value": "파일 소유권 이전 설정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "무단 데이터 마이그레이션을 방지하고 적절한 데이터 거버넌스 체인을 유지하기 위해 파일 소유권 이전을 제어해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "파일 소유권 이전을 관리자 또는 통제된 프로세스로 제한",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Transfer ownership settings > 제한을 구성합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-008": {
+    "name": {
+      "value": "데스크톱용 Drive 허용/차단",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "데스크톱용 Drive는 파일을 로컬로 동기화하므로 데이터가 관리되지 않는 엔드포인트에 저장되는 것을 방지하기 위해 제어해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "데스크톱용 Drive를 관리 기기로 제한하거나 비활성화",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Features and Applications > Drive for Desktop > 액세스를 구성합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-009": {
+    "name": {
+      "value": "서드파티 앱 Drive 액세스",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "무단 데이터 유출을 방지하기 위해 Drive 데이터에 액세스하는 서드파티 애플리케이션을 검토하고 제한해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive 데이터에 대한 서드파티 앱 액세스를 제한하고 검토",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > API controls > Third-party app access > Drive 액세스 권한이 있는 앱을 검토하고 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-010": {
+    "name": {
+      "value": "Drive DLP 규칙 감사",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Drive를 통한 민감한 데이터 공유를 감지하고 방지하기 위해 데이터 손실 방지 규칙을 구성해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "민감한 데이터 유형(PII, 금융, 건강 데이터)에 대한 DLP 규칙 구성됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Data protection > Manage rules > Drive의 민감한 데이터 유형에 대한 규칙을 생성합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-011": {
+    "name": {
+      "value": "대상 그룹 설정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "대상 그룹 설정은 파일을 공유할 때 제안될 수 있는 사용자를 제어하므로 실수로 인한 공유를 제한하도록 구성해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "공유 제안을 적절하게 제한하도록 대상 그룹 구성됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Target audiences > 대상 그룹을 검토하고 구성합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-012": {
+    "name": {
+      "value": "Drive 부가기능 설정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Drive 부가기능은 파일 콘텐츠에 액세스할 수 있으므로 신뢰할 수 없는 확장 프로그램을 통한 데이터 노출을 방지하기 위해 제어해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive 부가기능 설치를 관리자 승인 부가기능으로 제한",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Features and Applications > Add-ons > 설치 제한을 구성합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-013": {
+    "name": {
+      "value": "오프라인 액세스 설정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "오프라인 액세스는 Drive 파일을 기기에 로컬로 캐시할 수 있게 하므로 공유 또는 관리되지 않는 기기에서의 데이터 노출을 방지하기 위해 제어해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "오프라인 액세스를 비활성화하거나 관리 기기로 제한",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Features and Applications > Offline > 오프라인 액세스를 비활성화하거나 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-014": {
+    "name": {
+      "value": "Drive SDK API 액세스 비활성화 (GWS.DRIVEDOCS.4.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.4.1: Drive SDK는 서드파티 앱이 API를 통해 Drive 콘텐츠를 읽고 쓸 수 있게 하며, 광범위하게 사용 설정되면 직접적인 데이터 유출 채널이 됩니다. drive_and_docs.drive_sdk를 읽고 enableDriveSdkApiAccess가 켜져 있는 경우 실패 처리합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive SDK API 액세스 비활성화",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin console > Apps > Google Workspace > Drive and Docs > Features and Applications에서 특정 검토된 통합이 필요하지 않은 한 Drive SDK를 비활성화합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-015": {
+    "name": {
+      "value": "Drive 외부 파일 경고 사용 설정 (GWS.DRIVEDOCS.1.9)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.9: 사용자가 파일을 외부로 공유할 때 경고하는 것은 마찰이 적은 데이터 손실 제어입니다. drive_and_docs.external_file_warning을 읽고 highlightingEnabled가 꺼져 있는 경우 경고합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "외부 파일 공유 경고 사용 설정",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Drive 공유 설정에서 사용자가 조직 외부 사람과 파일을 공유할 때 경고를 사용 설정합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-016": {
+    "name": {
+      "value": "Drive 파일 보안 업데이트 시행 (GWS.DRIVEDOCS.3.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.3.1: 파일 보안 업데이트는 영향을 받는 파일의 링크 공유를 강화합니다. 사용자가 이를 제거하도록 허용하면 액세스가 다시 열립니다. drive_and_docs.file_security_update를 읽고 사용자가 보안 업데이트를 제거/관리하도록 허용된 경우 경고합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "보안 업데이트가 적용되고 사용자가 제거할 수 없음",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Drive 설정에서 파일 보안 업데이트를 적용하고 사용자가 자신이 소유한 파일에서 이를 제거할 수 없도록 합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-017": {
+    "name": {
+      "value": "기본 파일 액세스를 소유자 비공개로 설정 (GWS.DRIVEDOCS.1.8)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.8은 새로 생성된 Drive 항목의 기본 액세스 수준을 '소유자 비공개'로 설정하도록 요구하여, 파일이 생성 시점에 의도한 것보다 넓게 공유되지 않도록 합니다. 이 검사는 drive_and_docs.general_access_default Cloud Identity 정책을 읽고 기본 파일 액세스가 PRIVATE_TO_OWNER가 아닌 모든 조직 단위를 표시합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에서 새 파일의 기본 액세스 수준을 PRIVATE_TO_OWNER로 설정(defaultFileAccess).",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Google Admin console의 Apps > Google Workspace > Drive and Docs > Sharing settings > General access default에서 기본값을 '소유자 비공개'로 설정하여 새로 생성된 파일이 비공개로 시작하고 의도적인 조치로만 공유되도록 합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-018": {
+    "name": {
+      "value": "공유 드라이브 외부 공유 노출",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "도메인 관리자 액세스를 통해 테넌트의 모든 공유 드라이브를 열거하고 각 드라이브의 공유 제한을 검사합니다. domainUsersOnly 제한이 시행되지 않은 공유 드라이브는 콘텐츠가 조직 외부 계정과 공유되도록 허용하며, 도메인 수준 공유 설정이 허용하는 경우 공개 'anyone with the link' 액세스까지 포함될 수 있습니다. 이 검사는 외부 공유를 통제하는 드라이브 수준 제한을 평가합니다; 실제 공개 파일 링크를 확인하려면 이 검사가 수행하지 않는 파일별 권한 스캔이 필요합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 공유 드라이브가 액세스를 조직 구성원으로 제한하거나(domainUsersOnly = true), 외부 공유가 문서화되고 검토된 예외임",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Manage shared drives. 표시된 각 공유 드라이브에 대해 설정을 열고 'Sharing with people outside <organization>'(및 'Sharing with non-members')을 사용 중지하여 항목이 외부로 공유될 수 없도록 하거나 업무상 예외를 기록합니다. Sharing settings > Shared drive creation에서 도메인 기본값을 시행합니다.",
+      "status": "machine-draft"
+    }
+  }
+}

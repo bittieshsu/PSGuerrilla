@@ -1,0 +1,399 @@
+{
+  "_family": "AdminManagementChecks.json",
+  "ADMIN-001": {
+    "name": {
+      "value": "슈퍼 관리자 계정 인벤토리",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "모든 슈퍼 관리자 계정을 인벤토리에 등록하고 검토해야 합니다. 슈퍼 관리자는 모든 조직 설정 및 데이터에 대한 무제한 액세스 권한을 가집니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 슈퍼 관리자 계정이 문서화되어 있으며 명확한 업무상 필요에 따라 정당성이 확인됩니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Users > 관리자 역할로 필터링 > 모든 슈퍼 관리자 계정을 검토하고 불필요한 할당을 제거합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-002": {
+    "name": {
+      "value": "관리자 역할 할당 감사",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "관리자 역할 할당은 최소 권한 원칙을 따라야 합니다. 광범위한 기본 제공 역할 대신 맞춤 역할을 사용해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 관리자 역할 할당을 검토하고 가능한 경우 최소 권한의 맞춤 역할을 사용합니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Account > Admin roles > 각 역할 할당을 검토 > 광범위한 역할을 범위가 지정된 맞춤 역할로 대체합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-003": {
+    "name": {
+      "value": "위임된 관리자 권한 검토",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "맞춤 관리자 역할을 검토하여 위임된 권한의 범위가 적절하게 지정되고 과도한 액세스를 부여하지 않는지 확인해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "맞춤 관리자 역할의 범위를 필요한 최소 권한으로 지정합니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Account > Admin roles > 각 맞춤 역할을 검토 > 권한 범위가 적절하게 지정되었는지 확인합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-004": {
+    "name": {
+      "value": "비활성/정지된 관리자 계정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "정지되거나 비활성 상태인 사용자는 관리자 역할 할당을 유지해서는 안 됩니다. 이러한 계정은 재활성화 공격의 표적이 될 수 있습니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "관리자 역할이 할당된 정지 또는 비활성 사용자가 없습니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Users > 정지된 사용자로 필터링 > 정지된 모든 계정에서 관리자 역할을 제거합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-005": {
+    "name": {
+      "value": "사용자 계정 인벤토리",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "거버넌스를 위해 활성, 정지, 보관된 계정 수를 명확히 파악한 사용자 계정 인벤토리를 유지해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 계정이 적절한 활성/정지/보관 상태에 있는 완전한 사용자 인벤토리",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Users > 사용자 목록을 검토 > 더 이상 필요하지 않은 계정을 정지하거나 보관합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-006": {
+    "name": {
+      "value": "오래된 사용자 계정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "90일 이상 로그인하지 않은 사용자 계정은 방치된 계정일 수 있으며 정지 또는 삭제 대상으로 검토해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "문서화된 정당성 없이 90일 넘게 비활성 상태인 사용자 계정이 없습니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Users > 마지막 로그인 기준 정렬 > 90일 이상 비활성 상태인 계정을 검토하고 정지합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-007": {
+    "name": {
+      "value": "OU 구조 검토",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "적절한 범위에서 정책을 효과적으로 적용할 수 있도록 조직 단위 구조를 검토해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "명확한 정책 매핑과 함께 OU 구조가 문서화됩니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Organizational units > OU 계층 구조를 검토하고 정책 적용 요구사항에 부합하는지 확인합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-008": {
+    "name": {
+      "value": "디렉터리 공유 설정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "디렉터리 공유는 조직 연락처와 프로필을 볼 수 있는 사용자를 제어합니다. 외부 디렉터리 공유는 제한해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "디렉터리 공유를 내부 사용자로만 제한합니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Directory settings > Sharing settings > 연락처 공유를 도메인 사용자로 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-009": {
+    "name": {
+      "value": "사용자 프로필 표시 범위",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "외부 행위자의 정찰 가능성을 제한하기 위해 사용자 프로필 정보의 표시 범위를 제어해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "사용자 프로필 표시 범위를 내부 사용자로 제한합니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Directory settings > Profile sharing > 프로필 표시 범위를 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-010": {
+    "name": {
+      "value": "그룹 설정 및 외부 멤버십",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "외부 구성원을 허용하는 Google Groups는 내부 커뮤니케이션과 데이터를 무단 당사자에게 노출할 수 있습니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "외부 그룹 멤버십을 비활성화하거나 문서화된 정당성이 있는 특정 그룹으로 제한합니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Groups for Business > Sharing settings > 외부 멤버십을 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-011": {
+    "name": {
+      "value": "그룹 생성 제한",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "관리되지 않는 그룹이 확산되어 조직 데이터를 노출하는 것을 방지하기 위해 그룹 생성을 제한해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "그룹 생성을 관리자 또는 특정 위임 역할로 제한합니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Groups for Business > Sharing settings > 그룹을 생성할 수 있는 사용자를 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-012": {
+    "name": {
+      "value": "Groups for Business 설정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Groups for Business 설정은 외부 게시, 구성원 표시 범위, 콘텐츠 공유 등 그룹 기능을 제어합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "외부 액세스와 게시를 제한하도록 Groups for Business를 구성합니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Groups for Business > Sharing settings > 모든 설정을 검토합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-013": {
+    "name": {
+      "value": "슈퍼 관리자 수",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "슈퍼 관리자 계정 수는 2개에서 4개 사이여야 합니다. 너무 적으면 단일 장애 지점이 생기고, 너무 많으면 공격 표면이 증가합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "슈퍼 관리자 계정 2~4개",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Users > 슈퍼 관리자 역할로 필터링 > 불필요한 슈퍼 관리자를 제거하거나 백업을 추가하여 수를 2~4개로 조정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-014": {
+    "name": {
+      "value": "Assured Controls - Access Approvals 사용 설정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google 지원 담당자가 대상 데이터에 액세스하기 전에 조직의 승인을 요청하고 받도록 Access Approvals를 사용 설정하여 무단 공급자 액세스 위험을 줄여야 합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Access Approvals 사용 설정(Google 담당자가 데이터에 액세스하기 전에 고객 승인 필요)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Data > Compliance > Access Management / Access Approvals > Google 지원 담당자가 조직 데이터에 액세스하기 전에 승인을 요청하도록 요구 사항을 사용 설정합니다. Assured Controls가 필요합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-015": {
+    "name": {
+      "value": "Assured Controls - 지원 액세스를 미국 담당자로 제한",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "데이터 주권을 유지하고 대상 데이터가 미국 외 인력에 의해 처리되지 않도록 지원 액세스를 미국에 위치한 Google 담당자로 제한해야 합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "지원 액세스 대상을 미국 Google 담당자로 제한",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Data > Compliance > Access Management > 허용되는 지원 대상을 미국 Google 담당자로만 설정합니다. Assured Controls가 필요합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-016": {
+    "name": {
+      "value": "Assured Controls - 다중 리전 데이터 처리 비활성화",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "대상 데이터가 지정된 저장 리전 내에서만 처리되어 데이터 주권이 유지되도록 모든 Google Workspace 제품에서 여러 리전에 걸친 데이터 처리를 비활성화해야 합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "데이터 처리를 저장 리전으로 제한(다중 리전 처리 비활성화)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Data > Compliance > Data regions > Calendar, Drive and Docs, Gmail, Chat, Meet, Gemini 전반에서 'Limit data processing to the chosen storage region'을 사용 설정합니다. Assured Controls / Data Regions가 필요합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-017": {
+    "name": {
+      "value": "내부 앱 자동 신뢰 안 함 (GWS.COMMONCONTROLS.10.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.10.3: 내부(도메인 소유) OAuth 앱을 자동으로 신뢰하면 검토 없이 액세스가 부여되어 내부자/측면 데이터 액세스 경로가 됩니다. api_controls.internal_apps를 읽고 trustInternalApps가 켜져 있는 경우 경고합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "내부 앱이 자동으로 신뢰되지 않습니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin console > Security > API controls에서 내부 앱의 자동 신뢰를 비활성화하여 서드파티 앱과 동일한 검토를 거치도록 합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-018": {
+    "name": {
+      "value": "저장 데이터 리전 구성됨 (GWS.COMMONCONTROLS.15.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.15.1: 저장 데이터 리전을 설정하면 조직 데이터가 저장되는 위치가 적용됩니다(레지던시/규정 준수). data_regions.data_at_rest_region을 읽고 리전 기본 설정이 지정되지 않은 경우 경고합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "조직 정책에 따라 특정 저장 데이터 리전이 구성됩니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin console > Data > Data regions에서 저장 데이터 리전을 미설정 상태로 두지 말고 조직의 레지던시 정책에서 요구하는 리전으로 설정합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-019": {
+    "name": {
+      "value": "데이터 처리를 저장 리전으로 제한 (GWS.COMMONCONTROLS.15.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.15.2는 데이터가 저장 데이터에 대해 선택된 동일한 리전에서 처리되도록 요구하여, 처리 과정에서 대상 데이터가 선택된 관할권 밖으로 이동하지 않도록 합니다. 이 검사는 data_regions.data_processing_region Cloud Identity 정책을 읽고 처리가 저장 리전으로 제한되지 않은 모든 조직 단위를 표시합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에서 데이터 처리가 저장 리전으로 제한됩니다(limitToStorageRegion = true).",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Google Admin console의 Account > Data regions에서 'Process data only in the selected region'을 사용 설정하여 처리가 저장 데이터로 선택된 리전 내에서 이루어지도록 합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-020": {
+    "name": {
+      "value": "구성되지 않은 서드파티 앱 액세스 차단 (GWS.COMMONCONTROLS.10.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.10.4는 사용자가 구성되지 않은 서드파티 앱에 액세스하도록 허용해서는 안 된다고 요구합니다. 명시적으로 검토되지 않은 앱은 광범위한 OAuth 범위를 요청하여 데이터 유출 또는 계정 탈취 경로가 될 수 있기 때문입니다. 이 검사는 api_controls.unconfigured_third_party_apps Cloud Identity 정책을 읽고 액세스 수준이 BLOCK_ALL_SCOPES(구성되지 않은 앱에 대한 모든 액세스를 차단하는 값)가 아닌 모든 조직 단위를 표시합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에서 구성되지 않은 서드파티 앱의 액세스 수준을 BLOCK_ALL_SCOPES로 설정합니다.",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Google Admin console의 Security > API controls > App access control에서 구성되지 않은 서드파티 앱을 'Blocked'로 설정하여, 명시적으로 구성 및 검토되지 않은 앱에 사용자가 어떠한 액세스도 부여할 수 없도록 합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-021": {
+    "name": {
+      "value": "개별 제어가 없는 추가 Google 서비스 제한 (GWS.COMMONCONTROLS.16.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.16.1은 자체 개별 관리자 제어가 없는 Google 서비스를 모든 사용자에 대해 사용 중지할 것을 권장합니다. Google은 이를 반전된 의미로 모델링합니다: 이러한 추가 서비스가 제한(차단)되려면 enterprise_service_restrictions 서비스가 ENABLED 상태여야 합니다. 이 검사는 enterprise_service_restrictions.service_status Cloud Identity 정책을 읽고 serviceState가 ENABLED가 아닌, 즉 사용자가 여전히 구성되지 않은 추가 서비스에 접근할 수 있는 모든 조직 단위를 표시합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에서 enterprise_service_restrictions serviceState를 ENABLED로 설정합니다(추가 서비스 제한됨).",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Google Admin console의 Apps > Additional Google services에서 개별 제어가 없는 서비스의 액세스 설정을 모든 사용자에 대해 OFF로 설정합니다. 이렇게 하면 엔터프라이즈 서비스 제한이 사용 설정되어 사용자가 해당 추가 서비스에 접근할 수 없습니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-022": {
+    "name": {
+      "value": "앞서 사용해 보기(Early Access) 애플리케이션 비활성화 (GWS.COMMONCONTROLS.16.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.16.2는 Google의 전체 검토를 완료하지 않아 평가되지 않은 위험을 수반할 수 있는 사전 출시 기능인 Early Access 애플리케이션에 대한 사용자 액세스를 비활성화할 것을 권장합니다. 이 검사는 early_access_apps.service_status Cloud Identity 정책을 읽고 serviceState가 ENABLED인 모든 조직 단위를 표시합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에서 early_access_apps serviceState가 ENABLED가 아닙니다(Early Access 애플리케이션 비활성화됨).",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Google Admin console의 Apps > Additional Google services > Early Access Apps에서 서비스를 모든 사용자에 대해 OFF로 설정하여 사용자가 사전 출시 Early Access 애플리케이션을 사용 설정할 수 없도록 합니다.",
+      "status": "machine-draft"
+    }
+  }
+}

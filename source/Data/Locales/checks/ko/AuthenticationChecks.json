@@ -1,0 +1,327 @@
+{
+  "_family": "AuthenticationChecks.json",
+  "AUTH-001": {
+    "name": {
+      "value": "2SV 시행",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "도난당한 자격 증명을 통한 계정 탈취를 방지하기 위해 모든 사용자에게 2단계 인증(2SV/MFA)을 시행해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에 대해 시행됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > 2-step verification > Enforcement를 'On'으로 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-002": {
+    "name": {
+      "value": "2SV 등록률",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "모든 활성 사용자가 2SV를 등록해야 합니다. 등록률이 낮으면 계정이 자격 증명 기반 공격에 취약해집니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "활성 사용자 중 95% 이상 등록",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Reporting > User Reports > Security > 2SV가 없는 사용자를 검토합니다. Security > 2-Step Verification에서 등록 기한을 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-003": {
+    "name": {
+      "value": "2SV 방법 강도",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "보안 키를 기본 2SV 방법으로 사용해야 합니다. SMS 및 음성 기반 2SV는 SIM 스와핑 및 가로채기 공격에 취약합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "보안 키를 기본 방법으로 시행",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > 2-step verification > 허용 방법을 'Security key only'로 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-004": {
+    "name": {
+      "value": "비밀번호 최소 길이",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "무차별 대입 및 사전 공격에 저항하기 위해 비밀번호 최소 길이는 12자 이상이어야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "최소 12자",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Password management > 최소 길이를 12자 이상으로 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-005": {
+    "name": {
+      "value": "비밀번호 재사용 제한",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "자격 증명 순환 공격을 방지하기 위해 사용자가 최근 비밀번호를 재사용할 수 없도록 해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "비밀번호 재사용 허용 안 함",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Password management > 'Enforce password policy at next sign-in'을 사용 설정하고 재사용을 제한합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-006": {
+    "name": {
+      "value": "세션 지속 시간",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "세션 하이재킹 및 공유 기기에서의 무단 액세스 가능 시간 창을 줄이기 위해 웹 세션 지속 시간을 제한해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "세션 지속 시간 12시간 이하",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Google Session Control > 웹 세션 지속 시간을 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-007": {
+    "name": {
+      "value": "SSO 구성",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SSO가 구성된 경우 안전한 프로토콜과 신뢰할 수 있는 ID 공급자를 사용해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "신뢰할 수 있는 IdP로 SAML SSO가 올바르게 구성됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > SSO with third-party IdP > 구성을 확인합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-008": {
+    "name": {
+      "value": "보안 수준이 낮은 앱 액세스",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "자격 증명 노출을 방지하기 위해 보안 수준이 낮은 앱(최신 인증을 지원하지 않는 앱)을 차단해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 사용자에 대해 비활성화됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Less secure apps > 'Disable access to less secure apps'로 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-009": {
+    "name": {
+      "value": "앱 비밀번호 정책",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "앱별 비밀번호는 2SV를 우회하므로 제어해야 합니다. 허용하는 경우 먼저 2SV 등록을 요구해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "앱 비밀번호가 제한되거나 비활성화됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > 2-step verification > 앱 비밀번호 설정을 검토합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-010": {
+    "name": {
+      "value": "복구 옵션 구성",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "사용자 셀프 서비스 복구를 적절하게 구성해야 합니다. 소셜 엔지니어링을 방지하기 위해 슈퍼 관리자는 개인 복구 옵션을 가져서는 안 됩니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "슈퍼 관리자: 개인 복구 없음. 일반 사용자: 관리자 재정의와 함께 복구 옵션 허용",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Account recovery > 슈퍼 관리자 OU에 대해 개인 복구를 비활성화합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-011": {
+    "name": {
+      "value": "로그인 챌린지 설정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "의심스러운 로그인 시도가 감지될 때 추가 확인을 제공하도록 로그인 챌린지를 사용 설정해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "직원 ID 또는 기타 확인과 함께 로그인 챌린지 사용 설정됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Login challenges > 사용 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-012": {
+    "name": {
+      "value": "슈퍼 관리자 2SV 등록",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "모든 슈퍼 관리자 계정은 2SV를 등록해야 합니다. 슈퍼 관리자는 모든 설정 및 데이터에 대한 무제한 액세스 권한을 가집니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "슈퍼 관리자 100% 2SV 등록",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Reporting > User Reports > Security > 관리자 상태로 필터링 > 모든 슈퍼 관리자가 2SV를 등록했는지 확인합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-013": {
+    "name": {
+      "value": "오래된 슈퍼 관리자 계정",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "최근에 로그인하지 않은 슈퍼 관리자 계정은 방치된 상태일 수 있으며 침해 위험이 있습니다. 모든 슈퍼 관리자 계정을 적극적으로 관리해야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "90일 넘게 비활성 상태인 슈퍼 관리자 계정이 없습니다",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Users > 관리자 역할로 필터링 > 비활성 슈퍼 관리자 계정을 검토하고 제거하거나 정지합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-014": {
+    "name": {
+      "value": "2SV 등록 허용",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "사용자가 2단계 인증에 등록할 수 있도록 허용해야 합니다. 2SV 등록을 비활성화하면 MFA 도입이 차단되어 계정이 비밀번호만으로 보호됩니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에서 2SV 등록 허용됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Security > Authentication > 2-step verification > 모든 조직 단위에 대해 'Allow users to turn on 2-Step Verification'을 On으로 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-015": {
+    "name": {
+      "value": "2SV 등록 유예 기간",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "새로 추가된 사용자가 2SV를 등록해야 하는 유예 기간은 짧아야 합니다. 유예 기간이 길면 계정 생성 후 오랜 기간 동안 계정이 MFA로 보호되지 않은 상태로 남습니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "유예 기간 7일(168시간) 이하",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Security > Authentication > 2-step verification > 신규 사용자 등록 유예 기간을 7일 이하로 설정합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-016": {
+    "name": {
+      "value": "고급 보호 셀프 등록",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "고급 보호 프로그램 셀프 등록을 허용하면 고위험 사용자가 관리자 개입 없이 가장 강력한 계정 보호 조치를 채택할 수 있습니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에서 고급 보호 셀프 등록 허용됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Security > Authentication > Advanced Protection Program > 사용자가 고급 보호에 셀프 등록할 수 있도록 허용합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-017": {
+    "name": {
+      "value": "슈퍼 관리자 계정 셀프 복구",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "슈퍼 관리자의 셀프 서비스 계정 복구는 소셜 엔지니어링을 통한 계정 탈취 경로이므로 사용 중지해야 합니다. 슈퍼 관리자는 다른 관리자에 의해서만 복구되어야 합니다",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에서 슈퍼 관리자 셀프 복구 비활성화됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Security > Authentication > Account recovery > 모든 조직 단위에 대해 'Allow super admins to recover their account'를 사용 중지합니다",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-018": {
+    "name": {
+      "value": "사용자 및 슈퍼 관리자가 아닌 계정에 대해 계정 셀프 복구 비활성화 (GWS.COMMONCONTROLS.8.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.8.2는 사용자 및 슈퍼 관리자가 아닌 계정에 대해 계정 셀프 복구를 비활성화하도록 요구합니다. 셀프 서비스 복구는 계정 탈취 벡터입니다: 복구 채널을 제어하는 공격자는 헬프데스크 없이도 계정을 탈취할 수 있습니다. 이 검사는 security.user_account_recovery Cloud Identity 정책을 읽고 셀프 복구가 사용 설정된 모든 조직 단위를 표시합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "모든 조직 단위에서 사용자 및 슈퍼 관리자가 아닌 계정에 대해 계정 셀프 복구 비활성화(enableAccountRecovery = false).",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Google Admin console의 Security > Account recovery에서 사용자(및 슈퍼 관리자가 아닌 계정)에 대한 셀프 복구를 비활성화하여, 계정 복구가 사용자가 제어하는 채널이 아니라 관리자 또는 헬프데스크 프로세스를 통해 처리되도록 합니다.",
+      "status": "machine-draft"
+    }
+  }
+}
