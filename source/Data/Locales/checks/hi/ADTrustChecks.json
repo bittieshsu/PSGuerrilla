@@ -1,0 +1,69 @@
+{
+  "_family": "ADTrustChecks.json",
+  "ADTRUST-001": {
+    "name": { "value": "ट्रस्ट संबंध सूचीकरण", "status": "machine-draft" },
+    "description": { "value": "प्रमाणीकरण सीमा की पूर्ण तस्वीर स्थापित करने के लिए सभी ट्रस्ट संबंधों की सूची बनाई जानी चाहिए। अप्रलेखित ट्रस्ट बाहरी डोमेन के उपयोगकर्ताओं को संसाधनों तक पहुंचने की अनुमति देकर हमले की सतह का विस्तार करते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी ट्रस्ट संबंध व्यावसायिक औचित्य, दिशा, प्रकार, और स्वामी के साथ प्रलेखित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "सभी ट्रस्ट सूचीबद्ध करने के लिए Get-ADTrust -Filter * चलाएं। प्रत्येक ट्रस्ट को उसकी दिशा, प्रकार (forest, external, shortcut, realm), संक्रामिता, और व्यावसायिक औचित्य के साथ प्रलेखित करें। किसी भी ऐसे ट्रस्ट की समीक्षा करें और हटाएं जो अब किसी व्यावसायिक आवश्यकता को पूरा नहीं करता", "status": "machine-draft" }
+  },
+  "ADTRUST-002": {
+    "name": { "value": "ट्रस्ट दिशा विश्लेषण", "status": "machine-draft" },
+    "description": { "value": "इनबाउंड ट्रस्ट बाहरी डोमेन उपयोगकर्ताओं को आपके डोमेन में प्रमाणित होने की अनुमति देते हैं। प्रत्येक इनबाउंड या द्विदिश ट्रस्ट की समीक्षा की जानी चाहिए ताकि यह सुनिश्चित हो कि विश्वसनीय डोमेन पर्याप्त सुरक्षा नियंत्रण बनाए रखता है। एक समझौता किए गए विश्वसनीय डोमेन का उपयोग आपके परिवेश पर हमला करने के लिए किया जा सकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी ट्रस्ट दिशाएं उचित और प्रलेखित हों। हमले की सतह घटाने के लिए द्विदिश ट्रस्ट जहां संभव हो एकदिश में परिवर्तित किए गए हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADTrust -Filter * का उपयोग करके प्रत्येक ट्रस्ट दिशा की समीक्षा करें। द्विदिश ट्रस्ट के लिए, मूल्यांकन करें कि क्या दोनों दिशाएं आवश्यक हैं। जहां व्यावसायिक आवश्यकता केवल एक दिशा की हो वहां एकदिश ट्रस्ट में परिवर्तित करें। सभी इनबाउंड ट्रस्ट पथों के लिए औचित्य प्रलेखित करें", "status": "machine-draft" }
+  },
+  "ADTRUST-003": {
+    "name": { "value": "ट्रस्ट संक्रामिता विश्लेषण", "status": "machine-draft" },
+    "description": { "value": "संक्रामक ट्रस्ट प्रमाणीकरण पथों को प्रत्यक्ष ट्रस्ट साझेदारों से परे विस्तारित करते हैं, जो संभावित रूप से विश्वसनीय डोमेन की श्रृंखलाओं के माध्यम से अनपेक्षित पहुंच पथ बनाते हैं। प्रत्येक संक्रामक ट्रस्ट का उसके द्वारा बनाई गई विस्तारित हमले की सतह के लिए मूल्यांकन किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संक्रामक ट्रस्ट पूर्ण संक्रामिता पथ विश्लेषण के साथ प्रलेखित हों। जब संक्रामिता आवश्यक न हो तो forest ट्रस्ट के बजाय external ट्रस्ट को प्राथमिकता दी जाए", "status": "machine-draft" },
+    "remediationSteps": { "value": "अप्रत्यक्ष प्रमाणीकरण मार्गों की पहचान के लिए सभी संक्रामक ट्रस्ट पथों को मैप करें। forest ट्रस्ट के लिए, समझें कि सभी चाइल्ड डोमेन संक्रामक रूप से विश्वसनीय हैं। जब केवल विशिष्ट डोमेन पहुंच की आवश्यकता हो तो external (गैर-संक्रामक) ट्रस्ट का उपयोग करने पर विचार करें", "status": "machine-draft" }
+  },
+  "ADTRUST-004": {
+    "name": { "value": "SID Filtering स्थिति", "status": "machine-draft" },
+    "description": { "value": "SID filtering प्रमाणीकरण टोकन से विदेशी डोमेन के SID हटाता है, जो SID history इंजेक्शन हमलों को रोकता है। SID filtering के बिना, किसी विश्वसनीय डोमेन से समझौता करने वाला हमलावर आपके डोमेन से विशेषाधिकृत SID (जैसे Enterprise Admins) वाले टिकट बना सकता है, जिससे पूर्ण समझौता होता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी external और forest ट्रस्ट पर SID filtering (quarantine) सक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "'netdom trust /domain:trusted.domain /Quarantine' का उपयोग करके SID filtering स्थिति सत्यापित करें। 'netdom trust /domain:trusted.domain /Quarantine:Yes' के साथ SID filtering सक्षम करें। नोट: SID filtering external ट्रस्ट पर डिफ़ॉल्ट रूप से सक्षम होता है परंतु forest ट्रस्ट पर सत्यापित किया जाना चाहिए जहां इसे जानबूझकर अक्षम किया गया हो सकता है", "status": "machine-draft" }
+  },
+  "ADTRUST-005": {
+    "name": { "value": "SID History दुरुपयोग पहचान", "status": "machine-draft" },
+    "description": { "value": "SID history का उद्देश्य डोमेन स्थानांतरणों के लिए है परंतु ट्रस्ट सीमाओं के पार उपयोगकर्ता टोकन में विशेषाधिकृत SID इंजेक्ट करने के लिए इसका दुरुपयोग किया जा सकता है। किसी विश्वसनीय डोमेन से समझौता करने वाले हमलावर अपने नियंत्रित किसी भी खाते के SID history में Enterprise Admin या Domain Admin SID जोड़ सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "विशेषाधिकृत समूहों को संदर्भित करने वाले SID history मान वाला कोई खाता न हो। सभी स्थानांतरण पूर्ण होने के बाद SID history साफ़ किया गया हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {SIDHistory -like '*'} -Properties SIDHistory का उपयोग करके SID history वाले खातों की खोज करें। किसी भी ऐसी SID history प्रविष्टि की पहचान करें जो विशेषाधिकृत समूहों (Domain Admins, Enterprise Admins, इत्यादि) को संदर्भित करती है। स्थानांतरण के बाद SIDHistory पैरामीटर के साथ Remove-ADUser का उपयोग करके SID history साफ़ करें। ट्रस्ट पर SID filtering सक्षम करें", "status": "machine-draft" }
+  },
+  "ADTRUST-006": {
+    "name": { "value": "Selective Authentication स्थिति", "status": "machine-draft" },
+    "description": { "value": "Selective authentication प्रत्येक संसाधन पर स्पष्ट अनुमतियां आवश्यक करके यह प्रतिबंधित करता है कि किसी विश्वसनीय डोमेन के कौन से उपयोगकर्ता आपके डोमेन के संसाधनों पर प्रमाणित हो सकते हैं। इसके बिना, विश्वसनीय डोमेन के सभी प्रमाणित उपयोगकर्ता किसी भी संसाधन तक पहुंच सकते हैं जिस पर उनकी अनुमतियां हैं, जिससे हमले की सतह काफ़ी बढ़ जाती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी forest ट्रस्ट पर selective authentication सक्षम। Allowed-to-Authenticate अनुमतियां केवल आवश्यक संसाधनों पर प्रदान की गई हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Active Directory Domains and Trusts > ट्रस्ट के Properties > Authentication टैब > 'Selective authentication' चुनें के माध्यम से forest ट्रस्ट पर selective authentication सक्षम करें। फिर उन विशिष्ट कंप्यूटर ऑब्जेक्ट पर 'Allowed to Authenticate' अनुमति प्रदान करें जिन तक बाहरी उपयोगकर्ताओं को पहुंचने की आवश्यकता है", "status": "machine-draft" }
+  },
+  "ADTRUST-007": {
+    "name": { "value": "Azure AD हाइब्रिड ट्रस्ट सुरक्षा", "status": "machine-draft" },
+    "description": { "value": "ऑन-प्रिमाइसेस AD को Azure AD से जोड़ने वाले हाइब्रिड पहचान कॉन्फ़िगरेशन अतिरिक्त हमले पथ बनाते हैं। Azure AD Connect, pass-through authentication एजेंट, और federation सेवाओं को क्लाउड और ऑन-प्रिमाइसेस परिवेशों के बीच पिवट करने के लिए लक्षित किया जा सकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "Azure AD Connect नवीनतम संस्करण पर एक हार्डन्ड, समर्पित सर्वर पर चल रहा हो। PTA/federation पर PHS को प्राथमिकता दी जाए। यदि आवश्यक न हो तो Seamless SSO अक्षम हो। क्लाउड-केवल break-glass खाते कॉन्फ़िगर किए गए हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Azure AD Connect कॉन्फ़िगरेशन की समीक्षा करें और सुनिश्चित करें कि यह एक Tier 0 हार्डन्ड सर्वर पर चले। घटी हुई हमले की सतह के लिए federation या PTA से Password Hash Sync (PHS) पर स्विच करने का मूल्यांकन करें। यदि Seamless SSO का उपयोग कर रहे हैं, तो सुनिश्चित करें कि AZUREADSSOACC कंप्यूटर खाता पासवर्ड घुमाया गया हो। सत्यापित करें कि क्लाउड-केवल आपातकालीन पहुंच खाते मौजूद हैं", "status": "machine-draft" }
+  },
+  "ADTRUST-008": {
+    "name": { "value": "विदेशी डोमेन ट्रस्ट सूचीकरण", "status": "machine-draft" },
+    "description": { "value": "संगठन के बाहर के डोमेन के साथ ट्रस्ट सुरक्षा सीमा को संभावित रूप से भिन्न सुरक्षा मानकों वाली संस्थाओं तक विस्तारित करते हैं। विदेशी डोमेन ट्रस्ट को अतिरिक्त जांच मिलनी चाहिए क्योंकि भरोसा करने वाला संगठन बाहरी डोमेन की सुरक्षा मुद्रा को नियंत्रित नहीं कर सकता", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी विदेशी डोमेन ट्रस्ट बाहरी सुरक्षा मूल्यांकन, संविदात्मक सुरक्षा आवश्यकताओं, और वार्षिक समीक्षा के साथ प्रलेखित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADTrust -Filter * का उपयोग करके संगठन के बाहर के डोमेन के साथ ट्रस्ट की पहचान करें। प्रत्येक external ट्रस्ट के लिए, सत्यापित करें कि एक सुरक्षा समझौता मौजूद है, SID filtering सक्षम है, selective authentication कॉन्फ़िगर है, और ट्रस्ट की वार्षिक समीक्षा होती है", "status": "machine-draft" }
+  },
+  "ADTRUST-009": {
+    "name": { "value": "अनाथ ट्रस्ट पहचान", "status": "machine-draft" },
+    "description": { "value": "अनाथ ट्रस्ट ऐसे डोमेन को संदर्भित करते हैं जो अब मौजूद नहीं हैं या अब पहुंच योग्य नहीं हैं। ये पुराने ट्रस्ट ऑब्जेक्ट क्रेडेंशियल बनाए रख सकते हैं और सुरक्षा लेखापरीक्षाओं के दौरान भ्रम पैदा कर सकते हैं। अनावश्यक हमले की सतह घटाने और स्वच्छ ट्रस्ट टोपोलॉजी बनाए रखने के लिए इन्हें हटाया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "कोई अनाथ या अनसुलझा ट्रस्ट संबंध मौजूद न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "सभी ट्रस्ट सूचीबद्ध करें और विश्वसनीय डोमेन नाम को हल करके तथा 'netdom trust /verify' के साथ ट्रस्ट का परीक्षण करके प्रत्येक को मान्य करने का प्रयास करें। जहां साझेदार डोमेन अब मौजूद नहीं है या पहुंच योग्य नहीं है, वहां 'netdom trust /Remove' या Active Directory Domains and Trusts का उपयोग करके अनाथ ट्रस्ट हटाएं", "status": "machine-draft" }
+  },
+  "ADTRUST-010": {
+    "name": { "value": "ट्रस्ट कुंजी आयु और रोटेशन", "status": "machine-draft" },
+    "description": { "value": "ट्रस्ट पासवर्ड (inter-realm keys) नियमित रूप से घुमाए जाने चाहिए। पुरानी ट्रस्ट कुंजियां क्रेडेंशियल-आधारित हमलों की खिड़की बढ़ाती हैं। डिफ़ॉल्ट रूप से, ट्रस्ट पासवर्ड हर 30 दिनों में घूमते हैं, परंतु इसे सत्यापित किया जाना चाहिए क्योंकि विफल रोटेशन का पता नहीं चल सकता", "status": "machine-draft" },
+    "recommendedValue": { "value": "ट्रस्ट पासवर्ड पिछले 30 दिनों के भीतर घुमाए गए हों। स्वचालित ट्रस्ट पासवर्ड रोटेशन अक्षम न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "trustAuthOutgoing विशेषता की जांच करके या 'netdom trust /domain:trusted.domain /verify' चलाकर ट्रस्ट पासवर्ड अंतिम बार सेट किए जाने की तिथि जांचें। यदि ट्रस्ट पासवर्ड पुराना है, तो 'netdom trust /domain:trusted.domain /Reset' का उपयोग करके इसे रीसेट करें। सत्यापित करें कि किसी GPO या रजिस्ट्री सेटिंग ने स्वचालित ट्रस्ट पासवर्ड रोटेशन अक्षम नहीं किया है", "status": "machine-draft" }
+  },
+  "ADTRUST-011": {
+    "name": { "value": "ट्रस्ट पदानुक्रम विज़ुअलाइज़ेशन", "status": "machine-draft" },
+    "description": { "value": "एक पूर्ण ट्रस्ट टोपोलॉजी मानचित्र बनाए रखा जाना चाहिए जो सभी ट्रस्ट संबंधों, दिशाओं, प्रकारों, और संक्रामिता पथों को दर्शाए। संपूर्ण प्रमाणीकरण सीमा को समझने और अप्रत्याशित पहुंच पथों की पहचान के लिए यह विज़ुअलाइज़ेशन आवश्यक है", "status": "machine-draft" },
+    "recommendedValue": { "value": "अद्यतन ट्रस्ट टोपोलॉजी आरेख बनाए रखा गया हो और त्रैमासिक समीक्षा की गई हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "स्वचालित उपकरणों का उपयोग करके एक ट्रस्ट टोपोलॉजी मानचित्र उत्पन्न करें या दिशा, प्रकार, संक्रामिता, SID filtering स्थिति, और selective authentication स्थिति सहित सभी ट्रस्ट संबंधों को मैनुअल रूप से प्रलेखित करें। जब भी ट्रस्ट जोड़े, संशोधित, या हटाए जाएं तो आरेख अद्यतन करें। मानचित्र को सुरक्षा प्रलेखन में शामिल करें और त्रैमासिक समीक्षा करें", "status": "machine-draft" }
+  }
+}

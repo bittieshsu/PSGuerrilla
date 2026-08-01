@@ -1,0 +1,183 @@
+{
+  "_family": "ADPrivilegedAccountChecks.json",
+  "ADPRIV-001": {
+    "name": { "value": "Domain Admins सूचीकरण", "status": "machine-draft" },
+    "description": { "value": "Domain Admins समूह सभी डोमेन-जुड़े सिस्टमों पर पूर्ण प्रशासनिक नियंत्रण प्रदान करता है। सदस्यता कड़ाई से सीमित होनी चाहिए और प्रत्येक सदस्य के पास एक प्रलेखित व्यावसायिक औचित्य होना चाहिए। अत्यधिक सदस्यता क्रेडेंशियल चोरी और लेटरल मूवमेंट के लिए हमले की सतह को नाटकीय रूप से बढ़ा देती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "न्यूनतम सदस्यता (आदर्श रूप से अधिकतम 2-3 खाते) प्रत्येक सदस्य के लिए प्रलेखित औचित्य के साथ। कोई दिन-प्रतिदिन के उपयोगकर्ता खाते नहीं", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Domain Admins' -Recursive का उपयोग करके नेस्ट किए गए समूहों सहित Domain Admins सदस्यता सूचीबद्ध करें। प्रत्येक सदस्य की व्यावसायिक आवश्यकता हेतु समीक्षा करें। अनावश्यक सदस्यों को हटाएं और प्रत्यायोजित प्रशासन मॉडल में स्थानांतरित करें। सुनिश्चित करें कि कोई नियमित उपयोगकर्ता खाता सदस्य न हो", "status": "machine-draft" }
+  },
+  "ADPRIV-002": {
+    "name": { "value": "Enterprise Admins सूचीकरण", "status": "machine-draft" },
+    "description": { "value": "Enterprise Admins समूह के पास सभी डोमेन में फ़ॉरेस्ट-व्यापी प्रशासनिक विशेषाधिकार हैं। यह समूह सामान्य संचालन के दौरान खाली रहना चाहिए और केवल फ़ॉरेस्ट-स्तरीय परिवर्तनों के लिए अस्थायी रूप से भरा जाना चाहिए। एक समझौता किया गया Enterprise Admin खाता पूर्ण फ़ॉरेस्ट समझौते की ओर ले जाता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सामान्य संचालन के दौरान खाली। सदस्य केवल फ़ॉरेस्ट-स्तरीय परिवर्तनों के लिए प्रलेखित अनुमोदन के साथ अस्थायी रूप से जोड़े जाएं", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Enterprise Admins' -Recursive का उपयोग करके Enterprise Admins सदस्यता सूचीबद्ध करें। सभी स्थायी सदस्य हटाएं। फ़ॉरेस्ट-स्तरीय संचालन के लिए एक just-in-time पहुंच प्रक्रिया लागू करें जो पूर्ण लेखापरीक्षा लॉगिंग के साथ सदस्यों को अस्थायी रूप से जोड़ती और हटाती है", "status": "machine-draft" }
+  },
+  "ADPRIV-003": {
+    "name": { "value": "Schema Admins सूचीकरण", "status": "machine-draft" },
+    "description": { "value": "Schema Admins समूह AD schema को संशोधित कर सकता है, जो अपरिवर्तनीय है और पूरे फ़ॉरेस्ट को प्रभावित करता है। यह समूह सामान्य संचालन के दौरान खाली रहना चाहिए क्योंकि schema परिवर्तन दुर्लभ और उच्च-प्रभाव वाले होते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सामान्य संचालन के दौरान खाली। सदस्य केवल schema संशोधनों के लिए परिवर्तन प्रबंधन अनुमोदन के साथ अस्थायी रूप से जोड़े जाएं", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Schema Admins' का उपयोग करके Schema Admins सदस्यता सूचीबद्ध करें। सभी स्थायी सदस्य हटाएं। सदस्य केवल तभी जोड़ें जब औपचारिक परिवर्तन प्रबंधन प्रक्रिया के माध्यम से schema परिवर्तन आवश्यक हों", "status": "machine-draft" }
+  },
+  "ADPRIV-004": {
+    "name": { "value": "Account Operators सूचीकरण", "status": "machine-draft" },
+    "description": { "value": "Account Operators डोमेन में अधिकांश उपयोगकर्ता और समूह खाते बना और संशोधित कर सकते हैं, जिसमें विशेषाधिकृत OU में खाते बनाना शामिल है। इस समूह को अक्सर अनदेखा किया जाता है परंतु यह महत्वपूर्ण विशेषाधिकार वृद्धि क्षमता प्रदान करता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "खाली। Account Operators समूह सदस्यता के बजाय प्रत्यायोजित OU-स्तरीय अनुमतियों का उपयोग करें", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Account Operators' का उपयोग करके Account Operators सदस्यता सूचीबद्ध करें। सभी सदस्य हटाएं और Active Directory Delegation of Control wizard का उपयोग करके OU-आधारित प्रत्यायोजन से बदलें। सभी प्रत्यायोजित अनुमतियां प्रलेखित करें", "status": "machine-draft" }
+  },
+  "ADPRIV-005": {
+    "name": { "value": "Server Operators सूचीकरण", "status": "machine-draft" },
+    "description": { "value": "Server Operators डोमेन नियंत्रकों पर लॉगिन कर सकते हैं, सेवाएं प्रबंधित कर सकते हैं, और साझा संसाधन संशोधित कर सकते हैं। इस समूह का दुरुपयोग सेवाओं में हेरफेर करके SYSTEM के रूप में मनमाना कोड चलाकर DC पर विशेषाधिकार बढ़ाने के लिए किया जा सकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "खाली। इसके बजाय विशिष्ट प्रत्यायोजन वाले समर्पित सेवा प्रबंधन खातों का उपयोग करें", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Server Operators' का उपयोग करके Server Operators सदस्यता सूचीबद्ध करें। सभी सदस्य हटाएं और किसी आवश्यक सर्वर प्रबंधन कार्य के लिए लक्षित प्रत्यायोजन लागू करें। DC लॉगिन अधिकारों की अलग से लेखापरीक्षा करें", "status": "machine-draft" }
+  },
+  "ADPRIV-006": {
+    "name": { "value": "Backup Operators सूचीकरण", "status": "machine-draft" },
+    "description": { "value": "Backup Operators डोमेन नियंत्रकों पर फ़ाइलों का बैकअप और पुनर्स्थापन कर सकते हैं, जिसमें AD डेटाबेस (ntds.dit) शामिल है। यह डोमेन के सभी पासवर्ड हैश निकालने की अनुमति देता है, जिससे Backup Operators सदस्यता किसी कुशल हमलावर के लिए Domain Admin पहुंच के समकक्ष हो जाती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "खाली या केवल समर्पित बैकअप सेवा खातों तक सीमित। कोई उपयोगकर्ता खाते नहीं", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Backup Operators' का उपयोग करके Backup Operators सदस्यता सूचीबद्ध करें। सभी उपयोगकर्ता खाते हटाएं। यदि बैकअप सेवा खातों को सदस्यता की आवश्यकता है, तो सुनिश्चित करें कि वे समर्पित हैं, मज़बूत पासवर्ड रखते हैं, और निगरानी में हैं। ऐसे एजेंट-आधारित बैकअप समाधानों पर विचार करें जिन्हें Backup Operators सदस्यता की आवश्यकता नहीं होती", "status": "machine-draft" }
+  },
+  "ADPRIV-007": {
+    "name": { "value": "Print Operators सूचीकरण", "status": "machine-draft" },
+    "description": { "value": "Print Operators डोमेन नियंत्रकों पर प्रिंटर प्रबंधित कर सकते हैं और प्रिंटर ड्राइवर लोड कर सकते हैं। दुर्भावनापूर्ण प्रिंटर ड्राइवर DC पर SYSTEM के रूप में मनमाना कोड निष्पादित कर सकते हैं, जो पूर्ण डोमेन समझौते का मार्ग प्रदान करता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "खाली। डोमेन नियंत्रकों के बजाय समर्पित प्रिंट सर्वरों का उपयोग करके प्रिंटर प्रबंधित करें", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'Print Operators' का उपयोग करके Print Operators सदस्यता सूचीबद्ध करें। सभी सदस्य हटाएं। डोमेन नियंत्रकों के बजाय समर्पित सदस्य सर्वरों पर प्रिंट सेवाएं परिनियोजित करें। समूह नीति के माध्यम से प्रिंटर ड्राइवर स्थापना प्रतिबंधित करें", "status": "machine-draft" }
+  },
+  "ADPRIV-008": {
+    "name": { "value": "DnsAdmins समूह सदस्यता", "status": "machine-draft" },
+    "description": { "value": "DnsAdmins समूह के सदस्य डोमेन नियंत्रकों पर DNS सेवा को एक मनमाना DLL लोड करने के लिए कॉन्फ़िगर कर सकते हैं, जो SYSTEM के रूप में निष्पादित होता है। यह सुविख्यात विशेषाधिकार वृद्धि पथ एक प्रतीत होने वाली निम्न-विशेषाधिकार समूह सदस्यता से पूर्ण डोमेन समझौते की ओर ले जा सकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "खाली या केवल समर्पित DNS प्रशासन खातों तक सीमित। सदस्यता को Tier 0 विशेषाधिकृत माना जाए", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Identity 'DnsAdmins' का उपयोग करके DnsAdmins सदस्यता सूचीबद्ध करें। अनावश्यक सदस्य हटाएं। अपने tiering मॉडल में DnsAdmins को एक Tier 0 विशेषाधिकृत समूह मानें। DNS सर्वर कॉन्फ़िगरेशन और ServerLevelPluginDll registry मान में परिवर्तनों की निगरानी करें", "status": "machine-draft" }
+  },
+  "ADPRIV-009": {
+    "name": { "value": "नेस्ट किए गए समूह सदस्यता विश्लेषण", "status": "machine-draft" },
+    "description": { "value": "नेस्ट किए गए समूह सदस्यताएं समूह नेस्टिंग की श्रृंखलाओं के पीछे विशेषाधिकृत पहुंच छिपाकर प्रभावी विशेषाधिकारों को अस्पष्ट कर सकती हैं। उपयोगकर्ताओं के पास गहराई से नेस्ट किए गए समूहों के माध्यम से Domain Admin समकक्ष पहुंच हो सकती है जो सरल समूह सूचीकरण के माध्यम से दिखाई नहीं देती", "status": "machine-draft" },
+    "recommendedValue": { "value": "विशेषाधिकृत समूहों तक सभी नेस्ट किए गए समूह पथ प्रलेखित हों। अधिकतम नेस्टिंग गहराई 2 स्तर। कोई गोलाकार नेस्टिंग नहीं", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember -Recursive का उपयोग करके सभी विशेषाधिकृत समूह सदस्यताओं को पुनरावर्ती रूप से सूचीबद्ध करें। सभी नेस्टिंग पथ मैप करें और उन उपयोगकर्ताओं की पहचान करें जो अप्रत्यक्ष सदस्यता के माध्यम से विशेषाधिकार प्राप्त करते हैं। अनावश्यक नेस्टिंग को समतल करें और सभी शेष नेस्ट किए गए पथों को व्यावसायिक औचित्य के साथ प्रलेखित करें", "status": "machine-draft" }
+  },
+  "ADPRIV-010": {
+    "name": { "value": "विशेषाधिकृत उपयोगकर्ता 'पासवर्ड कभी समाप्त न हो'", "status": "machine-draft" },
+    "description": { "value": "'Password Never Expires' फ़्लैग सेट वाले विशेषाधिकृत खाते पासवर्ड रोटेशन नीतियों से मुक्त होते हैं। यदि ऐसे किसी खाते से समझौता हो जाता है, तो हमलावर अनिश्चित काल तक निरंतर पहुंच बनाए रखता है क्योंकि पासवर्ड को कभी बदलने के लिए बाध्य नहीं किया जाएगा", "status": "machine-draft" },
+    "recommendedValue": { "value": "Password Never Expires फ़्लैग सेट वाला कोई विशेषाधिकृत खाता न हो। सभी विशेषाधिकृत खाते 60 दिन या उससे कम की पासवर्ड रोटेशन नीति के अधीन हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {PasswordNeverExpires -eq $true -and AdminCount -eq 1} का उपयोग करके PasswordNeverExpires वाले विशेषाधिकृत खातों की पहचान करें। फ़्लैग हटाएं और सुनिश्चित करें कि ये खाते एक उपयुक्त पासवर्ड नीति से आच्छादित हैं। 60-दिन अधिकतम पासवर्ड आयु के साथ विशेषाधिकृत खातों के लिए FGPP लागू करें", "status": "machine-draft" }
+  },
+  "ADPRIV-011": {
+    "name": { "value": "विशेषाधिकृत उपयोगकर्ता 'पासवर्ड आवश्यक नहीं'", "status": "machine-draft" },
+    "description": { "value": "PASSWD_NOTREQD फ़्लैग किसी खाते को एक रिक्त पासवर्ड रखने की अनुमति देता है, जो पासवर्ड नीति को पूरी तरह बायपास कर देता है। विशेषाधिकृत खातों पर यह विनाशकारी है क्योंकि यह अत्यधिक विशेषाधिकृत संसाधनों तक अप्रमाणित पहुंच की अनुमति देता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "PASSWD_NOTREQD फ़्लैग सेट वाला कोई विशेषाधिकृत खाता न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {PasswordNotRequired -eq $true -and AdminCount -eq 1} का उपयोग करके खातों की पहचान करें। सभी पहचाने गए खातों पर PASSWD_NOTREQD फ़्लैग तुरंत हटाएं और एक मज़बूत पासवर्ड सेट करें। जांच करें कि यह फ़्लैग कैसे सेट हुआ क्योंकि यह समझौते का संकेत दे सकता है", "status": "machine-draft" }
+  },
+  "ADPRIV-012": {
+    "name": { "value": "विशेषाधिकृत उपयोगकर्ता बिना Kerberos Pre-Auth", "status": "machine-draft" },
+    "description": { "value": "Kerberos पूर्व-प्रमाणीकरण अक्षम वाले खाते AS-REP Roasting के प्रति संवेदनशील होते हैं, जहां हमलावर बिना किसी प्रमाणीकरण के एन्क्रिप्टेड सामग्री का ऑफ़लाइन अनुरोध कर सकता है और खाता पासवर्ड पुनर्प्राप्त करने के लिए इसे क्रैक कर सकता है। विशेषाधिकृत खातों पर, यह डोमेन समझौते का सीधा मार्ग प्रदान करता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "'Do not require Kerberos preauthentication' फ़्लैग सेट वाला कोई विशेषाधिकृत खाता न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true -and AdminCount -eq 1} का उपयोग करके खातों की पहचान करें। सभी विशेषाधिकृत खातों पर Kerberos पूर्व-प्रमाणीकरण तुरंत सक्षम करें। प्रभावित खातों के पासवर्ड घुमाएं क्योंकि वे AS-REP Roasting के माध्यम से पहले ही समझौता किए जा चुके हो सकते हैं", "status": "machine-draft" }
+  },
+  "ADPRIV-013": {
+    "name": { "value": "विशेषाधिकृत उपयोगकर्ता प्रतिवर्ती एन्क्रिप्शन", "status": "machine-draft" },
+    "description": { "value": "'Store password using reversible encryption' सक्षम वाले खाते पासवर्ड को ऐसे प्रारूप में संग्रहीत करते हैं जिसे सादे-पाठ में डिक्रिप्ट किया जा सकता है। यह पासवर्ड को सादे-पाठ में संग्रहीत करने के समकक्ष है और AD डेटाबेस तक पहुंच वाले किसी भी हमलावर को वास्तविक पासवर्ड पुनर्प्राप्त करने देता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "प्रतिवर्ती एन्क्रिप्शन सक्षम वाला कोई खाता न हो, विशेषकर विशेषाधिकृत खाते नहीं", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true -and AdminCount -eq 1} का उपयोग करके खातों की पहचान करें। फ़्लैग हटाएं और सभी प्रभावित खातों पर तत्काल पासवर्ड परिवर्तन बाध्य करें। पासवर्ड नीतियों की समीक्षा करें ताकि वे प्रतिवर्ती एन्क्रिप्शन की आवश्यकता न रखें", "status": "machine-draft" }
+  },
+  "ADPRIV-014": {
+    "name": { "value": "विशेषाधिकृत उपयोगकर्ता केवल-DES Kerberos", "status": "machine-draft" },
+    "description": { "value": "केवल-DES Kerberos एन्क्रिप्शन का उपयोग करने के लिए कॉन्फ़िगर किए गए खाते एक क्रिप्टोग्राफ़िक रूप से टूटे हुए एल्गोरिथ्म का उपयोग कर रहे हैं। DES कुंजियों को तेज़ी से ब्रूट-फ़ोर्स किया जा सकता है, जिससे हमलावर प्रभावित खातों के लिए Kerberos टिकट बना या डिक्रिप्ट कर सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "'Use Kerberos DES encryption types for this account' फ़्लैग सेट वाला कोई खाता न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {UseDESKeyOnly -eq $true -and AdminCount -eq 1} का उपयोग करके खातों की पहचान करें। केवल-DES फ़्लैग हटाएं और सुनिश्चित करें कि खाते AES256 एन्क्रिप्शन का समर्थन करते हैं। नई AES-आधारित Kerberos कुंजियां उत्पन्न करने के लिए प्रभावित खातों के पासवर्ड घुमाएं", "status": "machine-draft" }
+  },
+  "ADPRIV-015": {
+    "name": { "value": "विशेषाधिकृत खाते बिना MFA संकेतक", "status": "machine-draft" },
+    "description": { "value": "विशेषाधिकृत खातों को सभी इंटरैक्टिव और दूरस्थ लॉगिन के लिए बहु-कारक प्रमाणीकरण द्वारा संरक्षित किया जाना चाहिए। MFA के बिना, अकेले चोरी हुआ पासवर्ड पूर्ण डोमेन प्रशासनिक पहुंच प्राप्त करने के लिए पर्याप्त होता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी विशेषाधिकृत खाते smart card, Windows Hello for Business, या FIDO2 के माध्यम से MFA का उपयोग करने के लिए आवश्यक हों। जहां लागू हो 'Smart card is required for interactive logon' फ़्लैग सेट किया गया हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {SmartcardLogonRequired -eq $false -and AdminCount -eq 1} का उपयोग करके smart card लॉगिन आवश्यकता के लिए विशेषाधिकृत खातों की समीक्षा करें। सभी विशेषाधिकृत खातों के लिए smart card या Windows Hello for Business प्रमाणीकरण परिनियोजित करें। Tier 0 खातों पर 'Smart card is required for interactive logon' फ़्लैग सक्षम करें", "status": "machine-draft" }
+  },
+  "ADPRIV-016": {
+    "name": { "value": "विशेषाधिकृत खाते कमज़ोर पासवर्ड", "status": "machine-draft" },
+    "description": { "value": "कमज़ोर या सामान्य रूप से उपयोग किए जाने वाले पासवर्ड वाले विशेषाधिकृत खाते password spraying, शब्दकोश हमलों, या credential stuffing के माध्यम से तुच्छ रूप से समझौता किए जाते हैं। किसी Domain Admin खाते पर एक कमज़ोर पासवर्ड मिनटों में पूर्ण डोमेन समझौते की ओर ले जा सकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी विशेषाधिकृत खाता पासवर्ड न्यूनतम 25 वर्ण के हों और सामान्य पासवर्ड शब्दकोशों में न पाए जाएं", "status": "machine-draft" },
+    "remediationSteps": { "value": "NT हैश की ज्ञात कमज़ोर पासवर्ड सूचियों से तुलना करके (DSInternals जैसे उपकरणों का उपयोग करके) विशेषाधिकृत खाता पासवर्ड शक्ति का परीक्षण करें। कमज़ोर पासवर्ड वाले किसी भी खाते पर तत्काल पासवर्ड परिवर्तन बाध्य करें। विशेषाधिकृत खातों के लिए 25+ वर्ण पासवर्ड आवश्यक करने वाला FGPP लागू करें", "status": "machine-draft" }
+  },
+  "ADPRIV-017": {
+    "name": { "value": "विशेषाधिकृत खाते पुराने पासवर्ड", "status": "machine-draft" },
+    "description": { "value": "जिन विशेषाधिकृत खातों के पासवर्ड 90 दिनों से अधिक समय से नहीं बदले गए हैं, उनकी उजागरता की खिड़की विस्तारित होती है। यदि क्रेडेंशियल समझौता किए गए थे, तो हमलावर पूरे उस समय के लिए पहुंच बनाए रखता है जब तक पासवर्ड अपरिवर्तित रहता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी विशेषाधिकृत खाता पासवर्ड पिछले 60 दिनों के भीतर बदले गए हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {AdminCount -eq 1} -Properties PasswordLastSet | Where-Object {$_.PasswordLastSet -lt (Get-Date).AddDays(-90)} का उपयोग करके पुराने पासवर्ड वाले विशेषाधिकृत खातों की पहचान करें। सभी पहचाने गए खातों पर पासवर्ड रोटेशन बाध्य करें। विशेषाधिकृत खातों के लिए 60-दिन अधिकतम पासवर्ड आयु के साथ FGPP लागू करें", "status": "machine-draft" }
+  },
+  "ADPRIV-018": {
+    "name": { "value": "विशेषाधिकृत खाते जो कभी लॉगिन नहीं हुए", "status": "machine-draft" },
+    "description": { "value": "जो विशेषाधिकृत खाते कभी लॉगिन नहीं हुए हैं, वे ऐसे प्रावधानित खाते हो सकते हैं जिनका कभी दावा नहीं किया गया, परीक्षण खाते, या स्थानांतरण कलाकृतियां हो सकते हैं। विशेषाधिकृत समूहों में ये अप्रबंधित खाते एक महत्वपूर्ण जोखिम दर्शाते हैं क्योंकि उनमें डिफ़ॉल्ट या कमज़ोर पासवर्ड हो सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "null LastLogonTimestamp वाला कोई विशेषाधिकृत खाता न हो। सभी विशेषाधिकृत खाते अपने निर्दिष्ट स्वामियों द्वारा सक्रिय रूप से उपयोग किए जाएं", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {AdminCount -eq 1} -Properties LastLogonTimestamp | Where-Object {$_.LastLogonTimestamp -eq $null} का उपयोग करके ऐसे विशेषाधिकृत खातों की पहचान करें जो कभी लॉगिन नहीं हुए। यह निर्धारित करने के लिए प्रत्येक खाते की जांच करें कि यह आवश्यक है या नहीं। अनावश्यक खातों को विशेषाधिकृत समूहों से अक्षम या हटाएं", "status": "machine-draft" }
+  },
+  "ADPRIV-019": {
+    "name": { "value": "विशेषाधिकृत समूहों में अक्षम खाते", "status": "machine-draft" },
+    "description": { "value": "विशेषाधिकृत समूहों में शेष अक्षम खाते जोखिम पैदा करते हैं क्योंकि खाते को पुनः सक्षम करना (जानबूझकर या समझौते के माध्यम से) तुरंत पूर्ण विशेषाधिकृत पहुंच प्रदान करता है। अक्षम खातों को सभी विशेषाधिकृत समूहों से हटाया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "किसी भी विशेषाधिकृत समूह में कोई अक्षम खाता न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember 'Domain Admins' -Recursive | Get-ADUser | Where-Object {$_.Enabled -eq $false} का उपयोग करके विशेषाधिकृत समूहों में अक्षम खातों की पहचान करें। सभी विशेषाधिकृत समूहों के लिए दोहराएं। अक्षम खातों को सभी विशेषाधिकृत समूह सदस्यताओं से तुरंत हटाएं", "status": "machine-draft" }
+  },
+  "ADPRIV-020": {
+    "name": { "value": "AdminSDHolder संरक्षित ऑब्जेक्ट लेखापरीक्षा", "status": "machine-draft" },
+    "description": { "value": "AdminSDHolder एक सुरक्षा तंत्र है जो SDProp के माध्यम से हर 60 मिनट में संरक्षित ऑब्जेक्ट (विशेषाधिकृत उपयोगकर्ता और समूह) पर ACL को अधिलेखित करता है। AdminSDHolder ACL में संशोधन सभी संरक्षित ऑब्जेक्ट तक प्रसारित होते हैं, जिससे यह दृढ़ता के लिए एक उच्च-मूल्य लक्ष्य बन जाता है। AdminSDHolder पर अनधिकृत ACE सभी विशेषाधिकृत खातों तक बैकडोर पहुंच प्रदान करते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "AdminSDHolder ACL में केवल डिफ़ॉल्ट प्रविष्टियां हों, कोई अनधिकृत या अप्रत्याशित ACE न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ACL या ADSIEdit का उपयोग करके CN=AdminSDHolder,CN=System,DC=domain पर AdminSDHolder ACL की समीक्षा करें। प्रलेखित बेसलाइन से तुलना करें। किसी भी गैर-डिफ़ॉल्ट ACE को तुरंत हटाएं। सतत सुरक्षा निगरानी के भाग के रूप में AdminSDHolder में संशोधनों की निगरानी करें", "status": "machine-draft" }
+  },
+  "ADPRIV-021": {
+    "name": { "value": "AdminCount अनाथ", "status": "machine-draft" },
+    "description": { "value": "जब ऑब्जेक्ट संरक्षित समूहों से हटाए जाते हैं, तो AdminCount विशेषता 1 पर सेट रहती है और विरासत में मिली अनुमतियां अवरुद्ध रहती हैं। इन 'AdminCount अनाथ' की टूटी हुई अनुमति विरासत होती है, जो सुरक्षा नीतियों को सही ढंग से लागू होने से रोक सकती है और विशेषाधिकार वृद्धि को छिपा सकती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "AdminCount=1 वाला कोई खाता न हो जो किसी संरक्षित समूह का सदस्य न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser -Filter {AdminCount -eq 1} का उपयोग करके अनाथ खातों की पहचान करें और वर्तमान संरक्षित समूह सदस्यता से क्रॉस-रेफ़रेंस करें। अनाथों के लिए, AdminCount विशेषता साफ़ करें और ऑब्जेक्ट के ACL पर विरासत पुनः सक्षम करें। विरासत में मिली अनुमतियां ठीक करने के लिए PowerShell या ADSIEdit का उपयोग करें", "status": "machine-draft" }
+  },
+  "ADPRIV-022": {
+    "name": { "value": "krbtgt पासवर्ड आयु", "status": "machine-draft" },
+    "description": { "value": "krbtgt खाते के पासवर्ड का उपयोग डोमेन में सभी Kerberos टिकटों को एन्क्रिप्ट और साइन करने के लिए किया जाता है। यदि समझौता हो जाता है, तो हमलावर Golden Tickets बना सकता है जो किसी भी संसाधन तक किसी भी अवधि के लिए अप्रतिबंधित पहुंच प्रदान करते हैं। krbtgt पासवर्ड कम से कम हर 180 दिनों में और किसी संदिग्ध समझौते के तुरंत बाद घुमाया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "krbtgt पासवर्ड पिछले 180 दिनों के भीतर बदला गया हो। किसी संदिग्ध समझौते के बाद दो बार घुमाया गया हो (सभी मौजूदा टिकट अमान्य करने के लिए)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADUser krbtgt -Properties PasswordLastSet का उपयोग करके krbtgt पासवर्ड आयु जांचें। सभी मौजूदा टिकट अमान्य करने के लिए पासवर्ड दो बार रीसेट करें (प्रतिकृति पूर्ण होने के लिए रीसेट के बीच पर्याप्त समय के साथ)। रोटेशन को सुरक्षित रूप से करने के लिए Microsoft के krbtgt reset script का उपयोग करें। हर 180 दिनों में नियमित रोटेशन अनुसूचित करें", "status": "machine-draft" }
+  },
+  "ADPRIV-023": {
+    "name": { "value": "krbtgt खाता उजागरता मूल्यांकन", "status": "machine-draft" },
+    "description": { "value": "krbtgt खाता कॉन्फ़िगरेशन का उजागरता संकेतकों के लिए मूल्यांकन किया जाना चाहिए, जिसमें समर्थित एन्क्रिप्शन प्रकार, प्रत्यायोजन सेटिंग्स, और SPN शामिल हैं। कोई भी गलत कॉन्फ़िगरेशन Golden Ticket और अन्य Kerberos-आधारित हमलों का जोखिम बढ़ाता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "krbtgt खाता केवल AES256 एन्क्रिप्शन, कोई प्रत्यायोजन नहीं, और डिफ़ॉल्ट kadmin/changepw से परे कोई अतिरिक्त SPN नहीं के साथ कॉन्फ़िगर किया गया हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "msDS-SupportedEncryptionTypes, प्रत्यायोजन सेटिंग्स, और SPN सहित krbtgt खाता गुणों की समीक्षा करें। सुनिश्चित करें कि AES256 प्राथमिक एन्क्रिप्शन प्रकार है। सत्यापित करें कि कोई प्रत्यायोजन फ़्लैग सेट नहीं है। ऐसे अप्रत्याशित SPN की जांच करें जो समझौते या गलत कॉन्फ़िगरेशन का संकेत दे सकते हैं", "status": "machine-draft" }
+  },
+  "ADPRIV-024": {
+    "name": { "value": "विशेषाधिकृत समूहों में सेवा खाते", "status": "machine-draft" },
+    "description": { "value": "विशेषाधिकृत समूहों में सेवा खाते उच्च जोखिम प्रस्तुत करते हैं क्योंकि उनके पास आमतौर पर ऐसे पासवर्ड होते हैं जो समाप्त नहीं होते, प्रशासकों के बीच साझा किए जाते हैं, स्क्रिप्ट या कॉन्फ़िगरेशन फ़ाइलों में संग्रहीत हो सकते हैं, और कई सर्वरों पर चलते हैं जहां क्रेडेंशियल संचित किए जा सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "विशेषाधिकृत समूहों में कोई सेवा खाता न हो। सेवा खातों को न्यूनतम आवश्यक पहुंच तक सीमित प्रत्यायोजित अनुमतियों का उपयोग करना चाहिए", "status": "machine-draft" },
+    "remediationSteps": { "value": "सभी सदस्यों की समीक्षा करके और सेवा लॉगिन पहचान के रूप में उपयोग किए जाने वाले खातों की जांच करके विशेषाधिकृत समूहों में सेवा खातों की पहचान करें। सेवा खातों को विशेषाधिकृत समूहों से हटाएं और प्रत्यायोजन के माध्यम से केवल आवश्यक विशिष्ट अनुमतियां प्रदान करें। जहां संभव हो Group Managed Service Accounts (gMSA) में स्थानांतरित करें", "status": "machine-draft" }
+  },
+  "ADPRIV-025": {
+    "name": { "value": "विशेषाधिकृत समूहों में कंप्यूटर खाते", "status": "machine-draft" },
+    "description": { "value": "विशेषाधिकृत समूहों में कंप्यूटर खाते उन कंप्यूटरों पर SYSTEM के रूप में चलने वाली किसी भी प्रक्रिया को समूह के विशेषाधिकार प्रदान करते हैं। ऐसी किसी मशीन से समझौता करने वाला हमलावर Domain Admin समकक्ष पहुंच प्राप्त करता है, जो लेटरल मूवमेंट हमले की सतह का काफ़ी विस्तार करता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "किसी भी विशेषाधिकृत समूह में कोई कंप्यूटर खाता न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Get-ADGroupMember 'Domain Admins' | Where-Object {$_.objectClass -eq 'computer'} का उपयोग करके विशेषाधिकृत समूह सदस्यों को सूचीबद्ध करें और किसी भी कंप्यूटर खाते की पहचान करें। सभी विशेषाधिकृत समूहों के लिए दोहराएं। कंप्यूटर खाते तुरंत हटाएं और जांच करें कि उन्हें क्यों जोड़ा गया", "status": "machine-draft" }
+  },
+  "ADPRIV-026": {
+    "name": { "value": "DC पर विशेषाधिकृत उपयोगकर्ता स्थानीय लॉगिन", "status": "machine-draft" },
+    "description": { "value": "केवल निर्दिष्ट Tier 0 प्रशासनिक खातों को डोमेन नियंत्रकों पर स्थानीय रूप से लॉगिन करने की अनुमति होनी चाहिए। गैर-Tier 0 खातों को DC पर लॉगिन करने की अनुमति देना कम-सुरक्षित वर्कस्टेशनों पर क्रेडेंशियल संचयन हमलों के प्रति विशेषाधिकृत क्रेडेंशियल उजागर करता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "केवल Domain Admins और निर्दिष्ट Tier 0 खातों को DC पर स्थानीय लॉगिन की अनुमति। 'Allow log on locally' Domain Controllers OU पर GPO के माध्यम से प्रतिबंधित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Domain Controllers OU पर लागू समूह नीति के माध्यम से कॉन्फ़िगर करें: Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > User Rights Assignment > 'Allow log on locally' = केवल Administrators, Domain Admins। अन्य सभी प्रविष्टियां हटाएं और अच्छी तरह परीक्षण करें", "status": "machine-draft" }
+  },
+  "ADPRIV-027": {
+    "name": { "value": "DC पर विशेषाधिकृत उपयोगकर्ता RDP", "status": "machine-draft" },
+    "description": { "value": "डोमेन नियंत्रकों तक Remote Desktop पहुंच कड़ाई से निर्दिष्ट Tier 0 प्रशासकों तक सीमित होनी चाहिए। RDP सत्र क्रेडेंशियल कैश करते हैं जिन्हें संचित किया जा सकता है, और अत्यधिक RDP पहुंच क्रेडेंशियल चोरी और DC तक लेटरल मूवमेंट के लिए हमले की सतह बढ़ाती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "केवल निर्दिष्ट Tier 0 प्रशासनिक खातों को DC तक RDP पहुंच की अनुमति। 'Allow log on through Remote Desktop Services' GPO के माध्यम से प्रतिबंधित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Domain Controllers OU पर लागू समूह नीति के माध्यम से कॉन्फ़िगर करें: Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > User Rights Assignment > 'Allow log on through Remote Desktop Services' = केवल Administrators। RDP सत्रों के लिए Remote Credential Guard या Restricted Admin mode का उपयोग करने पर विचार करें", "status": "machine-draft" }
+  },
+  "ADPRIV-028": {
+    "name": { "value": "DCSync अधिकार वाले उपयोगकर्ता", "status": "machine-draft" },
+    "description": { "value": "DCSync सभी उपयोगकर्ता हैश सहित Active Directory से पासवर्ड डेटा की प्रतिकृति की अनुमति देता है। 'Replicating Directory Changes All' और 'Replicating Directory Changes' अधिकार वाले खाते किसी DC को छुए बिना डोमेन के हर पासवर्ड हैश निकाल सकते हैं। केवल डोमेन नियंत्रक कंप्यूटर खातों और डिफ़ॉल्ट admin खाते के पास ही ये अधिकार होने चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "केवल डोमेन नियंत्रक कंप्यूटर खातों और डिफ़ॉल्ट administrator खाते के पास प्रतिकृति अधिकार हों। कोई अतिरिक्त उपयोगकर्ता या समूह DCSync अनुमतियां प्रदान न किए गए हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "(Get-ACL 'AD:\\DC=domain,DC=com').Access | Where-Object {$_.ObjectType -match '1131f6a[a-d]'} का उपयोग करके 'Replicating Directory Changes' और 'Replicating Directory Changes All' के लिए डोमेन रूट ACL की लेखापरीक्षा करें। किसी भी अनधिकृत प्रविष्टि को तुरंत हटाएं। जांच करें कि क्या अनधिकृत खातों ने पहले ही DCSync किया है", "status": "machine-draft" }
+  },
+  "ADPRIV-029": {
+    "name": { "value": "Protected Users समूह लेखापरीक्षा", "status": "machine-draft" },
+    "description": { "value": "Protected Users सुरक्षा समूह हार्डन्ड प्रमाणीकरण सुरक्षा प्रदान करता है, जिसमें NTLM प्रमाणीकरण अक्षम करना, AES Kerberos एन्क्रिप्शन लागू करना, क्रेडेंशियल कैशिंग रोकना, और छोटे TGT जीवनकाल सेट करना शामिल है। सभी Tier 0 विशेषाधिकृत खाते सदस्य होने चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी Tier 0 विशेषाधिकृत उपयोगकर्ता खाते Protected Users समूह के सदस्य हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Add-ADGroupMember -Identity 'Protected Users' -Members <account> का उपयोग करके सभी Tier 0 खातों को Protected Users समूह में जोड़ें। प्रत्येक खाते का पहले परीक्षण करें क्योंकि Protected Users NTLM और क्रेडेंशियल प्रत्यायोजन अक्षम करता है जो legacy अनुप्रयोगों को तोड़ सकता है। नोट: सेवा खाते और कंप्यूटर खाते जोड़े नहीं जाने चाहिए", "status": "machine-draft" }
+  },
+  "ADPRIV-030": {
+    "name": { "value": "Protected Users में नहीं वाले विशेषाधिकृत उपयोगकर्ता", "status": "machine-draft" },
+    "description": { "value": "जो विशेषाधिकृत खाते Protected Users समूह के सदस्य नहीं हैं, उनमें हार्डन्ड प्रमाणीकरण सुरक्षा का अभाव होता है और वे NTLM रिले, क्रेडेंशियल कैशिंग, और दीर्घकालिक Kerberos टिकट सहित क्रेडेंशियल चोरी तकनीकों के प्रति संवेदनशील रहते हैं। प्रत्येक पात्र विशेषाधिकृत खाते को संरक्षित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी पात्र विशेषाधिकृत उपयोगकर्ता खाते Protected Users समूह में नामांकित हों। अपवाद प्रतिपूरक नियंत्रणों के साथ प्रलेखित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "विशेषाधिकृत समूह सदस्यों की Protected Users सदस्यता से तुलना करें। Protected Users में न होने वाले प्रत्येक विशेषाधिकृत खाते के लिए, संगतता (NTLM निर्भरताएं, प्रत्यायोजन आवश्यकताएं) का मूल्यांकन करें और समूह में जोड़ें। किसी भी अपवाद को विशिष्ट तकनीकी कारणों और प्रतिपूरक नियंत्रणों के साथ प्रलेखित करें", "status": "machine-draft" }
+  }
+}
