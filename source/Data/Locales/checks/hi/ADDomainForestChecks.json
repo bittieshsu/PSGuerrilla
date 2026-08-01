@@ -1,0 +1,123 @@
+{
+  "_family": "ADDomainForestChecks.json",
+  "ADDOM-001": {
+    "name": { "value": "फ़ॉरेस्ट कार्यात्मक स्तर", "status": "machine-draft" },
+    "description": { "value": "Active Directory फ़ॉरेस्ट कार्यात्मक स्तर Windows Server 2016 या उच्चतर पर होना चाहिए ताकि Privileged Access Management और बेहतर Kerberos सुरक्षा जैसी आधुनिक सुरक्षा सुविधाएं सक्षम हो सकें। पुराने कार्यात्मक स्तर चलाना वातावरण को ऐसे हमलों के प्रति उजागर करता है जो लीगेसी प्रोटोकॉल कमज़ोरियों का लाभ उठाते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2016 या उच्चतर", "status": "machine-draft" },
+    "remediationSteps": { "value": "Active Directory Domains and Trusts > फ़ॉरेस्ट रूट पर राइट-क्लिक करें > Raise Forest Functional Level के माध्यम से फ़ॉरेस्ट कार्यात्मक स्तर बढ़ाएं। स्तर बढ़ाने से पहले सुनिश्चित करें कि सभी डोमेन नियंत्रक एक समर्थित OS संस्करण चलाते हैं", "status": "machine-draft" }
+  },
+  "ADDOM-002": {
+    "name": { "value": "डोमेन कार्यात्मक स्तर", "status": "machine-draft" },
+    "description": { "value": "Active Directory डोमेन कार्यात्मक स्तर Windows Server 2016 या उच्चतर पर होना चाहिए। निम्न कार्यात्मक स्तर Protected Users समूह कार्यक्षमता, प्रमाणीकरण नीतियों, और आधुनिक Kerberos आर्मरिंग सहित क्रिटिकल सुरक्षा सुविधाओं के उपयोग को रोकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2016 या उच्चतर", "status": "machine-draft" },
+    "remediationSteps": { "value": "Active Directory Domains and Trusts > डोमेन पर राइट-क्लिक करें > Raise Domain Functional Level के माध्यम से डोमेन कार्यात्मक स्तर बढ़ाएं। पहले सत्यापित करें कि डोमेन में सभी DC एक संगत OS संस्करण चला रहे हैं", "status": "machine-draft" }
+  },
+  "ADDOM-003": {
+    "name": { "value": "स्कीमा संस्करण पहचान", "status": "machine-draft" },
+    "description": { "value": "AD स्कीमा संस्करण प्रलेखित होना चाहिए और नवीनतम समर्थित संस्करण के अनुरूप होना चाहिए। एक पुराना स्कीमा आधुनिक सुरक्षा सुविधाओं और एप्लिकेशनों द्वारा आवश्यक विशेषताओं से रहित हो सकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "Windows Server 2022 (संस्करण 88) या बाद के संस्करण के अनुरूप स्कीमा संस्करण", "status": "machine-draft" },
+    "remediationSteps": { "value": "स्कीमा अद्यतन करने के लिए नवीनतम Windows Server स्थापना मीडिया से adprep /forestprep और adprep /domainprep चलाएं। CN=Schema,CN=Configuration,DC=domain पर objectVersion विशेषता सत्यापित करें", "status": "machine-draft" }
+  },
+  "ADDOM-004": {
+    "name": { "value": "डोमेन नियंत्रक सूची", "status": "machine-draft" },
+    "description": { "value": "सभी डोमेन नियंत्रकों को उनके OS संस्करण, पैच स्तर, और स्थान के साथ सूचीबद्ध किया जाना चाहिए। अनट्रैक किए गए डोमेन नियंत्रक एक महत्वपूर्ण सुरक्षा जोखिम दर्शाते हैं क्योंकि वे पैच से चूक सकते हैं या पता चले बिना समझौता हो सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी डोमेन नियंत्रक वर्तमान OS संस्करण, साइट सदस्यता, और पैच स्थिति के साथ प्रलेखित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Domain Controllers OU से सभी DC कंप्यूटर ऑब्जेक्ट की क्वेरी करें। सत्यापित करें कि प्रत्येक DC का हिसाब है, वह एक समर्थित OS चला रहा है, और नियमित पैच प्राप्त कर रहा है। किसी भी अनधिकृत DC को तुरंत हटाएं या डिमोट करें", "status": "machine-draft" }
+  },
+  "ADDOM-005": {
+    "name": { "value": "डोमेन नियंत्रकों पर अप्रचलित OS", "status": "machine-draft" },
+    "description": { "value": "जीवन-समाप्त ऑपरेटिंग सिस्टम (Windows Server 2012 R2 या पूर्ववर्ती) चलाने वाले डोमेन नियंत्रकों को सुरक्षा अद्यतन प्राप्त नहीं होते और वे ज्ञात शोषणों के प्रति संवेदनशील होते हैं। ये क्रिटिकल अवसंरचना जोखिम दर्शाते हैं क्योंकि किसी DC से समझौता करने पर पूर्ण डोमेन नियंत्रण मिल जाता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी डोमेन नियंत्रक वर्तमान पैच के साथ Windows Server 2019 या बाद का संस्करण चला रहे हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "अप्रचलित OS संस्करण चलाने वाले DC के प्रवास की योजना बनाएं। Windows Server 2022 पर नए DC बनाएं, यदि आवश्यक हो तो FSMO भूमिकाएं स्थानांतरित करें, प्रतिकृति करें, फिर पुराने DC को डिमोट और डीकमीशन करें। इस उपचार को प्राथमिकता दें क्योंकि लीगेसी DC सक्रिय रूप से लक्षित होते हैं", "status": "machine-draft" }
+  },
+  "ADDOM-006": {
+    "name": { "value": "FSMO भूमिका धारक पहचान", "status": "machine-draft" },
+    "description": { "value": "पांच FSMO भूमिकाएं (Schema Master, Domain Naming Master, RID Master, PDC Emulator, Infrastructure Master) प्रलेखित होनी चाहिए और उपयुक्त डोमेन नियंत्रकों पर रखी जानी चाहिए। भूमिका स्थान जानना आपदा पुनर्प्राप्ति और परिचालन जागरूकता के लिए आवश्यक है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी FSMO भूमिकाएं प्रलेखित हों, विश्वसनीय DC पर रखी गई हों, और DR योजना में शामिल हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "भूमिका धारकों की पहचान के लिए 'netdom query fsmo' चलाएं या AD स्कीमा और डोमेन विभाजनों की क्वेरी करें। भूमिकाओं को प्रलेखित करें और सत्यापित करें कि वे उच्च उपलब्धता वाले DC पर हैं। यदि वर्तमान धारक अनुपयुक्त हैं तो भूमिकाएं स्थानांतरित करें", "status": "machine-draft" }
+  },
+  "ADDOM-007": {
+    "name": { "value": "AD प्रतिकृति स्वास्थ्य", "status": "machine-draft" },
+    "description": { "value": "Active Directory प्रतिकृति विफलताएं असंगत सुरक्षा नीति अनुप्रयोग, पुराने क्रेडेंशियल के वैध बने रहने, और स्प्लिट-ब्रेन परिदृश्यों का कारण बन सकती हैं। निरंतर प्रतिकृति विफलताएं किसी समझौता किए गए या अनधिकृत DC का भी संकेत दे सकती हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी डोमेन नियंत्रक पिछले 24 घंटों में बिना किसी त्रुटि के सफलतापूर्वक प्रतिकृति कर रहे हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "विफलताओं की पहचान के लिए 'repadmin /replsummary' और 'repadmin /showrepl' चलाएं। DNS समस्याओं, नेटवर्क कनेक्टिविटी समस्याओं, या USN रोलबैक स्थितियों की जांच करें और उनका समाधान करें। नियमित संचालन के भाग के रूप में प्रतिकृति स्थिति की निगरानी करें", "status": "machine-draft" }
+  },
+  "ADDOM-008": {
+    "name": { "value": "Tombstone Lifetime कॉन्फ़िगरेशन", "status": "machine-draft" },
+    "description": { "value": "tombstone lifetime यह परिभाषित करता है कि हटाए गए ऑब्जेक्ट स्थायी रूप से हटाए जाने से पहले कितने समय तक बनाए रखे जाते हैं और यह निर्धारित करता है कि किसी DC को पुनर्निर्मित किए जाने से पहले उसका अधिकतम ऑफ़लाइन समय कितना हो सकता है। बहुत कम मान लिंगरिंग ऑब्जेक्ट का कारण बन सकता है; आधुनिक वातावरण के लिए 60 दिनों के डिफ़ॉल्ट को 180 दिनों तक बढ़ाया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "180 दिन", "status": "machine-draft" },
+    "remediationSteps": { "value": "CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,DC=domain पर tombstoneLifetime विशेषता संशोधित करें। ADSIEdit या PowerShell का उपयोग करके 180 पर सेट करें। संशोधन से पहले सुनिश्चित करें कि AD Recycle Bin सक्षम है", "status": "machine-draft" }
+  },
+  "ADDOM-009": {
+    "name": { "value": "AD Recycle Bin स्थिति", "status": "machine-draft" },
+    "description": { "value": "Active Directory Recycle Bin सभी विशेषताओं के साथ हटाए गए ऑब्जेक्ट की पुनर्प्राप्ति की अनुमति देता है। इसके बिना, गलती से या दुर्भावनापूर्वक हटाए गए ऑब्जेक्ट को पुनर्स्थापित करने के लिए बैकअप से आधिकारिक पुनर्स्थापना की आवश्यकता होती है, जो महत्वपूर्ण डाउनटाइम का कारण बनती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Active Directory Administrative Center > डोमेन पर राइट-क्लिक करें > Enable Recycle Bin के माध्यम से AD Recycle Bin सक्षम करें, या PowerShell में Enable-ADOptionalFeature 'Recycle Bin Feature' चलाएं। नोट: यह क्रिया अपरिवर्तनीय है", "status": "machine-draft" }
+  },
+  "ADDOM-010": {
+    "name": { "value": "साइट और सबनेट कॉन्फ़िगरेशन", "status": "machine-draft" },
+    "description": { "value": "उपयोग में सभी IP सबनेट AD साइटों को असाइन किए जाने चाहिए। गुम सबनेट-से-साइट मैपिंग क्लाइंट को उप-इष्टतम DC के विरुद्ध प्रमाणित करने का कारण बनती हैं, जिससे संभावित रूप से WAN लिंक पर क्रेडेंशियल क्लियरटेक्स्ट में भेजे जाते हैं और सुरक्षा स्थिति कमज़ोर होती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी IP सबनेट उपयुक्त AD साइटों से मैप हों, कोई अनाथ सबनेट न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "AD Sites and Services > Subnets कंटेनर की समीक्षा करें। अनमैप किए गए सबनेट की पहचान के लिए नेटवर्क प्रलेखन का क्रॉस-संदर्भ करें। सभी उत्पादन नेटवर्क के लिए सबनेट ऑब्जेक्ट बनाएं और उन्हें सही साइट से संबद्ध करें", "status": "machine-draft" }
+  },
+  "ADDOM-011": {
+    "name": { "value": "साइट लिंक कॉन्फ़िगरेशन", "status": "machine-draft" },
+    "description": { "value": "AD साइट लिंक उपयुक्त लागत, प्रतिकृति अंतराल, और अनुसूची के साथ कॉन्फ़िगर किए जाने चाहिए ताकि नेटवर्क बाधाओं का सम्मान करते हुए समय पर प्रतिकृति सुनिश्चित हो सके। गलत कॉन्फ़िगर किए गए साइट लिंक सुरक्षा नीति प्रसार में देरी कर सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "साइट लिंक उपयुक्त लागत और लिंक क्षमता के आधार पर 15-60 मिनट के प्रतिकृति अंतराल के साथ कॉन्फ़िगर हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "AD Sites and Services > Inter-Site Transports > IP की समीक्षा करें। सत्यापित करें कि प्रत्येक साइट लिंक में उपयुक्त लागत मान, प्रतिकृति अंतराल (180 मिनट का डिफ़ॉल्ट अक्सर बहुत लंबा होता है), और अनुसूची हो। नेटवर्क टोपोलॉजी के आधार पर समायोजित करें", "status": "machine-draft" }
+  },
+  "ADDOM-012": {
+    "name": { "value": "DNS क्षेत्र सुरक्षा", "status": "machine-draft" },
+    "description": { "value": "AD-एकीकृत DNS क्षेत्रों को केवल सुरक्षित गतिशील अद्यतन का उपयोग करना चाहिए। असुरक्षित अद्यतनों की अनुमति देना हमलावरों को DNS रिकॉर्ड को दूषित करने, प्रमाणीकरण ट्रैफ़िक को पुनर्निर्देशित करने, और डोमेन-जुड़े सिस्टम के विरुद्ध adversary-in-the-middle हमले करने में सक्षम बनाता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी AD-एकीकृत DNS क्षेत्रों पर केवल सुरक्षित गतिशील अद्यतन", "status": "machine-draft" },
+    "remediationSteps": { "value": "DNS Manager खोलें > प्रत्येक AD-एकीकृत क्षेत्र पर राइट-क्लिक करें > Properties > General टैब > Dynamic Updates को 'Secure only' में बदलें। सभी फ़ॉरवर्ड और रिवर्स लुकअप क्षेत्रों की समीक्षा करें। यदि लागू हो तो DNSSEC हस्ताक्षर सत्यापित करें", "status": "machine-draft" }
+  },
+  "ADDOM-013": {
+    "name": { "value": "LDAP हस्ताक्षर आवश्यकताएं", "status": "machine-draft" },
+    "description": { "value": "LDAP ट्रैफ़िक पर adversary-in-the-middle हमलों को रोकने के लिए सभी डोमेन नियंत्रकों पर LDAP हस्ताक्षर आवश्यक होना चाहिए। हस्ताक्षर के बिना, हमलावर LDAP क्वेरी और प्रतिक्रियाओं को इंटरसेप्ट और संशोधित कर सकते हैं, जिससे संभावित रूप से विशेषाधिकार बढ़ सकते हैं या डेटा बाहर निकाला जा सकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी DC पर LDAP सर्वर हस्ताक्षर आवश्यकता 'Require signing' पर सेट हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "समूह नीति के माध्यम से कॉन्फ़िगर करें: Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options > 'Domain controller: LDAP server signing requirements' = 'Require signing'। Domain Controllers OU पर लागू करें", "status": "machine-draft" }
+  },
+  "ADDOM-014": {
+    "name": { "value": "LDAP चैनल बाइंडिंग", "status": "machine-draft" },
+    "description": { "value": "LDAP चैनल बाइंडिंग टोकन LDAP सत्र को TLS चैनल से क्रिप्टोग्राफ़िक रूप से बांधकर रिले हमलों को रोकते हैं। चैनल बाइंडिंग के बिना, हमलावर अनधिकृत पहुंच प्राप्त करने के लिए LDAP प्रमाणीकरण को रिले कर सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी डोमेन नियंत्रकों पर LDAP चैनल बाइंडिंग 'Always' पर सेट हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "सभी DC पर HKLM\\System\\CurrentControlSet\\Services\\NTDS\\Parameters पर रजिस्ट्री मान LdapEnforceChannelBinding को 2 (Always) पर सेट करें। असंगत क्लाइंट की पहचान के लिए पहले मान 1 (When Supported) के साथ परीक्षण करें", "status": "machine-draft" }
+  },
+  "ADDOM-015": {
+    "name": { "value": "SMB हस्ताक्षर आवश्यकताएं", "status": "machine-draft" },
+    "description": { "value": "SMB ट्रैफ़िक पर adversary-in-the-middle और रिले हमलों को रोकने के लिए सभी डोमेन नियंत्रकों पर SMB हस्ताक्षर आवश्यक होना चाहिए। SMB रिले हमलों का उपयोग डोमेन नियंत्रकों पर SYSTEM-स्तरीय पहुंच प्राप्त करने के लिए किया जा सकता है, जिससे पूर्ण डोमेन समझौता हो जाता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी डोमेन नियंत्रकों और सदस्य सर्वरों पर SMB हस्ताक्षर आवश्यक हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "समूह नीति के माध्यम से कॉन्फ़िगर करें: Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options > 'Microsoft network server: Digitally sign communications (always)' = Enabled। Domain Controllers OU और सभी सर्वर OU पर लागू करें", "status": "machine-draft" }
+  },
+  "ADDOM-016": {
+    "name": { "value": "NTLMv1 उपयोग पहचान", "status": "machine-draft" },
+    "description": { "value": "NTLMv1 एक गंभीर रूप से कमज़ोर प्रमाणीकरण प्रोटोकॉल है जिसे आधुनिक हार्डवेयर के साथ सेकंडों में क्रैक किया जा सकता है। वातावरण में किसी भी NTLMv1 उपयोग की पहचान और उन्मूलन किया जाना चाहिए क्योंकि यह क्रेडेंशियल को तुच्छ ऑफ़लाइन हमलों के प्रति उजागर करता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "शून्य NTLMv1 प्रमाणीकरण इवेंट पहचाने जाएं; LAN Manager प्रमाणीकरण स्तर NTLMv1 अस्वीकार करने पर सेट हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "समूह नीति के माध्यम से NTLM लेखापरीक्षण सक्षम करें: Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options > 'Network security: Restrict NTLM' सेटिंग्स। NTLMv1 उपयोग के लिए इवेंट लॉग की समीक्षा करें और एप्लिकेशनों का उपचार करें, फिर 'Network security: LAN Manager authentication level' को 'Send NTLMv2 response only. Refuse LM & NTLM' पर सेट करें", "status": "machine-draft" }
+  },
+  "ADDOM-017": {
+    "name": { "value": "NTLMv2 प्रवर्तन", "status": "machine-draft" },
+    "description": { "value": "LAN Manager प्रमाणीकरण स्तर को केवल NTLMv2 प्रतिक्रियाएं भेजने और LM तथा NTLMv1 को अस्वीकार करने के लिए कॉन्फ़िगर किया जाना चाहिए। यद्यपि NTLMv2 अभी भी Kerberos से कम सुरक्षित है, यह NTLMv1 की तुलना में काफ़ी मज़बूत है और न्यूनतम NTLM मानक होना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "LAN Manager प्रमाणीकरण स्तर 'Send NTLMv2 response only. Refuse LM & NTLM' (स्तर 5) पर सेट हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "समूह नीति के माध्यम से कॉन्फ़िगर करें: Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options > 'Network security: LAN Manager authentication level' = 'Send NTLMv2 response only. Refuse LM & NTLM'। प्रवर्तन से पहले पूरी तरह परीक्षण करें", "status": "machine-draft" }
+  },
+  "ADDOM-018": {
+    "name": { "value": "Null Session गणना", "status": "machine-draft" },
+    "description": { "value": "Active Directory तक अनाम (null session) पहुंच अप्रमाणित हमलावरों को उपयोगकर्ताओं, समूहों, शेयरों, और डोमेन जानकारी को सूचीबद्ध करने की अनुमति देती है। इस टोही डेटा का उपयोग क्रेडेंशियल हमलों और पार्श्व संचलन की योजना बनाने के लिए किया जाता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "Null session गणना अक्षम हो; अनाम पहुंच रोकने के लिए RestrictAnonymous और RestrictAnonymousSAM सेट हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "समूह नीति के माध्यम से कॉन्फ़िगर करें: Computer Configuration > Policies > Windows Settings > Security Settings > Local Policies > Security Options > 'Network access: Restrict anonymous access to Named Pipes and Shares' = Enabled, 'Network access: Do not allow anonymous enumeration of SAM accounts' = Enabled, 'Network access: Do not allow anonymous enumeration of SAM accounts and shares' = Enabled सेट करें", "status": "machine-draft" }
+  },
+  "ADDOM-019": {
+    "name": { "value": "डोमेन नियंत्रकों पर Print Spooler", "status": "machine-draft" },
+    "description": { "value": "डोमेन नियंत्रकों पर Print Spooler सेवा PrintNightmare (CVE-2021-34527) और SpoolSample/PrinterBug हमलों को सक्षम करती है। एक हमलावर किसी DC को हमलावर-नियंत्रित सर्वर पर प्रमाणित होने के लिए बाध्य कर सकता है, जिससे क्रेडेंशियल रिले और अप्रतिबंधित प्रत्यायोजन दुरुपयोग सक्षम होता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी डोमेन नियंत्रकों पर Print Spooler सेवा अक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "समूह नीति के माध्यम से सभी डोमेन नियंत्रकों पर Print Spooler सेवा अक्षम करें: Computer Configuration > Policies > Windows Settings > Security Settings > System Services > Print Spooler > Startup Mode = Disabled। Domain Controllers OU पर लागू करें। सत्यापित करें कि कोई प्रिंट कार्यक्षमता DC पर निर्भर नहीं है", "status": "machine-draft" }
+  },
+  "ADDOM-020": {
+    "name": { "value": "DSRM पासवर्ड कॉन्फ़िगरेशन", "status": "machine-draft" },
+    "description": { "value": "Directory Services Restore Mode (DSRM) पासवर्ड किसी डोमेन नियंत्रक को पुनर्प्राप्ति मोड में बूट किए जाने पर उस तक स्थानीय व्यवस्थापक पहुंच प्रदान करता है। भौतिक या दूरस्थ पहुंच वाला ऐसा हमलावर जो DSRM पासवर्ड जानता है, पूरे AD डेटाबेस को निकाल सकता है। DSRM पासवर्ड प्रति DC अद्वितीय होना चाहिए और नियमित रूप से घुमाया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "DSRM पासवर्ड प्रति DC अद्वितीय हो, वार्षिक रूप से घुमाया जाए, और सुरक्षित रूप से संग्रहीत हो। नेटवर्क DSRM लॉगऑन रोकने के लिए DsrmAdminLogonBehavior 0 पर सेट हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "प्रत्येक DC पर 'ntdsutil > set dsrm password' का उपयोग करके DSRM पासवर्ड रीसेट करें। DSRM खाते को नेटवर्क लॉगऑन के लिए उपयोग होने से रोकने हेतु HKLM\\System\\CurrentControlSet\\Control\\Lsa पर रजिस्ट्री मान DsrmAdminLogonBehavior को 0 पर सेट करें। पासवर्ड प्रलेखित करें और सुरक्षित रूप से संग्रहीत करें", "status": "machine-draft" }
+  }
+}
