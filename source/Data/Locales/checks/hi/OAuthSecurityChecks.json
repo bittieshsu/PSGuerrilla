@@ -1,0 +1,63 @@
+{
+  "_family": "OAuthSecurityChecks.json",
+  "OAUTH-001": {
+    "name": { "value": "OAuth ऐप Whitelist/Blocklist", "status": "machine-draft" },
+    "description": { "value": "अनधिकृत अनुप्रयोगों को संगठनात्मक डेटा तक पहुंचने से रोकने के लिए OAuth ऐप पहुंच को एक allowlist या blocklist द्वारा शासित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "केवल अनुमोदित अनुप्रयोगों के साथ OAuth ऐप allowlist कॉन्फ़िगर किया गया हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > API controls > App access control > Manage third-party app access > विश्वसनीय/अवरुद्ध ऐप्स कॉन्फ़िगर करें", "status": "machine-draft" }
+  },
+  "OAUTH-002": {
+    "name": { "value": "स्थापित OAuth ऐप्स सूची", "status": "machine-draft" },
+    "description": { "value": "संगठनात्मक डेटा तक पहुंचने वाले अनधिकृत या जोखिमपूर्ण अनुप्रयोगों की पहचान के लिए उपयोगकर्ताओं द्वारा स्थापित सभी OAuth अनुप्रयोगों की सूची बनाई और समीक्षा की जानी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी स्थापित OAuth ऐप्स सुरक्षा टीम द्वारा समीक्षित और अनुमोदित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > API controls > App access control > स्थापित ऐप्स की समीक्षा करें और अनधिकृत अनुप्रयोगों के लिए पहुंच रद्द करें", "status": "machine-draft" }
+  },
+  "OAUTH-003": {
+    "name": { "value": "OAuth स्कोप विश्लेषण", "status": "machine-draft" },
+    "description": { "value": "उच्च-जोखिम स्कोप (Gmail, Drive, Admin) वाले OAuth अनुप्रयोग महत्वपूर्ण डेटा बहिष्करण जोखिम प्रस्तुत करते हैं और इनकी समीक्षा तथा प्रतिबंधन किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "उच्च-जोखिम स्कोप (gmail, drive, admin) वाले कोई अनधिकृत ऐप्स न हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > API controls > App access control > संवेदनशील स्कोप वाले ऐप्स की समीक्षा करें > आवश्यकतानुसार रद्द या प्रतिबंधित करें", "status": "machine-draft" }
+  },
+  "OAUTH-004": {
+    "name": { "value": "OAuth ऐप जोखिम स्कोरिंग", "status": "machine-draft" },
+    "description": { "value": "सुरक्षा समीक्षा को प्राथमिकता देने के लिए OAuth अनुप्रयोगों को उनके प्रदत्त स्कोप और प्रकाशक विश्वास के आधार पर जोखिम-स्कोर किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी उच्च-जोखिम ऐप्स समीक्षित और अनुमोदित; व्यापक स्कोप वाले कोई अनसमीक्षित ऐप्स न हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > API controls > App access control > स्कोप विस्तार के अनुसार क्रमबद्ध ऐप्स की समीक्षा करें > उच्च-जोखिम अनुप्रयोगों का समाधान करें", "status": "machine-draft" }
+  },
+  "OAUTH-005": {
+    "name": { "value": "असत्यापित ऐप पहुंच नीति", "status": "machine-draft" },
+    "description": { "value": "उपयोगकर्ताओं को संभावित रूप से दुर्भावनापूर्ण अनुप्रयोगों को अनुमतियां देने से रोकने के लिए असत्यापित तृतीय-पक्ष ऐप्स तक पहुंच प्रतिबंधित की जानी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी उपयोगकर्ताओं के लिए असत्यापित ऐप पहुंच अवरुद्ध", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > API controls > App access control > Settings > असत्यापित ऐप्स अवरुद्ध करें", "status": "machine-draft" }
+  },
+  "OAUTH-006": {
+    "name": { "value": "API पहुंच नियंत्रण", "status": "machine-draft" },
+    "description": { "value": "संगठनात्मक डेटा तक अनधिकृत प्रोग्रामेटिक पहुंच को रोकने के लिए API पहुंच को उपयुक्त स्कोपिंग और प्रतिबंधों के साथ नियंत्रित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "API पहुंच अनुमोदित अनुप्रयोगों और स्कोप तक सीमित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > API controls > Manage Google Services > API पहुंच को केवल विश्वसनीय ऐप्स तक प्रतिबंधित करें", "status": "machine-draft" }
+  },
+  "OAUTH-007": {
+    "name": { "value": "Marketplace ऐप स्थापना प्रतिबंध", "status": "machine-draft" },
+    "description": { "value": "उपयोगकर्ताओं को अनधिकृत अनुप्रयोग स्थापित करने से रोकने के लिए Google Workspace Marketplace ऐप स्थापना को प्रतिबंधित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "Marketplace ऐप स्थापना केवल admin-अनुमोदित ऐप्स या allowlist किए गए ऐप्स तक सीमित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace Marketplace apps > Settings > marketplace ऐप स्थापना प्रतिबंधित करें", "status": "machine-draft" }
+  },
+  "OAUTH-008": {
+    "name": { "value": "डोमेन-व्यापी प्रत्यायोजन अनुदान लेखापरीक्षा", "status": "machine-draft" },
+    "description": { "value": "डोमेन-व्यापी प्रत्यायोजन सेवा खातों को किसी भी उपयोगकर्ता का प्रतिरूपण करने और उनके डेटा तक पहुंचने की अनुमति देता है। अनधिकृत या अत्यधिक अनुमेय अनुदान एक महत्वपूर्ण सुरक्षा जोखिम प्रस्तुत करते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "दायरे वाली अनुमतियों के साथ न्यूनतम डोमेन-व्यापी प्रत्यायोजन अनुदान; सभी अनुदान समीक्षित और अनुमोदित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > API controls > Domain-wide delegation > सभी अनुदानों की समीक्षा करें, अनावश्यक अनुदान हटाएं, और स्कोप को आवश्यक न्यूनतम तक प्रतिबंधित करें", "status": "machine-draft" }
+  },
+  "OAUTH-009": {
+    "name": { "value": "सेवा खाता कुंजी गणना", "status": "machine-draft" },
+    "description": { "value": "सेवा खाता कुंजियों की सूची बनाई जानी चाहिए और उन्हें नियमित रूप से घुमाया जाना चाहिए। लीक हुई या पुरानी कुंजियां निरंतर अनधिकृत पहुंच प्रदान करती हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी सेवा खाता कुंजियां सूचीबद्ध, 90 दिनों के भीतर घुमाई गई, और अप्रयुक्त कुंजियां हटाई गई हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Cloud Console > IAM & Admin > Service accounts > कुंजियों की समीक्षा करें और घुमाएं > अप्रयुक्त सेवा खाता कुंजियां हटाएं", "status": "machine-draft" }
+  },
+  "OAUTH-010": {
+    "name": { "value": "संवेदनशील स्कोप वाले कनेक्टेड ऐप्स", "status": "machine-draft" },
+    "description": { "value": "कनेक्टेड ऐप्स के माध्यम से डेटा बहिष्करण को रोकने के लिए Drive, Gmail, या Calendar डेटा तक पहुंच वाले अनुप्रयोगों की सूची बनाई और सत्यापन किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "संवेदनशील स्कोप (Drive, Gmail, Calendar) वाले सभी ऐप्स समीक्षित और अनुमोदित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > API controls > App access control > स्कोप (Drive, Gmail, Calendar) के अनुसार फ़िल्टर करें > अनधिकृत ऐप्स की समीक्षा करें और प्रतिबंधित करें", "status": "machine-draft" }
+  }
+}

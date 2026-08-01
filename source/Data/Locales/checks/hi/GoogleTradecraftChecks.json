@@ -1,0 +1,45 @@
+{
+  "_family": "GoogleTradecraftChecks.json",
+  "GTRADE-001": {
+    "name": { "value": "डोमेन-व्यापी प्रत्यायोजन संगठन-अधिग्रहण जोखिम", "status": "machine-draft" },
+    "description": { "value": "डोमेन-व्यापी प्रत्यायोजन प्रतिरूपण को किसी सेवा खाते की OAuth client ID से बांधता है, उसकी कुंजी से नहीं; इसलिए जो कोई भी व्यापक स्कोप धारण करने वाले किसी प्रत्यायोजित SA पर कुंजी बना सकता है, वह super admin के बिना संगठन-व्यापी प्रतिरूपण प्राप्त कर लेता है (DeleFriend तकनीक)। पूर्ण Gmail/Drive/Directory/cloud-platform स्कोप वाले प्रत्यायोजित अनुदान अधिग्रहण की पूर्वशर्त हैं।", "status": "machine-draft" },
+    "recommendedValue": { "value": "किसी सेवा खाते को संगठन-प्रतिरूपण स्कोप (पूर्ण Gmail/Drive/Directory/cloud-platform) प्रत्यायोजित न हों; केवल संकीर्ण read-only स्कोप हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Security > API controls > Domain-wide delegation: पूर्ण mail.google.com, पूर्ण drive, admin.directory, या cloud-platform स्कोप धारण करने वाले किसी भी अनुदान को हटाएं या संकीर्ण करें; आवश्यक न्यूनतम read-only स्कोप तक सीमित करें। GCP में, प्रत्यायोजित सेवा खातों पर कुंजी निर्माण अस्वीकार करें (iam.disableServiceAccountKeyCreation)।", "status": "machine-draft" }
+  },
+  "GTRADE-002": {
+    "name": { "value": "इंटरनेट-पठनीय Google Groups", "status": "machine-draft" },
+    "description": { "value": "जिन समूहों के विषय 'anyone on the internet' द्वारा देखे जा सकते हैं, वे चुपचाप अपना पूरा संदेश इतिहास लीक कर देते हैं, एक ऐसा वर्ग जिसने हजारों संगठनों के आंतरिक मेल (वित्तीय जानकारी, क्रेडेंशियल, PII) को उजागर किया है। Google इस जोखिम के लिए कोई मूल अलर्ट प्रदान नहीं करता।", "status": "machine-draft" },
+    "recommendedValue": { "value": "कोई भी समूह इंटरनेट पर किसी के भी द्वारा देखने योग्य न हो (whoCanViewGroup ANYONE_CAN_VIEW न हो)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Groups for Business > Sharing settings, और प्रति-समूह पहुंच सेटिंग्स: 'Who can view conversations' को 'Anyone on the internet' से हटाकर केवल सदस्यों/संगठन तक सीमित करें।", "status": "machine-draft" }
+  },
+  "GTRADE-003": {
+    "name": { "value": "खुले-सदस्यता / बाहरी-सदस्य समूह", "status": "machine-draft" },
+    "description": { "value": "ऐसे समूह जिनमें कोई भी (या डोमेन में कोई भी) शामिल हो सकता है, या जो बाहरी सदस्यों की अनुमति देते हैं, विश्वास सीमा को चौड़ा करते हैं और स्व-सेवा पहुंच सक्षम करते हैं; यदि ऐसा समूह संसाधन या IAM पहुंच भी धारण करता है, तो उसमें शामिल होना उस पहुंच को विरासत में देता है (एक विशेषाधिकार-वृद्धि मार्ग जिसे Google इच्छित व्यवहार के रूप में वर्गीकृत करता है)।", "status": "machine-draft" },
+    "recommendedValue": { "value": "समूह आमंत्रित सदस्यों तक सीमित हों; जब तक स्पष्ट रूप से आवश्यक न हो, कोई anyone-can-join न हो और कोई बाहरी सदस्य न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Groups for Business: डिफ़ॉल्ट 'Who can join' को 'Only invited users' पर सेट करें और जब तक कोई समूह स्पष्ट रूप से इनकी आवश्यकता न रखे, 'Allow external members' अक्षम करें; संसाधन/IAM पहुंच प्रदान करने वाले समूहों की समीक्षा करें।", "status": "machine-draft" }
+  },
+  "GTRADE-004": {
+    "name": { "value": "Super-Admin विस्तार", "status": "machine-draft" },
+    "description": { "value": "सुपर प्रशासक SSO और अधिकांश नियंत्रणों को बायपास करते हैं; एक बड़ी super-admin आबादी संगठन की सर्वोच्च-मूल्य वाली आक्रमण सतह का विस्तार करती है। Google की सर्वोत्तम प्रथा यह है कि संख्या छोटी रखी जाए (पांच से कम) और दैनिक कार्य least-privilege भूमिकाओं के अंतर्गत किया जाए।", "status": "machine-draft" },
+    "recommendedValue": { "value": "5 से कम सक्रिय सुपर प्रशासक", "status": "machine-draft" },
+    "remediationSteps": { "value": "Account > Admin roles > Super Admin: सदस्यता को न्यूनतम break-glass समुच्चय तक घटाएं; नियमित कर्तव्यों को least-privilege कस्टम/prebuilt भूमिकाओं में स्थानांतरित करें; शेष सभी सुपर प्रशासकों पर फ़िशिंग-प्रतिरोधी 2SV लागू करें।", "status": "machine-draft" }
+  },
+  "GTRADE-005": {
+    "name": { "value": "Super-Admin-समतुल्य कस्टम भूमिकाएं", "status": "machine-draft" },
+    "description": { "value": "उच्च-शक्ति विशेषाधिकार (उपयोगकर्ता प्रबंधन, सुरक्षा सेटिंग्स, भूमिका प्रबंधन, डेटा निर्यात/Takeout) धारण करने वाली कस्टम प्रशासक भूमिकाएं super-admin क्षमता के समकक्ष हो सकती हैं जबकि एक साधारण super-admin head-count से बच निकलती हैं, एक शांत विशेषाधिकार-संकेंद्रण और निरंतरता वेक्टर।", "status": "machine-draft" },
+    "recommendedValue": { "value": "break-glass उपयोग के बाहर कोई कस्टम भूमिका super-admin-समतुल्य विशेषाधिकार (उपयोगकर्ता/सुरक्षा/भूमिका प्रबंधन या डेटा निर्यात) धारण न करे", "status": "machine-draft" },
+    "remediationSteps": { "value": "Account > Admin roles: उपयोगकर्ता-प्रबंधन, सुरक्षा-सेटिंग्स, भूमिका-प्रबंधन, या डेटा-निर्यात/Takeout विशेषाधिकार धारण करने वाली कस्टम भूमिकाओं की समीक्षा करें; उन्हें संकीर्ण रूप से दायरे वाली भूमिकाओं में विभाजित करें और नियुक्त व्यक्तियों को सीमित करें।", "status": "machine-draft" }
+  },
+  "GTRADE-006": {
+    "name": { "value": "निरंतर / अति-दायरे वाले OAuth अनुदान", "status": "machine-draft" },
+    "description": { "value": "पूर्ण Gmail/Drive/admin स्कोप धारण करने वाले तृतीय-पक्ष OAuth अनुदान MFA को बायपास करते हैं और पासवर्ड रीसेट से बचे रहते हैं (Apps Script, app passwords, और IMAP-OAuth सत्र रीसेट द्वारा रद्द नहीं होते), एक टिकाऊ निरंतरता चैनल। Google अनुदान लॉग करता है परंतु कोई डिफ़ॉल्ट दुर्भावनापूर्ण-अनुदान वर्गीकारक नहीं भेजता।", "status": "machine-draft" },
+    "recommendedValue": { "value": "पूर्ण mail/drive/admin स्कोप धारण करने वाला कोई तृतीय-पक्ष OAuth ऐप न हो; निरंतर अनुदान समीक्षित और स्पष्ट रूप से रद्द किए गए हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Security > API controls > App access control: पूर्ण Gmail/Drive/Directory स्कोप वाले ऐप्स की समीक्षा करें, उन्हें allowlist किए गए ऐप्स तक सीमित करें, और अनावश्यक अनुदानों को स्पष्ट रूप से रद्द करें (केवल पासवर्ड रीसेट OAuth, app-password, या Apps Script पहुंच को रद्द नहीं करता)।", "status": "machine-draft" }
+  },
+  "GTRADE-007": {
+    "name": { "value": "किसी समूह के माध्यम से प्रदत्त प्रशासक भूमिका", "status": "machine-draft" },
+    "description": { "value": "Google Workspace किसी प्रशासक भूमिका को किसी उपयोगकर्ता के बजाय किसी सुरक्षा समूह को असाइन करने देता है; प्रत्येक सदस्य, चाहे प्रत्यक्ष हो या किसी चाइल्ड समूह के माध्यम से नेस्टेड, भूमिका के विशेषाधिकार विरासत में पाता है, और जो कोई भी समूह की सदस्यता संपादित कर सकता है वह स्वयं को भूमिका प्रदान कर सकता है। इसलिए किसी समूह पर एक व्यापक-विशेषाधिकार भूमिका एक सदस्यता-आधारित वृद्धि मार्ग है: समूह का edit-membership नियंत्रण भूमिका का प्रभावी अनुदान बन जाता है। यह किसी Active Directory नेस्टेड-समूह-से-विशेषाधिकार-प्राप्त-समूह मार्ग का Workspace समकक्ष है। यह जांच किसी समूह को असाइन की गई प्रत्येक भूमिका की गणना करती है, समूह के सदस्यों (नेस्टेड उपसमूहों सहित) को हल करती है, और वृद्धि सतह को चिह्नित करती है; प्रत्येक अनुदान इच्छित है या नहीं यह जिले का निर्धारण है, इसलिए व्यापक-विशेषाधिकार अनुदान FAIL होते हैं और संकीर्ण अनुदान समीक्षा के लिए WARN होते हैं।", "status": "machine-draft" },
+    "recommendedValue": { "value": "प्रशासक भूमिकाएं नामित व्यक्तियों को असाइन की जाती हैं, समूहों को नहीं; जहां समूह अनुदान जानबूझकर किया गया हो, वहां उसकी सदस्यता कड़ाई से नियंत्रित हो और भूमिका least-privilege हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Account > Admin roles > (भूमिका) > Admins। किसी समूह को असाइन की गई प्रत्येक भूमिका के लिए, पुष्टि करें कि समूह अनुदान इच्छित है; विशेषाधिकार-प्राप्त भूमिकाओं को नामित व्यक्तियों को असाइन करना प्राथमिकता दें। जहां समूह अनुदान बना रहे, वहां प्रतिबंधित करें कि कौन समूह की सदस्यता संपादित कर सकता है (owners/managers), पहुंच को चौड़ा करने वाले नेस्टेड उपसमूहों को हटाएं, और भूमिका को least privilege तक घटाएं। समीक्षा करें कि समूह और किसी भी नेस्टेड चाइल्ड समूह में कौन सदस्य जोड़ सकता है।", "status": "machine-draft" }
+  }
+}

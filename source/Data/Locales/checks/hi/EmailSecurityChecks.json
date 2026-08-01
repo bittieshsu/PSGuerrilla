@@ -1,0 +1,189 @@
+{
+  "_family": "EmailSecurityChecks.json",
+  "EMAIL-001": {
+    "name": { "value": "SPF रिकॉर्ड सत्यापन", "status": "machine-draft" },
+    "description": { "value": "सभी डोमेन के लिए Sender Policy Framework (SPF) रिकॉर्ड अस्तित्व में हों और मान्य हों। SPF यह निर्दिष्ट करके ईमेल स्पूफ़िंग को रोकता है कि कौन से मेल सर्वर किसी डोमेन की ओर से ईमेल भेजने के लिए अधिकृत हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी डोमेन के लिए -all या ~all क्वालिफ़ायर के साथ मान्य v=spf1 रिकॉर्ड प्रकाशित हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Authenticate email > प्रत्येक डोमेन के लिए SPF रिकॉर्ड प्रकाशित करें: v=spf1 include:_spf.google.com ~all", "status": "machine-draft" }
+  },
+  "EMAIL-002": {
+    "name": { "value": "DKIM साइनिंग सक्षम", "status": "machine-draft" },
+    "description": { "value": "सभी डोमेन के लिए DomainKeys Identified Mail (DKIM) साइनिंग सक्षम और मान्य हो। DKIM क्रिप्टोग्राफ़िक प्रमाण प्रदान करता है कि ईमेल सामग्री के साथ पारगमन के दौरान छेड़छाड़ नहीं की गई है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी डोमेन के लिए मान्य कुंजी प्रकाशित करके DKIM साइनिंग सक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Authenticate email > प्रत्येक डोमेन के लिए DKIM कुंजी उत्पन्न करें और DNS रिकॉर्ड प्रकाशित करें", "status": "machine-draft" }
+  },
+  "EMAIL-003": {
+    "name": { "value": "DMARC नीति लेखापरीक्षा", "status": "machine-draft" },
+    "description": { "value": "सभी डोमेन के लिए Domain-based Message Authentication, Reporting and Conformance (DMARC) नीति reject या quarantine पर सेट हो। none की DMARC नीति स्पूफ़िंग के विरुद्ध कोई सुरक्षा प्रदान नहीं करती", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी डोमेन के लिए DMARC नीति reject या quarantine पर सेट हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "_dmarc.<domain> पर p=reject या p=quarantine के साथ DMARC TXT रिकॉर्ड प्रकाशित करें। निगरानी के लिए p=none से आरंभ करें, फिर quarantine तक और अंत में reject तक बढ़ाएं", "status": "machine-draft" }
+  },
+  "EMAIL-004": {
+    "name": { "value": "MTA-STS नीति", "status": "machine-draft" },
+    "description": { "value": "Mail Transfer Agent Strict Transport Security (MTA-STS) प्रमाणित TLS कनेक्शन की आवश्यकता के माध्यम से TLS डाउनग्रेड हमलों और पारगमन में ईमेल के मैन-इन-द-मिडल अवरोधन को रोकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "MTA-STS TXT रिकॉर्ड प्रकाशित हो और नीति https://mta-sts.<domain>/.well-known/mta-sts.txt पर होस्ट हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "_mta-sts.<domain> TXT रिकॉर्ड को v=STSv1; id=<unique_id> के साथ प्रकाशित करें और MTA-STS नीति फ़ाइल को https://mta-sts.<domain>/.well-known/mta-sts.txt पर होस्ट करें", "status": "machine-draft" }
+  },
+  "EMAIL-005": {
+    "name": { "value": "TLS प्रवर्तन", "status": "machine-draft" },
+    "description": { "value": "छिपकर सुनने से रोकने के लिए ईमेल पारेषण हेतु Transport Layer Security (TLS) आवश्यक होनी चाहिए। Compliance TLS सेटिंग्स निर्दिष्ट भागीदार डोमेन के साथ एन्क्रिप्टेड कनेक्शन सुनिश्चित करती हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी आउटबाउंड और इनबाउंड कनेक्शन के लिए TLS आवश्यक हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Compliance > Secure transport (TLS) compliance > सभी डोमेन या विशिष्ट भागीदार डोमेन के लिए TLS आवश्यक करने वाला नियम जोड़ें", "status": "machine-draft" }
+  },
+  "EMAIL-006": {
+    "name": { "value": "ईमेल Allowlist/Blocklist समीक्षा", "status": "machine-draft" },
+    "description": { "value": "अत्यधिक अनुमेय प्रविष्टियों के लिए ईमेल allowlist और blocklist की समीक्षा की जानी चाहिए। Allowlist में शामिल प्रेषक स्पैम फ़िल्टरिंग को बायपास करते हैं और गलत कॉन्फ़िगर होने पर इनका दुरुपयोग किया जा सकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "बिना किसी वाइल्डकार्ड डोमेन के न्यूनतम allowlist प्रविष्टियां; blocklist सक्रिय रूप से अनुरक्षित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Spam, phishing and malware > अत्यधिक व्यापक प्रविष्टियों के लिए Email allowlists और Blocked senders सूचियों की समीक्षा करें", "status": "machine-draft" }
+  },
+  "EMAIL-007": {
+    "name": { "value": "Inbound Gateway कॉन्फ़िगरेशन", "status": "machine-draft" },
+    "description": { "value": "प्रेषक प्रमाणीकरण परिणामों को संरक्षित करने के लिए इनबाउंड ईमेल गेटवे उचित रूप से कॉन्फ़िगर किए जाने चाहिए। गलत कॉन्फ़िगर किए गए गेटवे SPF/DKIM/DMARC हेडर हटा सकते हैं या सुरक्षा फ़िल्टरिंग को बायपास कर सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सही IP श्रेणियों और हेडर संरक्षण के साथ इनबाउंड गेटवे कॉन्फ़िगर किए गए हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Spam, phishing and malware > Inbound gateway > गेटवे IP सत्यापित करें और सुनिश्चित करें कि प्रमाणीकरण हेडर संरक्षित हैं", "status": "machine-draft" }
+  },
+  "EMAIL-008": {
+    "name": { "value": "ईमेल Routing नियम लेखापरीक्षा", "status": "machine-draft" },
+    "description": { "value": "संदिग्ध या अनधिकृत कॉन्फ़िगरेशन के लिए ईमेल रूटिंग नियमों की समीक्षा की जानी चाहिए। दुर्भावनापूर्ण रूटिंग नियम ईमेल को हमलावर-नियंत्रित गंतव्यों की ओर पुनर्निर्देशित कर सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी रूटिंग नियम व्यावसायिक औचित्य के साथ समीक्षित और प्रलेखित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Routing > अनधिकृत प्रविष्टियों के लिए सभी routing नियमों, default routing, और recipient maps की समीक्षा करें", "status": "machine-draft" }
+  },
+  "EMAIL-009": {
+    "name": { "value": "स्वतः-अग्रेषण नीति", "status": "machine-draft" },
+    "description": { "value": "डेटा बहिष्करण को रोकने के लिए बाहरी पतों पर स्वचालित ईमेल अग्रेषण अक्षम किया जाना चाहिए। हमलावर अक्सर किसी खाते से समझौता करने के बाद अग्रेषण नियम स्थापित करते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों के लिए स्वतः-अग्रेषण अक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access > सभी OU के लिए स्वचालित अग्रेषण अक्षम करें। Gmail API के माध्यम से मौजूदा अग्रेषण नियमों की समीक्षा करें", "status": "machine-draft" }
+  },
+  "EMAIL-010": {
+    "name": { "value": "प्रतिनिधि पहुंच सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "मेल प्रत्यायोजन उपयोगकर्ताओं को अन्य उपयोगकर्ताओं को अपने मेलबॉक्स तक पढ़ने और भेजने की पहुंच प्रदान करने की अनुमति देता है। अत्यधिक प्रत्यायोजन अनधिकृत पहुंच और प्रतिरूपण का कारण बन सकता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "मेल प्रत्यायोजन प्रतिबंधित और समय-समय पर समीक्षित हो; कोई अप्रत्याशित प्रतिनिधि न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access > मेल प्रत्यायोजन सेटिंग्स की समीक्षा करें। Gmail API के माध्यम से अनधिकृत प्रतिनिधियों के लिए व्यक्तिगत उपयोगकर्ताओं की जांच करें", "status": "machine-draft" }
+  },
+  "EMAIL-011": {
+    "name": { "value": "POP/IMAP पहुंच सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "जब तक विशेष रूप से आवश्यक न हो, POP और IMAP पहुंच अक्षम की जानी चाहिए। ये लीगेसी प्रोटोकॉल आधुनिक सुरक्षा नियंत्रणों को बायपास करते हैं और क्रेडेंशियल-आधारित हमलों के लिए उपयोग किए जा सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी उपयोगकर्ताओं के लिए POP और IMAP अक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access > POP और IMAP पहुंच अक्षम करें। Gmail API के माध्यम से व्यक्तिगत उपयोगकर्ता सेटिंग्स की समीक्षा करें", "status": "machine-draft" }
+  },
+  "EMAIL-012": {
+    "name": { "value": "स्पैम और फ़िशिंग फ़िल्टर सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "सोशल इंजीनियरिंग हमलों और दुर्भावनापूर्ण ईमेल अभियानों के विरुद्ध अधिकतम सुरक्षा प्रदान करने के लिए उन्नत स्पैम और फ़िशिंग फ़िल्टर सक्षम किए जाने चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "उन्नत स्पैम फ़िल्टरिंग और आक्रामक फ़िशिंग पहचान सक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Spam, phishing and malware > 'Be more aggressive when filtering spam' और सभी फ़िशिंग सुरक्षा विकल्प सक्षम करें", "status": "machine-draft" }
+  },
+  "EMAIL-013": {
+    "name": { "value": "उन्नत पूर्व-वितरण संदेश स्कैनिंग", "status": "machine-draft" },
+    "description": { "value": "उन्नत पूर्व-वितरण संदेश स्कैनिंग संदेशों को उपयोगकर्ता इनबॉक्स में वितरित किए जाने से पहले मैलवेयर और खतरों का पता लगाने के लिए उन्नत ह्यूरिस्टिक्स और सैंडबॉक्सिंग का उपयोग करती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "उन्नत पूर्व-वितरण संदेश स्कैनिंग सक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Spam, phishing and malware > संदिग्ध सामग्री की पहचान के लिए 'Enhanced pre-delivery message scanning' सक्षम करें", "status": "machine-draft" }
+  },
+  "EMAIL-014": {
+    "name": { "value": "बाहरी प्राप्तकर्ता चेतावनी", "status": "machine-draft" },
+    "description": { "value": "आकस्मिक डेटा प्रकटीकरण और सोशल इंजीनियरिंग को रोकने के लिए संगठन के बाहर के प्राप्तकर्ताओं को ईमेल भेजते समय उपयोगकर्ताओं को चेतावनी दी जानी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी उपयोगकर्ताओं के लिए बाहरी प्राप्तकर्ता चेतावनी सक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access > 'Warn users when they send messages outside the domain' सक्षम करें", "status": "machine-draft" }
+  },
+  "EMAIL-015": {
+    "name": { "value": "अटैचमेंट सुरक्षा सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "एन्क्रिप्टेड आर्काइव, असामान्य फ़ाइल प्रकार, और स्क्रिप्ट सहित दुर्भावनापूर्ण फ़ाइल अटैचमेंट का पता लगाने और उन्हें अवरुद्ध करने के लिए सभी अटैचमेंट सुरक्षा उपाय सक्षम किए जाने चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "quarantine कार्रवाई के साथ सभी अटैचमेंट सुरक्षा विकल्प सक्षम हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Safety > Attachments > सभी सुरक्षा उपाय सक्षम करें: encrypted attachments, scripts from untrusted senders, और anomalous attachment types", "status": "machine-draft" }
+  },
+  "EMAIL-016": {
+    "name": { "value": "लिंक और बाहरी छवि सुरक्षा", "status": "machine-draft" },
+    "description": { "value": "फ़िशिंग और मैलवेयर के लिए URL स्कैन करने हेतु लिंक सुरक्षा सक्षम की जानी चाहिए। बाहरी छवि प्रॉक्सीिंग ट्रैकिंग पिक्सेल और IP प्रकटीकरण को रोकती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "URL स्कैनिंग, क्लिक-समय चेतावनियां, और बाहरी छवि प्रॉक्सीिंग सक्षम हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Safety > Links and external images > 'Identify links behind shortened URLs', 'Scan linked images', और 'Show warning prompt for click on links to untrusted domains' सक्षम करें", "status": "machine-draft" }
+  },
+  "EMAIL-017": {
+    "name": { "value": "स्पूफ़िंग और प्रमाणीकरण सुरक्षा", "status": "machine-draft" },
+    "description": { "value": "स्पूफ़िंग और प्रमाणीकरण सुरक्षा उपाय डोमेन स्पूफ़िंग, कर्मचारी नाम स्पूफ़िंग, और संगठन के समान दिखने वाले डोमेन से अप्रमाणित ईमेल के विरुद्ध रक्षा करते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "quarantine कार्रवाई के साथ सभी स्पूफ़िंग और प्रमाणीकरण सुरक्षा उपाय सक्षम हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Safety > Spoofing and authentication > सभी सुरक्षा उपाय सक्षम करें: domain spoofing, employee name spoofing, inbound email spoofing, और unauthenticated email", "status": "machine-draft" }
+  },
+  "EMAIL-018": {
+    "name": { "value": "अनुपालन नियम लेखापरीक्षा", "status": "machine-draft" },
+    "description": { "value": "यह सुनिश्चित करने के लिए कि संवेदनशील डेटा को उचित रूप से संभाला जाए, सामग्री अनुपालन नियमों की समीक्षा की जानी चाहिए। नियम सामग्री पैटर्न के आधार पर एन्क्रिप्शन, quarantine, या अस्वीकृति लागू कर सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "उपयुक्त कार्रवाइयों के साथ संवेदनशील डेटा प्रकारों के लिए सामग्री अनुपालन नियम कॉन्फ़िगर किए गए हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Compliance > Content compliance > मौजूदा नियमों की समीक्षा करें और संवेदनशील सामग्री प्रकारों (PII, वित्तीय डेटा, स्वास्थ्य रिकॉर्ड) के लिए नियम बनाएं", "status": "machine-draft" }
+  },
+  "EMAIL-019": {
+    "name": { "value": "DLP नियम कॉन्फ़िगरेशन", "status": "machine-draft" },
+    "description": { "value": "ईमेल के माध्यम से संवेदनशील डेटा को संगठन से बाहर जाने का पता लगाने और रोकने के लिए Data Loss Prevention (DLP) नियम कॉन्फ़िगर किए जाने चाहिए। DLP स्वचालित सामग्री निरीक्षण और नीति प्रवर्तन प्रदान करता है", "status": "machine-draft" },
+    "recommendedValue": { "value": "block या warn कार्रवाई के साथ मुख्य डेटा प्रकारों (credit cards, SSNs, health records) के लिए DLP नियम कॉन्फ़िगर किए गए हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Security > Data protection > Manage rules: एक Gmail DLP नियम बनाएं जो संवेदनशील सामग्री पैटर्न (credit cards, SSNs, health records) का पता लगाता है और block या warn कार्रवाई लागू करता है", "status": "machine-draft" }
+  },
+  "EMAIL-020": {
+    "name": { "value": "Gmail Confidential Mode", "status": "machine-draft" },
+    "description": { "value": "Gmail confidential mode प्रेषकों को समाप्ति तिथियां सेट करने और संदेशों तक पहुंच रद्द करने की अनुमति देता है। समीक्षा करें कि यह सुविधा संगठनात्मक नीति के अनुसार सक्षम है या प्रतिबंधित है", "status": "machine-draft" },
+    "recommendedValue": { "value": "संवेदनशील डेटा संभालने वाले उपयोगकर्ताओं के लिए Gmail confidential mode सक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access > Gmail confidential mode सेटिंग्स की समीक्षा करें और संगठनात्मक आवश्यकताओं के आधार पर सक्षम या प्रतिबंधित करें", "status": "machine-draft" }
+  },
+  "EMAIL-021": {
+    "name": { "value": "S/MIME सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "S/MIME एंड-टू-एंड ईमेल एन्क्रिप्शन और डिजिटल हस्ताक्षर प्रदान करता है। यदि अनुपालन द्वारा आवश्यक हो, तो S/MIME प्रमाणपत्र उचित रूप से कॉन्फ़िगर और प्रबंधित किए जाने चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "यदि अनुपालन द्वारा आवश्यक हो तो S/MIME सक्षम हो; प्रमाणपत्र उचित रूप से प्रबंधित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access > S/MIME > यदि आवश्यक हो तो hosted S/MIME सक्षम करें और सुनिश्चित करें कि प्रमाणपत्र अपलोड किए गए और मान्य हैं", "status": "machine-draft" }
+  },
+  "EMAIL-022": {
+    "name": { "value": "मेल अग्रेषण नियम गणना", "status": "machine-draft" },
+    "description": { "value": "सभी उपयोगकर्ता-स्तरीय मेल अग्रेषण नियमों की गणना और समीक्षा की जानी चाहिए। हमलावर आमतौर पर खाता समझौते के बाद ईमेल तक निरंतर पहुंच बनाए रखने के लिए अग्रेषण नियम स्थापित करते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "कोई अनधिकृत अग्रेषण नियम न हो; सभी अग्रेषण नियम प्रलेखित और अनुमोदित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "सभी उपयोगकर्ताओं के लिए Gmail API के माध्यम से अग्रेषण नियमों की गणना करें। अनधिकृत अग्रेषण पते हटाएं। भविष्य के दुरुपयोग को रोकने के लिए OU स्तर पर स्वतः-अग्रेषण अक्षम करें", "status": "machine-draft" }
+  },
+  "EMAIL-023": {
+    "name": { "value": "प्रति-उपयोगकर्ता आउटबाउंड गेटवे अक्षम (GWS.GMAIL.12.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.12.1 के लिए आवश्यक है कि प्रति-उपयोगकर्ता आउटबाउंड गेटवे अक्षम हों। सक्षम होने पर, उपयोगकर्ता अपने स्वयं के बाहरी SMTP सर्वरों के माध्यम से आउटबाउंड मेल रूट कर सकते हैं, जो संगठन के मेल सुरक्षा नियंत्रणों को बायपास करता है और एक डेटा-बहिष्करण तथा स्पूफ़िंग मार्ग बनाता है। यह जांच Cloud Identity Policy API से gmail.per_user_outbound_gateway नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां बाहरी SMTP रूटिंग की अनुमति है। जब नीति वापस नहीं आती, तो परिणाम Not Assessed होता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों के लिए प्रति-उपयोगकर्ता आउटबाउंड गेटवे (बाहरी SMTP) अक्षम हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console में Apps > Google Workspace > Gmail > Routing के अंतर्गत, सुनिश्चित करें कि प्रति-उपयोगकर्ता आउटबाउंड गेटवे की अनुमति न हो ताकि उपयोगकर्ता बाहरी SMTP सर्वरों के माध्यम से मेल रूट न कर सकें। आउटबाउंड रूटिंग को केवल अनुमोदित गेटवे के माध्यम से केंद्रीकृत रखें।", "status": "machine-draft" }
+  },
+  "EMAIL-024": {
+    "name": { "value": "Gmail Security Sandbox सक्षम (GWS.GMAIL.16.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.16.1 Gmail Security Sandbox सक्षम करने की अनुशंसा करता है, जो हस्ताक्षर स्कैनिंग से छूट जाने वाले zero-day मैलवेयर का पता लगाने के लिए इनबाउंड अटैचमेंट को एक वर्चुअल वातावरण में विस्फोटित करता है। यह जांच Cloud Identity Policy API से gmail.security_sandbox नीति पढ़ती है और उन संगठनात्मक इकाइयों को चिह्नित करती है जहां sandbox अक्षम है। सटीक नीति फ़ील्ड किसी लाइसेंस प्राप्त टेनेंट पर पुष्टि लंबित रहने तक सर्वोत्तम-प्रयास है; जब नीति वापस नहीं आती, तो परिणाम किसी गढ़े गए निर्णय के बजाय Not Assessed होता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों के लिए Security Sandbox सक्षम (वर्चुअल अटैचमेंट विस्फोट)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console में Apps > Google Workspace > Gmail > Safety > Attachments के अंतर्गत, Security Sandbox सक्षम करें ताकि इनबाउंड अटैचमेंट वितरण से पहले एक वर्चुअल वातावरण में विस्फोटित हों। ध्यान दें कि Security Sandbox के लिए उपयुक्त Google Workspace संस्करण आवश्यक है।", "status": "machine-draft" }
+  },
+  "EMAIL-025": {
+    "name": { "value": "Gmail मेल प्रत्यायोजन अक्षम (GWS.GMAIL.1.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.1.1: मेल प्रत्यायोजन एक उपयोगकर्ता को किसी अन्य खाते को अपने मेलबॉक्स तक पढ़ने/भेजने की पहुंच प्रदान करने देता है, एक स्थायी डेटा-पहुंच मार्ग जो प्रत्यायोजन के उद्देश्य से अधिक समय तक बना रहता है। gmail.mail_delegation पढ़ता है; जहां enableMailDelegation चालू है वहां चेतावनी देता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "जब तक जानबूझकर आवश्यक न हो, मेल प्रत्यायोजन अक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail settings > User settings में, जब तक कोई समीक्षित व्यावसायिक आवश्यकता न हो, मेल प्रत्यायोजन अक्षम करें।", "status": "machine-draft" }
+  },
+  "EMAIL-026": {
+    "name": { "value": "Gmail POP और IMAP पहुंच अक्षम (GWS.GMAIL.9.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.9.1: लीगेसी POP और IMAP प्रोटोकॉल आधुनिक प्रमाणीकरण को बायपास करते हैं और एक credential-stuffing / MFA-बायपास वेक्टर हैं। gmail.imap_access और gmail.pop_access पढ़ता है; जहां इनमें से कोई भी सक्षम है वहां विफल होता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "POP और IMAP पहुंच अक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail settings > End User Access में, POP और IMAP अक्षम करें ताकि मेल क्लाइंट को आधुनिक प्रमाणित प्रोटोकॉल का उपयोग करना पड़े।", "status": "machine-draft" }
+  },
+  "EMAIL-027": {
+    "name": { "value": "Gmail उपयोगकर्ता ईमेल/संपर्क आयात अक्षम (GWS.GMAIL.8.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.8.1: उपयोगकर्ता ईमेल अपलोड (बाहरी खातों से मेल और संपर्क आयात करना) बाहरी डेटा को टेनेंट में खींचता है और उल्टी दिशा में बहिष्करण कर सकता है। gmail.user_email_uploads पढ़ता है; जहां enableMailAndContactsImport चालू है वहां चेतावनी देता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "उपयोगकर्ता ईमेल/संपर्क आयात अक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail settings में, जब तक आवश्यक न हो, उपयोगकर्ताओं की अन्य खातों से मेल और संपर्क आयात करने की क्षमता अक्षम करें।", "status": "machine-draft" }
+  },
+  "EMAIL-028": {
+    "name": { "value": "Google Workspace Sync for Outlook अक्षम (GWS.GMAIL.10.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.10.1: Google Workspace Sync for Microsoft Outlook (GWSMO) मेलबॉक्स डेटा को एक Outlook क्लाइंट से जोड़ता है, जिससे डेटा सतह का विस्तार होता है और कुछ वेब सुरक्षा उपाय बायपास होते हैं। gmail.workspace_sync_for_outlook पढ़ता है; जहां यह सक्षम है वहां चेतावनी देता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "जब तक आवश्यक न हो, GWSMO अक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail end-user access सेटिंग्स में, जब तक कोई समीक्षित आवश्यकता न हो, Google Workspace Sync for Microsoft Outlook अक्षम करें।", "status": "machine-draft" }
+  },
+  "EMAIL-029": {
+    "name": { "value": "Gmail स्पैम-ओवरराइड प्रेषक सूचियां समीक्षित (GWS.GMAIL.18.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.18.1: approved-sender / spam-override सूचियां सूचीबद्ध डोमेन से आने वाले मेल को स्पैम फ़िल्टरिंग बायपास कराती हैं, जो अत्यधिक व्यापक होने पर एक फ़िशिंग बायपास है। gmail.spam_override_lists पढ़ता है; जहां override प्रेषक डोमेन कॉन्फ़िगर किए गए हैं वहां चेतावनी देता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "स्पैम-ओवरराइड प्रेषक सूचियां अनुपस्थित हों या न्यूनतम और समीक्षित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail spam settings में, approved-sender / bypass सूचियों की समीक्षा करें और उन्हें न्यूनतम करें ताकि विश्वसनीय-डोमेन मेल को स्पैम फ़िल्टरिंग से पूर्णतः छूट न मिले।", "status": "machine-draft" }
+  },
+  "EMAIL-030": {
+    "name": { "value": "स्वचालित ईमेल अग्रेषण अक्षम (GWS.GMAIL.11.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.11.1 स्वचालित ईमेल अग्रेषण को अक्षम करने की अनुशंसा करता है, विशेष रूप से बाहरी डोमेन पर। स्वतः-अग्रेषण एक सामान्य डेटा-बहिष्करण चैनल और खाता अधिग्रहण के बाद एक निरंतरता तंत्र है, क्योंकि यह इनबाउंड मेल को चुपचाप एक हमलावर-नियंत्रित पते पर कॉपी करता है। यह जांच gmail.auto_forwarding Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां स्वचालित अग्रेषण सक्षम है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में स्वचालित ईमेल अग्रेषण अक्षम (enableAutoForwarding = false)।", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console में, Apps > Google Workspace > Gmail > End User Access के अंतर्गत, बाहरी गंतव्यों को प्राथमिकता देते हुए 'Allow users to automatically forward incoming email to another address' अक्षम करें। अप्रत्याशित बाहरी प्राप्तकर्ताओं के लिए मौजूदा अग्रेषण नियमों की समीक्षा करें।", "status": "machine-draft" }
+  },
+  "EMAIL-031": {
+    "name": { "value": "उन्नत पूर्व-वितरण संदेश स्कैनिंग सक्षम (GWS.GMAIL.15.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.15.1 के लिए उन्नत पूर्व-वितरण संदेश स्कैनिंग आवश्यक है, जो किसी संदेश के इनबॉक्स तक पहुंचने से पहले संदिग्ध और फ़िशिंग सामग्री की पहचान में सुधार करती है। यह जांच gmail.enhanced_pre_delivery_message_scanning Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां उन्नत संदिग्ध-सामग्री पहचान सक्षम नहीं है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में उन्नत पूर्व-वितरण संदेश स्कैनिंग सक्षम (enableImprovedSuspiciousContentDetection = true)।", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console में, Apps > Google Workspace > Gmail > Spam, Phishing, and Malware के अंतर्गत, उन्नत पूर्व-वितरण संदेश स्कैनिंग सक्षम करें ताकि Gmail वितरण से पहले संदिग्ध सामग्री का अतिरिक्त विश्लेषण करे।", "status": "machine-draft" }
+  }
+}

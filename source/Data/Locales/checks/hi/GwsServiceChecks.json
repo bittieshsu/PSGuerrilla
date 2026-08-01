@@ -1,0 +1,75 @@
+{
+  "_family": "GwsServiceChecks.json",
+  "GWS-SITES-001": {
+    "name": { "value": "Sites सेवा अक्षम", "status": "machine-draft" },
+    "description": { "value": "least-privilege के अनुरूप, आक्रमण सतह को घटाने के लिए Google Sites सेवा सभी उपयोगकर्ताओं के लिए अक्षम की जानी चाहिए। जहां प्रलेखित आवश्यकता हो, वहां Sites को प्रति संगठनात्मक इकाई या समूह चयनात्मक रूप से सक्षम किया जा सकता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "Sites सेवा सभी के लिए OFF (केवल आवश्यकतानुसार प्रति OU/समूह चयनात्मक रूप से सक्षम करें)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Sites > Service status > सभी के लिए OFF पर सेट करें। केवल वहां प्रति संगठनात्मक इकाई या समूह चयनात्मक रूप से सक्षम करें जहां प्रलेखित व्यावसायिक आवश्यकता हो।", "status": "machine-draft" }
+  },
+  "GWS-CLASS-001": {
+    "name": { "value": "Classroom सदस्यता - कक्षाओं में कौन शामिल हो सकता है", "status": "machine-draft" },
+    "description": { "value": "आपके डोमेन में कक्षाओं में कौन शामिल हो सकता है, यह केवल आपके डोमेन के उपयोगकर्ताओं तक सीमित होना चाहिए, जिससे बाहरी खातों को आंतरिक कक्षाओं में शामिल होने से रोका जा सके।", "status": "machine-draft" },
+    "recommendedValue": { "value": "कक्षाओं में कौन शामिल हो सकता है, इसे 'Users in your domain only' पर सेट करें", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Class settings > About class membership > Who can join classes in your domain > 'Users in your domain only' पर सेट करें।", "status": "machine-draft" }
+  },
+  "GWS-CLASS-002": {
+    "name": { "value": "Classroom सदस्यता - उपयोगकर्ता किन कक्षाओं में शामिल हो सकते हैं", "status": "machine-draft" },
+    "description": { "value": "आपके डोमेन के उपयोगकर्ता किन कक्षाओं में शामिल हो सकते हैं, यह केवल आपके डोमेन की कक्षाओं तक सीमित होना चाहिए, जिससे आंतरिक उपयोगकर्ताओं को उन बाहरी कक्षाओं में शामिल होने से रोका जा सके जो डेटा का बहिष्करण कर सकती हैं।", "status": "machine-draft" },
+    "recommendedValue": { "value": "उपयोगकर्ता किन कक्षाओं में शामिल हो सकते हैं, इसे 'Classes in your domain only' पर सेट करें", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Class settings > About class membership > Which classes users in your domain can join > 'Classes in your domain only' पर सेट करें।", "status": "machine-draft" }
+  },
+  "GWS-CLASS-003": {
+    "name": { "value": "Classroom API डेटा पहुंच प्रतिबंधित", "status": "machine-draft" },
+    "description": { "value": "उपयोगकर्ताओं को तृतीय-पक्ष ऐप्स को अपने Google Classroom डेटा तक पहुंचने के लिए अधिकृत करने में सक्षम नहीं होना चाहिए, जिससे बाहरी एकीकरणों द्वारा अनियंत्रित डेटा पहुंच को रोका जा सके।", "status": "machine-draft" },
+    "recommendedValue": { "value": "उपयोगकर्ता ऐप्स को Classroom डेटा तक पहुंचने के लिए अधिकृत नहीं कर सकते (API डेटा पहुंच अक्षम)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Data access > 'Users can authorize apps to access their Google Classroom data' को अनचेक करें।", "status": "machine-draft" }
+  },
+  "GWS-CLASS-004": {
+    "name": { "value": "Classroom Roster आयात अक्षम", "status": "machine-draft" },
+    "description": { "value": "तृतीय-पक्ष एकीकरण के माध्यम से roster आयात बंद किया जाना चाहिए ताकि कक्षा roster स्पष्ट शासन के बिना बाहरी प्रणालियों से सिंक न हों।", "status": "machine-draft" },
+    "recommendedValue": { "value": "Roster आयात OFF किया गया हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Roster import > OFF चुनें।", "status": "machine-draft" }
+  },
+  "GWS-CLASS-005": {
+    "name": { "value": "Classroom छात्र नामांकन-रद्दीकरण प्रतिबंधित", "status": "machine-draft" },
+    "description": { "value": "केवल शिक्षकों को छात्रों को कक्षाओं से नामांकन-रद्द करने की अनुमति होनी चाहिए, जिससे छात्रों को स्वयं को या अन्य को हटाने और कक्षा सदस्यता की अखंडता को बाधित करने से रोका जा सके।", "status": "machine-draft" },
+    "recommendedValue": { "value": "छात्र नामांकन-रद्दीकरण केवल शिक्षकों तक सीमित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Student unenrollment > 'Teachers only' चुनें।", "status": "machine-draft" }
+  },
+  "GWS-CLASS-006": {
+    "name": { "value": "Classroom कक्षा निर्माण सत्यापित शिक्षकों तक सीमित", "status": "machine-draft" },
+    "description": { "value": "कक्षा निर्माण केवल सत्यापित शिक्षकों तक सीमित होना चाहिए, जिससे अनधिकृत उपयोगकर्ताओं को कक्षाएं बनाने और सदस्य एकत्र करने से रोका जा सके।", "status": "machine-draft" },
+    "recommendedValue": { "value": "कक्षा निर्माण केवल सत्यापित शिक्षकों तक सीमित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > General settings > Teacher permissions > 'Verified teachers only' चुनें।", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-001": {
+    "name": { "value": "Gemini ऐप पहुंच लाइसेंस प्राप्त उपयोगकर्ताओं तक सीमित", "status": "machine-draft" },
+    "description": { "value": "बिना लाइसेंस वाले सभी उपयोगकर्ताओं के लिए Gemini ऐप उपयोगकर्ता पहुंच OFF पर सेट होनी चाहिए, जिससे यह सुनिश्चित हो कि जनरेटिव-AI पहुंच सभी उपयोगकर्ताओं के लिए खुली होने के बजाय लाइसेंस असाइनमेंट द्वारा शासित हो।", "status": "machine-draft" },
+    "recommendedValue": { "value": "बिना लाइसेंस वाले उपयोगकर्ताओं के लिए Gemini ऐप पहुंच OFF", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini app > User access > 'Allow all users to access the Gemini app, regardless of license' को अनचेक करें।", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-002": {
+    "name": { "value": "Gemini Alpha सुविधाएं अक्षम", "status": "machine-draft" },
+    "description": { "value": "Gemini Alpha सुविधाएं अक्षम होनी चाहिए। पूर्व-रिलीज़ सुविधाओं की सुरक्षा समीक्षा पूरी नहीं हुई हो सकती है और वे संगठनात्मक डेटा को अनपरखे प्रसंस्करण के समक्ष उजागर कर सकती हैं।", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gemini for Workspace में Alpha सुविधाओं तक पहुंच बंद की गई हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini for Workspace > Alpha features > 'Turn off access to Alpha features in Gemini for Google Workspace' चुनें।", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-003": {
+    "name": { "value": "Gemini वार्तालाप इतिहास सक्षम", "status": "machine-draft" },
+    "description": { "value": "Gemini वार्तालाप इतिहास सक्षम होना चाहिए ताकि AI इंटरैक्शन लेखापरीक्षा और अनुपालन उद्देश्यों के लिए बनाए रखे जाएं। अक्षम इतिहास डेटा प्रबंधन को छिपा सकता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gemini वार्तालाप इतिहास सक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini app > Gemini conversation history > सुनिश्चित करें कि वार्तालाप इतिहास चालू है।", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-004": {
+    "name": { "value": "Gemini वार्तालाप प्रतिधारण न्यूनतम 18 माह", "status": "machine-draft" },
+    "description": { "value": "लेखापरीक्षा, कानूनी-होल्ड, और घटना-जांच आवश्यकताओं का समर्थन करने के लिए Gemini वार्तालाप प्रतिधारण न्यूनतम 18 माह पर सेट होना चाहिए।", "status": "machine-draft" },
+    "recommendedValue": { "value": "वार्तालाप प्रतिधारण कम से कम 18 माह पर सेट", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini app > Gemini conversation history > प्रतिधारण अवधि कम से कम 18 माह पर सेट करें।", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-005": {
+    "name": { "value": "Gemini वार्तालाप साझाकरण अक्षम", "status": "machine-draft" },
+    "description": { "value": "लिंक के माध्यम से Gemini वार्तालाप साझाकरण OFF पर सेट होना चाहिए ताकि AI वार्तालाप सामग्री, जिसमें संवेदनशील प्रॉम्प्ट और आउटपुट शामिल हो सकते हैं, इच्छित प्राप्तकर्ताओं के बाहर साझा होने से रुके।", "status": "machine-draft" },
+    "recommendedValue": { "value": "लिंक के माध्यम से वार्तालाप साझाकरण OFF पर सेट", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini app > Sharing > 'Allow conversation sharing via link' को OFF पर सेट करें।", "status": "machine-draft" }
+  }
+}
