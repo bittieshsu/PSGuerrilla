@@ -1,0 +1,75 @@
+{
+  "_family": "GwsServiceChecks.json",
+  "GWS-SITES-001": {
+    "name": { "value": "Sites 서비스 사용 중지", "status": "machine-draft" },
+    "description": { "value": "최소 권한 원칙에 따라 공격 표면을 줄이기 위해 모든 사용자에 대해 Google Sites 서비스를 사용 중지해야 합니다. 문서화된 필요가 있는 경우 조직 단위 또는 그룹별로 선택적으로 Sites를 사용 설정할 수 있습니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 사용자에 대해 Sites 서비스 OFF(필요에 따라 OU/그룹별로만 선택적으로 사용 설정)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Sites > Service status: 모든 사용자에 대해 OFF로 설정합니다. 문서화된 업무상 필요가 있는 경우에만 조직 단위 또는 그룹별로 선택적으로 사용 설정합니다.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-001": {
+    "name": { "value": "Classroom 구성원 - 수업에 참여할 수 있는 사용자", "status": "machine-draft" },
+    "description": { "value": "도메인에서 수업에 참여할 수 있는 사용자는 도메인 내 사용자로만 제한하여 외부 계정이 내부 수업에 참여하지 못하도록 해야 합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "수업에 참여할 수 있는 사용자가 'Users in your domain only'로 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Class settings > About class membership > Who can join classes in your domain: 'Users in your domain only'로 설정합니다.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-002": {
+    "name": { "value": "Classroom 구성원 - 사용자가 참여할 수 있는 수업", "status": "machine-draft" },
+    "description": { "value": "도메인 내 사용자가 참여할 수 있는 수업은 도메인 내 수업으로만 제한하여 내부 사용자가 데이터를 유출할 수 있는 외부 수업에 참여하지 못하도록 해야 합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "사용자가 참여할 수 있는 수업이 'Classes in your domain only'로 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Class settings > About class membership > Which classes users in your domain can join: 'Classes in your domain only'로 설정합니다.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-003": {
+    "name": { "value": "Classroom API 데이터 액세스 제한", "status": "machine-draft" },
+    "description": { "value": "외부 통합에 의한 통제되지 않은 데이터 액세스를 방지하기 위해 사용자가 타사 앱에 자신의 Google Classroom 데이터에 대한 액세스 권한을 부여할 수 없도록 해야 합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "사용자가 앱에 Classroom 데이터 액세스 권한을 부여할 수 없음(API 데이터 액세스 사용 중지)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Data access: 'Users can authorize apps to access their Google Classroom data' 선택을 해제합니다.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-004": {
+    "name": { "value": "Classroom 명단 가져오기 사용 중지", "status": "machine-draft" },
+    "description": { "value": "명시적인 거버넌스 없이 외부 시스템에서 수업 명단이 동기화되지 않도록 타사 통합을 통한 명단 가져오기를 사용 중지해야 합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "명단 가져오기 OFF", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Roster import: OFF를 선택합니다.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-005": {
+    "name": { "value": "Classroom 학생 등록 취소 제한", "status": "machine-draft" },
+    "description": { "value": "학생이 자신이나 다른 학생을 제거하여 수업 구성원의 무결성을 훼손하지 못하도록 교사만 학생의 수업 등록을 취소할 수 있어야 합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "학생 등록 취소가 교사만으로 제한됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > Student unenrollment: 'Teachers only'를 선택합니다.", "status": "machine-draft" }
+  },
+  "GWS-CLASS-006": {
+    "name": { "value": "Classroom 수업 생성을 인증된 교사로 제한", "status": "machine-draft" },
+    "description": { "value": "무단 사용자가 수업을 생성하고 구성원을 모으지 못하도록 수업 생성을 인증된 교사만으로 제한해야 합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "수업 생성이 인증된 교사만으로 제한됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Classroom > General settings > Teacher permissions: 'Verified teachers only'를 선택합니다.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-001": {
+    "name": { "value": "Gemini 앱 액세스를 라이선스 사용자로 제한", "status": "machine-draft" },
+    "description": { "value": "생성형 AI 액세스가 모든 사용자에게 개방되지 않고 라이선스 할당에 따라 관리되도록, 라이선스가 없는 모든 사용자에 대해 Gemini 앱 사용자 액세스를 OFF로 설정해야 합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "라이선스가 없는 사용자에 대해 Gemini 앱 액세스 OFF", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini app > User access: 'Allow all users to access the Gemini app, regardless of license' 선택을 해제합니다.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-002": {
+    "name": { "value": "Gemini 알파 기능 사용 중지", "status": "machine-draft" },
+    "description": { "value": "Gemini 알파 기능은 사용 중지해야 합니다. 사전 출시 기능은 보안 검토가 완료되지 않았을 수 있으며 조직 데이터를 검증되지 않은 처리에 노출할 수 있습니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gemini for Workspace의 알파 기능에 대한 액세스가 사용 중지됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini for Workspace > Alpha features: 'Turn off access to Alpha features in Gemini for Google Workspace'를 선택합니다.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-003": {
+    "name": { "value": "Gemini 대화 기록 사용 설정", "status": "machine-draft" },
+    "description": { "value": "AI 상호작용이 감사 및 규정 준수 목적으로 보존되도록 Gemini 대화 기록을 사용 설정해야 합니다. 기록을 사용 중지하면 데이터 처리를 숨길 수 있습니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "Gemini 대화 기록이 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini app > Gemini conversation history: 대화 기록이 켜져 있는지 확인합니다.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-004": {
+    "name": { "value": "Gemini 대화 보존 최소 18개월", "status": "machine-draft" },
+    "description": { "value": "감사, 법적 보존, 사고 조사 요구사항을 지원하기 위해 Gemini 대화 보존 기간을 최소 18개월로 설정해야 합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "대화 보존 기간이 최소 18개월로 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini app > Gemini conversation history: 보존 기간을 최소 18개월로 설정합니다.", "status": "machine-draft" }
+  },
+  "GWS-GEMINI-005": {
+    "name": { "value": "Gemini 대화 공유 사용 중지", "status": "machine-draft" },
+    "description": { "value": "민감한 프롬프트와 출력을 포함할 수 있는 AI 대화 콘텐츠가 의도한 수신자 외부로 공유되지 않도록 링크를 통한 Gemini 대화 공유를 OFF로 설정해야 합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "링크를 통한 대화 공유가 OFF로 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Generative AI > Gemini app > Sharing: 'Allow conversation sharing via link'를 OFF로 설정합니다.", "status": "machine-draft" }
+  }
+}

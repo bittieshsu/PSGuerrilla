@@ -1,0 +1,39 @@
+{
+  "_family": "LoggingAlertingChecks.json",
+  "LOG-001": {
+    "name": { "value": "감사 로그 보존 설정", "status": "machine-draft" },
+    "description": { "value": "사고 조사와 규정 준수 요구사항을 지원하기 위해 감사 로그를 적절한 기간 동안 보존해야 합니다. 기본 보존 기간은 Workspace 에디션에 따라 다릅니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "감사 로그 보존 기간 12개월 이상; 장기 보존을 위해 BigQuery 내보내기를 통해 연장", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Reporting > Audit and investigation: 로그 가용성을 검토합니다. 장기 보존을 위해 Admin Console > Reporting > BigQuery export를 통해 BigQuery 내보내기를 구성합니다", "status": "machine-draft" }
+  },
+  "LOG-002": {
+    "name": { "value": "Alert Center 규칙 인벤토리", "status": "machine-draft" },
+    "description": { "value": "의심스러운 로그인, 데이터 유출, 정책 위반을 포함한 보안 관련 이벤트를 탐지하고 알리도록 Alert Center 규칙을 구성해야 합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "주요 보안 이벤트(의심스러운 로그인, 데이터 유출, 권한 변경)에 대한 알림 규칙이 구성됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > Alert center: 기존 규칙을 검토하고 누락된 보안 이벤트 범주에 대한 규칙을 만듭니다", "status": "machine-draft" }
+  },
+  "LOG-003": {
+    "name": { "value": "활동 규칙 커버리지 분석", "status": "machine-draft" },
+    "description": { "value": "활동 규칙은 로그인, Drive, Admin, 이메일 이벤트를 포함한 보안 도메인 전반에 걸쳐 적절한 커버리지를 제공해야 합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "로그인, Drive 공유, 관리자 변경, 이메일 전달, OAuth 이벤트를 포괄하는 활동 규칙", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > Alert center > Rules: 이벤트 범주 전반의 커버리지를 검토하고 미포괄 보안 도메인에 대한 규칙을 추가합니다", "status": "machine-draft" }
+  },
+  "LOG-004": {
+    "name": { "value": "데이터 내보내기 설정", "status": "machine-draft" },
+    "description": { "value": "사용자가 조직 데이터를 도메인 외부로 대량 내보내지 못하도록 Google Takeout(데이터 내보내기)을 제어해야 합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "대부분의 사용자에 대해 Google Takeout이 사용 중지되거나 제한됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Google Takeout: 해당 OU에 대해 사용 중지하거나 제한합니다", "status": "machine-draft" }
+  },
+  "LOG-005": {
+    "name": { "value": "관리자 이메일 알림 구성", "status": "machine-draft" },
+    "description": { "value": "슈퍼 관리자 변경, 보안 설정 수정, 대량 작업을 포함한 중요한 관리자 작업에 대해 이메일 알림을 구성해야 합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "중요한 관리자 작업과 보안 이벤트에 대해 이메일 알림이 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > Alert center: 중요한 알림 유형에 대한 이메일 알림 수신자를 구성합니다", "status": "machine-draft" }
+  },
+  "LOG-006": {
+    "name": { "value": "Reporting API 액세스", "status": "machine-draft" },
+    "description": { "value": "승인된 서비스 계정과 애플리케이션만 감사 및 사용 데이터를 검색할 수 있도록 Reports API에 대한 액세스를 검토해야 합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "Reports API 액세스가 승인된 서비스 계정으로만 제한됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Security > API controls > Domain-wide delegation: Reports API 범위를 가진 부여를 검토하고 무단 액세스를 제거합니다", "status": "machine-draft" }
+  }
+}

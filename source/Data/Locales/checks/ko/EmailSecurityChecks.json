@@ -1,0 +1,189 @@
+{
+  "_family": "EmailSecurityChecks.json",
+  "EMAIL-001": {
+    "name": { "value": "SPF 레코드 검증", "status": "machine-draft" },
+    "description": { "value": "Sender Policy Framework(SPF) 레코드는 모든 도메인에 대해 존재하고 유효해야 합니다. SPF는 어떤 메일 서버가 도메인을 대신하여 이메일을 보낼 권한이 있는지 지정하여 이메일 스푸핑을 방지합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 도메인에 대해 -all 또는 ~all 한정자를 포함한 유효한 v=spf1 레코드가 게시됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Authenticate email: 각 도메인에 대해 SPF 레코드를 게시합니다: v=spf1 include:_spf.google.com ~all", "status": "machine-draft" }
+  },
+  "EMAIL-002": {
+    "name": { "value": "DKIM 서명 사용", "status": "machine-draft" },
+    "description": { "value": "DomainKeys Identified Mail(DKIM) 서명은 모든 도메인에 대해 사용 설정되고 유효해야 합니다. DKIM은 이메일 콘텐츠가 전송 중에 변조되지 않았다는 암호학적 증명을 제공합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 도메인에 대해 유효한 키가 게시되고 DKIM 서명이 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Authenticate email: 각 도메인에 대해 DKIM 키를 생성하고 DNS 레코드를 게시합니다", "status": "machine-draft" }
+  },
+  "EMAIL-003": {
+    "name": { "value": "DMARC 정책 감사", "status": "machine-draft" },
+    "description": { "value": "Domain-based Message Authentication, Reporting and Conformance(DMARC) 정책은 모든 도메인에 대해 reject 또는 quarantine으로 설정해야 합니다. none인 DMARC 정책은 스푸핑에 대한 보호를 제공하지 않습니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 도메인에 대해 DMARC 정책이 reject 또는 quarantine으로 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "_dmarc.<domain>에 p=reject 또는 p=quarantine으로 DMARC TXT 레코드를 게시합니다. 모니터링을 위해 p=none으로 시작한 후 quarantine으로, 마지막으로 reject로 단계적으로 강화합니다", "status": "machine-draft" }
+  },
+  "EMAIL-004": {
+    "name": { "value": "MTA-STS 정책", "status": "machine-draft" },
+    "description": { "value": "Mail Transfer Agent Strict Transport Security(MTA-STS)는 인증된 TLS 연결을 요구하여 TLS 다운그레이드 공격과 전송 중 이메일에 대한 중간자 가로채기를 방지합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "MTA-STS TXT 레코드가 게시되고 정책이 https://mta-sts.<domain>/.well-known/mta-sts.txt에 호스팅됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "_mta-sts.<domain> TXT 레코드를 v=STSv1; id=<unique_id>로 게시하고 MTA-STS 정책 파일을 https://mta-sts.<domain>/.well-known/mta-sts.txt에 호스팅합니다", "status": "machine-draft" }
+  },
+  "EMAIL-005": {
+    "name": { "value": "TLS 적용", "status": "machine-draft" },
+    "description": { "value": "도청을 방지하기 위해 이메일 전송에 Transport Layer Security(TLS)를 요구해야 합니다. Compliance TLS 설정은 지정된 파트너 도메인과의 암호화된 연결을 보장합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 아웃바운드 및 인바운드 연결에 TLS 요구됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Compliance > Secure transport (TLS) compliance: 모든 도메인 또는 특정 파트너 도메인에 대해 TLS를 요구하는 규칙을 추가합니다", "status": "machine-draft" }
+  },
+  "EMAIL-006": {
+    "name": { "value": "이메일 허용 목록/차단 목록 검토", "status": "machine-draft" },
+    "description": { "value": "이메일 허용 목록과 차단 목록에서 지나치게 관대한 항목이 있는지 검토해야 합니다. 허용 목록에 등록된 발신자는 스팸 필터링을 우회하며 잘못 구성될 경우 악용될 수 있습니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "와일드카드 도메인이 없는 최소한의 허용 목록 항목; 차단 목록을 적극적으로 유지 관리", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Spam, phishing and malware: Email allowlists 및 Blocked senders 목록에서 지나치게 광범위한 항목이 있는지 검토합니다", "status": "machine-draft" }
+  },
+  "EMAIL-007": {
+    "name": { "value": "인바운드 게이트웨이 구성", "status": "machine-draft" },
+    "description": { "value": "인바운드 이메일 게이트웨이는 발신자 인증 결과를 보존하도록 올바르게 구성해야 합니다. 잘못 구성된 게이트웨이는 SPF/DKIM/DMARC 헤더를 제거하거나 보안 필터링을 우회할 수 있습니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "올바른 IP 범위와 헤더 보존으로 인바운드 게이트웨이가 구성됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Spam, phishing and malware > Inbound gateway: 게이트웨이 IP와 인증 헤더가 보존되는지 확인합니다", "status": "machine-draft" }
+  },
+  "EMAIL-008": {
+    "name": { "value": "이메일 라우팅 규칙 감사", "status": "machine-draft" },
+    "description": { "value": "이메일 라우팅 규칙에서 의심스럽거나 무단인 구성이 있는지 검토해야 합니다. 악성 라우팅 규칙은 이메일을 공격자가 제어하는 대상으로 리디렉션할 수 있습니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 라우팅 규칙이 검토되고 업무상 정당성과 함께 문서화됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Routing: 모든 라우팅 규칙, 기본 라우팅, 수신자 맵에서 무단 항목이 있는지 검토합니다", "status": "machine-draft" }
+  },
+  "EMAIL-009": {
+    "name": { "value": "자동 전달 정책", "status": "machine-draft" },
+    "description": { "value": "데이터 유출을 방지하기 위해 외부 주소로의 자동 이메일 전달을 사용 중지해야 합니다. 공격자는 계정을 침해한 후 전달 규칙을 설정하는 경우가 많습니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 조직 단위에 대해 자동 전달 사용 중지됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access: 모든 OU에 대해 자동 전달을 사용 중지합니다. Gmail API를 통해 기존 전달 규칙을 검토합니다", "status": "machine-draft" }
+  },
+  "EMAIL-010": {
+    "name": { "value": "위임 액세스 설정", "status": "machine-draft" },
+    "description": { "value": "메일 위임을 통해 사용자는 다른 사용자에게 자신의 메일함에 대한 읽기 및 전송 액세스 권한을 부여할 수 있습니다. 과도한 위임은 무단 액세스와 사칭으로 이어질 수 있습니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "메일 위임이 제한되고 주기적으로 검토됨; 예기치 않은 위임 대상 없음", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access: 메일 위임 설정을 검토합니다. Gmail API를 통해 개별 사용자에게 무단 위임 대상이 있는지 확인합니다", "status": "machine-draft" }
+  },
+  "EMAIL-011": {
+    "name": { "value": "POP/IMAP 액세스 설정", "status": "machine-draft" },
+    "description": { "value": "특별히 필요하지 않은 한 POP 및 IMAP 액세스를 사용 중지해야 합니다. 이러한 레거시 프로토콜은 최신 보안 제어를 우회하며 자격 증명 기반 공격에 사용될 수 있습니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 사용자에 대해 POP 및 IMAP 사용 중지됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access: POP 및 IMAP 액세스를 사용 중지합니다. Gmail API를 통해 개별 사용자 설정을 검토합니다", "status": "machine-draft" }
+  },
+  "EMAIL-012": {
+    "name": { "value": "스팸 및 피싱 필터 설정", "status": "machine-draft" },
+    "description": { "value": "사회 공학 공격과 악성 이메일 캠페인에 대한 최대한의 보호를 제공하기 위해 향상된 스팸 및 피싱 필터를 사용 설정해야 합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "향상된 스팸 필터링과 적극적인 피싱 탐지가 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Spam, phishing and malware: 'Be more aggressive when filtering spam' 및 모든 피싱 보호 옵션을 사용 설정합니다", "status": "machine-draft" }
+  },
+  "EMAIL-013": {
+    "name": { "value": "향상된 전달 전 메시지 스캔", "status": "machine-draft" },
+    "description": { "value": "향상된 전달 전 메시지 스캔은 고급 휴리스틱과 샌드박싱을 사용하여 메시지가 사용자 받은편지함에 전달되기 전에 멀웨어와 위협을 탐지합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "향상된 전달 전 메시지 스캔이 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Spam, phishing and malware: 의심스러운 콘텐츠를 식별하기 위해 'Enhanced pre-delivery message scanning'을 사용 설정합니다", "status": "machine-draft" }
+  },
+  "EMAIL-014": {
+    "name": { "value": "외부 수신자 경고", "status": "machine-draft" },
+    "description": { "value": "우발적인 데이터 노출과 사회 공학을 방지하기 위해 사용자가 조직 외부의 수신자에게 이메일을 보낼 때 경고해야 합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 사용자에 대해 외부 수신자 경고가 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access: 'Warn users when they send messages outside the domain'을 사용 설정합니다", "status": "machine-draft" }
+  },
+  "EMAIL-015": {
+    "name": { "value": "첨부파일 안전 설정", "status": "machine-draft" },
+    "description": { "value": "암호화된 압축 파일, 비정상적인 파일 유형, 스크립트를 포함한 악성 파일 첨부를 탐지하고 차단하기 위해 모든 첨부파일 안전 보호를 사용 설정해야 합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 첨부파일 보호 옵션이 격리 작업과 함께 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Safety > Attachments: 모든 보호를 사용 설정합니다: 암호화된 첨부파일, 신뢰할 수 없는 발신자의 스크립트, 비정상적인 첨부파일 유형", "status": "machine-draft" }
+  },
+  "EMAIL-016": {
+    "name": { "value": "링크 및 외부 이미지 보호", "status": "machine-draft" },
+    "description": { "value": "피싱과 멀웨어를 검사하기 위해 URL을 스캔하도록 링크 보호를 사용 설정해야 합니다. 외부 이미지 프록시는 추적 픽셀과 IP 노출을 방지합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "URL 스캔, 클릭 시점 경고, 외부 이미지 프록시가 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Safety > Links and external images: 'Identify links behind shortened URLs', 'Scan linked images', 'Show warning prompt for click on links to untrusted domains'를 사용 설정합니다", "status": "machine-draft" }
+  },
+  "EMAIL-017": {
+    "name": { "value": "스푸핑 및 인증 보호", "status": "machine-draft" },
+    "description": { "value": "스푸핑 및 인증 보호는 도메인 스푸핑, 직원 이름 스푸핑, 조직과 유사하게 보이는 도메인에서 오는 미인증 이메일로부터 보호합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 스푸핑 및 인증 보호가 격리 작업과 함께 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Safety > Spoofing and authentication: 모든 보호를 사용 설정합니다: 도메인 스푸핑, 직원 이름 스푸핑, 인바운드 이메일 스푸핑, 미인증 이메일", "status": "machine-draft" }
+  },
+  "EMAIL-018": {
+    "name": { "value": "규정 준수 규칙 감사", "status": "machine-draft" },
+    "description": { "value": "민감한 데이터가 적절하게 처리되도록 콘텐츠 규정 준수 규칙을 검토해야 합니다. 규칙은 콘텐츠 패턴에 따라 암호화, 격리 또는 거부를 적용할 수 있습니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "민감한 데이터 유형에 대해 적절한 작업과 함께 콘텐츠 규정 준수 규칙이 구성됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > Compliance > Content compliance: 기존 규칙을 검토하고 민감한 콘텐츠 유형(PII, 금융 데이터, 건강 기록)에 대한 규칙을 만듭니다", "status": "machine-draft" }
+  },
+  "EMAIL-019": {
+    "name": { "value": "DLP 규칙 구성", "status": "machine-draft" },
+    "description": { "value": "데이터 손실 방지(DLP) 규칙은 민감한 데이터가 이메일을 통해 조직을 벗어나는 것을 탐지하고 방지하도록 구성해야 합니다. DLP는 자동화된 콘텐츠 검사와 정책 적용을 제공합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "주요 데이터 유형(신용카드, SSN, 건강 기록)에 대해 차단 또는 경고 작업과 함께 DLP 규칙이 구성됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Security > Data protection > Manage rules: 민감한 콘텐츠 패턴(신용카드, SSN, 건강 기록)을 탐지하고 차단 또는 경고 작업을 적용하는 Gmail DLP 규칙을 만듭니다", "status": "machine-draft" }
+  },
+  "EMAIL-020": {
+    "name": { "value": "Gmail 비밀 모드", "status": "machine-draft" },
+    "description": { "value": "Gmail 비밀 모드를 사용하면 발신자가 만료 날짜를 설정하고 메시지에 대한 액세스를 취소할 수 있습니다. 조직 정책에 따라 이 기능이 사용 설정되었는지 또는 제한되었는지 검토합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "민감한 데이터를 처리하는 사용자에 대해 Gmail 비밀 모드가 사용 설정됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access: Gmail 비밀 모드 설정을 검토하고 조직 요구사항에 따라 사용 설정하거나 제한합니다", "status": "machine-draft" }
+  },
+  "EMAIL-021": {
+    "name": { "value": "S/MIME 설정", "status": "machine-draft" },
+    "description": { "value": "S/MIME는 종단 간 이메일 암호화와 디지털 서명을 제공합니다. 규정 준수상 필요한 경우 S/MIME 인증서를 올바르게 구성하고 관리해야 합니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "규정 준수상 필요한 경우 S/MIME 사용 설정; 인증서가 올바르게 관리됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access > S/MIME: 필요한 경우 호스팅된 S/MIME를 사용 설정하고 인증서가 업로드되고 유효한지 확인합니다", "status": "machine-draft" }
+  },
+  "EMAIL-022": {
+    "name": { "value": "메일 전달 규칙 열거", "status": "machine-draft" },
+    "description": { "value": "모든 사용자 수준 메일 전달 규칙을 열거하고 검토해야 합니다. 공격자는 계정 침해 후 이메일에 대한 지속적인 액세스를 유지하기 위해 전달 규칙을 설정하는 경우가 많습니다", "status": "machine-draft" },
+    "recommendedValue": { "value": "무단 전달 규칙 없음; 모든 전달 규칙이 문서화되고 승인됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail API를 통해 모든 사용자의 전달 규칙을 열거합니다. 무단 전달 주소를 제거합니다. 향후 악용을 방지하기 위해 OU 수준에서 자동 전달을 사용 중지합니다", "status": "machine-draft" }
+  },
+  "EMAIL-023": {
+    "name": { "value": "사용자별 아웃바운드 게이트웨이 사용 중지 (GWS.GMAIL.12.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.12.1은 사용자별 아웃바운드 게이트웨이를 사용 중지하도록 요구합니다. 사용 설정하면 사용자가 자신의 외부 SMTP 서버를 통해 아웃바운드 메일을 라우팅할 수 있어 조직의 메일 보안 제어를 우회하고 데이터 유출 및 스푸핑 경로를 만듭니다. 이 검사는 Cloud Identity Policy API에서 gmail.per_user_outbound_gateway 정책을 읽고 외부 SMTP 라우팅이 허용되는 조직 단위를 표시합니다. 정책이 반환되지 않으면 결과는 Not Assessed입니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 조직 단위에 대해 사용자별 아웃바운드 게이트웨이(외부 SMTP) 사용 중지됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console의 Apps > Google Workspace > Gmail > Routing에서 사용자가 외부 SMTP 서버를 통해 메일을 라우팅할 수 없도록 사용자별 아웃바운드 게이트웨이가 허용되지 않는지 확인합니다. 아웃바운드 라우팅은 승인된 게이트웨이를 통해서만 중앙 집중식으로 유지합니다.", "status": "machine-draft" }
+  },
+  "EMAIL-024": {
+    "name": { "value": "Gmail Security Sandbox 사용 설정 (GWS.GMAIL.16.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.16.1은 Gmail Security Sandbox 사용 설정을 권장하며, 이는 시그니처 스캔이 놓치는 제로데이 멀웨어를 탐지하기 위해 인바운드 첨부파일을 가상 환경에서 폭파(detonate)합니다. 이 검사는 Cloud Identity Policy API에서 gmail.security_sandbox 정책을 읽고 샌드박스가 사용 중지된 조직 단위를 표시합니다. 정확한 정책 필드는 라이선스가 있는 테넌트에서의 확인을 기다리는 최선 노력 수준이며, 정책이 반환되지 않으면 결과는 조작된 판정이 아니라 Not Assessed입니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 조직 단위에 대해 Security Sandbox 사용 설정(가상 첨부파일 폭파)됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console의 Apps > Google Workspace > Gmail > Safety > Attachments에서 인바운드 첨부파일이 전달 전에 가상 환경에서 폭파되도록 Security Sandbox를 사용 설정합니다. Security Sandbox에는 적절한 Google Workspace 에디션이 필요합니다.", "status": "machine-draft" }
+  },
+  "EMAIL-025": {
+    "name": { "value": "Gmail 메일 위임 사용 중지 (GWS.GMAIL.1.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.1.1: 메일 위임을 통해 사용자는 다른 계정에 자신의 메일함에 대한 읽기/전송 액세스 권한을 부여할 수 있으며, 이는 위임의 목적보다 오래 지속되는 상시 데이터 액세스 경로입니다. gmail.mail_delegation을 읽고 enableMailDelegation이 켜진 경우 경고합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "의도적으로 필요한 경우가 아니면 메일 위임 사용 중지", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail settings > User settings에서 검토된 업무상 필요가 없는 한 메일 위임을 사용 중지합니다.", "status": "machine-draft" }
+  },
+  "EMAIL-026": {
+    "name": { "value": "Gmail POP 및 IMAP 액세스 사용 중지 (GWS.GMAIL.9.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.9.1: 레거시 POP 및 IMAP 프로토콜은 최신 인증을 우회하며 자격 증명 스터핑 / MFA 우회 벡터입니다. gmail.imap_access와 gmail.pop_access를 읽고 둘 중 하나라도 사용 설정된 경우 실패합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "POP 및 IMAP 액세스 사용 중지됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail settings > End User Access에서 메일 클라이언트가 최신 인증 프로토콜을 사용하도록 POP 및 IMAP을 사용 중지합니다.", "status": "machine-draft" }
+  },
+  "EMAIL-027": {
+    "name": { "value": "Gmail 사용자 이메일/연락처 가져오기 사용 중지 (GWS.GMAIL.8.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.8.1: 사용자 이메일 업로드(외부 계정에서 메일 및 연락처 가져오기)는 외부 데이터를 테넌트로 가져오며 역방향으로 유출될 수도 있습니다. gmail.user_email_uploads를 읽고 enableMailAndContactsImport가 켜진 경우 경고합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "사용자 이메일/연락처 가져오기 사용 중지됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail settings에서 필요하지 않은 한 사용자가 다른 계정에서 메일 및 연락처를 가져오는 기능을 사용 중지합니다.", "status": "machine-draft" }
+  },
+  "EMAIL-028": {
+    "name": { "value": "Google Workspace Sync for Outlook 사용 중지 (GWS.GMAIL.10.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.10.1: Google Workspace Sync for Microsoft Outlook(GWSMO)는 메일함 데이터를 Outlook 클라이언트로 연결하여 데이터 노출 표면을 확장하고 일부 웹 보호를 우회합니다. gmail.workspace_sync_for_outlook을 읽고 사용 설정된 경우 경고합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "필요하지 않은 한 GWSMO 사용 중지", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail 최종 사용자 액세스 설정에서 검토된 필요가 없는 한 Google Workspace Sync for Microsoft Outlook을 사용 중지합니다.", "status": "machine-draft" }
+  },
+  "EMAIL-029": {
+    "name": { "value": "Gmail 스팸 재정의 발신자 목록 검토 (GWS.GMAIL.18.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.18.1: 승인된 발신자 / 스팸 재정의 목록은 목록에 있는 도메인의 메일이 스팸 필터링을 우회하게 하며, 지나치게 광범위할 경우 피싱 우회가 됩니다. gmail.spam_override_lists를 읽고 재정의 발신자 도메인이 구성된 경우 경고합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "스팸 재정의 발신자 목록이 없거나 최소한이며 검토됨", "status": "machine-draft" },
+    "remediationSteps": { "value": "Gmail 스팸 설정에서 신뢰할 수 있는 도메인 메일이 스팸 필터링에서 일괄 면제되지 않도록 승인된 발신자 / 우회 목록을 검토하고 최소화합니다.", "status": "machine-draft" }
+  },
+  "EMAIL-030": {
+    "name": { "value": "자동 이메일 전달 사용 중지 (GWS.GMAIL.11.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.11.1은 특히 외부 도메인으로의 자동 이메일 전달을 사용 중지하도록 권장합니다. 자동 전달은 인바운드 메일을 공격자가 제어하는 주소로 조용히 복사하기 때문에 일반적인 데이터 유출 채널이자 계정 탈취 후 지속성 메커니즘입니다. 이 검사는 gmail.auto_forwarding Cloud Identity 정책을 읽고 자동 전달이 사용 설정된 조직 단위를 표시합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 조직 단위에서 자동 이메일 전달 사용 중지(enableAutoForwarding = false)됨.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console의 Apps > Google Workspace > Gmail > End User Access에서 외부 대상을 우선하여 'Allow users to automatically forward incoming email to another address'를 사용 중지합니다. 기존 전달 규칙에서 예기치 않은 외부 수신자가 있는지 검토합니다.", "status": "machine-draft" }
+  },
+  "EMAIL-031": {
+    "name": { "value": "향상된 전달 전 메시지 스캔 사용 설정 (GWS.GMAIL.15.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GMAIL.15.1은 향상된 전달 전 메시지 스캔을 요구하며, 이는 메시지가 받은편지함에 도달하기 전에 의심스럽고 피싱성 콘텐츠의 탐지를 개선합니다. 이 검사는 gmail.enhanced_pre_delivery_message_scanning Cloud Identity 정책을 읽고 개선된 의심스러운 콘텐츠 탐지가 사용 설정되지 않은 조직 단위를 표시합니다.", "status": "machine-draft" },
+    "recommendedValue": { "value": "모든 조직 단위에서 향상된 전달 전 메시지 스캔 사용 설정(enableImprovedSuspiciousContentDetection = true)됨.", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console의 Apps > Google Workspace > Gmail > Spam, Phishing, and Malware에서 Gmail이 전달 전에 의심스러운 콘텐츠를 추가로 분석하도록 향상된 전달 전 메시지 스캔을 사용 설정합니다.", "status": "machine-draft" }
+  }
+}
