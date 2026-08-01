@@ -1,0 +1,69 @@
+{
+  "_family": "DeviceManagementChecks.json",
+  "DEVICE-001": {
+    "name": { "value": "MDM नीति लेखापरीक्षा", "status": "machine-draft" },
+    "description": { "value": "सुरक्षा नियंत्रण लागू करने के लिए संगठनात्मक डेटा तक पहुंचने वाले मोबाइल उपकरणों को MDM नीतियों के माध्यम से प्रबंधित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी मोबाइल उपकरण लागू सुरक्षा नीतियों के साथ MDM प्रबंधन के अधीन", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Mobile devices > उपकरण प्रबंधन स्थिति की समीक्षा करें > अप्रबंधित उपकरणों के लिए advanced MDM सक्षम करें", "status": "machine-draft" }
+  },
+  "DEVICE-002": {
+    "name": { "value": "उपकरण अनुमोदन आवश्यकताएं", "status": "machine-draft" },
+    "description": { "value": "अनधिकृत उपकरण पहुंच को रोकने के लिए मोबाइल उपकरणों को संगठनात्मक डेटा तक पहुंचने से पहले व्यवस्थापक अनुमोदन की आवश्यकता होनी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "संगठनात्मक डेटा तक पहुंचने से पहले उपकरण अनुमोदन आवश्यक", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Mobile & endpoints > Settings > General > उपकरण पहुंच के लिए व्यवस्थापक अनुमोदन आवश्यक करें", "status": "machine-draft" }
+  },
+  "DEVICE-003": {
+    "name": { "value": "स्क्रीन लॉक प्रवर्तन", "status": "machine-draft" },
+    "description": { "value": "संगठनात्मक डेटा तक अनधिकृत भौतिक पहुंच को रोकने के लिए सभी मोबाइल उपकरणों पर स्क्रीन लॉक लागू किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "न्यूनतम PIN/पासवर्ड आवश्यकताओं के साथ स्क्रीन लॉक लागू", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Mobile & endpoints > Settings > Universal settings > Screen lock > न्यूनतम जटिलता के साथ स्क्रीन लॉक लागू करें", "status": "machine-draft" }
+  },
+  "DEVICE-004": {
+    "name": { "value": "उपकरण एन्क्रिप्शन आवश्यकताएं", "status": "machine-draft" },
+    "description": { "value": "भौतिक चोरी या हानि से विश्राम-अवस्था डेटा की रक्षा के लिए सभी मोबाइल उपकरणों पर उपकरण एन्क्रिप्शन आवश्यक होना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी प्रबंधित उपकरणों पर एन्क्रिप्शन आवश्यक", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Mobile & endpoints > Settings > Universal settings > Encryption > उपकरण एन्क्रिप्शन आवश्यक करें", "status": "machine-draft" }
+  },
+  "DEVICE-005": {
+    "name": { "value": "समझौता किए गए उपकरण अवरोधन", "status": "machine-draft" },
+    "description": { "value": "डेटा उजागर होने से रोकने के लिए समझौता किए गए उपकरणों को संगठनात्मक डेटा तक पहुंचने से स्वचालित रूप से अवरुद्ध किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "समझौता किए गए उपकरण का पता लगाना और अवरोधन सक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Mobile & endpoints > Settings > Universal settings > Compromised devices > समझौता किए गए उपकरणों को डेटा तक पहुंचने से अवरुद्ध करें", "status": "machine-draft" }
+  },
+  "DEVICE-006": {
+    "name": { "value": "Jailbroken/Rooted उपकरण नीति", "status": "machine-draft" },
+    "description": { "value": "Jailbroken (iOS) या rooted (Android) उपकरण OS-स्तरीय सुरक्षा नियंत्रणों को बायपास करते हैं और उन्हें संगठनात्मक डेटा तक पहुंचने से अवरुद्ध किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "Jailbroken/rooted उपकरण संगठनात्मक डेटा पहुंच से अवरुद्ध", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Mobile & endpoints > Settings > Universal settings > Compromised devices > jailbroken/rooted उपकरणों को अवरुद्ध करें", "status": "machine-draft" }
+  },
+  "DEVICE-007": {
+    "name": { "value": "Chrome ब्राउज़र प्रबंधन", "status": "machine-draft" },
+    "description": { "value": "नीति प्रवर्तन के लिए संगठनात्मक डेटा तक पहुंचने के लिए उपयोग किए जाने वाले Chrome ब्राउज़र Chrome Browser Cloud Management में नामांकित किए जाने चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "लागू नीतियों के साथ Chrome ब्राउज़र Cloud Management में नामांकित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Chrome > Settings > प्रबंधित ब्राउज़रों के लिए Chrome ब्राउज़र नीतियों की समीक्षा और कॉन्फ़िगर करें", "status": "machine-draft" }
+  },
+  "DEVICE-008": {
+    "name": { "value": "Chrome एक्सटेंशन Whitelist/Blocklist", "status": "machine-draft" },
+    "description": { "value": "दुर्भावनापूर्ण एक्सटेंशन को संगठनात्मक डेटा तक पहुंचने से रोकने के लिए Chrome एक्सटेंशन को allowlist या blocklist के माध्यम से प्रबंधित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "एक्सटेंशन इंस्टॉलेशन allowlist के माध्यम से व्यवस्थापक-अनुमोदित एक्सटेंशन तक सीमित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Chrome > Apps & extensions > एक्सटेंशन allowlist और blocklist कॉन्फ़िगर करें", "status": "machine-draft" }
+  },
+  "DEVICE-009": {
+    "name": { "value": "Chrome OS उपकरण नीतियां", "status": "machine-draft" },
+    "description": { "value": "Chrome OS उपकरणों पर auto-update, लॉगिन प्रतिबंध और सुरक्षा सेटिंग्स सहित उपयुक्त नीतियां लागू होनी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "अपडेट, लॉगिन और सुरक्षा के लिए लागू नीतियों के साथ Chrome OS उपकरण प्रबंधित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Chrome > Settings > Device settings > auto-update, लॉगिन प्रतिबंध और सुरक्षा नीतियां कॉन्फ़िगर करें", "status": "machine-draft" }
+  },
+  "DEVICE-010": {
+    "name": { "value": "Endpoint Verification सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "Endpoint verification संदर्भ-जागरूक पहुंच नीतियों के लिए उपकरण विश्वास संकेत प्रदान करता है और इसे सक्षम किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "संदर्भ-जागरूक पहुंच के लिए endpoint verification सक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Mobile & endpoints > Settings > General > संदर्भ-जागरूक पहुंच नीतियों के लिए endpoint verification सक्षम करें", "status": "machine-draft" }
+  },
+  "DEVICE-011": {
+    "name": { "value": "कंपनी-स्वामित्व उपकरण सूची", "status": "machine-draft" },
+    "description": { "value": "कॉर्पोरेट डेटा तक पहुंचने वाली संगठनात्मक संपत्तियों पर दृश्यता बनाए रखने के लिए कंपनी-स्वामित्व वाले उपकरणों की सूची बनाई जानी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी कंपनी-स्वामित्व वाले उपकरणों की पूर्ण सूची बनाए रखी गई", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Devices > Mobile devices > उपकरण सूची की समीक्षा करें > सुनिश्चित करें कि सभी कंपनी-स्वामित्व वाले उपकरण पंजीकृत और हिसाब में हैं", "status": "machine-draft" }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "_family": "AdminManagementChecks.json",
+  "ADMIN-001": {
+    "name": { "value": "Super admin खातों की सूची", "status": "machine-draft" },
+    "description": { "value": "सभी super admin खातों की सूची बनाई और समीक्षा की जानी चाहिए। Super admin के पास सभी संगठनात्मक सेटिंग्स और डेटा तक अप्रतिबंधित पहुंच होती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी super admin खाते प्रलेखित हों और स्पष्ट व्यावसायिक आवश्यकता के साथ न्यायोचित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Directory > Users > व्यवस्थापक भूमिका के अनुसार फ़िल्टर करें > सभी super admin खातों की समीक्षा करें और अनावश्यक असाइनमेंट हटाएं", "status": "machine-draft" }
+  },
+  "ADMIN-002": {
+    "name": { "value": "व्यवस्थापक भूमिका असाइनमेंट लेखापरीक्षा", "status": "machine-draft" },
+    "description": { "value": "प्रशासनिक भूमिका असाइनमेंट न्यूनतम विशेषाधिकार के सिद्धांत का पालन करने चाहिए। व्यापक अंतर्निहित भूमिकाओं के बजाय कस्टम भूमिकाओं का उपयोग किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी व्यवस्थापक भूमिका असाइनमेंट की समीक्षा की गई हो और जहां संभव हो न्यूनतम-विशेषाधिकार कस्टम भूमिकाओं का उपयोग किया गया हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Account > Admin roles > प्रत्येक भूमिका असाइनमेंट की समीक्षा करें > व्यापक भूमिकाओं को दायरा-सीमित कस्टम भूमिकाओं से बदलें", "status": "machine-draft" }
+  },
+  "ADMIN-003": {
+    "name": { "value": "प्रत्यायोजित व्यवस्थापक अनुमतियों की समीक्षा", "status": "machine-draft" },
+    "description": { "value": "कस्टम व्यवस्थापक भूमिकाओं की समीक्षा की जानी चाहिए ताकि यह सुनिश्चित हो सके कि प्रत्यायोजित अनुमतियां उचित रूप से दायरा-सीमित हैं और अत्यधिक पहुंच प्रदान नहीं करतीं", "status": "machine-draft" },
+    "recommendedValue": { "value": "कस्टम व्यवस्थापक भूमिकाएं न्यूनतम आवश्यक अनुमतियों तक सीमित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Account > Admin roles > प्रत्येक कस्टम भूमिका की समीक्षा करें > सत्यापित करें कि अनुमतियां उचित रूप से दायरा-सीमित हैं", "status": "machine-draft" }
+  },
+  "ADMIN-004": {
+    "name": { "value": "निष्क्रिय/निलंबित व्यवस्थापक खाते", "status": "machine-draft" },
+    "description": { "value": "निलंबित या निष्क्रिय उपयोगकर्ताओं को व्यवस्थापक भूमिका असाइनमेंट नहीं रखने चाहिए। ये खाते पुनः-सक्रियण हमलों के लिए लक्षित किए जा सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "व्यवस्थापक भूमिका असाइनमेंट वाला कोई निलंबित या निष्क्रिय उपयोगकर्ता न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Directory > Users > निलंबित उपयोगकर्ताओं को फ़िल्टर करें > किसी भी निलंबित खाते से व्यवस्थापक भूमिकाएं हटाएं", "status": "machine-draft" }
+  },
+  "ADMIN-005": {
+    "name": { "value": "उपयोगकर्ता खाता सूची", "status": "machine-draft" },
+    "description": { "value": "शासन के लिए सक्रिय, निलंबित और संग्रहीत खातों की स्पष्ट गणना के साथ उपयोगकर्ता खाता सूची बनाए रखी जानी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी खातों के उपयुक्त सक्रिय/निलंबित/संग्रहीत स्थिति में होने के साथ पूर्ण उपयोगकर्ता सूची", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Directory > Users > उपयोगकर्ता सूची की समीक्षा करें > अब आवश्यक न रहे खातों को निलंबित या संग्रहीत करें", "status": "machine-draft" }
+  },
+  "ADMIN-006": {
+    "name": { "value": "लंबे समय से निष्क्रिय उपयोगकर्ता खाते", "status": "machine-draft" },
+    "description": { "value": "90 या अधिक दिनों तक कोई लॉगिन न होने वाले उपयोगकर्ता खाते अनाथ हो सकते हैं और उन्हें निलंबन या विलोपन के लिए समीक्षा किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "प्रलेखित औचित्य के बिना 90 दिनों से अधिक समय तक निष्क्रिय कोई उपयोगकर्ता खाता न हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Directory > Users > अंतिम साइन-इन के अनुसार क्रमबद्ध करें > 90+ दिनों से निष्क्रिय खातों की समीक्षा करें और निलंबित करें", "status": "machine-draft" }
+  },
+  "ADMIN-007": {
+    "name": { "value": "OU संरचना समीक्षा", "status": "machine-draft" },
+    "description": { "value": "संगठनात्मक इकाई संरचना की समीक्षा की जानी चाहिए ताकि यह सुनिश्चित हो सके कि नीतियां उपयुक्त दायरे पर प्रभावी ढंग से लागू की जा सकें", "status": "machine-draft" },
+    "recommendedValue": { "value": "स्पष्ट नीति मैपिंग के साथ OU संरचना प्रलेखित हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Directory > Organizational units > OU पदानुक्रम की समीक्षा करें और सुनिश्चित करें कि यह नीति अनुप्रयोग आवश्यकताओं के अनुरूप है", "status": "machine-draft" }
+  },
+  "ADMIN-008": {
+    "name": { "value": "Directory साझाकरण सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "Directory साझाकरण यह नियंत्रित करता है कि कौन संगठनात्मक संपर्क और प्रोफ़ाइल देख सकता है। बाहरी directory साझाकरण सीमित होना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "Directory साझाकरण केवल आंतरिक उपयोगकर्ताओं तक सीमित हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Directory > Directory settings > Sharing settings > संपर्क साझाकरण को domain users तक सीमित करें", "status": "machine-draft" }
+  },
+  "ADMIN-009": {
+    "name": { "value": "उपयोगकर्ता प्रोफ़ाइल दृश्यता", "status": "machine-draft" },
+    "description": { "value": "बाहरी अभिकर्ताओं से टोही की संभावना को सीमित करने के लिए उपयोगकर्ता प्रोफ़ाइल जानकारी की दृश्यता नियंत्रित की जानी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "उपयोगकर्ता प्रोफ़ाइल दृश्यता आंतरिक उपयोगकर्ताओं तक सीमित हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Directory > Directory settings > Profile sharing > प्रोफ़ाइल दृश्यता सीमित करें", "status": "machine-draft" }
+  },
+  "ADMIN-010": {
+    "name": { "value": "Groups सेटिंग्स और बाहरी सदस्यता", "status": "machine-draft" },
+    "description": { "value": "बाहरी सदस्यों की अनुमति देने वाले Google Groups आंतरिक संचार और डेटा को अनधिकृत पक्षों के समक्ष उजागर कर सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "बाहरी समूह सदस्यता अक्षम हो या प्रलेखित औचित्य के साथ विशिष्ट समूहों तक सीमित हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Groups for Business > Sharing settings > बाहरी सदस्यता सीमित करें", "status": "machine-draft" }
+  },
+  "ADMIN-011": {
+    "name": { "value": "समूह निर्माण प्रतिबंध", "status": "machine-draft" },
+    "description": { "value": "अप्रबंधित समूहों के प्रसार को रोकने के लिए समूह निर्माण प्रतिबंधित होना चाहिए, जो संगठनात्मक डेटा उजागर कर सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "समूह निर्माण व्यवस्थापकों या विशिष्ट प्रत्यायोजित भूमिकाओं तक सीमित हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Groups for Business > Sharing settings > समूह कौन बना सकता है इसे सीमित करें", "status": "machine-draft" }
+  },
+  "ADMIN-012": {
+    "name": { "value": "Groups for Business सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "Groups for Business सेटिंग्स बाहरी पोस्टिंग, सदस्य दृश्यता और सामग्री साझाकरण सहित समूह सुविधाओं को नियंत्रित करती हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "Groups for Business प्रतिबंधित बाहरी पहुंच और पोस्टिंग के साथ कॉन्फ़िगर किया गया हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Groups for Business > Sharing settings > सभी सेटिंग्स की समीक्षा करें", "status": "machine-draft" }
+  },
+  "ADMIN-013": {
+    "name": { "value": "Super admin संख्या", "status": "machine-draft" },
+    "description": { "value": "super admin खातों की संख्या 2 और 4 के बीच होनी चाहिए। बहुत कम होने से विफलता का एकल बिंदु बनता है; बहुत अधिक होने से हमले की सतह बढ़ जाती है", "status": "machine-draft" },
+    "recommendedValue": { "value": "2-4 super admin खाते", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Directory > Users > super admin भूमिका के अनुसार फ़िल्टर करें > अनावश्यक super admin हटाकर या एक बैकअप जोड़कर संख्या को 2-4 पर समायोजित करें", "status": "machine-draft" }
+  },
+  "ADMIN-014": {
+    "name": { "value": "Assured Controls - Access Approvals सक्षम", "status": "machine-draft" },
+    "description": { "value": "Access Approvals सक्षम किया जाना चाहिए ताकि Google सहायता कर्मचारियों को कवर किए गए डेटा तक पहुंचने से पहले संगठनात्मक अनुमोदन का अनुरोध और प्राप्ति करनी पड़े, जिससे अनधिकृत प्रदाता पहुंच का जोखिम कम हो जाता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "Access Approvals सक्षम (Google कर्मचारियों को डेटा तक पहुंचने से पहले ग्राहक अनुमोदन की आवश्यकता हो)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Data > Compliance > Access Management / Access Approvals > Google सहायता कर्मचारियों के लिए संगठनात्मक डेटा तक पहुंचने से पहले अनुमोदन का अनुरोध करने की आवश्यकता सक्षम करें। Assured Controls आवश्यक है।", "status": "machine-draft" }
+  },
+  "ADMIN-015": {
+    "name": { "value": "Assured Controls - सहायता पहुंच U.S. कर्मचारियों तक सीमित", "status": "machine-draft" },
+    "description": { "value": "डेटा संप्रभुता बनाए रखने और कवर किए गए डेटा को गैर-U.S. कर्मियों द्वारा नियंत्रित होने से रोकने के लिए सहायता पहुंच संयुक्त राज्य अमेरिका में स्थित Google कर्मचारियों तक सीमित होनी चाहिए।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सहायता पहुंच दर्शक U.S. Google कर्मचारियों तक सीमित हों", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Data > Compliance > Access Management > अनुमत सहायता दर्शक को केवल U.S. Google कर्मचारियों पर सेट करें। Assured Controls आवश्यक है।", "status": "machine-draft" }
+  },
+  "ADMIN-016": {
+    "name": { "value": "Assured Controls - बहु-क्षेत्र डेटा प्रसंस्करण अक्षम", "status": "machine-draft" },
+    "description": { "value": "सभी Google Workspace उत्पादों के लिए कई क्षेत्रों में डेटा प्रसंस्करण अक्षम किया जाना चाहिए ताकि कवर किया गया डेटा केवल अपने निर्दिष्ट भंडारण क्षेत्र के भीतर संसाधित हो, जिससे डेटा संप्रभुता संरक्षित रहे।", "status": "machine-draft" },
+    "recommendedValue": { "value": "डेटा प्रसंस्करण भंडारण क्षेत्र तक सीमित (बहु-क्षेत्र प्रसंस्करण अक्षम)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Data > Compliance > Data regions > Calendar, Drive and Docs, Gmail, Chat, Meet, और Gemini में 'Limit data processing to the chosen storage region' सक्षम करें। Assured Controls / Data Regions आवश्यक है।", "status": "machine-draft" }
+  },
+  "ADMIN-017": {
+    "name": { "value": "आंतरिक ऐप्स स्वतः-विश्वसनीय नहीं (GWS.COMMONCONTROLS.10.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.3: आंतरिक (domain-स्वामित्व वाले) OAuth ऐप्स पर स्वचालित रूप से विश्वास करने से उन्हें बिना समीक्षा के पहुंच मिल जाती है, जो एक आंतरिक/पार्श्विक डेटा-पहुंच मार्ग है। api_controls.internal_apps पढ़ता है; जहां trustInternalApps चालू है वहां चेतावनी देता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "आंतरिक ऐप्स पर स्वचालित रूप से विश्वास नहीं किया जाता", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin console > Security > API controls में, आंतरिक ऐप्स पर स्वचालित विश्वास अक्षम करें ताकि वे तृतीय-पक्ष ऐप्स की तरह ही समीक्षा से गुज़रें।", "status": "machine-draft" }
+  },
+  "ADMIN-018": {
+    "name": { "value": "विश्राम-अवस्था डेटा क्षेत्र कॉन्फ़िगर (GWS.COMMONCONTROLS.15.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.1: विश्राम-अवस्था डेटा क्षेत्र सेट करने से यह लागू होता है कि संगठनात्मक डेटा कहां संग्रहीत है (निवास/अनुपालन)। data_regions.data_at_rest_region पढ़ता है; जहां कोई क्षेत्र प्राथमिकता सेट नहीं है वहां चेतावनी देता है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "संगठनात्मक नीति के अनुसार एक विशिष्ट विश्राम-अवस्था डेटा क्षेत्र कॉन्फ़िगर किया गया हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin console > Data > Data regions में, इसे अनसेट छोड़ने के बजाय अपने संगठन की निवास नीति द्वारा आवश्यक विश्राम-अवस्था डेटा क्षेत्र सेट करें।", "status": "machine-draft" }
+  },
+  "ADMIN-019": {
+    "name": { "value": "डेटा प्रसंस्करण भंडारण क्षेत्र तक सीमित (GWS.COMMONCONTROLS.15.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.15.2 के लिए आवश्यक है कि डेटा उसी क्षेत्र में संसाधित हो जो विश्राम-अवस्था डेटा के लिए चुना गया है, ताकि प्रसंस्करण कवर किए गए डेटा को चुने गए अधिकार-क्षेत्र से बाहर न ले जाए। यह जांच data_regions.data_processing_region Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां प्रसंस्करण भंडारण क्षेत्र तक सीमित नहीं है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में डेटा प्रसंस्करण भंडारण क्षेत्र तक सीमित (limitToStorageRegion = true)।", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console में, Account > Data regions के अंतर्गत, 'Process data only in the selected region' सक्षम करें ताकि प्रसंस्करण विश्राम-अवस्था डेटा के लिए चुने गए क्षेत्र के भीतर ही रहे।", "status": "machine-draft" }
+  },
+  "ADMIN-020": {
+    "name": { "value": "अकॉन्फ़िगर्ड तृतीय-पक्ष ऐप्स तक पहुंच अवरुद्ध (GWS.COMMONCONTROLS.10.4)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.10.4 के लिए आवश्यक है कि उपयोगकर्ताओं को अकॉन्फ़िगर्ड तृतीय-पक्ष ऐप्स तक पहुंचने की अनुमति नहीं दी जानी चाहिए, क्योंकि जिस ऐप की स्पष्ट रूप से समीक्षा नहीं हुई है वह व्यापक OAuth स्कोप का अनुरोध कर सकता है और डेटा-निष्कासन या खाता-अधिग्रहण का मार्ग बन सकता है। यह जांच api_controls.unconfigured_third_party_apps Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जिसका पहुंच स्तर BLOCK_ALL_SCOPES नहीं है (वह मान जो अकॉन्फ़िगर्ड ऐप्स तक सभी पहुंच अवरुद्ध करता है)।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में अकॉन्फ़िगर्ड तृतीय-पक्ष ऐप्स के लिए पहुंच स्तर BLOCK_ALL_SCOPES पर सेट।", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console में, Security > API controls > App access control के अंतर्गत, अकॉन्फ़िगर्ड तृतीय-पक्ष ऐप्स को 'Blocked' पर सेट करें, ताकि उपयोगकर्ता उन ऐप्स को कोई पहुंच न दे सकें जिन्हें स्पष्ट रूप से कॉन्फ़िगर और समीक्षा नहीं किया गया है।", "status": "machine-draft" }
+  },
+  "ADMIN-021": {
+    "name": { "value": "व्यक्तिगत नियंत्रण रहित अतिरिक्त Google सेवाएं प्रतिबंधित (GWS.COMMONCONTROLS.16.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.1 अनुशंसा करता है कि जिन Google सेवाओं का अपना व्यक्तिगत व्यवस्थापक नियंत्रण नहीं है उन्हें सभी के लिए OFF कर दिया जाए। Google इसे उलटी अर्थ-व्यवस्था के साथ मॉडल करता है: उन अतिरिक्त सेवाओं को प्रतिबंधित (अवरुद्ध) करने के लिए enterprise_service_restrictions सेवा ENABLED होनी चाहिए। यह जांच enterprise_service_restrictions.service_status Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां serviceState ENABLED नहीं है, जिसका अर्थ है कि उपयोगकर्ता अब भी अकॉन्फ़िगर्ड अतिरिक्त सेवाओं तक पहुंच सकते हैं।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में enterprise_service_restrictions serviceState ENABLED पर सेट (अतिरिक्त सेवाएं प्रतिबंधित)।", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console में, Apps > Additional Google services के अंतर्गत, व्यक्तिगत नियंत्रण रहित सेवाओं के लिए पहुंच सेटिंग को सभी के लिए OFF पर सेट करें। यह एंटरप्राइज़ सेवा प्रतिबंध सक्षम करता है ताकि उपयोगकर्ता उन अतिरिक्त सेवाओं तक न पहुंच सकें।", "status": "machine-draft" }
+  },
+  "ADMIN-022": {
+    "name": { "value": "Early Access अनुप्रयोग अक्षम (GWS.COMMONCONTROLS.16.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.COMMONCONTROLS.16.2 Early Access अनुप्रयोगों तक उपयोगकर्ता पहुंच अक्षम करने की अनुशंसा करता है, जो पूर्व-रिलीज़ सुविधाएं हैं जिन्होंने Google की पूर्ण समीक्षा पूरी नहीं की है और अनमूल्यांकित जोखिम ले सकती हैं। यह जांच early_access_apps.service_status Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां serviceState ENABLED है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में early_access_apps serviceState ENABLED नहीं (Early Access अनुप्रयोग अक्षम)।", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console में, Apps > Additional Google services > Early Access Apps के अंतर्गत, सेवा को सभी के लिए OFF करें ताकि उपयोगकर्ता पूर्व-रिलीज़ Early Access अनुप्रयोग सक्षम न कर सकें।", "status": "machine-draft" }
+  }
+}

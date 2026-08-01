@@ -1,0 +1,153 @@
+{
+  "_family": "CollaborationChecks.json",
+  "COLLAB-001": {
+    "name": { "value": "Meet रिकॉर्डिंग सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "संवेदनशील चर्चाओं के अनधिकृत कैप्चर को रोकने के लिए मीटिंग रिकॉर्डिंग सेटिंग्स नियंत्रित की जानी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "रिकॉर्डिंग मीटिंग आयोजकों तक सीमित हो या संवेदनशील OU के लिए अक्षम हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Google Meet > Meet video settings > Recording > रिकॉर्डिंग अनुमतियां कॉन्फ़िगर करें", "status": "machine-draft" }
+  },
+  "COLLAB-002": {
+    "name": { "value": "Meet बाहरी प्रतिभागी सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "अनधिकृत उपस्थिति और सूचना प्रकटीकरण को रोकने के लिए मीटिंग में बाहरी प्रतिभागी पहुंच नियंत्रित की जानी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "बाहरी प्रतिभागियों को शामिल होने के लिए अनुमोदन या नॉकिंग की आवश्यकता हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Google Meet > Meet video settings > Participants > बाहरी प्रतिभागियों के लिए अनुमोदन आवश्यक करें", "status": "machine-draft" }
+  },
+  "COLLAB-003": {
+    "name": { "value": "Meet अनाम शामिल होने की सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "अनाम उपयोगकर्ता (Google खातों के बिना) स्पष्ट होस्ट अनुमोदन के बिना मीटिंग में शामिल होने में सक्षम नहीं होने चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "अनाम शामिल होना अक्षम हो या होस्ट अनुमोदन आवश्यक हो", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Google Meet > Meet video settings > Participants > अनाम शामिल होना अक्षम करें या नॉकिंग आवश्यक करें", "status": "machine-draft" }
+  },
+  "COLLAB-004": {
+    "name": { "value": "Chat बाहरी संचार", "status": "machine-draft" },
+    "description": { "value": "बाहरी उपयोगकर्ताओं के साथ प्रत्यक्ष संदेशों के माध्यम से डेटा रिसाव को रोकने के लिए बाहरी चैट संचार प्रतिबंधित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "अधिकांश उपयोगकर्ताओं के लिए बाहरी चैट प्रतिबंधित या अक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Google Chat > Chat settings > External chat > बाहरी चैट को विशिष्ट OU तक सीमित करें", "status": "machine-draft" }
+  },
+  "COLLAB-005": {
+    "name": { "value": "Chat इतिहास सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "अनुपालन और लेखापरीक्षा उद्देश्यों के लिए चैट इतिहास सक्षम और संरक्षित रखा जाना चाहिए। इतिहास अक्षम करने से दुर्भावनापूर्ण संचार छिप सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "प्रतिधारण नीति के अनुसार चैट इतिहास सक्षम और संरक्षित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Google Chat > Chat settings > History > इतिहास सक्षम करें और प्रतिधारण कॉन्फ़िगर करें", "status": "machine-draft" }
+  },
+  "COLLAB-006": {
+    "name": { "value": "Chat Spaces बाहरी पहुंच", "status": "machine-draft" },
+    "description": { "value": "बाहरी सदस्यों की अनुमति देने वाले चैट स्पेस (रूम) आंतरिक संचार और साझा फ़ाइलों को अनधिकृत पक्षों के समक्ष उजागर कर सकते हैं", "status": "machine-draft" },
+    "recommendedValue": { "value": "चैट स्पेस तक बाहरी पहुंच प्रतिबंधित या अक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Google Chat > Chat settings > Spaces > स्पेस तक बाहरी पहुंच सीमित करें", "status": "machine-draft" }
+  },
+  "COLLAB-007": {
+    "name": { "value": "Chat ऐप इंस्टॉलेशन सेटिंग्स", "status": "machine-draft" },
+    "description": { "value": "अनधिकृत एकीकरण को वार्तालाप डेटा तक पहुंचने से रोकने के लिए चैट ऐप (बॉट) इंस्टॉलेशन नियंत्रित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "चैट ऐप इंस्टॉलेशन व्यवस्थापक-अनुमोदित ऐप्स तक सीमित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Google Chat > Chat settings > Apps > ऐप इंस्टॉलेशन को अनुमोदित ऐप्स तक सीमित करें", "status": "machine-draft" }
+  },
+  "COLLAB-008": {
+    "name": { "value": "Calendar बाहरी साझाकरण", "status": "machine-draft" },
+    "description": { "value": "मीटिंग विवरण और उपस्थित लोगों के उजागर होने से रोकने के लिए बाहरी उपयोगकर्ताओं के साथ कैलेंडर साझाकरण को free/busy जानकारी तक सीमित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "बाहरी कैलेंडर साझाकरण केवल free/busy जानकारी तक सीमित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Calendar > Sharing settings > External sharing options > 'Only free/busy information' पर सेट करें", "status": "machine-draft" }
+  },
+  "COLLAB-009": {
+    "name": { "value": "Calendar बाहरी आमंत्रण", "status": "machine-draft" },
+    "description": { "value": "आकस्मिक सूचना प्रकटीकरण को रोकने के लिए बाहरी प्राप्तकर्ताओं को कैलेंडर आमंत्रण भेजते समय उपयोगकर्ताओं को चेतावनी दी जानी चाहिए या प्रतिबंधित किया जाना चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "बाहरी आमंत्रण चेतावनियां सक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Calendar > Sharing settings > बाहरी आमंत्रण चेतावनियां सक्षम करें", "status": "machine-draft" }
+  },
+  "COLLAB-010": {
+    "name": { "value": "Calendar अपॉइंटमेंट स्लॉट बाहरी दृश्यता", "status": "machine-draft" },
+    "description": { "value": "उपलब्धता और शेड्यूलिंग विवरण के बाहरी प्रदर्शन को सीमित करने के लिए कैलेंडर अपॉइंटमेंट स्लॉट दृश्यता नियंत्रित की जानी चाहिए", "status": "machine-draft" },
+    "recommendedValue": { "value": "अपॉइंटमेंट स्लॉट बाहरी दृश्यता प्रतिबंधित", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Calendar > Sharing settings > अपॉइंटमेंट स्लॉट दृश्यता सेटिंग्स की समीक्षा करें", "status": "machine-draft" }
+  },
+  "COLLAB-011": {
+    "name": { "value": "Meet बाहरी प्रतिभागी लेबलिंग", "status": "machine-draft" },
+    "description": { "value": "मीटिंग में बाहरी प्रतिभागियों को दृश्यमान रूप से लेबल किया जाना चाहिए ताकि होस्ट और उपस्थित लोग बाहरी व्यक्तियों को आसानी से पहचान सकें और संवेदनशील जानकारी उजागर करने से बच सकें", "status": "machine-draft" },
+    "recommendedValue": { "value": "बाहरी प्रतिभागी लेबलिंग सक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Google Meet > Meet safety settings > External participants > बाहरी प्रतिभागियों की लेबलिंग सक्षम करें", "status": "machine-draft" }
+  },
+  "COLLAB-012": {
+    "name": { "value": "Meet होस्ट प्रबंधन", "status": "machine-draft" },
+    "description": { "value": "होस्ट प्रबंधन सक्षम किया जाना चाहिए ताकि मीटिंग होस्ट मीटिंग अपहरण और व्यवधान को रोकने के लिए म्यूट करना, हटाना और लॉक करना जैसे मॉडरेशन नियंत्रण बनाए रखें", "status": "machine-draft" },
+    "recommendedValue": { "value": "होस्ट प्रबंधन सक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Apps > Google Workspace > Google Meet > Meet safety settings > Host management > होस्ट प्रबंधन नियंत्रण सक्षम करें", "status": "machine-draft" }
+  },
+  "GROUP-001": {
+    "name": { "value": "Google Groups तक बाहरी पहुंच प्रतिबंधित (GWS.GROUPS.1.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.1 के लिए आवश्यक है कि Groups for Business साझाकरण सीमित किया जाए ताकि समूह संगठन के बाहर के लोगों के लिए सुलभ न हों। जब समूह साझाकरण सहयोग क्षमता domain-users-only पर सेट नहीं होती, तो समूह सामग्री, जिसमें किसी स्कूल में छात्र और स्टाफ डेटा शामिल हो सकता है, बाहरी पक्षों की पहुंच में आ जाती है। यह जांच Cloud Identity Policy API से groups_for_business.groups_sharing नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जिसकी सहयोग क्षमता DOMAIN_USERS_ONLY नहीं है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों के लिए समूह साझाकरण सहयोग क्षमता DOMAIN_USERS_ONLY पर सेट", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Admin console में Apps > Google Workspace > Groups for Business > Sharing settings के अंतर्गत, समूह पहुंच को संगठन के उपयोगकर्ताओं तक सीमित करने के लिए सेट करें ('Anyone on the internet' नहीं), ताकि बाहरी पक्ष समूह सामग्री तक न पहुंच सकें।", "status": "machine-draft" }
+  },
+  "GROUP-002": {
+    "name": { "value": "समूह स्वामी बाहरी सदस्य नहीं जोड़ सकते (GWS.GROUPS.1.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.2 के लिए आवश्यक है कि समूह स्वामियों को संगठन के बाहर से सदस्य जोड़ने की अनुमति न हो। बाहरी सदस्य समूह के साथ साझा की गई हर चीज़ तक पहुंच प्राप्त कर लेते हैं। यह जांच उन संगठनात्मक इकाइयों को चिह्नित करती है जहां स्वामी बाहरी सदस्यों की अनुमति दे सकते हैं (ownersCanAllowExternalMembers सक्षम है)।", "status": "machine-draft" },
+    "recommendedValue": { "value": "समूह स्वामी बाहरी सदस्यों की अनुमति नहीं दे सकते (ownersCanAllowExternalMembers अक्षम)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business sharing settings में, वह विकल्प अक्षम करें जो समूह स्वामियों को संगठन के बाहर से सदस्य जोड़ने देता है, ताकि बाहरी सदस्यता के लिए प्रशासनिक कार्रवाई आवश्यक हो।", "status": "machine-draft" }
+  },
+  "GROUP-003": {
+    "name": { "value": "समूह संगठन के बाहर से मेल प्राप्त नहीं कर सकते (GWS.GROUPS.1.3)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.1.3 के लिए आवश्यक है कि समूह स्वामियों को संगठन के बाहर से आने वाले ईमेल की अनुमति देने की अनुमति न हो। समूहों को सार्वजनिक इनबाउंड मेल की अनुमति देना एक इनबाउंड फ़िशिंग और स्पैम वेक्टर है। यह जांच उन संगठनात्मक इकाइयों को चिह्नित करती है जहां स्वामी सार्वजनिक से आने वाले मेल की अनुमति दे सकते हैं (ownersCanAllowIncomingMailFromPublic सक्षम है)।", "status": "machine-draft" },
+    "recommendedValue": { "value": "समूह स्वामी सार्वजनिक से आने वाले मेल की अनुमति नहीं दे सकते (ownersCanAllowIncomingMailFromPublic अक्षम)", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business sharing settings में, वह विकल्प अक्षम करें जो समूह स्वामियों को संगठन के बाहर से आने वाले ईमेल स्वीकार करने देता है, जिससे स्पष्ट रूप से कॉन्फ़िगर न होने तक समूह मेल आंतरिक प्रेषकों तक सीमित रहे।", "status": "machine-draft" }
+  },
+  "GROUP-004": {
+    "name": { "value": "समूह निर्माण प्रशासकों तक सीमित (GWS.GROUPS.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.2.1 अनुशंसा करता है कि Groups for Business कौन बना सकता है इसे प्रशासकों तक सीमित किया जाए। जब कोई भी उपयोगकर्ता समूह बना सकता है, तो समूह विस्तार शासन से आगे निकल जाता है और बाहरी-साझाकरण डिफ़ॉल्ट बिना समीक्षा के लागू हो सकते हैं। यह जांच उन संगठनात्मक इकाइयों को चिह्नित करती है जहां समूह-निर्माण पहुंच स्तर ADMIN_ONLY नहीं है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "समूह निर्माण पहुंच स्तर ADMIN_ONLY पर सेट", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business settings में, 'who can create groups' को केवल प्रशासकों पर सेट करें, ताकि नए समूह जानबूझकर बनाए जाएं और समीक्षित साझाकरण सेटिंग्स प्राप्त करें।", "status": "machine-draft" }
+  },
+  "GROUP-005": {
+    "name": { "value": "समूह वार्तालाप दृश्यता डिफ़ॉल्ट रूप से सदस्यों तक (GWS.GROUPS.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.3.1 के लिए आवश्यक है कि समूह वार्तालाप देखने की डिफ़ॉल्ट अनुमति पूरे domain या सार्वजनिक के बजाय समूह सदस्यों तक सीमित हो। अत्यधिक-खुली वार्तालाप दृश्यता चर्चा अभिलेखागार को उजागर करती है, जिनमें संवेदनशील छात्र और स्टाफ जानकारी हो सकती है। यह जांच groups_for_business.groups_sharing नीति से viewTopicsDefaultAccessLevel पढ़ती है और चेतावनी देती है जहां डिफ़ॉल्ट समूह सदस्यों से अधिक व्यापक है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "डिफ़ॉल्ट वार्तालाप दृश्य पहुंच GROUP_MEMBERS पर सेट", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business settings में, डिफ़ॉल्ट 'who can view conversations' अनुमति को समूह सदस्यों पर सेट करें।", "status": "machine-draft" }
+  },
+  "COLLAB-013": {
+    "name": { "value": "Chat बाहरी फ़ाइल साझाकरण अक्षम (GWS.CHAT.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.2.1 के लिए आवश्यक है कि Google Chat में बाहरी फ़ाइल साझाकरण अक्षम किया जाए (कोई फ़ाइल नहीं पर सेट)। Chat के माध्यम से बाहरी उपयोगकर्ताओं के साथ फ़ाइलें साझा करने की अनुमति देना एक प्रत्यक्ष डेटा-निष्कासन मार्ग है। यह जांच chat.chat_file_sharing पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को विफल करती है जहां बाहरी फ़ाइल साझाकरण NO_FILES पर सेट नहीं है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chat में बाहरी फ़ाइल साझाकरण NO_FILES पर सेट", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin console में Apps > Google Workspace > Google Chat > External file sharing के अंतर्गत, बाहरी फ़ाइल साझाकरण को 'No files' पर सेट करें ताकि Chat के माध्यम से संगठन के बाहर के लोगों के साथ फ़ाइलें साझा न की जा सकें।", "status": "machine-draft" }
+  },
+  "COLLAB-014": {
+    "name": { "value": "Chat स्पेस इतिहास चालू (GWS.CHAT.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CHAT.3.1 के लिए आवश्यक है कि Chat स्पेस का इतिहास हमेशा चालू रहे ताकि निगरानी, जांच और eDiscovery के लिए वार्तालाप संरक्षित रहें। यह जांच chat.space_history पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चेतावनी देती है जहां स्पेस इतिहास HISTORY_ALWAYS_ON पर सेट नहीं है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "Chat स्पेस इतिहास HISTORY_ALWAYS_ON पर सेट", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Chat settings में, स्पेस इतिहास को हमेशा चालू पर सेट करें ताकि वार्तालाप संरक्षित रहें और निगरानी तथा eDiscovery के लिए उपलब्ध हों।", "status": "machine-draft" }
+  },
+  "COLLAB-015": {
+    "name": { "value": "मीटिंग में शामिल होना संगठन तक सीमित (GWS.MEET.2.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.2.1 के लिए आवश्यक है कि मीटिंग तक पहुंच प्रतिबंधित हो ताकि केवल संगठन के उपयोगकर्ता (या विश्वसनीय Workspace संगठन) शामिल हो सकें। मीटिंग को किसी के लिए भी खुला छोड़ना बाहरी और अप्रमाणित पक्षों को उन सत्रों में आने देता है जिनमें छात्र शामिल हो सकते हैं। यह जांच meet.safety_access पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को विफल करती है जहां meetingsAllowedToJoin, SAME_ORGANIZATION_ONLY / ANY_WORKSPACE_ORGANIZATION से अधिक व्यापक है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "meetingsAllowedToJoin, SAME_ORGANIZATION_ONLY (या ANY_WORKSPACE_ORGANIZATION) पर सेट", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Meet safety settings में, मीटिंग में कौन शामिल हो सकता है इसे अपने संगठन के उपयोगकर्ताओं तक सीमित करें, ताकि बाहरी/अप्रमाणित प्रतिभागी डिफ़ॉल्ट रूप से शामिल न हो सकें।", "status": "machine-draft" }
+  },
+  "COLLAB-016": {
+    "name": { "value": "Meet स्वचालित ट्रांसक्रिप्शन डिफ़ॉल्ट रूप से बंद (GWS.MEET.5.2)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.2 अनुशंसा करता है कि Google Meet में स्वचालित ट्रांसक्रिप्शन डिफ़ॉल्ट रूप से बंद हो। मीटिंग का स्वतः-ट्रांसक्रिप्शन वार्तालाप सामग्री को, जो छात्रों के उपस्थित होने पर संवेदनशील होती है, बिना किसी जानबूझकर निर्णय के कैप्चर और संग्रहीत करता है। यह जांच meet.automatic_transcription पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चेतावनी देती है जहां यह डिफ़ॉल्ट रूप से सक्षम है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "स्वचालित ट्रांसक्रिप्शन डिफ़ॉल्ट रूप से अक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Meet settings में, स्वचालित ट्रांसक्रिप्शन को डिफ़ॉल्ट रूप से अक्षम करें ताकि मीटिंग सामग्री केवल तभी कैप्चर हो जब कोई होस्ट जानबूझकर इसे सक्षम करे।", "status": "machine-draft" }
+  },
+  "COLLAB-017": {
+    "name": { "value": "Calendar बाहरी अंतरसंचालनीयता प्रबंधित (GWS.CALENDAR.3.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.3.1 के लिए आवश्यक है कि Calendar Interop (Microsoft Exchange जैसे किसी बाहरी सिस्टम के साथ free/busy और कैलेंडर डेटा साझा करना) तब तक बंद रहे जब तक इसे जानबूझकर प्रबंधित न किया जाए। Interop कैलेंडर डेटा को किसी बाहरी प्लेटफ़ॉर्म से जोड़ता है। यह जांच calendar.interoperability पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चेतावनी देती है जहां enableInteroperability चालू है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "जानबूझकर प्रबंधित न होने तक Calendar अंतरसंचालनीयता अक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Admin console में Apps > Google Workspace > Calendar > Calendar Interop management के अंतर्गत, अंतरसंचालनीयता अक्षम करें जब तक कोई समीक्षित एकीकरण इसकी आवश्यकता न रखता हो।", "status": "machine-draft" }
+  },
+  "COLLAB-018": {
+    "name": { "value": "Calendar अपॉइंटमेंट भुगतान अक्षम (GWS.CALENDAR.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.CALENDAR.4.1 अनुशंसा करता है कि सशुल्क अपॉइंटमेंट शेड्यूल अक्षम किए जाएं। यह जांच calendar.appointment_schedules पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चेतावनी देती है जहां enablePayments चालू है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "सशुल्क अपॉइंटमेंट शेड्यूल अक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Calendar अपॉइंटमेंट-शेड्यूल settings में, भुगतान अक्षम करें जब तक संगठन जानबूझकर सशुल्क अपॉइंटमेंट का उपयोग न करता हो।", "status": "machine-draft" }
+  },
+  "COLLAB-019": {
+    "name": { "value": "Meet स्वचालित रिकॉर्डिंग डिफ़ॉल्ट रूप से बंद (GWS.MEET.5.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.MEET.5.1 अनुशंसा करता है कि Google Meet में स्वचालित रिकॉर्डिंग डिफ़ॉल्ट रूप से बंद हो। स्वतः-रिकॉर्डिंग मीटिंग वीडियो/ऑडियो को, जो छात्रों के उपस्थित होने पर संवेदनशील होता है, बिना किसी जानबूझकर निर्णय के कैप्चर और संग्रहीत करती है। यह जांच meet.automatic_recording पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चेतावनी देती है जहां यह डिफ़ॉल्ट रूप से सक्षम है।", "status": "machine-draft" },
+    "recommendedValue": { "value": "स्वचालित रिकॉर्डिंग डिफ़ॉल्ट रूप से अक्षम", "status": "machine-draft" },
+    "remediationSteps": { "value": "Google Meet settings में, स्वचालित रिकॉर्डिंग को डिफ़ॉल्ट रूप से अक्षम करें ताकि मीटिंग केवल तभी रिकॉर्ड हो जब कोई होस्ट जानबूझकर रिकॉर्डिंग शुरू करे।", "status": "machine-draft" }
+  },
+  "GROUP-006": {
+    "name": { "value": "समूह directory में दृश्यमान (GWS.GROUPS.4.1)", "status": "machine-draft" },
+    "description": { "value": "SCuBA GWS.GROUPS.4.1 के लिए आवश्यक है कि समूहों को directory से छिपाने योग्य न बनाया जाए; छिपे हुए समूह इस बात की पारदर्शिता और निगरानी को कमज़ोर करते हैं कि किस तक पहुंचा जा सकता है और कौन सी पहुंच मौजूद है। यह जांच groups_for_business.groups_sharing नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चेतावनी देती है जहां स्वामी समूह छिपा सकते हैं (ownersCanHideGroups) या नए समूह डिफ़ॉल्ट रूप से छिपे होते हैं (newGroupsAreHidden)।", "status": "machine-draft" },
+    "recommendedValue": { "value": "स्वामी समूह छिपा नहीं सकते और नए समूह डिफ़ॉल्ट रूप से छिपे नहीं होते", "status": "machine-draft" },
+    "remediationSteps": { "value": "Groups for Business settings में, समूह स्वामियों को समूहों को directory से छिपाने से रोकें और सुनिश्चित करें कि नए समूह डिफ़ॉल्ट रूप से छिपे न हों, जिससे directory पारदर्शिता बनी रहे।", "status": "machine-draft" }
+  }
+}
