@@ -107,5 +107,23 @@
       "value": "Security > API controls > App access control: gennemgå apps med fulde Gmail-/Drive-/Directory-scopes, begræns til apps på tilladelseslisten, og tilbagekald udtrykkeligt unødvendige tildelinger (en nulstilling af adgangskode alene tilbagekalder IKKE OAuth-, appadgangskode- eller Apps Script-adgang).",
       "status": "machine-draft"
     }
+  },
+  "GTRADE-007": {
+    "name": {
+      "value": "Administratorrolle tildelt via en gruppe",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Workspace tillader, at en administratorrolle tildeles en sikkerhedsgruppe i stedet for en bruger; hvert medlem, direkte eller indlejret via en underordnet gruppe, arver rollens rettigheder, og enhver, der kan redigere gruppens medlemskab, kan tildele sig selv rollen. En rolle med brede rettigheder på en gruppe er derfor en medlemskabsbaseret eskaleringsvej: kontrollen med at redigere gruppens medlemskab bliver den reelle tildeling af rollen. Dette er Workspace-modstykket til en Active Directory-vej fra en indlejret gruppe til en privilegeret gruppe. Denne kontrol opregner hver rolle, der er tildelt en gruppe, opløser gruppens medlemmer (inklusive indlejrede undergrupper) og markerer eskaleringsfladen; om hver tildeling er tilsigtet, er distriktets afgørelse, så tildelinger med brede rettigheder giver FAIL og snævre WARN til gennemgang.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Administratorroller tildeles navngivne personer, ikke grupper; hvor en gruppetildeling er bevidst, er dens medlemskab stramt kontrolleret, og rollen har mindst mulige rettigheder",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Account > Admin roles > (role) > Admins. For hver rolle, der er tildelt en gruppe, skal du bekræfte, at gruppetildelingen er tilsigtet; foretræk at tildele privilegerede roller til navngivne personer. Hvor en gruppetildeling forbliver, skal du begrænse, hvem der kan redigere gruppens medlemskab (ejere/administratorer), fjerne indlejrede undergrupper, der udvider rækkevidden, og reducere rollen til mindst mulige rettigheder. Gennemgå, hvem der kan tilføje medlemmer til gruppen og til eventuelle indlejrede underordnede grupper.",
+      "status": "machine-draft"
+    }
   }
 }

@@ -107,5 +107,23 @@
       "value": "Sécurité > Contrôles des API > Contrôle d'accès aux applications : examinez les applications disposant de portées complètes Gmail/Drive/Directory, limitez-les aux applications autorisées et révoquez explicitement les délégations inutiles (une réinitialisation de mot de passe seule ne révoque PAS l'accès OAuth, par mot de passe d'application ou Apps Script).",
       "status": "machine-draft"
     }
+  },
+  "GTRADE-007": {
+    "name": {
+      "value": "Rôle d'administrateur accordé via un groupe",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Workspace permet d'attribuer un rôle d'administrateur à un groupe de sécurité plutôt qu'à un utilisateur ; chaque membre, direct ou imbriqué via un groupe enfant, hérite des privilèges du rôle, et quiconque peut modifier l'appartenance au groupe peut s'attribuer le rôle. Un rôle à larges privilèges sur un groupe constitue donc une voie d'escalade fondée sur l'appartenance : le contrôle de modification de l'appartenance au groupe devient l'attribution effective du rôle. C'est l'équivalent Workspace d'une voie Active Directory allant d'un groupe imbriqué vers un groupe à privilèges. Cette vérification énumère chaque rôle attribué à un groupe, résout les membres du groupe (y compris les sous-groupes imbriqués) et signale la surface d'escalade ; savoir si chaque attribution est intentionnelle relève de la décision du district, de sorte que les attributions à larges privilèges obtiennent FAIL et les attributions restreintes WARN pour examen.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Les rôles d'administrateur sont attribués à des personnes nommées, pas à des groupes ; lorsqu'une attribution à un groupe est délibérée, son appartenance est étroitement contrôlée et le rôle applique le moindre privilège",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Compte > Rôles d'administrateur > (rôle) > Administrateurs. Pour chaque rôle attribué à un groupe, confirmez que l'attribution au groupe est intentionnelle ; préférez attribuer les rôles à privilèges à des personnes nommées. Lorsqu'une attribution à un groupe est conservée, limitez qui peut modifier l'appartenance au groupe (propriétaires/gestionnaires), supprimez les sous-groupes imbriqués qui élargissent la portée et réduisez le rôle au moindre privilège. Examinez qui peut ajouter des membres au groupe et à tout groupe enfant imbriqué.",
+      "status": "machine-draft"
+    }
   }
 }

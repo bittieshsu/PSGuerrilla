@@ -1,39 +1,129 @@
 {
   "_family": "GoogleTradecraftChecks.json",
   "GTRADE-001": {
-    "name": { "value": "Exposición a apropiación de la organización por delegación en todo el dominio", "status": "machine-draft" },
-    "description": { "value": "La delegación en todo el dominio vincula la suplantación al ID de cliente OAuth de una cuenta de servicio, no a su clave, de modo que cualquiera que pueda generar una clave en una cuenta de servicio delegada que posea ámbitos amplios obtiene suplantación en toda la organización sin ser superadministrador (la técnica DeleFriend). Las concesiones delegadas que llevan ámbitos completos de Gmail/Drive/Directory/cloud-platform son la precondición de la apropiación.", "status": "machine-draft" },
-    "recommendedValue": { "value": "Ninguna cuenta de servicio con ámbitos de suplantación de la organización delegados (Gmail/Drive/Directory/cloud-platform completos); solo ámbitos de solo lectura restringidos", "status": "machine-draft" },
-    "remediationSteps": { "value": "Seguridad > Controles de API > Delegación en todo el dominio: elimine o restrinja cualquier concesión que posea ámbitos completos de mail.google.com, drive completo, admin.directory o cloud-platform; limítela a los ámbitos de solo lectura mínimos requeridos. En GCP, deniegue la creación de claves en las cuentas de servicio delegadas (iam.disableServiceAccountKeyCreation).", "status": "machine-draft" }
+    "name": {
+      "value": "Exposición a apropiación de la organización por delegación en todo el dominio",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "La delegación en todo el dominio vincula la suplantación al ID de cliente OAuth de una cuenta de servicio, no a su clave, de modo que cualquiera que pueda generar una clave en una cuenta de servicio delegada que posea ámbitos amplios obtiene suplantación en toda la organización sin ser superadministrador (la técnica DeleFriend). Las concesiones delegadas que llevan ámbitos completos de Gmail/Drive/Directory/cloud-platform son la precondición de la apropiación.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ninguna cuenta de servicio con ámbitos de suplantación de la organización delegados (Gmail/Drive/Directory/cloud-platform completos); solo ámbitos de solo lectura restringidos",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Seguridad > Controles de API > Delegación en todo el dominio: elimine o restrinja cualquier concesión que posea ámbitos completos de mail.google.com, drive completo, admin.directory o cloud-platform; limítela a los ámbitos de solo lectura mínimos requeridos. En GCP, deniegue la creación de claves en las cuentas de servicio delegadas (iam.disableServiceAccountKeyCreation).",
+      "status": "machine-draft"
+    }
   },
   "GTRADE-002": {
-    "name": { "value": "Grupos de Google legibles desde Internet", "status": "machine-draft" },
-    "description": { "value": "Los grupos cuyos temas pueden ver 'cualquier persona en Internet' filtran silenciosamente todo su historial de mensajes, una clase que ha expuesto el correo interno (datos financieros, credenciales, PII) de miles de organizaciones. Google no ofrece ninguna alerta nativa para esta exposición.", "status": "machine-draft" },
-    "recommendedValue": { "value": "Ningún grupo visible para cualquier persona en Internet (whoCanViewGroup distinto de ANYONE_CAN_VIEW)", "status": "machine-draft" },
-    "remediationSteps": { "value": "Aplicaciones > Google Workspace > Grupos de empresa > Configuración de uso compartido, y la configuración de acceso por grupo: cambie 'Quién puede ver las conversaciones' de 'Cualquier persona en Internet' a solo los miembros o la organización.", "status": "machine-draft" }
+    "name": {
+      "value": "Grupos de Google legibles desde Internet",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Los grupos cuyos temas pueden ver 'cualquier persona en Internet' filtran silenciosamente todo su historial de mensajes, una clase que ha expuesto el correo interno (datos financieros, credenciales, PII) de miles de organizaciones. Google no ofrece ninguna alerta nativa para esta exposición.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ningún grupo visible para cualquier persona en Internet (whoCanViewGroup distinto de ANYONE_CAN_VIEW)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Aplicaciones > Google Workspace > Grupos de empresa > Configuración de uso compartido, y la configuración de acceso por grupo: cambie 'Quién puede ver las conversaciones' de 'Cualquier persona en Internet' a solo los miembros o la organización.",
+      "status": "machine-draft"
+    }
   },
   "GTRADE-003": {
-    "name": { "value": "Grupos de unión abierta / con miembros externos", "status": "machine-draft" },
-    "description": { "value": "Los grupos a los que cualquiera (o cualquier persona del dominio) puede unirse, o que permiten miembros externos, amplían el límite de confianza y habilitan el acceso de autoservicio; si tal grupo además posee acceso a recursos o a IAM, unirse a él hereda ese acceso (una vía de escalada de privilegios que Google clasifica como comportamiento previsto).", "status": "machine-draft" },
-    "recommendedValue": { "value": "Grupos restringidos a miembros invitados; sin unión abierta a cualquiera y sin miembros externos salvo que se requiera explícitamente", "status": "machine-draft" },
-    "remediationSteps": { "value": "Aplicaciones > Google Workspace > Grupos de empresa: establezca el valor predeterminado de 'Quién puede unirse' en 'Solo usuarios invitados' y deshabilite 'Permitir miembros externos' salvo que un grupo los requiera explícitamente; revise los grupos que conceden acceso a recursos o a IAM.", "status": "machine-draft" }
+    "name": {
+      "value": "Grupos de unión abierta / con miembros externos",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Los grupos a los que cualquiera (o cualquier persona del dominio) puede unirse, o que permiten miembros externos, amplían el límite de confianza y habilitan el acceso de autoservicio; si tal grupo además posee acceso a recursos o a IAM, unirse a él hereda ese acceso (una vía de escalada de privilegios que Google clasifica como comportamiento previsto).",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Grupos restringidos a miembros invitados; sin unión abierta a cualquiera y sin miembros externos salvo que se requiera explícitamente",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Aplicaciones > Google Workspace > Grupos de empresa: establezca el valor predeterminado de 'Quién puede unirse' en 'Solo usuarios invitados' y deshabilite 'Permitir miembros externos' salvo que un grupo los requiera explícitamente; revise los grupos que conceden acceso a recursos o a IAM.",
+      "status": "machine-draft"
+    }
   },
   "GTRADE-004": {
-    "name": { "value": "Proliferación de superadministradores", "status": "machine-draft" },
-    "description": { "value": "Los superadministradores omiten el SSO y la mayoría de los controles; una población numerosa de superadministradores amplía la superficie de ataque de mayor valor de la organización. La práctica recomendada de Google es mantener un número reducido (menos de cinco) y realizar el trabajo diario con roles de mínimo privilegio.", "status": "machine-draft" },
-    "recommendedValue": { "value": "Menos de 5 superadministradores activos", "status": "machine-draft" },
-    "remediationSteps": { "value": "Cuenta > Roles de administrador > Superadministrador: reduzca la pertenencia al conjunto mínimo de emergencia (break-glass); traslade las tareas rutinarias a roles personalizados/predefinidos de mínimo privilegio; aplique 2SV resistente al phishing a todos los superadministradores restantes.", "status": "machine-draft" }
+    "name": {
+      "value": "Proliferación de superadministradores",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Los superadministradores omiten el SSO y la mayoría de los controles; una población numerosa de superadministradores amplía la superficie de ataque de mayor valor de la organización. La práctica recomendada de Google es mantener un número reducido (menos de cinco) y realizar el trabajo diario con roles de mínimo privilegio.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Menos de 5 superadministradores activos",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Cuenta > Roles de administrador > Superadministrador: reduzca la pertenencia al conjunto mínimo de emergencia (break-glass); traslade las tareas rutinarias a roles personalizados/predefinidos de mínimo privilegio; aplique 2SV resistente al phishing a todos los superadministradores restantes.",
+      "status": "machine-draft"
+    }
   },
   "GTRADE-005": {
-    "name": { "value": "Roles personalizados equivalentes a superadministrador", "status": "machine-draft" },
-    "description": { "value": "Los roles de administrador personalizados que llevan privilegios de alto poder (gestión de usuarios, configuración de seguridad, gestión de roles, exportación de datos/Takeout) pueden aproximarse a la capacidad de superadministrador mientras eluden un simple recuento de superadministradores, un vector silencioso de concentración de privilegios y de persistencia.", "status": "machine-draft" },
-    "recommendedValue": { "value": "Ningún rol personalizado lleva privilegios equivalentes a superadministrador (gestión de usuarios/seguridad/roles o exportación de datos) fuera del uso de emergencia (break-glass)", "status": "machine-draft" },
-    "remediationSteps": { "value": "Cuenta > Roles de administrador: revise los roles personalizados que posean privilegios de gestión de usuarios, configuración de seguridad, gestión de roles o exportación de datos/Takeout; divídalos en roles de ámbito reducido y limite los asignatarios.", "status": "machine-draft" }
+    "name": {
+      "value": "Roles personalizados equivalentes a superadministrador",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Los roles de administrador personalizados que llevan privilegios de alto poder (gestión de usuarios, configuración de seguridad, gestión de roles, exportación de datos/Takeout) pueden aproximarse a la capacidad de superadministrador mientras eluden un simple recuento de superadministradores, un vector silencioso de concentración de privilegios y de persistencia.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ningún rol personalizado lleva privilegios equivalentes a superadministrador (gestión de usuarios/seguridad/roles o exportación de datos) fuera del uso de emergencia (break-glass)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Cuenta > Roles de administrador: revise los roles personalizados que posean privilegios de gestión de usuarios, configuración de seguridad, gestión de roles o exportación de datos/Takeout; divídalos en roles de ámbito reducido y limite los asignatarios.",
+      "status": "machine-draft"
+    }
   },
   "GTRADE-006": {
-    "name": { "value": "Concesiones OAuth persistentes / con ámbitos excesivos", "status": "machine-draft" },
-    "description": { "value": "Las concesiones OAuth de terceros que poseen ámbitos completos de Gmail/Drive/admin omiten la MFA y sobreviven a un restablecimiento de contraseña (las sesiones de Apps Script, las contraseñas de aplicación y las sesiones de IMAP-OAuth no se revocan con un restablecimiento), un canal de persistencia duradero. Google registra las concesiones pero no incluye ningún clasificador de concesiones maliciosas predeterminado.", "status": "machine-draft" },
-    "recommendedValue": { "value": "Ninguna aplicación OAuth de terceros que posea ámbitos completos de mail/drive/admin; concesiones persistentes revisadas y revocadas explícitamente", "status": "machine-draft" },
-    "remediationSteps": { "value": "Seguridad > Controles de API > Control de acceso a aplicaciones: revise las aplicaciones con ámbitos completos de Gmail/Drive/Directory, restrinja a aplicaciones en la lista de permitidos y revoque explícitamente las concesiones innecesarias (un restablecimiento de contraseña por sí solo NO revoca el acceso OAuth, de contraseña de aplicación ni de Apps Script).", "status": "machine-draft" }
+    "name": {
+      "value": "Concesiones OAuth persistentes / con ámbitos excesivos",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Las concesiones OAuth de terceros que poseen ámbitos completos de Gmail/Drive/admin omiten la MFA y sobreviven a un restablecimiento de contraseña (las sesiones de Apps Script, las contraseñas de aplicación y las sesiones de IMAP-OAuth no se revocan con un restablecimiento), un canal de persistencia duradero. Google registra las concesiones pero no incluye ningún clasificador de concesiones maliciosas predeterminado.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ninguna aplicación OAuth de terceros que posea ámbitos completos de mail/drive/admin; concesiones persistentes revisadas y revocadas explícitamente",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Seguridad > Controles de API > Control de acceso a aplicaciones: revise las aplicaciones con ámbitos completos de Gmail/Drive/Directory, restrinja a aplicaciones en la lista de permitidos y revoque explícitamente las concesiones innecesarias (un restablecimiento de contraseña por sí solo NO revoca el acceso OAuth, de contraseña de aplicación ni de Apps Script).",
+      "status": "machine-draft"
+    }
+  },
+  "GTRADE-007": {
+    "name": {
+      "value": "Rol de administrador concedido a través de un grupo",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Workspace permite asignar un rol de administrador a un grupo de seguridad en lugar de a un usuario; cada miembro, directo o anidado a través de un grupo secundario, hereda los privilegios del rol, y cualquiera que pueda editar la pertenencia del grupo puede concederse el rol a sí mismo. Por tanto, un rol de amplios privilegios sobre un grupo es una vía de escalada basada en la pertenencia: el control de edición de la pertenencia del grupo se convierte en la concesión efectiva del rol. Es el equivalente en Workspace de una vía de Active Directory de grupo anidado a grupo con privilegios. Esta comprobación enumera cada rol asignado a un grupo, resuelve los miembros del grupo (incluidos los subgrupos anidados) y señala la superficie de escalada; si cada concesión es intencionada es una determinación del distrito, por lo que las concesiones de amplios privilegios obtienen FAIL y las restringidas WARN para revisión.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Los roles de administrador se asignan a personas concretas, no a grupos; cuando una concesión a un grupo es deliberada, su pertenencia está estrictamente controlada y el rol es de mínimo privilegio",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administración > Cuenta > Roles de administrador > (rol) > Administradores. Para cada rol asignado a un grupo, confirme que la concesión al grupo es intencionada; es preferible asignar los roles con privilegios a personas concretas. Cuando se mantenga una concesión a un grupo, restrinja quién puede editar la pertenencia del grupo (propietarios/gestores), elimine los subgrupos anidados que amplían el alcance y reduzca el rol al mínimo privilegio. Revise quién puede añadir miembros al grupo y a cualquier grupo secundario anidado.",
+      "status": "machine-draft"
+    }
   }
 }

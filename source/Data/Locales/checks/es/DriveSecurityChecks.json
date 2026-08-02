@@ -305,5 +305,23 @@
       "value": "En la consola de administración de Google, en Aplicaciones > Google Workspace > Drive y Documentos > Configuración de uso compartido > Acceso general predeterminado, establezca el valor predeterminado en 'Privado para el propietario' para que los archivos recién creados comiencen como privados y solo se compartan mediante una acción deliberada.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-018": {
+    "name": {
+      "value": "Exposición de unidades compartidas al uso compartido externo",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Enumera todas las unidades compartidas del inquilino mediante acceso de administrador de dominio e inspecciona las restricciones de uso compartido de cada unidad. Una unidad compartida cuya restricción domainUsersOnly no está aplicada permite que su contenido se comparta con cuentas fuera de la organización, hasta llegar al acceso público 'anyone with the link' si la configuración de uso compartido a nivel de dominio lo permite. Esto evalúa la restricción a nivel de unidad que controla el uso compartido externo; confirmar un enlace público real a un archivo requiere un análisis de permisos por archivo que esta comprobación no realiza.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Cada unidad compartida restringe el acceso a los miembros de la organización (domainUsersOnly = true), o el uso compartido externo es una excepción documentada y revisada",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administración > Aplicaciones > Google Workspace > Drive y Documentos > Gestionar unidades compartidas. Para cada unidad compartida marcada, abra su configuración y desactive 'Sharing with people outside <organization>' (y 'Sharing with non-members') para que los elementos no puedan compartirse externamente, o registre la excepción de negocio. Aplique un valor predeterminado de dominio en Sharing settings > Shared drive creation.",
+      "status": "machine-draft"
+    }
   }
 }

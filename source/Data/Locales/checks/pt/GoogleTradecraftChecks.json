@@ -107,5 +107,23 @@
       "value": "Segurança > Controlos de API > Controlo de acesso de aplicações: reveja as aplicações com âmbitos completos de Gmail/Drive/Directory, restrinja às aplicações na lista de permissões e revogue explicitamente as concessões desnecessárias (uma reposição de palavra-passe, por si só, NÃO revoga o acesso OAuth, por palavra-passe de aplicação ou do Apps Script).",
       "status": "machine-draft"
     }
+  },
+  "GTRADE-007": {
+    "name": {
+      "value": "Função de administrador concedida através de um grupo",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "O Google Workspace permite atribuir uma função de administrador a um grupo de segurança em vez de a um utilizador; cada membro, direto ou aninhado através de um grupo secundário, herda os privilégios da função, e qualquer pessoa que possa editar a pertença ao grupo pode conceder a função a si própria. Uma função de amplos privilégios sobre um grupo é, por isso, um caminho de escalada baseado na pertença: o controlo de edição da pertença ao grupo torna-se a concessão efetiva da função. É o equivalente no Workspace de um caminho do Active Directory de grupo aninhado para grupo com privilégios. Esta verificação enumera cada função atribuída a um grupo, resolve os membros do grupo (incluindo subgrupos aninhados) e assinala a superfície de escalada; se cada concessão é intencional é uma determinação do distrito, pelo que as concessões de amplos privilégios obtêm FAIL e as restritas WARN para revisão.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "As funções de administrador são atribuídas a pessoas nomeadas, não a grupos; quando uma concessão a um grupo é deliberada, a sua pertença é rigorosamente controlada e a função tem privilégio mínimo",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Conta > Funções de administrador > (função) > Administradores. Para cada função atribuída a um grupo, confirme que a concessão ao grupo é intencional; prefira atribuir funções com privilégios a pessoas nomeadas. Onde uma concessão a um grupo se mantém, restrinja quem pode editar a pertença ao grupo (proprietários/gestores), remova os subgrupos aninhados que ampliam o alcance e reduza a função ao privilégio mínimo. Reveja quem pode adicionar membros ao grupo e a quaisquer grupos secundários aninhados.",
+      "status": "machine-draft"
+    }
   }
 }

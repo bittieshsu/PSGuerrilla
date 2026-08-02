@@ -179,5 +179,95 @@
       "value": "Admin Console > Sécurité > Authentification. Sélectionnez l'unité organisationnelle des élèves. Sous Récupération de compte, désactivez la récupération autonome du compte utilisateur pour les OU d'élèves (la récupération passe par le service d'assistance du district). Sous Gestion des mots de passe, imposez des mots de passe robustes avec une longueur minimale de 12 caractères ou plus. Sous Validation en deux étapes, imposez la 2SV pour les tranches d'âge pouvant détenir un second facteur et documentez l'exception pour les OU plus jeunes.",
       "status": "machine-draft"
     }
+  },
+  "GWS-K12-011": {
+    "name": {
+      "value": "Transfert automatique des élèves désactivé",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Une seule règle de transfert automatique Gmail copie silencieusement chaque message futur vers une adresse externe, et elle survit à une réinitialisation de mot de passe car il s'agit d'un paramètre, pas d'une session. Le personnel a parfois un besoin légitime ; une OU d'élèves n'en a pas, et laisser cette capacité activée constitue une voie permanente d'exfiltration et de persistance de compte. Cette vérification résout le paramètre utilisateur final de transfert automatique Gmail pour chaque OU d'élèves.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Le transfert automatique des e-mails est désactivé pour les OU d'élèves",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Google Workspace > Gmail > Accès de l'utilisateur final. Sélectionnez l'unité organisationnelle des élèves et désactivez 'Automatic forwarding' afin que les utilisateurs de l'OU ne puissent pas configurer de règles de transfert. Appliquez la même chose à toute OU de personnel sans besoin métier.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-015": {
+    "name": {
+      "value": "Couverture des licences pour la journalisation d'audit",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Les journaux d'audit Workspace répondent aux questions que soulève chaque incident de compte, mais des chercheurs ont constaté que, sans licence payante attribuée à un utilisateur, les actions dans le Drive privé de cet utilisateur peuvent ne générer aucun enregistrement de journal, laissant l'organisation aveugle à l'exfiltration. Google a qualifié cela de comportement prévu, ce qui fait de l'attribution d'une licence un contrôle de sécurité. L'évaluer nécessite l'édition/SKU Workspace de chaque utilisateur, que le collecteur ne renseigne pas encore, de sorte que ce contrôle est un élément documenté de revue manuelle : la vérification signale Not Assessed et oriente vers une confirmation manuelle.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Chaque utilisateur actif détient une licence payante afin que les actions dans le Drive privé soient journalisées (à vérifier manuellement ; l'édition/SKU n'est pas encore collectée)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Facturation > Licences. Confirmez que chaque utilisateur actif dispose d'une licence Workspace payante afin que les actions dans le Drive privé génèrent des enregistrements d'audit. L'évaluation nécessite l'édition/SKU de chaque utilisateur, que le collecteur ne renseigne pas encore, alors vérifiez la couverture à la main.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-013": {
+    "name": {
+      "value": "Authentification héritée désactivée pour les élèves",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "POP et IMAP sont des protocoles d'accès au courrier antérieurs à OAuth qui contournent les questions de connexion modernes et les seconds facteurs : un nom d'utilisateur et un mot de passe valides suffisent. Ils existent pour d'anciens clients de messagerie de bureau dont une OU d'élèves n'a pas besoin, et les laisser activés maintient ouverte une porte fondée sur les seuls identifiants, à côté de la porte d'entrée que le district a renforcée avec la 2SV. Cette vérification résout les paramètres d'accès utilisateur final IMAP et POP de Gmail pour chaque OU d'élèves. Les mots de passe d'application, une voie héritée connexe, ne sont pas exposés par cette surface de stratégie et restent un élément de revue manuelle.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "L'accès utilisateur final IMAP et POP est désactivé pour les OU d'élèves",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Applications > Google Workspace > Gmail > Accès de l'utilisateur final. Sélectionnez l'unité organisationnelle des élèves et désactivez l'accès IMAP et POP. Les mots de passe d'application sont une voie d'accès héritée connexe que cette vérification ne peut pas lire ; examinez-les séparément.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-012": {
+    "name": {
+      "value": "Exportation des données des élèves (Takeout) désactivée",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Takeout est une exportation prise en charge, en un clic, de l'ensemble du Drive et de Gmail d'un utilisateur ; au moment du départ, ou entre les mains d'un compte compromis, c'est un outil d'exfiltration massive. Takeout est configurable par OU dans la console d'administration, mais aucune surface de stratégie Cloud Identity n'expose actuellement son état pour une lecture automatisée, de sorte que ce contrôle est un élément documenté de revue manuelle : la vérification signale Not Assessed et oriente vers une confirmation manuelle plutôt que de supposer une valeur qu'elle ne peut pas lire.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Google Takeout est désactivé pour les OU d'élèves (à vérifier manuellement ; aucune API de configuration ne l'expose aujourd'hui)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Compte > Paramètres du compte > Takeout. Sélectionnez l'unité organisationnelle des élèves et désactivez Takeout afin qu'une exportation massive en un clic de Drive et Gmail ne soit pas disponible pour les élèves. Aucune surface de stratégie Cloud Identity n'expose cet état, alors confirmez-le à la main.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-014": {
+    "name": {
+      "value": "Privilèges d'exportation et de conservation Vault restreints",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Vault représente une portée administrative sur l'ensemble du tenant. 'Manage Exports' peut télécharger la boîte aux lettres et le Drive de n'importe quel utilisateur à tout moment ; 'Manage Retention Rules' peut supprimer définitivement des enregistrements qu'une règle mal configurée emporte. Ces privilèges reposent sur des rôles d'administrateur et s'accumulent comme le font les rôles d'administration déléguée. Cette vérification met en évidence les attributions de rôles d'administrateur dont les privilèges correspondent à la gestion de l'exportation, de la conservation, des conservations à des fins juridiques, des dossiers ou de l'eDiscovery Vault ; savoir si chaque titulaire est légitime relève de la décision du district, de sorte qu'elle produit une liste d'examen plutôt qu'un échec ferme. Les règles de conservation elles-mêmes sont examinées directement dans Vault.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Chaque privilège d'exportation ou de conservation Vault correspond à un administrateur connu et actuel qui en a besoin",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Compte > Rôles d'administrateur. Pour chaque rôle signalé comme portant un privilège d'exportation, de conservation, de conservation à des fins juridiques, de dossier ou d'eDiscovery Vault, confirmez que le titulaire en a besoin ; supprimez le privilège ou l'attribution lorsque ce n'est pas le cas. Examinez les règles de conservation actuelles directement dans Vault (vault.google.com > Retention).",
+      "status": "machine-draft"
+    }
   }
 }

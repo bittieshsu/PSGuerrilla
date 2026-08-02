@@ -179,5 +179,95 @@
       "value": "Admin Console > Security > Authentication. Vælg elev-organisationsenheden. Under Account recovery skal du slå selvgendannelse af brugerkonti fra for elev-OU'er (gendannelse foregår gennem distriktets helpdesk). Under Password management skal du håndhæve stærke adgangskoder med en minimumslængde på 12 eller højere. Under 2-step verification skal du håndhæve 2SV for aldersgrupper, der kan have en anden faktor, og dokumentere undtagelsen for yngre OU'er.",
       "status": "machine-draft"
     }
+  },
+  "GWS-K12-011": {
+    "name": {
+      "value": "Automatisk videresendelse for elever deaktiveret",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "En enkelt regel for automatisk videresendelse i Gmail kopierer lydløst hver fremtidig besked til en ekstern adresse, og den overlever en nulstilling af adgangskoden, fordi den er en indstilling og ikke en session. Personale har lejlighedsvis et legitimt behov; en elev-OU har det ikke, og at lade funktionen være slået til er en stående vej til eksfiltrering og kontopersistens. Denne kontrol opløser Gmail-slutbrugerindstillingen for automatisk videresendelse for hver elev-OU.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Automatisk videresendelse af e-mail er deaktiveret for elev-OU'er",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access. Vælg elev-organisationsenheden, og slå 'Automatic forwarding' fra, så brugere i OU'en ikke kan konfigurere videresendelsesregler. Anvend det samme på enhver personale-OU uden forretningsbehov.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-015": {
+    "name": {
+      "value": "Licensdækning for revisionslogning",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Workspace-revisionslogfiler besvarer de spørgsmål, som enhver kontohændelse rejser, men forskere fandt, at uden en betalt licens tildelt en bruger kan handlinger i den brugers private Drive ikke generere nogen logposter, hvilket efterlader organisationen blind over for eksfiltrering. Google kaldte det tilsigtet adfærd, hvilket gør en licenstildeling til en sikkerhedskontrol. At vurdere det kræver hver brugers Workspace-udgave/SKU, som indsamleren endnu ikke udfylder, så denne kontrol er et dokumenteret element til manuel gennemgang: kontrollen rapporterer Not Assessed og henviser til en manuel bekræftelse.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Hver aktiv bruger har en betalt licens, så handlinger i privat Drive logges (verificér manuelt; udgave/SKU indsamles endnu ikke)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Billing > Licenses. Bekræft, at hver aktiv bruger er tildelt en betalt Workspace-licens, så handlinger i privat Drive genererer revisionsposter. Vurderingen kræver hver brugers udgave/SKU, som indsamleren endnu ikke udfylder, så verificér dækningen manuelt.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-013": {
+    "name": {
+      "value": "Ældre godkendelse deaktiveret for elever",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "POP og IMAP er e-mailadgangsprotokoller fra før OAuth, der omgår moderne loginudfordringer og andenfaktorer: et gyldigt brugernavn og en gyldig adgangskode er nok. De findes til ældre desktop-mailklienter, som en elev-OU ikke har brug for, og at lade dem være slået til holder en dør åben, der kun er baseret på legitimationsoplysninger, ved siden af hoveddøren, som distriktet har hærdet med 2SV. Denne kontrol opløser Gmail-slutbrugeradgangsindstillingerne for IMAP og POP for hver elev-OU. App-specifikke adgangskoder, en beslægtet ældre vej, eksponeres ikke af denne politikflade og forbliver et element til manuel gennemgang.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "IMAP- og POP-slutbrugeradgang er deaktiveret for elev-OU'er",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Gmail > End User Access. Vælg elev-organisationsenheden, og slå både IMAP- og POP-adgang fra. App-specifikke adgangskoder er en beslægtet ældre adgangsvej, som denne kontrol ikke kan læse; gennemgå dem separat.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-012": {
+    "name": {
+      "value": "Eksport af elevdata (Takeout) deaktiveret",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Takeout er en understøttet eksport med ét klik af en brugers hele Drive og Gmail; på vej ud ad døren, eller i hænderne på en kompromitteret konto, er det et værktøj til masseeksfiltrering. Takeout kan konfigureres pr. OU i administrationskonsollen, men i øjeblikket eksponerer ingen Cloud Identity-politikflade dens tilstand til automatiseret læsning, så denne kontrol er et dokumenteret element til manuel gennemgang: kontrollen rapporterer Not Assessed og henviser til en manuel bekræftelse i stedet for at antage en værdi, den ikke kan læse.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Google Takeout er slået fra for elev-OU'er (verificér manuelt; ingen konfigurations-API eksponerer dette i dag)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Account > Account settings > Takeout. Vælg elev-organisationsenheden, og slå Takeout fra, så en masseeksport med ét klik af Drive og Gmail ikke er tilgængelig for elever. Ingen Cloud Identity-politikflade eksponerer denne tilstand, så bekræft den manuelt.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-014": {
+    "name": {
+      "value": "Vault-eksport- og opbevaringsrettigheder begrænset",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Vault er administrativ rækkevidde over hele tenanten. 'Manage Exports' kan når som helst downloade enhver brugers postkasse og Drive; 'Manage Retention Rules' kan permanent slette poster, som en fejlkonfigureret regel fejer med. Disse rettigheder hviler på administratorroller og akkumuleres på samme måde som delegerede administratorroller. Denne kontrol fremhæver administratorrolletildelinger, hvis rettigheder svarer til håndtering af Vault-eksport, opbevaring, hold, matter eller eDiscovery; om hver indehaver er legitim, er distriktets afgørelse, så den producerer en gennemgangsliste i stedet for en hård fejl. Selve opbevaringsreglerne gennemgås direkte i Vault.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Hver Vault-eksport- eller opbevaringsrettighed knytter sig til en kendt, aktuel administrator, der har brug for den",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Account > Admin roles. For hver rolle, der er markeret som bærer af en Vault-eksport-, opbevarings-, hold-, matter- eller eDiscovery-rettighed, skal du bekræfte, at indehaveren har brug for den; fjern rettigheden eller tildelingen, hvor de ikke har. Gennemgå de aktuelle opbevaringsregler direkte i Vault (vault.google.com > Retention).",
+      "status": "machine-draft"
+    }
   }
 }

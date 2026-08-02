@@ -305,5 +305,23 @@
       "value": "Nella Console di amministrazione Google, in App > Google Workspace > Drive e Docs > Impostazioni di condivisione > Accesso generale predefinito, imposta il valore predefinito su 'Privato per il proprietario' affinché i file appena creati inizino come privati e vengano condivisi solo tramite un'azione deliberata.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-018": {
+    "name": {
+      "value": "Esposizione dei Drive condivisi alla condivisione esterna",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Enumera ogni Drive condiviso nel tenant tramite accesso di amministratore di dominio e ispeziona le restrizioni di condivisione di ciascun Drive. Un Drive condiviso la cui restrizione domainUsersOnly non è applicata consente di condividere i suoi contenuti con account esterni all'organizzazione, fino all'accesso pubblico 'anyone with the link' se l'impostazione di condivisione a livello di dominio lo permette. Questo valuta la restrizione a livello di Drive che governa la condivisione esterna; confermare un collegamento a file effettivamente pubblico richiede una scansione delle autorizzazioni file per file che questo controllo non esegue.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ogni Drive condiviso limita l'accesso ai membri dell'organizzazione (domainUsersOnly = true), oppure la condivisione esterna è un'eccezione documentata ed esaminata",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace > Drive e Docs > Gestisci Drive condivisi. Per ogni Drive condiviso segnalato, apri le sue impostazioni e disattiva 'Sharing with people outside <organization>' (e 'Sharing with non-members') affinché gli elementi non possano essere condivisi esternamente, oppure registra l'eccezione aziendale. Applica un valore predefinito di dominio in Sharing settings > Shared drive creation.",
+      "status": "machine-draft"
+    }
   }
 }

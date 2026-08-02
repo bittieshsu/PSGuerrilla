@@ -305,5 +305,23 @@
       "value": "Na Consola de administração, em Aplicações > Google Workspace > Drive and Docs > Definições de partilha > Acesso geral predefinido, defina a predefinição como 'Privado para o proprietário' para que os ficheiros recém-criados comecem privados e só sejam partilhados por ação deliberada.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-018": {
+    "name": {
+      "value": "Exposição de Drives partilhados à partilha externa",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Enumera cada Drive partilhado no tenant através de acesso de administrador de domínio e inspeciona as restrições de partilha de cada Drive. Um Drive partilhado cuja restrição domainUsersOnly não está aplicada permite que o seu conteúdo seja partilhado com contas fora da organização, até ao acesso público 'anyone with the link' se a definição de partilha ao nível do domínio o permitir. Isto avalia a restrição ao nível do Drive que controla a partilha externa; confirmar uma ligação de ficheiro efetivamente pública exige uma análise de permissões ficheiro a ficheiro que esta verificação não realiza.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Cada Drive partilhado restringe o acesso aos membros da organização (domainUsersOnly = true), ou a partilha externa é uma exceção documentada e revista",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Drive and Docs > Gerir Drives partilhados. Para cada Drive partilhado assinalado, abra as suas definições e desative 'Sharing with people outside <organization>' (e 'Sharing with non-members') para que os itens não possam ser partilhados externamente, ou registe a exceção de negócio. Aplique uma predefinição de domínio em Sharing settings > Shared drive creation.",
+      "status": "machine-draft"
+    }
   }
 }

@@ -179,5 +179,95 @@
       "value": "Consola de administração > Segurança > Autenticação. Selecione a unidade organizacional de alunos. Em Recuperação de conta, desative a recuperação de conta própria do utilizador para as OU de alunos (a recuperação é feita através do help desk do distrito). Em Gestão de palavras-passe, imponha palavras-passe fortes com comprimento mínimo de 12 ou superior. Em Verificação em dois passos, imponha a 2SV para as faixas etárias que podem deter um segundo fator e documente a exceção para as OU mais jovens.",
       "status": "machine-draft"
     }
+  },
+  "GWS-K12-011": {
+    "name": {
+      "value": "Reencaminhamento automático de alunos desativado",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Uma única regra de reencaminhamento automático do Gmail copia silenciosamente cada mensagem futura para um endereço externo, e sobrevive a uma reposição de palavra-passe porque é uma definição, não uma sessão. O pessoal tem ocasionalmente uma necessidade legítima; uma OU de alunos não tem, e deixar a capacidade ativada é um caminho permanente de exfiltração e persistência de conta. Esta verificação resolve a definição de utilizador final de reencaminhamento automático do Gmail para cada OU de alunos.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "O reencaminhamento automático de email está desativado para as OU de alunos",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Gmail > Acesso do utilizador final. Selecione a unidade organizacional de alunos e desative 'Automatic forwarding' para que os utilizadores da OU não possam configurar regras de reencaminhamento. Aplique o mesmo a qualquer OU de pessoal sem necessidade de negócio.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-015": {
+    "name": {
+      "value": "Cobertura de licenças para o registo de auditoria",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Os registos de auditoria do Workspace respondem às perguntas que cada incidente de conta levanta, mas os investigadores descobriram que, sem uma licença paga atribuída a um utilizador, as ações no Drive privado desse utilizador podem não gerar quaisquer registos, deixando a organização cega perante a exfiltração. A Google classificou isto como comportamento intencional, o que torna a atribuição de uma licença um controlo de segurança. Avaliá-lo exige a edição/SKU do Workspace de cada utilizador, que o coletor ainda não preenche, pelo que este controlo é um item documentado de revisão manual: a verificação reporta Not Assessed e encaminha para uma confirmação manual.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Cada utilizador ativo possui uma licença paga para que as ações no Drive privado sejam registadas (verifique manualmente; edição/SKU ainda não recolhida)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Faturação > Licenças. Confirme que cada utilizador ativo tem atribuída uma licença paga do Workspace para que as ações no Drive privado gerem registos de auditoria. A avaliação necessita da edição/SKU de cada utilizador, que o coletor ainda não preenche, por isso verifique a cobertura manualmente.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-013": {
+    "name": {
+      "value": "Autenticação legada desativada para alunos",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "POP e IMAP são protocolos de acesso ao correio anteriores ao OAuth que contornam os desafios de início de sessão modernos e os segundos fatores: um nome de utilizador e uma palavra-passe válidos são suficientes. Existem para clientes de correio de secretária legados de que uma OU de alunos não necessita, e deixá-los ativados mantém aberta uma porta baseada apenas em credenciais, ao lado da porta principal que o distrito reforçou com 2SV. Esta verificação resolve as definições de acesso de utilizador final IMAP e POP do Gmail para cada OU de alunos. As palavras-passe específicas de aplicação, um caminho legado relacionado, não são expostas por esta superfície de políticas e permanecem um item de revisão manual.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "O acesso de utilizador final IMAP e POP está desativado para as OU de alunos",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Aplicações > Google Workspace > Gmail > Acesso do utilizador final. Selecione a unidade organizacional de alunos e desative o acesso IMAP e POP. As palavras-passe específicas de aplicação são um caminho de acesso legado relacionado que esta verificação não consegue ler; reveja-as separadamente.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-012": {
+    "name": {
+      "value": "Exportação de dados de alunos (Takeout) desativada",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "O Google Takeout é uma exportação suportada, com um clique, de todo o Drive e Gmail de um utilizador; à saída, ou nas mãos de uma conta comprometida, é uma ferramenta de exfiltração em massa. O Takeout é configurável por OU na consola de administração, mas atualmente nenhuma superfície de políticas do Cloud Identity expõe o seu estado para leitura automatizada, pelo que este controlo é um item documentado de revisão manual: a verificação reporta Not Assessed e encaminha para uma confirmação manual em vez de assumir um valor que não consegue ler.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "O Google Takeout está desativado para as OU de alunos (verifique manualmente; nenhuma API de configuração o expõe hoje)",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Conta > Definições da conta > Takeout. Selecione a unidade organizacional de alunos e desative o Takeout para que uma exportação em massa com um clique de Drive e Gmail não esteja disponível para os alunos. Nenhuma superfície de políticas do Cloud Identity expõe este estado, por isso confirme-o manualmente.",
+      "status": "machine-draft"
+    }
+  },
+  "GWS-K12-014": {
+    "name": {
+      "value": "Privilégios de exportação e retenção do Vault restringidos",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "O Google Vault é um alcance administrativo sobre todo o tenant. 'Manage Exports' pode transferir a caixa de correio e o Drive de qualquer utilizador a qualquer momento; 'Manage Retention Rules' pode eliminar permanentemente registos que uma regra mal configurada arraste. Estes privilégios assentam em funções de administrador e acumulam-se da mesma forma que as funções de administração delegada. Esta verificação revela as atribuições de funções de administrador cujos privilégios correspondem à gestão de exportação, retenção, retenção legal, processo ou eDiscovery do Vault; se cada titular é legítimo é uma determinação do distrito, pelo que produz uma lista de revisão em vez de uma falha absoluta. As próprias regras de retenção são revistas diretamente no Vault.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Cada privilégio de exportação ou retenção do Vault corresponde a um administrador conhecido e atual que dele necessita",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administração > Conta > Funções de administrador. Para cada função assinalada por transportar um privilégio de exportação, retenção, retenção legal, processo ou eDiscovery do Vault, confirme que o titular dele necessita; remova o privilégio ou a atribuição quando não for o caso. Reveja as regras de retenção atuais diretamente no Vault (vault.google.com > Retention).",
+      "status": "machine-draft"
+    }
   }
 }
