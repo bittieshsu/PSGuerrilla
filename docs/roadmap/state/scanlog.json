@@ -1,0 +1,9 @@
+[
+  {
+    "at": "2026-08-03 18:14 UTC",
+    "changes": [
+      "Initial CISA/SCuBA baseline snapshot captured: ScubaGear 170 MS.* policies, ScubaGoggles 137 GWS.* policies, KEV 1656 CVEs."
+    ],
+    "date": "2026-08-03"
+  }
+]
