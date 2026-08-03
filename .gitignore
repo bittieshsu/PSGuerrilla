@@ -63,3 +63,4 @@ Tests/test-summary.json
 !Tests/**/*.ps1
 !Tests/**/*.psm1
 !Tests/Fixtures/**/*.json
+__pycache__/
