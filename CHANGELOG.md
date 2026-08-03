@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+## [2.53.1] - 2026-08-02
+
+### Added
+- **Generated reports now localize into 13 languages.** Every HTML report honors a `-ReportLanguage` code on `Invoke-ADAudit`, `Invoke-EntraAudit`, `Invoke-GWSAudit`, `Invoke-Campaign`, and the `Export-TechnicalReport` / `Export-ExecutiveSummary` / `Export-RemediationPlaybook` / `Export-BudgetJustification` cmdlets (also settable as `output.reportLanguage` in config). The report shell and all 643 checks' static content — name, description, recommended value, and remediation steps — render in Spanish, French, German, Italian, Hebrew, Portuguese, Dutch, Danish, Russian, Simplified Chinese, Japanese, Korean, and Hindi. The `<html lang>` / `dir` attributes follow the selected language, right-to-left languages (Hebrew) mirror the layout, and each translated string carries per-key provenance. **Live collected evidence stays as collected** — only the check definitions are translated; any string a language is missing falls back to English. A localization gate (154 checks) fails the build if a shipped language is missing a check, shell key, category label, or format placeholder, and it proves its own scanner can fail with a poison self-test.
+- All 13 translations ship as machine-draft pending native review. Test reports (`-TestMode`) render in the selected language too.
+
+### Note
+- This supersedes the "generated reports remain English only" note from v2.52.0: report **output** is now localized for the 13 languages above. The desktop GUI's 41-language coverage is unchanged; the remaining GUI languages are not yet available for report output.
+
 ## [2.53.0] - 2026-07-26
 
 ### Added
