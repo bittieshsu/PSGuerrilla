@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-08-03 18:14 UTC**
+Last scan: **2026-08-04 13:46 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-08-03 18:14 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.07.29 (2026-07-29) | 1656 known-exploited CVEs |
+| CISA KEV catalog | 2026.08.03 (2026-08-03) | 1657 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -175,15 +175,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-18577` N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability (added 2026-08-03)
 - `CVE-2026-20316` Cisco Secure Firewall Management Center Use of Hard-coded Password Vulnerability (added 2026-07-29)
 - `CVE-2025-68686` Fortinet FortiOS Exposure of Sensitive Information to an Unauthorized Actor Vulnerability (added 2026-07-27)
 - `CVE-2026-16812` Arista VeloCloud Orchestrator On-Prem OS Command Injection Vulnerability (added 2026-07-27)
 - `CVE-2026-16232` Check Point SmartConsole Improper Authentication Vulnerability (added 2026-07-22)
-- `CVE-2026-50522` Microsoft SharePoint Deserialization of Untrusted Data Vulnerability  (added 2026-07-22)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-08-04
+- KEV catalog 2026.07.29 -> 2026.08.03 (+1 entries, now 1657)
 
 ### 2026-08-03
 - Initial CISA/SCuBA baseline snapshot captured: ScubaGear 170 MS.* policies, ScubaGoggles 137 GWS.* policies, KEV 1656 CVEs.

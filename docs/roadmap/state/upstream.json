@@ -1,10 +1,15 @@
 {
-  "generated": "2026-08-03 18:14 UTC",
+  "generated": "2026-08-04 13:46 UTC",
   "kev": {
-    "catalogVersion": "2026.07.29",
-    "count": 1656,
-    "date": "2026-07-29",
+    "catalogVersion": "2026.08.03",
+    "count": 1657,
+    "date": "2026-08-03",
     "newest": [
+      {
+        "added": "2026-08-03",
+        "cve": "CVE-2026-18577",
+        "name": "N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability"
+      },
       {
         "added": "2026-07-29",
         "cve": "CVE-2026-20316",
@@ -24,11 +29,6 @@
         "added": "2026-07-22",
         "cve": "CVE-2026-16232",
         "name": "Check Point SmartConsole Improper Authentication Vulnerability"
-      },
-      {
-        "added": "2026-07-22",
-        "cve": "CVE-2026-50522",
-        "name": "Microsoft SharePoint Deserialization of Untrusted Data Vulnerability "
       }
     ]
   },

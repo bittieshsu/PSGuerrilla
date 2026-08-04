@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-08-04 13:46 UTC",
+    "changes": [
+      "KEV catalog 2026.07.29 -> 2026.08.03 (+1 entries, now 1657)"
+    ],
+    "date": "2026-08-04"
+  },
+  {
     "at": "2026-08-03 18:14 UTC",
     "changes": [
       "Initial CISA/SCuBA baseline snapshot captured: ScubaGear 170 MS.* policies, ScubaGoggles 137 GWS.* policies, KEV 1656 CVEs."
