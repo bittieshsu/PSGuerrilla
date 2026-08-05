@@ -33,8 +33,8 @@ jobs:
 
       - name: Commit roadmap if changed
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name  "Jim Tyler"
+          git config user.email "jaratyweb@gmail.com"
           git add docs/roadmap/
           if git diff --cached --quiet; then
             echo "No roadmap changes to commit."
