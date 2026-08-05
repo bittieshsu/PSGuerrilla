@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-08-05 01:38 UTC**
+Last scan: **2026-08-05 13:41 UTC**
 
 ## Upstream state
 
@@ -186,7 +186,7 @@ Broader CISA context (CVE-level, not directly a config baseline):
 Most recent first. One entry per day the scanner ran.
 
 ### 2026-08-05
-- KEV catalog 2026.08.03 -> 2026.08.04 (+3 entries, now 1660)
+- No upstream changes detected.
 
 ### 2026-08-04
 - KEV catalog 2026.07.29 -> 2026.08.03 (+1 entries, now 1657)
