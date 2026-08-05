@@ -1,10 +1,25 @@
 {
-  "generated": "2026-08-04 13:46 UTC",
+  "generated": "2026-08-05 01:38 UTC",
   "kev": {
-    "catalogVersion": "2026.08.03",
-    "count": 1657,
-    "date": "2026-08-03",
+    "catalogVersion": "2026.08.04",
+    "count": 1660,
+    "date": "2026-08-04",
     "newest": [
+      {
+        "added": "2026-08-04",
+        "cve": "CVE-2026-18556",
+        "name": "N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability"
+      },
+      {
+        "added": "2026-08-04",
+        "cve": "CVE-2026-34486",
+        "name": "Apache Tomcat Missing Encryption of Sensitive Data Vulnerability"
+      },
+      {
+        "added": "2026-08-04",
+        "cve": "CVE-2026-9198",
+        "name": "IBM Langflow Code Injection Vulnerability"
+      },
       {
         "added": "2026-08-03",
         "cve": "CVE-2026-18577",
@@ -14,21 +29,6 @@
         "added": "2026-07-29",
         "cve": "CVE-2026-20316",
         "name": "Cisco Secure Firewall Management Center Use of Hard-coded Password Vulnerability"
-      },
-      {
-        "added": "2026-07-27",
-        "cve": "CVE-2025-68686",
-        "name": "Fortinet FortiOS Exposure of Sensitive Information to an Unauthorized Actor Vulnerability"
-      },
-      {
-        "added": "2026-07-27",
-        "cve": "CVE-2026-16812",
-        "name": "Arista VeloCloud Orchestrator On-Prem OS Command Injection Vulnerability"
-      },
-      {
-        "added": "2026-07-22",
-        "cve": "CVE-2026-16232",
-        "name": "Check Point SmartConsole Improper Authentication Vulnerability"
       }
     ]
   },
