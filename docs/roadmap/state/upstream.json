@@ -1,10 +1,15 @@
 {
-  "generated": "2026-08-05 13:41 UTC",
+  "generated": "2026-08-06 13:40 UTC",
   "kev": {
-    "catalogVersion": "2026.08.04",
-    "count": 1660,
-    "date": "2026-08-04",
+    "catalogVersion": "2026.08.06",
+    "count": 1661,
+    "date": "2026-08-06",
     "newest": [
+      {
+        "added": "2026-08-05",
+        "cve": "CVE-2026-63077",
+        "name": "JetBrains TeamCity Deserialization of Untrusted Data Vulnerability"
+      },
       {
         "added": "2026-08-04",
         "cve": "CVE-2026-18556",
@@ -24,11 +29,6 @@
         "added": "2026-08-03",
         "cve": "CVE-2026-18577",
         "name": "N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability"
-      },
-      {
-        "added": "2026-07-29",
-        "cve": "CVE-2026-20316",
-        "name": "Cisco Secure Firewall Management Center Use of Hard-coded Password Vulnerability"
       }
     ]
   },
