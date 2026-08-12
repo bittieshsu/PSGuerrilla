@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-08-11 12:45 UTC**
+Last scan: **2026-08-12 12:51 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-08-11 12:45 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.08.10 (2026-08-10) | 1662 known-exploited CVEs |
+| CISA KEV catalog | 2026.08.11 (2026-08-11) | 1665 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -175,15 +175,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-20349` Cisco Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) Heap Inspection Vulnerability (added 2026-08-11)
+- `CVE-2026-68820` Microsoft Windows Ancillary Function Driver for WinSock Use-After-Free Vulnerability (added 2026-08-11)
+- `CVE-2026-72898` Metabase SQL Injection Vulnerability (added 2026-08-11)
 - `CVE-2026-8037` Progress LoadMaster Command Injection Vulnerability (added 2026-08-07)
 - `CVE-2026-63077` JetBrains TeamCity Deserialization of Untrusted Data Vulnerability (added 2026-08-05)
-- `CVE-2026-18556` N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability (added 2026-08-04)
-- `CVE-2026-34486` Apache Tomcat Missing Encryption of Sensitive Data Vulnerability (added 2026-08-04)
-- `CVE-2026-9198` IBM Langflow Code Injection Vulnerability (added 2026-08-04)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-08-12
+- KEV catalog 2026.08.10 -> 2026.08.11 (+3 entries, now 1665)
 
 ### 2026-08-11
 - KEV catalog 2026.08.07 -> 2026.08.10 (+0 entries, now 1662)
