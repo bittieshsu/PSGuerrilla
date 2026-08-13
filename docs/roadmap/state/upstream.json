@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-12 12:42 UTC",
+  "generated": "2026-08-13 12:44 UTC",
   "kev": {
     "catalogVersion": "2026.08.11",
     "count": 1665,
@@ -349,6 +349,7 @@
       "GWS.MEET.5.2v1",
       "GWS.MEET.6.1v1",
       "GWS.MEET.6.2v1",
+      "GWS.MEET.6.3v1",
       "GWS.SITES.1.1v1"
     ],
     "release": {

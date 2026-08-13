@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-08-12 12:42 UTC**
+Last scan: **2026-08-13 12:44 UTC**
 
 ## Upstream state
 
@@ -20,7 +20,7 @@ Coverage compares the base policy ID (version tag stripped) so a version bump do
 | Baseline | Upstream policies | Covered by Guerrilla | Gap |
 |---|---|---|---|
 | ScubaGear MS.* | 170 | 79 | **91** |
-| ScubaGoggles GWS.* | 137 | 95 | **42** |
+| ScubaGoggles GWS.* | 138 | 95 | **43** |
 
 Guerrilla references 80 MS.* and 95 GWS.* policy IDs today.
 
@@ -126,7 +126,7 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 ## ScubaGoggles (Google Workspace) gaps
 
-42 upstream policies have no Guerrilla check yet (candidate roadmap items):
+43 upstream policies have no Guerrilla check yet (candidate roadmap items):
 
 - [ ] `GWS.CALENDAR.3.2`
 - [ ] `GWS.CHAT.5.1`
@@ -170,6 +170,7 @@ Version drift (Guerrilla references an older policy version than upstream):
 - [ ] `GWS.GMAIL.7.6`
 - [ ] `GWS.MEET.6.1`
 - [ ] `GWS.MEET.6.2`
+- [ ] `GWS.MEET.6.3`
 
 ## Newest CISA KEV entries
 
@@ -184,6 +185,9 @@ Broader CISA context (CVE-level, not directly a config baseline):
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-08-13
+- ScubaGoggles new policies: GWS.MEET.6.3v1
 
 ### 2026-08-12
 - KEV catalog 2026.08.10 -> 2026.08.11 (+3 entries, now 1665)
