@@ -1,10 +1,15 @@
 {
-  "generated": "2026-08-17 12:27 UTC",
+  "generated": "2026-08-18 12:29 UTC",
   "kev": {
-    "catalogVersion": "2026.08.14",
-    "count": 1665,
-    "date": "2026-08-14",
+    "catalogVersion": "2026.08.17",
+    "count": 1666,
+    "date": "2026-08-17",
     "newest": [
+      {
+        "added": "2026-08-17",
+        "cve": "CVE-2025-62593",
+        "name": "Ray-Project Ray Code Injection Vulnerability"
+      },
       {
         "added": "2026-08-11",
         "cve": "CVE-2026-20349",
@@ -24,11 +29,6 @@
         "added": "2026-08-07",
         "cve": "CVE-2026-8037",
         "name": "Progress LoadMaster Command Injection Vulnerability"
-      },
-      {
-        "added": "2026-08-05",
-        "cve": "CVE-2026-63077",
-        "name": "JetBrains TeamCity Deserialization of Untrusted Data Vulnerability"
       }
     ]
   },
