@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-08-18 12:22 UTC**
+Last scan: **2026-08-19 12:23 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-08-18 12:22 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.08.17 (2026-08-17) | 1666 known-exploited CVEs |
+| CISA KEV catalog | 2026.08.18 (2026-08-18) | 1670 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -176,15 +176,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-33824` Microsoft Internet Key Exchange (IKE) Service Extensions Double Free Vulnerability (added 2026-08-18)
+- `CVE-2026-59310` Broadcom VMware vCenter Path Traversal Vulnerability (added 2026-08-18)
+- `CVE-2026-55040` Microsoft SharePoint Weak Authentication Vulnerability (added 2026-08-18)
+- `CVE-2026-65400` Apple macOS Improper Authentication Vulnerability (added 2026-08-18)
 - `CVE-2025-62593` Ray-Project Ray Code Injection Vulnerability (added 2026-08-17)
-- `CVE-2026-20349` Cisco Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) Heap Inspection Vulnerability (added 2026-08-11)
-- `CVE-2026-68820` Microsoft Windows Ancillary Function Driver for WinSock Use-After-Free Vulnerability (added 2026-08-11)
-- `CVE-2026-72898` Metabase SQL Injection Vulnerability (added 2026-08-11)
-- `CVE-2026-8037` Progress LoadMaster Command Injection Vulnerability (added 2026-08-07)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-08-19
+- KEV catalog 2026.08.17 -> 2026.08.18 (+4 entries, now 1670)
 
 ### 2026-08-18
 - KEV catalog 2026.08.14 -> 2026.08.17 (+1 entries, now 1666)
