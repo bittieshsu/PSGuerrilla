@@ -1,10 +1,20 @@
 {
-  "generated": "2026-08-20 12:25 UTC",
+  "generated": "2026-08-21 12:24 UTC",
   "kev": {
-    "catalogVersion": "2026.08.19",
-    "count": 1671,
-    "date": "2026-08-19",
+    "catalogVersion": "2026.08.21",
+    "count": 1673,
+    "date": "2026-08-21",
     "newest": [
+      {
+        "added": "2026-08-20",
+        "cve": "CVE-2026-72530",
+        "name": "TrueConf Server Code Injection Vulnerability"
+      },
+      {
+        "added": "2026-08-20",
+        "cve": "CVE-2026-72529",
+        "name": "TrueConf Server Missing Authentication for Critical Function Vulnerability"
+      },
       {
         "added": "2026-08-19",
         "cve": "CVE-2026-64849",
@@ -19,16 +29,6 @@
         "added": "2026-08-18",
         "cve": "CVE-2026-59310",
         "name": "Broadcom VMware vCenter Path Traversal Vulnerability"
-      },
-      {
-        "added": "2026-08-18",
-        "cve": "CVE-2026-55040",
-        "name": "Microsoft SharePoint Weak Authentication Vulnerability"
-      },
-      {
-        "added": "2026-08-18",
-        "cve": "CVE-2026-65400",
-        "name": "Apple macOS Improper Authentication Vulnerability"
       }
     ]
   },
