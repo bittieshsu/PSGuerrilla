@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-08-21 12:24 UTC**
+Last scan: **2026-08-22 12:17 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-08-21 12:24 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.08.21 (2026-08-21) | 1673 known-exploited CVEs |
+| CISA KEV catalog | 2026.08.21 (2026-08-21) | 1674 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -176,15 +176,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-73570` Zimbra Collaboration Suite (ZCS) OS Command Injection Vulnerability (added 2026-08-21)
 - `CVE-2026-72530` TrueConf Server Code Injection Vulnerability (added 2026-08-20)
 - `CVE-2026-72529` TrueConf Server Missing Authentication for Critical Function Vulnerability (added 2026-08-20)
 - `CVE-2026-64849` MLflow Server-Side Request Forgery Vulnerability (added 2026-08-19)
 - `CVE-2026-33824` Microsoft Internet Key Exchange (IKE) Service Extensions Double Free Vulnerability (added 2026-08-18)
-- `CVE-2026-59310` Broadcom VMware vCenter Path Traversal Vulnerability (added 2026-08-18)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-08-22
+- No upstream changes detected.
 
 ### 2026-08-21
 - KEV catalog 2026.08.19 -> 2026.08.21 (+2 entries, now 1673)
