@@ -1,10 +1,15 @@
 {
-  "generated": "2026-08-24 12:26 UTC",
+  "generated": "2026-08-25 12:26 UTC",
   "kev": {
-    "catalogVersion": "2026.08.21",
-    "count": 1674,
-    "date": "2026-08-21",
+    "catalogVersion": "2026.08.24",
+    "count": 1675,
+    "date": "2026-08-24",
     "newest": [
+      {
+        "added": "2026-08-24",
+        "cve": "CVE-2026-21962",
+        "name": "Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in Improper Access Control Vulnerability"
+      },
       {
         "added": "2026-08-21",
         "cve": "CVE-2026-73570",
@@ -24,11 +29,6 @@
         "added": "2026-08-19",
         "cve": "CVE-2026-64849",
         "name": "MLflow Server-Side Request Forgery Vulnerability"
-      },
-      {
-        "added": "2026-08-18",
-        "cve": "CVE-2026-33824",
-        "name": "Microsoft Internet Key Exchange (IKE) Service Extensions Double Free Vulnerability"
       }
     ]
   },
