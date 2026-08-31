@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-08-30 15:41 UTC**
+Last scan: **2026-08-31 18:24 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-08-30 15:41 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.08.27 (2026-08-27) | 1685 known-exploited CVEs |
+| CISA KEV catalog | 2026.08.31 (2026-08-31) | 1687 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -176,15 +176,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-82078` PaperCut NG/MF Unsafe Reflection Vulnerability (added 2026-08-31)
+- `CVE-2026-81578` PaperCut NG/MF Missing Authentication for Critical Function Vulnerability (added 2026-08-31)
 - `CVE-2023-49105` ownCloud Improper Authentication Vulnerability (added 2026-08-27)
 - `CVE-2026-53362` Linux Kernel Unspecified Vulnerability (added 2026-08-27)
 - `CVE-2026-66384` JFrog Artifactory Improper Limitation of a Pathname to a Restricted Directory Vulnerability (added 2026-08-27)
-- `CVE-2021-23758` Ajax.NET Professional Deserialization of Untrusted Data Vulnerability (added 2026-08-26)
-- `CVE-2015-3246` Red Hat Libuser Race Condition Vulnerability (added 2026-08-26)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-08-31
+- KEV catalog 2026.08.27 -> 2026.08.31 (+2 entries, now 1687)
 
 ### 2026-08-30
 - No upstream changes detected.

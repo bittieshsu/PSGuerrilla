@@ -1,10 +1,20 @@
 {
-  "generated": "2026-08-30 15:41 UTC",
+  "generated": "2026-08-31 18:24 UTC",
   "kev": {
-    "catalogVersion": "2026.08.27",
-    "count": 1685,
-    "date": "2026-08-27",
+    "catalogVersion": "2026.08.31",
+    "count": 1687,
+    "date": "2026-08-31",
     "newest": [
+      {
+        "added": "2026-08-31",
+        "cve": "CVE-2026-82078",
+        "name": "PaperCut NG/MF Unsafe Reflection Vulnerability"
+      },
+      {
+        "added": "2026-08-31",
+        "cve": "CVE-2026-81578",
+        "name": "PaperCut NG/MF Missing Authentication for Critical Function Vulnerability"
+      },
       {
         "added": "2026-08-27",
         "cve": "CVE-2023-49105",
@@ -19,16 +29,6 @@
         "added": "2026-08-27",
         "cve": "CVE-2026-66384",
         "name": "JFrog Artifactory Improper Limitation of a Pathname to a Restricted Directory Vulnerability"
-      },
-      {
-        "added": "2026-08-26",
-        "cve": "CVE-2021-23758",
-        "name": "Ajax.NET Professional Deserialization of Untrusted Data Vulnerability"
-      },
-      {
-        "added": "2026-08-26",
-        "cve": "CVE-2015-3246",
-        "name": "Red Hat Libuser Race Condition Vulnerability"
       }
     ]
   },
