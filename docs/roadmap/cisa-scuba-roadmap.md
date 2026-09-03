@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-09-02 15:34 UTC**
+Last scan: **2026-09-03 15:26 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-09-02 15:34 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.09.01 (2026-09-01) | 1687 known-exploited CVEs |
+| CISA KEV catalog | 2026.09.02 (2026-09-02) | 1694 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -176,15 +176,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
-- `CVE-2026-82078` PaperCut NG/MF Unsafe Reflection Vulnerability (added 2026-08-31)
-- `CVE-2026-81578` PaperCut NG/MF Missing Authentication for Critical Function Vulnerability (added 2026-08-31)
-- `CVE-2023-49105` ownCloud Improper Authentication Vulnerability (added 2026-08-27)
-- `CVE-2026-53362` Linux Kernel Unspecified Vulnerability (added 2026-08-27)
-- `CVE-2026-66384` JFrog Artifactory Improper Limitation of a Pathname to a Restricted Directory Vulnerability (added 2026-08-27)
+- `CVE-2026-59822` BerriAI LiteLLM Improper Authentication Vulnerability (added 2026-09-02)
+- `CVE-2026-48710` Kludex Starlette HTTP Request/Response Smuggling Vulnerability (added 2026-09-02)
+- `CVE-2026-49869` Kestra OSS OS Command Injection Vulnerability (added 2026-09-02)
+- `CVE-2026-82329` JFrog Artifactory Improper Authentication Vulnerability (added 2026-09-02)
+- `CVE-2026-9586` Sangoma Switchvox SQL Injection Vulnerability (added 2026-09-02)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-09-03
+- KEV catalog 2026.09.01 -> 2026.09.02 (+7 entries, now 1694)
 
 ### 2026-09-02
 - KEV catalog 2026.08.31 -> 2026.09.01 (+0 entries, now 1687)
