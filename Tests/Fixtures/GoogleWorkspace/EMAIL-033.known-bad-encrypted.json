@@ -1,0 +1,26 @@
+{
+  "checkId": "EMAIL-033",
+  "platform": "GWS",
+  "scenario": "known-bad-encrypted",
+  "expectedStatus": "FAIL",
+  "description": "encryptedAttachmentProtectionConsequence leaves flagged mail in the inbox",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gmail.email_attachment_safety": [
+          {
+            "setting": {
+              "value": {
+                "anomalousAttachmentProtectionConsequence": "QUARANTINE",
+                "encryptedAttachmentProtectionConsequence": "KEEP_IN_INBOX",
+                "attachmentWithScriptsProtectionConsequence": "SPAM_FOLDER"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

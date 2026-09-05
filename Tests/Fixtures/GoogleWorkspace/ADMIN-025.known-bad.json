@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-025",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Multi-party approval disabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "multi_party_approval.require_approvals": [
+          {
+            "setting": {
+              "value": {
+                "multiPartyApprovalState": "DISABLED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "checkId": "ADMIN-023",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Three active super admins, within two to eight",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "primaryEmail": "admin0@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin1@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin2@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "user0@e.com",
+        "isAdmin": false,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "user1@e.com",
+        "isAdmin": false,
+        "suspended": false
+      }
+    ]
+  }
+}

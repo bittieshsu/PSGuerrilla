@@ -726,3 +726,111 @@ function Test-ADMIN022 {
         -Type 'early_access_apps.service_status' -Field 'serviceState' -NonCompliantValues @('ENABLED') -Status 'WARN' `
         -BadMsg 'Early Access applications are enabled' -GoodMsg 'Early Access applications are disabled'
 }
+
+# ── ADMIN-023: GWS.COMMONCONTROLS.6.2 — super admin count within 2..8 ──────
+# Directory-derived, not policy-derived: the Rego reads directory/v1/users/list
+# and counts super admins, so this counts the same population. Break-glass
+# accounts are a documented exception in the baseline rather than an automatic
+# exemption, so they are counted and named for the reviewer instead of being
+# silently subtracted, which would let a tenant sit above the ceiling forever by
+# labelling the excess.
+function Test-ADMIN023 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey 'Users' -Subject 'directory users'
+    if ($na) { return $na }
+
+    $users = @($AuditData.Users | Where-Object { $null -ne $_ })
+    if ($users.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'No directory users were returned, so the super-admin population cannot be counted' -OrgUnitPath $OrgUnitPath
+    }
+
+    $admins = @($users | Where-Object { $_.isAdmin -eq $true -and $_.suspended -ne $true })
+    $names = @($admins | ForEach-Object { "$($_.primaryEmail)" } | Where-Object { $_ })
+    $d = @{ SuperAdminCount = $admins.Count; SuperAdmins = $names }
+
+    if ($admins.Count -lt 2) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue ("$($admins.Count) active super admin account(s). Fewer than two means a single lost or " +
+                'compromised account can lock the organization out of its own tenant with no second admin to recover it.') `
+            -OrgUnitPath $OrgUnitPath -Details $d
+    }
+    if ($admins.Count -gt 8) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue ("$($admins.Count) active super admin accounts, above the maximum of eight: " +
+                "$((@($names) | Select-Object -First 10) -join '; '). Each one is an unconstrained path to the whole tenant.") `
+            -OrgUnitPath $OrgUnitPath -Details ($d + @{ AffectedItems = $names; AffectedLabel = 'Super admin accounts' })
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "$($admins.Count) active super admin account(s), within the supported range of two to eight" `
+        -OrgUnitPath $OrgUnitPath -Details $d
+}
+
+# ── ADMIN-024: GWS.COMMONCONTROLS.11.1 — Marketplace apps allowlisted ──────
+# Two fields on one policy object. accessLevel must restrict installs, AND
+# allowAllInternalApps must be off: leaving it on exempts internally published
+# apps from the allowlist, which is the control's entire point.
+function Test-ADMIN024 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey 'CloudIdentityPolicies' -Subject 'Marketplace app access policy'
+    if ($na) { return $na }
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' -OrgUnitPath $OrgUnitPath
+    }
+    $objs = @(Resolve-GooglePolicyValue -Policies $pol -Type 'workspace_marketplace.apps_access_options')
+    if ($objs.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'No workspace_marketplace.apps_access_options policy returned for this tenant' -OrgUnitPath $OrgUnitPath
+    }
+
+    $badAccess = 0; $badInternal = 0; $missing = 0; $blocked = 0
+    foreach ($o in $objs) {
+        $props = $o.PSObject.Properties.Name
+        if ($props -notcontains 'accessLevel') { $missing++; continue }
+        $level = "$($o.accessLevel)"
+        if ($level -notmatch '(?i)^(ALLOW_LISTED_APPS|ALLOW_NONE)$') { $badAccess++; continue }
+        if ($level -match '(?i)^ALLOW_NONE$') { $blocked++ }
+        # Restriction is in place; the internal-app exemption still has to be off.
+        if ($props -notcontains 'allowAllInternalApps') { $missing++; continue }
+        if ($o.allowAllInternalApps -ne $false) { $badInternal++ }
+    }
+
+    if ($badAccess -gt 0 -or $badInternal -gt 0) {
+        $parts = @()
+        if ($badAccess -gt 0) { $parts += "$badAccess policy/policies let users install any Marketplace app" }
+        if ($badInternal -gt 0) { $parts += "$badInternal policy/policies exempt all internally published apps from the allowlist" }
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue ("Marketplace installs are not confined to an allowlist: $($parts -join '; ') " +
+                "(of $($objs.Count) targeted policy/policies).") `
+            -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; UnrestrictedAccess = $badAccess; InternalExempt = $badInternal }
+    }
+    if ($missing -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue ("The Marketplace access fields were not returned in $missing of $($objs.Count) targeted " +
+                'policy/policies, so the restriction is not assessed rather than assumed to be in place') `
+            -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; UnreadableCount = $missing }
+    }
+    $how = if ($blocked -eq $objs.Count) { 'Marketplace installs are blocked entirely' } else { 'Marketplace installs are confined to an allowlist' }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "$how, with internal apps not exempted, across all $($objs.Count) targeted policy/policies" `
+        -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count }
+}
+
+# ── ADMIN-025: GWS.COMMONCONTROLS.17.1 — multi-party approval enabled ──────
+function Test-ADMIN025 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    Test-GwsPolicyEnum -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Type 'multi_party_approval.require_approvals' -Field 'multiPartyApprovalState' `
+        -CompliantValues @('ENABLED') -Status 'WARN' `
+        -BadMsg 'Multi-party approval is not required for sensitive admin actions' `
+        -GoodMsg 'Multi-party approval is required for sensitive admin actions'
+}

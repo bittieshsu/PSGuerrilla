@@ -278,3 +278,43 @@ function Test-LOG006 {
         -OrgUnitPath $OrgUnitPath `
         -Details @{ Note = 'Reports API access should be restricted to authorized service accounts only' }
 }
+
+# ── LOG-007: GWS.COMMONCONTROLS.13.1 — every system-defined alert active ───
+# LOG-005 asks whether alerting is switched on at all (at least one rule
+# active). This is the SCuBA bar, which is stricter: EVERY system-defined rule
+# must be ACTIVE, because the rules cover distinct event classes and an inactive
+# one means that class of event happens silently.
+function Test-LOG007 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey 'CloudIdentityPolicies' -Subject 'system-defined alert rules'
+    if ($na) { return $na }
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' -OrgUnitPath $OrgUnitPath
+    }
+    $rules = @(Resolve-GooglePolicyValue -Policies $pol -Type 'rule.system_defined_alerts')
+    if ($rules.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'No system-defined alert rules were returned for this tenant, so their state is not assessed' -OrgUnitPath $OrgUnitPath
+    }
+
+    # Anything not explicitly ACTIVE counts as not alerting. An unrecognized
+    # state is never read as active, so a new enum value cannot silently pass.
+    $inactive = @($rules | Where-Object { "$($_.state)".Trim() -notmatch '(?i)^ACTIVE$' })
+    if ($inactive.Count -gt 0) {
+        $names = @($inactive | ForEach-Object { if ("$($_.displayName)") { "$($_.displayName)" } else { "(unnamed rule)" } })
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue ("$($inactive.Count) of $($rules.Count) system-defined alert rule(s) are not active: " +
+                "$((@($names) | Select-Object -First 10) -join '; '). Those events still occur; nobody is told about them.") `
+            -OrgUnitPath $OrgUnitPath `
+            -Details @{ TotalRules = $rules.Count; InactiveCount = $inactive.Count
+                        AffectedItems = $names; AffectedLabel = 'Inactive system-defined alert rules' }
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "All $($rules.Count) system-defined alert rule(s) are active" `
+        -OrgUnitPath $OrgUnitPath -Details @{ TotalRules = $rules.Count; InactiveCount = 0 }
+}

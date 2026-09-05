@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-023",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Enabled on any device",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.drive_for_desktop": [
+          {
+            "setting": {
+              "value": {
+                "allowDriveForDesktop": true,
+                "restrictToAuthorizedDevices": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

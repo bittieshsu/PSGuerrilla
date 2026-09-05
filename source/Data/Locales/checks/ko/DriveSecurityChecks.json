@@ -395,5 +395,23 @@
       "value": "관리 콘솔 > 앱 > Google Workspace > 드라이브 및 문서 > 공유 설정 > '<조직> 외부로 콘텐츠 배포'. 누구도 다른 조직이 소유한 공유 드라이브로 콘텐츠를 배포할 수 없도록 설정합니다.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-023": {
+    "name": {
+      "value": "데스크톱용 드라이브를 승인된 기기로 제한 (GWS.DRIVEDOCS.5.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.5.1: 데스크톱용 드라이브는 조직 파일을 로컬 디스크로 동기화하므로, 관리되지 않는 하드웨어에서 허용하면 조직이 지우거나 암호화하거나 검사할 수 없는 기기에 드라이브 콘텐츠의 완전한 로컬 사본이 남습니다. drive_and_docs.drive_for_desktop을 읽어 allowDriveForDesktop이 켜져 있으면서 restrictToAuthorizedDevices가 적용되지 않으면 실패로 처리합니다. 데스크톱용 드라이브를 완전히 끈 상태는 준수이며, 검사는 그냥 통과시키지 않고 그 사실을 밝힙니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "데스크톱용 드라이브가 사용 중지되었거나 회사 소유의 승인된 기기로 제한됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "관리 콘솔 > 앱 > Google Workspace > 드라이브 및 문서 > 기능 및 애플리케이션 > 데스크톱용 Google 드라이브. 이를 끄거나, 켠 상태로 두고 '승인된 기기에서만 데스크톱용 Google 드라이브 허용'을 사용 설정합니다.",
+      "status": "machine-draft"
+    }
   }
 }

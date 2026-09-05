@@ -581,6 +581,41 @@
         "known-bad",
         "not-assessed"
       ]
+    },
+    {
+      "id": "AUTH-019",
+      "name": "Conflicting unmanaged accounts replaced (GWS.COMMONCONTROLS.7.1)",
+      "description": "SCuBA GWS.COMMONCONTROLS.7.1: an unmanaged consumer account created against a corporate address holds organization data outside any admin control, cannot be audited or suspended, and survives an employee's departure. Configuring conflict management to replace those accounts brings them under management instead of leaving them alongside the managed identity. Reads provisioning.conflicting_accounts_management and warns where option is anything other than REPLACE_CONFLICTING_ACCOUNT.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 2,
+      "subcategory": "Account Lifecycle",
+      "recommendedValue": "Conflicting unmanaged accounts are replaced with managed accounts",
+      "remediationUrl": "https://admin.google.com/ac/accountsettings",
+      "remediationSteps": "Admin console > Account > Account settings > Conflicting accounts management. Set the option to replace conflicting unmanaged accounts so they are converted to managed accounts rather than preserved.",
+      "compliance": {
+        "scuba": [
+          "GWS.COMMONCONTROLS.7.1v1"
+        ],
+        "nistSp80053": [
+          "AC-2",
+          "IA-2",
+          "AC-2(7)"
+        ],
+        "mitreAttack": [
+          "T1078"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-assessed"
+      ]
     }
   ]
 }

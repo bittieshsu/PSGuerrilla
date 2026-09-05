@@ -107,5 +107,23 @@
       "value": "Admin Console > Security > API controls > Domain-wide delegation > Gennemgå tildelinger med Reports API-scopes > Fjern uautoriseret adgang",
       "status": "machine-draft"
     }
+  },
+  "LOG-007": {
+    "name": {
+      "value": "Alle systemdefinerede advarselsregler aktiveret (GWS.COMMONCONTROLS.13.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.13.1: Google leverer systemdefinerede advarselsregler for de hændelser, en administrator mest af alt skal høre om, herunder mistænkelige logins, advarsler om statsstøttede angreb og ændringer i administratorrettigheder. En inaktiv regel betyder, at hændelsen stadig sker, og ingen får det at vide. Læser rule.system_defined_alerts og fejler, så snart en regel ikke er i tilstanden ACTIVE, med navn på de inaktive regler.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Alle systemdefinerede advarselsregler er aktive",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Regler > Systemdefinerede regler. Gennemgå de inaktive regler, og aktivér hver enkelt, med modtagere så advarslerne lander i en overvåget postkasse og ikke på et ubemandet alias.",
+      "status": "machine-draft"
+    }
   }
 }

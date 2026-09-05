@@ -330,7 +330,7 @@
       "status": "machine-draft"
     },
     "description": {
-      "value": "SCuBA GWS.DRIVEDOCS.1.3: en bruger, der deler en fil uden for organisationen, bør gøres opmærksom på det i delingsøjeblikket — det sidste tidspunkt, hvor en utilsigtet videregivelse stadig er billig at standse. Læser drive_and_docs.external_sharing og parrer externalSharingMode med det advarselsfelt, som den tilstand faktisk bruger: warnForSharingOutsideAllowlistedDomains når deling er begrænset til tilladte domæner, og warnForExternalSharing når deling er åben. Hvor ekstern deling er forbudt, kan politikken ikke gælde, og kontrollen rapporterer det i stedet for at bestå i stilhed.",
+      "value": "SCuBA GWS.DRIVEDOCS.1.3: en bruger, der deler en fil uden for organisationen, bør gøres opmærksom på det i delingsøjeblikket, det sidste tidspunkt, hvor en utilsigtet videregivelse stadig er billig at standse. Læser drive_and_docs.external_sharing og parrer externalSharingMode med det advarselsfelt, som den tilstand faktisk bruger: warnForSharingOutsideAllowlistedDomains når deling er begrænset til tilladte domæner, og warnForExternalSharing når deling er åben. Hvor ekstern deling er forbudt, kan politikken ikke gælde, og kontrollen rapporterer det i stedet for at bestå i stilhed.",
       "status": "machine-draft"
     },
     "recommendedValue": {
@@ -384,7 +384,7 @@
       "status": "machine-draft"
     },
     "description": {
-      "value": "SCuBA GWS.DRIVEDOCS.1.7: at flytte en fil til et delt drev, der ejes af en anden organisation, overdrager varetægten over den — den modtagende organisations administratorer kontrollerer indholdet, og den organisation, der skabte det, mister muligheden for at tilbagekalde adgang eller opbevare det. Læser drive_and_docs.external_sharing og fejler, når allowedPartiesForDistributingContent er noget andet end NONE i en politik, hvis externalSharingMode tillader ekstern deling. Ikke relevant hvor ekstern deling er forbudt.",
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: at flytte en fil til et delt drev, der ejes af en anden organisation, overdrager varetægten over den: den modtagende organisations administratorer kontrollerer indholdet, og den organisation, der skabte det, mister muligheden for at tilbagekalde adgang eller opbevare det. Læser drive_and_docs.external_sharing og fejler, når allowedPartiesForDistributingContent er noget andet end NONE i en politik, hvis externalSharingMode tillader ekstern deling. Ikke relevant hvor ekstern deling er forbudt.",
       "status": "machine-draft"
     },
     "recommendedValue": {
@@ -393,6 +393,24 @@
     },
     "remediationSteps": {
       "value": "Administratorkonsol > Apps > Google Workspace > Drev og Docs > Delingsindstillinger > 'Distribution af indhold uden for <organisation>'. Indstil det, så ingen må distribuere indhold til delte drev, der ejes af en anden organisation.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-023": {
+    "name": {
+      "value": "Drev til computer begrænset til godkendte enheder (GWS.DRIVEDOCS.5.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.5.1: Drev til computer synkroniserer organisationens filer til lokale diske, så at tillade det på ustyret hardware efterlader en fuld lokal kopi af Drev-indholdet på maskiner, organisationen hverken kan slette, kryptere eller undersøge. Læser drive_and_docs.drive_for_desktop og fejler, når allowDriveForDesktop er slået til, mens restrictToAuthorizedDevices ikke håndhæves. Drev til computer helt slået fra er i overensstemmelse, og kontrollen siger det frem for blot at bestå.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drev til computer er slået fra eller begrænset til godkendte firmaejede enheder",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Drev og Docs > Funktioner og programmer > Google Drev til computer. Slå det fra, eller lad det være slået til og aktivér 'Tillad kun Google Drev til computer på godkendte enheder'.",
       "status": "machine-draft"
     }
   }

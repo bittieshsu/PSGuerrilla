@@ -384,7 +384,7 @@
       "status": "machine-draft"
     },
     "description": {
-      "value": "SCuBA GWS.DRIVEDOCS.1.7：将文件移入其他组织拥有的共享云端硬盘会转移其保管权——接收方组织的管理员掌控该内容，创建它的组织将失去撤销访问权或保留该文件的能力。读取 drive_and_docs.external_sharing，若在 externalSharingMode 允许外部共享的策略中 allowedPartiesForDistributingContent 不是 NONE 即判定不合规。禁止外部共享时不适用。",
+      "value": "SCuBA GWS.DRIVEDOCS.1.7：将文件移入其他组织拥有的共享云端硬盘会转移其保管权: : 接收方组织的管理员掌控该内容，创建它的组织将失去撤销访问权或保留该文件的能力。读取 drive_and_docs.external_sharing，若在 externalSharingMode 允许外部共享的策略中 allowedPartiesForDistributingContent 不是 NONE 即判定不合规。禁止外部共享时不适用。",
       "status": "machine-draft"
     },
     "recommendedValue": {
@@ -393,6 +393,24 @@
     },
     "remediationSteps": {
       "value": "管理控制台 > 应用 > Google Workspace > 云端硬盘和文档 > 共享设置 > “将内容分发到 <组织> 之外”。将其设置为不允许任何人向其他组织拥有的共享云端硬盘分发内容。",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-023": {
+    "name": {
+      "value": "云端硬盘桌面版限于授权设备 (GWS.DRIVEDOCS.5.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.5.1：云端硬盘桌面版会把组织文件同步到本地磁盘，因此允许它运行在非受管硬件上，等于把云端硬盘内容的完整本地副本留在组织无法擦除、加密或检查的机器上。读取 drive_and_docs.drive_for_desktop，当 allowDriveForDesktop 开启而 restrictToAuthorizedDevices 未强制执行时判定不合规。完全关闭云端硬盘桌面版属于合规，检查会明确说明这一点，而不是笼统地判为通过。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "云端硬盘桌面版已停用，或仅限公司所有的授权设备",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理控制台 > 应用 > Google Workspace > 云端硬盘和文档 > 功能和应用 > Google 云端硬盘桌面版。将其关闭，或保持开启并启用“仅允许在授权设备上使用 Google 云端硬盘桌面版”。",
       "status": "machine-draft"
     }
   }

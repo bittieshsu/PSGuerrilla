@@ -323,5 +323,23 @@
       "value": "Google Admin console의 Security > Account recovery에서 사용자(및 슈퍼 관리자가 아닌 계정)에 대한 셀프 복구를 비활성화하여, 계정 복구가 사용자가 제어하는 채널이 아니라 관리자 또는 헬프데스크 프로세스를 통해 처리되도록 합니다.",
       "status": "machine-draft"
     }
+  },
+  "AUTH-019": {
+    "name": {
+      "value": "충돌하는 비관리 계정 대체 (GWS.COMMONCONTROLS.7.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.7.1: 회사 주소로 만들어진 비관리 소비자 계정은 조직 데이터를 모든 관리 통제 밖에 보관하며, 감사도 정지도 할 수 없고, 직원이 떠난 뒤에도 남습니다. 충돌 관리를 대체로 설정하면 그런 계정이 관리 대상 ID와 나란히 남는 대신 관리 아래로 들어옵니다. provisioning.conflicting_accounts_management를 읽어 option이 REPLACE_CONFLICTING_ACCOUNT가 아니면 경고합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "충돌하는 비관리 계정이 관리 계정으로 대체됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "관리 콘솔 > 계정 > 계정 설정 > 충돌 계정 관리. 충돌하는 비관리 계정을 대체하도록 선택해 보존이 아니라 관리 계정으로 전환되게 합니다.",
+      "status": "machine-draft"
+    }
   }
 }

@@ -624,6 +624,115 @@
         "known-bad",
         "not-assessed"
       ]
+    },
+    {
+      "id": "ADMIN-023",
+      "name": "Super admin count within the supported range (GWS.COMMONCONTROLS.6.2)",
+      "description": "SCuBA GWS.COMMONCONTROLS.6.2: a tenant needs at least two super admins so a single lost account cannot lock the organization out, and no more than eight because every additional super admin is an unconstrained path to the whole tenant. Counts enabled accounts carrying super-admin privilege from the directory and fails outside the range of two to eight. Break-glass accounts are a documented exception to be recorded rather than an automatic pass, so they are counted and listed rather than silently excluded.",
+      "severity": "High",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 3,
+      "subcategory": "Privileged Access",
+      "recommendedValue": "Between two and eight separate super admin accounts, with any break-glass accounts documented",
+      "remediationUrl": "https://admin.google.com/ac/accountsettings",
+      "remediationSteps": "Admin console > Account > Admin roles > Super Admin. If fewer than two, promote a second dedicated admin account so recovery is possible. If more than eight, move admins onto the narrowest delegated role that covers their duties and remove super-admin privilege.",
+      "compliance": {
+        "scuba": [
+          "GWS.COMMONCONTROLS.6.2v1"
+        ],
+        "nistSp80053": [
+          "AC-2",
+          "AC-6",
+          "AC-6(5)"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad-too-few",
+        "known-bad-too-many",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "ADMIN-024",
+      "name": "Marketplace apps limited to an allowlist (GWS.COMMONCONTROLS.11.1)",
+      "description": "SCuBA GWS.COMMONCONTROLS.11.1: a Marketplace application installed by a user inherits that user's access to Workspace data through OAuth, so an unrestricted Marketplace is a self-service data-egress channel that never passes through review. Reads workspace_marketplace.apps_access_options and requires accessLevel to be ALLOW_LISTED_APPS or ALLOW_NONE. It additionally fails when allowAllInternalApps is on, because that setting exempts internally published apps from the allowlist the control exists to enforce.",
+      "severity": "High",
+      "zeroTrustPillar": "Applications & Workloads",
+      "zeroTrustWeight": 3,
+      "subcategory": "Third-Party Apps",
+      "recommendedValue": "Marketplace installs restricted to an allowlist or blocked entirely, with internal apps not exempted",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/marketplace",
+      "remediationSteps": "Admin console > Apps > Google Workspace Marketplace > Settings. Set app access to 'Allow users to install only allowlisted apps' or block installs entirely, and turn off the option that allows all internal apps.",
+      "compliance": {
+        "scuba": [
+          "GWS.COMMONCONTROLS.11.1v1"
+        ],
+        "nistSp80053": [
+          "CM-7",
+          "AC-3",
+          "SA-9"
+        ],
+        "mitreAttack": [
+          "T1550.001"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "clean-blocked",
+        "known-bad-access",
+        "known-bad-internal",
+        "field-missing",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "ADMIN-025",
+      "name": "Multi-party approval required for sensitive admin actions (GWS.COMMONCONTROLS.17.1)",
+      "description": "SCuBA GWS.COMMONCONTROLS.17.1: multi-party approval forces a second admin to sign off on the sensitive actions an attacker performs immediately after taking over an admin account, such as disabling security settings or altering recovery options. It converts a single compromised session into an action that has to survive another human. Reads multi_party_approval.require_approvals and warns where multiPartyApprovalState is anything other than ENABLED.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Identity",
+      "zeroTrustWeight": 2,
+      "subcategory": "Privileged Access",
+      "recommendedValue": "Multi-party approval enabled for sensitive admin actions",
+      "remediationUrl": "https://admin.google.com/ac/accountsettings",
+      "remediationSteps": "Admin console > Account > Multi-party approval. Turn on the requirement for sensitive admin actions and confirm at least two super admins exist to approve them.",
+      "compliance": {
+        "scuba": [
+          "GWS.COMMONCONTROLS.17.1v1"
+        ],
+        "nistSp80053": [
+          "AC-3",
+          "AC-6",
+          "CM-5"
+        ],
+        "mitreAttack": [
+          "T1078.004"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-assessed"
+      ]
     }
   ]
 }

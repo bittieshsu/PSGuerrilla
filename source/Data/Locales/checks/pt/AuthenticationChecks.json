@@ -323,5 +323,23 @@
       "value": "Na Consola de administração, em Segurança > Recuperação de conta, desative a autorrecuperação para os utilizadores (e administradores não superadministradores), para que a recuperação de conta seja tratada através de um processo de administrador ou de suporte técnico, em vez de um canal controlado pelo utilizador.",
       "status": "machine-draft"
     }
+  },
+  "AUTH-019": {
+    "name": {
+      "value": "Contas não gerenciadas em conflito substituídas (GWS.COMMONCONTROLS.7.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.7.1: uma conta de consumidor não gerenciada criada com um endereço corporativo guarda dados da organização fora de qualquer controle administrativo, não pode ser auditada nem suspensa e sobrevive à saída do funcionário. Configurar a gestão de conflitos para substituir essas contas as coloca sob gestão em vez de deixá-las ao lado da identidade gerenciada. Lê provisioning.conflicting_accounts_management e alerta quando option é diferente de REPLACE_CONFLICTING_ACCOUNT.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "As contas não gerenciadas em conflito são substituídas por contas gerenciadas",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Conta > Configurações da conta > Gestão de contas em conflito. Escolha substituir as contas não gerenciadas em conflito para que sejam convertidas em contas gerenciadas em vez de preservadas.",
+      "status": "machine-draft"
+    }
   }
 }

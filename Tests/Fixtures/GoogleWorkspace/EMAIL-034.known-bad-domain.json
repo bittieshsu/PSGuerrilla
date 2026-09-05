@@ -1,0 +1,28 @@
+{
+  "checkId": "EMAIL-034",
+  "platform": "GWS",
+  "scenario": "known-bad-domain",
+  "expectedStatus": "FAIL",
+  "description": "domainSpoofingConsequence leaves flagged mail in the inbox",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gmail.spoofing_and_authentication": [
+          {
+            "setting": {
+              "value": {
+                "domainSpoofingConsequence": "KEEP_IN_INBOX",
+                "domainNameSpoofingConsequence": "QUARANTINE",
+                "employeeNameSpoofingConsequence": "SPAM_FOLDER",
+                "groupsSpoofingConsequence": "SPAM_FOLDER",
+                "unauthenticatedEmailConsequence": "SPAM_FOLDER"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

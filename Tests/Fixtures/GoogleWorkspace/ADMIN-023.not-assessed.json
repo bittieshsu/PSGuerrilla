@@ -1,0 +1,13 @@
+{
+  "checkId": "ADMIN-023",
+  "platform": "GWS",
+  "scenario": "not-assessed",
+  "expectedStatus": "SKIP",
+  "description": "Directory users could not be collected",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {
+      "Users": "429 rate limited"
+    }
+  }
+}

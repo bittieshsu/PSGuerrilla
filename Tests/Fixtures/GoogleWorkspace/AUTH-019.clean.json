@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-019",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Conflicting accounts replaced",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "provisioning.conflicting_accounts_management": [
+          {
+            "setting": {
+              "value": {
+                "option": "REPLACE_CONFLICTING_ACCOUNT"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

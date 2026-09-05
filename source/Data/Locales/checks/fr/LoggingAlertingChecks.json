@@ -107,5 +107,23 @@
       "value": "Admin Console > Sécurité > Contrôles des API > Délégation à l'échelle du domaine > Examinez les délégations disposant des portées de l'API Reports > Supprimez les accès non autorisés",
       "status": "machine-draft"
     }
+  },
+  "LOG-007": {
+    "name": {
+      "value": "Toutes les règles d'alerte définies par le système activées (GWS.COMMONCONTROLS.13.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.13.1 : Google fournit un ensemble de règles d'alerte définies par le système couvrant les événements qu'un administrateur doit connaître en priorité, notamment les connexions suspectes, les avertissements d'attaques soutenues par un État et les changements de privilèges d'administration. Une règle inactive signifie que l'événement se produit toujours et que personne n'en est informé. Lit rule.system_defined_alerts et échoue dès qu'une règle n'est pas à l'état ACTIVE, en nommant les règles inactives.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les règles d'alerte définies par le système sont actives",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Règles > Règles définies par le système. Passez en revue les règles inactives et activez chacune d'elles, en ajoutant des destinataires pour que les alertes arrivent dans une boîte surveillée et non sur un alias sans lecteur.",
+      "status": "machine-draft"
+    }
   }
 }

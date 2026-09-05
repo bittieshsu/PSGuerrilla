@@ -1064,3 +1064,179 @@ function Test-EMAIL031 {
         -Type 'gmail.enhanced_pre_delivery_message_scanning' -Field 'enableImprovedSuspiciousContentDetection' -SecureValue $true -Status 'FAIL' `
         -BadMsg 'Enhanced pre-delivery message scanning is not enabled' -GoodMsg 'Enhanced pre-delivery message scanning is enabled'
 }
+
+# ── EMAIL-032: GWS.GMAIL.17.1 — comprehensive mail storage enabled ─────────
+function Test-EMAIL032 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    Test-GwsPolicyBoolean -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Type 'gmail.comprehensive_mail_storage' -Field 'enabled' -SecureValue $true -Status 'WARN' `
+        -BadMsg 'Comprehensive mail storage is disabled, so mail generated outside Gmail is absent from the record' `
+        -GoodMsg 'Comprehensive mail storage is enabled'
+}
+
+# Shared consequence evaluator for GWS.GMAIL.5.5 and 7.6. Both policies say the
+# same thing about different protections: detecting a bad message and leaving it
+# in the inbox is a label, not an outcome. The Rego treats SPAM_FOLDER and
+# QUARANTINE as the only compliant consequences, so anything else, including a
+# missing field, is reported rather than assumed safe. One known-bad fixture per
+# contributing field proves each branch separately.
+function Test-GwsMailConsequences {
+    param(
+        [hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath,
+        [string]$Type, [string[]]$Fields, [string]$Subject
+    )
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey 'CloudIdentityPolicies' -Subject $Subject
+    if ($na) { return $na }
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' -OrgUnitPath $OrgUnitPath
+    }
+    $objs = @(Resolve-GooglePolicyValue -Policies $pol -Type $Type)
+    if ($objs.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue "No $Type policy returned for this tenant" -OrgUnitPath $OrgUnitPath
+    }
+
+    $bad = [System.Collections.Generic.List[string]]::new(); $missing = 0
+    foreach ($o in $objs) {
+        $props = $o.PSObject.Properties.Name
+        foreach ($f in $Fields) {
+            if ($props -notcontains $f) { $missing++; continue }
+            if ("$($o.$f)".Trim() -notmatch '(?i)^(SPAM_FOLDER|QUARANTINE)$') {
+                $bad.Add("$f = $($o.$f)")
+            }
+        }
+    }
+    if ($bad.Count -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue ("$($bad.Count) protection consequence(s) leave flagged mail in the inbox rather than moving it " +
+                "to spam or quarantine: $((@($bad) | Select-Object -Unique | Select-Object -First 8) -join '; ') " +
+                "(across $($objs.Count) targeted policy/policies).") `
+            -OrgUnitPath $OrgUnitPath `
+            -Details @{ PolicyCount = $objs.Count; ViolatingCount = $bad.Count
+                        AffectedItems = @($bad | Select-Object -Unique); AffectedLabel = 'Protections that keep flagged mail in the inbox' }
+    }
+    if ($missing -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue ("$missing protection consequence field(s) were not returned across $($objs.Count) targeted " +
+                'policy/policies, so the outcome is not assessed rather than assumed to be spam or quarantine') `
+            -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; UnreadableCount = $missing }
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "Every protection moves flagged mail to spam or quarantine across all $($objs.Count) targeted policy/policies" `
+        -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count }
+}
+
+# ── EMAIL-033: GWS.GMAIL.5.5 — unsafe attachments leave the inbox ──────────
+# The baseline title points at GMAIL.5.1 to 5.3; the Rego shows GMAIL.5 is the
+# ATTACHMENT group, so 5.5 reads gmail.email_attachment_safety. Reading the
+# title alone would have wired this to the spoofing settings.
+function Test-EMAIL033 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    Test-GwsMailConsequences -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Type 'gmail.email_attachment_safety' -Subject 'attachment safety policy' `
+        -Fields @('anomalousAttachmentProtectionConsequence','encryptedAttachmentProtectionConsequence','attachmentWithScriptsProtectionConsequence')
+}
+
+# ── EMAIL-034: GWS.GMAIL.7.6 — spoofed mail leaves the inbox ───────────────
+function Test-EMAIL034 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    Test-GwsMailConsequences -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Type 'gmail.spoofing_and_authentication' -Subject 'spoofing and authentication policy' `
+        -Fields @('domainSpoofingConsequence','domainNameSpoofingConsequence','employeeNameSpoofingConsequence','groupsSpoofingConsequence','unauthenticatedEmailConsequence')
+}
+
+# ── EMAIL-035: GWS.GMAIL.18.2 — no domain bypasses filtering ───────────────
+# The Rego is non-compliant simply when warningDomainsFound is bound, i.e. the
+# API reported domains configured to bypass warnings. An absent field means the
+# tenant has none.
+function Test-EMAIL035 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey 'CloudIdentityPolicies' -Subject 'spam override lists'
+    if ($na) { return $na }
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' -OrgUnitPath $OrgUnitPath
+    }
+    $objs = @(Resolve-GooglePolicyValue -Policies $pol -Type 'gmail.spam_override_lists')
+    if ($objs.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'No gmail.spam_override_lists policy returned for this tenant' -OrgUnitPath $OrgUnitPath
+    }
+    $found = [System.Collections.Generic.List[string]]::new()
+    foreach ($o in $objs) {
+        if ($o.PSObject.Properties.Name -notcontains 'warningDomainsFound') { continue }
+        $v = "$($o.warningDomainsFound)".Trim()
+        if ($v -and $v -notmatch '(?i)^(false|0)$') { $found.Add($v) }
+    }
+    if ($found.Count -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue ("Spam filtering and warning banners are bypassed for one or more domains: " +
+                "$((@($found) | Select-Object -Unique | Select-Object -First 6) -join '; '). Mail from those domains reaches " +
+                'inboxes unfiltered and unlabelled, including mail from any attacker able to send as them.') `
+            -OrgUnitPath $OrgUnitPath `
+            -Details @{ PolicyCount = $objs.Count; AffectedItems = @($found | Select-Object -Unique); AffectedLabel = 'Domains bypassing spam filtering' }
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "No domain is configured to bypass spam filtering or warning banners (across $($objs.Count) targeted policy/policies)" `
+        -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count }
+}
+
+# ── EMAIL-036: GWS.GMAIL.18.3 — no blanket warning-banner suppression ──────
+function Test-EMAIL036 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey 'CloudIdentityPolicies' -Subject 'spam override lists'
+    if ($na) { return $na }
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' -OrgUnitPath $OrgUnitPath
+    }
+    $objs = @(Resolve-GooglePolicyValue -Policies $pol -Type 'gmail.spam_override_lists')
+    if ($objs.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'No gmail.spam_override_lists policy returned for this tenant' -OrgUnitPath $OrgUnitPath
+    }
+    $offenders = [System.Collections.Generic.List[string]]::new(); $sawList = $false
+    foreach ($o in $objs) {
+        if ($o.PSObject.Properties.Name -notcontains 'spamOverride') { continue }
+        $sawList = $true
+        foreach ($ov in @($o.spamOverride)) {
+            if ($null -eq $ov) { continue }
+            if ($ov.PSObject.Properties.Name -notcontains 'hideWarningBannerForAll') { continue }
+            if ($ov.hideWarningBannerForAll -eq $true) {
+                $label = if ("$($ov.description)") { "$($ov.description)" } else { '(unnamed override list)' }
+                $offenders.Add($label)
+            }
+        }
+    }
+    if ($offenders.Count -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue ("Spam filter bypass and warning-banner hiding is enabled for all senders in: " +
+                "$((@($offenders) | Select-Object -Unique | Select-Object -First 6) -join '; '). That removes the most " +
+                'visible untrusted-message signal a user has, tenant wide rather than for a reviewed exception.') `
+            -OrgUnitPath $OrgUnitPath `
+            -Details @{ PolicyCount = $objs.Count; AffectedItems = @($offenders | Select-Object -Unique); AffectedLabel = 'Override lists hiding warnings for all senders' }
+    }
+    if (-not $sawList) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue ("The spam override lists were not returned across $($objs.Count) targeted policy/policies, " +
+                'so blanket warning suppression is not assessed rather than assumed absent') `
+            -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count }
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "No override list hides warning banners for all internal and external senders (across $($objs.Count) targeted policy/policies)" `
+        -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count }
+}

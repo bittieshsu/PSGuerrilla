@@ -330,7 +330,7 @@
       "status": "machine-draft"
     },
     "description": {
-      "value": "SCuBA GWS.DRIVEDOCS.1.3: een gebruiker die een bestand buiten de organisatie deelt, hoort daarop gewezen te worden op het moment van delen — het laatste punt waarop een onbedoelde openbaarmaking nog goedkoop te stoppen is. Leest drive_and_docs.external_sharing en koppelt externalSharingMode aan het waarschuwingsveld dat die modus daadwerkelijk gebruikt: warnForSharingOutsideAllowlistedDomains wanneer delen beperkt is tot toegestane domeinen, en warnForExternalSharing wanneer delen open staat. Waar extern delen verboden is kan het beleid niet van toepassing zijn en meldt de controle dat, in plaats van stilzwijgend te slagen.",
+      "value": "SCuBA GWS.DRIVEDOCS.1.3: een gebruiker die een bestand buiten de organisatie deelt, hoort daarop gewezen te worden op het moment van delen, het laatste punt waarop een onbedoelde openbaarmaking nog goedkoop te stoppen is. Leest drive_and_docs.external_sharing en koppelt externalSharingMode aan het waarschuwingsveld dat die modus daadwerkelijk gebruikt: warnForSharingOutsideAllowlistedDomains wanneer delen beperkt is tot toegestane domeinen, en warnForExternalSharing wanneer delen open staat. Waar extern delen verboden is kan het beleid niet van toepassing zijn en meldt de controle dat, in plaats van stilzwijgend te slagen.",
       "status": "machine-draft"
     },
     "recommendedValue": {
@@ -384,7 +384,7 @@
       "status": "machine-draft"
     },
     "description": {
-      "value": "SCuBA GWS.DRIVEDOCS.1.7: een bestand verplaatsen naar een gedeelde Drive van een andere organisatie draagt het beheer ervan over — de beheerders van de ontvangende organisatie beheersen de inhoud en de organisatie die het bestand maakte verliest de mogelijkheid toegang in te trekken of het te bewaren. Leest drive_and_docs.external_sharing en faalt wanneer allowedPartiesForDistributingContent iets anders is dan NONE in een beleid waarvan externalSharingMode extern delen toestaat. Niet van toepassing waar extern delen verboden is.",
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: een bestand verplaatsen naar een gedeelde Drive van een andere organisatie draagt het beheer ervan over: de beheerders van de ontvangende organisatie beheersen de inhoud en de organisatie die het bestand maakte verliest de mogelijkheid toegang in te trekken of het te bewaren. Leest drive_and_docs.external_sharing en faalt wanneer allowedPartiesForDistributingContent iets anders is dan NONE in een beleid waarvan externalSharingMode extern delen toestaat. Niet van toepassing waar extern delen verboden is.",
       "status": "machine-draft"
     },
     "recommendedValue": {
@@ -393,6 +393,24 @@
     },
     "remediationSteps": {
       "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Documenten > Instellingen voor delen > 'Inhoud buiten <organisatie> distribueren'. Stel dit zo in dat niemand inhoud mag distribueren naar gedeelde Drives van een andere organisatie.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-023": {
+    "name": {
+      "value": "Drive voor desktop beperkt tot geautoriseerde apparaten (GWS.DRIVEDOCS.5.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.5.1: Drive voor desktop synchroniseert organisatiebestanden naar lokale schijven, dus het toestaan op onbeheerde hardware zet een volledige lokale kopie van de Drive-inhoud op machines die de organisatie niet kan wissen, versleutelen of onderzoeken. Leest drive_and_docs.drive_for_desktop en faalt wanneer allowDriveForDesktop aanstaat terwijl restrictToAuthorizedDevices niet wordt afgedwongen. Drive voor desktop volledig uit staat is conform, en de controle zegt dat er ook bij in plaats van kaal te slagen.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive voor desktop is uitgeschakeld of beperkt tot geautoriseerde apparaten van het bedrijf",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Documenten > Functies en toepassingen > Google Drive voor desktop. Schakel het uit, of laat het aan en schakel 'Google Drive voor desktop alleen toestaan op geautoriseerde apparaten' in.",
       "status": "machine-draft"
     }
   }

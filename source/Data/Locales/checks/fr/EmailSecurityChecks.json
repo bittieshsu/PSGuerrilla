@@ -557,5 +557,95 @@
       "value": "Dans Google Admin Console, sous Applications > Google Workspace > Gmail > Spam, hameçonnage et logiciels malveillants, activez l'analyse renforcée des messages avant distribution afin que Gmail effectue une analyse supplémentaire des contenus suspects avant distribution.",
       "status": "machine-draft"
     }
+  },
+  "EMAIL-032": {
+    "name": {
+      "value": "Stockage complet des messages activé (GWS.GMAIL.17.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.17.1 : le stockage complet des messages conserve une copie de chaque message associé au compte d'un utilisateur, y compris ceux envoyés depuis des applications Workspace autres que Gmail, afin qu'une investigation puisse reconstituer ce qui a été envoyé. Sans lui, le courrier généré hors de Gmail est absent de l'enregistrement et une recherche renvoie une réponse partielle qui paraît complète. Lit gmail.comprehensive_mail_storage et alerte lorsque enabled n'est pas true.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Stockage complet des messages activé pour tous les utilisateurs",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Applications > Google Workspace > Gmail > Conformité > Stockage complet des messages. Activez-le pour que tous les messages associés à un utilisateur soient stockés et récupérables.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-033": {
+    "name": {
+      "value": "Les pièces jointes dangereuses ne restent pas dans la boîte de réception (GWS.GMAIL.5.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.5.5 : les protections des pièces jointes ne réduisent le risque que si le message signalé est mis hors de portée. Détecter une pièce jointe malveillante puis la laisser dans la boîte de réception signifie que la protection a produit une étiquette et non un résultat, et l'utilisateur conserve la possibilité de l'ouvrir. Lit gmail.email_attachment_safety et exige que les conséquences pour les pièces jointes anormales, chiffrées et contenant des scripts soient SPAM_FOLDER ou QUARANTINE. Une conséquence qui conserve le message dans la boîte de réception échoue.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les protections des pièces jointes déplacent le courrier signalé vers le spam ou la quarantaine",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Applications > Google Workspace > Gmail > Sécurité > Pièces jointes. Pour les pièces jointes anormales, chiffrées et contenant des scripts, définissez l'action sur déplacer vers le spam ou mettre en quarantaine plutôt que conserver dans la boîte de réception.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-034": {
+    "name": {
+      "value": "Le courrier usurpé et non authentifié ne reste pas dans la boîte de réception (GWS.GMAIL.7.6)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.7.6 : les protections d'usurpation et d'authentification couvrent les schémas d'usurpation qui portent la fraude au président, notamment les domaines ressemblants, l'usurpation de noms de collaborateurs et les expéditeurs non authentifiés. Signaler un tel message et le laisser dans la boîte de réception le place toujours sous les yeux du destinataire. Lit gmail.spoofing_and_authentication et exige que les conséquences liées au domaine, au nom de domaine, au nom de collaborateur, aux groupes et au courrier non authentifié soient SPAM_FOLDER ou QUARANTINE.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toutes les protections d'usurpation et d'authentification déplacent le courrier signalé vers le spam ou la quarantaine",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Applications > Google Workspace > Gmail > Sécurité > Usurpation et authentification. Pour chaque protection, définissez l'action sur déplacer vers le spam ou mettre en quarantaine plutôt que conserver dans la boîte de réception.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-035": {
+    "name": {
+      "value": "Aucun domaine ne contourne le filtrage du spam ni les avertissements (GWS.GMAIL.18.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.18.2 : ajouter un domaine à une liste de contournement désactive le filtrage du spam et supprime les bandeaux d'avertissement pour tous ses messages ; tout attaquant capable d'émettre au nom de ce domaine, ou qui compromet une seule boîte en son sein, atteint donc les boîtes de réception sans filtrage ni étiquetage. Lit gmail.spam_override_lists et échoue lorsque warningDomainsFound signale des domaines configurés pour contourner les avertissements.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucun domaine n'est configuré pour contourner le filtrage du spam ou les bandeaux d'avertissement",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Applications > Google Workspace > Gmail > Spam, hameçonnage et logiciels malveillants. Passez en revue chaque liste d'autorisation et chaque passerelle entrante, et supprimez les domaines configurés pour contourner le filtrage ou masquer les avertissements. Préférez des règles de portée réduite à une confiance générale accordée à un domaine.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-036": {
+    "name": {
+      "value": "Le contournement du filtre anti-spam n'est pas activé pour tous les expéditeurs (GWS.GMAIL.18.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.18.3 : une liste de contournement qui masque le bandeau d'avertissement pour tous les messages d'expéditeurs internes et externes supprime le signal le plus visible dont dispose un utilisateur pour juger qu'un message n'est pas fiable, à l'échelle du tenant et non pour une exception examinée. Lit gmail.spam_override_lists et échoue lorsqu'une entrée définit hideWarningBannerForAll, en nommant les entrées concernées.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aucune liste de contournement ne masque les bandeaux d'avertissement pour tous les expéditeurs internes et externes",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Applications > Google Workspace > Gmail > Spam, hameçonnage et logiciels malveillants. Ouvrez chaque liste de contournement ou d'expéditeurs approuvés et décochez l'option qui contourne les filtres anti-spam et masque les avertissements pour tous les messages d'expéditeurs internes et externes.",
+      "status": "machine-draft"
+    }
   }
 }

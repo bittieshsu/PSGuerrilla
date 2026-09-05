@@ -1,0 +1,29 @@
+{
+  "checkId": "EMAIL-036",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "An override hides warnings for all senders",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gmail.spam_override_lists": [
+          {
+            "setting": {
+              "value": {
+                "spamOverride": [
+                  {
+                    "description": "Global bypass",
+                    "hideWarningBannerForAll": true
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

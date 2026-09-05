@@ -906,6 +906,190 @@
         "known-bad",
         "not-assessed"
       ]
+    },
+    {
+      "id": "EMAIL-032",
+      "name": "Comprehensive mail storage enabled (GWS.GMAIL.17.1)",
+      "description": "SCuBA GWS.GMAIL.17.1: comprehensive mail storage keeps a copy of every message associated with a user's account, including messages sent from non-Gmail Workspace applications, so an investigation can reconstruct what was sent. Without it, mail generated outside Gmail is absent from the record and a search returns a partial answer that looks complete. Reads gmail.comprehensive_mail_storage and warns where enabled is not true.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Visibility & Analytics",
+      "zeroTrustWeight": 2,
+      "subcategory": "Mail Retention",
+      "recommendedValue": "Comprehensive mail storage enabled for all users",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/gmail",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Gmail > Compliance > Comprehensive mail storage. Enable it so all messages associated with a user are stored and retrievable.",
+      "compliance": {
+        "scuba": [
+          "GWS.GMAIL.17.1v1"
+        ],
+        "nistSp80053": [
+          "AU-11",
+          "AU-4",
+          "SI-4"
+        ],
+        "mitreAttack": [],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "EMAIL-033",
+      "name": "Unsafe attachments are not left in the inbox (GWS.GMAIL.5.5)",
+      "description": "SCuBA GWS.GMAIL.5.5: attachment protections only reduce risk if a flagged message is moved out of reach. Detecting a malicious attachment and then leaving it in the inbox means the protection produced a label rather than an outcome, and the user still gets the chance to open it. Reads gmail.email_attachment_safety and requires the anomalous-attachment, encrypted-attachment and script-attachment consequences each to be SPAM_FOLDER or QUARANTINE. A consequence of keeping the mail in the inbox fails.",
+      "severity": "High",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 3,
+      "subcategory": "Attachment Safety",
+      "recommendedValue": "Every attachment protection moves flagged mail to spam or quarantine",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/gmail",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Gmail > Safety > Attachments. For anomalous attachments, encrypted attachments and attachments with scripts, set the action to move the message to spam or to quarantine rather than keeping it in the inbox.",
+      "compliance": {
+        "scuba": [
+          "GWS.GMAIL.5.5v1"
+        ],
+        "nistSp80053": [
+          "SI-3",
+          "SI-8",
+          "SC-44"
+        ],
+        "mitreAttack": [
+          "T1566.001"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad-anomalous",
+        "known-bad-encrypted",
+        "known-bad-scripts",
+        "field-missing",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "EMAIL-034",
+      "name": "Spoofed and unauthenticated mail is not left in the inbox (GWS.GMAIL.7.6)",
+      "description": "SCuBA GWS.GMAIL.7.6: the spoofing and authentication protections cover the impersonation patterns that carry business email compromise, including lookalike domains, employee-name spoofing and unauthenticated senders. Flagging such a message and leaving it in the inbox still puts it in front of the recipient. Reads gmail.spoofing_and_authentication and requires the domain, domain-name, employee-name, groups and unauthenticated-email consequences each to be SPAM_FOLDER or QUARANTINE.",
+      "severity": "High",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 3,
+      "subcategory": "Spoofing Protection",
+      "recommendedValue": "Every spoofing and authentication protection moves flagged mail to spam or quarantine",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/gmail",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Gmail > Safety > Spoofing and authentication. For each protection, set the action to move the message to spam or to quarantine rather than keeping it in the inbox.",
+      "compliance": {
+        "scuba": [
+          "GWS.GMAIL.7.6v1"
+        ],
+        "nistSp80053": [
+          "SI-3",
+          "SI-8",
+          "IA-2"
+        ],
+        "mitreAttack": [
+          "T1566.002",
+          "T1534"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad-domain",
+        "known-bad-domainname",
+        "known-bad-employee",
+        "known-bad-groups",
+        "known-bad-unauth",
+        "field-missing",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "EMAIL-035",
+      "name": "No domains bypass spam filtering and warnings (GWS.GMAIL.18.2)",
+      "description": "SCuBA GWS.GMAIL.18.2: adding a domain to a bypass list disables spam filtering and suppresses the warning banners for every message from it, so any attacker who can send as that domain, or who compromises a single mailbox within it, reaches inboxes unfiltered and unlabelled. Reads gmail.spam_override_lists and fails where warningDomainsFound reports domains configured to bypass warnings.",
+      "severity": "High",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 3,
+      "subcategory": "Spam Controls",
+      "recommendedValue": "No domain is configured to bypass spam filtering or warning banners",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/gmail",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Gmail > Spam, phishing and malware. Review every allowlist and inbound gateway entry, and remove domains configured to bypass filtering or hide warnings. Prefer narrowly scoped rules over blanket domain trust.",
+      "compliance": {
+        "scuba": [
+          "GWS.GMAIL.18.2v1"
+        ],
+        "nistSp80053": [
+          "SI-8",
+          "SC-7",
+          "SI-3"
+        ],
+        "mitreAttack": [
+          "T1566"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "field-missing",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "EMAIL-036",
+      "name": "Spam filter bypass not enabled for all senders (GWS.GMAIL.18.3)",
+      "description": "SCuBA GWS.GMAIL.18.3: an override list that hides the warning banner for all messages from internal and external senders removes the single most visible signal a user has that a message is untrusted, across the entire tenant rather than for a reviewed exception. Reads gmail.spam_override_lists and fails where any override entry sets hideWarningBannerForAll, naming the entries responsible.",
+      "severity": "High",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 3,
+      "subcategory": "Spam Controls",
+      "recommendedValue": "No override list hides warning banners for all internal and external senders",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/gmail",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Gmail > Spam, phishing and malware. Open each override or approved-sender list and clear the option that bypasses spam filters and hides warnings for all messages from internal and external senders.",
+      "compliance": {
+        "scuba": [
+          "GWS.GMAIL.18.3v1"
+        ],
+        "nistSp80053": [
+          "SI-8",
+          "SI-3",
+          "AT-2"
+        ],
+        "mitreAttack": [
+          "T1566"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "field-missing",
+        "not-assessed"
+      ]
     }
   ]
 }

@@ -1,111 +1,345 @@
 {
   "_family": "AuthenticationChecks.json",
   "AUTH-001": {
-    "name": { "value": "2SV प्रवर्तन", "status": "machine-draft" },
-    "description": { "value": "चुराए गए क्रेडेंशियल के माध्यम से खाता अधिग्रहण रोकने के लिए सभी उपयोगकर्ताओं के लिए दो-चरणीय सत्यापन (2SV/MFA) लागू किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों के लिए लागू", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Authentication > 2-step verification > Enforcement को 'On' पर सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "2SV प्रवर्तन",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "चुराए गए क्रेडेंशियल के माध्यम से खाता अधिग्रहण रोकने के लिए सभी उपयोगकर्ताओं के लिए दो-चरणीय सत्यापन (2SV/MFA) लागू किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सभी संगठनात्मक इकाइयों के लिए लागू",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > 2-step verification > Enforcement को 'On' पर सेट करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-002": {
-    "name": { "value": "2SV नामांकन दर", "status": "machine-draft" },
-    "description": { "value": "सभी सक्रिय उपयोगकर्ताओं के पास 2SV नामांकित होना चाहिए। कम नामांकन दर खातों को क्रेडेंशियल-आधारित हमलों के प्रति संवेदनशील बना देती है", "status": "machine-draft" },
-    "recommendedValue": { "value": "सक्रिय उपयोगकर्ताओं में 95% या अधिक नामांकन", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Reporting > User Reports > Security > 2SV रहित उपयोगकर्ताओं की समीक्षा करें। Security > 2-Step Verification के माध्यम से नामांकन समय-सीमा सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "2SV नामांकन दर",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "सभी सक्रिय उपयोगकर्ताओं के पास 2SV नामांकित होना चाहिए। कम नामांकन दर खातों को क्रेडेंशियल-आधारित हमलों के प्रति संवेदनशील बना देती है",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सक्रिय उपयोगकर्ताओं में 95% या अधिक नामांकन",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Reporting > User Reports > Security > 2SV रहित उपयोगकर्ताओं की समीक्षा करें। Security > 2-Step Verification के माध्यम से नामांकन समय-सीमा सेट करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-003": {
-    "name": { "value": "2SV विधि मज़बूती", "status": "machine-draft" },
-    "description": { "value": "सुरक्षा कुंजियां प्राथमिक 2SV विधि होनी चाहिए। SMS और वॉइस-आधारित 2SV SIM-स्वैपिंग और अवरोधन हमलों के प्रति संवेदनशील हैं", "status": "machine-draft" },
-    "recommendedValue": { "value": "सुरक्षा कुंजियां प्राथमिक विधि के रूप में लागू", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Authentication > 2-step verification > अनुमत विधियों को 'Security key only' पर सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "2SV विधि मज़बूती",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "सुरक्षा कुंजियां प्राथमिक 2SV विधि होनी चाहिए। SMS और वॉइस-आधारित 2SV SIM-स्वैपिंग और अवरोधन हमलों के प्रति संवेदनशील हैं",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सुरक्षा कुंजियां प्राथमिक विधि के रूप में लागू",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > 2-step verification > अनुमत विधियों को 'Security key only' पर सेट करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-004": {
-    "name": { "value": "पासवर्ड न्यूनतम लंबाई", "status": "machine-draft" },
-    "description": { "value": "ब्रूट-फोर्स और डिक्शनरी हमलों का प्रतिरोध करने के लिए पासवर्ड की न्यूनतम लंबाई कम से कम 12 वर्ण होनी चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "न्यूनतम 12 वर्ण", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Authentication > Password management > न्यूनतम लंबाई को 12 या अधिक पर सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "पासवर्ड न्यूनतम लंबाई",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "ब्रूट-फोर्स और डिक्शनरी हमलों का प्रतिरोध करने के लिए पासवर्ड की न्यूनतम लंबाई कम से कम 12 वर्ण होनी चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "न्यूनतम 12 वर्ण",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Password management > न्यूनतम लंबाई को 12 या अधिक पर सेट करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-005": {
-    "name": { "value": "पासवर्ड पुनः-उपयोग प्रतिबंध", "status": "machine-draft" },
-    "description": { "value": "उपयोगकर्ता हाल के पासवर्ड पुनः उपयोग करने में सक्षम नहीं होने चाहिए, जिससे क्रेडेंशियल साइक्लिंग हमले रुकें", "status": "machine-draft" },
-    "recommendedValue": { "value": "पासवर्ड पुनः-उपयोग की अनुमति नहीं", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Authentication > Password management > 'Enforce password policy at next sign-in' सक्षम करें और पुनः-उपयोग प्रतिबंधित करें", "status": "machine-draft" }
+    "name": {
+      "value": "पासवर्ड पुनः-उपयोग प्रतिबंध",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "उपयोगकर्ता हाल के पासवर्ड पुनः उपयोग करने में सक्षम नहीं होने चाहिए, जिससे क्रेडेंशियल साइक्लिंग हमले रुकें",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "पासवर्ड पुनः-उपयोग की अनुमति नहीं",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Password management > 'Enforce password policy at next sign-in' सक्षम करें और पुनः-उपयोग प्रतिबंधित करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-006": {
-    "name": { "value": "सत्र अवधि", "status": "machine-draft" },
-    "description": { "value": "सत्र अपहरण और साझा उपकरणों से अनधिकृत पहुंच की अवधि को कम करने के लिए वेब सत्र अवधि सीमित होनी चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "12 घंटे या उससे कम की सत्र अवधि", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Google Session Control > वेब सत्र अवधि सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "सत्र अवधि",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "सत्र अपहरण और साझा उपकरणों से अनधिकृत पहुंच की अवधि को कम करने के लिए वेब सत्र अवधि सीमित होनी चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "12 घंटे या उससे कम की सत्र अवधि",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Google Session Control > वेब सत्र अवधि सेट करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-007": {
-    "name": { "value": "SSO कॉन्फ़िगरेशन", "status": "machine-draft" },
-    "description": { "value": "यदि SSO कॉन्फ़िगर किया गया है, तो उसे सुरक्षित प्रोटोकॉल और विश्वसनीय पहचान प्रदाताओं का उपयोग करना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "विश्वसनीय IdP के साथ SAML SSO ठीक से कॉन्फ़िगर किया गया", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Authentication > SSO with third-party IdP > कॉन्फ़िगरेशन सत्यापित करें", "status": "machine-draft" }
+    "name": {
+      "value": "SSO कॉन्फ़िगरेशन",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "यदि SSO कॉन्फ़िगर किया गया है, तो उसे सुरक्षित प्रोटोकॉल और विश्वसनीय पहचान प्रदाताओं का उपयोग करना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "विश्वसनीय IdP के साथ SAML SSO ठीक से कॉन्फ़िगर किया गया",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > SSO with third-party IdP > कॉन्फ़िगरेशन सत्यापित करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-008": {
-    "name": { "value": "Less Secure Apps पहुंच", "status": "machine-draft" },
-    "description": { "value": "क्रेडेंशियल उजागर होने से रोकने के लिए कम-सुरक्षित ऐप्स (ऐसे ऐप्स जो आधुनिक प्रमाणीकरण का समर्थन नहीं करते) अवरुद्ध किए जाने चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "सभी उपयोगकर्ताओं के लिए अक्षम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Authentication > Less secure apps > 'Disable access to less secure apps' पर सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "Less Secure Apps पहुंच",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "क्रेडेंशियल उजागर होने से रोकने के लिए कम-सुरक्षित ऐप्स (ऐसे ऐप्स जो आधुनिक प्रमाणीकरण का समर्थन नहीं करते) अवरुद्ध किए जाने चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सभी उपयोगकर्ताओं के लिए अक्षम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Less secure apps > 'Disable access to less secure apps' पर सेट करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-009": {
-    "name": { "value": "ऐप पासवर्ड नीति", "status": "machine-draft" },
-    "description": { "value": "ऐप-विशिष्ट पासवर्ड 2SV को बायपास करते हैं और उन्हें नियंत्रित किया जाना चाहिए। यदि अनुमति है, तो उन्हें पहले 2SV नामांकन की आवश्यकता होनी चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "ऐप पासवर्ड प्रतिबंधित या अक्षम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Authentication > 2-step verification > ऐप पासवर्ड सेटिंग्स की समीक्षा करें", "status": "machine-draft" }
+    "name": {
+      "value": "ऐप पासवर्ड नीति",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "ऐप-विशिष्ट पासवर्ड 2SV को बायपास करते हैं और उन्हें नियंत्रित किया जाना चाहिए। यदि अनुमति है, तो उन्हें पहले 2SV नामांकन की आवश्यकता होनी चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "ऐप पासवर्ड प्रतिबंधित या अक्षम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > 2-step verification > ऐप पासवर्ड सेटिंग्स की समीक्षा करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-010": {
-    "name": { "value": "पुनर्प्राप्ति विकल्प कॉन्फ़िगरेशन", "status": "machine-draft" },
-    "description": { "value": "उपयोगकर्ता स्व-सेवा पुनर्प्राप्ति उचित रूप से कॉन्फ़िगर की जानी चाहिए। सोशल इंजीनियरिंग रोकने के लिए super admin के पास व्यक्तिगत पुनर्प्राप्ति विकल्प नहीं होने चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "Super admin: कोई व्यक्तिगत पुनर्प्राप्ति नहीं। नियमित उपयोगकर्ता: व्यवस्थापक ओवरराइड के साथ पुनर्प्राप्ति विकल्पों की अनुमति", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Authentication > Account recovery > super admin OU के लिए व्यक्तिगत पुनर्प्राप्ति अक्षम करें", "status": "machine-draft" }
+    "name": {
+      "value": "पुनर्प्राप्ति विकल्प कॉन्फ़िगरेशन",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "उपयोगकर्ता स्व-सेवा पुनर्प्राप्ति उचित रूप से कॉन्फ़िगर की जानी चाहिए। सोशल इंजीनियरिंग रोकने के लिए super admin के पास व्यक्तिगत पुनर्प्राप्ति विकल्प नहीं होने चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Super admin: कोई व्यक्तिगत पुनर्प्राप्ति नहीं। नियमित उपयोगकर्ता: व्यवस्थापक ओवरराइड के साथ पुनर्प्राप्ति विकल्पों की अनुमति",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Account recovery > super admin OU के लिए व्यक्तिगत पुनर्प्राप्ति अक्षम करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-011": {
-    "name": { "value": "लॉगिन चुनौती सेटिंग्स", "status": "machine-draft" },
-    "description": { "value": "संदिग्ध लॉगिन प्रयासों का पता चलने पर अतिरिक्त सत्यापन प्रदान करने के लिए लॉगिन चुनौतियां सक्षम की जानी चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "कर्मचारी ID या अन्य सत्यापन के साथ लॉगिन चुनौतियां सक्षम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Authentication > Login challenges > सक्षम करें", "status": "machine-draft" }
+    "name": {
+      "value": "लॉगिन चुनौती सेटिंग्स",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "संदिग्ध लॉगिन प्रयासों का पता चलने पर अतिरिक्त सत्यापन प्रदान करने के लिए लॉगिन चुनौतियां सक्षम की जानी चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "कर्मचारी ID या अन्य सत्यापन के साथ लॉगिन चुनौतियां सक्षम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Authentication > Login challenges > सक्षम करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-012": {
-    "name": { "value": "Super admin 2SV नामांकन", "status": "machine-draft" },
-    "description": { "value": "सभी super admin खातों में 2SV नामांकित होना चाहिए। Super admin के पास सभी सेटिंग्स और डेटा तक अप्रतिबंधित पहुंच होती है", "status": "machine-draft" },
-    "recommendedValue": { "value": "100% super admin 2SV में नामांकित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Reporting > User Reports > Security > व्यवस्थापक स्थिति के अनुसार फ़िल्टर करें > सुनिश्चित करें कि सभी super admin के पास 2SV नामांकित है", "status": "machine-draft" }
+    "name": {
+      "value": "Super admin 2SV नामांकन",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "सभी super admin खातों में 2SV नामांकित होना चाहिए। Super admin के पास सभी सेटिंग्स और डेटा तक अप्रतिबंधित पहुंच होती है",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "100% super admin 2SV में नामांकित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Reporting > User Reports > Security > व्यवस्थापक स्थिति के अनुसार फ़िल्टर करें > सुनिश्चित करें कि सभी super admin के पास 2SV नामांकित है",
+      "status": "machine-draft"
+    }
   },
   "AUTH-013": {
-    "name": { "value": "लंबे समय से निष्क्रिय super admin खाते", "status": "machine-draft" },
-    "description": { "value": "जिन super admin खातों ने हाल ही में लॉगिन नहीं किया है वे अनाथ हो सकते हैं और समझौते के जोखिम में हैं। सभी super admin खातों का सक्रिय रूप से प्रबंधन किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "90 दिनों से अधिक समय तक निष्क्रिय कोई super admin खाता न हो", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Directory > Users > व्यवस्थापक भूमिका के अनुसार फ़िल्टर करें > निष्क्रिय super admin खातों की समीक्षा करें और हटाएं या निलंबित करें", "status": "machine-draft" }
+    "name": {
+      "value": "लंबे समय से निष्क्रिय super admin खाते",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "जिन super admin खातों ने हाल ही में लॉगिन नहीं किया है वे अनाथ हो सकते हैं और समझौते के जोखिम में हैं। सभी super admin खातों का सक्रिय रूप से प्रबंधन किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "90 दिनों से अधिक समय तक निष्क्रिय कोई super admin खाता न हो",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Users > व्यवस्थापक भूमिका के अनुसार फ़िल्टर करें > निष्क्रिय super admin खातों की समीक्षा करें और हटाएं या निलंबित करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-014": {
-    "name": { "value": "2SV नामांकन अनुमत", "status": "machine-draft" },
-    "description": { "value": "उपयोगकर्ताओं को दो-चरणीय सत्यापन में नामांकन की अनुमति होनी चाहिए। 2SV नामांकन अक्षम करने से MFA अपनाना अवरुद्ध होता है और खाते केवल पासवर्ड से सुरक्षित रह जाते हैं", "status": "machine-draft" },
-    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में 2SV नामांकन अनुमत", "status": "machine-draft" },
-    "remediationSteps": { "value": "Security > Authentication > 2-step verification > सभी संगठनात्मक इकाइयों के लिए 'Allow users to turn on 2-Step Verification' को On पर सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "2SV नामांकन अनुमत",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "उपयोगकर्ताओं को दो-चरणीय सत्यापन में नामांकन की अनुमति होनी चाहिए। 2SV नामांकन अक्षम करने से MFA अपनाना अवरुद्ध होता है और खाते केवल पासवर्ड से सुरक्षित रह जाते हैं",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सभी संगठनात्मक इकाइयों में 2SV नामांकन अनुमत",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Security > Authentication > 2-step verification > सभी संगठनात्मक इकाइयों के लिए 'Allow users to turn on 2-Step Verification' को On पर सेट करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-015": {
-    "name": { "value": "2SV नामांकन छूट अवधि", "status": "machine-draft" },
-    "description": { "value": "नए जोड़े गए उपयोगकर्ताओं को 2SV में नामांकन करने से पहले की छूट अवधि छोटी होनी चाहिए। लंबी छूट अवधि खातों को निर्माण के बाद एक विस्तारित अवधि तक MFA द्वारा असुरक्षित छोड़ देती है", "status": "machine-draft" },
-    "recommendedValue": { "value": "7 दिन (168 घंटे) या उससे कम की छूट अवधि", "status": "machine-draft" },
-    "remediationSteps": { "value": "Security > Authentication > 2-step verification > नए-उपयोगकर्ता नामांकन छूट अवधि को 7 दिन या उससे कम पर सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "2SV नामांकन छूट अवधि",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "नए जोड़े गए उपयोगकर्ताओं को 2SV में नामांकन करने से पहले की छूट अवधि छोटी होनी चाहिए। लंबी छूट अवधि खातों को निर्माण के बाद एक विस्तारित अवधि तक MFA द्वारा असुरक्षित छोड़ देती है",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "7 दिन (168 घंटे) या उससे कम की छूट अवधि",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Security > Authentication > 2-step verification > नए-उपयोगकर्ता नामांकन छूट अवधि को 7 दिन या उससे कम पर सेट करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-016": {
-    "name": { "value": "Advanced Protection स्व-नामांकन", "status": "machine-draft" },
-    "description": { "value": "Advanced Protection Program में स्व-नामांकन की अनुमति उच्च-जोखिम वाले उपयोगकर्ताओं को व्यवस्थापक हस्तक्षेप के बिना उपलब्ध सबसे मज़बूत खाता सुरक्षा अपनाने देती है", "status": "machine-draft" },
-    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में Advanced Protection स्व-नामांकन अनुमत", "status": "machine-draft" },
-    "remediationSteps": { "value": "Security > Authentication > Advanced Protection Program > उपयोगकर्ताओं को Advanced Protection में स्व-नामांकन की अनुमति दें", "status": "machine-draft" }
+    "name": {
+      "value": "Advanced Protection स्व-नामांकन",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Advanced Protection Program में स्व-नामांकन की अनुमति उच्च-जोखिम वाले उपयोगकर्ताओं को व्यवस्थापक हस्तक्षेप के बिना उपलब्ध सबसे मज़बूत खाता सुरक्षा अपनाने देती है",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सभी संगठनात्मक इकाइयों में Advanced Protection स्व-नामांकन अनुमत",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Security > Authentication > Advanced Protection Program > उपयोगकर्ताओं को Advanced Protection में स्व-नामांकन की अनुमति दें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-017": {
-    "name": { "value": "Super admin खाता स्व-पुनर्प्राप्ति", "status": "machine-draft" },
-    "description": { "value": "super admin के लिए स्व-सेवा खाता पुनर्प्राप्ति सोशल इंजीनियरिंग के माध्यम से खाता-अधिग्रहण का एक मार्ग है और इसे बंद कर देना चाहिए। super admin की पुनर्प्राप्ति केवल किसी अन्य प्रशासक द्वारा की जानी चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में super admin स्व-पुनर्प्राप्ति अक्षम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Security > Authentication > Account recovery > सभी संगठनात्मक इकाइयों के लिए 'Allow super admins to recover their account' बंद करें", "status": "machine-draft" }
+    "name": {
+      "value": "Super admin खाता स्व-पुनर्प्राप्ति",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "super admin के लिए स्व-सेवा खाता पुनर्प्राप्ति सोशल इंजीनियरिंग के माध्यम से खाता-अधिग्रहण का एक मार्ग है और इसे बंद कर देना चाहिए। super admin की पुनर्प्राप्ति केवल किसी अन्य प्रशासक द्वारा की जानी चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सभी संगठनात्मक इकाइयों में super admin स्व-पुनर्प्राप्ति अक्षम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Security > Authentication > Account recovery > सभी संगठनात्मक इकाइयों के लिए 'Allow super admins to recover their account' बंद करें",
+      "status": "machine-draft"
+    }
   },
   "AUTH-018": {
-    "name": { "value": "उपयोगकर्ताओं और गैर-super-admin के लिए खाता स्व-पुनर्प्राप्ति अक्षम (GWS.COMMONCONTROLS.8.2)", "status": "machine-draft" },
-    "description": { "value": "SCuBA GWS.COMMONCONTROLS.8.2 के लिए आवश्यक है कि उपयोगकर्ताओं और गैर-super-admin खातों के लिए खाता स्व-पुनर्प्राप्ति अक्षम की जाए। स्व-सेवा पुनर्प्राप्ति एक खाता-अधिग्रहण वेक्टर है: जो हमलावर किसी पुनर्प्राप्ति चैनल को नियंत्रित करता है वह हेल्प डेस्क के बिना खाते पर कब्ज़ा कर सकता है। यह जांच security.user_account_recovery Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां स्व-पुनर्प्राप्ति सक्षम है।", "status": "machine-draft" },
-    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में उपयोगकर्ताओं और गैर-super-admin के लिए खाता स्व-पुनर्प्राप्ति अक्षम (enableAccountRecovery = false)।", "status": "machine-draft" },
-    "remediationSteps": { "value": "Google Admin console में, Security > Account recovery के अंतर्गत, उपयोगकर्ताओं (और गैर-super-admin) के लिए स्व-पुनर्प्राप्ति अक्षम करें, ताकि खाता पुनर्प्राप्ति किसी उपयोगकर्ता-नियंत्रित चैनल के बजाय किसी प्रशासक या हेल्प-डेस्क प्रक्रिया के माध्यम से संभाली जाए।", "status": "machine-draft" }
+    "name": {
+      "value": "उपयोगकर्ताओं और गैर-super-admin के लिए खाता स्व-पुनर्प्राप्ति अक्षम (GWS.COMMONCONTROLS.8.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.8.2 के लिए आवश्यक है कि उपयोगकर्ताओं और गैर-super-admin खातों के लिए खाता स्व-पुनर्प्राप्ति अक्षम की जाए। स्व-सेवा पुनर्प्राप्ति एक खाता-अधिग्रहण वेक्टर है: जो हमलावर किसी पुनर्प्राप्ति चैनल को नियंत्रित करता है वह हेल्प डेस्क के बिना खाते पर कब्ज़ा कर सकता है। यह जांच security.user_account_recovery Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां स्व-पुनर्प्राप्ति सक्षम है।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सभी संगठनात्मक इकाइयों में उपयोगकर्ताओं और गैर-super-admin के लिए खाता स्व-पुनर्प्राप्ति अक्षम (enableAccountRecovery = false)।",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Google Admin console में, Security > Account recovery के अंतर्गत, उपयोगकर्ताओं (और गैर-super-admin) के लिए स्व-पुनर्प्राप्ति अक्षम करें, ताकि खाता पुनर्प्राप्ति किसी उपयोगकर्ता-नियंत्रित चैनल के बजाय किसी प्रशासक या हेल्प-डेस्क प्रक्रिया के माध्यम से संभाली जाए।",
+      "status": "machine-draft"
+    }
+  },
+  "AUTH-019": {
+    "name": {
+      "value": "परस्पर विरोधी अप्रबंधित खाते प्रतिस्थापित (GWS.COMMONCONTROLS.7.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.7.1: कंपनी के पते से बनाया गया अप्रबंधित उपभोक्ता खाता संगठन का डेटा हर प्रशासनिक नियंत्रण से बाहर रखता है, न उसका ऑडिट हो सकता है न उसे निलंबित किया जा सकता है, और कर्मचारी के जाने के बाद भी वह बना रहता है। विरोध प्रबंधन को प्रतिस्थापन पर सेट करने से ऐसे खाते प्रबंधित पहचान के साथ-साथ बने रहने के बजाय प्रबंधन के अधीन आ जाते हैं। provisioning.conflicting_accounts_management पढ़ता है और जब option REPLACE_CONFLICTING_ACCOUNT से भिन्न हो तो चेतावनी देता है।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "परस्पर विरोधी अप्रबंधित खाते प्रबंधित खातों से प्रतिस्थापित किए जाते हैं",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "एडमिन कंसोल > खाता > खाता सेटिंग > परस्पर विरोधी खातों का प्रबंधन। परस्पर विरोधी अप्रबंधित खातों को प्रतिस्थापित करने का विकल्प चुनें ताकि वे संरक्षित रहने के बजाय प्रबंधित खातों में परिवर्तित हो जाएँ।",
+      "status": "machine-draft"
+    }
   }
 }

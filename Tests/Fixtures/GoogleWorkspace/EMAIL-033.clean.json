@@ -1,0 +1,26 @@
+{
+  "checkId": "EMAIL-033",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Every attachment protection quarantines or spams",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gmail.email_attachment_safety": [
+          {
+            "setting": {
+              "value": {
+                "anomalousAttachmentProtectionConsequence": "QUARANTINE",
+                "encryptedAttachmentProtectionConsequence": "SPAM_FOLDER",
+                "attachmentWithScriptsProtectionConsequence": "SPAM_FOLDER"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

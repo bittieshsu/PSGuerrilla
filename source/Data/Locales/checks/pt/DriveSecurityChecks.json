@@ -384,7 +384,7 @@
       "status": "machine-draft"
     },
     "description": {
-      "value": "SCuBA GWS.DRIVEDOCS.1.7: mover um arquivo para um drive compartilhado pertencente a outra organização transfere sua custódia — os administradores da organização receptora controlam o conteúdo e a organização que o criou perde a capacidade de revogar o acesso ou de retê-lo. Lê drive_and_docs.external_sharing e falha quando allowedPartiesForDistributingContent é diferente de NONE em uma política cujo externalSharingMode permite compartilhamento externo. Não se aplica onde o compartilhamento externo é proibido.",
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: mover um arquivo para um drive compartilhado pertencente a outra organização transfere sua custódia: os administradores da organização receptora controlam o conteúdo e a organização que o criou perde a capacidade de revogar o acesso ou de retê-lo. Lê drive_and_docs.external_sharing e falha quando allowedPartiesForDistributingContent é diferente de NONE em uma política cujo externalSharingMode permite compartilhamento externo. Não se aplica onde o compartilhamento externo é proibido.",
       "status": "machine-draft"
     },
     "recommendedValue": {
@@ -393,6 +393,24 @@
     },
     "remediationSteps": {
       "value": "Console de administração > Apps > Google Workspace > Drive e Documentos > Configurações de compartilhamento > 'Distribuição de conteúdo fora de <organização>'. Configure de modo que ninguém possa distribuir conteúdo para drives compartilhados pertencentes a outra organização.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-023": {
+    "name": {
+      "value": "Drive para computador limitado a dispositivos autorizados (GWS.DRIVEDOCS.5.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.5.1: o Drive para computador sincroniza arquivos da organização em discos locais, então permiti-lo em hardware não gerenciado deixa uma cópia local completa do conteúdo do Drive em máquinas que a organização não pode apagar, criptografar nem inspecionar. Lê drive_and_docs.drive_for_desktop e falha quando allowDriveForDesktop está ativado enquanto restrictToAuthorizedDevices não é imposto. O Drive para computador totalmente desativado é conforme, e a verificação declara isso em vez de apenas passar.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "O Drive para computador está desativado ou restrito a dispositivos autorizados de propriedade da empresa",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Apps > Google Workspace > Drive e Documentos > Recursos e aplicativos > Google Drive para computador. Desative-o, ou mantenha-o ativo e habilite 'Permitir o Google Drive para computador somente em dispositivos autorizados'.",
       "status": "machine-draft"
     }
   }

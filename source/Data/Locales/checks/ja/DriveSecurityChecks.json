@@ -395,5 +395,23 @@
       "value": "管理コンソール > アプリ > Google Workspace > ドライブとドキュメント > 共有設定 >「<組織> の外部へのコンテンツの配布」。他組織が所有する共有ドライブへ誰もコンテンツを配布できないように設定します。",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-023": {
+    "name": {
+      "value": "パソコン版ドライブを承認済みデバイスに限定 (GWS.DRIVEDOCS.5.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.5.1: パソコン版ドライブは組織のファイルをローカルディスクへ同期します。したがって管理外のハードウェアで許可すると、組織が消去も暗号化も検査もできない端末に、ドライブ内容の完全なローカルコピーが置かれることになります。drive_and_docs.drive_for_desktop を読み取り、allowDriveForDesktop が有効なのに restrictToAuthorizedDevices が強制されていない場合に不合格とします。パソコン版ドライブを完全に無効にしている状態は準拠であり、単に合格とせずその旨を報告します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "パソコン版ドライブが無効、または会社所有の承認済みデバイスに限定されている",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理コンソール > アプリ > Google Workspace > ドライブとドキュメント > 機能とアプリケーション > パソコン版 Google ドライブ。無効にするか、有効のままにして「承認済みデバイスでのみパソコン版 Google ドライブを許可」を有効にします。",
+      "status": "machine-draft"
+    }
   }
 }

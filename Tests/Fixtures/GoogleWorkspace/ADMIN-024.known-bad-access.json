@@ -1,0 +1,25 @@
+{
+  "checkId": "ADMIN-024",
+  "platform": "GWS",
+  "scenario": "known-bad-access",
+  "expectedStatus": "FAIL",
+  "description": "Users may install any Marketplace app",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "workspace_marketplace.apps_access_options": [
+          {
+            "setting": {
+              "value": {
+                "accessLevel": "ALLOW_ALL",
+                "allowAllInternalApps": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

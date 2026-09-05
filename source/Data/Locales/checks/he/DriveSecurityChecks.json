@@ -384,7 +384,7 @@
       "status": "machine-draft"
     },
     "description": {
-      "value": "SCuBA GWS.DRIVEDOCS.1.7: העברת קובץ לדרייב משותף בבעלות ארגון אחר מעבירה את המשמורת עליו — מנהלי הארגון המקבל שולטים בתוכן, והארגון שיצר אותו מאבד את היכולת לבטל גישה או לשמר אותו. קורא את drive_and_docs.external_sharing ונכשל כאשר allowedPartiesForDistributingContent שונה מ-NONE במדיניות שה-externalSharingMode שלה מתיר שיתוף חיצוני. לא רלוונטי במקום שבו שיתוף חיצוני אסור.",
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: העברת קובץ לדרייב משותף בבעלות ארגון אחר מעבירה את המשמורת עליו: מנהלי הארגון המקבל שולטים בתוכן, והארגון שיצר אותו מאבד את היכולת לבטל גישה או לשמר אותו. קורא את drive_and_docs.external_sharing ונכשל כאשר allowedPartiesForDistributingContent שונה מ-NONE במדיניות שה-externalSharingMode שלה מתיר שיתוף חיצוני. לא רלוונטי במקום שבו שיתוף חיצוני אסור.",
       "status": "machine-draft"
     },
     "recommendedValue": {
@@ -393,6 +393,24 @@
     },
     "remediationSteps": {
       "value": "מסוף הניהול > אפליקציות > Google Workspace > Drive ו-Docs > הגדרות שיתוף > 'הפצת תוכן מחוץ ל-<ארגון>'. הגדירו כך שאיש לא יורשה להפיץ תוכן לדרייבים משותפים בבעלות ארגון אחר.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-023": {
+    "name": {
+      "value": "Drive למחשב מוגבל למכשירים מאושרים (GWS.DRIVEDOCS.5.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.5.1: Drive למחשב מסנכרן קבצי ארגון לדיסקים מקומיים, ולכן התרתו על חומרה לא מנוהלת מותירה עותק מקומי מלא של תוכן Drive על מכונות שהארגון אינו יכול למחוק, להצפין או לבדוק. קורא את drive_and_docs.drive_for_desktop ונכשל כאשר allowDriveForDesktop מופעל בעוד restrictToAuthorizedDevices אינו נאכף. Drive למחשב שכבוי לחלוטין הוא תואם, והבדיקה אומרת זאת במפורש במקום לעבור סתם כך.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive למחשב מושבת, או מוגבל למכשירים מאושרים בבעלות הארגון",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "מסוף הניהול > אפליקציות > Google Workspace > Drive ו-Docs > תכונות ואפליקציות > Google Drive למחשב. כבו אותו, או השאירו אותו פועל והפעילו 'אפשר את Google Drive למחשב רק במכשירים מאושרים'.",
       "status": "machine-draft"
     }
   }

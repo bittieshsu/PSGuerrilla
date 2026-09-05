@@ -1,39 +1,129 @@
 {
   "_family": "LoggingAlertingChecks.json",
   "LOG-001": {
-    "name": { "value": "लेखापरीक्षा लॉग प्रतिधारण सेटिंग्स", "status": "machine-draft" },
-    "description": { "value": "घटना जांच और अनुपालन आवश्यकताओं का समर्थन करने के लिए लेखापरीक्षा लॉग एक पर्याप्त अवधि तक बनाए रखे जाने चाहिए। डिफ़ॉल्ट प्रतिधारण Workspace संस्करण के अनुसार भिन्न होता है", "status": "machine-draft" },
-    "recommendedValue": { "value": "12 माह या उससे अधिक का लेखापरीक्षा लॉग प्रतिधारण; दीर्घकालिक प्रतिधारण के लिए BigQuery निर्यात के माध्यम से विस्तारित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Reporting > Audit and investigation > लॉग उपलब्धता की समीक्षा करें। दीर्घकालिक प्रतिधारण के लिए Admin Console > Reporting > BigQuery export के माध्यम से BigQuery निर्यात कॉन्फ़िगर करें", "status": "machine-draft" }
+    "name": {
+      "value": "लेखापरीक्षा लॉग प्रतिधारण सेटिंग्स",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "घटना जांच और अनुपालन आवश्यकताओं का समर्थन करने के लिए लेखापरीक्षा लॉग एक पर्याप्त अवधि तक बनाए रखे जाने चाहिए। डिफ़ॉल्ट प्रतिधारण Workspace संस्करण के अनुसार भिन्न होता है",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "12 माह या उससे अधिक का लेखापरीक्षा लॉग प्रतिधारण; दीर्घकालिक प्रतिधारण के लिए BigQuery निर्यात के माध्यम से विस्तारित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Reporting > Audit and investigation > लॉग उपलब्धता की समीक्षा करें। दीर्घकालिक प्रतिधारण के लिए Admin Console > Reporting > BigQuery export के माध्यम से BigQuery निर्यात कॉन्फ़िगर करें",
+      "status": "machine-draft"
+    }
   },
   "LOG-002": {
-    "name": { "value": "Alert Center नियम सूची", "status": "machine-draft" },
-    "description": { "value": "संदिग्ध लॉगिन, डेटा बहिष्करण, और नीति उल्लंघन सहित सुरक्षा-प्रासंगिक घटनाओं का पता लगाने और सूचित करने के लिए Alert Center नियम कॉन्फ़िगर किए जाने चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "मुख्य सुरक्षा घटनाओं (संदिग्ध लॉगिन, डेटा बहिष्करण, विशेषाधिकार परिवर्तन) के लिए अलर्ट नियम कॉन्फ़िगर किए गए हों", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Alert center > मौजूदा नियमों की समीक्षा करें > अनुपस्थित सुरक्षा घटना श्रेणियों के लिए नियम बनाएं", "status": "machine-draft" }
+    "name": {
+      "value": "Alert Center नियम सूची",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "संदिग्ध लॉगिन, डेटा बहिष्करण, और नीति उल्लंघन सहित सुरक्षा-प्रासंगिक घटनाओं का पता लगाने और सूचित करने के लिए Alert Center नियम कॉन्फ़िगर किए जाने चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "मुख्य सुरक्षा घटनाओं (संदिग्ध लॉगिन, डेटा बहिष्करण, विशेषाधिकार परिवर्तन) के लिए अलर्ट नियम कॉन्फ़िगर किए गए हों",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Alert center > मौजूदा नियमों की समीक्षा करें > अनुपस्थित सुरक्षा घटना श्रेणियों के लिए नियम बनाएं",
+      "status": "machine-draft"
+    }
   },
   "LOG-003": {
-    "name": { "value": "गतिविधि नियम कवरेज विश्लेषण", "status": "machine-draft" },
-    "description": { "value": "गतिविधि नियमों को लॉगिन, Drive, Admin, और ईमेल घटनाओं सहित सुरक्षा डोमेन में पर्याप्त कवरेज प्रदान करनी चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "लॉगिन, Drive साझाकरण, admin परिवर्तन, ईमेल अग्रेषण, और OAuth घटनाओं को कवर करने वाले गतिविधि नियम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Alert center > Rules > घटना श्रेणियों में कवरेज की समीक्षा करें > अनकवर सुरक्षा डोमेन के लिए नियम जोड़ें", "status": "machine-draft" }
+    "name": {
+      "value": "गतिविधि नियम कवरेज विश्लेषण",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "गतिविधि नियमों को लॉगिन, Drive, Admin, और ईमेल घटनाओं सहित सुरक्षा डोमेन में पर्याप्त कवरेज प्रदान करनी चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "लॉगिन, Drive साझाकरण, admin परिवर्तन, ईमेल अग्रेषण, और OAuth घटनाओं को कवर करने वाले गतिविधि नियम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Alert center > Rules > घटना श्रेणियों में कवरेज की समीक्षा करें > अनकवर सुरक्षा डोमेन के लिए नियम जोड़ें",
+      "status": "machine-draft"
+    }
   },
   "LOG-004": {
-    "name": { "value": "डेटा निर्यात सेटिंग्स", "status": "machine-draft" },
-    "description": { "value": "उपयोगकर्ताओं को संगठनात्मक डेटा का डोमेन के बाहर थोक-निर्यात करने से रोकने के लिए Google Takeout (डेटा निर्यात) को नियंत्रित किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "अधिकांश उपयोगकर्ताओं के लिए Google Takeout अक्षम या प्रतिबंधित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Additional Google services > Google Takeout > लागू OU के लिए अक्षम या प्रतिबंधित करें", "status": "machine-draft" }
+    "name": {
+      "value": "डेटा निर्यात सेटिंग्स",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "उपयोगकर्ताओं को संगठनात्मक डेटा का डोमेन के बाहर थोक-निर्यात करने से रोकने के लिए Google Takeout (डेटा निर्यात) को नियंत्रित किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "अधिकांश उपयोगकर्ताओं के लिए Google Takeout अक्षम या प्रतिबंधित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Additional Google services > Google Takeout > लागू OU के लिए अक्षम या प्रतिबंधित करें",
+      "status": "machine-draft"
+    }
   },
   "LOG-005": {
-    "name": { "value": "Admin ईमेल अलर्ट कॉन्फ़िगरेशन", "status": "machine-draft" },
-    "description": { "value": "सुपर एडमिन परिवर्तन, सुरक्षा सेटिंग संशोधन, और थोक संचालन सहित महत्वपूर्ण admin कार्रवाइयों के लिए ईमेल अलर्ट कॉन्फ़िगर किए जाने चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "महत्वपूर्ण admin कार्रवाइयों और सुरक्षा घटनाओं के लिए ईमेल अलर्ट सक्षम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Alert center > महत्वपूर्ण अलर्ट प्रकारों के लिए ईमेल अधिसूचना प्राप्तकर्ता कॉन्फ़िगर करें", "status": "machine-draft" }
+    "name": {
+      "value": "Admin ईमेल अलर्ट कॉन्फ़िगरेशन",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "सुपर एडमिन परिवर्तन, सुरक्षा सेटिंग संशोधन, और थोक संचालन सहित महत्वपूर्ण admin कार्रवाइयों के लिए ईमेल अलर्ट कॉन्फ़िगर किए जाने चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "महत्वपूर्ण admin कार्रवाइयों और सुरक्षा घटनाओं के लिए ईमेल अलर्ट सक्षम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Alert center > महत्वपूर्ण अलर्ट प्रकारों के लिए ईमेल अधिसूचना प्राप्तकर्ता कॉन्फ़िगर करें",
+      "status": "machine-draft"
+    }
   },
   "LOG-006": {
-    "name": { "value": "Reporting API पहुंच", "status": "machine-draft" },
-    "description": { "value": "यह सुनिश्चित करने के लिए कि केवल अधिकृत सेवा खाते और अनुप्रयोग लेखापरीक्षा और उपयोग डेटा प्राप्त कर सकें, Reports API तक पहुंच की समीक्षा की जानी चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "Reports API पहुंच केवल अधिकृत सेवा खातों तक सीमित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > API controls > Domain-wide delegation > Reports API स्कोप वाले अनुदानों की समीक्षा करें > अनधिकृत पहुंच हटाएं", "status": "machine-draft" }
+    "name": {
+      "value": "Reporting API पहुंच",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "यह सुनिश्चित करने के लिए कि केवल अधिकृत सेवा खाते और अनुप्रयोग लेखापरीक्षा और उपयोग डेटा प्राप्त कर सकें, Reports API तक पहुंच की समीक्षा की जानी चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Reports API पहुंच केवल अधिकृत सेवा खातों तक सीमित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > API controls > Domain-wide delegation > Reports API स्कोप वाले अनुदानों की समीक्षा करें > अनधिकृत पहुंच हटाएं",
+      "status": "machine-draft"
+    }
+  },
+  "LOG-007": {
+    "name": {
+      "value": "सिस्टम द्वारा परिभाषित सभी अलर्ट नियम सक्षम (GWS.COMMONCONTROLS.13.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.13.1: Google सिस्टम द्वारा परिभाषित अलर्ट नियमों का एक समूह देता है जो उन घटनाओं को कवर करता है जिनके बारे में एडमिन को सबसे अधिक जानना आवश्यक है, जिनमें संदिग्ध लॉगिन, राज्य समर्थित हमलों की चेतावनियाँ और एडमिन विशेषाधिकार में परिवर्तन शामिल हैं। कोई नियम निष्क्रिय होने का अर्थ है कि घटना फिर भी होती है और किसी को पता नहीं चलता। rule.system_defined_alerts पढ़ता है और जब कोई नियम ACTIVE स्थिति में न हो तो विफल होता है, निष्क्रिय नियमों के नाम बताते हुए।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सिस्टम द्वारा परिभाषित सभी अलर्ट नियम सक्रिय हैं",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "एडमिन कंसोल > नियम > सिस्टम द्वारा परिभाषित नियम। निष्क्रिय नियमों की समीक्षा करें और प्रत्येक को सक्षम करें, तथा प्राप्तकर्ता जोड़ें ताकि अलर्ट किसी निगरानी वाले मेलबॉक्स तक पहुँचें, न कि ऐसे उपनाम पर जिसे कोई नहीं पढ़ता।",
+      "status": "machine-draft"
+    }
   }
 }

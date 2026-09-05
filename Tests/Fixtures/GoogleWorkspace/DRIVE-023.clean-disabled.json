@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-023",
+  "platform": "GWS",
+  "scenario": "clean-disabled",
+  "expectedStatus": "PASS",
+  "description": "Drive for Desktop disabled entirely",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.drive_for_desktop": [
+          {
+            "setting": {
+              "value": {
+                "allowDriveForDesktop": false,
+                "restrictToAuthorizedDevices": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

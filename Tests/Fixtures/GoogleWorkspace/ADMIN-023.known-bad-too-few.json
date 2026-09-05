@@ -1,0 +1,28 @@
+{
+  "checkId": "ADMIN-023",
+  "platform": "GWS",
+  "scenario": "known-bad-too-few",
+  "expectedStatus": "FAIL",
+  "description": "A single super admin, no recovery path",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "primaryEmail": "admin0@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "user0@e.com",
+        "isAdmin": false,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "user1@e.com",
+        "isAdmin": false,
+        "suspended": false
+      }
+    ]
+  }
+}

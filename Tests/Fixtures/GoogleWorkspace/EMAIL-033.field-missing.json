@@ -1,0 +1,25 @@
+{
+  "checkId": "EMAIL-033",
+  "platform": "GWS",
+  "scenario": "field-missing",
+  "expectedStatus": "SKIP",
+  "description": "A consequence field was not returned",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gmail.email_attachment_safety": [
+          {
+            "setting": {
+              "value": {
+                "anomalousAttachmentProtectionConsequence": "QUARANTINE",
+                "encryptedAttachmentProtectionConsequence": "SPAM_FOLDER"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

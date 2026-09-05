@@ -395,5 +395,59 @@
       "value": "Google Admin console의 Apps > Additional Google services > Early Access Apps에서 서비스를 모든 사용자에 대해 OFF로 설정하여 사용자가 사전 출시 Early Access 애플리케이션을 사용 설정할 수 없도록 합니다.",
       "status": "machine-draft"
     }
+  },
+  "ADMIN-023": {
+    "name": {
+      "value": "최고 관리자 수가 지원 범위 내 (GWS.COMMONCONTROLS.6.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.6.2: 테넌트에는 최소 두 명의 최고 관리자가 필요합니다. 계정 하나를 잃었다고 조직이 자기 테넌트에서 잠기지 않도록 하기 위해서입니다. 동시에 여덟 명을 넘지 않아야 합니다. 최고 관리자가 한 명 늘 때마다 테넌트 전체로 향하는 제약 없는 경로가 하나 늘기 때문입니다. 디렉터리에서 최고 관리자 권한을 가진 활성 계정을 세어 둘에서 여덟 범위를 벗어나면 실패로 처리합니다. 비상용 계정은 자동 면제가 아니라 기록해야 할 예외이므로 제외하지 않고 함께 세어 목록에 표시합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "서로 구분되는 최고 관리자 계정 두 개에서 여덟 개 사이, 비상용 계정은 문서화",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "관리 콘솔 > 계정 > 관리자 역할 > 최고 관리자. 두 명 미만이면 복구가 가능하도록 전용 관리자 계정을 하나 더 지정합니다. 여덟 명을 넘으면 담당 업무를 포괄하는 가장 좁은 위임 역할로 옮기고 최고 관리자 권한을 제거합니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-024": {
+    "name": {
+      "value": "Marketplace 앱을 허용 목록으로 제한 (GWS.COMMONCONTROLS.11.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.11.1: 사용자가 설치한 Marketplace 앱은 OAuth를 통해 그 사용자의 Workspace 데이터 접근 권한을 그대로 물려받습니다. 따라서 제한 없는 Marketplace는 검토를 한 번도 거치지 않는 셀프서비스 데이터 유출 경로가 됩니다. workspace_marketplace.apps_access_options를 읽어 accessLevel이 ALLOW_LISTED_APPS 또는 ALLOW_NONE이어야 합니다. allowAllInternalApps가 켜져 있는 경우에도 실패로 처리하는데, 이 설정이 내부 게시 앱을 바로 그 허용 목록에서 면제해 주기 때문입니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Marketplace 설치를 허용 목록으로 제한하거나 완전히 차단하고, 내부 앱도 면제하지 않음",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "관리 콘솔 > 앱 > Google Workspace Marketplace > 설정. 접근 권한을 '허용 목록에 있는 앱만 설치하도록 허용'으로 설정하거나 설치를 완전히 차단하고, 모든 내부 앱을 허용하는 옵션을 끕니다.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-025": {
+    "name": {
+      "value": "민감한 관리 작업에 다자 승인 요구 (GWS.COMMONCONTROLS.17.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.17.1: 다자 승인은 공격자가 관리자 계정을 탈취한 직후 수행하는 종류의 민감한 작업, 예컨대 보안 설정 해제나 복구 옵션 변경에 대해 두 번째 관리자의 승인을 강제합니다. 침해된 세션 하나를 또 다른 사람을 통과해야 하는 작업으로 바꿉니다. multi_party_approval.require_approvals를 읽어 multiPartyApprovalState가 ENABLED가 아니면 경고합니다.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "민감한 관리 작업에 다자 승인이 사용 설정됨",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "관리 콘솔 > 계정 > 다자 승인. 민감한 관리 작업에 대한 요구 사항을 켜고, 승인할 수 있는 최고 관리자가 최소 두 명 있는지 확인합니다.",
+      "status": "machine-draft"
+    }
   }
 }

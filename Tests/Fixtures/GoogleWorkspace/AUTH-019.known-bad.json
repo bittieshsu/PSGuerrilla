@@ -1,0 +1,24 @@
+{
+  "checkId": "AUTH-019",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Conflicting accounts preserved rather than replaced",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "provisioning.conflicting_accounts_management": [
+          {
+            "setting": {
+              "value": {
+                "option": "PRESERVE_CONFLICTING_ACCOUNT"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

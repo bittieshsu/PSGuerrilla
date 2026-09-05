@@ -395,5 +395,59 @@
       "value": "Nella Console di amministrazione Google, in App > Servizi Google aggiuntivi > Early Access Apps, disattiva il servizio per tutti affinché gli utenti non possano abilitare le applicazioni Early Access in fase pre-rilascio.",
       "status": "machine-draft"
     }
+  },
+  "ADMIN-023": {
+    "name": {
+      "value": "Numero di super amministratori entro l'intervallo supportato (GWS.COMMONCONTROLS.6.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.6.2: un tenant necessita di almeno due super amministratori affinché la perdita di un singolo account non escluda l'organizzazione dal proprio tenant, e di non più di otto perché ogni super amministratore in più è una via senza vincoli verso l'intero tenant. Conta gli account attivi con privilegio di super amministratore nella directory e fallisce fuori dall'intervallo da due a otto. Gli account di emergenza sono un'eccezione documentata da registrare, non un'approvazione automatica, quindi vengono contati ed elencati.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Tra due e otto account di super amministratore distinti, con gli account di emergenza documentati",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Account > Ruoli amministratore > Super amministratore. Se sono meno di due, promuovi un secondo account amministrativo dedicato per consentire il ripristino. Se sono più di otto, sposta gli amministratori sul ruolo delegato più ristretto che copre le loro mansioni e rimuovi il privilegio di super amministratore.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-024": {
+    "name": {
+      "value": "App Marketplace limitate a un elenco di consentite (GWS.COMMONCONTROLS.11.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.11.1: un'app Marketplace installata da un utente eredita tramite OAuth l'accesso di quell'utente ai dati di Workspace, quindi un Marketplace senza restrizioni è un canale di esfiltrazione self service che non passa mai da una revisione. Legge workspace_marketplace.apps_access_options e richiede che accessLevel sia ALLOW_LISTED_APPS o ALLOW_NONE. Fallisce inoltre quando allowAllInternalApps è attivo, perché quell'impostazione esenta le app pubblicate internamente dall'elenco di consentite che il controllo esiste per imporre.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Installazioni da Marketplace limitate a un elenco di consentite o bloccate del tutto, senza esentare le app interne",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > App > Google Workspace Marketplace > Impostazioni. Imposta l'accesso su 'Consenti agli utenti di installare solo app consentite' oppure blocca del tutto le installazioni, e disattiva l'opzione che consente tutte le app interne.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-025": {
+    "name": {
+      "value": "Approvazione multipla richiesta per le azioni amministrative sensibili (GWS.COMMONCONTROLS.17.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.17.1: l'approvazione multipla obbliga un secondo amministratore ad autorizzare le azioni sensibili che un utente malintenzionato compie subito dopo aver preso il controllo di un account amministrativo, come disattivare impostazioni di sicurezza o modificare le opzioni di recupero. Trasforma una singola sessione compromessa in un'azione che deve superare un'altra persona. Legge multi_party_approval.require_approvals e avvisa quando multiPartyApprovalState è diverso da ENABLED.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Approvazione multipla abilitata per le azioni amministrative sensibili",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Account > Approvazione multipla. Attiva il requisito per le azioni amministrative sensibili e verifica che esistano almeno due super amministratori in grado di approvarle.",
+      "status": "machine-draft"
+    }
   }
 }

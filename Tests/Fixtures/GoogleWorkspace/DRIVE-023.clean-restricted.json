@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-023",
+  "platform": "GWS",
+  "scenario": "clean-restricted",
+  "expectedStatus": "PASS",
+  "description": "Enabled and restricted to authorized devices",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.drive_for_desktop": [
+          {
+            "setting": {
+              "value": {
+                "allowDriveForDesktop": true,
+                "restrictToAuthorizedDevices": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

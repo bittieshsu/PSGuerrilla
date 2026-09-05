@@ -1,0 +1,25 @@
+{
+  "checkId": "ADMIN-024",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Allowlisted apps only, internal apps not exempt",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "workspace_marketplace.apps_access_options": [
+          {
+            "setting": {
+              "value": {
+                "accessLevel": "ALLOW_LISTED_APPS",
+                "allowAllInternalApps": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

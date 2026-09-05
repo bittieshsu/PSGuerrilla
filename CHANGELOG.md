@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+### Added
+- **Eleven Google Workspace checks close most of the remaining config-readable CISA SCuBA gap.** `ADMIN-023` (COMMONCONTROLS.6.2, super admin count between two and eight), `ADMIN-024` (11.1, Marketplace apps limited to an allowlist), `ADMIN-025` (17.1, multi-party approval for sensitive admin actions), `AUTH-019` (7.1, conflicting unmanaged accounts replaced), `LOG-007` (13.1, every system-defined alert rule active), `DRIVE-023` (DRIVEDOCS.5.1, Drive for Desktop limited to authorized devices), `EMAIL-032` (GMAIL.17.1, comprehensive mail storage), `EMAIL-033` (5.5, unsafe attachments leave the inbox), `EMAIL-034` (7.6, spoofed and unauthenticated mail leaves the inbox), `EMAIL-035` (18.2, no domain bypasses spam filtering), `EMAIL-036` (18.3, no blanket warning-banner suppression).
+- Only one of the eleven needs data the scan was not already collecting, and that one needs none either: `ADMIN-023` counts super admins from the directory, and the other ten read Cloud Identity policies. The collector already lists every policy type unfiltered, so none of this required a new API scope, new domain-wide delegation, or a collector change.
+- Google Workspace coverage is now **190 checks**; the total is **658**, each validated by a golden-fixture test (**1,928 fixtures**). SCuBA Google Workspace policy coverage moves from 99 to **110 of 138**.
+
+### Note on the remaining 28
+- The gap does not go to zero, and saying otherwise would be the claim this project exists to avoid making. Of the 28 left, **14 are designated Manual by CISA itself**, **8 are log-derived** (the reference tooling infers them from audit events rather than reading a setting, and inferring a compliance verdict from the absence of an event is not a claim Guerrilla will make), **2 are DNS** (the DMARC contact policies, GMAIL.4.3 and 4.4), **3 remain config-readable and are queued** (COMMONCONTROLS.10.1, 10.2 and 12.1), and **1 needs a collector that does not exist yet** (COMMONCONTROLS.6.1 requires the Cloud Identity inbound SSO assignment API to tell whether an admin authenticates through an external IdP). The honest ceiling for what configuration alone can reach is 116 of 138, and it is published per control on the crosswalk page rather than asserted here.
+
+### Fixed
+- Four of the new checks were authored with Zero Trust pillar names outside the allowed set (`Application`, `Device`, `Visibility` rather than `Applications & Workloads`, `Devices`, `Visibility & Analytics`). The Zero Trust schema gate rejected them before they could ship, which is what it is for.
+
 ## [2.54.0] - 2026-09-05
 
 ### Added

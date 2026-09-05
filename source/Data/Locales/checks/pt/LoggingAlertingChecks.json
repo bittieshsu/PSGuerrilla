@@ -107,5 +107,23 @@
       "value": "Consola de administração > Segurança > Controlos de API > Delegação em todo o domínio > Reveja as concessões com âmbitos da Reports API > Remova o acesso não autorizado",
       "status": "machine-draft"
     }
+  },
+  "LOG-007": {
+    "name": {
+      "value": "Todas as regras de alerta definidas pelo sistema ativadas (GWS.COMMONCONTROLS.13.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.13.1: o Google fornece um conjunto de regras de alerta definidas pelo sistema que cobrem os eventos sobre os quais um administrador mais precisa ser informado, incluindo logins suspeitos, avisos de ataques apoiados por governos e mudanças de privilégios administrativos. Uma regra inativa significa que o evento continua acontecendo e ninguém fica sabendo. Lê rule.system_defined_alerts e falha quando alguma regra não está no estado ACTIVE, nomeando as regras inativas.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Todas as regras de alerta definidas pelo sistema estão ativas",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Regras > Regras definidas pelo sistema. Revise as regras inativas e ative cada uma delas, adicionando destinatários para que os alertas cheguem a uma caixa monitorada e não a um alias sem leitores.",
+      "status": "machine-draft"
+    }
   }
 }

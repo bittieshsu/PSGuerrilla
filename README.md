@@ -2,7 +2,7 @@
 
 **By [Jim Tyler](https://github.com/jimrtyler), Microsoft MVP**
 
-Guerrilla is an agentless, read-only security assessment platform for PowerShell 7. It audits three platforms from one tool: on-premises Active Directory, the Entra ID / Azure / Microsoft 365 / Intune identity plane, and Google Workspace. It runs 647 checks, every verdict is backed by a golden-fixture test, and it never installs an agent or writes to the systems it assesses.
+Guerrilla is an agentless, read-only security assessment platform for PowerShell 7. It audits three platforms from one tool: on-premises Active Directory, the Entra ID / Azure / Microsoft 365 / Intune identity plane, and Google Workspace. It runs 658 checks, every verdict is backed by a golden-fixture test, and it never installs an agent or writes to the systems it assesses.
 
 [![GitHub](https://img.shields.io/badge/GitHub-jimrtyler-181717?logo=github)](https://github.com/jimrtyler) [![LinkedIn](https://img.shields.io/badge/LinkedIn-jamestyler-0A66C2?logo=linkedin)](https://linkedin.com/in/jamestyler) [![YouTube](https://img.shields.io/badge/YouTube-PowerShellEngineer-FF0000?logo=youtube)](https://youtube.com/@powershellengineer)
 
@@ -27,7 +27,7 @@ Guerrilla assesses identity security posture across three platforms in a single 
 | **Entra ID / M365** | Entra ID, the Azure identity plane, Microsoft 365, and Intune: the full 44-control EIDSCA baseline, conditional access, PIM, application and OAuth governance, Exchange Online, SharePoint, Teams, Defender, hybrid identity, and endpoint compliance | 257 |
 | **Google Workspace** | Google Workspace: Gmail, Drive, Chat, Meet, Calendar, Sites, Classroom, Groups, and admin controls, aligned to the CISA SCuBA secure configuration baselines, plus the Guerrilla K12 candidate baseline (student-OU scoped) | 175 |
 
-**Total: 647 checks.** Each check maps to the standards it implements, where applicable, across NIST 800-53, MITRE ATT&CK, CIS Benchmarks, EIDSCA, and the CISA SCuBA baselines. Each carries a CISA Zero Trust Maturity Model pillar and weight, and each produces a `PASS`, `FAIL`, `WARN`, or an honest `Not Assessed`.
+**Total: 658 checks.** Each check maps to the standards it implements, where applicable, across NIST 800-53, MITRE ATT&CK, CIS Benchmarks, EIDSCA, and the CISA SCuBA baselines. Each carries a CISA Zero Trust Maturity Model pillar and weight, and each produces a `PASS`, `FAIL`, `WARN`, or an honest `Not Assessed`.
 
 > A check that cannot collect its data (missing module, scope, license, or dataset) reports **Not Assessed**. Guerrilla never scores an uncollected control as a pass. Absence of evidence is not compliance.
 
@@ -47,7 +47,7 @@ Every fixtured check is held to three assertions:
 - Known-bad input yields **FAIL** (or `WARN` where the control warns).
 - Uncollectable input yields **Not Assessed**.
 
-The suite currently stands at **1,878 golden fixtures across 647 checks, with 0 failures.** CI runs the fixtures, the collector query-contract tests, and the Zero Trust schema test before any release. A red suite blocks publish. The fixture framework, and a walkthrough of how to write one, is documented at [guerrilla.army/docs/validation](https://guerrilla.army/docs/validation).
+The suite currently stands at **1,928 golden fixtures across 658 checks, with 0 failures.** CI runs the fixtures, the collector query-contract tests, and the Zero Trust schema test before any release. A red suite blocks publish. The fixture framework, and a walkthrough of how to write one, is documented at [guerrilla.army/docs/validation](https://guerrilla.army/docs/validation).
 
 ## Requirements
 
@@ -156,7 +156,7 @@ Invoke-Campaign
 # Or run individual platforms
 Invoke-ADAudit      # Active Directory audit (211 checks)
 Invoke-EntraAudit   # Entra / Azure / Intune / M365 audit (257 checks)
-Invoke-GWSAudit     # Google Workspace audit (179 checks)
+Invoke-GWSAudit     # Google Workspace audit (190 checks)
 ```
 
 Results are saved to `$env:APPDATA/Guerrilla/` (Windows) or the equivalent per-user data directory on Linux and macOS, for report generation and trend tracking.
@@ -288,7 +288,7 @@ Guerrilla uses your current Kerberos session by default, so no stored credential
 |----------|-------|-------------|
 | `Invoke-ADAudit` | `Invoke-ADRecon` | Active Directory security audit (211 checks) |
 | `Invoke-EntraAudit` | `Invoke-CloudRecon` | Entra ID, Azure, Intune, and M365 audit (257 checks) |
-| `Invoke-GWSAudit` | (none) | Google Workspace security configuration audit (179 checks) |
+| `Invoke-GWSAudit` | (none) | Google Workspace security configuration audit (190 checks) |
 | `Invoke-Campaign` | (none) | Unified audit across all three platforms in a single run |
 
 Every run is recorded to a local, per-user history on your machine (no accounts, no telemetry), and the report opens with what changed since your last run.

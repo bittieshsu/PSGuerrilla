@@ -640,3 +640,59 @@ function Test-DRIVE022 {
         -BadMsg 'Users can upload or move content into shared drives owned by another organization' `
         -GoodMsg 'Content cannot be moved into shared drives owned by another organization'
 }
+
+# ── DRIVE-023: GWS.DRIVEDOCS.5.1 — Drive for Desktop on authorized devices ─
+# Conditional in the same shape as DRIVE-019..022, but gated on a boolean
+# rather than an enum: the authorized-device restriction only matters while
+# Drive for Desktop is enabled. Drive for Desktop switched off is compliant and
+# says so, rather than returning a pass that reads as "the restriction is set".
+function Test-DRIVE023 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey 'CloudIdentityPolicies' -Subject 'Drive for Desktop policy'
+    if ($na) { return $na }
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' -OrgUnitPath $OrgUnitPath
+    }
+    $objs = @(Resolve-GooglePolicyValue -Policies $pol -Type 'drive_and_docs.drive_for_desktop')
+    if ($objs.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'No drive_and_docs.drive_for_desktop policy returned for this tenant' -OrgUnitPath $OrgUnitPath
+    }
+
+    $bad = 0; $missing = 0; $enabled = 0
+    foreach ($o in $objs) {
+        $props = $o.PSObject.Properties.Name
+        if ($props -notcontains 'allowDriveForDesktop') { $missing++; continue }
+        if ($o.allowDriveForDesktop -ne $true) { continue }   # off entirely: nothing syncs
+        $enabled++
+        if ($props -notcontains 'restrictToAuthorizedDevices') { $missing++; continue }
+        if ($o.restrictToAuthorizedDevices -ne $true) { $bad++ }
+    }
+
+    if ($bad -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'FAIL' `
+            -CurrentValue ("Drive for Desktop is enabled without the authorized-device restriction in $bad of " +
+                "$($objs.Count) targeted policy/policies, so organizational files can sync to unmanaged hardware.") `
+            -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; EnabledCount = $enabled; ViolatingCount = $bad }
+    }
+    if ($missing -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue ("The Drive for Desktop settings were not returned in $missing of $($objs.Count) targeted " +
+                'policy/policies, so the restriction is not assessed rather than assumed enforced') `
+            -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; UnreadableCount = $missing }
+    }
+    if ($enabled -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue ("Not applicable: Drive for Desktop is disabled in all $($objs.Count) targeted policy/policies, " +
+                'so no organizational files sync to local disks.') `
+            -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; EnabledCount = 0 }
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "Drive for Desktop is restricted to authorized devices in all $enabled of $($objs.Count) targeted policy/policies where it is enabled" `
+        -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; EnabledCount = $enabled }
+}

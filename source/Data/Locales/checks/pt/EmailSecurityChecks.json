@@ -557,5 +557,95 @@
       "value": "Na Consola de administração do Google, em Aplicações > Google Workspace > Gmail > Spam, phishing e software malicioso, ative a análise avançada de mensagens antes da entrega para que o Gmail realize análise adicional de conteúdo suspeito antes da entrega.",
       "status": "machine-draft"
     }
+  },
+  "EMAIL-032": {
+    "name": {
+      "value": "Armazenamento completo de e-mails ativado (GWS.GMAIL.17.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.17.1: o armazenamento completo de e-mails mantém uma cópia de cada mensagem associada à conta de um usuário, incluindo mensagens enviadas por aplicativos do Workspace que não sejam o Gmail, para que uma investigação possa reconstruir o que foi enviado. Sem ele, o correio gerado fora do Gmail fica ausente do registro e uma busca devolve uma resposta parcial que parece completa. Lê gmail.comprehensive_mail_storage e alerta quando enabled não é true.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Armazenamento completo de e-mails ativado para todos os usuários",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Apps > Google Workspace > Gmail > Conformidade > Armazenamento completo de e-mails. Ative-o para que todas as mensagens associadas a um usuário sejam armazenadas e recuperáveis.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-033": {
+    "name": {
+      "value": "Anexos perigosos não permanecem na caixa de entrada (GWS.GMAIL.5.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.5.5: as proteções de anexos só reduzem o risco se a mensagem sinalizada sair do alcance do usuário. Detectar um anexo malicioso e depois deixá-lo na caixa de entrada significa que a proteção produziu um rótulo e não um resultado, e o usuário ainda tem a chance de abri-lo. Lê gmail.email_attachment_safety e exige que as consequências para anexos anômalos, criptografados e com scripts sejam SPAM_FOLDER ou QUARANTINE. Uma consequência que mantém a mensagem na caixa de entrada falha.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toda proteção de anexos move o e-mail sinalizado para spam ou quarentena",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Apps > Google Workspace > Gmail > Segurança > Anexos. Para anexos anômalos, criptografados e com scripts, defina a ação como mover para spam ou colocar em quarentena em vez de manter na caixa de entrada.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-034": {
+    "name": {
+      "value": "E-mails falsificados e não autenticados não permanecem na caixa de entrada (GWS.GMAIL.7.6)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.7.6: as proteções de falsificação e autenticação cobrem os padrões de personificação que sustentam a fraude de comprometimento de e-mail corporativo, incluindo domínios parecidos, falsificação de nomes de funcionários e remetentes não autenticados. Sinalizar uma mensagem dessas e deixá-la na caixa de entrada ainda a coloca diante do destinatário. Lê gmail.spoofing_and_authentication e exige que as consequências de domínio, nome de domínio, nome de funcionário, grupos e e-mail não autenticado sejam SPAM_FOLDER ou QUARANTINE.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Toda proteção de falsificação e autenticação move o e-mail sinalizado para spam ou quarentena",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Apps > Google Workspace > Gmail > Segurança > Falsificação e autenticação. Para cada proteção, defina a ação como mover para spam ou colocar em quarentena em vez de manter na caixa de entrada.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-035": {
+    "name": {
+      "value": "Nenhum domínio ignora a filtragem de spam nem os avisos (GWS.GMAIL.18.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.18.2: adicionar um domínio a uma lista de exceção desativa a filtragem de spam e suprime os banners de aviso para todas as suas mensagens, de modo que qualquer invasor capaz de enviar como aquele domínio, ou que comprometa uma única caixa dentro dele, chega às caixas de entrada sem filtragem nem rótulo. Lê gmail.spam_override_lists e falha quando warningDomainsFound informa domínios configurados para ignorar os avisos.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Nenhum domínio está configurado para ignorar a filtragem de spam ou os banners de aviso",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Apps > Google Workspace > Gmail > Spam, phishing e malware. Revise cada lista de permissões e cada entrada de gateway de entrada, removendo os domínios configurados para ignorar a filtragem ou ocultar avisos. Prefira regras de escopo restrito à confiança ampla em um domínio.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-036": {
+    "name": {
+      "value": "A exceção ao filtro de spam não está ativada para todos os remetentes (GWS.GMAIL.18.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.18.3: uma lista de exceção que oculta o banner de aviso para todas as mensagens de remetentes internos e externos remove o sinal mais visível que um usuário tem de que uma mensagem não é confiável, em todo o tenant e não para uma exceção revisada. Lê gmail.spam_override_lists e falha quando alguma entrada define hideWarningBannerForAll, nomeando as entradas responsáveis.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Nenhuma lista de exceção oculta os banners de aviso para todos os remetentes internos e externos",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Apps > Google Workspace > Gmail > Spam, phishing e malware. Abra cada lista de exceção ou de remetentes aprovados e desmarque a opção que ignora os filtros de spam e oculta os avisos para todas as mensagens de remetentes internos e externos.",
+      "status": "machine-draft"
+    }
   }
 }

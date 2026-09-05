@@ -1,0 +1,25 @@
+{
+  "checkId": "ADMIN-024",
+  "platform": "GWS",
+  "scenario": "known-bad-internal",
+  "expectedStatus": "FAIL",
+  "description": "Allowlist set but internal apps exempted",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "workspace_marketplace.apps_access_options": [
+          {
+            "setting": {
+              "value": {
+                "accessLevel": "ALLOW_LISTED_APPS",
+                "allowAllInternalApps": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

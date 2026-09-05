@@ -1,0 +1,25 @@
+{
+  "checkId": "ADMIN-024",
+  "platform": "GWS",
+  "scenario": "clean-blocked",
+  "expectedStatus": "PASS",
+  "description": "Marketplace installs blocked entirely",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "workspace_marketplace.apps_access_options": [
+          {
+            "setting": {
+              "value": {
+                "accessLevel": "ALLOW_NONE",
+                "allowAllInternalApps": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

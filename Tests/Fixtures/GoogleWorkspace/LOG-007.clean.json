@@ -1,0 +1,33 @@
+{
+  "checkId": "LOG-007",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Every system-defined alert rule active",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "rule.system_defined_alerts": [
+          {
+            "setting": {
+              "value": {
+                "displayName": "Suspicious login",
+                "state": "ACTIVE"
+              }
+            }
+          },
+          {
+            "setting": {
+              "value": {
+                "displayName": "Government-backed attack",
+                "state": "ACTIVE"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

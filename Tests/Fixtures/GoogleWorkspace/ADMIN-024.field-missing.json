@@ -1,0 +1,24 @@
+{
+  "checkId": "ADMIN-024",
+  "platform": "GWS",
+  "scenario": "field-missing",
+  "expectedStatus": "SKIP",
+  "description": "accessLevel not returned",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "workspace_marketplace.apps_access_options": [
+          {
+            "setting": {
+              "value": {
+                "allowAllInternalApps": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

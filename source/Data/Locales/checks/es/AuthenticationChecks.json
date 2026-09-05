@@ -323,5 +323,23 @@
       "value": "En la consola de administración de Google, en Seguridad > Recuperación de cuentas, deshabilite la autorrecuperación para los usuarios (y los administradores no superadministradores), de modo que la recuperación de cuentas se gestione mediante un administrador o un proceso del servicio de asistencia en lugar de un canal controlado por el usuario.",
       "status": "machine-draft"
     }
+  },
+  "AUTH-019": {
+    "name": {
+      "value": "Cuentas no gestionadas en conflicto sustituidas (GWS.COMMONCONTROLS.7.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.7.1: una cuenta de consumidor no gestionada creada con una dirección corporativa contiene datos de la organización fuera de todo control administrativo, no puede auditarse ni suspenderse y sobrevive a la salida del empleado. Configurar la gestión de conflictos para sustituir esas cuentas las somete a gestión en lugar de dejarlas junto a la identidad gestionada. Lee provisioning.conflicting_accounts_management y advierte cuando option es distinto de REPLACE_CONFLICTING_ACCOUNT.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Las cuentas no gestionadas en conflicto se sustituyen por cuentas gestionadas",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administración > Cuenta > Configuración de la cuenta > Gestión de cuentas en conflicto. Elija la opción de sustituir las cuentas no gestionadas en conflicto para que se conviertan en cuentas gestionadas en lugar de conservarse.",
+      "status": "machine-draft"
+    }
   }
 }

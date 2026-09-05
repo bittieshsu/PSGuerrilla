@@ -323,5 +323,23 @@
       "value": "Nella Console di amministrazione Google, in Sicurezza > Recupero dell'account, disabilita il recupero autonomo per gli utenti (e gli amministratori non super), affinché il recupero dell'account avvenga tramite un amministratore o un processo di help desk anziché tramite un canale controllato dall'utente.",
       "status": "machine-draft"
     }
+  },
+  "AUTH-019": {
+    "name": {
+      "value": "Account non gestiti in conflitto sostituiti (GWS.COMMONCONTROLS.7.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.7.1: un account consumer non gestito creato con un indirizzo aziendale contiene dati dell'organizzazione al di fuori di qualsiasi controllo amministrativo, non può essere verificato né sospeso e sopravvive all'uscita del dipendente. Configurare la gestione dei conflitti perché sostituisca quegli account li porta sotto gestione invece di lasciarli accanto all'identità gestita. Legge provisioning.conflicting_accounts_management e avvisa quando option è diverso da REPLACE_CONFLICTING_ACCOUNT.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Gli account non gestiti in conflitto vengono sostituiti da account gestiti",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console di amministrazione > Account > Impostazioni account > Gestione degli account in conflitto. Scegli di sostituire gli account non gestiti in conflitto in modo che vengano convertiti in account gestiti anziché conservati.",
+      "status": "machine-draft"
+    }
   }
 }

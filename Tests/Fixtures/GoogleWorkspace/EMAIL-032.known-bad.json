@@ -1,0 +1,24 @@
+{
+  "checkId": "EMAIL-032",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Comprehensive mail storage disabled",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "gmail.comprehensive_mail_storage": [
+          {
+            "setting": {
+              "value": {
+                "enabled": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

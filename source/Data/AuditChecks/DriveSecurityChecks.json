@@ -669,6 +669,44 @@
         "field-missing",
         "not-assessed"
       ]
+    },
+    {
+      "id": "DRIVE-023",
+      "name": "Drive for Desktop limited to authorized devices (GWS.DRIVEDOCS.5.1)",
+      "description": "SCuBA GWS.DRIVEDOCS.5.1: Drive for Desktop synchronizes organizational files onto local disks, so allowing it on unmanaged hardware places a full local copy of Drive content on machines the organization cannot wipe, encrypt or inspect. Reads drive_and_docs.drive_for_desktop and fails where allowDriveForDesktop is on while restrictToAuthorizedDevices is not enforced. Drive for Desktop being off entirely is compliant and the check reports that rather than a bare pass.",
+      "severity": "High",
+      "zeroTrustPillar": "Devices",
+      "zeroTrustWeight": 3,
+      "subcategory": "Endpoint Sync",
+      "recommendedValue": "Drive for Desktop is disabled, or restricted to company-owned authorized devices",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/55656082996",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Drive and Docs > Features and Applications > Google Drive for Desktop. Either turn it off, or leave it on and enable 'Only allow Google Drive for Desktop on authorized devices'.",
+      "compliance": {
+        "scuba": [
+          "GWS.DRIVEDOCS.5.1v1"
+        ],
+        "nistSp80053": [
+          "AC-19",
+          "SC-28",
+          "MP-7"
+        ],
+        "mitreAttack": [
+          "T1005",
+          "T1025"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean-restricted",
+        "clean-disabled",
+        "known-bad",
+        "field-missing",
+        "not-assessed"
+      ]
     }
   ]
 }

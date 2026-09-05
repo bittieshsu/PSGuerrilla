@@ -533,3 +533,18 @@ function Test-AUTH018 {
         -Type 'security.user_account_recovery' -Field 'enableAccountRecovery' -SecureValue $false -Status 'FAIL' `
         -BadMsg 'Account self-recovery is enabled' -GoodMsg 'Account self-recovery is disabled'
 }
+
+# ── AUTH-019: GWS.COMMONCONTROLS.7.1 — conflicting accounts replaced ───────
+# Compliant value verified against Commoncontrols.rego: anything other than
+# REPLACE_CONFLICTING_ACCOUNT is non-compliant, including
+# AUTOMATICALLY_SEND_INVITATIONS, which invites the user to convert rather than
+# converting the account.
+function Test-AUTH019 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    Test-GwsPolicyEnum -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Type 'provisioning.conflicting_accounts_management' -Field 'option' `
+        -CompliantValues @('REPLACE_CONFLICTING_ACCOUNT') -Status 'WARN' `
+        -BadMsg 'Conflicting unmanaged accounts are not replaced with managed accounts' `
+        -GoodMsg 'Conflicting unmanaged accounts are replaced with managed accounts'
+}

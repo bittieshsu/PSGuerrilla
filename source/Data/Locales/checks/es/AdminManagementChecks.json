@@ -395,5 +395,59 @@
       "value": "En la consola de administración de Google, en Aplicaciones > Servicios adicionales de Google > Early Access Apps, desactive el servicio para todos de modo que los usuarios no puedan habilitar aplicaciones de acceso anticipado previas al lanzamiento.",
       "status": "machine-draft"
     }
+  },
+  "ADMIN-023": {
+    "name": {
+      "value": "Número de superadministradores dentro del rango admitido (GWS.COMMONCONTROLS.6.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.6.2: un tenant necesita al menos dos superadministradores para que la pérdida de una sola cuenta no deje a la organización fuera de su propio tenant, y no más de ocho porque cada superadministrador adicional es una vía sin restricciones hacia todo el tenant. Cuenta las cuentas activas con privilegio de superadministrador en el directorio y falla fuera del rango de dos a ocho. Las cuentas de emergencia son una excepción documentada que debe registrarse, no una aprobación automática, por lo que se cuentan y se enumeran.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Entre dos y ocho cuentas de superadministrador distintas, con las cuentas de emergencia documentadas",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administración > Cuenta > Funciones de administrador > Superadministrador. Si hay menos de dos, promueva una segunda cuenta de administrador dedicada para permitir la recuperación. Si hay más de ocho, traslade a los administradores a la función delegada más restringida que cubra sus tareas y retire el privilegio de superadministrador.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-024": {
+    "name": {
+      "value": "Aplicaciones de Marketplace limitadas a una lista de permitidas (GWS.COMMONCONTROLS.11.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.11.1: una aplicación de Marketplace instalada por un usuario hereda mediante OAuth el acceso de ese usuario a los datos de Workspace, de modo que un Marketplace sin restricciones es un canal de salida de datos de autoservicio que nunca pasa por revisión. Lee workspace_marketplace.apps_access_options y exige que accessLevel sea ALLOW_LISTED_APPS o ALLOW_NONE. Además falla cuando allowAllInternalApps está activado, porque esa opción exime a las aplicaciones publicadas internamente de la lista de permitidas que el control existe para imponer.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Instalaciones de Marketplace restringidas a una lista de permitidas o bloqueadas por completo, sin eximir las aplicaciones internas",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administración > Aplicaciones > Google Workspace Marketplace > Configuración. Establezca el acceso en 'Permitir que los usuarios instalen solo aplicaciones de la lista de permitidas' o bloquee las instalaciones por completo, y desactive la opción que permite todas las aplicaciones internas.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-025": {
+    "name": {
+      "value": "Aprobación de varias partes requerida para acciones administrativas sensibles (GWS.COMMONCONTROLS.17.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.17.1: la aprobación de varias partes obliga a que un segundo administrador autorice las acciones sensibles que un atacante realiza justo después de apoderarse de una cuenta administrativa, como desactivar ajustes de seguridad o alterar las opciones de recuperación. Convierte una sola sesión comprometida en una acción que debe superar a otra persona. Lee multi_party_approval.require_approvals y advierte cuando multiPartyApprovalState es distinto de ENABLED.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aprobación de varias partes habilitada para acciones administrativas sensibles",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administración > Cuenta > Aprobación de varias partes. Active el requisito para las acciones administrativas sensibles y confirme que existen al menos dos superadministradores que puedan aprobarlas.",
+      "status": "machine-draft"
+    }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "checkId": "LOG-007",
+  "platform": "GWS",
+  "scenario": "empty",
+  "expectedStatus": "SKIP",
+  "description": "Policy API returned no system-defined alert rules",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "rule.system_defined_alerts": []
+      }
+    }
+  }
+}

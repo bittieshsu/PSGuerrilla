@@ -395,5 +395,23 @@
       "value": "Consola de administración > Aplicaciones > Google Workspace > Drive y Documentos > Configuración de uso compartido > 'Distribución de contenido fuera de <organización>'. Configúrelo de modo que nadie pueda distribuir contenido a unidades compartidas propiedad de otra organización.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-023": {
+    "name": {
+      "value": "Drive para ordenadores limitado a dispositivos autorizados (GWS.DRIVEDOCS.5.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.5.1: Drive para ordenadores sincroniza archivos de la organización en discos locales, por lo que permitirlo en equipos no gestionados deja una copia local completa del contenido de Drive en máquinas que la organización no puede borrar, cifrar ni inspeccionar. Lee drive_and_docs.drive_for_desktop y falla cuando allowDriveForDesktop está activado mientras restrictToAuthorizedDevices no se aplica. Que Drive para ordenadores esté desactivado por completo es conforme y la comprobación lo indica en lugar de aprobar sin más.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive para ordenadores está desactivado, o restringido a dispositivos autorizados propiedad de la empresa",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Consola de administración > Aplicaciones > Google Workspace > Drive y Documentos > Funciones y aplicaciones > Google Drive para ordenadores. Desactívelo, o déjelo activado y habilite 'Permitir Google Drive para ordenadores solo en dispositivos autorizados'.",
+      "status": "machine-draft"
+    }
   }
 }

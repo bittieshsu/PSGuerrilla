@@ -395,5 +395,59 @@
       "value": "Na Consola de administração, em Aplicações > Serviços adicionais da Google > Early Access Apps, desative o serviço (OFF) para todos, para que os utilizadores não possam ativar as aplicações de Acesso Antecipado de pré-lançamento.",
       "status": "machine-draft"
     }
+  },
+  "ADMIN-023": {
+    "name": {
+      "value": "Número de superadministradores dentro do intervalo suportado (GWS.COMMONCONTROLS.6.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.6.2: um tenant precisa de pelo menos dois superadministradores para que a perda de uma única conta não deixe a organização de fora do próprio tenant, e de no máximo oito porque cada superadministrador adicional é um caminho sem restrições para todo o tenant. Conta as contas ativas com privilégio de superadministrador no diretório e falha fora do intervalo de dois a oito. As contas de emergência são uma exceção documentada a ser registrada, não uma aprovação automática, por isso são contadas e listadas.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Entre duas e oito contas de superadministrador distintas, com as contas de emergência documentadas",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Conta > Funções de administrador > Superadministrador. Se houver menos de duas, promova uma segunda conta administrativa dedicada para permitir a recuperação. Se houver mais de oito, mova os administradores para a função delegada mais restrita que cubra suas tarefas e remova o privilégio de superadministrador.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-024": {
+    "name": {
+      "value": "Apps do Marketplace limitados a uma lista de permissões (GWS.COMMONCONTROLS.11.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.11.1: um app do Marketplace instalado por um usuário herda por OAuth o acesso desse usuário aos dados do Workspace, de modo que um Marketplace sem restrições é um canal de saída de dados de autoatendimento que nunca passa por revisão. Lê workspace_marketplace.apps_access_options e exige que accessLevel seja ALLOW_LISTED_APPS ou ALLOW_NONE. Também falha quando allowAllInternalApps está ativado, porque essa opção isenta os apps publicados internamente da lista de permissões que o controle existe para impor.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Instalações do Marketplace restritas a uma lista de permissões ou bloqueadas por completo, sem isentar apps internos",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Apps > Google Workspace Marketplace > Configurações. Defina o acesso como 'Permitir que os usuários instalem apenas apps da lista de permissões' ou bloqueie as instalações por completo, e desative a opção que permite todos os apps internos.",
+      "status": "machine-draft"
+    }
+  },
+  "ADMIN-025": {
+    "name": {
+      "value": "Aprovação por várias partes exigida para ações administrativas sensíveis (GWS.COMMONCONTROLS.17.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.COMMONCONTROLS.17.1: a aprovação por várias partes obriga um segundo administrador a autorizar as ações sensíveis que um invasor executa logo após assumir uma conta administrativa, como desativar configurações de segurança ou alterar opções de recuperação. Converte uma única sessão comprometida em uma ação que ainda precisa passar por outra pessoa. Lê multi_party_approval.require_approvals e alerta quando multiPartyApprovalState é diferente de ENABLED.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Aprovação por várias partes ativada para ações administrativas sensíveis",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console de administração > Conta > Aprovação por várias partes. Ative a exigência para ações administrativas sensíveis e confirme que existem pelo menos dois superadministradores capazes de aprová-las.",
+      "status": "machine-draft"
+    }
   }
 }

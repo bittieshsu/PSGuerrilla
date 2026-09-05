@@ -172,6 +172,40 @@
       "source_url": null,
       "source_read_date": null,
       "official_id": null
+    },
+    {
+      "id": "LOG-007",
+      "name": "System-defined alerting rules all enabled (GWS.COMMONCONTROLS.13.1)",
+      "description": "SCuBA GWS.COMMONCONTROLS.13.1: Google ships a set of system-defined alerting rules covering the events an administrator most needs to hear about, including suspicious logins, government-backed attack warnings and admin privilege changes. A rule left inactive means the event still occurs and nobody is told. Reads rule.system_defined_alerts and fails where any rule is not in the ACTIVE state, naming the inactive rules.",
+      "severity": "High",
+      "zeroTrustPillar": "Visibility & Analytics",
+      "zeroTrustWeight": 3,
+      "subcategory": "Alerting",
+      "recommendedValue": "Every system-defined alerting rule is active",
+      "remediationUrl": "https://admin.google.com/ac/rules",
+      "remediationSteps": "Admin console > Rules > System-defined rules. Review the inactive rules and enable each one, adding recipients so the alerts reach a monitored mailbox rather than an unattended alias.",
+      "compliance": {
+        "scuba": [
+          "GWS.COMMONCONTROLS.13.1v1"
+        ],
+        "nistSp80053": [
+          "SI-4",
+          "AU-6",
+          "IR-5"
+        ],
+        "mitreAttack": [],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "empty",
+        "not-assessed"
+      ]
     }
   ]
 }

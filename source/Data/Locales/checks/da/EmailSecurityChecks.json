@@ -557,5 +557,95 @@
       "value": "I Google Admin Console under Apps > Google Workspace > Gmail > Spam, Phishing, and Malware skal du aktivere forbedret scanning af beskeder før levering, så Gmail udfører yderligere analyse af mistænkeligt indhold før levering.",
       "status": "machine-draft"
     }
+  },
+  "EMAIL-032": {
+    "name": {
+      "value": "Omfattende mailopbevaring aktiveret (GWS.GMAIL.17.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.17.1: omfattende mailopbevaring gemmer en kopi af hver besked knyttet til en brugers konto, herunder beskeder sendt fra andre Workspace-programmer end Gmail, så en undersøgelse kan rekonstruere, hvad der blev sendt. Uden den mangler post genereret uden for Gmail i registreringen, og en søgning giver et delvist svar, der ser komplet ud. Læser gmail.comprehensive_mail_storage og advarer, når enabled ikke er true.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Omfattende mailopbevaring aktiveret for alle brugere",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Gmail > Overholdelse > Omfattende mailopbevaring. Aktivér den, så alle beskeder knyttet til en bruger gemmes og kan hentes frem.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-033": {
+    "name": {
+      "value": "Usikre vedhæftede filer bliver ikke i indbakken (GWS.GMAIL.5.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.5.5: beskyttelse af vedhæftede filer sænker kun risikoen, hvis den markerede besked flyttes uden for rækkevidde. At opdage en skadelig vedhæftet fil og så lade den blive i indbakken betyder, at beskyttelsen gav en mærkat og ikke et resultat, og brugeren kan stadig åbne den. Læser gmail.email_attachment_safety og kræver, at konsekvenserne for afvigende, krypterede og scriptbærende vedhæftede filer er SPAM_FOLDER eller QUARANTINE. En konsekvens, der beholder beskeden i indbakken, fejler.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Al beskyttelse af vedhæftede filer flytter markeret post til spam eller karantæne",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Gmail > Sikkerhed > Vedhæftede filer. Sæt handlingen for afvigende, krypterede og scriptbærende vedhæftede filer til flyt til spam eller sæt i karantæne frem for behold i indbakken.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-034": {
+    "name": {
+      "value": "Forfalsket og uautentificeret post bliver ikke i indbakken (GWS.GMAIL.7.6)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.7.6: beskyttelsen mod forfalskning og manglende autentificering dækker de efterligningsmønstre, der bærer direktørsvindel, herunder lignende domæner, forfalskning af medarbejdernavne og uautentificerede afsendere. At markere en sådan besked og lade den blive i indbakken lægger den stadig frem for modtageren. Læser gmail.spoofing_and_authentication og kræver, at konsekvenserne for domæne, domænenavn, medarbejdernavn, grupper og uautentificeret post er SPAM_FOLDER eller QUARANTINE.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Al beskyttelse mod forfalskning og manglende autentificering flytter markeret post til spam eller karantæne",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Gmail > Sikkerhed > Forfalskning og autentificering. Sæt handlingen for hver beskyttelse til flyt til spam eller sæt i karantæne frem for behold i indbakken.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-035": {
+    "name": {
+      "value": "Ingen domæner omgår spamfiltrering og advarsler (GWS.GMAIL.18.2)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.18.2: at føje et domæne til en omgåelsesliste slår spamfiltrering fra og undertrykker advarselsbannerne for alle dets beskeder, så enhver angriber, der kan sende som det domæne eller kompromitterer en enkelt postkasse i det, når indbakkerne ufiltreret og umærket. Læser gmail.spam_override_lists og fejler, når warningDomainsFound rapporterer domæner, der er sat op til at omgå advarsler.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ingen domæner er sat op til at omgå spamfiltrering eller advarselsbannere",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Gmail > Spam, phishing og malware. Gennemgå hver tilladelsesliste og hver indgående gateway, og fjern domæner, der er sat op til at omgå filtrering eller skjule advarsler. Foretræk snævert afgrænsede regler frem for generel tillid til et domæne.",
+      "status": "machine-draft"
+    }
+  },
+  "EMAIL-036": {
+    "name": {
+      "value": "Omgåelse af spamfilter ikke aktiveret for alle afsendere (GWS.GMAIL.18.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.GMAIL.18.3: en omgåelsesliste, der skjuler advarselsbanneret for alle beskeder fra interne og eksterne afsendere, fjerner det mest synlige signal, en bruger har om, at en besked ikke er troværdig, og det på tværs af hele tenanten frem for for en vurderet undtagelse. Læser gmail.spam_override_lists og fejler, når en post sætter hideWarningBannerForAll, med navn på de ansvarlige poster.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ingen omgåelsesliste skjuler advarselsbannere for alle interne og eksterne afsendere",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Gmail > Spam, phishing og malware. Åbn hver omgåelses- eller godkendt afsenderliste, og fjern indstillingen, der omgår spamfiltre og skjuler advarsler for alle beskeder fra interne og eksterne afsendere.",
+      "status": "machine-draft"
+    }
   }
 }

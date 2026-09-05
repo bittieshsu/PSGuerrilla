@@ -1,0 +1,58 @@
+{
+  "checkId": "ADMIN-023",
+  "platform": "GWS",
+  "scenario": "known-bad-too-many",
+  "expectedStatus": "FAIL",
+  "description": "Nine super admins, above the maximum of eight",
+  "objectShape": false,
+  "auditData": {
+    "Errors": {},
+    "Users": [
+      {
+        "primaryEmail": "admin0@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin1@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin2@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin3@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin4@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin5@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin6@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin7@e.com",
+        "isAdmin": true,
+        "suspended": false
+      },
+      {
+        "primaryEmail": "admin8@e.com",
+        "isAdmin": true,
+        "suspended": false
+      }
+    ]
+  }
+}
