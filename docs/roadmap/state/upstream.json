@@ -1,10 +1,15 @@
 {
-  "generated": "2026-09-04 15:24 UTC",
+  "generated": "2026-09-05 14:11 UTC",
   "kev": {
-    "catalogVersion": "2026.09.02",
-    "count": 1694,
-    "date": "2026-09-02",
+    "catalogVersion": "2026.09.04",
+    "count": 1695,
+    "date": "2026-09-04",
     "newest": [
+      {
+        "added": "2026-09-04",
+        "cve": "CVE-2026-85046",
+        "name": "Google Chromium V8 Type Confusion Vulnerability"
+      },
       {
         "added": "2026-09-02",
         "cve": "CVE-2026-59822",
@@ -24,11 +29,6 @@
         "added": "2026-09-02",
         "cve": "CVE-2026-82329",
         "name": "JFrog Artifactory Improper Authentication Vulnerability"
-      },
-      {
-        "added": "2026-09-02",
-        "cve": "CVE-2026-9586",
-        "name": "Sangoma Switchvox SQL Injection Vulnerability"
       }
     ]
   },
