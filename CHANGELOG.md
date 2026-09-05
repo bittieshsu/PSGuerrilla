@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2.54.0] - 2026-09-05
+
 ### Added
 - **Four Google Workspace checks close the conditional external-sharing gaps in the CISA SCuBA Drive baseline.** `DRIVE-019` (GWS.DRIVEDOCS.1.3) asserts that users are warned before sharing outside the organization, `DRIVE-020` (GWS.DRIVEDOCS.1.4) that sharing is limited to recipients holding a Google account rather than PIN-based visitor links, `DRIVE-021` (GWS.DRIVEDOCS.1.5) that publishing Drive content to the web is off, and `DRIVE-022` (GWS.DRIVEDOCS.1.7) that no one may move content into a shared drive owned by another organization. All four read `drive_and_docs.external_sharing`, which the collector already gathers, so they need no new API scope or permission.
 - These four policies only bind when external sharing is permitted, so each check pairs `externalSharingMode` with the sub-setting **on the same policy value object**, per targeted policy — reading the two fields separately would let one OU's sharing mode answer for another OU's setting. Where external sharing is disallowed the check says the policy cannot apply instead of returning a bare pass, and where the sub-setting is missing while sharing *is* permitted it reports **Not Assessed** rather than crediting a setting nobody could read. Enum direction and field names were verified against the ScubaGoggles Rego before any verdict code was written.
