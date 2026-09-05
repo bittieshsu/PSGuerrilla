@@ -159,8 +159,8 @@ New-Fixture AD ADTRADE-002 $R throttled SKIP 'TradecraftSignals failed' $skTC
 New-Fixture AD ADTRADE-004 $R clean PASS 'No RODCs (PRP hygiene N/A)' @{ Errors=@{}; Tradecraft=@{ Rodcs=@() } }
 New-Fixture AD ADTRADE-004 $R known-bad WARN 'RODC present (verify PRP out-of-band)' @{ Errors=@{}; Tradecraft=@{ Rodcs=@(@{ DNSHostName='rodc1.t.l' }) } }
 New-Fixture AD ADTRADE-004 $R throttled SKIP 'TradecraftSignals failed' $skTC
-New-Fixture AD ADTRADE-005 $R clean PASS 'Seamless SSO key rotated within 90 days' @{ Errors=@{}; Tradecraft=@{ SeamlessSsoAccount=@{ PwdLastSet='2026-05-01T00:00:00Z'; DistinguishedName='CN=AZUREADSSOACC,...' } } }
-New-Fixture AD ADTRADE-005 $R known-bad FAIL 'Seamless SSO key not rotated in >90 days' @{ Errors=@{}; Tradecraft=@{ SeamlessSsoAccount=@{ PwdLastSet='2026-01-01T00:00:00Z'; DistinguishedName='CN=AZUREADSSOACC,...' } } }
+New-Fixture AD ADTRADE-005 $R clean PASS 'Seamless SSO key rotated within 90 days' @{ Errors=@{}; Tradecraft=@{ SeamlessSsoAccount=@{ PwdLastSet='@now-45d'; DistinguishedName='CN=AZUREADSSOACC,...' } } }
+New-Fixture AD ADTRADE-005 $R known-bad FAIL 'Seamless SSO key not rotated in >90 days' @{ Errors=@{}; Tradecraft=@{ SeamlessSsoAccount=@{ PwdLastSet='@now-247d'; DistinguishedName='CN=AZUREADSSOACC,...' } } }
 New-Fixture AD ADTRADE-005 $R throttled SKIP 'TradecraftSignals failed' $skTC
 New-Fixture AD ADTRADE-008 $R clean PASS 'Key Admins / Enterprise Key Admins empty' @{ Errors=@{}; Tradecraft=@{ KeyAdminGroupsFound=$true; EnterpriseKeyAdmins=@(@{ ObjectClass='group' }); KeyAdmins=@(@{ ObjectClass='group' }) } }
 New-Fixture AD ADTRADE-008 $R known-bad FAIL 'A user is a member of Key Admins' @{ Errors=@{}; Tradecraft=@{ KeyAdminGroupsFound=$true; EnterpriseKeyAdmins=@(@{ ObjectClass='group' }); KeyAdmins=@(@{ ObjectClass='group' },@{ ObjectClass='user'; SamAccountName='bad' }) } }

@@ -11,7 +11,7 @@
         {
           "Tombstoned": false,
           "Name": "stale.t.l",
-          "WhenChanged": "2023-01-01T00:00:00Z",
+          "WhenChanged": "@now-1343d",
           "DN": "CN=stale,..."
         }
       ]

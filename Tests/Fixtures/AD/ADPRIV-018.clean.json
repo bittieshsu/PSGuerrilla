@@ -10,7 +10,7 @@
       "AllPrivilegedUsers": [
         {
           "SamAccountName": "admin1",
-          "LastLogonTimestamp": "2026-05-01T00:00:00Z"
+          "LastLogonTimestamp": "@now-45d"
         }
       ]
     }

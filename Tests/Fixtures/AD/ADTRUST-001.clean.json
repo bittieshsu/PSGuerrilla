@@ -15,9 +15,9 @@
         "TrustPartner": "partner.corp.com",
         "IsAzureAD": false,
         "ForestTransitive": false,
-        "WhenCreated": "2020-01-15T10:00:00Z",
+        "WhenCreated": "@now-2425d",
         "SelectiveAuthentication": false,
-        "WhenChanged": "2020-01-15T10:00:00Z",
+        "WhenChanged": "@now-2425d",
         "WithinForest": false
       }
     ],

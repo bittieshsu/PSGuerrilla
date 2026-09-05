@@ -34,7 +34,7 @@
       {
         "primaryEmail": "staff@d.org",
         "orgUnitPath": "/Staff",
-        "lastLoginTime": "2098-01-01T00:00:00Z",
+        "lastLoginTime": "@now+26051d",
         "suspended": false
       }
     ]

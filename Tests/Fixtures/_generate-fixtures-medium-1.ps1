@@ -31,7 +31,7 @@ $skLS   =@{ Errors=@{ LogonScripts='collector error' }; LogonScripts=$null }
 $skTC   =@{ Errors=@{ TradecraftSignals='collector error' }; Tradecraft=$null }
 $skStale=@{ Errors=@{ StaleObjects='collector error' }; StaleObjects=$null }
 $skTrust=@{ Errors=@{ TrustRelationships='collector error' }; Trusts=$null }
-$recent='2026-05-01T00:00:00Z'; $old='2023-01-01T00:00:00Z'
+$recent='@now-45d'; $old='@now-1343d'
 
 # ── ADPWD ──
 New-Fixture AD ADPWD-002 $R clean PASS 'No fine-grained password policies defined' @{ Errors=@{}; PasswordPolicies=@{ FineGrainedPolicies=@() } }

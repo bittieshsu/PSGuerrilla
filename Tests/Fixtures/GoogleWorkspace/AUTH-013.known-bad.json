@@ -12,7 +12,7 @@
         "isAdmin": true,
         "suspended": false,
         "primaryEmail": "admin@e.com",
-        "lastLoginTime": "2026-01-01T00:00:00Z"
+        "lastLoginTime": "@now-247d"
       }
     ]
   }

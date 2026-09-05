@@ -49,6 +49,42 @@ Import-Guerrilla
 
 $platformByFamily = @{ AD = 'AD'; Entra = 'Entra'; Eidsca = 'Entra'; GoogleWorkspace = 'GWS' }
 
+# --- Rot guard: no absolute datetimes in fixtures ------------------------------
+# An age-based check compares its data against "now", so a fixture that pins an
+# absolute timestamp drifts across the threshold on some future run and turns the
+# gate red with no code change (see c105fd6, and the 2026-06-01 "recent" sentinel
+# that aged past 90 days and broke ADMIN-006 / AUTH-013 / EIDAPP-009). The loader
+# already resolves relative tokens ("@now-30d"); this makes using them mandatory so
+# the failure mode cannot come back. Absolute dates in the fixture's own metadata
+# (description text) are fine — only auditData is scanned.
+$absoluteDates = [System.Collections.Generic.List[string]]::new()
+foreach ($file in (Get-ChildItem -Path (Join-Path $root 'Fixtures') -Filter *.json -Recurse)) {
+    $fxRaw = Get-Content -Path $file.FullName -Raw | ConvertFrom-Json -AsHashtable
+    if (-not $fxRaw.auditData) { continue }
+    $stack = [System.Collections.Generic.Stack[object]]::new()
+    $stack.Push($fxRaw.auditData)
+    while ($stack.Count -gt 0) {
+        $node = $stack.Pop()
+        # ConvertFrom-Json coerces an ISO-8601 literal to [datetime], so an absolute
+        # date arrives as a datetime while a relative token stays the string '@now-30d'.
+        # Testing for [datetime] is therefore what catches a pinned date; testing for a
+        # date-shaped string silently matches nothing.
+        if ($node -is [datetime]) {
+            $absoluteDates.Add("$($file.Name): $($node.ToString('o'))")
+        } elseif ($node -is [System.Collections.IDictionary]) {
+            foreach ($v in $node.Values) { if ($null -ne $v) { $stack.Push($v) } }
+        } elseif ($node -is [System.Collections.IList]) {
+            foreach ($v in $node) { if ($null -ne $v) { $stack.Push($v) } }
+        }
+    }
+}
+if ($absoluteDates.Count -gt 0) {
+    Write-Host "FATAL: $($absoluteDates.Count) fixture value(s) pin an absolute datetime instead of a relative token (@now-30d)." -ForegroundColor Red
+    Write-Host 'These rot: the date drifts across the check threshold and fails the gate on a future run.' -ForegroundColor Red
+    $absoluteDates | Select-Object -First 20 | ForEach-Object { Write-Host "  $_" -ForegroundColor Red }
+    exit 4
+}
+
 $cases = Get-GuerrillaFixtureCases
 
 if ($PoisonSelfTest) {

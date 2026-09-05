@@ -11,7 +11,7 @@
         {
           "ParentComputer": "COMP1",
           "DistinguishedName": "CN=Key",
-          "WhenCreated": "2023-01-01T00:00:00Z"
+          "WhenCreated": "@now-1343d"
         }
       ]
     }

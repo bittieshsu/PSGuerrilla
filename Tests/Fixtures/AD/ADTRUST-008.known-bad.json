@@ -14,7 +14,7 @@
         "SIDFilteringEnabled": false,
         "TrustType": "External",
         "SelectiveAuthentication": false,
-        "WhenCreated": "2023-01-01T00:00:00Z",
+        "WhenCreated": "@now-1343d",
         "IsTransitive": true,
         "WithinForest": false,
         "TrustPartner": "external-org.com"

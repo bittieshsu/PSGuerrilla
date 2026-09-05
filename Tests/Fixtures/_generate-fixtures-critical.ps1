@@ -66,8 +66,8 @@ New-Fixture AD ADPRIV-016 $RECON throttled SKIP 'PasswordHashQuality collection 
 New-Fixture AD ADPRIV-020 $RECON no-data SKIP 'AdminSDHolder ACL data not available (object-only PASS/FAIL not JSON-representable)' @{ Errors=@{}; PrivilegedAccounts=@{ AdminSDHolderACL=$null } }
 New-Fixture AD ADPRIV-020 $RECON throttled SKIP 'PrivilegedMembers collection failed' @{ Errors=@{ PrivilegedMembers='referral returned from server' }; PrivilegedAccounts=$null }
 
-New-Fixture AD ADPRIV-023 $RECON clean PASS 'krbtgt is disabled and not DES-only' @{ Errors=@{}; PrivilegedAccounts=@{ KrbtgtAccount=@{ PwdAgeDays=90; UACFlags=@{ ACCOUNTDISABLE=$true; USE_DES_KEY_ONLY=$false }; WhenCreated='2024-01-01T00:00:00Z' } } }
-New-Fixture AD ADPRIV-023 $RECON known-bad WARN 'krbtgt account is enabled' @{ Errors=@{}; PrivilegedAccounts=@{ KrbtgtAccount=@{ PwdAgeDays=90; UACFlags=@{ ACCOUNTDISABLE=$false; USE_DES_KEY_ONLY=$false }; WhenCreated='2024-01-01T00:00:00Z' } } }
+New-Fixture AD ADPRIV-023 $RECON clean PASS 'krbtgt is disabled and not DES-only' @{ Errors=@{}; PrivilegedAccounts=@{ KrbtgtAccount=@{ PwdAgeDays=90; UACFlags=@{ ACCOUNTDISABLE=$true; USE_DES_KEY_ONLY=$false }; WhenCreated='@now-978d' } } }
+New-Fixture AD ADPRIV-023 $RECON known-bad WARN 'krbtgt account is enabled' @{ Errors=@{}; PrivilegedAccounts=@{ KrbtgtAccount=@{ PwdAgeDays=90; UACFlags=@{ ACCOUNTDISABLE=$false; USE_DES_KEY_ONLY=$false }; WhenCreated='@now-978d' } } }
 New-Fixture AD ADPRIV-023 $RECON throttled SKIP 'PrivilegedMembers collection failed' @{ Errors=@{ PrivilegedMembers='referral returned from server' }; PrivilegedAccounts=$null }
 
 New-Fixture AD ADPRIV-028 $RECON clean PASS 'No non-default principals hold DCSync rights' @{ Errors=@{}; DCSyncAccounts=@() }

@@ -13,9 +13,9 @@
         "TrustDirection": "Bidirectional",
         "TrustType": "External",
         "FlatName": "CONTOSO",
-        "WhenCreated": "2023-01-01T00:00:00Z",
+        "WhenCreated": "@now-1343d",
         "SelectiveAuthentication": false,
-        "WhenChanged": "2023-01-01T00:00:00Z",
+        "WhenChanged": "@now-1343d",
         "TrustPartner": "contoso.onmicrosoft.com"
       }
     ]

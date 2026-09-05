@@ -12,7 +12,7 @@
           "appId": "a1",
           "passwordCredentials": [
             {
-              "endDateTime": "2020-01-01T00:00:00Z",
+              "endDateTime": "@now-2439d",
               "keyId": "k1"
             }
           ],

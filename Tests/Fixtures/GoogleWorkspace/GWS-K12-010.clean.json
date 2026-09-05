@@ -61,7 +61,7 @@
           "setting": {
             "type": "settings/security.two_step_verification_enforcement",
             "value": {
-              "enforcedFrom": "2020-01-01T00:00:00Z"
+              "enforcedFrom": "@now-2439d"
             }
           },
           "policyQuery": {
@@ -105,7 +105,7 @@
             "setting": {
               "type": "settings/security.two_step_verification_enforcement",
               "value": {
-                "enforcedFrom": "2020-01-01T00:00:00Z"
+                "enforcedFrom": "@now-2439d"
               }
             },
             "policyQuery": {

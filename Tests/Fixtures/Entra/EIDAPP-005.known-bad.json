@@ -29,7 +29,7 @@
           "passwordCredentials": [
             {
               "keyId": "cred-1",
-              "endDateTime": "2099-12-31T00:00:00Z"
+              "endDateTime": "@now+26780d"
             }
           ],
           "keyCredentials": []

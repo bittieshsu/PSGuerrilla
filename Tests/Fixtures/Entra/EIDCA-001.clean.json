@@ -11,9 +11,9 @@
         {
           "displayName": "Require MFA",
           "id": "p1",
-          "modifiedDateTime": "2024-06-01T00:00:00Z",
+          "modifiedDateTime": "@now-826d",
           "state": "enabled",
-          "createdDateTime": "2024-01-01T00:00:00Z"
+          "createdDateTime": "@now-978d"
         }
       ],
       "Errors": {}

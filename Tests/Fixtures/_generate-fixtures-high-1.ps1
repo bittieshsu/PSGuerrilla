@@ -43,8 +43,8 @@ foreach ($u in @(@{ Id='ADPRIV-014'; Flag='USE_DES_KEY_ONLY' })) {
 New-Fixture AD ADPRIV-015 $R clean PASS 'Privileged user requires smartcard' @{ Errors=@{}; PrivilegedAccounts=@{ AllPrivilegedUsers=@(@{ ObjectClass='user'; SamAccountName='a'; Enabled=$true; UACFlags=@{ SMARTCARD_REQUIRED=$true } }) } }
 New-Fixture AD ADPRIV-015 $R known-bad FAIL 'No privileged user requires smartcard' @{ Errors=@{}; PrivilegedAccounts=@{ AllPrivilegedUsers=@(@{ ObjectClass='user'; SamAccountName='a'; Enabled=$true; UACFlags=@{ SMARTCARD_REQUIRED=$false } }) } }
 New-Fixture AD ADPRIV-015 $R throttled SKIP 'PrivilegedMembers failed' $skipPriv
-New-Fixture AD ADPRIV-017 $R clean PASS 'Privileged password changed recently' @{ Errors=@{}; PrivilegedAccounts=@{ AllPrivilegedUsers=@(@{ SamAccountName='a'; Enabled=$true; PwdLastSet='2026-05-01T00:00:00Z' }) } }
-New-Fixture AD ADPRIV-017 $R known-bad FAIL 'Privileged password older than 365 days' @{ Errors=@{}; PrivilegedAccounts=@{ AllPrivilegedUsers=@(@{ SamAccountName='a'; Enabled=$true; PwdLastSet='2020-01-01T00:00:00Z' }) } }
+New-Fixture AD ADPRIV-017 $R clean PASS 'Privileged password changed recently' @{ Errors=@{}; PrivilegedAccounts=@{ AllPrivilegedUsers=@(@{ SamAccountName='a'; Enabled=$true; PwdLastSet='@now-45d' }) } }
+New-Fixture AD ADPRIV-017 $R known-bad FAIL 'Privileged password older than 365 days' @{ Errors=@{}; PrivilegedAccounts=@{ AllPrivilegedUsers=@(@{ SamAccountName='a'; Enabled=$true; PwdLastSet='@now-2439d' }) } }
 New-Fixture AD ADPRIV-017 $R throttled SKIP 'PrivilegedMembers failed' $skipPriv
 New-Fixture AD ADPRIV-019 $R clean PASS 'No disabled accounts in privileged groups' @{ Errors=@{}; PrivilegedAccounts=@{ PrivilegedGroups=@{ 'Domain Admins'=@(@{ ObjectClass='user'; Enabled=$true; SamAccountName='a' }) } } }
 New-Fixture AD ADPRIV-019 $R known-bad FAIL 'Disabled account in Domain Admins' @{ Errors=@{}; PrivilegedAccounts=@{ PrivilegedGroups=@{ 'Domain Admins'=@(@{ ObjectClass='user'; Enabled=$false; SamAccountName='old' }) } } }
@@ -130,8 +130,8 @@ New-Fixture AD ADTIER-007 $R throttled SKIP 'PrivilegedMembers failed' $skipPriv
 New-Fixture AD ADTRUST-006 $R clean PASS 'External trust uses selective authentication' @{ Errors=@{}; Trusts=@(@{ TrustPartner='p.com'; WithinForest=$false; SelectiveAuthentication=$true }) }
 New-Fixture AD ADTRUST-006 $R known-bad FAIL 'External trust lacks selective authentication' @{ Errors=@{}; Trusts=@(@{ TrustPartner='p.com'; WithinForest=$false; SelectiveAuthentication=$false }) }
 New-Fixture AD ADTRUST-006 $R throttled SKIP 'TrustRelationships failed' @{ Errors=@{ TrustRelationships='collector error' }; Trusts=$null }
-New-Fixture AD ADTRUST-010 $R clean PASS 'Trust password rotated within 180 days' @{ Errors=@{}; Trusts=@(@{ TrustPartner='p.com'; TrustDirection='Bidirectional'; WhenChanged='2026-05-01T00:00:00Z' }) }
-New-Fixture AD ADTRUST-010 $R known-bad WARN 'Trust password older than 180 days' @{ Errors=@{}; Trusts=@(@{ TrustPartner='p.com'; TrustDirection='Bidirectional'; WhenChanged='2020-01-01T00:00:00Z' }) }
+New-Fixture AD ADTRUST-010 $R clean PASS 'Trust password rotated within 180 days' @{ Errors=@{}; Trusts=@(@{ TrustPartner='p.com'; TrustDirection='Bidirectional'; WhenChanged='@now-45d' }) }
+New-Fixture AD ADTRUST-010 $R known-bad WARN 'Trust password older than 180 days' @{ Errors=@{}; Trusts=@(@{ TrustPartner='p.com'; TrustDirection='Bidirectional'; WhenChanged='@now-2439d' }) }
 New-Fixture AD ADTRUST-010 $R throttled SKIP 'TrustRelationships failed' @{ Errors=@{ TrustRelationships='collector error' }; Trusts=$null }
 
 # ── Stale objects (missing StaleObjects => SKIP; empty arrays => PASS) ──

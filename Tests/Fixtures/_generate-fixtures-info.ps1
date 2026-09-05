@@ -57,11 +57,11 @@ New-Fixture $AD ADSCRIPT-003 $R throttled SKIP 'Logon script data not collected'
 New-Fixture $AD ADPWD-020 $R clean PASS 'BitLocker recovery keys present (informational)' @{ Errors = @{}; PasswordPolicies = @{ BitLockerKeys = 5 } }
 
 # ADTRUST-001 trust inventory — always PASS (+SKIP guard TrustRelationships)
-New-Fixture $AD ADTRUST-001 $R clean PASS 'Trust relationships inventoried' @{ Errors = @{}; Trusts = @(@{ TrustPartner = 'partner.corp.com'; TrustDirection = 'Bidirectional'; TrustType = 'External'; IsTransitive = $false; ForestTransitive = $false; WithinForest = $false; SIDFilteringEnabled = $true; SelectiveAuthentication = $false; IsAzureAD = $false; WhenCreated = '2020-01-15T10:00:00Z'; WhenChanged = '2020-01-15T10:00:00Z' }) }
+New-Fixture $AD ADTRUST-001 $R clean PASS 'Trust relationships inventoried' @{ Errors = @{}; Trusts = @(@{ TrustPartner = 'partner.corp.com'; TrustDirection = 'Bidirectional'; TrustType = 'External'; IsTransitive = $false; ForestTransitive = $false; WithinForest = $false; SIDFilteringEnabled = $true; SelectiveAuthentication = $false; IsAzureAD = $false; WhenCreated = '@now-2425d'; WhenChanged = '@now-2425d' }) }
 New-Fixture $AD ADTRUST-001 $R throttled SKIP 'Trust data not collected' @{ Errors = @{ TrustRelationships = 'AD enumeration failed' } }
 
 # ADTRUST-011 trust topology — always PASS (+SKIP guard)
-New-Fixture $AD ADTRUST-011 $R clean PASS 'Trust topology mapped' @{ Errors = @{}; Trusts = @(@{ TrustPartner = 'partner.corp.com'; TrustDirection = 'Bidirectional'; TrustType = 'External'; ForestTransitive = $false; WithinForest = $false; IsAzureAD = $false; IsTransitive = $false; SIDFilteringEnabled = $true; SelectiveAuthentication = $false; WhenCreated = '2020-01-15T10:00:00Z'; WhenChanged = '2020-01-15T10:00:00Z' }); Domain = @{ DomainName = 'contoso.com' }; Connection = @{ DomainDN = 'DC=contoso,DC=com' } }
+New-Fixture $AD ADTRUST-011 $R clean PASS 'Trust topology mapped' @{ Errors = @{}; Trusts = @(@{ TrustPartner = 'partner.corp.com'; TrustDirection = 'Bidirectional'; TrustType = 'External'; ForestTransitive = $false; WithinForest = $false; IsAzureAD = $false; IsTransitive = $false; SIDFilteringEnabled = $true; SelectiveAuthentication = $false; WhenCreated = '@now-2425d'; WhenChanged = '@now-2425d' }); Domain = @{ DomainName = 'contoso.com' }; Connection = @{ DomainDN = 'DC=contoso,DC=com' } }
 New-Fixture $AD ADTRUST-011 $R throttled SKIP 'Trust data not collected' @{ Errors = @{ TrustRelationships = 'AD enumeration failed' } }
 
 # ───────────────────── Entra / Azure / Intune / Entra ─────────────────────
@@ -71,7 +71,7 @@ New-Fixture $EN AZIAM-008 $I known-bad WARN 'No management groups configured' @{
 New-Fixture $EN AZIAM-008 $I no-data SKIP 'Azure subscriptions not assessed' @{ Errors = @{}; AzureIAM = @{ Errors = @{ Subscriptions = 'ARM 401' }; Subscriptions = @() } }
 
 # EIDAPP-001 app registration inventory — PASS any / WARN none / SKIP
-New-Fixture $EN EIDAPP-001 $I clean PASS 'App registrations / service principals present' @{ Errors = @{}; Applications = @{ Errors = @{}; AppRegistrations = @(@{ appId = 'a1'; displayName = 'App1'; signInAudience = 'AzureADMyOrg'; createdDateTime = '2024-01-01T00:00:00Z' }); ServicePrincipals = @(@{ appId = 'a1'; displayName = 'App1' }) } }
+New-Fixture $EN EIDAPP-001 $I clean PASS 'App registrations / service principals present' @{ Errors = @{}; Applications = @{ Errors = @{}; AppRegistrations = @(@{ appId = 'a1'; displayName = 'App1'; signInAudience = 'AzureADMyOrg'; createdDateTime = '@now-978d' }); ServicePrincipals = @(@{ appId = 'a1'; displayName = 'App1' }) } }
 New-Fixture $EN EIDAPP-001 $I known-bad WARN 'No applications or service principals found' @{ Errors = @{}; Applications = @{ Errors = @{}; AppRegistrations = @(); ServicePrincipals = @() } }
 New-Fixture $EN EIDAPP-001 $I no-data SKIP 'Applications not assessed' @{ Errors = @{ Applications = 'Graph 429' }; Applications = @{ Errors = @{} } }
 
@@ -80,7 +80,7 @@ New-Fixture $EN EIDAPP-016 $I clean PASS 'Managed identities inventoried' @{ Err
 New-Fixture $EN EIDAPP-016 $I no-data SKIP 'No service principals to assess' @{ Errors = @{}; Applications = @{ Errors = @{}; ServicePrincipals = @() } }
 
 # EIDAPP-017 SP sign-in activity — PASS / SKIP
-New-Fixture $EN EIDAPP-017 $I clean PASS 'Service principal sign-in activity present' @{ Errors = @{}; Applications = @{ Errors = @{}; ServicePrincipals = @(@{ id = 'sp1'; displayName = 'App1'; signInActivity = @{ lastSignInDateTime = '2026-06-01T00:00:00Z' } }) } }
+New-Fixture $EN EIDAPP-017 $I clean PASS 'Service principal sign-in activity present' @{ Errors = @{}; Applications = @{ Errors = @{}; ServicePrincipals = @(@{ id = 'sp1'; displayName = 'App1'; signInActivity = @{ lastSignInDateTime = '@now-30d' } }) } }
 New-Fixture $EN EIDAPP-017 $I no-data SKIP 'No service principal sign-in data' @{ Errors = @{}; Applications = @{ Errors = @{}; ServicePrincipals = @() } }
 
 # EIDAUTH-001 auth methods policy — PASS / SKIP
@@ -96,7 +96,7 @@ New-Fixture $EN EIDAUTH-006 $I clean PASS 'FIDO2 security key registrations inve
 New-Fixture $EN EIDAUTH-006 $I no-data SKIP 'No registration details to assess' @{ Errors = @{}; AuthMethods = @{ UserRegistrationDetails = $null } }
 
 # EIDCA-001 CA policy inventory — PASS any / WARN none / SKIP
-New-Fixture $EN EIDCA-001 $I clean PASS 'Conditional Access policies inventoried' @{ Errors = @{}; ConditionalAccess = @{ Errors = @{}; Policies = @(@{ id = 'p1'; displayName = 'Require MFA'; state = 'enabled'; createdDateTime = '2024-01-01T00:00:00Z'; modifiedDateTime = '2024-06-01T00:00:00Z' }) } }
+New-Fixture $EN EIDCA-001 $I clean PASS 'Conditional Access policies inventoried' @{ Errors = @{}; ConditionalAccess = @{ Errors = @{}; Policies = @(@{ id = 'p1'; displayName = 'Require MFA'; state = 'enabled'; createdDateTime = '@now-978d'; modifiedDateTime = '@now-826d' }) } }
 New-Fixture $EN EIDCA-001 $I known-bad WARN 'No Conditional Access policies found' @{ Errors = @{}; ConditionalAccess = @{ Errors = @{}; Policies = @() } }
 New-Fixture $EN EIDCA-001 $I no-data SKIP 'Conditional Access not assessed' @{ Errors = @{ ConditionalAccess = 'Graph 429' }; ConditionalAccess = @{ Errors = @{} } }
 
@@ -127,7 +127,7 @@ New-Fixture $EN EIDPIM-011 $I clean PASS 'PIM activation/assignment schedules pr
 New-Fixture $EN EIDPIM-011 $I no-data SKIP 'No assignment schedules to assess' @{ Errors = @{}; PIM = @{ Errors = @{}; RoleAssignmentSchedules = $null } }
 
 # EIDTNT-001 organization config — PASS org present / WARN org null / SKIP
-New-Fixture $EN EIDTNT-001 $I clean PASS 'Tenant organization config present' @{ Errors = @{}; TenantConfig = @{ Errors = @{}; Organization = @{ id = 't1'; displayName = 'Contoso'; countryLetterCode = 'US'; createdDateTime = '2018-01-01T00:00:00Z'; verifiedDomains = @(@{ name = 'contoso.com' }); assignedPlans = @() } } }
+New-Fixture $EN EIDTNT-001 $I clean PASS 'Tenant organization config present' @{ Errors = @{}; TenantConfig = @{ Errors = @{}; Organization = @{ id = 't1'; displayName = 'Contoso'; countryLetterCode = 'US'; createdDateTime = '@now-3169d'; verifiedDomains = @(@{ name = 'contoso.com' }); assignedPlans = @() } } }
 New-Fixture $EN EIDTNT-001 $I known-bad WARN 'Organization data unavailable' @{ Errors = @{}; TenantConfig = @{ Errors = @{}; Organization = $null } }
 New-Fixture $EN EIDTNT-001 $I no-data SKIP 'Tenant config not assessed' @{ Errors = @{ TenantConfig = 'Graph 429' }; TenantConfig = @{ Errors = @{} } }
 
@@ -146,12 +146,12 @@ New-Fixture $EN EIDTNT-010 $I known-bad WARN 'An unverified domain exists' @{ Er
 New-Fixture $EN EIDTNT-010 $I no-data SKIP 'Tenant config not assessed' @{ Errors = @{ TenantConfig = 'Graph 429' }; TenantConfig = @{ Errors = @{} } }
 
 # INTUNE-001 compliance policies — PASS present / FAIL none / SKIP
-New-Fixture $EN INTUNE-001 $I clean PASS 'Compliance policies present' @{ Errors = @{}; Intune = @{ Errors = @{}; CompliancePolicies = @(@{ '@odata.type' = '#microsoft.graph.windows10CompliancePolicy'; id = 'c1'; displayName = 'Win10 Baseline'; createdDateTime = '2024-01-01T00:00:00Z' }) } }
+New-Fixture $EN INTUNE-001 $I clean PASS 'Compliance policies present' @{ Errors = @{}; Intune = @{ Errors = @{}; CompliancePolicies = @(@{ '@odata.type' = '#microsoft.graph.windows10CompliancePolicy'; id = 'c1'; displayName = 'Win10 Baseline'; createdDateTime = '@now-978d' }) } }
 New-Fixture $EN INTUNE-001 $I known-bad FAIL 'No compliance policies configured' @{ Errors = @{}; Intune = @{ Errors = @{}; CompliancePolicies = @() } }
 New-Fixture $EN INTUNE-001 $I throttled SKIP 'Intune compliance policies not assessed' $skInt
 
 # INTUNE-004 device configuration profiles — PASS present / WARN none / SKIP
-New-Fixture $EN INTUNE-004 $I clean PASS 'Device configuration profiles present' @{ Errors = @{}; Intune = @{ Errors = @{}; DeviceConfigurations = @(@{ '@odata.type' = '#microsoft.graph.windows10GeneralConfiguration'; id = 'd1'; displayName = 'Win10 Config'; createdDateTime = '2024-01-01T00:00:00Z' }) } }
+New-Fixture $EN INTUNE-004 $I clean PASS 'Device configuration profiles present' @{ Errors = @{}; Intune = @{ Errors = @{}; DeviceConfigurations = @(@{ '@odata.type' = '#microsoft.graph.windows10GeneralConfiguration'; id = 'd1'; displayName = 'Win10 Config'; createdDateTime = '@now-978d' }) } }
 New-Fixture $EN INTUNE-004 $I known-bad WARN 'No device configuration profiles found' @{ Errors = @{}; Intune = @{ Errors = @{}; DeviceConfigurations = @() } }
 New-Fixture $EN INTUNE-004 $I throttled SKIP 'Intune device configurations not assessed' $skInt
 

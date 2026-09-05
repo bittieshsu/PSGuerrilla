@@ -11,7 +11,7 @@
         {
           "displayName": "Win10 Baseline",
           "id": "c1",
-          "createdDateTime": "2024-01-01T00:00:00Z",
+          "createdDateTime": "@now-978d",
           "@odata.type": "#microsoft.graph.windows10CompliancePolicy"
         }
       ],

@@ -38,8 +38,8 @@ New-Fixture $G AUTH-008 $F no-data SKIP 'Cloud Identity policy API unavailable' 
 New-Fixture $G AUTH-010 $F clean PASS 'No super admin has self-service recovery configured' @{ Errors=@{}; Users=@(@{ isAdmin=$true; suspended=$false; recoveryEmail=$null; recoveryPhone=$null; primaryEmail='admin@e.com' }) }
 New-Fixture $G AUTH-010 $F known-bad FAIL 'A super admin has a recovery email set' @{ Errors=@{}; Users=@(@{ isAdmin=$true; suspended=$false; recoveryEmail='r@e.com'; recoveryPhone=$null; primaryEmail='admin@e.com' }) }
 New-Fixture $G AUTH-010 $F throttled SKIP 'User inventory not assessed' @{ Errors=@{ Users='Admin SDK 429' }; Users=$null }
-New-Fixture $G AUTH-013 $F clean PASS 'Super admins logged in recently' @{ Errors=@{}; Users=@(@{ isAdmin=$true; suspended=$false; lastLoginTime='2026-06-01T00:00:00Z'; primaryEmail='admin@e.com' }) }
-New-Fixture $G AUTH-013 $F known-bad FAIL 'A super admin inactive >90 days' @{ Errors=@{}; Users=@(@{ isAdmin=$true; suspended=$false; lastLoginTime='2026-01-01T00:00:00Z'; primaryEmail='admin@e.com' }) }
+New-Fixture $G AUTH-013 $F clean PASS 'Super admins logged in recently' @{ Errors=@{}; Users=@(@{ isAdmin=$true; suspended=$false; lastLoginTime='@now-30d'; primaryEmail='admin@e.com' }) }
+New-Fixture $G AUTH-013 $F known-bad FAIL 'A super admin inactive >90 days' @{ Errors=@{}; Users=@(@{ isAdmin=$true; suspended=$false; lastLoginTime='@now-247d'; primaryEmail='admin@e.com' }) }
 New-Fixture $G AUTH-013 $F throttled SKIP 'User inventory not assessed' @{ Errors=@{ Users='Admin SDK 429' }; Users=$null }
 New-Fixture $G AUTH-017 $F clean PASS 'Super admin self-recovery disabled' (Cip 'security.super_admin_account_recovery' @{ enableAccountRecovery=$false })
 New-Fixture $G AUTH-017 $F known-bad FAIL 'Super admin self-recovery enabled' (Cip 'security.super_admin_account_recovery' @{ enableAccountRecovery=$true })

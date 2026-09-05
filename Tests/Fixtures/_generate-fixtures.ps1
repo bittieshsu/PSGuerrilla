@@ -257,7 +257,7 @@ New-Fixture Entra EIDAPP-005 Entra known-bad FAIL 'an app with RoleManagement.Re
             @{ appId='app-1'; requiredResourceAccess=@( @{ resourceAppId='00000003-0000-0000-c000-000000000000'; resourceAccess=@( @{ id='9e3f62cf-ca93-4989-b6ce-bf83c28f9fe8'; type='Role' } ) } ) }
         )
         ServicePrincipals = @(
-            @{ appId='app-1'; passwordCredentials=@( @{ keyId='cred-1'; endDateTime='2099-12-31T00:00:00Z' } ); keyCredentials=@() }
+            @{ appId='app-1'; passwordCredentials=@( @{ keyId='cred-1'; endDateTime='@now+26780d' } ); keyCredentials=@() }
         )
     }
     Errors = @{}

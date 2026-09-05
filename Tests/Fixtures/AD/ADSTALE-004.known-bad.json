@@ -11,7 +11,7 @@
         {
           "SamAccountName": "e1",
           "Enabled": true,
-          "PwdLastSet": "2023-01-01T00:00:00Z",
+          "PwdLastSet": "@now-1343d",
           "DN": "CN=e1,DC=t,DC=l"
         }
       ],

@@ -11,7 +11,7 @@
         "TrustType": "External",
         "TrustDirection": "Outbound",
         "TrustPartner": "old-domain.com",
-        "WhenChanged": "2023-01-01T00:00:00Z",
+        "WhenChanged": "@now-1343d",
         "TrustSID": "S-1-5-21-1-2-3"
       }
     ]

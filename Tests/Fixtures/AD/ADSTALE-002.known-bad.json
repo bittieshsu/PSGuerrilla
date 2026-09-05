@@ -9,7 +9,7 @@
     "StaleObjects": {
       "InactiveComputers": [
         {
-          "LastLogon": "2023-01-01T00:00:00Z",
+          "LastLogon": "@now-1343d",
           "Enabled": true,
           "OperatingSystem": "Windows Server 2008",
           "DN": "CN=c1,DC=t,DC=l",

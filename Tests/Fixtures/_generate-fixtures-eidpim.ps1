@@ -20,7 +20,7 @@ $I = 'Entra'; $EN = 'Entra'
 
 # A clean privileged user (member, enabled, cloud-only, signed in recently)
 function User($id, $upn, $extra) {
-    $u = @{ id = $id; displayName = $upn; userPrincipalName = $upn; userType = 'Member'; accountEnabled = $true; onPremisesSyncEnabled = $false; signInActivity = @{ lastSignInDateTime = '2026-06-01T00:00:00Z' }; createdDateTime = '2020-01-01T00:00:00Z' }
+    $u = @{ id = $id; displayName = $upn; userPrincipalName = $upn; userType = 'Member'; accountEnabled = $true; onPremisesSyncEnabled = $false; signInActivity = @{ lastSignInDateTime = '@now-30d' }; createdDateTime = '@now-2439d' }
     if ($extra) { foreach ($k in $extra.Keys) { $u[$k] = $extra[$k] } }
     $u
 }

@@ -10,10 +10,10 @@
     },
     "AllUsers": [
       {
-        "PwdLastSet": "2026-05-01T00:00:00Z"
+        "PwdLastSet": "@now-45d"
       },
       {
-        "PwdLastSet": "2026-05-01T00:00:00Z"
+        "PwdLastSet": "@now-45d"
       }
     ],
     "Errors": {}

@@ -9,7 +9,7 @@
       "AllPrivilegedUsers": [
         {
           "Enabled": true,
-          "PwdLastSet": "2026-05-01T00:00:00Z",
+          "PwdLastSet": "@now-45d",
           "SamAccountName": "a"
         }
       ]

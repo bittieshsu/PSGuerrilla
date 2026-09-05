@@ -11,7 +11,7 @@
           "displayName": "A1",
           "appId": "a1",
           "signInAudience": "AzureADMyOrg",
-          "createdDateTime": "2025-01-01T00:00:00Z"
+          "createdDateTime": "@now-612d"
         }
       ]
     },

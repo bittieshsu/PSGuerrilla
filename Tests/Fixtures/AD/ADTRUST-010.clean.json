@@ -8,7 +8,7 @@
     "Trusts": [
       {
         "TrustDirection": "Bidirectional",
-        "WhenChanged": "2026-05-01T00:00:00Z",
+        "WhenChanged": "@now-45d",
         "TrustPartner": "p.com"
       }
     ],

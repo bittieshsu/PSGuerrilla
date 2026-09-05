@@ -34,25 +34,25 @@
       {
         "primaryEmail": "s1@d.org",
         "orgUnitPath": "/Students",
-        "lastLoginTime": "2098-01-01T00:00:00Z",
+        "lastLoginTime": "@now+26051d",
         "suspended": false
       },
       {
         "primaryEmail": "s2@d.org",
         "orgUnitPath": "/Students/HighSchool",
-        "lastLoginTime": "2098-01-01T00:00:00Z",
+        "lastLoginTime": "@now+26051d",
         "suspended": false
       },
       {
         "primaryEmail": "grad@d.org",
         "orgUnitPath": "/Students",
-        "lastLoginTime": "2001-06-01T00:00:00Z",
+        "lastLoginTime": "@now-9227d",
         "suspended": true
       },
       {
         "primaryEmail": "staff@d.org",
         "orgUnitPath": "/Staff",
-        "lastLoginTime": "2001-06-01T00:00:00Z",
+        "lastLoginTime": "@now-9227d",
         "suspended": false
       }
     ]

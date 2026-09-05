@@ -15,9 +15,9 @@
           "userPrincipalName": "alice@contoso.com",
           "displayName": "alice@contoso.com",
           "signInActivity": {
-            "lastSignInDateTime": "2026-06-01T00:00:00Z"
+            "lastSignInDateTime": "@now-30d"
           },
-          "createdDateTime": "2020-01-01T00:00:00Z",
+          "createdDateTime": "@now-2439d",
           "id": "u1",
           "accountEnabled": true,
           "userType": "Member"
@@ -27,9 +27,9 @@
           "userPrincipalName": "stale@contoso.com",
           "displayName": "stale@contoso.com",
           "signInActivity": {
-            "lastSignInDateTime": "2026-06-01T00:00:00Z"
+            "lastSignInDateTime": "@now-30d"
           },
-          "createdDateTime": "2020-01-01T00:00:00Z",
+          "createdDateTime": "@now-2439d",
           "id": "u2",
           "accountEnabled": false,
           "userType": "Member"

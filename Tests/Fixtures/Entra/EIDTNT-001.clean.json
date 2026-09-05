@@ -11,7 +11,7 @@
         "assignedPlans": [],
         "id": "t1",
         "displayName": "Contoso",
-        "createdDateTime": "2018-01-01T00:00:00Z",
+        "createdDateTime": "@now-3169d",
         "countryLetterCode": "US",
         "verifiedDomains": [
           {

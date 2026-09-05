@@ -12,7 +12,7 @@
         "Value": 18,
         "RawValue": "18",
         "SettingName": "Gemini for Workspace - setting",
-        "Timestamp": "2026-05-01T12:00:00.000Z"
+        "Timestamp": "@now-45d"
       }
     }
   }

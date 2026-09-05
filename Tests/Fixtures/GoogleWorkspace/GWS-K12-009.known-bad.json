@@ -34,13 +34,13 @@
       {
         "primaryEmail": "s1@d.org",
         "orgUnitPath": "/Students",
-        "lastLoginTime": "2098-01-01T00:00:00Z",
+        "lastLoginTime": "@now+26051d",
         "suspended": false
       },
       {
         "primaryEmail": "ghost@d.org",
         "orgUnitPath": "/Students",
-        "lastLoginTime": "2001-06-01T00:00:00Z",
+        "lastLoginTime": "@now-9227d",
         "suspended": false
       }
     ]

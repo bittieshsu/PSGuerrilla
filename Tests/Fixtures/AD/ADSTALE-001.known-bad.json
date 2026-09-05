@@ -11,7 +11,7 @@
         {
           "SamAccountName": "u1",
           "Enabled": true,
-          "LastLogon": "2023-01-01T00:00:00Z",
+          "LastLogon": "@now-1343d",
           "DN": "CN=u1,DC=t,DC=l",
           "MemberOf": []
         }

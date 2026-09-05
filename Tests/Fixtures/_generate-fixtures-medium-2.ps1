@@ -21,7 +21,7 @@ $skCA =@{ Errors=@{ ConditionalAccess='Graph 429' }; ConditionalAccess=@{ Errors
 $skAM =@{ Errors=@{ AuthMethods='Graph 429' }; AuthMethods=@{ Errors=@{} } }
 $skTen=@{ Errors=@{ TenantConfig='Graph 429' }; TenantConfig=@{ Errors=@{} } }
 $skAz =@{ Errors=@{}; AzureIAM=$null }
-$past='2020-01-01T00:00:00Z'; $recent='2026-06-01T00:00:00Z'
+$past='@now-2439d'; $recent='@now-30d'
 $rscope='/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1'
 
 # ── Azure IAM ──
@@ -58,8 +58,8 @@ New-Fixture Entra EIDAPP-008 $I no-data SKIP 'App registrations unavailable' @{ 
 New-Fixture Entra EIDAPP-009 $I clean PASS 'No stale service principals' @{ Errors=@{}; Applications=@{ ServicePrincipals=@(@{ id='sp1'; appId='a1'; displayName='SP1'; signInActivity=@{ lastSignInDateTime=$recent } }) } }
 New-Fixture Entra EIDAPP-009 $I known-bad WARN 'A service principal is stale (>90 days)' @{ Errors=@{}; Applications=@{ ServicePrincipals=@(@{ id='sp1'; appId='a1'; displayName='SP1'; signInActivity=@{ lastSignInDateTime=$past } }) } }
 New-Fixture Entra EIDAPP-009 $I no-data SKIP 'Service principals unavailable' @{ Errors=@{}; Applications=@{ ServicePrincipals=@() } }
-New-Fixture Entra EIDAPP-010 $I clean PASS 'No multi-tenant app registrations' @{ Errors=@{}; Applications=@{ AppRegistrations=@(@{ appId='a1'; displayName='A1'; signInAudience='AzureADMyOrg'; createdDateTime='2025-01-01T00:00:00Z' }) } }
-New-Fixture Entra EIDAPP-010 $I known-bad WARN 'A multi-tenant app registration exists' @{ Errors=@{}; Applications=@{ AppRegistrations=@(@{ appId='a1'; displayName='A1'; signInAudience='AzureADMultipleOrgs'; createdDateTime='2025-01-01T00:00:00Z' }) } }
+New-Fixture Entra EIDAPP-010 $I clean PASS 'No multi-tenant app registrations' @{ Errors=@{}; Applications=@{ AppRegistrations=@(@{ appId='a1'; displayName='A1'; signInAudience='AzureADMyOrg'; createdDateTime='@now-612d' }) } }
+New-Fixture Entra EIDAPP-010 $I known-bad WARN 'A multi-tenant app registration exists' @{ Errors=@{}; Applications=@{ AppRegistrations=@(@{ appId='a1'; displayName='A1'; signInAudience='AzureADMultipleOrgs'; createdDateTime='@now-612d' }) } }
 New-Fixture Entra EIDAPP-010 $I no-data SKIP 'App registrations unavailable' @{ Errors=@{}; Applications=@{ AppRegistrations=@() } }
 New-Fixture Entra EIDAPP-013 $I clean PASS 'Admin consent workflow enabled with reviewers' @{ Errors=@{}; TenantConfig=@{ Errors=@{}; AdminConsentRequestPolicy=@{ isEnabled=$true; reviewers=@(@{ query='group:admin'; queryType='directoryObject'; queryRoot='' }); requestExpiresInDays=30; notificationsEnabled=$true; remindersEnabled=$true } } }
 New-Fixture Entra EIDAPP-013 $I known-bad FAIL 'Admin consent workflow disabled' @{ Errors=@{}; TenantConfig=@{ Errors=@{}; AdminConsentRequestPolicy=@{ isEnabled=$false } } }
@@ -103,8 +103,8 @@ New-Fixture Entra EIDAUTH-018 $I known-bad FAIL 'Authenticator does not show app
 New-Fixture Entra EIDAUTH-018 $I no-data SKIP 'Auth method configs not available' @{ Errors=@{}; AuthMethods=@{ MethodConfigurations=@() } }
 
 # ── Entra Conditional Access ──
-New-Fixture Entra EIDCA-003 $I clean PASS 'No CA policies stuck in report-only' @{ Errors=@{}; ConditionalAccess=@{ Errors=@{}; Policies=@(@{ id='p1'; displayName='P1'; state='enabled'; createdDateTime='2025-01-01T00:00:00Z' }) } }
-New-Fixture Entra EIDCA-003 $I known-bad FAIL 'Three CA policies stuck in report-only' @{ Errors=@{}; ConditionalAccess=@{ Errors=@{}; Policies=@(@{ id='p1'; displayName='R1'; state='enabledForReportingButNotEnforced'; createdDateTime='2025-01-01T00:00:00Z' },@{ id='p2'; displayName='R2'; state='enabledForReportingButNotEnforced'; createdDateTime='2025-01-01T00:00:00Z' },@{ id='p3'; displayName='R3'; state='enabledForReportingButNotEnforced'; createdDateTime='2025-01-01T00:00:00Z' }) } }
+New-Fixture Entra EIDCA-003 $I clean PASS 'No CA policies stuck in report-only' @{ Errors=@{}; ConditionalAccess=@{ Errors=@{}; Policies=@(@{ id='p1'; displayName='P1'; state='enabled'; createdDateTime='@now-612d' }) } }
+New-Fixture Entra EIDCA-003 $I known-bad FAIL 'Three CA policies stuck in report-only' @{ Errors=@{}; ConditionalAccess=@{ Errors=@{}; Policies=@(@{ id='p1'; displayName='R1'; state='enabledForReportingButNotEnforced'; createdDateTime='@now-612d' },@{ id='p2'; displayName='R2'; state='enabledForReportingButNotEnforced'; createdDateTime='@now-612d' },@{ id='p3'; displayName='R3'; state='enabledForReportingButNotEnforced'; createdDateTime='@now-612d' }) } }
 New-Fixture Entra EIDCA-003 $I throttled SKIP 'Conditional Access not assessed' $skCA
 New-Fixture Entra EIDCA-010 $I clean PASS 'Location-based CA policy present' @{ Errors=@{}; ConditionalAccess=@{ Errors=@{}; Policies=@(@{ id='p1'; displayName='Loc'; state='enabled'; conditions=@{ locations=@{ includeLocations=@('00000000-0000-0000-0000-000000000000'); excludeLocations=@() } } }) } }
 New-Fixture Entra EIDCA-010 $I known-bad WARN 'No location-based CA policies' @{ Errors=@{}; ConditionalAccess=@{ Errors=@{}; Policies=@(@{ id='p1'; displayName='NoLoc'; state='enabled'; conditions=@{ locations=$null } }) } }

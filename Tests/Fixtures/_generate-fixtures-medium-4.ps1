@@ -21,7 +21,7 @@ function New-Fixture {
 $F='GWS'; $G='GoogleWorkspace'
 function Cip($type,$val){ @{ Errors=@{}; CloudIdentityPolicies=@{ ByType=@{ "$type"=@(@{ setting=@{ value=$val } }) } } } }
 $skCip=@{ Errors=@{}; CloudIdentityPolicies=$null }
-$recent='2026-06-01T00:00:00Z'
+$recent='@now-30d'
 
 # ── Authentication ──
 New-Fixture $G AUTH-003 $F clean PASS '2SV enforcement requires a phishing-resistant security key' (Cip 'security.two_step_verification_enforcement_factor' @{ allowedSignInFactorSet='SECURITY_KEY' })

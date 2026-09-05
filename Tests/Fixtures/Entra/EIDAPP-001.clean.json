@@ -10,7 +10,7 @@
       "AppRegistrations": [
         {
           "appId": "a1",
-          "createdDateTime": "2024-01-01T00:00:00Z",
+          "createdDateTime": "@now-978d",
           "displayName": "App1",
           "signInAudience": "AzureADMyOrg"
         }

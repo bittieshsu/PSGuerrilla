@@ -10,7 +10,7 @@
       "ServicePrincipals": [
         {
           "signInActivity": {
-            "lastSignInDateTime": "2026-06-01T00:00:00Z"
+            "lastSignInDateTime": "@now-30d"
           },
           "displayName": "App1",
           "id": "sp1"
