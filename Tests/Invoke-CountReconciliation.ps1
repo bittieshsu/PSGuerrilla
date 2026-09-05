@@ -98,7 +98,33 @@ function Test-Claims {
     }
 }
 Test-Claims -Label 'manifest Description (source/Guerrilla.psd1)' -Text $manifest.Description
-Test-Claims -Label 'README.md' -Text (Get-Content (Join-Path $root 'README.md') -Raw)
+$readme = Get-Content (Join-Path $root 'README.md') -Raw
+Test-Claims -Label 'README.md' -Text $readme
+
+# 3b) The platform table states its counts as bare cells, with no "checks" after
+#     the number, so Test-Claims cannot see them in either direction: a wrong
+#     value is not flagged and a right one does not satisfy the presence rule.
+#     The Google Workspace cell sat at 175 for three releases while the prose
+#     around it was updated twice. Match the row by platform name and compare
+#     the last numeric cell against the derived per-platform count.
+$tableRows = @{
+    'Active Directory' = 'AD'
+    'Entra ID / M365'  = 'Entra'
+    'Google Workspace' = 'GWS'
+}
+foreach ($kv in $tableRows.GetEnumerator()) {
+    $pattern = '\|\s*\*\*' + [regex]::Escape($kv.Key) + '\*\*\s*\|.*?\|\s*(\d[\d,]*)\s*\|'
+    $m = [regex]::Match($readme, $pattern)
+    if (-not $m.Success) {
+        $problems.Add("README.md: platform table has no row for '$($kv.Key)'; the per-platform count cannot be reconciled.")
+        continue
+    }
+    $claimed = [int]($m.Groups[1].Value -replace ',', '')
+    $derived = [int]$perPlatform[$kv.Value]
+    if ($claimed -ne $derived) {
+        $problems.Add("README.md: platform table row '$($kv.Key)' claims $claimed but the artifact derived $derived.")
+    }
+}
 
 if ($problems.Count -gt 0) {
     Write-Host 'GATE E RED: public numbers do not reconcile with the derived artifact:' -ForegroundColor Red

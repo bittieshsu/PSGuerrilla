@@ -25,7 +25,7 @@ Guerrilla assesses identity security posture across three platforms in a single 
 |---------|-------|--------|
 | **Active Directory** | On-premises Active Directory: privileged groups, delegation and ACLs, Kerberos, certificate services (ESC1 through ESC16), trusts, group policy, NTLM-relay preconditions, Tier-0 hygiene, logging posture, and adversary tradecraft indicators | 211 |
 | **Entra ID / M365** | Entra ID, the Azure identity plane, Microsoft 365, and Intune: the full 44-control EIDSCA baseline, conditional access, PIM, application and OAuth governance, Exchange Online, SharePoint, Teams, Defender, hybrid identity, and endpoint compliance | 257 |
-| **Google Workspace** | Google Workspace: Gmail, Drive, Chat, Meet, Calendar, Sites, Classroom, Groups, and admin controls, aligned to the CISA SCuBA secure configuration baselines, plus the Guerrilla K12 candidate baseline (student-OU scoped) | 175 |
+| **Google Workspace** | Google Workspace: Gmail, Drive, Chat, Meet, Calendar, Sites, Classroom, Groups, and admin controls, aligned to the CISA SCuBA secure configuration baselines, plus the Guerrilla K12 candidate baseline (student-OU scoped) | 190 |
 
 **Total: 658 checks.** Each check maps to the standards it implements, where applicable, across NIST 800-53, MITRE ATT&CK, CIS Benchmarks, EIDSCA, and the CISA SCuBA baselines. Each carries a CISA Zero Trust Maturity Model pillar and weight, and each produces a `PASS`, `FAIL`, `WARN`, or an honest `Not Assessed`.
 
