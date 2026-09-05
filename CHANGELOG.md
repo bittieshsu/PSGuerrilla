@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [2.55.0] - 2026-09-05
+
 ### Added
 - **Eleven Google Workspace checks close most of the remaining config-readable CISA SCuBA gap.** `ADMIN-023` (COMMONCONTROLS.6.2, super admin count between two and eight), `ADMIN-024` (11.1, Marketplace apps limited to an allowlist), `ADMIN-025` (17.1, multi-party approval for sensitive admin actions), `AUTH-019` (7.1, conflicting unmanaged accounts replaced), `LOG-007` (13.1, every system-defined alert rule active), `DRIVE-023` (DRIVEDOCS.5.1, Drive for Desktop limited to authorized devices), `EMAIL-032` (GMAIL.17.1, comprehensive mail storage), `EMAIL-033` (5.5, unsafe attachments leave the inbox), `EMAIL-034` (7.6, spoofed and unauthenticated mail leaves the inbox), `EMAIL-035` (18.2, no domain bypasses spam filtering), `EMAIL-036` (18.3, no blanket warning-banner suppression).
 - Only one of the eleven needs data the scan was not already collecting, and that one needs none either: `ADMIN-023` counts super admins from the directory, and the other ten read Cloud Identity policies. The collector already lists every policy type unfiltered, so none of this required a new API scope, new domain-wide delegation, or a collector change.
