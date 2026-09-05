@@ -384,7 +384,7 @@
       "status": "machine-draft"
     },
     "description": {
-      "value": "SCuBA GWS.DRIVEDOCS.1.7: mover un archivo a una unidad compartida propiedad de otra organización transfiere su custodia — los administradores de la organización receptora controlan el contenido y la organización que lo creó pierde la capacidad de revocar el acceso o de conservarlo. Lee drive_and_docs.external_sharing y falla cuando allowedPartiesForDistributingContent es distinto de NONE en una política cuyo externalSharingMode permite el uso compartido externo. No aplicable cuando el uso compartido externo está deshabilitado.",
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: mover un archivo a una unidad compartida propiedad de otra organización transfiere su custodia: los administradores de la organización receptora controlan el contenido y la organización que lo creó pierde la capacidad de revocar el acceso o de conservarlo. Lee drive_and_docs.external_sharing y falla cuando allowedPartiesForDistributingContent es distinto de NONE en una política cuyo externalSharingMode permite el uso compartido externo. No aplicable cuando el uso compartido externo está deshabilitado.",
       "status": "machine-draft"
     },
     "recommendedValue": {
