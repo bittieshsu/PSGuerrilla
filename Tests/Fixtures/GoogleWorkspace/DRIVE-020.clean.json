@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-020",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Open external sharing, non-Google invites off",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWED",
+                "allowNonGoogleInvites": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

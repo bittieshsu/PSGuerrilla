@@ -323,5 +323,77 @@
       "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Docs > Gedeelde Drives beheren. Open voor elke gemarkeerde gedeelde Drive de instellingen en schakel 'Sharing with people outside <organization>' (en 'Sharing with non-members') uit zodat items niet extern kunnen worden gedeeld, of leg de zakelijke uitzondering vast. Dwing een domeinstandaard af onder Sharing settings > Shared drive creation.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-019": {
+    "name": {
+      "value": "Waarschuwing bij extern delen ingeschakeld (GWS.DRIVEDOCS.1.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.3: een gebruiker die een bestand buiten de organisatie deelt, hoort daarop gewezen te worden op het moment van delen — het laatste punt waarop een onbedoelde openbaarmaking nog goedkoop te stoppen is. Leest drive_and_docs.external_sharing en koppelt externalSharingMode aan het waarschuwingsveld dat die modus daadwerkelijk gebruikt: warnForSharingOutsideAllowlistedDomains wanneer delen beperkt is tot toegestane domeinen, en warnForExternalSharing wanneer delen open staat. Waar extern delen verboden is kan het beleid niet van toepassing zijn en meldt de controle dat, in plaats van stilzwijgend te slagen.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Gebruikers worden gewaarschuwd voordat zij Drive-inhoud buiten de organisatie delen",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Documenten > Instellingen voor delen. Bij delen beperkt tot toegestane domeinen: schakel 'Waarschuwen wanneer bestanden van gebruikers of gedeelde Drives buiten de toegestane domeinen worden gedeeld' in. Bij open delen: schakel 'Waarschuwen wanneer bestanden van gebruikers of gedeelde Drives buiten <organisatie> worden gedeeld' in.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-020": {
+    "name": {
+      "value": "Delen met niet-Google-accounts uitgeschakeld (GWS.DRIVEDOCS.1.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.4: delen met een ontvanger zonder Google-account levert een bezoekerslink met pincode op, waardoor toegang berust op het bezit van een gemailde code in plaats van op een geverifieerde identiteit die de organisatie kan controleren, opschorten of met MFA beschermen. Leest drive_and_docs.external_sharing en koppelt externalSharingMode aan allowNonGoogleInvitesInAllowlistedDomains of allowNonGoogleInvites, afhankelijk van de modus. Niet van toepassing waar extern delen verboden is.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Delen via Drive is beperkt tot ontvangers met een Google-account",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Documenten > Instellingen voor delen. Schakel 'Gebruikers toestaan bestanden te delen met mensen die geen Google-account gebruiken' uit (in het gedeelte voor toegestane domeinen wanneer delen daartoe beperkt is).",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-021": {
+    "name": {
+      "value": "Publiceren van Drive-inhoud op het web uitgeschakeld (GWS.DRIVEDOCS.1.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.5: publiceren op het web haalt een document volledig uit het rechtenmodel: het wordt leesbaar voor iedereen met de link en indexeerbaar door zoekmachines, zonder enige registratie per ontvanger van wie het heeft bereikt. Leest drive_and_docs.external_sharing en faalt wanneer allowPublishingFiles aan staat in een beleid waarvan externalSharingMode extern delen toestaat. Niet van toepassing waar extern delen verboden is.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Het publiceren van Drive-inhoud op het web is uitgeschakeld",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Documenten > Instellingen voor delen > 'Gepubliceerde webinhoud'. Schakel publiceren uit zodat bestanden niet zichtbaar kunnen worden gemaakt voor iedereen met de link.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-022": {
+    "name": {
+      "value": "Inhoud distribueren naar externe gedeelde Drives geblokkeerd (GWS.DRIVEDOCS.1.7)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: een bestand verplaatsen naar een gedeelde Drive van een andere organisatie draagt het beheer ervan over — de beheerders van de ontvangende organisatie beheersen de inhoud en de organisatie die het bestand maakte verliest de mogelijkheid toegang in te trekken of het te bewaren. Leest drive_and_docs.external_sharing en faalt wanneer allowedPartiesForDistributingContent iets anders is dan NONE in een beleid waarvan externalSharingMode extern delen toestaat. Niet van toepassing waar extern delen verboden is.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Niemand mag inhoud uploaden of verplaatsen naar gedeelde Drives van een andere organisatie",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Beheerdersconsole > Apps > Google Workspace > Drive en Documenten > Instellingen voor delen > 'Inhoud buiten <organisatie> distribueren'. Stel dit zo in dat niemand inhoud mag distribueren naar gedeelde Drives van een andere organisatie.",
+      "status": "machine-draft"
+    }
   }
 }

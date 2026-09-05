@@ -323,5 +323,77 @@
       "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Manage shared drives. עבור כל כונן משותף שסומן, פתח את ההגדרות שלו וכבה את 'Sharing with people outside <organization>' (ואת 'Sharing with non-members') כך שלא ניתן יהיה לשתף פריטים חיצונית, או תעד את החריג העסקי. אכוף ברירת מחדל של דומיין תחת Sharing settings > Shared drive creation.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-019": {
+    "name": {
+      "value": "אזהרת שיתוף חיצוני מופעלת (GWS.DRIVEDOCS.1.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.3: משתמש שמשתף קובץ מחוץ לארגון צריך לקבל התראה על כך ברגע השיתוף, הנקודה האחרונה שבה עדיין זול לעצור חשיפה בשוגג. קורא את drive_and_docs.external_sharing ומצמיד את externalSharingMode לשדה האזהרה שהמצב הזה באמת משתמש בו: warnForSharingOutsideAllowlistedDomains כאשר השיתוף מוגבל לדומיינים מאושרים, ו-warnForExternalSharing כאשר השיתוף פתוח. במקום שבו שיתוף חיצוני אסור המדיניות אינה יכולה לחול, והבדיקה מדווחת על כך במקום לעבור בשקט.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "משתמשים מקבלים אזהרה לפני שיתוף תוכן Drive מחוץ לארגון",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "מסוף הניהול > אפליקציות > Google Workspace > Drive ו-Docs > הגדרות שיתוף. כאשר השיתוף מוגבל לדומיינים מאושרים, הפעילו 'הזהר כאשר קבצים בבעלות משתמשים או דרייבים משותפים משותפים מחוץ לדומיינים המאושרים'. כאשר השיתוף פתוח, הפעילו 'הזהר כאשר קבצים בבעלות משתמשים או דרייבים משותפים משותפים מחוץ ל-<ארגון>'.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-020": {
+    "name": {
+      "value": "שיתוף עם חשבונות שאינם Google מושבת (GWS.DRIVEDOCS.1.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.4: שיתוף עם נמען ללא חשבון Google מנפיק קישור אורח מבוסס קוד PIN, כך שהגישה נשענת על החזקת קוד שנשלח בדוא\"ל ולא על זהות מאומתת שהארגון יכול לבקר, להשעות או להחיל עליה אימות רב-שלבי. קורא את drive_and_docs.external_sharing ומצמיד את externalSharingMode ל-allowNonGoogleInvitesInAllowlistedDomains או ל-allowNonGoogleInvites בהתאם למצב. לא רלוונטי במקום שבו שיתוף חיצוני אסור.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "שיתוף ב-Drive מוגבל לנמענים המחזיקים בחשבון Google",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "מסוף הניהול > אפליקציות > Google Workspace > Drive ו-Docs > הגדרות שיתוף. כבו את 'אפשר למשתמשים לשתף קבצים עם אנשים שאינם משתמשים בחשבון Google' (בקטע הדומיינים המאושרים כאשר השיתוף מוגבל אליהם).",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-021": {
+    "name": {
+      "value": "פרסום תוכן Drive לאינטרנט מושבת (GWS.DRIVEDOCS.1.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.5: פרסום לאינטרנט מוציא מסמך לחלוטין ממודל ההרשאות, הופך אותו לקריא לכל מי שמחזיק בקישור וניתן לאינדוקס על ידי מנועי חיפוש, ללא כל תיעוד לפי נמען של מי שהגיע אליו. קורא את drive_and_docs.external_sharing ונכשל כאשר allowPublishingFiles מופעל בכל מדיניות שה-externalSharingMode שלה מתיר שיתוף חיצוני. לא רלוונטי במקום שבו שיתוף חיצוני אסור.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "פרסום תוכן Drive לאינטרנט מושבת",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "מסוף הניהול > אפליקציות > Google Workspace > Drive ו-Docs > הגדרות שיתוף > 'תוכן אינטרנט שפורסם'. כבו את הפרסום כך שלא ניתן יהיה להפוך קבצים לגלויים לכל מי שמחזיק בקישור.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-022": {
+    "name": {
+      "value": "הפצת תוכן לדרייבים משותפים חיצוניים חסומה (GWS.DRIVEDOCS.1.7)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: העברת קובץ לדרייב משותף בבעלות ארגון אחר מעבירה את המשמורת עליו — מנהלי הארגון המקבל שולטים בתוכן, והארגון שיצר אותו מאבד את היכולת לבטל גישה או לשמר אותו. קורא את drive_and_docs.external_sharing ונכשל כאשר allowedPartiesForDistributingContent שונה מ-NONE במדיניות שה-externalSharingMode שלה מתיר שיתוף חיצוני. לא רלוונטי במקום שבו שיתוף חיצוני אסור.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "אף גורם אינו רשאי להעלות או להעביר תוכן לדרייבים משותפים בבעלות ארגון אחר",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "מסוף הניהול > אפליקציות > Google Workspace > Drive ו-Docs > הגדרות שיתוף > 'הפצת תוכן מחוץ ל-<ארגון>'. הגדירו כך שאיש לא יורשה להפיץ תוכן לדרייבים משותפים בבעלות ארגון אחר.",
+      "status": "machine-draft"
+    }
   }
 }

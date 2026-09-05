@@ -323,5 +323,77 @@
       "value": "管理控制台 > 应用 > Google Workspace > Drive and Docs > 管理共享云端硬盘。对于每个被标记的共享云端硬盘，打开其设置并关闭 'Sharing with people outside <organization>'（以及 'Sharing with non-members'），使项目无法在外部共享，或记录业务例外。在 Sharing settings > Shared drive creation 下强制实施域默认值。",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-019": {
+    "name": {
+      "value": "已启用外部共享警告 (GWS.DRIVEDOCS.1.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.3：用户将文件共享到组织外部时应在共享的那一刻收到提示，这是意外泄露仍能以低成本阻止的最后节点。读取 drive_and_docs.external_sharing，并将 externalSharingMode 与该模式实际使用的警告字段配对：共享限于许可名单域时为 warnForSharingOutsideAllowlistedDomains，共享开放时为 warnForExternalSharing。在禁止外部共享的范围内，该策略无法适用，检查会如实报告而不是无声通过。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "用户在将 Drive 内容共享到组织外部之前会收到警告",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理控制台 > 应用 > Google Workspace > 云端硬盘和文档 > 共享设置。共享限于许可名单域时，开启“当用户或共享云端硬盘拥有的文件被共享到许可名单域之外时发出警告”。共享开放时，开启“当用户或共享云端硬盘拥有的文件被共享到 <组织> 之外时发出警告”。",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-020": {
+    "name": {
+      "value": "已停用与非 Google 账号的共享 (GWS.DRIVEDOCS.1.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.4：向没有 Google 账号的收件人共享会签发基于 PIN 码的访客链接，访问权因而取决于是否持有通过电子邮件发送的验证码，而非组织可以审计、停用或施加多重身份验证的已认证身份。读取 drive_and_docs.external_sharing，按模式将 externalSharingMode 与 allowNonGoogleInvitesInAllowlistedDomains 或 allowNonGoogleInvites 配对。禁止外部共享时不适用。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive 共享仅限于持有 Google 账号的收件人",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理控制台 > 应用 > Google Workspace > 云端硬盘和文档 > 共享设置。关闭“允许用户与未使用 Google 账号的人共享文件”（共享限于许可名单域时，位于许可名单域部分）。",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-021": {
+    "name": {
+      "value": "已停用将 Drive 内容发布到网络 (GWS.DRIVEDOCS.1.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.5：发布到网络会使文档完全脱离权限模型，任何持有链接的人都可读取，搜索引擎也可将其编入索引，且没有任何按收件人记录的访问痕迹。读取 drive_and_docs.external_sharing，若任何 externalSharingMode 允许外部共享的策略中 allowPublishingFiles 处于开启状态即判定不合规。禁止外部共享时不适用。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "已停用将 Drive 内容发布到网络",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理控制台 > 应用 > Google Workspace > 云端硬盘和文档 > 共享设置 > “已发布的网络内容”。关闭发布功能，使文件无法对任何持有链接的人可见。",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-022": {
+    "name": {
+      "value": "已阻止向外部共享云端硬盘分发内容 (GWS.DRIVEDOCS.1.7)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.7：将文件移入其他组织拥有的共享云端硬盘会转移其保管权——接收方组织的管理员掌控该内容，创建它的组织将失去撤销访问权或保留该文件的能力。读取 drive_and_docs.external_sharing，若在 externalSharingMode 允许外部共享的策略中 allowedPartiesForDistributingContent 不是 NONE 即判定不合规。禁止外部共享时不适用。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "任何人都不得将内容上传或移动到其他组织拥有的共享云端硬盘",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理控制台 > 应用 > Google Workspace > 云端硬盘和文档 > 共享设置 > “将内容分发到 <组织> 之外”。将其设置为不允许任何人向其他组织拥有的共享云端硬盘分发内容。",
+      "status": "machine-draft"
+    }
   }
 }

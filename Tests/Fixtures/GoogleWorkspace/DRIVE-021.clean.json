@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-021",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Sharing permitted but web publishing is off",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWED",
+                "allowPublishingFiles": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

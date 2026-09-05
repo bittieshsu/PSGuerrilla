@@ -497,3 +497,146 @@ function Test-DRIVE018 {
             AffectedLabel = 'Shared drives permitting external sharing'
         }
 }
+
+# ── GWS.DRIVEDOCS.1.3 / 1.4 / 1.5 / 1.7 shared evaluator ──────────────────
+# These four SCuBA policies are all conditional on external sharing: each one
+# constrains a sub-setting of drive_and_docs.external_sharing that only has any
+# effect when externalSharingMode permits sharing outside the organization. All
+# of them live on the SAME policy value object as externalSharingMode, so the
+# mode and the sub-setting can be paired per targeted policy without needing the
+# policyQuery OU — reading the fields separately would let one OU's mode answer
+# for another OU's sub-setting.
+#
+# -Applies is a scriptblock over the mode; -Evaluate is a scriptblock over the
+# whole value object returning 'ok', 'bad', or 'missing'. Grading is
+# weakest-OU-wins. A value object where the policy applies but the sub-setting is
+# absent grades 'missing' and the whole check reports Not Assessed: an unreadable
+# setting is not a passing setting (an earlier generation of these checks read a
+# missing field as compliant, which is how a tenant scored a clean report on a
+# setting nobody had ever looked at).
+function Test-GwsDriveSharingSubSetting {
+    param(
+        [hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath,
+        [scriptblock]$Applies, [scriptblock]$Evaluate,
+        [string]$Status, [string]$BadMsg, [string]$GoodMsg
+    )
+
+    $na = Get-NotAssessedFinding -CheckDefinition $CheckDefinition -ErrorMap $AuditData.Errors `
+        -SourceKey 'CloudIdentityPolicies' -Subject 'Drive external-sharing policy'
+    if ($na) { return $na }
+
+    $pol = $AuditData.CloudIdentityPolicies
+    if (-not $pol) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'Cloud Identity Policy API not available (cloud-identity.policies.readonly not delegated, or API disabled)' `
+            -OrgUnitPath $OrgUnitPath
+    }
+    $objs = @(Resolve-GooglePolicyValue -Policies $pol -Type 'drive_and_docs.external_sharing')
+    if ($objs.Count -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue 'No drive_and_docs.external_sharing policy returned for this tenant' -OrgUnitPath $OrgUnitPath
+    }
+
+    $bad = 0; $missing = 0; $applicable = 0
+    foreach ($o in $objs) {
+        $mode = if ($o.PSObject.Properties.Name -contains 'externalSharingMode') { "$($o.externalSharingMode)" } else { $null }
+        # Mode itself unreadable: the policy's applicability is unknown, so it is
+        # not assessed rather than assumed inapplicable (which would read as a pass).
+        if (-not $mode) { $missing++; continue }
+        if (-not (& $Applies $mode)) { continue }
+        $applicable++
+        switch (& $Evaluate $o) {
+            'bad'     { $bad++ }
+            'missing' { $missing++ }
+        }
+    }
+
+    if ($bad -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status $Status `
+            -CurrentValue "$BadMsg in $bad of $($objs.Count) targeted policy/policies" -OrgUnitPath $OrgUnitPath `
+            -Details @{ PolicyCount = $objs.Count; ApplicableCount = $applicable; ViolatingCount = $bad }
+    }
+    if ($missing -gt 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'SKIP' `
+            -CurrentValue ("External sharing is permitted but the setting this policy constrains was not returned " +
+                "in $missing of $($objs.Count) targeted policy/policies — not assessed rather than assumed compliant") `
+            -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; UnreadableCount = $missing }
+    }
+    if ($applicable -eq 0) {
+        return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+            -CurrentValue ("Not applicable: external sharing is disallowed in all $($objs.Count) targeted policy/policies, " +
+                'so this setting cannot expose content outside the organization') `
+            -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; ApplicableCount = 0 }
+    }
+    return New-AuditFinding -CheckDefinition $CheckDefinition -Status 'PASS' `
+        -CurrentValue "$GoodMsg in all $applicable of $($objs.Count) targeted policy/policies where external sharing is permitted" `
+        -OrgUnitPath $OrgUnitPath -Details @{ PolicyCount = $objs.Count; ApplicableCount = $applicable }
+}
+
+# Reads a field off a policy value object as 'ok' / 'bad' / 'missing'.
+function Get-GwsPolicyFieldVerdict {
+    param($Object, [string]$Field, $SecureValue)
+    if ($Object.PSObject.Properties.Name -notcontains $Field) { return 'missing' }
+    if ($Object.$Field -eq $SecureValue) { return 'ok' }
+    return 'bad'
+}
+
+# ── DRIVE-019: GWS.DRIVEDOCS.1.3 — Warn when sharing outside allowlisted domains ──
+# Two modes, two different fields: an allowlisted-domains tenant is governed by
+# warnForSharingOutsideAllowlistedDomains, an open-sharing tenant by
+# warnForExternalSharing. Reading only one of them would score half the tenants
+# against a setting that does not apply to them.
+function Test-DRIVE019 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    Test-GwsDriveSharingSubSetting -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Applies { param($mode) $mode -in @('ALLOWED', 'ALLOWLISTED_DOMAINS') } `
+        -Evaluate {
+            param($o)
+            $field = if ("$($o.externalSharingMode)" -eq 'ALLOWLISTED_DOMAINS') { 'warnForSharingOutsideAllowlistedDomains' } else { 'warnForExternalSharing' }
+            Get-GwsPolicyFieldVerdict -Object $o -Field $field -SecureValue $true
+        } `
+        -Status 'FAIL' `
+        -BadMsg 'Users are not warned when sharing Drive content outside the organization' `
+        -GoodMsg 'Users are warned when sharing Drive content outside the organization'
+}
+
+# ── DRIVE-020: GWS.DRIVEDOCS.1.4 — No sharing with non-Google accounts ────
+function Test-DRIVE020 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    Test-GwsDriveSharingSubSetting -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Applies { param($mode) $mode -in @('ALLOWED', 'ALLOWLISTED_DOMAINS') } `
+        -Evaluate {
+            param($o)
+            $field = if ("$($o.externalSharingMode)" -eq 'ALLOWLISTED_DOMAINS') { 'allowNonGoogleInvitesInAllowlistedDomains' } else { 'allowNonGoogleInvites' }
+            Get-GwsPolicyFieldVerdict -Object $o -Field $field -SecureValue $false
+        } `
+        -Status 'WARN' `
+        -BadMsg 'Drive content can be shared with recipients who have no Google account (visitor sharing, PIN-based access)' `
+        -GoodMsg 'Drive sharing is limited to Google accounts'
+}
+
+# ── DRIVE-021: GWS.DRIVEDOCS.1.5 — Publishing to the web disabled ─────────
+function Test-DRIVE021 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    Test-GwsDriveSharingSubSetting -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Applies { param($mode) $mode -ne 'DISALLOWED' } `
+        -Evaluate { param($o) Get-GwsPolicyFieldVerdict -Object $o -Field 'allowPublishingFiles' -SecureValue $false } `
+        -Status 'WARN' `
+        -BadMsg 'Users can publish Drive content to the web, making it readable by anyone with the link' `
+        -GoodMsg 'Publishing Drive content to the web is disabled'
+}
+
+# ── DRIVE-022: GWS.DRIVEDOCS.1.7 — No distributing content to outside drives ──
+function Test-DRIVE022 {
+    [CmdletBinding()]
+    param([hashtable]$AuditData, [hashtable]$CheckDefinition, [string]$OrgUnitPath = '/')
+    Test-GwsDriveSharingSubSetting -AuditData $AuditData -CheckDefinition $CheckDefinition -OrgUnitPath $OrgUnitPath `
+        -Applies { param($mode) $mode -ne 'DISALLOWED' } `
+        -Evaluate { param($o) Get-GwsPolicyFieldVerdict -Object $o -Field 'allowedPartiesForDistributingContent' -SecureValue 'NONE' } `
+        -Status 'WARN' `
+        -BadMsg 'Users can upload or move content into shared drives owned by another organization' `
+        -GoodMsg 'Content cannot be moved into shared drives owned by another organization'
+}

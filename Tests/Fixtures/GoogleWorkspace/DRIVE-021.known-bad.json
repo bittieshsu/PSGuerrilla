@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-021",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Users can publish Drive content to the web",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWED",
+                "allowPublishingFiles": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -323,5 +323,77 @@
       "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Geteilte Ablagen verwalten. Öffnen Sie für jede markierte geteilte Ablage deren Einstellungen und deaktivieren Sie 'Sharing with people outside <organization>' (und 'Sharing with non-members'), damit Elemente nicht extern freigegeben werden können, oder dokumentieren Sie die geschäftliche Ausnahme. Erzwingen Sie einen Domänenstandard unter Sharing settings > Shared drive creation.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-019": {
+    "name": {
+      "value": "Warnung bei externer Freigabe aktiviert (GWS.DRIVEDOCS.1.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.3: Ein Nutzer, der eine Datei außerhalb der Organisation freigibt, sollte im Moment der Freigabe darauf hingewiesen werden — dem letzten Zeitpunkt, an dem eine versehentliche Offenlegung noch günstig zu verhindern ist. Liest drive_and_docs.external_sharing und verknüpft externalSharingMode mit dem Warnfeld, das dieser Modus tatsächlich verwendet: warnForSharingOutsideAllowlistedDomains, wenn die Freigabe auf zugelassene Domains beschränkt ist, und warnForExternalSharing bei offener Freigabe. Ist externe Freigabe untersagt, kann die Richtlinie nicht greifen, und die Prüfung meldet dies, statt still zu bestehen.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Nutzer werden gewarnt, bevor sie Drive-Inhalte außerhalb der Organisation freigeben",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen. Bei Beschränkung auf zugelassene Domains aktivieren Sie 'Warnen, wenn Dateien von Nutzern oder geteilten Ablagen außerhalb der zugelassenen Domains freigegeben werden'. Bei offener Freigabe aktivieren Sie 'Warnen, wenn Dateien von Nutzern oder geteilten Ablagen außerhalb von <Organisation> freigegeben werden'.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-020": {
+    "name": {
+      "value": "Freigabe an Nicht-Google-Konten deaktiviert (GWS.DRIVEDOCS.1.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.4: Die Freigabe an einen Empfänger ohne Google-Konto erzeugt einen PIN-basierten Besucherlink. Der Zugriff beruht damit auf dem Besitz eines per E-Mail versandten Codes statt auf einer authentifizierten Identität, die die Organisation prüfen, sperren oder mit MFA schützen kann. Liest drive_and_docs.external_sharing und verknüpft externalSharingMode je nach Modus mit allowNonGoogleInvitesInAllowlistedDomains oder allowNonGoogleInvites. Nicht anwendbar, wenn externe Freigabe untersagt ist.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive-Freigaben sind auf Empfänger mit einem Google-Konto beschränkt",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen. Deaktivieren Sie 'Nutzern erlauben, Dateien für Personen ohne Google-Konto freizugeben' (im Abschnitt für zugelassene Domains, wenn die Freigabe darauf beschränkt ist).",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-021": {
+    "name": {
+      "value": "Veröffentlichung von Drive-Inhalten im Web deaktiviert (GWS.DRIVEDOCS.1.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.5: Die Veröffentlichung im Web nimmt ein Dokument vollständig aus dem Berechtigungsmodell heraus: Es wird für jeden mit dem Link lesbar und von Suchmaschinen indexierbar, ohne jede empfängerbezogene Aufzeichnung, wer es erreicht hat. Liest drive_and_docs.external_sharing und schlägt fehl, wenn allowPublishingFiles in einer Richtlinie aktiviert ist, deren externalSharingMode externe Freigabe zulässt. Nicht anwendbar, wenn externe Freigabe untersagt ist.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Die Veröffentlichung von Drive-Inhalten im Web ist deaktiviert",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen > 'Veröffentlichte Webinhalte'. Deaktivieren Sie die Veröffentlichung, damit Dateien nicht für jeden mit dem Link sichtbar gemacht werden können.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-022": {
+    "name": {
+      "value": "Inhaltsverteilung an fremde geteilte Ablagen blockiert (GWS.DRIVEDOCS.1.7)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: Wird eine Datei in eine geteilte Ablage einer anderen Organisation verschoben, geht die Verfügungsgewalt über sie über — die Administratoren der empfangenden Organisation kontrollieren den Inhalt, und die erstellende Organisation verliert die Möglichkeit, den Zugriff zu widerrufen oder die Datei aufzubewahren. Liest drive_and_docs.external_sharing und schlägt fehl, wenn allowedPartiesForDistributingContent in einer Richtlinie, deren externalSharingMode externe Freigabe zulässt, einen anderen Wert als NONE hat. Nicht anwendbar, wenn externe Freigabe untersagt ist.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Niemand darf Inhalte in geteilte Ablagen einer anderen Organisation hochladen oder verschieben",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin-Konsole > Apps > Google Workspace > Drive und Docs > Freigabeeinstellungen > 'Inhalte außerhalb von <Organisation> verteilen'. Stellen Sie es so ein, dass niemand Inhalte an geteilte Ablagen einer anderen Organisation verteilen darf.",
+      "status": "machine-draft"
+    }
   }
 }

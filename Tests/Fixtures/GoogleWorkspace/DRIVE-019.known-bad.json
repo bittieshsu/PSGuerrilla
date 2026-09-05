@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-019",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "FAIL",
+  "description": "Open external sharing with no warning",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWED",
+                "warnForExternalSharing": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

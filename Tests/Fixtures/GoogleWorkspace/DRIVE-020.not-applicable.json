@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-020",
+  "platform": "GWS",
+  "scenario": "not-applicable",
+  "expectedStatus": "PASS",
+  "description": "External sharing disallowed, so visitor sharing cannot apply",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "DISALLOWED",
+                "allowNonGoogleInvites": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

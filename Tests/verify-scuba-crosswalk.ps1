@@ -12,7 +12,7 @@ $env:PSGUERRILLA_QUIET = '1'
 $root = Split-Path $PSScriptRoot -Parent
 Import-Module (Join-Path $root 'source' 'Guerrilla.psd1') -Force
 $mod = Get-Module Guerrilla
-$dataDir = Join-Path $root 'Data/AuditChecks'
+$dataDir = Join-Path $root 'source' 'Data' 'AuditChecks'
 
 $results = [System.Collections.Generic.List[object]]::new()
 function Add-R($n, $ok, $d) { $results.Add([PSCustomObject]@{ Name = $n; Pass = [bool]$ok; Detail = $d }) }

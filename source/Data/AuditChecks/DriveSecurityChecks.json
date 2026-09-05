@@ -517,6 +517,158 @@
         "empty",
         "not-assessed"
       ]
+    },
+    {
+      "id": "DRIVE-019",
+      "name": "External-sharing warning enabled (GWS.DRIVEDOCS.1.3)",
+      "description": "SCuBA GWS.DRIVEDOCS.1.3: a user sharing a file outside the organization should be told so at the moment of sharing, which is the last point at which an accidental disclosure is still cheap to stop. Reads drive_and_docs.external_sharing and pairs externalSharingMode with the warning field that mode actually uses: warnForSharingOutsideAllowlistedDomains when sharing is limited to allowlisted domains, warnForExternalSharing when sharing is open. Where external sharing is disallowed the policy cannot apply and the check reports that rather than a silent pass.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 2,
+      "subcategory": "External Sharing",
+      "recommendedValue": "Users are warned before sharing Drive content outside the organization",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/55656082996/sharing",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Drive and Docs > Sharing settings. With sharing set to allowlisted domains, turn on 'Warn when files owned by users or shared drives are shared outside allowlisted domains'. With sharing open, turn on 'Warn when files owned by users or shared drives are shared outside <organization>'.",
+      "compliance": {
+        "scuba": [
+          "GWS.DRIVEDOCS.1.3v1"
+        ],
+        "nistSp80053": [
+          "AC-3",
+          "AC-4",
+          "AT-2"
+        ],
+        "mitreAttack": [
+          "T1537"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "clean-allowlisted",
+        "known-bad",
+        "known-bad-allowlisted",
+        "not-applicable",
+        "field-missing",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "DRIVE-020",
+      "name": "Sharing with non-Google accounts disabled (GWS.DRIVEDOCS.1.4)",
+      "description": "SCuBA GWS.DRIVEDOCS.1.4: sharing to a recipient with no Google account issues a PIN-based visitor link, so access rests on possession of an emailed code rather than on an authenticated identity the organization can audit, suspend, or apply MFA to. Reads drive_and_docs.external_sharing, pairing externalSharingMode with allowNonGoogleInvitesInAllowlistedDomains or allowNonGoogleInvites as the mode dictates. Not applicable where external sharing is disallowed.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 2,
+      "subcategory": "External Sharing",
+      "recommendedValue": "Drive sharing is limited to recipients holding a Google account",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/55656082996/sharing",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Drive and Docs > Sharing settings. Turn off 'Allow users to share files with people who aren't using a Google account' (in the allowlisted-domains section when sharing is limited to allowlisted domains).",
+      "compliance": {
+        "scuba": [
+          "GWS.DRIVEDOCS.1.4v1"
+        ],
+        "nistSp80053": [
+          "AC-3",
+          "IA-2",
+          "IA-8"
+        ],
+        "mitreAttack": [
+          "T1537"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "clean-allowlisted",
+        "known-bad",
+        "known-bad-allowlisted",
+        "not-applicable",
+        "field-missing",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "DRIVE-021",
+      "name": "Publishing Drive content to the web disabled (GWS.DRIVEDOCS.1.5)",
+      "description": "SCuBA GWS.DRIVEDOCS.1.5: publishing to the web takes a document out of the permission model entirely, making it readable by anyone holding the link and indexable by search engines, with no per-recipient record of who reached it. Reads drive_and_docs.external_sharing and fails where allowPublishingFiles is on in any policy whose externalSharingMode permits external sharing. Not applicable where external sharing is disallowed.",
+      "severity": "High",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 3,
+      "subcategory": "External Sharing",
+      "recommendedValue": "Publishing Drive content to the web is disabled",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/55656082996/sharing",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Drive and Docs > Sharing settings > 'Published web content'. Turn off publishing so files cannot be made visible to anyone with the link.",
+      "compliance": {
+        "scuba": [
+          "GWS.DRIVEDOCS.1.5v1"
+        ],
+        "nistSp80053": [
+          "AC-3",
+          "AC-4",
+          "AC-22"
+        ],
+        "mitreAttack": [
+          "T1537"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-applicable",
+        "field-missing",
+        "not-assessed"
+      ]
+    },
+    {
+      "id": "DRIVE-022",
+      "name": "Content distribution to outside shared drives blocked (GWS.DRIVEDOCS.1.7)",
+      "description": "SCuBA GWS.DRIVEDOCS.1.7: moving a file into a shared drive owned by another organization transfers custody of it — the receiving organization's admins control the content and the organization that created it loses the ability to revoke access or retain it. Reads drive_and_docs.external_sharing and fails where allowedPartiesForDistributingContent is anything other than NONE in a policy whose externalSharingMode permits external sharing. Not applicable where external sharing is disallowed.",
+      "severity": "Medium",
+      "zeroTrustPillar": "Data",
+      "zeroTrustWeight": 2,
+      "subcategory": "Shared Drives",
+      "recommendedValue": "No party may upload or move content into shared drives owned by another organization",
+      "remediationUrl": "https://admin.google.com/ac/appsettings/55656082996/sharing",
+      "remediationSteps": "Admin console > Apps > Google Workspace > Drive and Docs > Sharing settings > 'Distributing content outside of <organization>'. Set it so that no one is allowed to distribute content to shared drives owned by another organization.",
+      "compliance": {
+        "scuba": [
+          "GWS.DRIVEDOCS.1.7v1"
+        ],
+        "nistSp80053": [
+          "AC-3",
+          "AC-4",
+          "SC-7"
+        ],
+        "mitreAttack": [
+          "T1537"
+        ],
+        "cisBenchmark": []
+      },
+      "provenance": "baseline",
+      "source_url": null,
+      "source_read_date": null,
+      "official_id": null,
+      "verdictPaths": [
+        "clean",
+        "known-bad",
+        "not-applicable",
+        "field-missing",
+        "not-assessed"
+      ]
     }
   ]
 }

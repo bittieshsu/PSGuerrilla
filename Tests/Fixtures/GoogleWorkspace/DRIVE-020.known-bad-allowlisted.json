@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-020",
+  "platform": "GWS",
+  "scenario": "known-bad-allowlisted",
+  "expectedStatus": "WARN",
+  "description": "Allowlisted-domain sharing permits non-Google visitor sharing",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWLISTED_DOMAINS",
+                "allowNonGoogleInvitesInAllowlistedDomains": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

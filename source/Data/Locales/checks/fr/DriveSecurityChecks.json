@@ -323,5 +323,77 @@
       "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Gérer les Drive partagés. Pour chaque Drive partagé signalé, ouvrez ses paramètres et désactivez 'Sharing with people outside <organization>' (et 'Sharing with non-members') afin que les éléments ne puissent pas être partagés en externe, ou consignez l'exception métier. Appliquez une valeur par défaut de domaine sous Sharing settings > Shared drive creation.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-019": {
+    "name": {
+      "value": "Avertissement de partage externe activé (GWS.DRIVEDOCS.1.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.3 : un utilisateur qui partage un fichier hors de l'organisation doit en être averti au moment du partage, dernier instant où une divulgation accidentelle reste peu coûteuse à arrêter. Lit drive_and_docs.external_sharing et associe externalSharingMode au champ d'avertissement que ce mode utilise réellement : warnForSharingOutsideAllowlistedDomains lorsque le partage est limité aux domaines autorisés, et warnForExternalSharing lorsque le partage est ouvert. Lorsque le partage externe est interdit, la stratégie ne peut pas s'appliquer et le contrôle le signale au lieu de valider en silence.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Les utilisateurs sont avertis avant de partager du contenu Drive hors de l'organisation",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage. Si le partage est limité aux domaines autorisés, activez « Avertir lorsque des fichiers appartenant à des utilisateurs ou à des Drive partagés sont partagés hors des domaines autorisés ». Si le partage est ouvert, activez « Avertir lorsque des fichiers appartenant à des utilisateurs ou à des Drive partagés sont partagés hors de <organisation> ».",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-020": {
+    "name": {
+      "value": "Partage avec des comptes non Google désactivé (GWS.DRIVEDOCS.1.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.4 : partager avec un destinataire sans compte Google émet un lien visiteur protégé par code PIN ; l'accès repose alors sur la possession d'un code envoyé par e-mail et non sur une identité authentifiée que l'organisation peut auditer, suspendre ou soumettre à la MFA. Lit drive_and_docs.external_sharing et associe externalSharingMode à allowNonGoogleInvitesInAllowlistedDomains ou allowNonGoogleInvites selon le mode. Sans objet lorsque le partage externe est interdit.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Le partage Drive est limité aux destinataires disposant d'un compte Google",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage. Désactivez « Autoriser les utilisateurs à partager des fichiers avec des personnes n'utilisant pas de compte Google » (dans la section des domaines autorisés lorsque le partage y est limité).",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-021": {
+    "name": {
+      "value": "Publication de contenu Drive sur le Web désactivée (GWS.DRIVEDOCS.1.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.5 : la publication sur le Web sort entièrement un document du modèle d'autorisations, le rend lisible par quiconque détient le lien et indexable par les moteurs de recherche, sans aucune trace par destinataire de qui y a accédé. Lit drive_and_docs.external_sharing et échoue lorsque allowPublishingFiles est activé dans une stratégie dont externalSharingMode autorise le partage externe. Sans objet lorsque le partage externe est interdit.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "La publication de contenu Drive sur le Web est désactivée",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage > « Contenu Web publié ». Désactivez la publication afin qu'aucun fichier ne puisse être rendu visible à quiconque détient le lien.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-022": {
+    "name": {
+      "value": "Distribution de contenu vers des Drive partagés externes bloquée (GWS.DRIVEDOCS.1.7)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.7 : déplacer un fichier vers un Drive partagé appartenant à une autre organisation en transfère la garde — les administrateurs de l'organisation destinataire contrôlent le contenu et l'organisation qui l'a créé perd la capacité d'en révoquer l'accès ou de le conserver. Lit drive_and_docs.external_sharing et échoue lorsque allowedPartiesForDistributingContent vaut autre chose que NONE dans une stratégie dont externalSharingMode autorise le partage externe. Sans objet lorsque le partage externe est interdit.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Personne ne peut importer ni déplacer de contenu vers des Drive partagés appartenant à une autre organisation",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Console d'administration > Applications > Google Workspace > Drive et Docs > Paramètres de partage > « Distribution de contenu hors de <organisation> ». Configurez ce paramètre de sorte que personne ne puisse distribuer de contenu vers des Drive partagés appartenant à une autre organisation.",
+      "status": "machine-draft"
+    }
   }
 }

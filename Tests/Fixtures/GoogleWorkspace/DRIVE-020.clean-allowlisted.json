@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-020",
+  "platform": "GWS",
+  "scenario": "clean-allowlisted",
+  "expectedStatus": "PASS",
+  "description": "Allowlisted-domain sharing, non-Google invites off",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWLISTED_DOMAINS",
+                "allowNonGoogleInvitesInAllowlistedDomains": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

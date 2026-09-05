@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-022",
+  "platform": "GWS",
+  "scenario": "not-applicable",
+  "expectedStatus": "PASS",
+  "description": "External sharing disallowed, so outside distribution cannot apply",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "DISALLOWED",
+                "allowedPartiesForDistributingContent": "ALL_ELIGIBLE_USERS"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

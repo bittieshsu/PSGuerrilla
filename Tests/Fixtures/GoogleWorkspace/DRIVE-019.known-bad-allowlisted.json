@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-019",
+  "platform": "GWS",
+  "scenario": "known-bad-allowlisted",
+  "expectedStatus": "FAIL",
+  "description": "Allowlisted-domain sharing with no out-of-allowlist warning",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWLISTED_DOMAINS",
+                "warnForSharingOutsideAllowlistedDomains": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

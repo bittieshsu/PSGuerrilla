@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-020",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Open external sharing permits non-Google visitor sharing",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWED",
+                "allowNonGoogleInvites": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

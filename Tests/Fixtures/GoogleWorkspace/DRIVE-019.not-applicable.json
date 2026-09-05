@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-019",
+  "platform": "GWS",
+  "scenario": "not-applicable",
+  "expectedStatus": "PASS",
+  "description": "External sharing disallowed, so the warning policy cannot apply",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "DISALLOWED",
+                "warnForExternalSharing": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "checkId": "DRIVE-020",
+  "platform": "GWS",
+  "scenario": "field-missing",
+  "expectedStatus": "SKIP",
+  "description": "Sharing permitted but the non-Google-invite field was not returned",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWED"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

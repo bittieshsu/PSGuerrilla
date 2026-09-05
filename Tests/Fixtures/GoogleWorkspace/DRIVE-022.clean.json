@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-022",
+  "platform": "GWS",
+  "scenario": "clean",
+  "expectedStatus": "PASS",
+  "description": "Sharing permitted, distribution to outside shared drives set to NONE",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWED",
+                "allowedPartiesForDistributingContent": "NONE"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

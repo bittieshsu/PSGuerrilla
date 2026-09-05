@@ -1,0 +1,25 @@
+{
+  "checkId": "DRIVE-022",
+  "platform": "GWS",
+  "scenario": "known-bad",
+  "expectedStatus": "WARN",
+  "description": "Anyone may move content into an outside shared drive",
+  "objectShape": true,
+  "auditData": {
+    "Errors": {},
+    "CloudIdentityPolicies": {
+      "ByType": {
+        "drive_and_docs.external_sharing": [
+          {
+            "setting": {
+              "value": {
+                "externalSharingMode": "ALLOWED",
+                "allowedPartiesForDistributingContent": "ALL_ELIGIBLE_USERS"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

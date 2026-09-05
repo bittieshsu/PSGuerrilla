@@ -323,5 +323,77 @@
       "value": "管理コンソール > アプリ > Google Workspace > Drive and Docs > 共有ドライブを管理。フラグが付いた各共有ドライブについて、その設定を開き、'Sharing with people outside <organization>' (および 'Sharing with non-members') をオフにしてアイテムを外部と共有できないようにするか、業務上の例外を記録します。Sharing settings > Shared drive creation でドメインの既定値を適用します。",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-019": {
+    "name": {
+      "value": "外部共有の警告が有効 (GWS.DRIVEDOCS.1.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.3: 組織外へファイルを共有するユーザーには、共有のその瞬間に警告を出すべきです。偶発的な漏えいを低コストで止められる最後の地点だからです。drive_and_docs.external_sharing を読み取り、externalSharingMode を、そのモードが実際に使用する警告フィールドと対応付けます。共有が許可リストのドメインに限定されている場合は warnForSharingOutsideAllowlistedDomains、共有が開放されている場合は warnForExternalSharing です。外部共有が禁止されている範囲ではポリシー自体が適用されないため、黙って合格とせずその旨を報告します。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "組織外に Drive のコンテンツを共有する前にユーザーへ警告が表示される",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理コンソール > アプリ > Google Workspace > ドライブとドキュメント > 共有設定。共有を許可リストのドメインに限定している場合は「ユーザーまたは共有ドライブが所有するファイルが許可リストのドメイン外に共有されたときに警告する」をオンにします。共有が開放されている場合は「ユーザーまたは共有ドライブが所有するファイルが <組織> の外部に共有されたときに警告する」をオンにします。",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-020": {
+    "name": {
+      "value": "Google アカウント以外との共有を無効化 (GWS.DRIVEDOCS.1.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.4: Google アカウントを持たない相手への共有は PIN ベースの訪問者リンクを発行するため、アクセスはメールで送られたコードの所持に依存し、組織が監査・停止・多要素認証の適用を行える認証済み ID には依存しません。drive_and_docs.external_sharing を読み取り、モードに応じて externalSharingMode を allowNonGoogleInvitesInAllowlistedDomains または allowNonGoogleInvites と対応付けます。外部共有が禁止されている場合は対象外です。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive の共有は Google アカウントを持つ相手に限定されている",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理コンソール > アプリ > Google Workspace > ドライブとドキュメント > 共有設定。「Google アカウントを使用していないユーザーとのファイル共有を許可する」をオフにします（共有を許可リストのドメインに限定している場合は、その許可リストのセクション内）。",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-021": {
+    "name": {
+      "value": "Drive コンテンツのウェブ公開を無効化 (GWS.DRIVEDOCS.1.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.5: ウェブへの公開はドキュメントを権限モデルから完全に外し、リンクを持つ誰もが閲覧でき、検索エンジンにインデックスされる状態にします。誰がアクセスしたかという受信者ごとの記録も残りません。drive_and_docs.external_sharing を読み取り、externalSharingMode が外部共有を許可しているポリシーで allowPublishingFiles がオンの場合に不合格とします。外部共有が禁止されている場合は対象外です。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive コンテンツのウェブ公開が無効になっている",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理コンソール > アプリ > Google Workspace > ドライブとドキュメント > 共有設定 >「公開されたウェブ コンテンツ」。公開をオフにして、リンクを持つ誰にでもファイルが見える状態にできないようにします。",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-022": {
+    "name": {
+      "value": "外部の共有ドライブへのコンテンツ配布をブロック (GWS.DRIVEDOCS.1.7)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: 他組織が所有する共有ドライブへファイルを移動すると、その管理権が移ります。受け取り側組織の管理者がコンテンツを支配し、作成した組織はアクセスを取り消すことも保持することもできなくなります。drive_and_docs.external_sharing を読み取り、externalSharingMode が外部共有を許可しているポリシーで allowedPartiesForDistributingContent が NONE 以外の場合に不合格とします。外部共有が禁止されている場合は対象外です。",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "他組織が所有する共有ドライブへのコンテンツのアップロードや移動は誰にも許可されない",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "管理コンソール > アプリ > Google Workspace > ドライブとドキュメント > 共有設定 >「<組織> の外部へのコンテンツの配布」。他組織が所有する共有ドライブへ誰もコンテンツを配布できないように設定します。",
+      "status": "machine-draft"
+    }
   }
 }

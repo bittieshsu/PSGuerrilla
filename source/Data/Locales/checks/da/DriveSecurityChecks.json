@@ -323,5 +323,77 @@
       "value": "Google Admin Console > Apps > Google Workspace > Drive and Docs > Manage shared drives. For hvert markeret delt drev skal du åbne dets indstillinger og slå 'Sharing with people outside <organization>' (og 'Sharing with non-members') fra, så elementer ikke kan deles eksternt, eller registrere forretningsundtagelsen. Håndhæv en domænestandard under Sharing settings > Shared drive creation.",
       "status": "machine-draft"
     }
+  },
+  "DRIVE-019": {
+    "name": {
+      "value": "Advarsel om ekstern deling aktiveret (GWS.DRIVEDOCS.1.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.3: en bruger, der deler en fil uden for organisationen, bør gøres opmærksom på det i delingsøjeblikket — det sidste tidspunkt, hvor en utilsigtet videregivelse stadig er billig at standse. Læser drive_and_docs.external_sharing og parrer externalSharingMode med det advarselsfelt, som den tilstand faktisk bruger: warnForSharingOutsideAllowlistedDomains når deling er begrænset til tilladte domæner, og warnForExternalSharing når deling er åben. Hvor ekstern deling er forbudt, kan politikken ikke gælde, og kontrollen rapporterer det i stedet for at bestå i stilhed.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Brugere advares, før de deler Drive-indhold uden for organisationen",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Drev og Docs > Delingsindstillinger. Med deling begrænset til tilladte domæner skal du slå 'Advar, når filer ejet af brugere eller delte drev deles uden for tilladte domæner' til. Med åben deling skal du slå 'Advar, når filer ejet af brugere eller delte drev deles uden for <organisation>' til.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-020": {
+    "name": {
+      "value": "Deling med ikke-Google-konti deaktiveret (GWS.DRIVEDOCS.1.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.4: deling med en modtager uden Google-konto udsteder et pinkodebaseret gæstelink, så adgangen hviler på besiddelse af en tilsendt kode frem for en godkendt identitet, som organisationen kan revidere, suspendere eller beskytte med MFA. Læser drive_and_docs.external_sharing og parrer externalSharingMode med allowNonGoogleInvitesInAllowlistedDomains eller allowNonGoogleInvites afhængigt af tilstanden. Ikke relevant hvor ekstern deling er forbudt.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive-deling er begrænset til modtagere med en Google-konto",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Drev og Docs > Delingsindstillinger. Slå 'Tillad brugere at dele filer med personer, der ikke bruger en Google-konto' fra (i afsnittet for tilladte domæner, når deling er begrænset til disse).",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-021": {
+    "name": {
+      "value": "Udgivelse af Drive-indhold på nettet deaktiveret (GWS.DRIVEDOCS.1.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.5: udgivelse på nettet tager dokumentet helt ud af rettighedsmodellen, gør det læsbart for enhver med linket og indekserbart af søgemaskiner, uden nogen registrering pr. modtager af, hvem der nåede frem til det. Læser drive_and_docs.external_sharing og fejler, når allowPublishingFiles er slået til i en politik, hvis externalSharingMode tillader ekstern deling. Ikke relevant hvor ekstern deling er forbudt.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Udgivelse af Drive-indhold på nettet er deaktiveret",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Drev og Docs > Delingsindstillinger > 'Udgivet webindhold'. Slå udgivelse fra, så filer ikke kan gøres synlige for enhver med linket.",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-022": {
+    "name": {
+      "value": "Distribution af indhold til eksterne delte drev blokeret (GWS.DRIVEDOCS.1.7)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: at flytte en fil til et delt drev, der ejes af en anden organisation, overdrager varetægten over den — den modtagende organisations administratorer kontrollerer indholdet, og den organisation, der skabte det, mister muligheden for at tilbagekalde adgang eller opbevare det. Læser drive_and_docs.external_sharing og fejler, når allowedPartiesForDistributingContent er noget andet end NONE i en politik, hvis externalSharingMode tillader ekstern deling. Ikke relevant hvor ekstern deling er forbudt.",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Ingen må uploade eller flytte indhold til delte drev, der ejes af en anden organisation",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Administratorkonsol > Apps > Google Workspace > Drev og Docs > Delingsindstillinger > 'Distribution af indhold uden for <organisation>'. Indstil det, så ingen må distribuere indhold til delte drev, der ejes af en anden organisation.",
+      "status": "machine-draft"
+    }
   }
 }

@@ -1,111 +1,399 @@
 {
   "_family": "DriveSecurityChecks.json",
   "DRIVE-001": {
-    "name": { "value": "बाहरी साझाकरण डिफ़ॉल्ट", "status": "machine-draft" },
-    "description": { "value": "बाहरी पक्षों को आकस्मिक डेटा उजागर होने से रोकने के लिए संगठन के बाहर साझाकरण डिफ़ॉल्ट रूप से प्रतिबंधित या अक्षम होना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "बाहरी साझाकरण allowlisted domains तक सीमित या अक्षम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > संगठन के बाहर साझाकरण को 'Off' या 'Allowlisted domains' पर सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "बाहरी साझाकरण डिफ़ॉल्ट",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "बाहरी पक्षों को आकस्मिक डेटा उजागर होने से रोकने के लिए संगठन के बाहर साझाकरण डिफ़ॉल्ट रूप से प्रतिबंधित या अक्षम होना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "बाहरी साझाकरण allowlisted domains तक सीमित या अक्षम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > संगठन के बाहर साझाकरण को 'Off' या 'Allowlisted domains' पर सेट करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-002": {
-    "name": { "value": "लिंक साझाकरण डिफ़ॉल्ट सेटिंग्स", "status": "machine-draft" },
-    "description": { "value": "अनपेक्षित डेटा उजागर होने से रोकने के लिए डिफ़ॉल्ट लिंक साझाकरण को व्यापक पहुंच के बजाय 'Restricted' (विशिष्ट लोग) पर सेट किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "डिफ़ॉल्ट लिंक साझाकरण 'Restricted' (केवल विशिष्ट लोग) पर सेट", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > डिफ़ॉल्ट लिंक साझाकरण को 'Restricted' पर सेट करें", "status": "machine-draft" }
+    "name": {
+      "value": "लिंक साझाकरण डिफ़ॉल्ट सेटिंग्स",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "अनपेक्षित डेटा उजागर होने से रोकने के लिए डिफ़ॉल्ट लिंक साझाकरण को व्यापक पहुंच के बजाय 'Restricted' (विशिष्ट लोग) पर सेट किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "डिफ़ॉल्ट लिंक साझाकरण 'Restricted' (केवल विशिष्ट लोग) पर सेट",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > डिफ़ॉल्ट लिंक साझाकरण को 'Restricted' पर सेट करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-003": {
-    "name": { "value": "'Anyone with the link' साझाकरण लेखापरीक्षा", "status": "machine-draft" },
-    "description": { "value": "'Anyone with the link' के साथ साझा की गई फ़ाइलें इंटरनेट पर किसी के भी लिए सुलभ होती हैं और एक महत्वपूर्ण डेटा उजागर जोखिम दर्शाती हैं", "status": "machine-draft" },
-    "recommendedValue": { "value": "'Anyone with the link' साझाकरण अक्षम या कड़ाई से नियंत्रित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > 'Anyone with the link' विकल्प अक्षम करें या 'Domain users with the link' तक सीमित करें", "status": "machine-draft" }
+    "name": {
+      "value": "'Anyone with the link' साझाकरण लेखापरीक्षा",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "'Anyone with the link' के साथ साझा की गई फ़ाइलें इंटरनेट पर किसी के भी लिए सुलभ होती हैं और एक महत्वपूर्ण डेटा उजागर जोखिम दर्शाती हैं",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "'Anyone with the link' साझाकरण अक्षम या कड़ाई से नियंत्रित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > 'Anyone with the link' विकल्प अक्षम करें या 'Domain users with the link' तक सीमित करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-004": {
-    "name": { "value": "Shared Drive निर्माण प्रतिबंध", "status": "machine-draft" },
-    "description": { "value": "अनियंत्रित प्रसार को रोकने और साझा डेटा भंडारों के उचित शासन को सुनिश्चित करने के लिए Shared Drive निर्माण प्रतिबंधित किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "Shared Drive निर्माण विशिष्ट समूहों या व्यवस्थापकों तक सीमित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > Shared drive creation > shared drive कौन बना सकता है इसे सीमित करें", "status": "machine-draft" }
+    "name": {
+      "value": "Shared Drive निर्माण प्रतिबंध",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "अनियंत्रित प्रसार को रोकने और साझा डेटा भंडारों के उचित शासन को सुनिश्चित करने के लिए Shared Drive निर्माण प्रतिबंधित किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Shared Drive निर्माण विशिष्ट समूहों या व्यवस्थापकों तक सीमित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > Shared drive creation > shared drive कौन बना सकता है इसे सीमित करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-005": {
-    "name": { "value": "Shared Drive सदस्य प्रबंधन", "status": "machine-draft" },
-    "description": { "value": "अनधिकृत उपयोगकर्ताओं के जुड़ने या अनुमतियों के बढ़ने को रोकने के लिए Shared Drive सदस्य प्रबंधन नियंत्रित किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "केवल प्रबंधक सदस्य जोड़ सकते हैं और पहुंच स्तर बदल सकते हैं", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > Shared drive settings > सदस्य प्रबंधन अनुमतियां कॉन्फ़िगर करें", "status": "machine-draft" }
+    "name": {
+      "value": "Shared Drive सदस्य प्रबंधन",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "अनधिकृत उपयोगकर्ताओं के जुड़ने या अनुमतियों के बढ़ने को रोकने के लिए Shared Drive सदस्य प्रबंधन नियंत्रित किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "केवल प्रबंधक सदस्य जोड़ सकते हैं और पहुंच स्तर बदल सकते हैं",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > Shared drive settings > सदस्य प्रबंधन अनुमतियां कॉन्फ़िगर करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-006": {
-    "name": { "value": "Shared Drive बाहरी साझाकरण", "status": "machine-draft" },
-    "description": { "value": "संवेदनशील संगठनात्मक डेटा को domain के बाहर साझा होने से रोकने के लिए Shared Drives पर बाहरी साझाकरण प्रतिबंधित किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "Shared Drives पर बाहरी साझाकरण अक्षम या allowlisted domains तक सीमित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > Shared drive sharing > बाहरी साझाकरण सीमित करें", "status": "machine-draft" }
+    "name": {
+      "value": "Shared Drive बाहरी साझाकरण",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "संवेदनशील संगठनात्मक डेटा को domain के बाहर साझा होने से रोकने के लिए Shared Drives पर बाहरी साझाकरण प्रतिबंधित किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Shared Drives पर बाहरी साझाकरण अक्षम या allowlisted domains तक सीमित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Sharing settings > Shared drive sharing > बाहरी साझाकरण सीमित करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-007": {
-    "name": { "value": "फ़ाइल स्वामित्व स्थानांतरण सेटिंग्स", "status": "machine-draft" },
-    "description": { "value": "अनधिकृत डेटा प्रवासन को रोकने और उचित डेटा शासन श्रृंखलाओं को बनाए रखने के लिए फ़ाइल स्वामित्व स्थानांतरण नियंत्रित किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "फ़ाइल स्वामित्व स्थानांतरण व्यवस्थापकों या नियंत्रित प्रक्रिया तक सीमित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Transfer ownership settings > प्रतिबंध कॉन्फ़िगर करें", "status": "machine-draft" }
+    "name": {
+      "value": "फ़ाइल स्वामित्व स्थानांतरण सेटिंग्स",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "अनधिकृत डेटा प्रवासन को रोकने और उचित डेटा शासन श्रृंखलाओं को बनाए रखने के लिए फ़ाइल स्वामित्व स्थानांतरण नियंत्रित किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "फ़ाइल स्वामित्व स्थानांतरण व्यवस्थापकों या नियंत्रित प्रक्रिया तक सीमित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Transfer ownership settings > प्रतिबंध कॉन्फ़िगर करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-008": {
-    "name": { "value": "Drive for Desktop अनुमत/अवरुद्ध", "status": "machine-draft" },
-    "description": { "value": "Drive for Desktop फ़ाइलों को स्थानीय रूप से सिंक करता है और डेटा को अप्रबंधित एंडपॉइंट पर संग्रहीत होने से रोकने के लिए इसे नियंत्रित किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "Drive for Desktop प्रबंधित उपकरणों तक सीमित या अक्षम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Features and Applications > Drive for Desktop > पहुंच कॉन्फ़िगर करें", "status": "machine-draft" }
+    "name": {
+      "value": "Drive for Desktop अनुमत/अवरुद्ध",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Drive for Desktop फ़ाइलों को स्थानीय रूप से सिंक करता है और डेटा को अप्रबंधित एंडपॉइंट पर संग्रहीत होने से रोकने के लिए इसे नियंत्रित किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive for Desktop प्रबंधित उपकरणों तक सीमित या अक्षम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Features and Applications > Drive for Desktop > पहुंच कॉन्फ़िगर करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-009": {
-    "name": { "value": "तृतीय-पक्ष ऐप Drive पहुंच", "status": "machine-draft" },
-    "description": { "value": "अनधिकृत डेटा निष्कासन को रोकने के लिए Drive डेटा तक पहुंच वाले तृतीय-पक्ष अनुप्रयोगों की समीक्षा और प्रतिबंधित किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "Drive डेटा तक तृतीय-पक्ष ऐप पहुंच प्रतिबंधित और समीक्षित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > API controls > Third-party app access > Drive पहुंच वाले ऐप्स की समीक्षा करें और प्रतिबंधित करें", "status": "machine-draft" }
+    "name": {
+      "value": "तृतीय-पक्ष ऐप Drive पहुंच",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "अनधिकृत डेटा निष्कासन को रोकने के लिए Drive डेटा तक पहुंच वाले तृतीय-पक्ष अनुप्रयोगों की समीक्षा और प्रतिबंधित किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive डेटा तक तृतीय-पक्ष ऐप पहुंच प्रतिबंधित और समीक्षित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > API controls > Third-party app access > Drive पहुंच वाले ऐप्स की समीक्षा करें और प्रतिबंधित करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-010": {
-    "name": { "value": "Drive DLP नियम लेखापरीक्षा", "status": "machine-draft" },
-    "description": { "value": "Google Drive के माध्यम से संवेदनशील डेटा के साझाकरण का पता लगाने और उसे रोकने के लिए Data Loss Prevention नियम कॉन्फ़िगर किए जाने चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "संवेदनशील डेटा प्रकारों (PII, वित्तीय, स्वास्थ्य डेटा) के लिए DLP नियम कॉन्फ़िगर किए गए", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Security > Data protection > Manage rules > Drive में संवेदनशील डेटा प्रकारों के लिए नियम बनाएं", "status": "machine-draft" }
+    "name": {
+      "value": "Drive DLP नियम लेखापरीक्षा",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Google Drive के माध्यम से संवेदनशील डेटा के साझाकरण का पता लगाने और उसे रोकने के लिए Data Loss Prevention नियम कॉन्फ़िगर किए जाने चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "संवेदनशील डेटा प्रकारों (PII, वित्तीय, स्वास्थ्य डेटा) के लिए DLP नियम कॉन्फ़िगर किए गए",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Security > Data protection > Manage rules > Drive में संवेदनशील डेटा प्रकारों के लिए नियम बनाएं",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-011": {
-    "name": { "value": "Target Audience सेटिंग्स", "status": "machine-draft" },
-    "description": { "value": "Target audience सेटिंग्स यह नियंत्रित करती हैं कि फ़ाइलें साझा करते समय किसे सुझाया जा सकता है और आकस्मिक साझाकरण को सीमित करने के लिए इन्हें कॉन्फ़िगर किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "साझाकरण सुझावों को उचित रूप से सीमित करने के लिए target audiences कॉन्फ़िगर किए गए", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Directory > Target audiences > target audience समूहों की समीक्षा और कॉन्फ़िगर करें", "status": "machine-draft" }
+    "name": {
+      "value": "Target Audience सेटिंग्स",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Target audience सेटिंग्स यह नियंत्रित करती हैं कि फ़ाइलें साझा करते समय किसे सुझाया जा सकता है और आकस्मिक साझाकरण को सीमित करने के लिए इन्हें कॉन्फ़िगर किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "साझाकरण सुझावों को उचित रूप से सीमित करने के लिए target audiences कॉन्फ़िगर किए गए",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Directory > Target audiences > target audience समूहों की समीक्षा और कॉन्फ़िगर करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-012": {
-    "name": { "value": "Drive Add-ons सेटिंग्स", "status": "machine-draft" },
-    "description": { "value": "Drive add-ons फ़ाइल सामग्री तक पहुंच सकते हैं और अविश्वसनीय एक्सटेंशन के माध्यम से डेटा उजागर होने से रोकने के लिए इन्हें नियंत्रित किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "Drive add-on इंस्टॉलेशन व्यवस्थापक-अनुमोदित add-ons तक सीमित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Features and Applications > Add-ons > इंस्टॉलेशन प्रतिबंध कॉन्फ़िगर करें", "status": "machine-draft" }
+    "name": {
+      "value": "Drive Add-ons सेटिंग्स",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "Drive add-ons फ़ाइल सामग्री तक पहुंच सकते हैं और अविश्वसनीय एक्सटेंशन के माध्यम से डेटा उजागर होने से रोकने के लिए इन्हें नियंत्रित किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive add-on इंस्टॉलेशन व्यवस्थापक-अनुमोदित add-ons तक सीमित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Features and Applications > Add-ons > इंस्टॉलेशन प्रतिबंध कॉन्फ़िगर करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-013": {
-    "name": { "value": "ऑफ़लाइन पहुंच सेटिंग्स", "status": "machine-draft" },
-    "description": { "value": "ऑफ़लाइन पहुंच Drive फ़ाइलों को उपकरणों पर स्थानीय रूप से कैश करने की अनुमति देती है और साझा या अप्रबंधित उपकरणों पर डेटा उजागर होने से रोकने के लिए इसे नियंत्रित किया जाना चाहिए", "status": "machine-draft" },
-    "recommendedValue": { "value": "ऑफ़लाइन पहुंच अक्षम या प्रबंधित उपकरणों तक सीमित", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Features and Applications > Offline > ऑफ़लाइन पहुंच अक्षम या सीमित करें", "status": "machine-draft" }
+    "name": {
+      "value": "ऑफ़लाइन पहुंच सेटिंग्स",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "ऑफ़लाइन पहुंच Drive फ़ाइलों को उपकरणों पर स्थानीय रूप से कैश करने की अनुमति देती है और साझा या अप्रबंधित उपकरणों पर डेटा उजागर होने से रोकने के लिए इसे नियंत्रित किया जाना चाहिए",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "ऑफ़लाइन पहुंच अक्षम या प्रबंधित उपकरणों तक सीमित",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Features and Applications > Offline > ऑफ़लाइन पहुंच अक्षम या सीमित करें",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-014": {
-    "name": { "value": "Drive SDK API पहुंच अक्षम (GWS.DRIVEDOCS.4.1)", "status": "machine-draft" },
-    "description": { "value": "SCuBA GWS.DRIVEDOCS.4.1: Drive SDK तृतीय-पक्ष ऐप्स को API के माध्यम से Drive सामग्री पढ़ने और लिखने देता है, जो व्यापक रूप से सक्षम होने पर एक प्रत्यक्ष डेटा-निष्कासन चैनल है। drive_and_docs.drive_sdk पढ़ता है; जहां enableDriveSdkApiAccess चालू है वहां विफल होता है।", "status": "machine-draft" },
-    "recommendedValue": { "value": "Drive SDK API पहुंच अक्षम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin console > Apps > Google Workspace > Drive and Docs > Features and Applications में, Drive SDK अक्षम करें जब तक विशिष्ट समीक्षित एकीकरण इसकी आवश्यकता न रखते हों।", "status": "machine-draft" }
+    "name": {
+      "value": "Drive SDK API पहुंच अक्षम (GWS.DRIVEDOCS.4.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.4.1: Drive SDK तृतीय-पक्ष ऐप्स को API के माध्यम से Drive सामग्री पढ़ने और लिखने देता है, जो व्यापक रूप से सक्षम होने पर एक प्रत्यक्ष डेटा-निष्कासन चैनल है। drive_and_docs.drive_sdk पढ़ता है; जहां enableDriveSdkApiAccess चालू है वहां विफल होता है।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive SDK API पहुंच अक्षम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin console > Apps > Google Workspace > Drive and Docs > Features and Applications में, Drive SDK अक्षम करें जब तक विशिष्ट समीक्षित एकीकरण इसकी आवश्यकता न रखते हों।",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-015": {
-    "name": { "value": "Drive बाहरी-फ़ाइल चेतावनी सक्षम (GWS.DRIVEDOCS.1.9)", "status": "machine-draft" },
-    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.9: जब उपयोगकर्ता फ़ाइलें बाहरी रूप से साझा करते हैं तब उन्हें चेतावनी देना एक कम-घर्षण वाला डेटा-हानि नियंत्रण है। drive_and_docs.external_file_warning पढ़ता है; जहां highlightingEnabled बंद है वहां चेतावनी देता है।", "status": "machine-draft" },
-    "recommendedValue": { "value": "बाहरी-फ़ाइल साझाकरण चेतावनी सक्षम", "status": "machine-draft" },
-    "remediationSteps": { "value": "Drive sharing settings में, जब उपयोगकर्ता संगठन के बाहर के लोगों के साथ फ़ाइलें साझा करते हैं तब चेतावनियां सक्षम करें।", "status": "machine-draft" }
+    "name": {
+      "value": "Drive बाहरी-फ़ाइल चेतावनी सक्षम (GWS.DRIVEDOCS.1.9)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.9: जब उपयोगकर्ता फ़ाइलें बाहरी रूप से साझा करते हैं तब उन्हें चेतावनी देना एक कम-घर्षण वाला डेटा-हानि नियंत्रण है। drive_and_docs.external_file_warning पढ़ता है; जहां highlightingEnabled बंद है वहां चेतावनी देता है।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "बाहरी-फ़ाइल साझाकरण चेतावनी सक्षम",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Drive sharing settings में, जब उपयोगकर्ता संगठन के बाहर के लोगों के साथ फ़ाइलें साझा करते हैं तब चेतावनियां सक्षम करें।",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-016": {
-    "name": { "value": "Drive फ़ाइल सुरक्षा अपडेट लागू (GWS.DRIVEDOCS.3.1)", "status": "machine-draft" },
-    "description": { "value": "SCuBA GWS.DRIVEDOCS.3.1: फ़ाइल सुरक्षा अपडेट प्रभावित फ़ाइलों पर लिंक-साझाकरण को कड़ा करता है; उपयोगकर्ताओं को इसे हटाने देने से पहुंच फिर से खुल जाती है। drive_and_docs.file_security_update पढ़ता है; जहां उपयोगकर्ताओं को सुरक्षा अपडेट हटाने/प्रबंधित करने की अनुमति है वहां चेतावनी देता है।", "status": "machine-draft" },
-    "recommendedValue": { "value": "सुरक्षा अपडेट लागू और उपयोगकर्ता इसे नहीं हटा सकते", "status": "machine-draft" },
-    "remediationSteps": { "value": "Drive settings में, फ़ाइल सुरक्षा अपडेट लागू करें और उपयोगकर्ताओं को अपनी स्वामित्व वाली फ़ाइलों से इसे हटाने की अनुमति न दें।", "status": "machine-draft" }
+    "name": {
+      "value": "Drive फ़ाइल सुरक्षा अपडेट लागू (GWS.DRIVEDOCS.3.1)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.3.1: फ़ाइल सुरक्षा अपडेट प्रभावित फ़ाइलों पर लिंक-साझाकरण को कड़ा करता है; उपयोगकर्ताओं को इसे हटाने देने से पहुंच फिर से खुल जाती है। drive_and_docs.file_security_update पढ़ता है; जहां उपयोगकर्ताओं को सुरक्षा अपडेट हटाने/प्रबंधित करने की अनुमति है वहां चेतावनी देता है।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सुरक्षा अपडेट लागू और उपयोगकर्ता इसे नहीं हटा सकते",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Drive settings में, फ़ाइल सुरक्षा अपडेट लागू करें और उपयोगकर्ताओं को अपनी स्वामित्व वाली फ़ाइलों से इसे हटाने की अनुमति न दें।",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-017": {
-    "name": { "value": "डिफ़ॉल्ट फ़ाइल पहुंच स्वामी तक निजी पर सेट (GWS.DRIVEDOCS.1.8)", "status": "machine-draft" },
-    "description": { "value": "SCuBA GWS.DRIVEDOCS.1.8 के लिए आवश्यक है कि नई बनाई गई Drive आइटम के लिए डिफ़ॉल्ट पहुंच स्तर 'Private to owner' हो, ताकि निर्माण के समय फ़ाइलें इच्छित से अधिक व्यापक रूप से साझा न हों। यह जांच drive_and_docs.general_access_default Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां डिफ़ॉल्ट फ़ाइल पहुंच PRIVATE_TO_OWNER नहीं है।", "status": "machine-draft" },
-    "recommendedValue": { "value": "सभी संगठनात्मक इकाइयों में नई फ़ाइलों के लिए डिफ़ॉल्ट पहुंच स्तर PRIVATE_TO_OWNER (defaultFileAccess) पर सेट।", "status": "machine-draft" },
-    "remediationSteps": { "value": "Google Admin console में, Apps > Google Workspace > Drive and Docs > Sharing settings > General access default के अंतर्गत, डिफ़ॉल्ट को 'Private to owner' पर सेट करें ताकि नई बनाई गई फ़ाइलें निजी रूप से शुरू हों और केवल जानबूझकर की गई कार्रवाई द्वारा साझा हों।", "status": "machine-draft" }
+    "name": {
+      "value": "डिफ़ॉल्ट फ़ाइल पहुंच स्वामी तक निजी पर सेट (GWS.DRIVEDOCS.1.8)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.8 के लिए आवश्यक है कि नई बनाई गई Drive आइटम के लिए डिफ़ॉल्ट पहुंच स्तर 'Private to owner' हो, ताकि निर्माण के समय फ़ाइलें इच्छित से अधिक व्यापक रूप से साझा न हों। यह जांच drive_and_docs.general_access_default Cloud Identity नीति पढ़ती है और किसी भी ऐसी संगठनात्मक इकाई को चिह्नित करती है जहां डिफ़ॉल्ट फ़ाइल पहुंच PRIVATE_TO_OWNER नहीं है।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "सभी संगठनात्मक इकाइयों में नई फ़ाइलों के लिए डिफ़ॉल्ट पहुंच स्तर PRIVATE_TO_OWNER (defaultFileAccess) पर सेट।",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Google Admin console में, Apps > Google Workspace > Drive and Docs > Sharing settings > General access default के अंतर्गत, डिफ़ॉल्ट को 'Private to owner' पर सेट करें ताकि नई बनाई गई फ़ाइलें निजी रूप से शुरू हों और केवल जानबूझकर की गई कार्रवाई द्वारा साझा हों।",
+      "status": "machine-draft"
+    }
   },
   "DRIVE-018": {
-    "name": { "value": "Shared Drive बाहरी-साझाकरण प्रदर्शन", "status": "machine-draft" },
-    "description": { "value": "domain-admin पहुंच के माध्यम से tenant में प्रत्येक shared drive को सूचीबद्ध करता है और प्रत्येक drive के साझाकरण प्रतिबंधों का निरीक्षण करता है। जिस shared drive का प्रतिबंध domainUsersOnly लागू नहीं है, वह अपनी सामग्री को संगठन के बाहर के खातों के साथ साझा करने की अनुमति देता है, और यदि domain-स्तरीय साझाकरण सेटिंग अनुमति देती है तो सार्वजनिक 'anyone with the link' पहुंच तक। यह उस drive-स्तरीय प्रतिबंध का मूल्यांकन करता है जो बाहरी साझाकरण को नियंत्रित करता है; किसी वास्तविक सार्वजनिक फ़ाइल लिंक की पुष्टि के लिए प्रति-फ़ाइल अनुमति स्कैन की आवश्यकता होती है जो यह जांच नहीं करती।", "status": "machine-draft" },
-    "recommendedValue": { "value": "प्रत्येक shared drive पहुंच को संगठन सदस्यों तक सीमित करता है (domainUsersOnly = true), या बाहरी साझाकरण एक प्रलेखित, समीक्षित अपवाद है", "status": "machine-draft" },
-    "remediationSteps": { "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Manage shared drives। प्रत्येक चिह्नित shared drive के लिए, उसकी सेटिंग्स खोलें और 'Sharing with people outside <organization>' (और 'Sharing with non-members') बंद करें ताकि आइटम बाहरी रूप से साझा न किए जा सकें, या व्यावसायिक अपवाद दर्ज करें। Sharing settings > Shared drive creation के अंतर्गत एक domain डिफ़ॉल्ट लागू करें।", "status": "machine-draft" }
+    "name": {
+      "value": "Shared Drive बाहरी-साझाकरण प्रदर्शन",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "domain-admin पहुंच के माध्यम से tenant में प्रत्येक shared drive को सूचीबद्ध करता है और प्रत्येक drive के साझाकरण प्रतिबंधों का निरीक्षण करता है। जिस shared drive का प्रतिबंध domainUsersOnly लागू नहीं है, वह अपनी सामग्री को संगठन के बाहर के खातों के साथ साझा करने की अनुमति देता है, और यदि domain-स्तरीय साझाकरण सेटिंग अनुमति देती है तो सार्वजनिक 'anyone with the link' पहुंच तक। यह उस drive-स्तरीय प्रतिबंध का मूल्यांकन करता है जो बाहरी साझाकरण को नियंत्रित करता है; किसी वास्तविक सार्वजनिक फ़ाइल लिंक की पुष्टि के लिए प्रति-फ़ाइल अनुमति स्कैन की आवश्यकता होती है जो यह जांच नहीं करती।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "प्रत्येक shared drive पहुंच को संगठन सदस्यों तक सीमित करता है (domainUsersOnly = true), या बाहरी साझाकरण एक प्रलेखित, समीक्षित अपवाद है",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "Admin Console > Apps > Google Workspace > Drive and Docs > Manage shared drives। प्रत्येक चिह्नित shared drive के लिए, उसकी सेटिंग्स खोलें और 'Sharing with people outside <organization>' (और 'Sharing with non-members') बंद करें ताकि आइटम बाहरी रूप से साझा न किए जा सकें, या व्यावसायिक अपवाद दर्ज करें। Sharing settings > Shared drive creation के अंतर्गत एक domain डिफ़ॉल्ट लागू करें।",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-019": {
+    "name": {
+      "value": "बाहरी शेयरिंग चेतावनी सक्षम (GWS.DRIVEDOCS.1.3)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.3: संगठन के बाहर फ़ाइल साझा करने वाले उपयोगकर्ता को साझा करने के उसी क्षण सूचित किया जाना चाहिए, यही वह अंतिम बिंदु है जहाँ आकस्मिक प्रकटीकरण को रोकना अब भी सस्ता है। drive_and_docs.external_sharing पढ़ता है और externalSharingMode को उस चेतावनी फ़ील्ड के साथ जोड़ता है जिसे वह मोड वास्तव में उपयोग करता है: जब साझाकरण अनुमत डोमेन तक सीमित हो तो warnForSharingOutsideAllowlistedDomains, और जब साझाकरण खुला हो तो warnForExternalSharing। जहाँ बाहरी साझाकरण वर्जित है वहाँ नीति लागू ही नहीं हो सकती, और जाँच चुपचाप पास करने के बजाय यही रिपोर्ट करती है।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "उपयोगकर्ताओं को संगठन के बाहर Drive सामग्री साझा करने से पहले चेतावनी मिलती है",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "एडमिन कंसोल > ऐप्स > Google Workspace > ड्राइव और डॉक्स > शेयरिंग सेटिंग। साझाकरण अनुमत डोमेन तक सीमित होने पर 'जब उपयोगकर्ताओं या साझा ड्राइव की फ़ाइलें अनुमत डोमेन के बाहर साझा की जाएँ तो चेतावनी दें' चालू करें। साझाकरण खुला होने पर 'जब उपयोगकर्ताओं या साझा ड्राइव की फ़ाइलें <संगठन> के बाहर साझा की जाएँ तो चेतावनी दें' चालू करें।",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-020": {
+    "name": {
+      "value": "गैर-Google खातों के साथ शेयरिंग अक्षम (GWS.DRIVEDOCS.1.4)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.4: बिना Google खाते वाले प्राप्तकर्ता के साथ साझा करने पर PIN-आधारित विज़िटर लिंक जारी होता है, इसलिए पहुँच ईमेल से भेजे गए कोड के कब्ज़े पर टिकी होती है, न कि किसी प्रमाणित पहचान पर जिसका संगठन ऑडिट कर सके, निलंबित कर सके या जिस पर MFA लागू कर सके। drive_and_docs.external_sharing पढ़ता है और मोड के अनुसार externalSharingMode को allowNonGoogleInvitesInAllowlistedDomains या allowNonGoogleInvites के साथ जोड़ता है। जहाँ बाहरी साझाकरण वर्जित है वहाँ लागू नहीं।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive शेयरिंग केवल उन प्राप्तकर्ताओं तक सीमित है जिनके पास Google खाता है",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "एडमिन कंसोल > ऐप्स > Google Workspace > ड्राइव और डॉक्स > शेयरिंग सेटिंग। 'उपयोगकर्ताओं को उन लोगों के साथ फ़ाइलें साझा करने दें जो Google खाते का उपयोग नहीं करते' को बंद करें (जब साझाकरण अनुमत डोमेन तक सीमित हो तो उसी अनुमत-डोमेन अनुभाग में)।",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-021": {
+    "name": {
+      "value": "Drive सामग्री का वेब पर प्रकाशन अक्षम (GWS.DRIVEDOCS.1.5)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.5: वेब पर प्रकाशित करने से दस्तावेज़ पूरी तरह अनुमति मॉडल से बाहर निकल जाता है, लिंक रखने वाला कोई भी उसे पढ़ सकता है और खोज इंजन उसे अनुक्रमित कर सकते हैं, और यह रिकॉर्ड नहीं रहता कि किस प्राप्तकर्ता ने उस तक पहुँच बनाई। drive_and_docs.external_sharing पढ़ता है और जिस भी नीति का externalSharingMode बाहरी साझाकरण की अनुमति देता है उसमें allowPublishingFiles चालू होने पर विफल होता है। जहाँ बाहरी साझाकरण वर्जित है वहाँ लागू नहीं।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "Drive सामग्री का वेब पर प्रकाशन अक्षम है",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "एडमिन कंसोल > ऐप्स > Google Workspace > ड्राइव और डॉक्स > शेयरिंग सेटिंग > 'प्रकाशित वेब सामग्री'। प्रकाशन बंद करें ताकि फ़ाइलें लिंक रखने वाले किसी भी व्यक्ति के लिए दृश्यमान न बनाई जा सकें।",
+      "status": "machine-draft"
+    }
+  },
+  "DRIVE-022": {
+    "name": {
+      "value": "बाहरी साझा ड्राइव में सामग्री वितरण अवरुद्ध (GWS.DRIVEDOCS.1.7)",
+      "status": "machine-draft"
+    },
+    "description": {
+      "value": "SCuBA GWS.DRIVEDOCS.1.7: किसी अन्य संगठन के स्वामित्व वाली साझा ड्राइव में फ़ाइल ले जाने से उसकी अभिरक्षा स्थानांतरित हो जाती है — प्राप्तकर्ता संगठन के व्यवस्थापक उस सामग्री को नियंत्रित करते हैं और जिस संगठन ने उसे बनाया वह पहुँच रद्द करने या उसे बनाए रखने की क्षमता खो देता है। drive_and_docs.external_sharing पढ़ता है और जिस नीति का externalSharingMode बाहरी साझाकरण की अनुमति देता है उसमें allowedPartiesForDistributingContent का मान NONE के अलावा कुछ भी होने पर विफल होता है। जहाँ बाहरी साझाकरण वर्जित है वहाँ लागू नहीं।",
+      "status": "machine-draft"
+    },
+    "recommendedValue": {
+      "value": "कोई भी पक्ष किसी अन्य संगठन के स्वामित्व वाली साझा ड्राइव में सामग्री अपलोड या स्थानांतरित नहीं कर सकता",
+      "status": "machine-draft"
+    },
+    "remediationSteps": {
+      "value": "एडमिन कंसोल > ऐप्स > Google Workspace > ड्राइव और डॉक्स > शेयरिंग सेटिंग > '<संगठन> के बाहर सामग्री का वितरण'। इसे इस तरह सेट करें कि किसी को भी अन्य संगठन के स्वामित्व वाली साझा ड्राइव में सामग्री वितरित करने की अनुमति न हो।",
+      "status": "machine-draft"
+    }
   }
 }
