@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-09-05 14:11 UTC**
+Last scan: **2026-09-06 14:35 UTC**
 
 ## Upstream state
 
@@ -20,9 +20,9 @@ Coverage compares the base policy ID (version tag stripped) so a version bump do
 | Baseline | Upstream policies | Covered by Guerrilla | Gap |
 |---|---|---|---|
 | ScubaGear MS.* | 170 | 79 | **91** |
-| ScubaGoggles GWS.* | 138 | 95 | **43** |
+| ScubaGoggles GWS.* | 138 | 110 | **28** |
 
-Guerrilla references 80 MS.* and 95 GWS.* policy IDs today.
+Guerrilla references 80 MS.* and 110 GWS.* policy IDs today.
 
 ## ScubaGear (M365 / Entra) gaps
 
@@ -126,48 +126,33 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 ## ScubaGoggles (Google Workspace) gaps
 
-43 upstream policies have no Guerrilla check yet (candidate roadmap items):
+28 upstream policies have no Guerrilla check yet (candidate roadmap items):
 
 - [ ] `GWS.CALENDAR.3.2`
 - [ ] `GWS.CHAT.5.1`
 - [ ] `GWS.CHAT.5.2`
 - [ ] `GWS.COMMONCONTROLS.10.1`
 - [ ] `GWS.COMMONCONTROLS.10.2`
-- [ ] `GWS.COMMONCONTROLS.11.1`
 - [ ] `GWS.COMMONCONTROLS.12.1`
-- [ ] `GWS.COMMONCONTROLS.13.1`
 - [ ] `GWS.COMMONCONTROLS.14.1`
 - [ ] `GWS.COMMONCONTROLS.14.2`
 - [ ] `GWS.COMMONCONTROLS.16.3`
 - [ ] `GWS.COMMONCONTROLS.16.4`
-- [ ] `GWS.COMMONCONTROLS.17.1`
 - [ ] `GWS.COMMONCONTROLS.18.1`
 - [ ] `GWS.COMMONCONTROLS.18.2`
 - [ ] `GWS.COMMONCONTROLS.2.1`
 - [ ] `GWS.COMMONCONTROLS.3.1`
 - [ ] `GWS.COMMONCONTROLS.3.2`
 - [ ] `GWS.COMMONCONTROLS.6.1`
-- [ ] `GWS.COMMONCONTROLS.6.2`
-- [ ] `GWS.COMMONCONTROLS.7.1`
 - [ ] `GWS.COMMONCONTROLS.8.3`
 - [ ] `GWS.COMMONCONTROLS.9.1`
 - [ ] `GWS.COMMONCONTROLS.9.2`
 - [ ] `GWS.DRIVEDOCS.1.10`
 - [ ] `GWS.DRIVEDOCS.1.11`
-- [ ] `GWS.DRIVEDOCS.1.3`
-- [ ] `GWS.DRIVEDOCS.1.4`
-- [ ] `GWS.DRIVEDOCS.1.5`
-- [ ] `GWS.DRIVEDOCS.1.7`
-- [ ] `GWS.DRIVEDOCS.5.1`
 - [ ] `GWS.DRIVEDOCS.5.2`
 - [ ] `GWS.GMAIL.13.1`
-- [ ] `GWS.GMAIL.17.1`
-- [ ] `GWS.GMAIL.18.2`
-- [ ] `GWS.GMAIL.18.3`
 - [ ] `GWS.GMAIL.4.3`
 - [ ] `GWS.GMAIL.4.4`
-- [ ] `GWS.GMAIL.5.5`
-- [ ] `GWS.GMAIL.7.6`
 - [ ] `GWS.MEET.6.1`
 - [ ] `GWS.MEET.6.2`
 - [ ] `GWS.MEET.6.3`
@@ -185,6 +170,9 @@ Broader CISA context (CVE-level, not directly a config baseline):
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-09-06
+- No upstream changes detected.
 
 ### 2026-09-05
 - KEV catalog 2026.09.02 -> 2026.09.04 (+1 entries, now 1695)
