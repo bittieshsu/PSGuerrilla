@@ -200,6 +200,9 @@ function Get-ADGroupPolicyObjects {
             HasScripts         = $false
             HasPreferences     = $false
             HasRegistryPol     = $false
+            RegistrySettings   = @()
+            RegistryPolTruncated  = $false
+            RegistryPolUnreadable = $false
             ScriptFiles        = @()
             PreferenceFiles    = @()
             CPasswordFound     = $false
@@ -264,17 +267,42 @@ function Get-ADGroupPolicyObjects {
             $sysvolInfo.CPasswordFound = $cpassLocations.Count -gt 0
             $sysvolInfo.CPasswordLocations = @($cpassLocations)
 
-            # Check for Registry.pol
-            $regPolPaths = @(
-                (Join-Path $gpoSysvolPath 'Machine\Registry.pol'),
-                (Join-Path $gpoSysvolPath 'User\Registry.pol')
+            # Registry.pol: presence AND contents. A large amount of AD posture is
+            # registry-backed policy with no LDAP attribute behind it (WSUS delivery,
+            # LLMNR, SMBv1, Defender ASR, Terminal Services), so recording only that
+            # the file exists leaves those controls unassessable. Parsing is bounded
+            # and never throws; see ConvertFrom-RegistryPol for the hostile-input
+            # contract, since these bytes come from SYSVOL.
+            $regPolTargets = @(
+                @{ Scope = 'Machine'; Path = (Join-Path $gpoSysvolPath 'Machine\Registry.pol') },
+                @{ Scope = 'User';    Path = (Join-Path $gpoSysvolPath 'User\Registry.pol') }
             )
-            foreach ($regPolPath in $regPolPaths) {
-                if (Test-Path -LiteralPath $regPolPath -ErrorAction SilentlyContinue) {
-                    $sysvolInfo.HasRegistryPol = $true
-                    break
+            $regSettings = [System.Collections.Generic.List[object]]::new()
+            foreach ($target in $regPolTargets) {
+                if (-not (Test-Path -LiteralPath $target.Path -ErrorAction SilentlyContinue)) { continue }
+                $sysvolInfo.HasRegistryPol = $true
+                $parsed = ConvertFrom-RegistryPol -Path $target.Path
+                if (-not $parsed.Valid) {
+                    Write-Verbose "Registry.pol at $($target.Path) did not parse: $($parsed.Reason)"
+                    $sysvolInfo.RegistryPolUnreadable = $true
+                    continue
+                }
+                # A truncated parse is recorded, not hidden: a check that reads these
+                # settings must be able to report Not Assessed rather than treating a
+                # partial list as proof a setting is absent.
+                if ($parsed.Truncated) { $sysvolInfo.RegistryPolTruncated = $true }
+                foreach ($s in $parsed.Settings) {
+                    $regSettings.Add([PSCustomObject]@{
+                        Scope         = $target.Scope
+                        KeyName       = $s.KeyName
+                        ValueName     = $s.ValueName
+                        ValueType     = $s.ValueType
+                        ValueTypeName = $s.ValueTypeName
+                        ValueData     = $s.ValueData
+                    })
                 }
             }
+            $sysvolInfo.RegistrySettings = @($regSettings)
 
             # Check if GPO is effectively empty (only GPT.INI exists)
             $allFiles = @(Get-ChildItem -LiteralPath $gpoSysvolPath -Recurse -File -ErrorAction SilentlyContinue)
