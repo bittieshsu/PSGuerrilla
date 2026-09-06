@@ -18,6 +18,10 @@ function ConvertFrom-RegistryPol {
         Strings : UTF-16LE, null terminated. The delimiters [ ; ] are themselves
                   UTF-16LE characters, so every one is two bytes, not one.
 
+        READ-ONLY: the file is opened as a pure observer (FileShare ReadWrite and
+        Delete) so the scan can never block a GPO save or a DFSR replication, and
+        never holds a lock on a system it is only supposed to be looking at.
+
         SECURITY: this parses a file that lives in SYSVOL, which means any principal
         who can write to a GPO folder controls its bytes. The parser therefore treats
         the input as hostile: every read is bounds checked against the buffer, the
@@ -51,7 +55,29 @@ function ConvertFrom-RegistryPol {
     }
 
     if ($PSCmdlet.ParameterSetName -eq 'Path') {
-        try { $Bytes = [System.IO.File]::ReadAllBytes($Path) }
+        # Read-only is not only "we never write". It also means we never get in the
+        # way of the systems we assess. [System.IO.File]::ReadAllBytes opens with
+        # FileShare.Read, which on Windows denies WRITERS for the duration of the
+        # read: while Guerrilla reads a large Registry.pol over a slow link, a
+        # sysadmin saving that GPO in GPMC, or DFSR replicating it, can take a
+        # sharing violation caused entirely by the scan. Opening with
+        # ReadWrite + Delete makes this a pure observer that never blocks anyone,
+        # even a process deleting the file underneath us.
+        try {
+            $stream = [System.IO.File]::Open($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read,
+                                             [System.IO.FileShare]::ReadWrite -bor [System.IO.FileShare]::Delete)
+            try {
+                $len = [int][System.Math]::Min($stream.Length, [int]::MaxValue)
+                $buffer = New-Object byte[] $len
+                $read = 0
+                while ($read -lt $len) {
+                    $n = $stream.Read($buffer, $read, $len - $read)
+                    if ($n -le 0) { break }   # file shrank under us; parse what we got
+                    $read += $n
+                }
+                $Bytes = if ($read -eq $len) { $buffer } else { $buffer[0..([System.Math]::Max($read - 1, 0))] }
+            } finally { $stream.Dispose() }
+        }
         catch { $result.Reason = "Could not read ${Path}: $($_.Exception.Message)"; return $result }
     }
 
