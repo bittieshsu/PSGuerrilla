@@ -1,10 +1,20 @@
 {
-  "generated": "2026-09-10 15:27 UTC",
+  "generated": "2026-09-11 15:29 UTC",
   "kev": {
-    "catalogVersion": "2026.09.09",
-    "count": 1703,
-    "date": "2026-09-09",
+    "catalogVersion": "2026.09.10",
+    "count": 1705,
+    "date": "2026-09-10",
     "newest": [
+      {
+        "added": "2026-09-10",
+        "cve": "CVE-2026-86060",
+        "name": "MikroTik RouterOS Improper Neutralization of Argument Delimiters in a Command Vulnerability"
+      },
+      {
+        "added": "2026-09-10",
+        "cve": "CVE-2026-67277",
+        "name": "MikroTik RouterOS Missing Authentication for Critical Function Vulnerability"
+      },
       {
         "added": "2026-09-09",
         "cve": "CVE-2026-19490",
@@ -19,16 +29,6 @@
         "added": "2026-09-09",
         "cve": "CVE-2026-87491",
         "name": "Google Chromium V8 Out of Bounds Write Vulnerability"
-      },
-      {
-        "added": "2026-09-09",
-        "cve": "CVE-2026-20079",
-        "name": "Cisco Firewall Management Center Authentication Bypass Using an Alternate Path or Channel Vulnerability"
-      },
-      {
-        "added": "2026-09-08",
-        "cve": "CVE-2026-75650",
-        "name": "Adobe Commerce and Magento Improper Neutralization of Special Elements Used in a Template Engine Vulnerability"
       }
     ]
   },

@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-09-11 15:29 UTC",
+    "changes": [
+      "KEV catalog 2026.09.09 -> 2026.09.10 (+2 entries, now 1705)"
+    ],
+    "date": "2026-09-11"
+  },
+  {
     "at": "2026-09-10 15:27 UTC",
     "changes": [
       "No upstream changes detected."

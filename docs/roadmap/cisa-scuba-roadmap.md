@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-09-10 15:27 UTC**
+Last scan: **2026-09-11 15:29 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-09-10 15:27 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.09.09 (2026-09-09) | 1703 known-exploited CVEs |
+| CISA KEV catalog | 2026.09.10 (2026-09-10) | 1705 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -161,15 +161,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-86060` MikroTik RouterOS Improper Neutralization of Argument Delimiters in a Command Vulnerability (added 2026-09-10)
+- `CVE-2026-67277` MikroTik RouterOS Missing Authentication for Critical Function Vulnerability (added 2026-09-10)
 - `CVE-2026-19490` Citrix NetScaler Authentication Bypass Using an Alternate Path or Channel Vulnerability (added 2026-09-09)
 - `CVE-2025-25249` Fortinet Multiple Products Heap-based Buffer Overflow Vulnerability (added 2026-09-09)
 - `CVE-2026-87491` Google Chromium V8 Out of Bounds Write Vulnerability (added 2026-09-09)
-- `CVE-2026-20079` Cisco Firewall Management Center Authentication Bypass Using an Alternate Path or Channel Vulnerability (added 2026-09-09)
-- `CVE-2026-75650` Adobe Commerce and Magento Improper Neutralization of Special Elements Used in a Template Engine Vulnerability (added 2026-09-08)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-09-11
+- KEV catalog 2026.09.09 -> 2026.09.10 (+2 entries, now 1705)
 
 ### 2026-09-10
 - No upstream changes detected.
