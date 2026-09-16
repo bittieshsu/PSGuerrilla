@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-09-15 15:53 UTC**
+Last scan: **2026-09-16 15:44 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-09-15 15:53 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.09.14 (2026-09-14) | 1710 known-exploited CVEs |
+| CISA KEV catalog | 2026.09.16 (2026-09-16) | 1711 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -19,14 +19,14 @@ Coverage compares the base policy ID (version tag stripped) so a version bump do
 
 | Baseline | Upstream policies | Covered by Guerrilla | Gap |
 |---|---|---|---|
-| ScubaGear MS.* | 162 | 72 | **90** |
-| ScubaGoggles GWS.* | 96 | 84 | **12** |
+| ScubaGear MS.* | 170 | 79 | **91** |
+| ScubaGoggles GWS.* | 138 | 110 | **28** |
 
 Guerrilla references 80 MS.* and 110 GWS.* policy IDs today.
 
 ## ScubaGear (M365 / Entra) gaps
 
-90 upstream policies have no Guerrilla check yet (candidate roadmap items):
+91 upstream policies have no Guerrilla check yet (candidate roadmap items):
 
 - [ ] `MS.AAD.3.9`
 - [ ] `MS.AAD.5.4`
@@ -106,6 +106,7 @@ Guerrilla references 80 MS.* and 110 GWS.* policy IDs today.
 - [ ] `MS.SECURITYSUITE.8.1`
 - [ ] `MS.SECURITYSUITE.8.2`
 - [ ] `MS.SHAREPOINT.1.4`
+- [ ] `MS.SHAREPOINT.3.3`
 - [ ] `MS.SHAREPOINT.4.1`
 - [ ] `MS.SHAREPOINT.4.2`
 - [ ] `MS.TEAMS.1.4`
@@ -123,15 +124,29 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 - `MS.DEFENDER.4.1v1 -> MS.DEFENDER.4.1v2`
 
-Guerrilla references these IDs that are not in the current upstream baseline (renamed, retired, or ahead of upstream): `MS.SHAREPOINT.1.1v1`, `MS.SHAREPOINT.1.2v1`, `MS.SHAREPOINT.1.3v1`, `MS.SHAREPOINT.2.1v1`, `MS.SHAREPOINT.2.2v1`, `MS.SHAREPOINT.3.1v1`, `MS.SHAREPOINT.3.2v1`
-
 ## ScubaGoggles (Google Workspace) gaps
 
-12 upstream policies have no Guerrilla check yet (candidate roadmap items):
+28 upstream policies have no Guerrilla check yet (candidate roadmap items):
 
 - [ ] `GWS.CALENDAR.3.2`
 - [ ] `GWS.CHAT.5.1`
 - [ ] `GWS.CHAT.5.2`
+- [ ] `GWS.COMMONCONTROLS.10.1`
+- [ ] `GWS.COMMONCONTROLS.10.2`
+- [ ] `GWS.COMMONCONTROLS.12.1`
+- [ ] `GWS.COMMONCONTROLS.14.1`
+- [ ] `GWS.COMMONCONTROLS.14.2`
+- [ ] `GWS.COMMONCONTROLS.16.3`
+- [ ] `GWS.COMMONCONTROLS.16.4`
+- [ ] `GWS.COMMONCONTROLS.18.1`
+- [ ] `GWS.COMMONCONTROLS.18.2`
+- [ ] `GWS.COMMONCONTROLS.2.1`
+- [ ] `GWS.COMMONCONTROLS.3.1`
+- [ ] `GWS.COMMONCONTROLS.3.2`
+- [ ] `GWS.COMMONCONTROLS.6.1`
+- [ ] `GWS.COMMONCONTROLS.8.3`
+- [ ] `GWS.COMMONCONTROLS.9.1`
+- [ ] `GWS.COMMONCONTROLS.9.2`
 - [ ] `GWS.DRIVEDOCS.1.10`
 - [ ] `GWS.DRIVEDOCS.1.11`
 - [ ] `GWS.DRIVEDOCS.5.2`
@@ -142,21 +157,24 @@ Guerrilla references these IDs that are not in the current upstream baseline (re
 - [ ] `GWS.MEET.6.2`
 - [ ] `GWS.MEET.6.3`
 
-Guerrilla references these IDs that are not in the current upstream baseline (renamed, retired, or ahead of upstream): `GWS.COMMONCONTROLS.1.1v1`, `GWS.COMMONCONTROLS.1.2v1`, `GWS.COMMONCONTROLS.1.3v1`, `GWS.COMMONCONTROLS.1.4v1`, `GWS.COMMONCONTROLS.1.5v1`, `GWS.COMMONCONTROLS.10.3v1`, `GWS.COMMONCONTROLS.10.4v1`, `GWS.COMMONCONTROLS.10.5v1`, `GWS.COMMONCONTROLS.11.1v1`, `GWS.COMMONCONTROLS.13.1v1`, `GWS.COMMONCONTROLS.15.1v1`, `GWS.COMMONCONTROLS.15.2v1`, `GWS.COMMONCONTROLS.16.1v1`, `GWS.COMMONCONTROLS.16.2v1`, `GWS.COMMONCONTROLS.17.1v1`, `GWS.COMMONCONTROLS.4.1v1`, `GWS.COMMONCONTROLS.5.1v1`, `GWS.COMMONCONTROLS.5.2v1`, `GWS.COMMONCONTROLS.5.3v1`, `GWS.COMMONCONTROLS.5.4v1`, `GWS.COMMONCONTROLS.5.5v1`, `GWS.COMMONCONTROLS.5.6v1`, `GWS.COMMONCONTROLS.6.2v1`, `GWS.COMMONCONTROLS.7.1v1`, `GWS.COMMONCONTROLS.8.1v1`, `GWS.COMMONCONTROLS.8.2v1`
-
 ## Newest CISA KEV entries
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-58704` Google Pixel Improper Authorization Vulnerability (added 2026-09-16)
 - `CVE-2026-76461` Cisco Secure Email Gateway SQL Injection Vulnerability (added 2026-09-14)
 - `CVE-2026-84869` ConnectWise ScreenConnect Improper Privilege Management and Missing Authorization Vulnerability (added 2026-09-11)
 - `CVE-2026-42016` JFrog Artifactory Incorrect Authorization Vulnerability (added 2026-09-11)
 - `CVE-2026-42018` JFrog Artifactory Improper Authentication Vulnerability (added 2026-09-11)
-- `CVE-2026-85706` GitLab Community Edition and Enterprise Edition Path Traversal Vulnerability (added 2026-09-11)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-09-16
+- ScubaGear new policies: MS.SHAREPOINT.1.1v1, MS.SHAREPOINT.1.2v1, MS.SHAREPOINT.1.3v1, MS.SHAREPOINT.2.1v1, MS.SHAREPOINT.2.2v1, MS.SHAREPOINT.3.1v1, MS.SHAREPOINT.3.2v1, MS.SHAREPOINT.3.3v2
+- ScubaGoggles new policies: GWS.COMMONCONTROLS.1.1v1, GWS.COMMONCONTROLS.1.2v1, GWS.COMMONCONTROLS.1.3v1, GWS.COMMONCONTROLS.1.4v1, GWS.COMMONCONTROLS.1.5v1, GWS.COMMONCONTROLS.10.1v1, GWS.COMMONCONTROLS.10.2v1, GWS.COMMONCONTROLS.10.3v1, GWS.COMMONCONTROLS.10.4v1, GWS.COMMONCONTROLS.10.5v1, GWS.COMMONCONTROLS.11.1v1, GWS.COMMONCONTROLS.12.1v1, GWS.COMMONCONTROLS.13.1v1, GWS.COMMONCONTROLS.14.1v1, GWS.COMMONCONTROLS.14.2v1, GWS.COMMONCONTROLS.15.1v1, GWS.COMMONCONTROLS.15.2v1, GWS.COMMONCONTROLS.16.1v1, GWS.COMMONCONTROLS.16.2v1, GWS.COMMONCONTROLS.16.3v1, GWS.COMMONCONTROLS.16.4v1, GWS.COMMONCONTROLS.17.1v1, GWS.COMMONCONTROLS.18.1v1, GWS.COMMONCONTROLS.18.2v1, GWS.COMMONCONTROLS.2.1v1, GWS.COMMONCONTROLS.3.1v1, GWS.COMMONCONTROLS.3.2v1, GWS.COMMONCONTROLS.4.1v1, GWS.COMMONCONTROLS.5.1v1, GWS.COMMONCONTROLS.5.2v1, GWS.COMMONCONTROLS.5.3v1, GWS.COMMONCONTROLS.5.4v1, GWS.COMMONCONTROLS.5.5v1, GWS.COMMONCONTROLS.5.6v1, GWS.COMMONCONTROLS.6.1v1, GWS.COMMONCONTROLS.6.2v1, GWS.COMMONCONTROLS.7.1v1, GWS.COMMONCONTROLS.8.1v1, GWS.COMMONCONTROLS.8.2v1, GWS.COMMONCONTROLS.8.3v1, GWS.COMMONCONTROLS.9.1v1, GWS.COMMONCONTROLS.9.2v1
+- KEV catalog 2026.09.14 -> 2026.09.16 (+1 entries, now 1711)
 
 ### 2026-09-15
 - ScubaGear removed policies: MS.SHAREPOINT.1.1v1, MS.SHAREPOINT.1.2v1, MS.SHAREPOINT.1.3v1, MS.SHAREPOINT.2.1v1, MS.SHAREPOINT.2.2v1, MS.SHAREPOINT.3.1v1, MS.SHAREPOINT.3.2v1, MS.SHAREPOINT.3.3v2
