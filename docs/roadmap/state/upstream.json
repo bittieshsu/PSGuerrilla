@@ -1,14 +1,24 @@
 {
-  "generated": "2026-09-16 15:44 UTC",
+  "generated": "2026-09-17 15:51 UTC",
   "kev": {
     "catalogVersion": "2026.09.16",
-    "count": 1711,
+    "count": 1713,
     "date": "2026-09-16",
     "newest": [
       {
         "added": "2026-09-16",
         "cve": "CVE-2026-58704",
         "name": "Google Pixel Improper Authorization Vulnerability"
+      },
+      {
+        "added": "2026-09-16",
+        "cve": "CVE-2026-76460",
+        "name": "Cisco Identity Services Engine Incorrect Use of Privileged APIs Vulnerability"
+      },
+      {
+        "added": "2026-09-16",
+        "cve": "CVE-2026-87886",
+        "name": "Acronis Backup Incorrect Default Permissions Vulnerability"
       },
       {
         "added": "2026-09-14",
@@ -19,16 +29,6 @@
         "added": "2026-09-11",
         "cve": "CVE-2026-84869",
         "name": "ConnectWise ScreenConnect Improper Privilege Management and Missing Authorization Vulnerability"
-      },
-      {
-        "added": "2026-09-11",
-        "cve": "CVE-2026-42016",
-        "name": "JFrog Artifactory Incorrect Authorization Vulnerability"
-      },
-      {
-        "added": "2026-09-11",
-        "cve": "CVE-2026-42018",
-        "name": "JFrog Artifactory Improper Authentication Vulnerability"
       }
     ]
   },

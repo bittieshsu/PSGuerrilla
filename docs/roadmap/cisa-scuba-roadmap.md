@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-09-16 15:44 UTC**
+Last scan: **2026-09-17 15:51 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-09-16 15:44 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.09.16 (2026-09-16) | 1711 known-exploited CVEs |
+| CISA KEV catalog | 2026.09.16 (2026-09-16) | 1713 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -162,14 +162,17 @@ Version drift (Guerrilla references an older policy version than upstream):
 Broader CISA context (CVE-level, not directly a config baseline):
 
 - `CVE-2026-58704` Google Pixel Improper Authorization Vulnerability (added 2026-09-16)
+- `CVE-2026-76460` Cisco Identity Services Engine Incorrect Use of Privileged APIs Vulnerability (added 2026-09-16)
+- `CVE-2026-87886` Acronis Backup Incorrect Default Permissions Vulnerability (added 2026-09-16)
 - `CVE-2026-76461` Cisco Secure Email Gateway SQL Injection Vulnerability (added 2026-09-14)
 - `CVE-2026-84869` ConnectWise ScreenConnect Improper Privilege Management and Missing Authorization Vulnerability (added 2026-09-11)
-- `CVE-2026-42016` JFrog Artifactory Incorrect Authorization Vulnerability (added 2026-09-11)
-- `CVE-2026-42018` JFrog Artifactory Improper Authentication Vulnerability (added 2026-09-11)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-09-17
+- No upstream changes detected.
 
 ### 2026-09-16
 - ScubaGear new policies: MS.SHAREPOINT.1.1v1, MS.SHAREPOINT.1.2v1, MS.SHAREPOINT.1.3v1, MS.SHAREPOINT.2.1v1, MS.SHAREPOINT.2.2v1, MS.SHAREPOINT.3.1v1, MS.SHAREPOINT.3.2v1, MS.SHAREPOINT.3.3v2
