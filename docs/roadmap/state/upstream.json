@@ -1,10 +1,20 @@
 {
-  "generated": "2026-09-17 15:51 UTC",
+  "generated": "2026-09-18 15:24 UTC",
   "kev": {
-    "catalogVersion": "2026.09.16",
-    "count": 1713,
-    "date": "2026-09-16",
+    "catalogVersion": "2026.09.18",
+    "count": 1715,
+    "date": "2026-09-18",
     "newest": [
+      {
+        "added": "2026-09-18",
+        "cve": "CVE-2025-39964",
+        "name": "Linux Kernel Race Condition Vulnerability"
+      },
+      {
+        "added": "2026-09-18",
+        "cve": "CVE-2026-53266",
+        "name": "Linux Kernel Out-of-Bounds Write Vulnerability"
+      },
       {
         "added": "2026-09-16",
         "cve": "CVE-2026-58704",
@@ -19,16 +29,6 @@
         "added": "2026-09-16",
         "cve": "CVE-2026-87886",
         "name": "Acronis Backup Incorrect Default Permissions Vulnerability"
-      },
-      {
-        "added": "2026-09-14",
-        "cve": "CVE-2026-76461",
-        "name": "Cisco Secure Email Gateway SQL Injection Vulnerability"
-      },
-      {
-        "added": "2026-09-11",
-        "cve": "CVE-2026-84869",
-        "name": "ConnectWise ScreenConnect Improper Privilege Management and Missing Authorization Vulnerability"
       }
     ]
   },
