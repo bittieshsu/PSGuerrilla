@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-09-20 15:04 UTC**
+Last scan: **2026-09-21 17:23 UTC**
 
 ## Upstream state
 
@@ -170,6 +170,9 @@ Broader CISA context (CVE-level, not directly a config baseline):
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-09-21
+- No upstream changes detected.
 
 ### 2026-09-20
 - No upstream changes detected.
