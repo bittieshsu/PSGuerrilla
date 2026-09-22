@@ -1,10 +1,15 @@
 {
-  "generated": "2026-09-21 17:23 UTC",
+  "generated": "2026-09-22 15:55 UTC",
   "kev": {
-    "catalogVersion": "2026.09.18",
-    "count": 1716,
-    "date": "2026-09-18",
+    "catalogVersion": "2026.09.21",
+    "count": 1717,
+    "date": "2026-09-21",
     "newest": [
+      {
+        "added": "2026-09-21",
+        "cve": "CVE-2026-7273",
+        "name": "Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability"
+      },
       {
         "added": "2026-09-18",
         "cve": "CVE-2025-39964",
@@ -24,11 +29,6 @@
         "added": "2026-09-16",
         "cve": "CVE-2026-58704",
         "name": "Google Pixel Improper Authorization Vulnerability"
-      },
-      {
-        "added": "2026-09-16",
-        "cve": "CVE-2026-76460",
-        "name": "Cisco Identity Services Engine Incorrect Use of Privileged APIs Vulnerability"
       }
     ]
   },
