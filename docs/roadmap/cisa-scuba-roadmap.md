@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-09-24 16:06 UTC**
+Last scan: **2026-09-25 16:06 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-09-24 16:06 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.09.23 (2026-09-23) | 1721 known-exploited CVEs |
+| CISA KEV catalog | 2026.09.25 (2026-09-25) | 1725 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -161,15 +161,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-67279` Mikrotik RouterOS Improper Enforcement of Behavioral Workflow Vulnerability (added 2026-09-25)
+- `CVE-2026-65660` Microsoft SharePoint Code Injection Vulnerability (added 2026-09-25)
+- `CVE-2026-5430` WSO2 Multiple Products Path Traversal Vulnerability  (added 2026-09-24)
+- `CVE-2026-71362` Adobe Commerce and Magento Incorrect Authorization Vulnerability  (added 2026-09-24)
 - `CVE-2026-93952` Arista VeloCloud Orchestrator Improper Input Validation Vulnerability (added 2026-09-22)
-- `CVE-2026-94127` F5 BIG-IP APM Heap-based Buffer Overflow Vulnerability (added 2026-09-22)
-- `CVE-2026-93616` Check Point Multiple Products Path Traversal Vulnerability (added 2026-09-22)
-- `CVE-2026-85102` Check Point Multiple Products Improper Certificate Validation Vulnerability (added 2026-09-22)
-- `CVE-2026-7273` Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability (added 2026-09-21)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-09-25
+- KEV catalog 2026.09.23 -> 2026.09.25 (+4 entries, now 1725)
 
 ### 2026-09-24
 - No upstream changes detected.

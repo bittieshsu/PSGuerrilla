@@ -1,34 +1,34 @@
 {
-  "generated": "2026-09-24 16:06 UTC",
+  "generated": "2026-09-25 16:06 UTC",
   "kev": {
-    "catalogVersion": "2026.09.23",
-    "count": 1721,
-    "date": "2026-09-23",
+    "catalogVersion": "2026.09.25",
+    "count": 1725,
+    "date": "2026-09-25",
     "newest": [
+      {
+        "added": "2026-09-25",
+        "cve": "CVE-2026-67279",
+        "name": "Mikrotik RouterOS Improper Enforcement of Behavioral Workflow Vulnerability"
+      },
+      {
+        "added": "2026-09-25",
+        "cve": "CVE-2026-65660",
+        "name": "Microsoft SharePoint Code Injection Vulnerability"
+      },
+      {
+        "added": "2026-09-24",
+        "cve": "CVE-2026-5430",
+        "name": "WSO2 Multiple Products Path Traversal Vulnerability "
+      },
+      {
+        "added": "2026-09-24",
+        "cve": "CVE-2026-71362",
+        "name": "Adobe Commerce and Magento Incorrect Authorization Vulnerability "
+      },
       {
         "added": "2026-09-22",
         "cve": "CVE-2026-93952",
         "name": "Arista VeloCloud Orchestrator Improper Input Validation Vulnerability"
-      },
-      {
-        "added": "2026-09-22",
-        "cve": "CVE-2026-94127",
-        "name": "F5 BIG-IP APM Heap-based Buffer Overflow Vulnerability"
-      },
-      {
-        "added": "2026-09-22",
-        "cve": "CVE-2026-93616",
-        "name": "Check Point Multiple Products Path Traversal Vulnerability"
-      },
-      {
-        "added": "2026-09-22",
-        "cve": "CVE-2026-85102",
-        "name": "Check Point Multiple Products Improper Certificate Validation Vulnerability"
-      },
-      {
-        "added": "2026-09-21",
-        "cve": "CVE-2026-7273",
-        "name": "Zyxel GS1900 Series Switches Stack-Based Buffer Overflow Vulnerability"
       }
     ]
   },
