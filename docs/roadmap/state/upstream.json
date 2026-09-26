@@ -1,8 +1,8 @@
 {
-  "generated": "2026-09-25 16:06 UTC",
+  "generated": "2026-09-26 15:20 UTC",
   "kev": {
     "catalogVersion": "2026.09.25",
-    "count": 1725,
+    "count": 1726,
     "date": "2026-09-25",
     "newest": [
       {
@@ -16,6 +16,11 @@
         "name": "Microsoft SharePoint Code Injection Vulnerability"
       },
       {
+        "added": "2026-09-25",
+        "cve": "CVE-2026-87902",
+        "name": "WordPress Core Remote File Inclusion Vulnerability"
+      },
+      {
         "added": "2026-09-24",
         "cve": "CVE-2026-5430",
         "name": "WSO2 Multiple Products Path Traversal Vulnerability "
@@ -24,11 +29,6 @@
         "added": "2026-09-24",
         "cve": "CVE-2026-71362",
         "name": "Adobe Commerce and Magento Incorrect Authorization Vulnerability "
-      },
-      {
-        "added": "2026-09-22",
-        "cve": "CVE-2026-93952",
-        "name": "Arista VeloCloud Orchestrator Improper Input Validation Vulnerability"
       }
     ]
   },
