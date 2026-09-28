@@ -1,10 +1,20 @@
 {
-  "generated": "2026-09-27 16:00 UTC",
+  "generated": "2026-09-28 18:55 UTC",
   "kev": {
-    "catalogVersion": "2026.09.25",
-    "count": 1726,
-    "date": "2026-09-25",
+    "catalogVersion": "2026.09.27",
+    "count": 1728,
+    "date": "2026-09-27",
     "newest": [
+      {
+        "added": "2026-09-27",
+        "cve": "CVE-2026-88772",
+        "name": "Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability"
+      },
+      {
+        "added": "2026-09-27",
+        "cve": "CVE-2026-88771",
+        "name": "Citrix NetScaler Improper Input Validation Vulnerability"
+      },
       {
         "added": "2026-09-25",
         "cve": "CVE-2026-67279",
@@ -19,16 +29,6 @@
         "added": "2026-09-25",
         "cve": "CVE-2026-87902",
         "name": "WordPress Core Remote File Inclusion Vulnerability"
-      },
-      {
-        "added": "2026-09-24",
-        "cve": "CVE-2026-5430",
-        "name": "WSO2 Multiple Products Path Traversal Vulnerability "
-      },
-      {
-        "added": "2026-09-24",
-        "cve": "CVE-2026-71362",
-        "name": "Adobe Commerce and Magento Incorrect Authorization Vulnerability "
       }
     ]
   },
