@@ -1,10 +1,15 @@
 {
-  "generated": "2026-09-28 18:55 UTC",
+  "generated": "2026-09-29 17:13 UTC",
   "kev": {
-    "catalogVersion": "2026.09.27",
-    "count": 1728,
-    "date": "2026-09-27",
+    "catalogVersion": "2026.09.29",
+    "count": 1729,
+    "date": "2026-09-29",
     "newest": [
+      {
+        "added": "2026-09-29",
+        "cve": "CVE-2026-86950",
+        "name": "Apple Multiple Products Out-of-Bounds Write Vulnerability"
+      },
       {
         "added": "2026-09-27",
         "cve": "CVE-2026-88772",
@@ -24,11 +29,6 @@
         "added": "2026-09-25",
         "cve": "CVE-2026-65660",
         "name": "Microsoft SharePoint Code Injection Vulnerability"
-      },
-      {
-        "added": "2026-09-25",
-        "cve": "CVE-2026-87902",
-        "name": "WordPress Core Remote File Inclusion Vulnerability"
       }
     ]
   },
