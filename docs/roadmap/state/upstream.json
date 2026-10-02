@@ -1,10 +1,25 @@
 {
-  "generated": "2026-10-01 17:41 UTC",
+  "generated": "2026-10-02 17:00 UTC",
   "kev": {
-    "catalogVersion": "2026.09.30",
-    "count": 1730,
-    "date": "2026-09-30",
+    "catalogVersion": "2026.10.02",
+    "count": 1733,
+    "date": "2026-10-02",
     "newest": [
+      {
+        "added": "2026-10-02",
+        "cve": "CVE-2026-102490",
+        "name": "Zammad GmbH Zammad Improper Privilege Management Vulnerability"
+      },
+      {
+        "added": "2026-10-02",
+        "cve": "CVE-2026-102489",
+        "name": "Zammad GmbH Zammad Session Fixation Vulnerability"
+      },
+      {
+        "added": "2026-10-01",
+        "cve": "CVE-2026-104286",
+        "name": "Fortinet FortiMail Path Traversal Vulnerability"
+      },
       {
         "added": "2026-09-30",
         "cve": "CVE-2026-76504",
@@ -14,21 +29,6 @@
         "added": "2026-09-29",
         "cve": "CVE-2026-86950",
         "name": "Apple Multiple Products Out-of-Bounds Write Vulnerability"
-      },
-      {
-        "added": "2026-09-27",
-        "cve": "CVE-2026-88772",
-        "name": "Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability"
-      },
-      {
-        "added": "2026-09-27",
-        "cve": "CVE-2026-88771",
-        "name": "Citrix NetScaler Improper Input Validation Vulnerability"
-      },
-      {
-        "added": "2026-09-25",
-        "cve": "CVE-2026-67279",
-        "name": "Mikrotik RouterOS Improper Enforcement of Behavioral Workflow Vulnerability"
       }
     ]
   },
