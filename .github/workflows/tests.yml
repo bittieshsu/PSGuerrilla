@@ -9,6 +9,11 @@ name: golden-fixture tests
 # blocks the merge. Enable branch protection on `main` requiring this check, and cut
 # releases only from a green commit (the release SHA should show a passing run here).
 
+# This workflow only reads the tree and uploads an artifact. Declared explicitly so
+# a future change to the account-wide default token scope cannot silently widen it.
+permissions:
+  contents: read
+
 on:
   push:
     branches: [main]
@@ -25,7 +30,7 @@ jobs:
     name: Golden-fixture detection suite
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Run golden-fixture detection tests
         shell: pwsh
@@ -46,7 +51,7 @@ jobs:
 
       - name: Upload test-summary artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
         with:
           name: test-summary
           path: Tests/test-summary.json
