@@ -1,10 +1,15 @@
 {
-  "generated": "2026-10-12 20:34 UTC",
+  "generated": "2026-10-13 18:38 UTC",
   "kev": {
-    "catalogVersion": "2026.10.08",
-    "count": 1739,
-    "date": "2026-10-08",
+    "catalogVersion": "2026.10.13",
+    "count": 1740,
+    "date": "2026-10-13",
     "newest": [
+      {
+        "added": "2026-10-13",
+        "cve": "CVE-2026-104935",
+        "name": "Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability"
+      },
       {
         "added": "2026-10-08",
         "cve": "CVE-2015-5477",
@@ -24,11 +29,6 @@
         "added": "2026-10-08",
         "cve": "CVE-2021-3199",
         "name": "ONLYOFFICE Docs Server Path Traversal Vulnerability"
-      },
-      {
-        "added": "2026-10-08",
-        "cve": "CVE-2015-3306",
-        "name": "ProFTPD Improper Access Control Vulnerability"
       }
     ]
   },
