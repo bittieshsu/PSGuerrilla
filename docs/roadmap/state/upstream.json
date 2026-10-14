@@ -1,14 +1,19 @@
 {
-  "generated": "2026-10-13 18:38 UTC",
+  "generated": "2026-10-14 16:08 UTC",
   "kev": {
     "catalogVersion": "2026.10.13",
-    "count": 1740,
+    "count": 1741,
     "date": "2026-10-13",
     "newest": [
       {
         "added": "2026-10-13",
         "cve": "CVE-2026-104935",
         "name": "Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability"
+      },
+      {
+        "added": "2026-10-13",
+        "cve": "CVE-2026-96951",
+        "name": "Microsoft Windows Command Injection Vulnerability"
       },
       {
         "added": "2026-10-08",
@@ -24,11 +29,6 @@
         "added": "2026-10-08",
         "cve": "CVE-2023-22894",
         "name": "Strapi Cleartext Storage of Sensitive Information Vulnerability"
-      },
-      {
-        "added": "2026-10-08",
-        "cve": "CVE-2021-3199",
-        "name": "ONLYOFFICE Docs Server Path Traversal Vulnerability"
       }
     ]
   },
