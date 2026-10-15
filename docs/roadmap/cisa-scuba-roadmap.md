@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-10-14 16:08 UTC**
+Last scan: **2026-10-15 15:56 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-10-14 16:08 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.10.13 (2026-10-13) | 1741 known-exploited CVEs |
+| CISA KEV catalog | 2026.10.14 (2026-10-14) | 1745 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -161,15 +161,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-105134` Ahsay AhsayCBS Command Injection Vulnerability (added 2026-10-14)
+- `CVE-2026-76519` Cisco Secure Email Gateway Relative Path Traversal Vulnerability (added 2026-10-14)
+- `CVE-2026-105133` Ahsay AhsayCBS Improper Authentication Vulnerability (added 2026-10-14)
+- `CVE-2026-0322` Palo Alto Networks PAN-OS Code Injection Vulnerability (added 2026-10-14)
 - `CVE-2026-104935` Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability (added 2026-10-13)
-- `CVE-2026-96951` Microsoft Windows Command Injection Vulnerability (added 2026-10-13)
-- `CVE-2015-5477`  ISC BIND Data Processing Errors Vulnerability (added 2026-10-08)
-- `CVE-2016-3081` Apache Struts Command Injection Vulnerability (added 2026-10-08)
-- `CVE-2023-22894` Strapi Cleartext Storage of Sensitive Information Vulnerability (added 2026-10-08)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-10-15
+- KEV catalog 2026.10.13 -> 2026.10.14 (+4 entries, now 1745)
 
 ### 2026-10-14
 - No upstream changes detected.
