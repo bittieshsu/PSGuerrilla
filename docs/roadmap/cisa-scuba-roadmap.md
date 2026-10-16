@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-10-15 15:56 UTC**
+Last scan: **2026-10-16 15:44 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-10-15 15:56 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.10.14 (2026-10-14) | 1745 known-exploited CVEs |
+| CISA KEV catalog | 2026.10.15 (2026-10-15) | 1746 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -19,14 +19,14 @@ Coverage compares the base policy ID (version tag stripped) so a version bump do
 
 | Baseline | Upstream policies | Covered by Guerrilla | Gap |
 |---|---|---|---|
-| ScubaGear MS.* | 170 | 79 | **91** |
+| ScubaGear MS.* | 169 | 79 | **90** |
 | ScubaGoggles GWS.* | 138 | 110 | **28** |
 
 Guerrilla references 80 MS.* and 110 GWS.* policy IDs today.
 
 ## ScubaGear (M365 / Entra) gaps
 
-91 upstream policies have no Guerrilla check yet (candidate roadmap items):
+90 upstream policies have no Guerrilla check yet (candidate roadmap items):
 
 - [ ] `MS.AAD.3.9`
 - [ ] `MS.AAD.5.4`
@@ -84,7 +84,6 @@ Guerrilla references 80 MS.* and 110 GWS.* policy IDs today.
 - [ ] `MS.SECURITYSUITE.1.2`
 - [ ] `MS.SECURITYSUITE.1.3`
 - [ ] `MS.SECURITYSUITE.1.4`
-- [ ] `MS.SECURITYSUITE.15.2`
 - [ ] `MS.SECURITYSUITE.2.1`
 - [ ] `MS.SECURITYSUITE.2.2`
 - [ ] `MS.SECURITYSUITE.2.3`
@@ -161,15 +160,19 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-21589` Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability (added 2026-10-15)
 - `CVE-2026-105134` Ahsay AhsayCBS Command Injection Vulnerability (added 2026-10-14)
 - `CVE-2026-76519` Cisco Secure Email Gateway Relative Path Traversal Vulnerability (added 2026-10-14)
 - `CVE-2026-105133` Ahsay AhsayCBS Improper Authentication Vulnerability (added 2026-10-14)
 - `CVE-2026-0322` Palo Alto Networks PAN-OS Code Injection Vulnerability (added 2026-10-14)
-- `CVE-2026-104935` Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability (added 2026-10-13)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-10-16
+- ScubaGear removed policies: MS.SECURITYSUITE.15.2v1
+- KEV catalog 2026.10.14 -> 2026.10.15 (+1 entries, now 1746)
 
 ### 2026-10-15
 - KEV catalog 2026.10.13 -> 2026.10.14 (+4 entries, now 1745)

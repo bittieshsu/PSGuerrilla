@@ -1,10 +1,15 @@
 {
-  "generated": "2026-10-15 15:56 UTC",
+  "generated": "2026-10-16 15:44 UTC",
   "kev": {
-    "catalogVersion": "2026.10.14",
-    "count": 1745,
-    "date": "2026-10-14",
+    "catalogVersion": "2026.10.15",
+    "count": 1746,
+    "date": "2026-10-15",
     "newest": [
+      {
+        "added": "2026-10-15",
+        "cve": "CVE-2026-21589",
+        "name": "Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability"
+      },
       {
         "added": "2026-10-14",
         "cve": "CVE-2026-105134",
@@ -24,11 +29,6 @@
         "added": "2026-10-14",
         "cve": "CVE-2026-0322",
         "name": "Palo Alto Networks PAN-OS Code Injection Vulnerability"
-      },
-      {
-        "added": "2026-10-13",
-        "cve": "CVE-2026-104935",
-        "name": "Ivanti Connect Secure Authentication Bypass by Spoofing Vulnerability"
       }
     ]
   },
@@ -151,7 +151,6 @@
       "MS.SECURITYSUITE.1.2v1",
       "MS.SECURITYSUITE.1.3v1",
       "MS.SECURITYSUITE.1.4v1",
-      "MS.SECURITYSUITE.15.2v1",
       "MS.SECURITYSUITE.2.1v1",
       "MS.SECURITYSUITE.2.2v1",
       "MS.SECURITYSUITE.2.3v1",
