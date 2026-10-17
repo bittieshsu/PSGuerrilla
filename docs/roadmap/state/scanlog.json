@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-10-17 14:37 UTC",
+    "changes": [
+      "KEV catalog 2026.10.15 -> 2026.10.16 (+2 entries, now 1748)"
+    ],
+    "date": "2026-10-17"
+  },
+  {
     "at": "2026-10-16 15:44 UTC",
     "changes": [
       "ScubaGear removed policies: MS.SECURITYSUITE.15.2v1",

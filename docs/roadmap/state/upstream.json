@@ -1,10 +1,20 @@
 {
-  "generated": "2026-10-16 15:44 UTC",
+  "generated": "2026-10-17 14:37 UTC",
   "kev": {
-    "catalogVersion": "2026.10.15",
-    "count": 1746,
-    "date": "2026-10-15",
+    "catalogVersion": "2026.10.16",
+    "count": 1748,
+    "date": "2026-10-16",
     "newest": [
+      {
+        "added": "2026-10-16",
+        "cve": "CVE-2026-102764",
+        "name": "BeyondTrust Remote Support Authentication Bypass by Spoofing Vulnerability"
+      },
+      {
+        "added": "2026-10-16",
+        "cve": "CVE-2025-61624",
+        "name": "Fortinet Multiple Products Path Traversal Vulnerability"
+      },
       {
         "added": "2026-10-15",
         "cve": "CVE-2026-21589",
@@ -19,16 +29,6 @@
         "added": "2026-10-14",
         "cve": "CVE-2026-76519",
         "name": "Cisco Secure Email Gateway Relative Path Traversal Vulnerability"
-      },
-      {
-        "added": "2026-10-14",
-        "cve": "CVE-2026-105133",
-        "name": "Ahsay AhsayCBS Improper Authentication Vulnerability"
-      },
-      {
-        "added": "2026-10-14",
-        "cve": "CVE-2026-0322",
-        "name": "Palo Alto Networks PAN-OS Code Injection Vulnerability"
       }
     ]
   },
