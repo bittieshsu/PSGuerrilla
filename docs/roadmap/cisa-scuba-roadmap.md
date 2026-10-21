@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-10-20 15:59 UTC**
+Last scan: **2026-10-21 16:17 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-10-20 15:59 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.10.16 (2026-10-16) | 1748 known-exploited CVEs |
+| CISA KEV catalog | 2026.10.21 (2026-10-21) | 1754 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -160,15 +160,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
-- `CVE-2026-102764` BeyondTrust Remote Support Authentication Bypass by Spoofing Vulnerability (added 2026-10-16)
-- `CVE-2025-61624` Fortinet Multiple Products Path Traversal Vulnerability (added 2026-10-16)
-- `CVE-2026-21589` Atlassian Multiple Products Files or Directories Accessible to External Parties Vulnerability (added 2026-10-15)
-- `CVE-2026-105134` Ahsay AhsayCBS Command Injection Vulnerability (added 2026-10-14)
-- `CVE-2026-76519` Cisco Secure Email Gateway Relative Path Traversal Vulnerability (added 2026-10-14)
+- `CVE-2026-106931` EG Secure Solutions SiteGuard Server Edition OS Command Injection Vulnerability (added 2026-10-20)
+- `CVE-2026-96656` Plex Media Server External Control of File Name or Path Vulnerability (added 2026-10-20)
+- `CVE-2026-96655` Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability (added 2026-10-20)
+- `CVE-2026-96654` Plex Media Server Improper Neutralization of Encoded URI Schemes in a Web Page Vulnerability (added 2026-10-20)
+- `CVE-2026-96652` Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability (added 2026-10-20)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-10-21
+- KEV catalog 2026.10.16 -> 2026.10.21 (+6 entries, now 1754)
 
 ### 2026-10-20
 - No upstream changes detected.
