@@ -1,5 +1,13 @@
 [
   {
+    "at": "2026-10-23 16:05 UTC",
+    "changes": [
+      "ScubaGear release v1.8.0 -> v2.0.0 (2026-10-22)",
+      "ScubaGoggles release v1.0.1 -> v1.1.0 (2026-10-22)"
+    ],
+    "date": "2026-10-23"
+  },
+  {
     "at": "2026-10-22 16:15 UTC",
     "changes": [
       "No upstream changes detected."

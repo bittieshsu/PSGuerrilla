@@ -2,14 +2,14 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-10-22 16:15 UTC**
+Last scan: **2026-10-23 16:05 UTC**
 
 ## Upstream state
 
 | Source | Latest | Notes |
 |---|---|---|
-| ScubaGear (M365 / Entra) | [v1.8.0](https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0) (2026-05-07) | MS.* Secure Configuration Baselines |
-| ScubaGoggles (Google Workspace) | [v1.0.1](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1) (2026-07-28) | GWS.* Secure Configuration Baselines |
+| ScubaGear (M365 / Entra) | [v2.0.0](https://github.com/cisagov/ScubaGear/releases/tag/v2.0.0) (2026-10-22) | MS.* Secure Configuration Baselines |
+| ScubaGoggles (Google Workspace) | [v1.1.0](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.1.0) (2026-10-22) | GWS.* Secure Configuration Baselines |
 | CISA KEV catalog | 2026.10.21 (2026-10-21) | 1754 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
@@ -169,6 +169,10 @@ Broader CISA context (CVE-level, not directly a config baseline):
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-10-23
+- ScubaGear release v1.8.0 -> v2.0.0 (2026-10-22)
+- ScubaGoggles release v1.0.1 -> v1.1.0 (2026-10-22)
 
 ### 2026-10-22
 - No upstream changes detected.

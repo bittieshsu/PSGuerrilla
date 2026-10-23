@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-22 16:15 UTC",
+  "generated": "2026-10-23 16:05 UTC",
   "kev": {
     "catalogVersion": "2026.10.21",
     "count": 1754,
@@ -205,9 +205,9 @@
       "MS.TEAMS.8.2v1"
     ],
     "release": {
-      "date": "2026-05-07",
-      "tag": "v1.8.0",
-      "url": "https://github.com/cisagov/ScubaGear/releases/tag/v1.8.0"
+      "date": "2026-10-22",
+      "tag": "v2.0.0",
+      "url": "https://github.com/cisagov/ScubaGear/releases/tag/v2.0.0"
     }
   },
   "scubagoggles": {
@@ -352,9 +352,9 @@
       "GWS.SITES.1.1v1"
     ],
     "release": {
-      "date": "2026-07-28",
-      "tag": "v1.0.1",
-      "url": "https://github.com/cisagov/ScubaGoggles/releases/tag/v1.0.1"
+      "date": "2026-10-22",
+      "tag": "v1.1.0",
+      "url": "https://github.com/cisagov/ScubaGoggles/releases/tag/v1.1.0"
     }
   }
 }
