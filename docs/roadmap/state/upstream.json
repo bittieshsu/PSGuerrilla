@@ -1,10 +1,20 @@
 {
-  "generated": "2026-10-23 16:05 UTC",
+  "generated": "2026-10-24 15:02 UTC",
   "kev": {
-    "catalogVersion": "2026.10.21",
-    "count": 1754,
-    "date": "2026-10-21",
+    "catalogVersion": "2026.10.23",
+    "count": 1756,
+    "date": "2026-10-23",
     "newest": [
+      {
+        "added": "2026-10-23",
+        "cve": "CVE-2026-114625",
+        "name": "Arista VeloCloud Orchestrator SQL Injection Vulnerability"
+      },
+      {
+        "added": "2026-10-23",
+        "cve": "CVE-2026-110447",
+        "name": "Collabora Online – Built-in CODE Server OS Command Injection Vulnerability"
+      },
       {
         "added": "2026-10-20",
         "cve": "CVE-2026-106931",
@@ -18,16 +28,6 @@
       {
         "added": "2026-10-20",
         "cve": "CVE-2026-96655",
-        "name": "Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability"
-      },
-      {
-        "added": "2026-10-20",
-        "cve": "CVE-2026-96654",
-        "name": "Plex Media Server Improper Neutralization of Encoded URI Schemes in a Web Page Vulnerability"
-      },
-      {
-        "added": "2026-10-20",
-        "cve": "CVE-2026-96652",
         "name": "Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability"
       }
     ]

@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-10-23 16:05 UTC**
+Last scan: **2026-10-24 15:02 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-10-23 16:05 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v2.0.0](https://github.com/cisagov/ScubaGear/releases/tag/v2.0.0) (2026-10-22) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.1.0](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.1.0) (2026-10-22) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.10.21 (2026-10-21) | 1754 known-exploited CVEs |
+| CISA KEV catalog | 2026.10.23 (2026-10-23) | 1756 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -160,15 +160,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-114625` Arista VeloCloud Orchestrator SQL Injection Vulnerability (added 2026-10-23)
+- `CVE-2026-110447` Collabora Online – Built-in CODE Server OS Command Injection Vulnerability (added 2026-10-23)
 - `CVE-2026-106931` EG Secure Solutions SiteGuard Server Edition OS Command Injection Vulnerability (added 2026-10-20)
 - `CVE-2026-96656` Plex Media Server External Control of File Name or Path Vulnerability (added 2026-10-20)
 - `CVE-2026-96655` Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability (added 2026-10-20)
-- `CVE-2026-96654` Plex Media Server Improper Neutralization of Encoded URI Schemes in a Web Page Vulnerability (added 2026-10-20)
-- `CVE-2026-96652` Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability (added 2026-10-20)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-10-24
+- KEV catalog 2026.10.21 -> 2026.10.23 (+2 entries, now 1756)
 
 ### 2026-10-23
 - ScubaGear release v1.8.0 -> v2.0.0 (2026-10-22)

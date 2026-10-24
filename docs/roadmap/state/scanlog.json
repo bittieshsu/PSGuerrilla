@@ -1,5 +1,12 @@
 [
   {
+    "at": "2026-10-24 15:02 UTC",
+    "changes": [
+      "KEV catalog 2026.10.21 -> 2026.10.23 (+2 entries, now 1756)"
+    ],
+    "date": "2026-10-24"
+  },
+  {
     "at": "2026-10-23 16:05 UTC",
     "changes": [
       "ScubaGear release v1.8.0 -> v2.0.0 (2026-10-22)",
