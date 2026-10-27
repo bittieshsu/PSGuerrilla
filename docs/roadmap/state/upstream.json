@@ -1,10 +1,20 @@
 {
-  "generated": "2026-10-26 17:52 UTC",
+  "generated": "2026-10-27 16:59 UTC",
   "kev": {
-    "catalogVersion": "2026.10.23",
-    "count": 1756,
-    "date": "2026-10-23",
+    "catalogVersion": "2026.10.26",
+    "count": 1758,
+    "date": "2026-10-26",
     "newest": [
+      {
+        "added": "2026-10-26",
+        "cve": "CVE-2026-109618",
+        "name": "PHP Memory Corruption Vulnerability"
+      },
+      {
+        "added": "2026-10-26",
+        "cve": "CVE-2026-109619",
+        "name": "PHP Stale Internal Request-State Vulnerability"
+      },
       {
         "added": "2026-10-23",
         "cve": "CVE-2026-114625",
@@ -19,16 +29,6 @@
         "added": "2026-10-20",
         "cve": "CVE-2026-106931",
         "name": "EG Secure Solutions SiteGuard Server Edition OS Command Injection Vulnerability"
-      },
-      {
-        "added": "2026-10-20",
-        "cve": "CVE-2026-96656",
-        "name": "Plex Media Server External Control of File Name or Path Vulnerability"
-      },
-      {
-        "added": "2026-10-20",
-        "cve": "CVE-2026-96655",
-        "name": "Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability"
       }
     ]
   },

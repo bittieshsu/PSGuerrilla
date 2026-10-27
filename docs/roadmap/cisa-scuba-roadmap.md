@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-10-26 17:52 UTC**
+Last scan: **2026-10-27 16:59 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-10-26 17:52 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v2.0.0](https://github.com/cisagov/ScubaGear/releases/tag/v2.0.0) (2026-10-22) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.1.0](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.1.0) (2026-10-22) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.10.23 (2026-10-23) | 1756 known-exploited CVEs |
+| CISA KEV catalog | 2026.10.26 (2026-10-26) | 1758 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -160,15 +160,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-109618` PHP Memory Corruption Vulnerability (added 2026-10-26)
+- `CVE-2026-109619` PHP Stale Internal Request-State Vulnerability (added 2026-10-26)
 - `CVE-2026-114625` Arista VeloCloud Orchestrator SQL Injection Vulnerability (added 2026-10-23)
 - `CVE-2026-110447` Collabora Online – Built-in CODE Server OS Command Injection Vulnerability (added 2026-10-23)
 - `CVE-2026-106931` EG Secure Solutions SiteGuard Server Edition OS Command Injection Vulnerability (added 2026-10-20)
-- `CVE-2026-96656` Plex Media Server External Control of File Name or Path Vulnerability (added 2026-10-20)
-- `CVE-2026-96655` Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability (added 2026-10-20)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-10-27
+- KEV catalog 2026.10.23 -> 2026.10.26 (+2 entries, now 1758)
 
 ### 2026-10-26
 - No upstream changes detected.
