@@ -2,7 +2,7 @@
 
 > Generated daily by `.github/workflows/cisa-roadmap.yml` (`scripts/roadmap/cisa-scan.py`). Do not edit by hand: changes are overwritten on the next scan. This is a deterministic diff of upstream CISA SCuBA baselines against the checks Guerrilla ships. No AI is involved.
 
-Last scan: **2026-10-29 17:45 UTC**
+Last scan: **2026-10-30 17:26 UTC**
 
 ## Upstream state
 
@@ -10,7 +10,7 @@ Last scan: **2026-10-29 17:45 UTC**
 |---|---|---|
 | ScubaGear (M365 / Entra) | [v2.0.0](https://github.com/cisagov/ScubaGear/releases/tag/v2.0.0) (2026-10-22) | MS.* Secure Configuration Baselines |
 | ScubaGoggles (Google Workspace) | [v1.1.0](https://github.com/cisagov/ScubaGoggles/releases/tag/v1.1.0) (2026-10-22) | GWS.* Secure Configuration Baselines |
-| CISA KEV catalog | 2026.10.28 (2026-10-28) | 1762 known-exploited CVEs |
+| CISA KEV catalog | 2026.10.29 (2026-10-29) | 1764 known-exploited CVEs |
 | CISA BOD 25-01 | [SCuBA mandate](https://www.cisa.gov/news-events/directives/binding-operational-directive-25-01) | Secure cloud baselines for FCEB M365 |
 
 ## SCuBA coverage summary
@@ -160,15 +160,18 @@ Version drift (Guerrilla references an older policy version than upstream):
 
 Broader CISA context (CVE-level, not directly a config baseline):
 
+- `CVE-2026-97229` GitLab Community Edition and Enterprise Edition Integer Overflow or Wraparound Vulnerability (added 2026-10-29)
+- `CVE-2026-76418` Cisco Secure Firewall ASA Software and Cisco Secure FTD Software Unchecked Return Value to NULL Pointer Dereference Vulnerability (added 2026-10-29)
 - `CVE-2026-41709` Broadcom VMWare ESX Insufficient Logging Vulnerability (added 2026-10-28)
 - `CVE-2026-46300` Linux Kernel Missing Initialization of a Variable Vulnerability (added 2026-10-28)
 - `CVE-2026-48356` Adobe Commerce and Magento Unrestricted Upload of File with Dangerous Type Vulnerability (added 2026-10-27)
-- `CVE-2026-111497` Google Brotli Unchecked Return Value Vulnerability (added 2026-10-27)
-- `CVE-2026-109618` PHP Memory Corruption Vulnerability (added 2026-10-26)
 
 ## Scan log
 
 Most recent first. One entry per day the scanner ran.
+
+### 2026-10-30
+- KEV catalog 2026.10.28 -> 2026.10.29 (+2 entries, now 1764)
 
 ### 2026-10-29
 - KEV catalog 2026.10.27 -> 2026.10.28 (+2 entries, now 1762)
